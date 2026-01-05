@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: PageProps) {
     const resolvedParams = await params;
     const slug = resolvedParams.slug || [];
-    const currentPath = slug.length > 0 ? `/${slug.join("/")}` : "/";
+    const currentPath = slug.length > 0 ? \`/\${slug.join("/")}\` : "/";
 
     // Fetch document data from Firestore
     const slugString = slug.join('/');
@@ -44,7 +44,7 @@ export default async function Page({ params }: PageProps) {
 
     // Use doc data or fallback to defaults
     const featuredImage = doc?.frontmatter?.image || "https://live.staticflickr.com/65535/55022177232_15f5a45416_b.jpg";
-    const title = doc?.frontmatter?.title || (slug.length > 0 && !doc ? currentPath : "Ordering Medical Cannabis Online in the UK");
+    const title = doc?.frontmatter?.title || (slug.length > 0 && !doc ? currentPath : "Welcome to Goldlabel");
     const content = doc?.content;
 
     return (
@@ -54,7 +54,7 @@ export default async function Page({ params }: PageProps) {
                     <div className="mobile-featured-image">
                         <Image
                             src={featuredImage}
-                            alt={doc?.frontmatter?.title || "UK Medical Cannabis"}
+                            alt={doc?.frontmatter?.title || "Goldlabel"}
                             width={1024}
                             height={683}
                             priority
@@ -79,22 +79,22 @@ export default async function Page({ params }: PageProps) {
                     ) : (
                         <section>
                             <blockquote>
-                                UK medical cannabis ordered legally by prescription, supplied by licensed pharmacies, and delivered to your home. Clear information on how the process works and where orders come from.
+                                Welcome to Goldlabel - A modern, flexible content management system built with Next.js and Firestore.
                             </blockquote>
                             <p>
-                                In the UK, medical cannabis can be supplied legally when it is prescribed as a cannabis-based product for medicinal use (a CBPM). Since 1 November 2018, qualifying CBPMs have been placed in Schedule 2, which means they can be prescribed and supplied under controlled conditions.
+                                Goldlabel provides a powerful platform for managing and publishing content. Built on Next.js 16, it combines the performance of static generation with the flexibility of dynamic content.
                             </p>
 
                             <p>
-                                The key condition is the prescription. UK rules restrict the decision to prescribe CBPMs to doctors on the GMC Specialist Register. In practice, that usually means a specialist consultation (often done remotely), followed by a prescription where appropriate.
+                                The system integrates seamlessly with Firestore for content storage, allowing you to manage your content through a simple markdown-based interface while maintaining full control over your data.
                             </p>
 
                             <p>
-                                Once prescribed, supply works like other controlled medicines: it is dispensed through a pharmacy and can be delivered to you by courier. Many CBPMs are “unlicensed specials”, which are still lawful to supply when ordered for an individual patient and sourced through properly licensed manufacturers and suppliers.
+                                Whether you're building a blog, documentation site, or content-rich application, Goldlabel provides the tools you need to create, manage, and publish your content with ease.
                             </p>
 
                             <p>
-                                What is not legal is buying cannabis as a consumer product without a prescription. This site exists for people using the legal route: prescription-led access, pharmacy dispensing, and home delivery — with clear information on the options available and where they come from.
+                                Get started by creating your first markdown document or explore the API to see how you can integrate Goldlabel into your workflow.
                             </p>
                         </section>
 
@@ -113,13 +113,13 @@ export default async function Page({ params }: PageProps) {
             <aside className="featured-image">
                 <Image
                     src={featuredImage}
-                    alt={doc?.frontmatter?.title || "UK Medical Cannabis"}
+                    alt={doc?.frontmatter?.title || "Goldlabel"}
                     width={1024}
                     height={683}
                     priority
                     style={{ objectFit: 'cover' }}
                 />
-                <figcaption>{doc?.frontmatter?.title || "Medical Cannabis greenhouse"}</figcaption>
+                <figcaption>{doc?.frontmatter?.title || "Goldlabel Content Platform"}</figcaption>
             </aside>
         </div>
     );
