@@ -5,8 +5,8 @@ import Footer from "@/goldlabel/components/Footer";
 import { getAllDocs } from "@/goldlabel/lib/firestore-service";
 
 export const metadata: Metadata = {
-  title: "UK Medical Cannabis",
-  description: "UK medical cannabis listings covering products, suppliers, and options to buy online with UK delivery",
+  title: "Goldlabel",
+  description: "A modern content management and publishing platform built with Next.js",
 };
 
 export default async function RootLayout({

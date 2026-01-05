@@ -75,7 +75,7 @@ export default function Footer() {
                 </div>
 
                 <div className="footer-bottom">
-                    <p>&copy; {currentYear} UK Medical Cannabis. All rights reserved.</p>
+                    <p>&copy; {currentYear} Goldlabel. All rights reserved.</p>
                 </div>
             </div>
         </footer>
