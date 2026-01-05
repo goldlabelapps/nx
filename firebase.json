@@ -1,0 +1,6 @@
+{
+    "firestore": {
+        "rules": "goldlabel/lib/firestore.rules",
+        "indexes": "goldlabel/lib/firestore.indexes.json"
+    }
+}

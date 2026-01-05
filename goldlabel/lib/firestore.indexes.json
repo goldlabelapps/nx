@@ -1,0 +1,19 @@
+{
+    "indexes": [
+        {
+            "collectionGroup": "markdown",
+            "queryScope": "COLLECTION",
+            "fields": [
+                {
+                    "fieldPath": "published",
+                    "order": "ASCENDING"
+                },
+                {
+                    "fieldPath": "updated",
+                    "order": "DESCENDING"
+                }
+            ]
+        }
+    ],
+    "fieldOverrides": []
+}
