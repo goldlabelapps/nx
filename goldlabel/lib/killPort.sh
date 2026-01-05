@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# killPort.sh - Terminates any process running on port 1975
+# killPort.sh - Terminates any process running on port 1999
 # Provides feedback if a process was found and killed
 
-PORT=1975
+PORT=1999
 
 # Check if any process is using the port
 PID=$(lsof -ti:$PORT 2>/dev/null)

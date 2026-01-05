@@ -1,8 +1,8 @@
 {
-  "name": "listingslab",
-  "version": "55.0.5",
+  "name": "next-goldlabel",
+  "version": "1.1.1",
   "scripts": {
-    "dev": "yarn kill && next dev -p 1975 --webpack & yarn open",
+    "dev": "yarn kill && next dev -p 1999 --webpack & yarn open",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
