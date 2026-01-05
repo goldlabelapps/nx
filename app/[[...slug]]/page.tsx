@@ -43,8 +43,8 @@ export default async function Page({ params }: PageProps) {
     }
 
     // Use doc data or fallback to defaults
-    const featuredImage = doc?.frontmatter?.image || "https://live.staticflickr.com/65535/55022177232_15f5a45416_b.jpg";
-    const title = doc?.frontmatter?.title || (slug.length > 0 && !doc ? currentPath : "Welcome to Goldlabel");
+    const featuredImage = doc?.frontmatter?.image || "/jpg/og_light.jpg";
+    const title = doc?.frontmatter?.title || (slug.length > 0 && !doc ? currentPath : "A target you can see");
     const content = doc?.content;
 
     return (
@@ -55,25 +55,17 @@ export default async function Page({ params }: PageProps) {
                         <Image
                             src={featuredImage}
                             alt={doc?.frontmatter?.title || "Goldlabel"}
-                            width={1024}
-                            height={683}
+                            width={1200}
+                            height={630}
                             priority
                             style={{ objectFit: 'cover' }}
                         />
                     </div>
                     <h1>{title}</h1>
+                    <h2>{doc?.frontmatter?.description || "A premium content platform designed for clarity and precision in digital publishing"}</h2>
                     {doc?.frontmatter?.description && (
                         <p className="description">{doc.frontmatter.description}</p>
                     )}
-                    <pre style={{ padding: '1rem', overflow: 'auto' }}>
-                        {JSON.stringify({
-                            currentSlug: slugString,
-                            docFound: !!doc,
-                            doc: doc,
-                            allDocsCount: allDocs.length,
-                            sampleDoc: allDocs[0]
-                        }, null, 2)}
-                    </pre>
                     {doc && content ? (
                         <div dangerouslySetInnerHTML={{ __html: content }} />
                     ) : (
@@ -119,7 +111,7 @@ export default async function Page({ params }: PageProps) {
                     priority
                     style={{ objectFit: 'cover' }}
                 />
-                <figcaption>{doc?.frontmatter?.title || "Goldlabel Content Platform"}</figcaption>
+                <figcaption>{doc?.frontmatter?.title || "Target 2026"}</figcaption>
             </aside>
         </div>
     );

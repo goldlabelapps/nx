@@ -119,7 +119,7 @@ const sampleDocs = [
       <h3>Contact Information</h3>
       <p><strong>Email:</strong> hello@listingslab.com</p>
       <p><strong>Location:</strong> Remote / Global</p>
-      <h3>Follow Us</h3>
+      <h3>See us socially</h3>
       <p>Stay connected on social media for updates and news.</p>
       <p>We typically respond within 24 hours during business days.</p>
     `,

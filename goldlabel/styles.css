@@ -1,26 +1,28 @@
 /* Light theme - default */
 :root {
-  --primary: #17A1AC;
-  --secondary: #1b595dff;
+  --primary: #C09F52;
+  --secondary: #A6823D;
   --background: #fff;
   --paper: #f3f3f3ff;
   --text: #000;
-  --border: #17A1AC;
+  --border: #C09F52;
   --header-height: 80px;
   --mobile-breakpoint: 999px;
 }
 
-/* Dark theme - system preference */
+/* Dark theme - disabled for now, will be configurable later */
+/*
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #17A1AC;
-    --secondary: #07c7d5ff;
+    --primary: #C09F52;
+    --secondary: #D4B976;
     --background: #000;
     --paper: #1e1e1eff;
     --text: #fff;
-    --border: #17A1AC;
+    --border: #C09F52;
   }
 }
+*/
 
 * {
   box-sizing: border-box;
@@ -37,22 +39,66 @@ body {
   background: var(--background);
   color: var(--text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  line-height: 1.6;
+  font-size: 18px;
+  line-height: 1.7;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Heading Styles - Light Weight */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+/* Heading Styles - Semantic Sizing */
+h1 {
+  font-size: 2.5rem;
   font-weight: 300;
-  margin: 0;
+  margin: 0 0 1rem 0;
   padding: 0;
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 0 0.875rem 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 300;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin: 0 0 0.625rem 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+p {
+  font-size: 1.125rem;
+  margin: 0 0 1.25rem 0;
+  line-height: 1.7;
 }
 
 a h1,
@@ -332,8 +378,6 @@ blockquote {
 .page-content article {
   background: var(--background);
   padding: 0 2rem 2rem 2rem;
-  font-size: 1.125rem;
-  line-height: 1.75;
 }
 
 .mobile-featured-image {

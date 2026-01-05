@@ -56,7 +56,7 @@ export default function Footer() {
                     ))}
 
                     <div className="footer-section">
-                        <h3>Follow Us</h3>
+                        <h3>See us socially</h3>
                         <div className="social-links">
                             {socialLinks.map((social) => (
                                 <a
