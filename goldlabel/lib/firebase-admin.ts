@@ -2,6 +2,8 @@ import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
 // Initialize Firebase Admin SDK (server-side only)
+// TEMPORARILY DISABLED - Fix Firebase credentials before uncommenting
+/*
 function initAdmin() {
     if (getApps().length === 0) {
         // Check if using full service account JSON or separate env vars
@@ -29,3 +31,7 @@ function initAdmin() {
 initAdmin();
 
 export const adminDb = getFirestore();
+*/
+
+// Mock adminDb for development
+export const adminDb = null as any;

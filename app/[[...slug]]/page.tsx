@@ -26,7 +26,7 @@ export async function generateStaticParams() {
 export default async function Page({ params }: PageProps) {
     const resolvedParams = await params;
     const slug = resolvedParams.slug || [];
-    const currentPath = slug.length > 0 ? \`/\${slug.join("/")}\` : "/";
+    const currentPath = slug.length > 0 ? `/${slug.join("/")}` : "/";
 
     // Fetch document data from Firestore
     const slugString = slug.join('/');
