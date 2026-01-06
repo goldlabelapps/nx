@@ -47,7 +47,8 @@ export default async function Page({ params }: PageProps) {
 
     // Use doc data or fallback to minimal defaults (no identifying text)
     const featuredImage = doc?.frontmatter?.image || "/png/og.png";
-    const title = doc?.frontmatter?.title || "";
+    const title = doc?.frontmatter?.title ? doc.frontmatter.title : "";
+    const description = doc?.frontmatter?.description ? doc.frontmatter.description : "";
     const content = doc?.content;
 
     // If homepage markdown is missing, show setup form
@@ -57,9 +58,30 @@ export default async function Page({ params }: PageProps) {
             <div className="page-layout">
                 <main className="page-content">
                     <article>
+                        <div className="mobile-featured-image">
+                            <Image
+                                src={featuredImage}
+                                alt={doc?.frontmatter?.title || ""}
+                                width={1200}
+                                height={630}
+                                priority
+                                style={{ objectFit: 'cover' }}
+                            />
+                        </div>
                         <HomeInstallClient />
                     </article>
                 </main>
+                <aside className="featured-image">
+                    <Image
+                        src={featuredImage}
+                        alt={doc?.frontmatter?.title || ""}
+                        width={1024}
+                        height={683}
+                        priority
+                        style={{ objectFit: 'cover' }}
+                    />
+                    {doc?.frontmatter?.title && <figcaption>{doc.frontmatter.title}</figcaption>}
+                </aside>
             </div>
         );
     }
@@ -78,13 +100,9 @@ export default async function Page({ params }: PageProps) {
                             style={{ objectFit: 'cover' }}
                         />
                     </div>
-                    {title && <h1>{title}</h1>}
-                    {doc?.frontmatter?.description && (
-                        <h2>{doc.frontmatter.description}</h2>
-                    )}
-                    {doc?.frontmatter?.description && (
-                        <p className="description">{doc.frontmatter.description}</p>
-                    )}
+                    {title ? <h1>{title}</h1> : null}
+                    {description ? <h2>{description}</h2> : null}
+                    {description ? <p className="description">{description}</p> : null}
                     {content && (
                         <div dangerouslySetInnerHTML={{ __html: content }} />
                     )}
