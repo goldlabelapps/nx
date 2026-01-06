@@ -41,11 +41,13 @@ export default function Install({ onSubmit }: InstallProps) {
         !submitted && (
             <form onSubmit={handleSubmit} className="setup-form-modern">
                 <h1 style={{ fontSize: '1.6rem', fontWeight: 400, margin: 0 }}>Install</h1>
-                <p className="setup-description">
-                    Enter a unique app name below and click Install to verify your Firestore connection. This will be used as your <b>app</b> identifier.
+                <p className="setup-description" style={{ marginBottom: '0.5rem' }}>
+                    <b>Display Name (Site Title):</b> This will be the public-facing name of your site and can be changed later.<br />
+                    <span style={{ color: 'var(--primary)', fontWeight: 500 }}>It's important!</span> This is what your users will see as your site title.<br />
+                    <span style={{ fontSize: '0.97em', color: 'var(--secondary)' }}>You can update the Display Name at any time, but your <b>site ID (slug)</b> will be generated from this name and <b>cannot be changed later</b>.</span>
                 </p>
-                <div className="setup-field setup-field-inline">
-                    <label htmlFor="appname">App Name</label>
+                <div className="setup-field setup-field-inline" style={{ marginTop: 0 }}>
+                    <label htmlFor="appname">Display Name</label>
                     <div className="setup-inline-row">
                         <input
                             id="appname"
@@ -57,7 +59,14 @@ export default function Install({ onSubmit }: InstallProps) {
                             className="setup-input"
                         />
                         <button type="submit" disabled={submitting || !isValid} className="setup-btn">
-                            {submitting ? "Testing..." : "Test Firebase"}
+                            {submitting ? "Testing..." : (
+                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4em' }}>
+                                    Proceed
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: 2, verticalAlign: 'middle' }}>
+                                        <path d="M7 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </span>
+                            )}
                         </button>
                     </div>
                     <div className="setup-feedback" style={{ color: isValid ? 'var(--secondary)' : 'var(--primary)', fontSize: '0.95rem', minHeight: '1.5em' }}>
