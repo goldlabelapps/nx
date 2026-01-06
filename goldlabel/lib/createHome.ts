@@ -3,7 +3,6 @@ import { adminDb } from './firebase-admin';
 import type { Doc } from './firestore-service';
 
 export async function createHomeMarkdown({ sitename, description, namespace }: { sitename: string; description: string; namespace: string }) {
-    if (!adminDb) throw new Error('Firebase not configured');
     const now = new Date().toISOString();
     const doc: Doc = {
         id: '/',
@@ -22,7 +21,11 @@ export async function createHomeMarkdown({ sitename, description, namespace }: {
             image: '',
         },
     };
-    await adminDb.collection('markdown').doc('/').set(doc);
+    if (adminDb) {
+        await adminDb.collection('markdown').doc('/').set(doc);
+    } else {
+        console.warn('Firebase not configured - skipping Firestore write');
+    }
     return doc;
 }
 

@@ -26,13 +26,42 @@
   gap: 0.4rem;
 }
 
+.setup-field-inline .setup-inline-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.setup-field-inline .setup-input {
+  flex: 1 1 350px;
+  min-width: 0;
+  font-size: 1.45rem;
+  height: 3.2rem;
+  padding: 1.1rem 1.3rem;
+}
+
+.setup-field-inline .setup-btn {
+  flex: 0 0 auto;
+  padding: 0 2.1rem;
+  font-size: 1.25rem;
+  white-space: nowrap;
+  min-width: unset;
+  width: auto;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .setup-input {
-  padding: 0.7rem 1rem;
+  padding: 1.1rem 1.3rem;
   border: 2px solid var(--primary);
   border-radius: 0.6rem;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   background: #fafbfc;
   transition: border 0.2s;
+  height: 3.2rem;
 }
 
 .setup-input:focus {
@@ -46,12 +75,16 @@
   color: #fff;
   border: none;
   border-radius: 0.6rem;
-  padding: 0.9rem 0;
-  font-size: 1.1rem;
+  padding: 0 2.1rem;
+  font-size: 1.25rem;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 8px 0 rgba(0, 112, 243, 0.08);
   transition: background 0.2s, box-shadow 0.2s;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .setup-btn:disabled {
