@@ -1,5 +1,5 @@
 {
-  "name": "next-goldlabel",
+  "name": "nx",
   "version": "1.1.2",
   "scripts": {
     "dev": "yarn kill && next dev -p 1999 --webpack & yarn open",
