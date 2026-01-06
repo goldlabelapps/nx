@@ -15,7 +15,11 @@ export default function HomeSetupClient() {
             </div>
             <Install
                 onSubmit={async (data) => {
-                    await createHomeMarkdown(data);
+                    await createHomeMarkdown({
+                        sitename: data.appname,
+                        description: "",
+                        namespace: ""
+                    });
                     window.location.reload();
                 }}
             />
