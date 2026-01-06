@@ -16,22 +16,17 @@ export default async function RootLayout({
 }>) {
 
   const shortcutIcon = '/svg/favicon.svg';
-  const appleTouchIcon = '/png/favicon.png';
+  const appleTouchIcon = '/png/apple-touch-icon.png';
 
-  // Fetch all docs for navigation, handle errors gracefully
-  let allDocs: any[] = [];
-  let firebaseError: { code: string; message: string; indexUrl?: string } | null = null;
-
-  try {
-    allDocs = await getAllDocs();
-  } catch (error: any) {
-    console.error('Firebase connection error in layout:', error);
-    firebaseError = {
-      code: error?.code || 'UNKNOWN',
-      message: error?.message || 'Failed to connect to Firebase',
-      indexUrl: error?.indexUrl
-    };
-  }
+  // Fetch all docs for navigation and map to NavItem[]
+  const allDocs = await getAllDocs();
+  const navItems = allDocs
+    .filter(doc => doc.frontmatter && doc.frontmatter.title)
+    .map(doc => ({
+      id: doc.id,
+      title: doc.frontmatter!.title!,
+      slug: doc.frontmatter!.slug
+    }));
 
   return (
     <html lang="en">
@@ -40,40 +35,20 @@ export default async function RootLayout({
         <link rel="icon" href={shortcutIcon} />
         <link rel="shortcut icon" href={shortcutIcon} type="image/x-icon" />
         <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
-        <meta name="theme-color" content="#000" />
-        <meta name="application-name" content="Listingslab" />
+        <meta name="theme-color" content="#C09F52" />
+        <meta name="application-name" content="NX" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Listingslab" />
+        <meta name="apple-mobile-web-app-title" content="NX" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body>
         <Header
           title={metadata.title as string}
           description={metadata.description as string}
-          navItems={allDocs}
+          navItems={navItems}
         />
-        {firebaseError && (
-          <div className="firebase-error-banner">
-            <div className="firebase-error-content">
-              <span className="firebase-error-icon">⚠️</span>
-              <div className="firebase-error-details">
-                <strong>Firebase Connection Issue</strong>
-                <p>{firebaseError.message}</p>
-                {firebaseError.indexUrl && (
-                  <a
-                    href={firebaseError.indexUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="firebase-error-link"
-                  >
-                    Create Required Index →
-                  </a>
-                )}
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Firebase error handling removed as requested */}
         {children}
         <Footer />
       </body>

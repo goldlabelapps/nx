@@ -9305,29 +9305,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nx@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "nx@workspace:."
-  dependencies:
-    "@ducanh2912/next-pwa": "npm:^10.2.9"
-    "@types/node": "npm:^20"
-    "@types/react": "npm:^19"
-    "@types/react-dom": "npm:^19"
-    dotenv: "npm:^17.2.3"
-    eslint: "npm:^9"
-    eslint-config-next: "npm:16.1.1"
-    firebase: "npm:^12.7.0"
-    firebase-admin: "npm:^13.6.0"
-    firebase-tools: "npm:^15.1.0"
-    next: "npm:16.1.1"
-    open-cli: "npm:^8.0.0"
-    react: "npm:19.2.3"
-    react-dom: "npm:19.2.3"
-    tsx: "npm:^4.21.0"
-    typescript: "npm:^5"
-  languageName: unknown
-  linkType: soft
-
 "next@npm:16.1.1":
   version: 16.1.1
   resolution: "next@npm:16.1.1"
@@ -9523,6 +9500,29 @@ __metadata:
   checksum: 10c0/8765f4199755b381323da2bff2202b4b15b59f59dba0d1be3f2f793b591321cd19e1b5a686ef48d9753a6bd4868550da632541a45dfb61809d55664222d73e44
   languageName: node
   linkType: hard
+
+"nx@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "nx@workspace:."
+  dependencies:
+    "@ducanh2912/next-pwa": "npm:^10.2.9"
+    "@types/node": "npm:^20"
+    "@types/react": "npm:^19"
+    "@types/react-dom": "npm:^19"
+    dotenv: "npm:^17.2.3"
+    eslint: "npm:^9"
+    eslint-config-next: "npm:16.1.1"
+    firebase: "npm:^12.7.0"
+    firebase-admin: "npm:^13.6.0"
+    firebase-tools: "npm:^15.1.0"
+    next: "npm:16.1.1"
+    open-cli: "npm:^8.0.0"
+    react: "npm:19.2.3"
+    react-dom: "npm:19.2.3"
+    tsx: "npm:^4.21.0"
+    typescript: "npm:^5"
+  languageName: unknown
+  linkType: soft
 
 "object-assign@npm:^4, object-assign@npm:^4.0.1, object-assign@npm:^4.1.1":
   version: 4.1.1
