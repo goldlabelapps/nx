@@ -3,6 +3,34 @@
  * Definitive exported types for the goldlabel module
  */
 
+
+/**
+ * Markdown Type Definition
+ * Defines the shape of a properly formatted markdown 
+ * document in the Firestore `markdown` collection
+ */
+export type TMarkdown = {
+    id: string;
+    published: boolean;
+    createdAt: string;
+    updatedAt: string;
+    frontmatter?: {
+        title?: string;
+        description?: string;
+        slug?: string;
+        tags?: string;
+        icon?: string;
+        order?: number;
+        image?: string;
+        price?: {
+            amount: number;
+            currency: string;
+        };
+    };
+    body: string;
+};
+
+
 /**
  * Feedback response structure
  * Standard format for API responses with status and messaging
@@ -38,25 +66,4 @@ export type TApiResponse<T = any> = {
     };
 };
 
-/**
- * Markdown document structure
- * Defines the shape of a properly formatted markdown document in Firestore
- */
-export type TMarkdown = {
-    id: string;
-    body: string; // Markdown content
-    published: boolean;
-    createdAt: string;
-    updatedAt: string;
-    frontmatter?: {
-        title?: string;
-        slug?: string;
-        order?: number;
-        description?: string;
-        image?: string;
-        icon?: string;
-        tags?: string;
-        author?: string;
-        category?: string;
-    };
-};
+
