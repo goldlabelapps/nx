@@ -1,52 +1,76 @@
 import React, { useState } from "react";
 
+
 interface SetupProps {
-    onSubmit: (data: { sitename: string; description: string; author: string }) => void;
+    onSubmit: (data: { sitename: string; description: string; namespace: string }) => void;
 }
 
 export default function Setup({ onSubmit }: SetupProps) {
     const [sitename, setSitename] = useState("");
     const [description, setDescription] = useState("");
-    const [author, setAuthor] = useState("");
+    const [namespace, setNamespace] = useState("");
     const [submitting, setSubmitting] = useState(false);
+
+    function slugify(str: string) {
+        return str
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '')
+            .replace(/--+/g, '-');
+    }
+
+    const isValid = sitename.trim().length >= 3 && description.trim().length >= 10;
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
-        onSubmit({ sitename, description, author });
+        let ns = namespace.trim();
+        if (!ns) {
+            ns = slugify(sitename);
+        }
+        onSubmit({ sitename, description, namespace: ns });
     };
-
     return (
-        <form onSubmit={handleSubmit} className="setup-form">
-            <h2>Setup Your Site</h2>
-            <label>
-                Site Name
+        <form onSubmit={handleSubmit} className="setup-form-modern">
+            <h2 className="setup-title">Setup</h2>
+            <div className="setup-field">
+                <label htmlFor="sitename">Site Name</label>
                 <input
+                    id="sitename"
                     type="text"
                     value={sitename}
                     onChange={e => setSitename(e.target.value)}
                     required
+                    placeholder="Goldlabel"
+                    className="setup-input"
                 />
-            </label>
-            <label>
-                Meta Description
+            </div>
+            <div className="setup-field">
+                <label htmlFor="description">Meta Description</label>
                 <input
+                    id="description"
                     type="text"
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                     required
+                    placeholder="A modern content platform..."
+                    className="setup-input"
                 />
-            </label>
-            <label>
-                Author
+            </div>
+            <div className="setup-field">
+                <label htmlFor="namespace">Namespace <span className="setup-hint">(unique slug, e.g. goldlabel.com or my-site)</span></label>
                 <input
+                    id="namespace"
                     type="text"
-                    value={author}
-                    onChange={e => setAuthor(e.target.value)}
+                    value={namespace}
+                    onChange={e => setNamespace(e.target.value)}
+                    placeholder="goldlabel.com"
+                    className="setup-input"
+                    pattern="^[a-zA-Z0-9.-]*$"
                 />
-            </label>
-            <button type="submit" disabled={submitting}>
-                {submitting ? "Setting up..." : "Create Homepage"}
+            </div>
+            <button type="submit" disabled={submitting || !isValid} className="setup-btn">
+                {submitting ? "Installing..." : "Install"}
             </button>
         </form>
     );

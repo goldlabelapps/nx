@@ -2,9 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { getAllSlugs, getDocBySlug, getAllDocs } from "@/goldlabel/lib/firestore-service";
-import dynamic from "next/dynamic";
-const Setup = dynamic(() => import("@/goldlabel/components/Setup"), { ssr: false });
-import { createHomeMarkdown } from "@/goldlabel/lib/createHome";
+
 
 interface PageProps {
     params: Promise<{
@@ -54,15 +52,12 @@ export default async function Page({ params }: PageProps) {
 
     // If homepage markdown is missing, show setup form
     if (!content && currentPath === "/") {
-        // This is a client-side only component, so render a wrapper
+        const HomeSetupClient = (await import("./HomeSetupClient")).default;
         return (
             <div className="page-layout">
                 <main className="page-content">
                     <article>
-                        <Setup onSubmit={async (data) => {
-                            await createHomeMarkdown(data);
-                            window.location.reload();
-                        }} />
+                        <HomeSetupClient />
                     </article>
                 </main>
             </div>

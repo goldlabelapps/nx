@@ -2,7 +2,7 @@
 import { adminDb } from './firebase-admin';
 import type { Doc } from './firestore-service';
 
-export async function createHomeMarkdown({ sitename, description, author }: { sitename: string; description: string; author: string }) {
+export async function createHomeMarkdown({ sitename, description, namespace }: { sitename: string; description: string; namespace: string }) {
     if (!adminDb) throw new Error('Firebase not configured');
     const now = new Date().toISOString();
     const doc: Doc = {
@@ -16,7 +16,7 @@ export async function createHomeMarkdown({ sitename, description, author }: { si
             slug: '/',
             order: 1,
             description,
-            author,
+            author: namespace,
             icon: 'goldlabel',
             tags: 'homepage',
             image: '',
