@@ -1,3 +1,71 @@
+/* Setup form styles */
+.setup-form-modern {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0;
+  padding: 2.5rem 2rem 2rem 2rem;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 32px 0 rgba(0, 0, 0, 0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.setup-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.setup-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.setup-input {
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--primary);
+  border-radius: 0.6rem;
+  font-size: 1.25rem;
+  background: #fafbfc;
+  transition: border 0.2s;
+}
+
+.setup-input:focus {
+  border: 1.5px solid #0070f3;
+  outline: none;
+  background: #fff;
+}
+
+.setup-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0.6rem;
+  padding: 0.9rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(0, 112, 243, 0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.setup-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.setup-hint {
+  font-size: 0.9em;
+  color: #888;
+  font-weight: 400;
+  margin-left: 0.3em;
+}
+
 /* Light theme - default */
 :root {
   --primary: #C09F52;

@@ -1,6 +1,8 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import { getAllSlugs, getDocBySlug, getAllDocs } from "@/goldlabel/lib/firestore-service";
+
 
 interface PageProps {
     params: Promise<{
@@ -28,24 +30,61 @@ export default async function Page({ params }: PageProps) {
     const slug = resolvedParams.slug || [];
     const currentPath = slug.length > 0 ? `/${slug.join("/")}` : "/";
 
+
     // Fetch document data from Firestore
     const slugString = slug.join('/');
-    const doc = slugString ? await getDocBySlug(slugString) : null;
+    let doc = slugString ? await getDocBySlug(slugString) : null;
+    let is404 = false;
+
+    // If no doc found, fetch the 404 doc from Firestore
+    if (!doc) {
+        doc = await getDocBySlug('404');
+        is404 = true;
+    }
 
     // Fetch all docs for navigation
     const allDocs = await getAllDocs();
 
-    console.log('Current slug:', slugString);
-    console.log('Doc found:', doc ? 'yes' : 'no');
-    console.log('All docs count:', allDocs.length);
-    if (allDocs.length > 0) {
-        console.log('Sample doc:', allDocs[0]);
-    }
-
-    // Use doc data or fallback to defaults
-    const featuredImage = doc?.frontmatter?.image || "/jpg/og_light.jpg";
-    const title = doc?.frontmatter?.title || (slug.length > 0 && !doc ? currentPath : "A target you can see");
+    // Use doc data or fallback to minimal defaults (no identifying text)
+    const featuredImage = doc?.frontmatter?.image || "/png/og.png";
+    const title = doc?.frontmatter?.title ? doc.frontmatter.title : "";
+    const description = doc?.frontmatter?.description ? doc.frontmatter.description : "";
     const content = doc?.content;
+
+    // If homepage markdown is missing, show setup form
+    if (!content && currentPath === "/") {
+        const HomeInstallClient = (await import("./HomeSetupClient")).default;
+        return (
+            <div className="page-layout">
+                <main className="page-content">
+                    <article>
+                        <div className="mobile-featured-image">
+                            <Image
+                                src={featuredImage}
+                                alt={doc?.frontmatter?.title || ""}
+                                width={1200}
+                                height={630}
+                                priority
+                                style={{ objectFit: 'cover' }}
+                            />
+                        </div>
+                        <HomeInstallClient />
+                    </article>
+                </main>
+                <aside className="featured-image">
+                    <Image
+                        src={featuredImage}
+                        alt={doc?.frontmatter?.title || ""}
+                        width={1024}
+                        height={683}
+                        priority
+                        style={{ objectFit: 'cover' }}
+                    />
+                    {doc?.frontmatter?.title && <figcaption>{doc.frontmatter.title}</figcaption>}
+                </aside>
+            </div>
+        );
+    }
 
     return (
         <div className="page-layout">
@@ -54,42 +93,18 @@ export default async function Page({ params }: PageProps) {
                     <div className="mobile-featured-image">
                         <Image
                             src={featuredImage}
-                            alt={doc?.frontmatter?.title || "Goldlabel"}
+                            alt={doc?.frontmatter?.title || ""}
                             width={1200}
                             height={630}
                             priority
                             style={{ objectFit: 'cover' }}
                         />
                     </div>
-                    <h1>{title}</h1>
-                    <h2>{doc?.frontmatter?.description || "A premium content platform designed for clarity and precision in digital publishing"}</h2>
-                    {doc?.frontmatter?.description && (
-                        <p className="description">{doc.frontmatter.description}</p>
-                    )}
-                    {doc && content ? (
+                    {title ? <h1>{title}</h1> : null}
+                    {description ? <h2>{description}</h2> : null}
+                    {description ? <p className="description">{description}</p> : null}
+                    {content && (
                         <div dangerouslySetInnerHTML={{ __html: content }} />
-                    ) : (
-                        <section>
-                            <blockquote>
-                                Welcome to Goldlabel - A modern, flexible content management system built with Next.js and Firestore.
-                            </blockquote>
-                            <p>
-                                Goldlabel provides a powerful platform for managing and publishing content. Built on Next.js 16, it combines the performance of static generation with the flexibility of dynamic content.
-                            </p>
-
-                            <p>
-                                The system integrates seamlessly with Firestore for content storage, allowing you to manage your content through a simple markdown-based interface while maintaining full control over your data.
-                            </p>
-
-                            <p>
-                                Whether you're building a blog, documentation site, or content-rich application, Goldlabel provides the tools you need to create, manage, and publish your content with ease.
-                            </p>
-
-                            <p>
-                                Get started by creating your first markdown document or explore the API to see how you can integrate Goldlabel into your workflow.
-                            </p>
-                        </section>
-
                     )}
                     {doc?.frontmatter && (
                         <div className="metadata">
@@ -105,13 +120,13 @@ export default async function Page({ params }: PageProps) {
             <aside className="featured-image">
                 <Image
                     src={featuredImage}
-                    alt={doc?.frontmatter?.title || "Goldlabel"}
+                    alt={doc?.frontmatter?.title || ""}
                     width={1024}
                     height={683}
                     priority
                     style={{ objectFit: 'cover' }}
                 />
-                <figcaption>{doc?.frontmatter?.title || "Target 2026"}</figcaption>
+                {doc?.frontmatter?.title && <figcaption>{doc.frontmatter.title}</figcaption>}
             </aside>
         </div>
     );

@@ -20,6 +20,7 @@ export default async function RootLayout({
 
   // Fetch all docs for navigation and map to NavItem[]
   const allDocs = await getAllDocs();
+  const homeDoc = allDocs.find(doc => doc.frontmatter?.slug === "/" || doc.id === "/");
   const navItems = allDocs
     .filter(doc => doc.frontmatter && doc.frontmatter.title)
     .map(doc => ({
@@ -27,6 +28,10 @@ export default async function RootLayout({
       title: doc.frontmatter!.title!,
       slug: doc.frontmatter!.slug
     }));
+
+  // Only use Firestore values for homepage title/description, fallback to empty string if missing
+  const headerTitle = homeDoc?.frontmatter?.title || "";
+  const headerDescription = homeDoc?.frontmatter?.description || "";
 
   return (
     <html lang="en">
@@ -44,8 +49,8 @@ export default async function RootLayout({
       </head>
       <body>
         <Header
-          title={metadata.title as string}
-          description={metadata.description as string}
+          title={headerTitle}
+          description={headerDescription}
           navItems={navItems}
         />
         {/* Firebase error handling removed as requested */}
