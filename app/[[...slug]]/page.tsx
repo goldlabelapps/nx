@@ -52,12 +52,12 @@ export default async function Page({ params }: PageProps) {
 
     // If homepage markdown is missing, show setup form
     if (!content && currentPath === "/") {
-        const HomeSetupClient = (await import("./HomeSetupClient")).default;
+        const HomeInstallClient = (await import("./HomeSetupClient")).default;
         return (
             <div className="page-layout">
                 <main className="page-content">
                     <article>
-                        <HomeSetupClient />
+                        <HomeInstallClient />
                     </article>
                 </main>
             </div>

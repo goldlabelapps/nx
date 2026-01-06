@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-
 interface InstallProps {
     onSubmit: (data: { sitename: string; description: string; namespace: string }) => void;
 }
