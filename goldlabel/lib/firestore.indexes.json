@@ -1,19 +1,24 @@
 {
-    "indexes": [
+  "indexes": [
+    {
+      "collectionGroup": "markdown",
+      "queryScope": "COLLECTION",
+      "fields": [
         {
-            "collectionGroup": "markdown",
-            "queryScope": "COLLECTION",
-            "fields": [
-                {
-                    "fieldPath": "published",
-                    "order": "ASCENDING"
-                },
-                {
-                    "fieldPath": "updated",
-                    "order": "DESCENDING"
-                }
-            ]
+          "fieldPath": "published",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "updatedAt",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "__name__",
+          "order": "DESCENDING"
         }
-    ],
-    "fieldOverrides": []
+      ],
+      "density": "SPARSE_ALL"
+    }
+  ],
+  "fieldOverrides": []
 }
