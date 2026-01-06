@@ -7,8 +7,9 @@ interface InstallProps {
 export default function Install({ onSubmit }: InstallProps) {
     const [appname, setAppname] = useState("");
     const [submitting, setSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
 
-    function slugify(str: string) {
+    function toApp(str: string) {
         return str
             .toLowerCase()
             .replace(/[^a-z0-9]+/g, '-')
@@ -22,41 +23,63 @@ export default function Install({ onSubmit }: InstallProps) {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setSubmitting(true);
+        // Placeholder doc object
+        const now = new Date().toISOString();
+        const doc = {
+            id: toApp(appname),
+            appname,
+            createdAt: now,
+            updatedAt: now,
+            published: true,
+        };
+        console.log('Created doc:', doc);
         onSubmit({ appname });
+        setSubmitted(true);
+        window.alert('we are working on this');
     };
     return (
-        <form onSubmit={handleSubmit} className="setup-form-modern">
-            <p className="setup-description">
-                Welcome to the Goldlabel installer. We're about to test your Firestore connection and perform a create operation on your database. This step requires that your Firestore setup is complete and accessible from this app. If you've finished your Firebase and Firestore configuration, enter a site name below and click Install to verify everything is working. Ready to test your Firestore connection?
-            </p>
-            <div className="setup-field">
-                <label htmlFor="appname">App Name</label>
-                <input
-                    id="appname"
-                    type="text"
-                    value={appname}
-                    onChange={e => setAppname(e.target.value)}
-                    required
-                    autoFocus
-                    className="setup-input"
-                />
-                <div style={{ paddingBottom: "0.5rem" }} />
-                <div className="setup-feedback" style={{ color: isValid ? 'green' : 'var(--primary)', fontSize: '0.95rem', minHeight: '1.5em' }}>
-                    {appname.length === 0 && "Enter an app name (case sensitive, at least 3 letters)."}
-                    {appname.length > 0 && !isValid && "App name must be at least 3 letters."}
-                    {isValid && (
-                        <span>
-                            App name looks good!<br />
-                            <span style={{ fontWeight: 500 }}>
-                                Slug: <span style={{ fontFamily: 'monospace', background: '#f6f6f6', padding: '0.1em 0.4em', borderRadius: '0.3em' }}>{slugify(appname)}</span>
+        !submitted && (
+            <form onSubmit={handleSubmit} className="setup-form-modern">
+                <h1 style={{ fontSize: '1.6rem', fontWeight: 400, margin: 0 }}>Install</h1>
+                <p className="setup-description" style={{ marginBottom: '0.5rem' }}>
+                    <b>Display Name (Site Title):</b> This will be the public-facing name of your site and can be changed later.<br />
+                    <span style={{ color: 'var(--primary)', fontWeight: 500 }}>It's important!</span> This is what your users will see as your site title.<br />
+                    <span style={{ fontSize: '0.97em', color: 'var(--secondary)' }}>You can update the Display Name at any time, but your <b>site ID (slug)</b> will be generated from this name and <b>cannot be changed later</b>.</span>
+                </p>
+                <div className="setup-field setup-field-inline" style={{ marginTop: 0 }}>
+                    <label htmlFor="appname">Display Name</label>
+                    <div className="setup-inline-row">
+                        <input
+                            id="appname"
+                            type="text"
+                            value={appname}
+                            onChange={e => setAppname(e.target.value)}
+                            required
+                            autoFocus
+                            className="setup-input"
+                        />
+                        <button type="submit" disabled={submitting || !isValid} className="setup-btn">
+                            {submitting ? "Testing..." : (
+                                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4em' }}>
+                                    Proceed
+                                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: 2, verticalAlign: 'middle' }}>
+                                        <path d="M7 5l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </span>
+                            )}
+                        </button>
+                    </div>
+                    <div className="setup-feedback" style={{ color: isValid ? 'var(--secondary)' : 'var(--primary)', fontSize: '0.95rem', minHeight: '1.5em' }}>
+                        {appname.length === 0 && "Enter an app name (at least 3 letters)."}
+                        {appname.length > 0 && !isValid && "App name must be at least 3 letters."}
+                        {isValid && (
+                            <span>
+                                Name looks good. Your app will have the unique id <b>{toApp(appname)}</b>
                             </span>
-                        </span>
-                    )}
+                        )}
+                    </div>
                 </div>
-            </div>
-            <button type="submit" disabled={submitting || !isValid} className="setup-btn">
-                {submitting ? "Testing..." : "Test Connection"}
-            </button>
-        </form>
+            </form>
+        )
     );
 }
