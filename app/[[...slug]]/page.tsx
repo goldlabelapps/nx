@@ -1,6 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import HomeInstallWrapper from "./HomeInstallWrapper";
 import { getAllSlugs, getDocBySlug, getAllDocs } from "@/goldlabel/lib/firestore-service";
 
 
@@ -53,7 +54,6 @@ export default async function Page({ params }: PageProps) {
 
     // If homepage markdown is missing, show setup form
     if (!content && currentPath === "/") {
-        const HomeInstallClient = (await import("./HomeSetupClient")).default;
         return (
             <div className="page-layout">
                 <main className="page-content">
@@ -68,7 +68,7 @@ export default async function Page({ params }: PageProps) {
                                 style={{ objectFit: 'cover' }}
                             />
                         </div>
-                        <HomeInstallClient />
+                        <HomeInstallWrapper />
                     </article>
                 </main>
                 <aside className="featured-image">

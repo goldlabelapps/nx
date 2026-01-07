@@ -1,6 +1,6 @@
 "use client";
 import Install from "@/goldlabel/components/Install";
-import { createHomeMarkdown } from "@/goldlabel/lib/createHome";
+// import { createHomeMarkdown } from "@/goldlabel/lib/createHome";
 export default function HomeSetupClient() {
     return (
         <>
@@ -15,10 +15,14 @@ export default function HomeSetupClient() {
             </div>
             <Install
                 onSubmit={async (data) => {
-                    await createHomeMarkdown({
-                        sitename: data.appname,
-                        description: "",
-                        namespace: ""
+                    await fetch("/api/createHome", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            sitename: data.appname,
+                            description: "",
+                            namespace: ""
+                        })
                     });
                     window.location.reload();
                 }}

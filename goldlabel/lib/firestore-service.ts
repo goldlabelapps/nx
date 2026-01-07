@@ -74,11 +74,6 @@ export async function getAllDocs(): Promise<Doc[]> {
  * Used for SSG to generate static content for each page
  */
 export async function getDocBySlug(slug: string): Promise<Doc | null> {
-    // TEMPORARILY DISABLED - Firebase not configured
-    console.warn('Firebase disabled - getDocBySlug returning null for:', slug);
-    return null;
-
-    /*
     try {
         const snapshot = await adminDb
             .collection('markdown')
@@ -100,7 +95,6 @@ export async function getDocBySlug(slug: string): Promise<Doc | null> {
         console.error('Error fetching doc by slug:', error);
         return null;
     }
-    */
 }
 
 /**

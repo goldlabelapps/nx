@@ -2,12 +2,18 @@ import { initializeApp, getApps, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 
 // Initialize Firebase Admin SDK (server-side only)
-// TEMPORARILY DISABLED - Fix Firebase credentials before uncommenting
-/*
 function initAdmin() {
     if (getApps().length === 0) {
-        // Check if using full service account JSON or separate env vars
-        const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT;
+        // Prefer FIREBASE_SERVICE_ACCOUNT_BASE64 if present
+        const base64 = process.env.FIREBASE_SERVICE_ACCOUNT_BASE64;
+        let serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT;
+        if (base64) {
+            try {
+                serviceAccountJson = Buffer.from(base64, 'base64').toString('utf8');
+            } catch (e) {
+                console.error('Failed to decode FIREBASE_SERVICE_ACCOUNT_BASE64:', e);
+            }
+        }
 
         if (serviceAccountJson) {
             // Parse the full service account JSON
@@ -21,7 +27,7 @@ function initAdmin() {
                 credential: cert({
                     projectId: process.env.FIREBASE_PROJECT_ID,
                     clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-                    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+                    privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\n/g, '\n'),
                 }),
             });
         }
@@ -31,7 +37,3 @@ function initAdmin() {
 initAdmin();
 
 export const adminDb = getFirestore();
-*/
-
-// Mock adminDb for development
-export const adminDb = null as any;
