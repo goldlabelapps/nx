@@ -1,5 +1,4 @@
 "use client";
-import Install from "@/app/goldlabel/components/Install";
 // import { createHomeMarkdown } from "@/app/goldlabel/lib/createHome";
 export default function HomeSetupClient() {
     return (
@@ -13,20 +12,6 @@ export default function HomeSetupClient() {
                     style={{ objectFit: 'cover', width: '100%', borderRadius: '1.2rem', marginBottom: '2rem' }}
                 />
             </div>
-            <Install
-                onSubmit={async (data) => {
-                    await fetch("/api/createHome", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            sitename: data.appname,
-                            description: "",
-                            namespace: ""
-                        })
-                    });
-                    window.location.reload();
-                }}
-            />
         </>
     );
 }

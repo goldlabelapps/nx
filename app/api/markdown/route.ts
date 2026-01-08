@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { getDocBySlug } from '../../goldlabel/lib/firestore-service';
+
 import type { TMarkdown, TApiResponse } from '../../goldlabel/types';
 
 export async function GET() {
-    const doc = await getDocBySlug('/');
+    // Firestore code removed
     if (doc) {
         // Map Doc.content to TMarkdown.body
         const markdown: TMarkdown = {

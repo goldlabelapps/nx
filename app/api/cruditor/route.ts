@@ -4,7 +4,7 @@ import type { TApiResponse } from '@/app/goldlabel/types';
 import packageJson from '@/package.json';
 
 /**
- * CRUDITOR - Universal CRUD operations handler for Firestore
+ * CRUDITOR - Universal CRUD operations handler
  * Handles Create, Read, Update, Delete operations for any collection
  */
 
@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
             feedback: {
                 status: 'error',
                 title: 'Read Operation Failed',
-                description: error.message || 'Failed to read from Firestore'
+                description: error.message || 'Failed to read from database'
             },
             request: {
                 method: 'GET',
