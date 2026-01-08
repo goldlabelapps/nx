@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "@/goldlabel/styles.css";
-import Header from "@/goldlabel/components/Header";
-import Footer from "@/goldlabel/components/Footer";
-import { getAllDocs } from "@/goldlabel/lib/firestore-service";
+import "@/app/goldlabel/styles.css";
+import Header from "@/app/goldlabel/components/Header";
+import Footer from "@/app/goldlabel/components/Footer";
+import { getAllDocs } from "@/app/goldlabel/lib/firestore-service";
 
 export const metadata: Metadata = {
   title: "Goldlabel",

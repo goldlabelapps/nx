@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { TApiResponse } from '@/goldlabel/types';
+import type { TApiResponse } from '@/app/goldlabel/types';
 import packageJson from '@/package.json';
 
 export async function GET(request: Request) {

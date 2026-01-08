@@ -1,6 +1,6 @@
 "use client";
-import Install from "@/goldlabel/components/Install";
-// import { createHomeMarkdown } from "@/goldlabel/lib/createHome";
+import Install from "@/app/goldlabel/components/Install";
+// import { createHomeMarkdown } from "@/app/goldlabel/lib/createHome";
 export default function HomeSetupClient() {
     return (
         <>

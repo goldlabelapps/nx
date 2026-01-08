@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { adminDb } from '@/goldlabel/lib/firebase-admin';
-import type { TApiResponse } from '@/goldlabel/types';
+import { adminDb } from '@/app/goldlabel/lib/firebase-admin';
+import type { TApiResponse } from '@/app/goldlabel/types';
 import packageJson from '@/package.json';
 
 /**

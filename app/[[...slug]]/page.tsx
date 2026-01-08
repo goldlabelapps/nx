@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HomeInstallWrapper from "./HomeInstallWrapper";
-import { getAllSlugs, getDocBySlug, getAllDocs } from "@/goldlabel/lib/firestore-service";
+import { getAllSlugs, getDocBySlug, getAllDocs } from "@/app/goldlabel/lib/firestore-service";
 
 
 interface PageProps {

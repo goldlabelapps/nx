@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { createHomeMarkdown } from '@/goldlabel/lib/createHome';
+import { createHomeMarkdown } from '@/app/goldlabel/lib/createHome';
 
 export async function POST(request: Request) {
     try {
