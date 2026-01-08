@@ -1,5 +1,5 @@
 "use client";
-// import { createHomeMarkdown } from "@/app/goldlabel/lib/createHome";
+
 export default function HomeSetupClient() {
     return (
         <>

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { TApiResponse } from '@/app/goldlabel/types';
+
 import packageJson from '@/package.json';
 
 export async function GET(request: Request) {
@@ -10,12 +10,12 @@ export async function GET(request: Request) {
 
     const endpoints = [
         {
-            name: 'Markdown',
-            url: `${baseUrl}/api/markdown`
+            name: 'Get Homepage',
+            url: `${baseUrl}/api/homepage`,
         }
     ];
 
-    const response: TApiResponse = {
+    const response = {
         time: Date.now(),
         app: packageJson.name,
         feedback: {
