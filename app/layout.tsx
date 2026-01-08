@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "@/goldlabel/styles.css";
-import Header from "@/goldlabel/components/Header";
-import Footer from "@/goldlabel/components/Footer";
-import { getAllDocs } from "@/goldlabel/lib/firestore-service";
+import "./goldlabel/styles.css";
+import Header from "./goldlabel/components/Header";
+import Footer from "./goldlabel/components/Footer";
+
 
 export const metadata: Metadata = {
   title: "Goldlabel",
@@ -18,20 +18,10 @@ export default async function RootLayout({
   const shortcutIcon = '/svg/favicon.svg';
   const appleTouchIcon = '/png/apple-touch-icon.png';
 
-  // Fetch all docs for navigation and map to NavItem[]
-  const allDocs = await getAllDocs();
-  const homeDoc = allDocs.find(doc => doc.frontmatter?.slug === "/" || doc.id === "/");
-  const navItems = allDocs
-    .filter(doc => doc.frontmatter && doc.frontmatter.title)
-    .map(doc => ({
-      id: doc.id,
-      title: doc.frontmatter!.title!,
-      slug: doc.frontmatter!.slug
-    }));
-
-  // Only use Firestore values for homepage title/description, fallback to empty string if missing
-  const headerTitle = homeDoc?.frontmatter?.title || "";
-  const headerDescription = homeDoc?.frontmatter?.description || "";
+  // Navigation and doc logic removed
+  const headerTitle = "NX";
+  const headerDescription = "by Goldlabel";
+  const navItems: any[] = [];
 
   return (
     <html lang="en">
@@ -51,7 +41,6 @@ export default async function RootLayout({
         <Header
           title={headerTitle}
           description={headerDescription}
-          navItems={navItems}
         />
         {/* Firebase error handling removed as requested */}
         {children}
