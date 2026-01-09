@@ -1,5 +1,3 @@
-
-
 import Header from "../goldlabel/components/Header";
 import Footer from "../goldlabel/components/Footer";
 import { Navigation } from "../goldlabel/components";
@@ -11,11 +9,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
 
-interface PageProps {
-    params: { slug?: string[] };
-}
-
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: any) {
     const navItems = getNavigationTree();
     // Determine markdown file path from slug
     let mdPath = "app/goldlabel/markdown";
