@@ -1,7 +1,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import HomeInstallWrapper from "./HomeInstallWrapper";
+import HomeInstallWrapper from "../goldlabel/components/HomeInstallWrapper";
 
 
 interface PageProps {
