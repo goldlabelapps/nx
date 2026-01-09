@@ -6,7 +6,7 @@ import Footer from "./goldlabel/components/Footer";
 
 export const metadata: Metadata = {
   title: "Goldlabel",
-  description: "A modern content management and publishing platform built with Next.js",
+  description: "A modern publishing platform built with Next.js",
 };
 
 export default async function RootLayout({
@@ -14,14 +14,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  const shortcutIcon = '/svg/favicon.svg';
-  const appleTouchIcon = '/png/apple-touch-icon.png';
-
-  // Navigation and doc logic removed
   const headerTitle = "NX";
   const headerDescription = "by Goldlabel";
-  const navItems: any[] = [];
+  const shortcutIcon = '/svg/favicon.svg';
+  const appleTouchIcon = '/png/apple-touch-icon.png';
 
   return (
     <html lang="en">
@@ -42,7 +38,6 @@ export default async function RootLayout({
           title={headerTitle}
           description={headerDescription}
         />
-        {/* Firebase error handling removed as requested */}
         {children}
         <Footer />
       </body>
