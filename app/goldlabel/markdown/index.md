@@ -8,9 +8,7 @@ icon: goldlabel
 tags: goldlabel, nextjs, cms
 ---
 
-> ### Goldlabel
-
-A flexible and powerful content management system that combines the best of Next.js with a clean, intuitive interface. Build and manage your content with ease.
+> A flexible and powerful content management system that combines the best of Next.js with a clean, intuitive interface. Build and manage your content with ease.
 
 ## Features
 

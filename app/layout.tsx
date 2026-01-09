@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "./goldlabel/styles.css";
-import Header from "./goldlabel/components/Header";
-import Footer from "./goldlabel/components/Footer";
 
+import "./goldlabel/styles.css";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Goldlabel",
@@ -14,8 +14,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const headerTitle = "NX";
-  const headerDescription = "by Goldlabel";
+  const siteTitle = "NX";
+  // const siteDescription = "by Goldlabel";
   const shortcutIcon = '/svg/favicon.svg';
   const appleTouchIcon = '/png/apple-touch-icon.png';
 
@@ -27,19 +27,14 @@ export default async function RootLayout({
         <link rel="shortcut icon" href={shortcutIcon} type="image/x-icon" />
         <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon} />
         <meta name="theme-color" content="#C09F52" />
-        <meta name="application-name" content="NX" />
+        <meta name="application-name" content={siteTitle} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="NX" />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body>
-        <Header
-          title={headerTitle}
-          description={headerDescription}
-        />
+      <body className={inter.className}>
         {children}
-        <Footer />
       </body>
     </html>
   );
