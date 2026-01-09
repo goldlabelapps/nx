@@ -36,10 +36,10 @@ function buildNavTree(dir: string, baseUrl = "/goldlabel/markdown"): NavItem[] {
                 const children = buildNavTree(path.join(dir, entry.name), `${baseUrl}/${entry.name}`);
                 // Try to find an index.md for directory metadata
                 const indexPath = path.join(dir, entry.name, "index.md");
-                let meta = { title: entry.name, slug: `/${entry.name}` };
+                let meta: { title: string; slug: string; order?: number } = { title: entry.name, slug: `/${entry.name}`, order: undefined };
                 if (fs.existsSync(indexPath)) {
                     const { title, order, slug } = getFrontmatterFromMarkdown(indexPath);
-                    meta = { title, order, slug: slug || `/${entry.name}` };
+                    meta = { title, slug: slug || `/${entry.name}`, order: order };
                 }
                 return {
                     ...meta,
