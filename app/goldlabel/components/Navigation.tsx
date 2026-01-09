@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export interface NavItem {
     title: string;
@@ -14,7 +15,7 @@ const renderNav = (items: NavItem[]) => (
     <ul>
         {items.map((item) => (
             <li key={item.path}>
-                <a href={item.path}>{item.title}</a>
+                <Link href={item.path}>{item.title}</Link>
                 {item.children && item.children.length > 0 && renderNav(item.children)}
             </li>
         ))}

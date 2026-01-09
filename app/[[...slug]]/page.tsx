@@ -1,8 +1,42 @@
+import { notFound } from "next/navigation";
+// Recursively collect all slugs for markdown files using frontmatter.slug
+function getAllMarkdownSlugsFromFrontmatter(dir = "app/goldlabel/markdown"): string[][] {
+    const fs = require("fs");
+    const path = require("path");
+    const matter = require("gray-matter");
+    let slugs: string[][] = [];
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+        if (entry.isDirectory()) {
+            slugs = slugs.concat(getAllMarkdownSlugsFromFrontmatter(path.join(dir, entry.name)));
+        } else if (entry.name.endsWith(".md")) {
+            const filePath = path.join(dir, entry.name);
+            const { data } = matter(fs.readFileSync(filePath, "utf-8"));
+            let slug = data.slug;
+            if (typeof slug === "string") {
+                slug = slug.replace(/^\/+/, ""); // remove leading slash
+                if (slug === "") {
+                    slugs.push([]); // root
+                } else {
+                    slugs.push(slug.split("/"));
+                }
+            }
+        }
+    }
+    return slugs;
+}
+
+export async function generateStaticParams() {
+    const slugs = getAllMarkdownSlugsFromFrontmatter();
+    return slugs.map((slugArr) => ({ slug: slugArr.length ? slugArr : undefined }));
+}
+
 import Header from "../goldlabel/components/Header";
 import Footer from "../goldlabel/components/Footer";
 import { Navigation } from "../goldlabel/components";
 import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
-
+import Image from "next/image";
+import type { TMarkdown } from "../goldlabel/types";
 import fs from "fs";
 import path from "path";
 import { remark } from "remark";
@@ -11,27 +45,49 @@ import matter from "gray-matter";
 
 export default async function Page({ params }: any) {
     const navItems = getNavigationTree();
-    // Determine markdown file path from slug
-    let mdPath = "app/goldlabel/markdown";
-    if (params?.slug && params.slug.length > 0) {
-        mdPath += "/" + params.slug.join("/");
+    // Find the markdown file by matching frontmatter.slug
+    function findMarkdownBySlug(slugArr: string[] = []) {
+        const fs = require("fs");
+        const path = require("path");
+        const matter = require("gray-matter");
+        let foundPath: string | null = null;
+        const walk = (dir: string) => {
+            const entries = fs.readdirSync(dir, { withFileTypes: true });
+            for (const entry of entries) {
+                if (entry.isDirectory()) {
+                    walk(path.join(dir, entry.name));
+                } else if (entry.name.endsWith(".md")) {
+                    const filePath = path.join(dir, entry.name);
+                    const { data } = matter(fs.readFileSync(filePath, "utf-8"));
+                    let slug = data.slug;
+                    if (typeof slug === "string") {
+                        slug = slug.replace(/^\/+/, "");
+                        if ((slugArr.length === 0 && (slug === "" || slug === undefined)) || slugArr.join("/") === slug) {
+                            foundPath = filePath;
+                        }
+                    }
+                }
+            }
+        };
+        walk("app/goldlabel/markdown");
+        return foundPath;
     }
-    // Try index.md first, then .md
-    let filePath = path.join(process.cwd(), mdPath + ".md");
-    if (!fs.existsSync(filePath)) {
-        filePath = path.join(process.cwd(), mdPath, "index.md");
+
+    const filePath = findMarkdownBySlug(params?.slug || []);
+    if (!filePath || !fs.existsSync(filePath)) {
+        notFound();
     }
     let htmlContent = "<p>Page not found.</p>";
     let title = "NX";
     let description = "by Goldlabel";
-    if (fs.existsSync(filePath)) {
-        const md = fs.readFileSync(filePath, "utf-8");
-        const { content, data } = matter(md);
-        if (data.title) title = data.title;
-        if (data.description) description = data.description;
-        const result = await remark().use(html).process(content);
-        htmlContent = result.toString();
-    }
+    let featuredImage = undefined;
+    const md = fs.readFileSync(filePath, "utf-8");
+    const { content, data } = matter(md);
+    if (data.title) title = data.title;
+    if (data.description) description = data.description;
+    if (data.image) featuredImage = data.image;
+    const result = await remark().use(html).process(content);
+    htmlContent = result.toString();
     return (
         <div className="page-layout">
             <header className="page-header">
@@ -43,8 +99,27 @@ export default async function Page({ params }: any) {
                 </nav>
                 <div className="col col-center">
                     <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                    {title.startsWith("404") && (
+                        <div style={{ marginTop: 32, textAlign: "center", color: "#888" }}>
+                            <h2>404 - Page Not Found</h2>
+                            <p>Sorry, the page you are looking for does not exist.</p>
+                        </div>
+                    )}
                 </div>
-                <div className="col col-right">Right Column</div>
+                <div className="col col-right">
+                    {featuredImage && (
+                        <div className="featured-image">
+                            <Image
+                                src={featuredImage}
+                                alt={title}
+                                width={400}
+                                height={200}
+                                style={{ objectFit: 'cover', borderRadius: '1rem', maxWidth: '100%', height: 'auto' }}
+                                priority
+                            />
+                        </div>
+                    )}
+                </div>
             </main>
             <footer className="page-footer">
                 <Footer />

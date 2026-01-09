@@ -20,3 +20,14 @@ export type TMarkdown = {
     };
     content?: string;
 };
+
+export interface INavNode {
+    title?: string;
+    slug?: string;
+    children?: INavNode[];
+}
+
+export interface IContextualNavigationProps {
+    rootNode: INavNode;
+    currentSlug: string;
+}
