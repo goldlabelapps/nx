@@ -1,3 +1,7 @@
+export interface IHeader {
+    title: string;
+    description: string;
+}
 // GoldLabel Config Type Definition
 export type TGoldlabelConfig = {
     title: string;

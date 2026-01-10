@@ -1,3 +1,13 @@
+---
+order: 20
+slug: /budbuddies/analysis
+title: Analysis
+description: UK-specific medical context (GMC clinics, legality, process)
+image: /png/og.png
+icon: mcuk
+tags: medical cannabis, uk
+---
+
 ![Image](https://budbuddies.cc/wp-content/uploads/2025/02/unnamed-6.jpg)
 
 ![Image](https://i.etsystatic.com/5614695/r/il/f67ef4/5970071772/il_570xN.5970071772_3bii.jpg)

@@ -1,3 +1,22 @@
+.goldlabel-header h1 {
+    margin-bottom: 0.2em;
+}
+
+.goldlabel-header h2 {
+    margin-top: 0.1em;
+}
+
+/* Header component styles */
+
+.goldlabel-header h1 {
+    margin: 0;
+    color: var(--color-primary);
+}
+
+.goldlabel-header h2 {
+    color: var(--color-secondary);
+}
+
 /* Goldlabel Theme Variables from config */
 :root {
     --color-primary: #17A1AC;
@@ -35,10 +54,12 @@ body {
 }
 
 .page-header {
-    background: var(--color-secondary);
+    background: transparent;
     color: var(--color-text);
-    padding: 1rem 2rem;
-    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 2.5rem;
 }
 
 .page-main {
@@ -55,29 +76,45 @@ body {
 
 
 .col-left,
-.col-right {
+.col-left {
     flex: 1 1 220px;
     min-width: 180px;
     max-width: 260px;
     background: var(--color-paper);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1rem;
+    /* border removed */
+    border-radius: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.col-right {
+    flex: 1 1 220px;
+    min-width: 180px;
+    max-width: 260px;
+    background: var(--color-background);
+    /* border removed */
+    border-radius: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 .col-center {
     flex: 2 1 0;
     min-width: 200px;
-    background: var(--color-paper);
-    border: 1px solid var(--color-border);
+    background: var(--color-background);
+    /* border removed */
     border-radius: 8px;
-    padding: 1rem;
+    padding: 0;
     box-sizing: border-box;
 }
 
+/* Remove background from markdown content area */
+.col-center .markdown-content {
+    background: none;
+}
+
 .page-footer {
-    background: var(--color-secondary);
+    background: transparent;
     color: var(--color-text);
     padding: 1rem 2rem;
     text-align: center;
