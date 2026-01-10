@@ -1,0 +1,24 @@
+{
+  "short_name": "MCUK",
+  "name": "Medical Cannabis UK",
+  "theme_color": "#17A1AC",
+  "background_color": "#17A1AC",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/png/favicon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/svg/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}
