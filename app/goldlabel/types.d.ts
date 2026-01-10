@@ -1,3 +1,27 @@
+// GoldLabel Config Type Definition
+export type TGoldlabelConfig = {
+    title: string;
+    description: string;
+    url: string;
+    cartridges: {
+        designSystem: {
+            defaultTheme: string;
+            themes: {
+                [key: string]: {
+                    mode: string;
+                    primary: string;
+                    secondary: string;
+                    background: string;
+                    paper: string;
+                    border: string;
+                    text: string;
+                };
+            };
+        };
+    };
+};
+
+
 // Markdown Type Definition
 export type TMarkdown = {
     id: string;
@@ -31,3 +55,4 @@ export interface IContextualNavigationProps {
     rootNode: INavNode;
     currentSlug: string;
 }
+
