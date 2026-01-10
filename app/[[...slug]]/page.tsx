@@ -1,3 +1,49 @@
+// Next.js App Router: set page metadata
+import { Metadata } from "next";
+// Generate metadata for dynamic title/description
+export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
+    // Find the markdown file by matching frontmatter.slug
+    const fs = require("fs");
+    const path = require("path");
+    const matter = require("gray-matter");
+    function findMarkdownBySlug(slugArr: string[] = []) {
+        let foundPath: string | null = null;
+        const walk = (dir: string) => {
+            const entries = fs.readdirSync(dir, { withFileTypes: true });
+            for (const entry of entries) {
+                if (entry.isDirectory()) {
+                    walk(path.join(dir, entry.name));
+                } else if (entry.name.endsWith(".md")) {
+                    const filePath = path.join(dir, entry.name);
+                    const { data } = matter(fs.readFileSync(filePath, "utf-8"));
+                    let slug = data.slug;
+                    if (typeof slug === "string") {
+                        slug = slug.replace(/^\/+/, "");
+                        if ((slugArr.length === 0 && (slug === "" || slug === undefined)) || slugArr.join("/") === slug) {
+                            foundPath = filePath;
+                        }
+                    }
+                }
+            }
+        };
+        walk("app/goldlabel/markdown");
+        return foundPath;
+    }
+    const resolvedParams = typeof params.then === 'function' ? await params : params;
+    const filePath = findMarkdownBySlug(resolvedParams?.slug || []);
+    let title = "NX";
+    let description = "by Goldlabel";
+    if (filePath && fs.existsSync(filePath)) {
+        const md = fs.readFileSync(filePath, "utf-8");
+        const { data } = matter(md);
+        if (data.title) title = data.title;
+        if (data.description) description = data.description;
+    }
+    return {
+        title: `${title}, ${description}`,
+        description,
+    };
+}
 import { notFound } from "next/navigation";
 // Recursively collect all slugs for markdown files using frontmatter.slug
 function getAllMarkdownSlugsFromFrontmatter(dir = "app/goldlabel/markdown"): string[][] {

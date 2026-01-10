@@ -15,19 +15,23 @@
 
 .goldlabel-nav a {
     display: block;
-    padding: 0.3em 0.7em;
+    padding: 0.45em 1em;
     border-radius: 6px;
-    color: var(--color-primary);
+    background: var(--color-paper);
+    color: var(--color-text);
     text-decoration: none;
     font-weight: 500;
-    transition: background 0.15s, color 0.15s;
+    border: 1px solid var(--color-border);
+    transition: background 0.15s, color 0.15s, border 0.15s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 .goldlabel-nav a:hover,
 .goldlabel-nav a:focus {
-    background: var(--color-paper);
-    color: var(--color-secondary);
-    text-decoration: underline;
+    background: #fafbfc;
+    color: var(--color-text);
+    border-color: var(--color-primary);
+    text-decoration: none;
 }
 
 /* Header Flex Layout */
@@ -173,7 +177,7 @@ body {
     flex: 1 1 220px;
     min-width: 180px;
     max-width: 260px;
-    background: var(--color-paper);
+    /* background removed */
     /* border removed */
     border-radius: 0;
     padding: 0;
