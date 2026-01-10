@@ -1,8 +1,15 @@
+export interface IHeader {
+    title: string;
+    description: string;
+    icon?: string;
+}
 // GoldLabel Config Type Definition
 export type TGoldlabelConfig = {
     title: string;
     description: string;
     url: string;
+    icon: string;
+    image: string;
     cartridges: {
         designSystem: {
             defaultTheme: string;
@@ -42,6 +49,10 @@ export type TMarkdown = {
             currency: string;
         };
     };
+    /**
+     * The featured image for the markdown, or the fallback from config if not present
+     */
+    image?: string;
     content?: string;
 };
 

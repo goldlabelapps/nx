@@ -1,15 +1,33 @@
+
 import React from "react";
+import type { IHeader } from "../types";
 
-interface HeaderProps {
-	title: string;
-	description: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ title, description }) => (
-	<header style={{ textAlign: "center", padding: "2rem 0" }}>
-		<h1 style={{ margin: 0 }}>{title}</h1>
-		<p style={{ color: "#888", margin: 0 }}>{description}</p>
-	</header>
-);
+const Header: React.FC<IHeader> = ({ title, description, icon }) => {
+	let iconValue = icon;
+	if (icon === 'mcuk') {
+		iconValue = '/svg/favicon.svg';
+	}
+	return (
+		<header className="goldlabel-header goldlabel-header-flex">
+			<div className="goldlabel-header-icon-col">
+				{iconValue && typeof iconValue === 'string' && iconValue.match(/^https?:\/\//) ? (
+					<a href="/" className="goldlabel-header-icon-link">
+						<img src={iconValue} alt="icon" className="goldlabel-header-icon-img goldlabel-header-icon-img-lg" />
+					</a>
+				) : iconValue && typeof iconValue === 'string' ? (
+					<a href="/" className="goldlabel-header-icon-link">
+						<img src={iconValue} alt="icon" className="goldlabel-header-icon-img goldlabel-header-icon-img-lg" />
+					</a>
+				) : iconValue ? (
+					<a href="/" className="goldlabel-header-icon-link goldlabel-header-icon-img-lg">{iconValue}</a>
+				) : null}
+			</div>
+			<div className="goldlabel-header-title-col">
+				<h1><a href="/" className="goldlabel-header-title-link">{title}</a></h1>
+				<h2>{description}</h2>
+			</div>
+		</header>
+	);
+};
 
 export default Header;

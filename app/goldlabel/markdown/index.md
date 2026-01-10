@@ -1,26 +1,19 @@
 ---
 order: 1
 slug: /
-title: Welcome to Goldlabel
-description: A modern content management and publishing platform built with Next.js
-image: https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg
-icon: goldlabel
-tags: goldlabel, nextjs, cms
+title: Medical Cannabis
+description: Order Medical Cannabis Online in the UK
+icon: mcuk
+image: /jpg/og.jpg
+tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  
 ---
 
-> A flexible and powerful content management system that combines the best of Next.js with a clean, intuitive interface. Build and manage your content with ease.
+## UK medical cannabis ordered legally by prescription, supplied by licensed pharmacies, and delivered to your home. Clear information on how the process works and where orders come from.
 
-## Features
+In the UK, medical cannabis can be supplied legally when it is prescribed as a cannabis-based product for medicinal use (a CBPM). Since 1 November 2018, qualifying CBPMs have been placed in Schedule 2, which means they can be prescribed and supplied under controlled conditions.
 
-- Modern Next.js architecture
-- Firestore integration for dynamic content
-- Markdown-based content management
-- Responsive design
-- SEO optimized
+The key condition is the prescription. UK rules restrict the decision to prescribe CBPMs to doctors on the GMC Specialist Register. In practice, that usually means a specialist consultation (often done remotely), followed by a prescription where appropriate.
 
-## Quick Links
+Once prescribed, supply works like other controlled medicines: it is dispensed through a pharmacy and can be delivered to you by courier. Many CBPMs are “unlicensed specials”, which are still lawful to supply when ordered for an individual patient and sourced through properly licensed manufacturers and suppliers.
 
-- [API Documentation](/api)
-- [Goldlabel Pro](https://goldlabel.pro/)
-- [GitHub Repository](https://github.com/goldlabelapps/goldlabel-pro.git)
-
+What is not legal is buying cannabis as a consumer product without a prescription. This site exists for people using the legal route: prescription-led access, pharmacy dispensing, and home delivery — with clear information on the options available and where they come from.
