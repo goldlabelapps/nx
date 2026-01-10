@@ -2,7 +2,7 @@
   "firestore": {
     "database": "(default)",
     "location": "nam5",
-    "rules": "goldlabel/lib/firestore.rules",
-    "indexes": "goldlabel/lib/firestore.indexes.json"
+    "rules": "app/goldlabel/lib/firestore.rules",
+    "indexes": "app/goldlabel/lib/firestore.indexes.json"
   }
 }

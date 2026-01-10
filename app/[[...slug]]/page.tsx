@@ -1,133 +1,129 @@
-
-import Image from "next/image";
-import Link from "next/link";
-import { getAllSlugs, getDocBySlug, getAllDocs } from "@/goldlabel/lib/firestore-service";
-
-
-interface PageProps {
-    params: Promise<{
-        slug?: string[];
-    }>;
+import { notFound } from "next/navigation";
+// Recursively collect all slugs for markdown files using frontmatter.slug
+function getAllMarkdownSlugsFromFrontmatter(dir = "app/goldlabel/markdown"): string[][] {
+    const fs = require("fs");
+    const path = require("path");
+    const matter = require("gray-matter");
+    let slugs: string[][] = [];
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+        if (entry.isDirectory()) {
+            slugs = slugs.concat(getAllMarkdownSlugsFromFrontmatter(path.join(dir, entry.name)));
+        } else if (entry.name.endsWith(".md")) {
+            const filePath = path.join(dir, entry.name);
+            const { data } = matter(fs.readFileSync(filePath, "utf-8"));
+            let slug = data.slug;
+            if (typeof slug === "string") {
+                slug = slug.replace(/^\/+/, ""); // remove leading slash
+                if (slug === "") {
+                    slugs.push([]); // root
+                } else {
+                    slugs.push(slug.split("/"));
+                }
+            }
+        }
+    }
+    return slugs;
 }
 
-// Generate static paths at build time
 export async function generateStaticParams() {
-    try {
-        const slugs = await getAllSlugs();
-
-        // Convert slugs to slug arrays for catch-all routes
-        return slugs.map(slug => ({
-            slug: slug.split('/').filter(Boolean)
-        }));
-    } catch (error) {
-        console.error('Error generating static params:', error);
-        return [];
-    }
+    const slugs = getAllMarkdownSlugsFromFrontmatter();
+    return slugs.map((slugArr) => ({ slug: slugArr.length ? slugArr : undefined }));
 }
 
-export default async function Page({ params }: PageProps) {
-    const resolvedParams = await params;
-    const slug = resolvedParams.slug || [];
-    const currentPath = slug.length > 0 ? `/${slug.join("/")}` : "/";
+import Header from "../goldlabel/components/Header";
+import Footer from "../goldlabel/components/Footer";
+import { Navigation } from "../goldlabel/components";
+import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
+import Image from "next/image";
+import type { TMarkdown } from "../goldlabel/types";
+import fs from "fs";
+import path from "path";
+import { remark } from "remark";
+import html from "remark-html";
+import matter from "gray-matter";
 
-
-    // Fetch document data from Firestore
-    const slugString = slug.join('/');
-    let doc = slugString ? await getDocBySlug(slugString) : null;
-    let is404 = false;
-
-    // If no doc found, fetch the 404 doc from Firestore
-    if (!doc) {
-        doc = await getDocBySlug('404');
-        is404 = true;
+export default async function Page({ params }: any) {
+    const navItems = getNavigationTree();
+    // Find the markdown file by matching frontmatter.slug
+    function findMarkdownBySlug(slugArr: string[] = []) {
+        const fs = require("fs");
+        const path = require("path");
+        const matter = require("gray-matter");
+        let foundPath: string | null = null;
+        const walk = (dir: string) => {
+            const entries = fs.readdirSync(dir, { withFileTypes: true });
+            for (const entry of entries) {
+                if (entry.isDirectory()) {
+                    walk(path.join(dir, entry.name));
+                } else if (entry.name.endsWith(".md")) {
+                    const filePath = path.join(dir, entry.name);
+                    const { data } = matter(fs.readFileSync(filePath, "utf-8"));
+                    let slug = data.slug;
+                    if (typeof slug === "string") {
+                        slug = slug.replace(/^\/+/, "");
+                        if ((slugArr.length === 0 && (slug === "" || slug === undefined)) || slugArr.join("/") === slug) {
+                            foundPath = filePath;
+                        }
+                    }
+                }
+            }
+        };
+        walk("app/goldlabel/markdown");
+        return foundPath;
     }
 
-    // Fetch all docs for navigation
-    const allDocs = await getAllDocs();
-
-    // Use doc data or fallback to minimal defaults (no identifying text)
-    const featuredImage = doc?.frontmatter?.image || "/png/og.png";
-    const title = doc?.frontmatter?.title ? doc.frontmatter.title : "";
-    const description = doc?.frontmatter?.description ? doc.frontmatter.description : "";
-    const content = doc?.content;
-
-    // If homepage markdown is missing, show setup form
-    if (!content && currentPath === "/") {
-        const HomeInstallClient = (await import("./HomeSetupClient")).default;
-        return (
-            <div className="page-layout">
-                <main className="page-content">
-                    <article>
-                        <div className="mobile-featured-image">
-                            <Image
-                                src={featuredImage}
-                                alt={doc?.frontmatter?.title || ""}
-                                width={1200}
-                                height={630}
-                                priority
-                                style={{ objectFit: 'cover' }}
-                            />
-                        </div>
-                        <HomeInstallClient />
-                    </article>
-                </main>
-                <aside className="featured-image">
-                    <Image
-                        src={featuredImage}
-                        alt={doc?.frontmatter?.title || ""}
-                        width={1024}
-                        height={683}
-                        priority
-                        style={{ objectFit: 'cover' }}
-                    />
-                    {doc?.frontmatter?.title && <figcaption>{doc.frontmatter.title}</figcaption>}
-                </aside>
-            </div>
-        );
+    const filePath = findMarkdownBySlug(params?.slug || []);
+    if (!filePath || !fs.existsSync(filePath)) {
+        notFound();
     }
-
+    let htmlContent = "<p>Page not found.</p>";
+    let title = "NX";
+    let description = "by Goldlabel";
+    let featuredImage = undefined;
+    const md = fs.readFileSync(filePath, "utf-8");
+    const { content, data } = matter(md);
+    if (data.title) title = data.title;
+    if (data.description) description = data.description;
+    if (data.image) featuredImage = data.image;
+    const result = await remark().use(html).process(content);
+    htmlContent = result.toString();
     return (
         <div className="page-layout">
-            <main className="page-content">
-                <article>
-                    <div className="mobile-featured-image">
-                        <Image
-                            src={featuredImage}
-                            alt={doc?.frontmatter?.title || ""}
-                            width={1200}
-                            height={630}
-                            priority
-                            style={{ objectFit: 'cover' }}
-                        />
-                    </div>
-                    {title ? <h1>{title}</h1> : null}
-                    {description ? <h2>{description}</h2> : null}
-                    {description ? <p className="description">{description}</p> : null}
-                    {content && (
-                        <div dangerouslySetInnerHTML={{ __html: content }} />
-                    )}
-                    {doc?.frontmatter && (
-                        <div className="metadata">
-                            {doc.frontmatter.author && <p>By {doc.frontmatter.author}</p>}
-                            {doc.frontmatter.tags && (
-                                <p>Tags: {doc.frontmatter.tags}</p>
-                            )}
+            <header className="page-header">
+                <Header title={title} description={description} />
+            </header>
+            <main className="page-main">
+                <nav className="col col-left desktop-nav">
+                    <Navigation items={navItems} />
+                </nav>
+                <div className="col col-center">
+                    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                    {title.startsWith("404") && (
+                        <div style={{ marginTop: 32, textAlign: "center", color: "#888" }}>
+                            <h2>404 - Page Not Found</h2>
+                            <p>Sorry, the page you are looking for does not exist.</p>
                         </div>
                     )}
-                </article>
+                </div>
+                <div className="col col-right">
+                    {featuredImage && (
+                        <div className="featured-image">
+                            <Image
+                                src={featuredImage}
+                                alt={title}
+                                width={400}
+                                height={200}
+                                style={{ objectFit: 'cover', borderRadius: '1rem', maxWidth: '100%', height: 'auto' }}
+                                priority
+                            />
+                        </div>
+                    )}
+                </div>
             </main>
-
-            <aside className="featured-image">
-                <Image
-                    src={featuredImage}
-                    alt={doc?.frontmatter?.title || ""}
-                    width={1024}
-                    height={683}
-                    priority
-                    style={{ objectFit: 'cover' }}
-                />
-                {doc?.frontmatter?.title && <figcaption>{doc.frontmatter.title}</figcaption>}
-            </aside>
+            <footer className="page-footer">
+                <Footer />
+            </footer>
         </div>
     );
 }
