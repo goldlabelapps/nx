@@ -1,12 +1,14 @@
-// /Users/goldlabel/GitHub/ed-tech/goldlabel/goldlabel.config.mjs
-
+/**
+ * @type {import("./types").TGoldlabelConfig}
+ */
 const config = {
-    title: "NX",
-    description: "GoldLabel NX Application",
+    title: "MCUK",
+    description: "Medical Cannabis UK",
     url: "https://nx.goldlabel.pro",
+    icon: '/svg/favicon.svg',
     cartridges: {
         designSystem: {
-            defaultTheme: 'system',
+            defaultTheme: 'light',
             themes: {
                 dark: {
                     mode: "dark",

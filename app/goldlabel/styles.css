@@ -1,15 +1,29 @@
-/* Color scheme variables */
+/* Goldlabel Theme Variables from config */
 :root {
-    --color-primary: #C09F52;
-    --color-secondary: #222;
-    --color-background: #f7f7f7;
-    --color-border: var(--color-primary);
+    --color-primary: #17A1AC;
+    --color-secondary: #1b595dff;
+    --color-background: #fff;
+    --color-paper: #f3f3f3ff;
+    --color-border: #17A1AC;
+    --color-text: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #17A1AC;
+        --color-secondary: #07c7d5ff;
+        --color-background: #000;
+        --color-paper: #1e1e1eff;
+        --color-border: #17A1AC;
+        --color-text: #fff;
+    }
 }
 
 body {
     margin: 0;
     padding: 0;
     background: var(--color-background);
+    color: var(--color-text);
     font-family: system-ui, sans-serif;
     font-size: 1.15rem;
 }
@@ -22,7 +36,7 @@ body {
 
 .page-header {
     background: var(--color-secondary);
-    color: #fff;
+    color: var(--color-text);
     padding: 1rem 2rem;
     text-align: center;
 }
@@ -39,12 +53,13 @@ body {
     padding: 1.5rem 0;
 }
 
+
 .col-left,
 .col-right {
     flex: 1 1 220px;
     min-width: 180px;
     max-width: 260px;
-    background: #fff;
+    background: var(--color-paper);
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 1rem;
@@ -54,7 +69,7 @@ body {
 .col-center {
     flex: 2 1 0;
     min-width: 200px;
-    background: #fff;
+    background: var(--color-paper);
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 1rem;
@@ -63,7 +78,7 @@ body {
 
 .page-footer {
     background: var(--color-secondary);
-    color: #fff;
+    color: var(--color-text);
     padding: 1rem 2rem;
     text-align: center;
 }
@@ -72,8 +87,8 @@ blockquote {
     border-left: 2px solid var(--color-primary);
     padding-left: 1em;
     margin-left: 0;
-    color: #555;
-    background: #fffbe6;
+    color: var(--color-secondary);
+    background: var(--color-paper);
 }
 
 /* Link styles */

@@ -3,6 +3,7 @@ export type TGoldlabelConfig = {
     title: string;
     description: string;
     url: string;
+    icon: string;
     cartridges: {
         designSystem: {
             defaultTheme: string;
