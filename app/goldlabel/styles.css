@@ -1,8 +1,50 @@
+@media (prefers-color-scheme: dark) {
+
+    .goldlabel-nav a:hover,
+    .goldlabel-nav a:focus {
+        background: #181c1d;
+        color: var(--color-text);
+        border-color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    button,
+    .button,
+    input[type="submit"],
+    input[type="button"] {
+        background: #222;
+        color: #fff;
+        border-color: var(--color-primary);
+    }
+
+    button:hover,
+    .button:hover,
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        background: #333;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+}
+
+.goldlabel-footer a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.goldlabel-footer a:hover,
+.goldlabel-footer a:focus {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
 /* Footer styles moved from Footer.tsx */
 .goldlabel-footer {
     text-align: center;
     padding: 2rem 0;
     color: #888;
+    font-size: 0.95rem;
 }
 
 h1,
@@ -45,7 +87,7 @@ h6 {
 
 .goldlabel-nav a:hover,
 .goldlabel-nav a:focus {
-    background: #fafbfc;
+    background: var(--color-primary);
     color: var(--color-text);
     border-color: var(--color-primary);
     text-decoration: none;
@@ -174,7 +216,8 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding-top: 2.5rem;
+    padding-top: calc(2.5rem - 8px);
+    padding-bottom: 8px;
 }
 
 .page-main {

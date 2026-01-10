@@ -138,7 +138,7 @@ export default async function Page({ params }: any) {
     if (data.image) {
         featuredImage = data.image;
     } else {
-        featuredImage = goldlabelConfig.image;
+        featuredImage = undefined;
     }
     if (data.icon) icon = data.icon;
     const result = await remark().use(html).process(content);
@@ -150,20 +150,26 @@ export default async function Page({ params }: any) {
             </header>
             <main className="page-main container">
                 <div className="col col-right">
+                    <a href="https://budbuddies.cc/bud/listingslab/" target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
+                        <picture>
+                            <source srcSet="/png/qr_white.png" media="(prefers-color-scheme: dark)" />
+                            <img src="/png/qr_black.png" alt="QR code" style={{ display: 'block', margin: 0, width: '100%', height: 'auto' }} />
+                        </picture>
+                    </a>
+                </div>
+                <div className="col col-center">
                     {featuredImage && (
-                        <div className="featured-image">
+                        <div className="featured-image" style={{ width: '100%', maxHeight: 315, overflow: 'hidden', marginBottom: '1.5rem', borderRadius: '1rem' }}>
                             <Image
                                 src={featuredImage}
                                 alt={title}
-                                width={400}
-                                height={200}
-                                style={{ objectFit: 'cover', borderRadius: '1rem', maxWidth: '100%', height: 'auto' }}
+                                width={1200}
+                                height={315}
+                                style={{ objectFit: 'cover', width: '100%', height: 315, display: 'block', borderRadius: '1rem' }}
                                 priority
                             />
                         </div>
                     )}
-                </div>
-                <div className="col col-center">
                     <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     {title.startsWith("404") && (
                         <div style={{ marginTop: 32, textAlign: "center", color: "#888" }}>
