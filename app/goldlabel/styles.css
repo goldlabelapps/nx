@@ -1,3 +1,20 @@
+/* Footer styles moved from Footer.tsx */
+.goldlabel-footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #888;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
 /* Navigation Styles */
 .goldlabel-nav ul {
     list-style: none;
@@ -72,9 +89,10 @@
     transition: color 0.2s;
 }
 
+
 .goldlabel-header-title-link:hover {
     color: var(--color-secondary);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .goldlabel-header-title-col {

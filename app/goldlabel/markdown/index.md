@@ -1,15 +1,14 @@
 ---
 order: 1
 slug: /
-title: MCUK
-description: Medical Cannabis UK
+title: Medical Cannabis
+description: Order Medical Cannabis Online in the UK
 icon: mcuk
 tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  
 ---
 
-## Ordering Medical Cannabis Online in the UK
+## UK medical cannabis ordered legally by prescription, supplied by licensed pharmacies, and delivered to your home. Clear information on how the process works and where orders come from.
 
-UK medical cannabis ordered legally by prescription, supplied by licensed pharmacies, and delivered to your home. Clear information on how the process works and where orders come from.
 In the UK, medical cannabis can be supplied legally when it is prescribed as a cannabis-based product for medicinal use (a CBPM). Since 1 November 2018, qualifying CBPMs have been placed in Schedule 2, which means they can be prescribed and supplied under controlled conditions.
 
 The key condition is the prescription. UK rules restrict the decision to prescribe CBPMs to doctors on the GMC Specialist Register. In practice, that usually means a specialist consultation (often done remotely), followed by a prescription where appropriate.
