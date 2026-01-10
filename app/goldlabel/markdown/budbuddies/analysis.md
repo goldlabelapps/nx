@@ -8,14 +8,6 @@ icon: mcuk
 tags: medical cannabis, uk
 ---
 
-![Image](https://budbuddies.cc/wp-content/uploads/2025/02/unnamed-6.jpg)
-
-![Image](https://i.etsystatic.com/5614695/r/il/f67ef4/5970071772/il_570xN.5970071772_3bii.jpg)
-
-![Image](https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/8/15/1408112748076/Cannabis-plants-found-by--011.jpg?auto=format\&enable=upscale\&fit=crop\&height=630\&overlay-align=bottom%2Cleft\&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctYWdlLTIwMTQucG5n\&overlay-width=100p\&precrop=40%3A21%2Coffset-x50%2Coffset-y0\&quality=85\&s=e312ad95e43a3d164d6e620a71c3e6a3\&width=1200)
-
-![Image](https://budbuddies.cc/wp-content/uploads/2025/01/D629912.webp)
-
 Below is a **non-trust analysis** of **BudBuddies**, focused on structure, UX, SEO, content, and affiliate potential.
 
 ---
@@ -106,9 +98,9 @@ You already have:
 
 This is ideal for:
 
-* Content-first SEO
-* Soft affiliate transitions
-* Authority building
+ * Content-first SEO
+ * Soft affiliate transitions
+ * Authority building
 
 ---
 

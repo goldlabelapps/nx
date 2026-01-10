@@ -148,19 +148,7 @@ export default async function Page({ params }: any) {
             <header className="page-header">
                 <Header title={title} description={description} icon={icon} />
             </header>
-            <main className="page-main">
-                <nav className="col col-left desktop-nav">
-                    <Navigation items={navItems} />
-                </nav>
-                <div className="col col-center">
-                    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-                    {title.startsWith("404") && (
-                        <div style={{ marginTop: 32, textAlign: "center", color: "#888" }}>
-                            <h2>404 - Page Not Found</h2>
-                            <p>Sorry, the page you are looking for does not exist.</p>
-                        </div>
-                    )}
-                </div>
+            <main className="page-main container">
                 <div className="col col-right">
                     {featuredImage && (
                         <div className="featured-image">
@@ -175,6 +163,18 @@ export default async function Page({ params }: any) {
                         </div>
                     )}
                 </div>
+                <div className="col col-center">
+                    <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                    {title.startsWith("404") && (
+                        <div style={{ marginTop: 32, textAlign: "center", color: "#888" }}>
+                            <h2>404 - Page Not Found</h2>
+                            <p>Sorry, the page you are looking for does not exist.</p>
+                        </div>
+                    )}
+                </div>
+                <nav className="col col-left desktop-nav">
+                    <Navigation items={navItems} />
+                </nav>
             </main>
             <footer className="page-footer">
                 <Footer />
