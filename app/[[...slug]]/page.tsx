@@ -153,7 +153,7 @@ export default async function Page({ params }: any) {
                     <a href="https://budbuddies.cc/bud/listingslab/" target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
                         <picture>
                             <source srcSet="/png/qr_white.png" media="(prefers-color-scheme: dark)" />
-                            <img src="/png/qr_black.png" alt="QR code" style={{ display: 'block', margin: 0, width: '100%', height: 'auto' }} />
+                            <img className="qr-image" src="/png/qr_black.png" alt="QR code" style={{ display: 'block', margin: 0, height: 'auto' }} />
                         </picture>
                     </a>
                 </div>
