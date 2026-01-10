@@ -37,6 +37,7 @@ import { Navigation } from "../goldlabel/components";
 import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
 import Image from "next/image";
 import type { TMarkdown } from "../goldlabel/types";
+import goldlabelConfig from "../goldlabel/goldlabel.config.mjs";
 import fs from "fs";
 import path from "path";
 import { remark } from "remark";
@@ -83,17 +84,23 @@ export default async function Page({ params }: any) {
     let title = "NX";
     let description = "by Goldlabel";
     let featuredImage = undefined;
+    let icon = undefined;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-    if (data.image) featuredImage = data.image;
+    if (data.image) {
+        featuredImage = data.image;
+    } else {
+        featuredImage = goldlabelConfig.image;
+    }
+    if (data.icon) icon = data.icon;
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
     return (
         <div className="page-layout">
             <header className="page-header">
-                <Header title={title} description={description} />
+                <Header title={title} description={description} icon={icon} />
             </header>
             <main className="page-main">
                 <nav className="col col-left desktop-nav">

@@ -11,6 +11,7 @@ interface NavigationProps {
     items: NavItem[];
 }
 
+
 const renderNav = (items: NavItem[]) => (
     <ul>
         {items.map((item) => (
@@ -22,10 +23,20 @@ const renderNav = (items: NavItem[]) => (
     </ul>
 );
 
-const Navigation: React.FC<NavigationProps> = ({ items }) => (
-    <nav>
-        {renderNav(items)}
-    </nav>
-);
+const Navigation: React.FC<NavigationProps> = ({ items }) => {
+    // Map items, replacing the label for the root ("/") with "Home"
+    const relabelHome = (navItems: NavItem[]): NavItem[] =>
+        navItems.map(item => {
+            if (item.path === "/") {
+                return { ...item, title: "Home" };
+            }
+            return item.children ? { ...item, children: relabelHome(item.children) } : item;
+        });
+    return (
+        <nav className="goldlabel-nav">
+            {renderNav(relabelHome(items))}
+        </nav>
+    );
+};
 
 export default Navigation;

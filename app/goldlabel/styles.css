@@ -1,3 +1,96 @@
+/* Navigation Styles */
+.goldlabel-nav ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1.2em;
+}
+
+.goldlabel-nav>ul {
+    padding-left: 0;
+}
+
+.goldlabel-nav li {
+    margin: 0.2em 0;
+}
+
+.goldlabel-nav a {
+    display: block;
+    padding: 0.3em 0.7em;
+    border-radius: 6px;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.15s, color 0.15s;
+}
+
+.goldlabel-nav a:hover,
+.goldlabel-nav a:focus {
+    background: var(--color-paper);
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+/* Header Flex Layout */
+.goldlabel-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.goldlabel-header-icon-col {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    height: 64px;
+}
+
+.goldlabel-header-icon-link {
+    display: inline-block;
+    height: 48px;
+}
+
+.goldlabel-header-icon-img {
+    height: 48px;
+    width: 48px;
+    object-fit: contain;
+    display: block;
+}
+
+.goldlabel-header-icon-img-lg {
+    height: 64px;
+    width: 64px;
+    vertical-align: top;
+}
+
+.goldlabel-header-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.goldlabel-header-title-link:hover {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+.goldlabel-header-title-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.goldlabel-header-title-col h1 {
+    margin: 0;
+}
+
+.goldlabel-header-title-col h2 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 1.1em;
+    color: #666;
+}
+
 .goldlabel-header h1 {
     margin-bottom: 0.2em;
 }

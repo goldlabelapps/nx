@@ -3,34 +3,17 @@ order: 1
 slug: /
 title: MCUK
 description: Medical Cannabis UK
-image: /png/og.png
 icon: mcuk
-tags: medical cannabis, uk
+tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  
 ---
 
-## Medical cannabis UK comparisons covering products, suppliers, and how to order for home delivery in the UK.
+## Ordering Medical Cannabis Online in the UK
 
-Medical cannabis UK product listings with supplier links and online ordering options for UK delivery.
+UK medical cannabis ordered legally by prescription, supplied by licensed pharmacies, and delivered to your home. Clear information on how the process works and where orders come from.
+In the UK, medical cannabis can be supplied legally when it is prescribed as a cannabis-based product for medicinal use (a CBPM). Since 1 November 2018, qualifying CBPMs have been placed in Schedule 2, which means they can be prescribed and supplied under controlled conditions.
 
-> Medical cannabis UK listings showing products, suppliers, and routes to order online with UK delivery.
+The key condition is the prescription. UK rules restrict the decision to prescribe CBPMs to doctors on the GMC Specialist Register. In practice, that usually means a specialist consultation (often done remotely), followed by a prescription where appropriate.
 
-#### Medical cannabis UK guides comparing suppliers, products, and delivery options across the UK.
+Once prescribed, supply works like other controlled medicines: it is dispensed through a pharmacy and can be delivered to you by courier. Many CBPMs are “unlicensed specials”, which are still lawful to supply when ordered for an individual patient and sourced through properly licensed manufacturers and suppliers.
 
-Medical cannabis UK directories featuring products, verified suppliers, and online ordering with UK-wide delivery.
-
-Medical cannabis UK product and supplier comparisons, including options to order online and receive delivery in the UK.
-
-Medical cannabis UK listings that show what’s available, where to buy, and how delivery works in the UK.
-
-Medical cannabis UK comparisons with direct links to suppliers offering online purchase and UK delivery.
-
-> Medical cannabis UK listings covering products, suppliers, and options to buy online with UK delivery
-
-> Medical cannabis UK information and listings, including options to buy online from UK suppliers with home delivery.
-
-> Medical cannabis UK listings covering products, suppliers, and options to buy online with UK delivery.
-
-> Medical cannabis UK information and comparisons, including verified suppliers offering online purchase and delivery in the UK.
-
-> Medical cannabis UK listings and comparisons, with links to suppliers offering online ordering and delivery.
-
+What is not legal is buying cannabis as a consumer product without a prescription. This site exists for people using the legal route: prescription-led access, pharmacy dispensing, and home delivery — with clear information on the options available and where they come from.
