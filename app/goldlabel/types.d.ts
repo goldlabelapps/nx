@@ -4,7 +4,7 @@ export interface IHeader {
     icon?: string;
 }
 // GoldLabel Config Type Definition
-export type TGoldlabelConfig = {
+export type TNXConfig = {
     project: string;
     title: string;
     description: string;

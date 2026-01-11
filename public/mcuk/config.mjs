@@ -1,5 +1,5 @@
 /**
- * @type {import("./types").TGoldlabelConfig}
+ * @type {import("./types").TNXConfig}
  */
 const config = {
     project: "mcuk",

@@ -23,8 +23,8 @@ import type { IHeader } from "../types";
 const Header: React.FC<IHeader> = ({ title, description, icon }) => {
 	const isMobile = useIsMobile();
 	let iconValue = icon;
-	if (icon === 'mcuk') {
-		const project = process.env.NEXT_PUBLIC_PROJECT || 'goldlabel';
+	if (icon === 'default') {
+		const project = process.env.NEXT_PUBLIC_PROJECT || 'default';
 		iconValue = `/${project}/favicon.svg`;
 	}
 

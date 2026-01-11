@@ -91,7 +91,7 @@ import { Navigation } from "../goldlabel/components";
 // No useEffect/useState in server components
 import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
 import Image from "next/image";
-import goldlabelConfig from "../goldlabel/goldlabel.config.mjs";
+import goldlabelConfig from "../../public/default/config.mjs";
 import fs from "fs";
 import path from "path";
 import { remark } from "remark";
@@ -197,7 +197,7 @@ export default async function Page({ params }: any) {
 
 
                     </div>
-                    <CallToAction label="Buy Cannabis Online" />
+                    <CallToAction label="CTA" />
                 </nav>
             </main>
             <footer className="page-footer">
