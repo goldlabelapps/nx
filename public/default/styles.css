@@ -123,12 +123,12 @@ html[data-theme="light"] {
 
     :root:not([data-theme]),
     html:not([data-theme]) {
-        --color-primary: #4fd6e6;
-        --color-secondary: #07c7d5ff;
-        --color-background: #000;
-        --color-paper: #1e1e1eff;
-        --color-border: #17A1AC;
-        --color-text: #fff;
+        --color-primary: #888;
+        --color-secondary: #bbb;
+        --color-background: #111;
+        --color-paper: #222;
+        --color-border: #444;
+        --color-text: #eee;
     }
 
     .goldlabel-nav a:hover,
@@ -302,22 +302,22 @@ h6 {
 
 /* Goldlabel Theme Variables from config */
 :root {
-    --color-primary: #17A1AC;
-    --color-secondary: #1b595dff;
+    --color-primary: #444;
+    --color-secondary: #888;
     --color-background: #fff;
-    --color-paper: #f3f3f3ff;
-    --color-border: #17A1AC;
-    --color-text: #000;
+    --color-paper: #f3f3f3;
+    --color-border: #bbb;
+    --color-text: #111;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-primary: #8be3ec;
-        --color-secondary: #07c7d5ff;
-        --color-background: #000;
-        --color-paper: #1e1e1eff;
-        --color-border: #17A1AC;
-        --color-text: #fff;
+        --color-primary: #888;
+        --color-secondary: #bbb;
+        --color-background: #111;
+        --color-paper: #222;
+        --color-border: #444;
+        --color-text: #eee;
     }
 }
 
