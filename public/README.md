@@ -1,3 +1,13 @@
+
+# Public Folder
+
+The `public/` directory contains all static assets that are publicly available when the app is deployed. This includes images, favicons, manifest files, and project-specific folders.
+
+## Purpose
+- All files in `public/` are served at the root of your deployed site (e.g., `/public/logo.png` is available at `https://yourdomain.com/logo.png`).
+- Assets in this folder are not protected and can be accessed by anyone.
+- Use this folder for images, icons, manifest files, and any other static files required by your app or by individual projects.
+
 # Multi-Project Support in NX
 
 This NX install supports running multiple projects from a single codebase by using the `NEXT_PUBLIC_PROJECT` environment variable.

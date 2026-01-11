@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
-import "./goldlabel/styles.css";
+const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+import(`../public/${project}/styles.css`);
 import { Inter } from "next/font/google";
 import config from "./goldlabel/goldlabel.config.mjs";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
@@ -31,10 +32,10 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href={icon} />
-        <link rel="shortcut icon" href={icon} type="image/x-icon" />
-        <link rel="apple-touch-icon" sizes="180x180" href={icon} />
+        <link rel="manifest" href={`/${project}/manifest.json`} />
+        <link rel="icon" href={`/${project}/favicon.svg`} />
+        <link rel="shortcut icon" href={`/${project}/favicon.svg`} type="image/svg+xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href={`/${project}/favicon.svg`} />
         <meta name="theme-color" content={primaryColor} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />

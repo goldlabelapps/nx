@@ -27,8 +27,9 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
                 }
             }
         };
-        // Use the project prop from config to determine markdown folder location
-        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        // Use the NEXT_PUBLIC_PROJECT env variable to determine markdown folder location
+        const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+        const markdownDir = `public/${project}/markdown`;
         walk(markdownDir);
         return foundPath;
     }
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 }
 import { notFound } from "next/navigation";
 // Recursively collect all slugs for markdown files using frontmatter.slug
-function getAllMarkdownSlugsFromFrontmatter(dir = `projects/${goldlabelConfig.project}/markdown`): string[][] {
+function getAllMarkdownSlugsFromFrontmatter(dir = `public/${process.env.NEXT_PUBLIC_PROJECT || "goldlabel"}/markdown`): string[][] {
     const fs = require("fs");
     const path = require("path");
     const matter = require("gray-matter");
@@ -87,9 +88,9 @@ export async function generateStaticParams() {
 import Header from "../goldlabel/components/Header";
 import Footer from "../goldlabel/components/Footer";
 import { Navigation } from "../goldlabel/components";
+// No useEffect/useState in server components
 import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
 import Image from "next/image";
-import type { TMarkdown } from "../goldlabel/types";
 import goldlabelConfig from "../goldlabel/goldlabel.config.mjs";
 import fs from "fs";
 import path from "path";
@@ -128,7 +129,8 @@ export default async function Page({ params }: any) {
             }
         };
         // Use the project prop from config to determine markdown folder location
-        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+        const markdownDir = `public/${project}/markdown`;
         walk(markdownDir);
         return foundPath;
     }
@@ -154,6 +156,7 @@ export default async function Page({ params }: any) {
     if (data.icon) icon = data.icon;
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
+
     return (
         <div className="page-layout">
             <header className="page-header">
@@ -161,7 +164,7 @@ export default async function Page({ params }: any) {
             </header>
             <main className="page-main container">
                 <div className="col col-left">
-                    <CallToAction />
+                    {/* Left column intentionally left empty for 900px layout; content moved to right column */}
                 </div>
                 <div className="col col-center">
                     {featuredImage && (
@@ -185,7 +188,12 @@ export default async function Page({ params }: any) {
                     )}
                 </div>
                 <nav className="col col-right desktop-nav">
-                    <Navigation items={navItems} />
+                    <div className="ccta-nav-stack">
+                        <CallToAction label="Buy Cannabis Online" />
+                        <div className="medium-nav">
+                            <Navigation items={navItems} />
+                        </div>
+                    </div>
                 </nav>
             </main>
             <footer className="page-footer">

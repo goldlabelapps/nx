@@ -1,9 +1,9 @@
 ---
 order: 10
-slug: /budbuddies
-title: Budbuddies
+slug: /suppliers
+title: Suppliers
 description: UK supplier offering online purchase and UK delivery
-image: /jpg/og.jpg
+image: /mcuk/assets/pastoral.jpg
 icon: mcuk
 tags: medical cannabis, uk
 ---

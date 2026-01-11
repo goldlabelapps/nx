@@ -24,7 +24,8 @@ const Header: React.FC<IHeader> = ({ title, description, icon }) => {
 	const isMobile = useIsMobile();
 	let iconValue = icon;
 	if (icon === 'mcuk') {
-		iconValue = '/svg/favicon.svg';
+		const project = process.env.NEXT_PUBLIC_PROJECT || 'goldlabel';
+		iconValue = `/${project}/favicon.svg`;
 	}
 
 	return (

@@ -2,7 +2,7 @@
  * @type {import("./types").TGoldlabelConfig}
  */
 const config = {
-    project: "mcuk",
+    project: "NX",
     url: "https://nx.goldlabel.pro",
     title: "MCUK",
     description: "Medical Cannabis UK",

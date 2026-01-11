@@ -13,7 +13,7 @@ export interface NavItem {
 async function getMarkdownRoot() {
     // Dynamically import config for ESM compatibility
     const goldlabelConfig = (await import("../goldlabel.config.mjs")).default;
-    return path.join(process.cwd(), `projects/${goldlabelConfig.project}/markdown`);
+    return path.join(process.cwd(), `public/${goldlabelConfig.project}/markdown`);
 }
 
 function getFrontmatterFromMarkdown(filePath: string): { title: string; order?: number; slug?: string } {

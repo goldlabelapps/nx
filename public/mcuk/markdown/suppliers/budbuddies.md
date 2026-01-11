@@ -1,43 +1,39 @@
 ---
 order: 20
-slug: /budbuddies/analysis
-title: Analysis
+slug: /suppliers/budbuddies
+title: Budbuddies
 description: UK-specific medical context (GMC clinics, legality, process)
-image: /png/og.png
+image: /mcuk/assets/pastoral.jpg
 icon: mcuk
-tags: medical cannabis, uk
+tags: medical cannabis, uk, pastoral
 ---
 
-Below is a **non-trust analysis** of **BudBuddies**, focused on structure, UX, SEO, content, and affiliate potential.
-
----
+> Below is a non-trust analysis of BudBuddies, focused on structure, UX, SEO, content, and affiliate potential
 
 ## 1. Positioning & Intent
 
-* **Clear commercial intent**: product discovery + outbound referrals.
-* **Audience**: UK users already cannabis-aware; skews recreational in tone despite UK *medical* context.
-* **Mismatch**: UK medical cannabis users expect clinics, prescriptions, conditions — not strain-led shopping.
+* Clear commercial intent: product discovery + outbound referrals.
+* Audience: UK users already cannabis-aware; skews recreational in tone despite UK *medical* context.
+* Mismatch: UK medical cannabis users expect clinics, prescriptions, conditions — not strain-led shopping.
 
-**Implication for Goldlabel**
+Implication for Goldlabel
 You can sit *above* BudBuddies as the “educational + decision” layer, then funnel traffic down.
-
----
 
 ## 2. Information Architecture
 
-**Strengths**
+Strengths
 
 * Simple structure.
 * Product/strain-centric pages are easy to scan.
 * Low cognitive load.
 
-**Weaknesses**
+Weaknesses
 
 * Flat taxonomy: strains without strong medical framing.
 * Weak internal linking between concepts (conditions ↔ strains ↔ clinics).
 * No obvious user journeys (e.g. *“I have anxiety → what now?”*).
 
-**Opportunity**
+Opportunity
 
 * Goldlabel can own:
 
@@ -46,24 +42,22 @@ You can sit *above* BudBuddies as the “educational + decision” layer, then f
   * Comparison flows
   * Decision trees
 
----
-
 ## 3. Content Quality & Gaps
 
-**What exists**
+What exists
 
 * Short descriptions.
 * Informal tone.
 * Minimal structured data.
 
-**What’s missing**
+What’s missing
 
 * UK-specific medical context (GMC clinics, legality, process).
 * Evidence-based framing (terpenes, cannabinoids, effects).
 * Long-form evergreen content.
 * FAQs aligned to real search intent.
 
-**SEO gap**
+SEO gap
 BudBuddies likely underperforms on:
 
 * “medical cannabis UK for X”
@@ -73,22 +67,20 @@ BudBuddies likely underperforms on:
 
 Goldlabel should target these explicitly.
 
----
-
 ## 4. UX / UI
 
-**Observations**
+Observations
 
 * Very little visual hierarchy.
 * No strong CTAs beyond browsing.
 * Not optimised for *learning* or *conversion funnels*.
 
-**Affiliate downside**
+Affiliate downside
 
 * Users bounce after curiosity.
 * No capture (email, bookmarking, comparison).
 
-**Goldlabel advantage**
+Goldlabel advantage
 You already have:
 
 * Structured navigation
@@ -102,8 +94,6 @@ This is ideal for:
  * Soft affiliate transitions
  * Authority building
 
----
-
 ## 5. Technical & Performance (inferred)
 
 Without deep inspection:
@@ -112,7 +102,7 @@ Without deep inspection:
 * Weak structured data for products/FAQs.
 * No strong topical clustering.
 
-**Goldlabel edge**
+Goldlabel edge
 
 * Programmatic nav generation.
 * Frontmatter-driven metadata.
@@ -120,19 +110,17 @@ Without deep inspection:
 
 You can out-rank without out-designing.
 
----
-
 ## 6. Affiliate Fit
 
 BudBuddies works well as:
 
-* **Downstream destination**
-* **Catalogue / discovery layer**
-* **Non-educational endpoint**
+* Downstream destination
+* Catalogue / discovery layer
+* Non-educational endpoint
 
-They should *not* be the first touch.
+They should not be the first touch.
 
-**Ideal flow**
+Ideal flow
 
 ```
 Google → Goldlabel article
@@ -141,45 +129,39 @@ Google → Goldlabel article
        → “Explore availability” → BudBuddies
 ```
 
----
-
 ## 7. Strategic Summary
 
-**BudBuddies**
+BudBuddies
 
 * Fast, informal, catalogue-like
 * Low authority, low education
 * Good affiliate endpoint
 
-**Goldlabel**
+Goldlabel
 
 * Should be authoritative, structured, UK-specific
 * Owns search intent + user trust (not visual trust)
 * Funnels intent cleanly
 
----
-
 ## 8. Immediate Next Steps (Recommended)
 
-1. Define **content pillars**:
+1. Define content pillars:
 
    * Conditions
    * Cannabinoids
    * Clinics & process
    * Costs & legality
-2. Build **strain abstraction pages** (not strain listings).
+2. Build strain abstraction pages (not strain listings).
 3. Use BudBuddies as:
 
    * “Check availability”
    * “Browse strains”
-4. Implement **UK-specific schema** (FAQ, Article, MedicalEntity-like structures).
-5. Design affiliate links as *supporting actions*, not CTAs.
-
----
+4. Implement UK-specific schema (FAQ, Article, MedicalEntity-like structures).
+5. Design affiliate links as supporting actions, not CTAs.
 
 If you want, next we can:
 
-* Map **exact SEO keyword clusters**
-* Design the **Goldlabel → BudBuddies funnel**
-* Draft a **content model + frontmatter schema**
-* Or prototype a **“condition → strain → partner” page** in Goldlabel terms
+* Map exact SEO keyword clusters
+* Design the Goldlabel → BudBuddies funnel
+* Draft a content model + frontmatter schema
+* Or prototype a “condition → strain → partner” page in Goldlabel terms
