@@ -9,6 +9,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     function findMarkdownBySlug(slugArr: string[] = []) {
         let foundPath: string | null = null;
         const walk = (dir: string) => {
+            if (!fs.existsSync(dir)) return;
             const entries = fs.readdirSync(dir, { withFileTypes: true });
             for (const entry of entries) {
                 if (entry.isDirectory()) {
@@ -108,6 +109,7 @@ export default async function Page({ params }: any) {
         const matter = require("gray-matter");
         let foundPath: string | null = null;
         const walk = (dir: string) => {
+            if (!fs.existsSync(dir)) return;
             const entries = fs.readdirSync(dir, { withFileTypes: true });
             for (const entry of entries) {
                 if (entry.isDirectory()) {
