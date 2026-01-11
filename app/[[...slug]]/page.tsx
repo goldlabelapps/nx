@@ -163,13 +163,13 @@ export default async function Page({ params }: any) {
                 </div>
                 <div className="col col-center">
                     {featuredImage && (
-                        <div className="featured-image" style={{ width: '100%', maxHeight: 315, overflow: 'hidden', marginBottom: '1.5rem', borderRadius: '1rem' }}>
+                        <div className="featured-image" style={{ width: '100%', height: 315, overflow: 'hidden', marginBottom: '1.5rem', borderRadius: '1rem' }}>
                             <Image
                                 src={featuredImage}
                                 alt={title}
                                 width={1200}
                                 height={315}
-                                style={{ objectFit: 'cover', width: '100%', height: 315, display: 'block', borderRadius: '1rem' }}
+                                style={{ objectFit: 'cover', width: '100%', height: '100%', display: 'block', borderRadius: '1rem' }}
                                 priority
                             />
                         </div>

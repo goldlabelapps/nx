@@ -1,12 +1,27 @@
 "use client";
 import React from "react";
+import { useEffect, useState } from "react";
+// Custom hook to detect mobile viewport
+function useIsMobile() {
+	const [isMobile, setIsMobile] = useState(false);
+	useEffect(() => {
+		function handleResize() {
+			setIsMobile(window.innerWidth <= 800);
+		}
+		handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+	return isMobile;
+}
 import type { IHeader } from "../types";
 
-import LightDark from "./LightDark";
+// import LightDark from "./LightDark";
 
 
 
 const Header: React.FC<IHeader> = ({ title, description, icon }) => {
+	const isMobile = useIsMobile();
 	let iconValue = icon;
 	if (icon === 'mcuk') {
 		iconValue = '/svg/favicon.svg';
@@ -29,9 +44,11 @@ const Header: React.FC<IHeader> = ({ title, description, icon }) => {
 			</div>
 			<div className="goldlabel-header-title-col">
 				<h1>{title}</h1>
-				<h2>{description}</h2>
+				{!isMobile && (
+					<h2 className="goldlabel-header-description">{description}</h2>
+				)}
 			</div>
-			<LightDark />
+			{/* LightDark moved to Footer */}
 		</header>
 	);
 };
