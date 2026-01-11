@@ -1,5 +1,5 @@
 {
-  "short_name": "MCUK",
+  "short_name": "NX",
   "name": "Medical Cannabis UK",
   "theme_color": "#17A1AC",
   "background_color": "#17A1AC",
@@ -9,11 +9,6 @@
   "start_url": "/",
   "splash_pages": null,
   "icons": [
-    {
-      "src": "/png/favicon.png",
-      "type": "image/png",
-      "sizes": "180x180"
-    },
     {
       "src": "/svg/favicon.svg",
       "type": "image/svg+xml",
