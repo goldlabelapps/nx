@@ -3,12 +3,11 @@
  */
 const config = {
     project: "mcuk",
+    url: "https://nx.goldlabel.pro",
     title: "MCUK",
     description: "Medical Cannabis UK",
     icon: '/svg/favicon.svg',
     image: "/jpg/og.jpg",
-    url: "https://nx.goldlabel.pro",
-    git: 'https://github.com/goldlabelapps/mcuk',
     cartridges: {
         designSystem: {
             defaultTheme: 'light',

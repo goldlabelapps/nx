@@ -43,7 +43,9 @@ export default async function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={inter.className}>
-        {children}
+        <div className="umbrella">
+          {children}
+        </div>
       </body>
     </html>
   );
