@@ -38,17 +38,17 @@ const LightDark: React.FC = () => {
     };
 
     return (
-        <div style={{ display: 'flex', gap: 10 }}>
+        <div className="goldlabel-theme-toggle">
             {["light", "dark"].map((t) => (
-                <button
+                <a
                     key={t}
                     aria-label={`Switch to ${t} mode`}
                     onClick={() => handleThemeChange(t as Theme)}
                     type="button"
-                    style={{ padding: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                    className={`goldlabel-theme-toggle-btn${theme === t ? " selected" : ""}`}
                 >
                     {themeIcons[t as Theme]}
-                </button>
+                </a>
             ))}
         </div>
     );
