@@ -197,7 +197,7 @@ export default async function Page({ params }: any) {
 
 
                     </div>
-                    <CallToAction label="Buy Cannabis Online" />
+                    <CallToAction label="CTA" />
                 </nav>
             </main>
             <footer className="page-footer">
