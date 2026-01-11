@@ -1,12 +1,17 @@
-
+"use client";
 import React from "react";
 import type { IHeader } from "../types";
+
+import LightDark from "./LightDark";
+
+
 
 const Header: React.FC<IHeader> = ({ title, description, icon }) => {
 	let iconValue = icon;
 	if (icon === 'mcuk') {
 		iconValue = '/svg/favicon.svg';
 	}
+
 	return (
 		<header className="goldlabel-header goldlabel-header-flex">
 			<div className="goldlabel-header-icon-col">
@@ -26,6 +31,7 @@ const Header: React.FC<IHeader> = ({ title, description, icon }) => {
 				<h1><a href="/" className="goldlabel-header-title-link">{title}</a></h1>
 				<h2>{description}</h2>
 			</div>
+			<LightDark />
 		</header>
 	);
 };

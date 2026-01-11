@@ -40,16 +40,20 @@ const renderNav = (items: NavItem[]) => (
 );
 
 const Navigation: React.FC<NavigationProps> = ({ items }) => {
+    // Ensure items is always an array
+    const safeItems = Array.isArray(items) ? items : [];
     // Map items, replacing the label for the root ("/") with "Home"
     const relabelHome = (navItems: NavItem[]): NavItem[] =>
-        navItems.map(item => {
-            if (item.path === "/") {
-                return { ...item, title: "Home" };
-            }
-            return item.children ? { ...item, children: relabelHome(item.children) } : item;
-        });
+        Array.isArray(navItems)
+            ? navItems.map(item => {
+                if (item.path === "/") {
+                    return { ...item, title: "Home" };
+                }
+                return item.children ? { ...item, children: relabelHome(item.children) } : item;
+            })
+            : [];
     // Remove redundant child index links before rendering
-    const cleaned = filterRedundantIndex(relabelHome(items));
+    const cleaned = filterRedundantIndex(relabelHome(safeItems));
     return (
         <nav className="goldlabel-nav">
             {renderNav(cleaned)}

@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
                 }
             }
         };
-        walk("app/goldlabel/markdown");
+        // Use the project prop from config to determine markdown folder location
+        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        walk(markdownDir);
         return foundPath;
     }
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -46,11 +48,15 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 }
 import { notFound } from "next/navigation";
 // Recursively collect all slugs for markdown files using frontmatter.slug
-function getAllMarkdownSlugsFromFrontmatter(dir = "app/goldlabel/markdown"): string[][] {
+function getAllMarkdownSlugsFromFrontmatter(dir = `projects/${goldlabelConfig.project}/markdown`): string[][] {
     const fs = require("fs");
     const path = require("path");
     const matter = require("gray-matter");
     let slugs: string[][] = [];
+    if (!fs.existsSync(dir)) {
+        // Directory does not exist, return empty array
+        return slugs;
+    }
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
         if (entry.isDirectory()) {
@@ -89,11 +95,12 @@ import path from "path";
 import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
+import CallToAction from "../goldlabel/components/CallToAction";
 
 export default async function Page({ params }: any) {
     // Unwrap params if it's a Promise (Next.js app router)
     const resolvedParams = typeof params.then === 'function' ? await params : params;
-    const navItems = getNavigationTree();
+    const navItems = await getNavigationTree();
     // Find the markdown file by matching frontmatter.slug
     function findMarkdownBySlug(slugArr: string[] = []) {
         const fs = require("fs");
@@ -118,7 +125,9 @@ export default async function Page({ params }: any) {
                 }
             }
         };
-        walk("app/goldlabel/markdown");
+        // Use the project prop from config to determine markdown folder location
+        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        walk(markdownDir);
         return foundPath;
     }
 
@@ -149,13 +158,8 @@ export default async function Page({ params }: any) {
                 <Header title={title} description={description} icon={icon} />
             </header>
             <main className="page-main container">
-                <div className="col col-right">
-                    <a href="https://budbuddies.cc/bud/listingslab/" target="_blank" rel="noopener noreferrer" style={{ display: 'block' }}>
-                        <picture>
-                            <source srcSet="/png/qr_white.png" media="(prefers-color-scheme: dark)" />
-                            <img className="qr-image" src="/png/qr_black.png" alt="QR code" style={{ display: 'block', margin: 0, height: 'auto' }} />
-                        </picture>
-                    </a>
+                <div className="col col-left">
+                    <CallToAction />
                 </div>
                 <div className="col col-center">
                     {featuredImage && (
@@ -172,13 +176,13 @@ export default async function Page({ params }: any) {
                     )}
                     <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     {title.startsWith("404") && (
-                        <div style={{ marginTop: 32, textAlign: "center", color: "#888" }}>
+                        <div className="not-found-message">
                             <h2>404 - Page Not Found</h2>
                             <p>Sorry, the page you are looking for does not exist.</p>
                         </div>
                     )}
                 </div>
-                <nav className="col col-left desktop-nav">
+                <nav className="col col-right desktop-nav">
                     <Navigation items={navItems} />
                 </nav>
             </main>

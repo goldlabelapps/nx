@@ -2,8 +2,9 @@
  * @type {import("./types").TGoldlabelConfig}
  */
 const config = {
-    title: "Medical Cannabis UK",
-    description: "Order Medical Cannabis Online in the UK",
+    project: "mcuk",
+    title: "MCUK",
+    description: "Medical Cannabis UK",
     icon: '/svg/favicon.svg',
     image: "/jpg/og.jpg",
     url: "https://nx.goldlabel.pro",
