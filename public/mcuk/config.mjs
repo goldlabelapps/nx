@@ -3,10 +3,10 @@
  */
 const config = {
     project: "mcuk",
-    url: "https://nx.goldlabel.pro",
+    url: "https://listingslab.com",
     title: "MCUK",
     description: "Medical Cannabis UK",
-    icon: `/${process.env.NEXT_PUBLIC_PROJECT || 'goldlabel'}/favicon.svg`,
+    icon: `/mcuk/favicon.svg`,
     image: "/jpg/og.jpg",
     cartridges: {
         designSystem: {
