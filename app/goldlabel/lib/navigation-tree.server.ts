@@ -10,8 +10,11 @@ export interface NavItem {
     children?: NavItem[];
 }
 
-
-const MARKDOWN_ROOT = path.join(process.cwd(), "app/goldlabel/markdown");
+async function getMarkdownRoot() {
+    // Dynamically import config for ESM compatibility
+    const goldlabelConfig = (await import("../goldlabel.config.mjs")).default;
+    return path.join(process.cwd(), `projects/${goldlabelConfig.project}/markdown`);
+}
 
 function getFrontmatterFromMarkdown(filePath: string): { title: string; order?: number; slug?: string } {
     const content = fs.readFileSync(filePath, "utf-8");
@@ -28,6 +31,10 @@ function getFrontmatterFromMarkdown(filePath: string): { title: string; order?: 
 }
 
 function buildNavTree(dir: string, baseUrl = "/goldlabel/markdown"): NavItem[] {
+    if (!fs.existsSync(dir)) {
+        // Directory does not exist, return empty array
+        return [];
+    }
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     const navItems = entries
         .filter((entry) => entry.isDirectory() || entry.name.endsWith(".md"))
@@ -66,6 +73,7 @@ function buildNavTree(dir: string, baseUrl = "/goldlabel/markdown"): NavItem[] {
     return navItems;
 }
 
-export function getNavigationTree(): NavItem[] {
-    return buildNavTree(MARKDOWN_ROOT, "/goldlabel/markdown");
+export async function getNavigationTree(): Promise<NavItem[]> {
+    const markdownRoot = await getMarkdownRoot();
+    return buildNavTree(markdownRoot, "/goldlabel/markdown");
 }
