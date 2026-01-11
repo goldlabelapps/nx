@@ -28,7 +28,7 @@ const Header: React.FC<IHeader> = ({ title, description, icon }) => {
 				) : null}
 			</div>
 			<div className="goldlabel-header-title-col">
-				<h1><a href="/" className="goldlabel-header-title-link">{title}</a></h1>
+				<h1>{title}</h1>
 				<h2>{description}</h2>
 			</div>
 			<LightDark />
