@@ -1,6 +1,6 @@
 {
-  "short_name": "Default",
-  "name": "Default",
+  "short_name": "Ed-Tech",
+  "name": "Ed-Tech",
   "theme_color": "#000",
   "background_color": "#000",
   "display": "fullscreen",
@@ -10,7 +10,7 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/default/favicon.svg",
+      "src": "/ed-tech/favicon.svg",
       "type": "image/svg+xml",
       "sizes": "512x512",
       "purpose": "any maskable"
