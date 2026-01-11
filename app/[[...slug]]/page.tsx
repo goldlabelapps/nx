@@ -9,6 +9,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     function findMarkdownBySlug(slugArr: string[] = []) {
         let foundPath: string | null = null;
         const walk = (dir: string) => {
+            if (!fs.existsSync(dir)) return;
             const entries = fs.readdirSync(dir, { withFileTypes: true });
             for (const entry of entries) {
                 if (entry.isDirectory()) {
@@ -26,8 +27,9 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
                 }
             }
         };
-        // Use the project prop from config to determine markdown folder location
-        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        // Use the NEXT_PUBLIC_PROJECT env variable to determine markdown folder location
+        const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+        const markdownDir = `public/${project}/markdown`;
         walk(markdownDir);
         return foundPath;
     }
@@ -48,7 +50,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 }
 import { notFound } from "next/navigation";
 // Recursively collect all slugs for markdown files using frontmatter.slug
-function getAllMarkdownSlugsFromFrontmatter(dir = `projects/${goldlabelConfig.project}/markdown`): string[][] {
+function getAllMarkdownSlugsFromFrontmatter(dir = `public/${process.env.NEXT_PUBLIC_PROJECT || "goldlabel"}/markdown`): string[][] {
     const fs = require("fs");
     const path = require("path");
     const matter = require("gray-matter");
@@ -86,9 +88,9 @@ export async function generateStaticParams() {
 import Header from "../goldlabel/components/Header";
 import Footer from "../goldlabel/components/Footer";
 import { Navigation } from "../goldlabel/components";
+// No useEffect/useState in server components
 import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
 import Image from "next/image";
-import type { TMarkdown } from "../goldlabel/types";
 import goldlabelConfig from "../goldlabel/goldlabel.config.mjs";
 import fs from "fs";
 import path from "path";
@@ -108,6 +110,7 @@ export default async function Page({ params }: any) {
         const matter = require("gray-matter");
         let foundPath: string | null = null;
         const walk = (dir: string) => {
+            if (!fs.existsSync(dir)) return;
             const entries = fs.readdirSync(dir, { withFileTypes: true });
             for (const entry of entries) {
                 if (entry.isDirectory()) {
@@ -126,7 +129,8 @@ export default async function Page({ params }: any) {
             }
         };
         // Use the project prop from config to determine markdown folder location
-        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+        const markdownDir = `public/${project}/markdown`;
         walk(markdownDir);
         return foundPath;
     }
@@ -152,6 +156,7 @@ export default async function Page({ params }: any) {
     if (data.icon) icon = data.icon;
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
+
     return (
         <div className="page-layout">
             <header className="page-header">
@@ -159,17 +164,17 @@ export default async function Page({ params }: any) {
             </header>
             <main className="page-main container">
                 <div className="col col-left">
-                    <CallToAction />
+                    {/* Left column intentionally left empty for 900px layout; content moved to right column */}
                 </div>
                 <div className="col col-center">
                     {featuredImage && (
-                        <div className="featured-image" style={{ width: '100%', maxHeight: 315, overflow: 'hidden', marginBottom: '1.5rem', borderRadius: '1rem' }}>
+                        <div className="featured-image" style={{ width: '100%', height: 315, overflow: 'hidden', marginBottom: '1.5rem', borderRadius: '1rem' }}>
                             <Image
                                 src={featuredImage}
                                 alt={title}
                                 width={1200}
                                 height={315}
-                                style={{ objectFit: 'cover', width: '100%', height: 315, display: 'block', borderRadius: '1rem' }}
+                                style={{ objectFit: 'cover', width: '100%', height: '100%', display: 'block', borderRadius: '1rem' }}
                                 priority
                             />
                         </div>
@@ -183,7 +188,16 @@ export default async function Page({ params }: any) {
                     )}
                 </div>
                 <nav className="col col-right desktop-nav">
-                    <Navigation items={navItems} />
+                    <div className="ccta-nav-stack">
+
+                        <div className="medium-nav">
+                            <Navigation items={navItems} />
+                        </div>
+
+
+
+                    </div>
+                    <CallToAction label="Buy Cannabis Online" />
                 </nav>
             </main>
             <footer className="page-footer">

@@ -1,6 +1,6 @@
 {
   "name": "nx",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "scripts": {
     "dev": "yarn kill && next dev -p 1999 --webpack & sleep 1 && yarn open",
     "build": "next build --webpack",
