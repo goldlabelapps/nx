@@ -3,8 +3,8 @@
  */
 const config = {
     project: "mcuk",
-    title: "Medical Cannabis UK",
-    description: "Order Medical Cannabis Online in the UK",
+    title: "MCUK",
+    description: "Medical Cannabis UK",
     icon: '/svg/favicon.svg',
     image: "/jpg/og.jpg",
     url: "https://nx.goldlabel.pro",

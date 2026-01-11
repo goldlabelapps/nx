@@ -1,8 +1,8 @@
 ---
 order: 1
 slug: /
-title: Medical Cannabis
-description: Order Medical Cannabis Online in the UK
+title: MCUK
+description: Medical Cannabis UK
 icon: mcuk
 image: /jpg/og.jpg
 tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  
