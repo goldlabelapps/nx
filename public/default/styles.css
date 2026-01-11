@@ -1,0 +1,487 @@
+/* Umbrella container for constraining all content */
+.umbrella {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1000px) {
+    .umbrella {
+        max-width: none;
+    }
+}
+
+/* Ensure no min-height on left column */
+.col-left {
+    min-height: 0 !important;
+}
+
+/* 404 Not Found Message Styles */
+.not-found-message {
+    margin-top: 2rem;
+    text-align: center;
+    color: #888;
+}
+
+
+/* Call To Action Card Styles */
+.call-to-action-card {
+    background: var(--color-primary);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (max-width: 1000px) {
+    .call-to-action-card {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1000px) {
+    .call-to-action-card {
+        max-width: 400px;
+        margin-left: 2rem;
+        margin-right: auto;
+    }
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+}
+
+/* Theme toggle styles */
+.goldlabel-theme-toggle {
+    margin-left: auto;
+    margin-right: 24px;
+    display: flex;
+    gap: 2px;
+}
+
+.goldlabel-theme-toggle-btn {
+    background: none;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 4px;
+    cursor: pointer;
+    color: inherit;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    outline: none;
+    box-shadow: none;
+}
+
+/* .goldlabel-theme-toggle-btn.selected {
+    border: 1px solid var(--color-text);
+    color: var(--color-primary);
+    outline: 2px solid var(--color-primary);
+    box-shadow: 0 0 0 2px #17A1AC33;
+    background: none;
+} */
+
+/* .goldlabel-theme-toggle-btn:focus {
+    outline: 1px solid var(--color-primary);
+} */
+
+/* Theme override for dark mode via [data-theme] */
+
+html[data-theme="dark"] {
+    --color-primary: #17A1AC;
+    --color-secondary: #07c7d5ff;
+    --color-background: #000;
+    --color-paper: #1e1e1eff;
+    --color-border: #17A1AC;
+    --color-text: #fff;
+}
+
+/* Theme override for light mode via [data-theme] */
+
+html[data-theme="light"] {
+    --color-primary: #17A1AC;
+    --color-secondary: #1b595dff;
+    --color-background: #fff;
+    --color-paper: #f3f3f3ff;
+    --color-border: #17A1AC;
+    --color-text: #000;
+}
+
+/* Fallback to system if no [data-theme] is set */
+@media (prefers-color-scheme: dark) {
+
+    :root:not([data-theme]),
+    html:not([data-theme]) {
+        --color-primary: #4fd6e6;
+        --color-secondary: #07c7d5ff;
+        --color-background: #000;
+        --color-paper: #1e1e1eff;
+        --color-border: #17A1AC;
+        --color-text: #fff;
+    }
+
+    .goldlabel-nav a:hover,
+    .goldlabel-nav a:focus {
+        background: #181c1d;
+        color: var(--color-text);
+        border-color: var(--color-primary);
+        text-decoration: none;
+    }
+
+
+
+    button:hover,
+    .button:hover,
+    input[type="submit"]:hover,
+    input[type="button"]:hover {
+        background: #333;
+        color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+}
+
+.goldlabel-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2rem 0;
+    color: #888;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.goldlabel-footer a:hover,
+.goldlabel-footer a:focus {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Footer styles moved from Footer.tsx */
+.goldlabel-footer {
+    /* text-align: center; */
+    padding: 2rem 0;
+    color: #888;
+    font-size: 0.95rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Styles */
+.goldlabel-nav ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 1.2em;
+}
+
+.goldlabel-nav>ul {
+    padding-left: 0;
+}
+
+.goldlabel-nav li {
+    margin: 0.2em 0;
+}
+
+.goldlabel-nav a {
+    display: inline-block;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    padding: 0.45em 1em;
+    border-radius: 6px;
+    /* background: var(--color-paper); */
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    /* border: 1px solid var(--color-border); */
+    transition: background 0.15s, color 0.15s, border 0.15s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.goldlabel-nav a:hover,
+.goldlabel-nav a:focus {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Header Flex Layout */
+.goldlabel-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.goldlabel-header-icon-col {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    height: 64px;
+}
+
+.goldlabel-header-icon-link {
+    display: inline-block;
+    height: 48px;
+}
+
+.goldlabel-header-icon-img {
+    height: 48px;
+    width: 48px;
+    object-fit: contain;
+    display: block;
+}
+
+.goldlabel-header-icon-img-lg {
+    height: 64px;
+    width: 64px;
+    vertical-align: top;
+}
+
+.goldlabel-header-title-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+
+.goldlabel-header-title-link:hover {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+.goldlabel-header-title-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.goldlabel-header-title-col h1 {
+    margin: 0;
+}
+
+
+
+.goldlabel-header h1 {
+    margin-bottom: 0.2em;
+}
+
+.goldlabel-header h2 {
+    margin-top: 0.1em;
+}
+
+/* Header component styles */
+
+.goldlabel-header h1 {
+    margin: 0;
+    color: var(--color-primary);
+}
+
+.goldlabel-header h2 {
+    color: var(--color-secondary);
+}
+
+/* Goldlabel Theme Variables from config */
+:root {
+    --color-primary: #17A1AC;
+    --color-secondary: #1b595dff;
+    --color-background: #fff;
+    --color-paper: #f3f3f3ff;
+    --color-border: #17A1AC;
+    --color-text: #000;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #8be3ec;
+        --color-secondary: #07c7d5ff;
+        --color-background: #000;
+        --color-paper: #1e1e1eff;
+        --color-border: #17A1AC;
+        --color-text: #fff;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: system-ui, sans-serif;
+    font-size: 1.15rem;
+}
+
+.page-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-header {
+    background: transparent;
+    color: var(--color-text);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: calc(2.5rem - 8px);
+    padding-bottom: 8px;
+}
+
+
+.page-main {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    gap: 2rem;
+    padding: 1.5rem 0;
+}
+
+
+
+
+.col-left {
+    display: none;
+}
+
+.col-right {
+    flex: 0 0 320px;
+    min-width: 220px;
+    max-width: 340px;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 1000px) {
+    .col-left {
+        margin-left: 2rem;
+        margin-right: 0;
+    }
+}
+
+
+
+.col-center {
+    flex: 1 1 0;
+    min-width: 0;
+    background: var(--color-background);
+    border-radius: 8px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remove background from markdown content area */
+.col-center .markdown-content {
+    background: none;
+}
+
+.page-footer {
+    background: transparent;
+    color: var(--color-text);
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+blockquote {
+    border-left: 2px solid var(--color-primary);
+    padding-left: 1em;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    margin-left: 0;
+    color: var(--color-secondary);
+    background: var(--color-paper);
+}
+
+/* Link styles */
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+/* Headings styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @media (max-width: 800px) {
+        .goldlabel-header-description {
+            font-size: 1.1rem;
+            font-weight: lighter;
+            line-height: 1.3;
+        }
+    }
+
+    font-weight: lighter;
+    color: var(--color-primary);
+}
+
+/* h1 {}
+
+h2 {} */
+
+/* h3 {
+    font-size: 1.3rem;
+} */
+
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+    .page-main {
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 100%;
+        padding: 1rem 0;
+    }
+
+    .col-center {
+        width: 100%;
+        min-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 8px;
+    }
+
+    .col-right {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 2rem;
+        flex-direction: column;
+        gap: 2rem;
+        display: flex;
+    }
+}
