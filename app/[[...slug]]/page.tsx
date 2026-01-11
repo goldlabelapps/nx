@@ -189,11 +189,15 @@ export default async function Page({ params }: any) {
                 </div>
                 <nav className="col col-right desktop-nav">
                     <div className="ccta-nav-stack">
-                        <CallToAction label="Buy Cannabis Online" />
+
                         <div className="medium-nav">
                             <Navigation items={navItems} />
                         </div>
+
+
+
                     </div>
+                    <CallToAction label="Buy Cannabis Online" />
                 </nav>
             </main>
             <footer className="page-footer">
