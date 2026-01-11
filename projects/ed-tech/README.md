@@ -1,4 +1,4 @@
-# EdTech Platform
+# ed-tech
 
 A modern, full-stack educational technology platform built with Next.js 16, featuring a monorepo architecture and comprehensive content management system.
 
