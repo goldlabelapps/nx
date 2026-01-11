@@ -1,0 +1,19 @@
+{
+  "short_name": "pr0",
+  "name": "pr0",
+  "theme_color": "#000",
+  "background_color": "#000",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/mcuk/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}
