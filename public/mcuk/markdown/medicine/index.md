@@ -3,7 +3,7 @@ order: 100
 slug: /medicine
 title: Medicine
 description: Medical Cannabis UK
-icon: medicine
+icon: mcuk
 tags: medical cannabis, uk, medicine
 ---
 
