@@ -99,7 +99,7 @@ import matter from "gray-matter";
 export default async function Page({ params }: any) {
     // Unwrap params if it's a Promise (Next.js app router)
     const resolvedParams = typeof params.then === 'function' ? await params : params;
-    const navItems = getNavigationTree();
+    const navItems = await getNavigationTree();
     // Find the markdown file by matching frontmatter.slug
     function findMarkdownBySlug(slugArr: string[] = []) {
         const fs = require("fs");
