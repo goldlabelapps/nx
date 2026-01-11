@@ -2,6 +2,7 @@
  * @type {import("./types").TGoldlabelConfig}
  */
 const config = {
+    project: "mcuk",
     title: "Medical Cannabis UK",
     description: "Order Medical Cannabis Online in the UK",
     icon: '/svg/favicon.svg',

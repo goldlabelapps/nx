@@ -26,7 +26,9 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
                 }
             }
         };
-        walk("app/goldlabel/markdown");
+        // Use the project prop from config to determine markdown folder location
+        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        walk(markdownDir);
         return foundPath;
     }
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -46,11 +48,15 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 }
 import { notFound } from "next/navigation";
 // Recursively collect all slugs for markdown files using frontmatter.slug
-function getAllMarkdownSlugsFromFrontmatter(dir = "app/goldlabel/markdown"): string[][] {
+function getAllMarkdownSlugsFromFrontmatter(dir = `projects/${goldlabelConfig.project}/markdown`): string[][] {
     const fs = require("fs");
     const path = require("path");
     const matter = require("gray-matter");
     let slugs: string[][] = [];
+    if (!fs.existsSync(dir)) {
+        // Directory does not exist, return empty array
+        return slugs;
+    }
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
         if (entry.isDirectory()) {
@@ -118,7 +124,9 @@ export default async function Page({ params }: any) {
                 }
             }
         };
-        walk("app/goldlabel/markdown");
+        // Use the project prop from config to determine markdown folder location
+        const markdownDir = `projects/${goldlabelConfig.project}/markdown`;
+        walk(markdownDir);
         return foundPath;
     }
 

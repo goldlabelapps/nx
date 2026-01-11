@@ -5,6 +5,7 @@ export interface IHeader {
 }
 // GoldLabel Config Type Definition
 export type TGoldlabelConfig = {
+    project: string;
     title: string;
     description: string;
     url: string;
