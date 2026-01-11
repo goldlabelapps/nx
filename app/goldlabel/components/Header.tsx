@@ -22,11 +22,8 @@ import type { IHeader } from "../types";
 
 const Header: React.FC<IHeader> = ({ title, description, icon }) => {
 	const isMobile = useIsMobile();
-	let iconValue = icon;
-	if (icon === 'default') {
-		const project = process.env.NEXT_PUBLIC_PROJECT || 'default';
-		iconValue = `/${project}/favicon.svg`;
-	}
+	const project = process.env.NEXT_PUBLIC_PROJECT || 'default';
+	const iconValue = `/${project}/favicon.svg`;
 
 	return (
 		<header className="goldlabel-header goldlabel-header-flex">
