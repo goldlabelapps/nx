@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
 import(`../public/${project}/styles.css`);
 import { Inter } from "next/font/google";
-import config from "./goldlabel/goldlabel.config.mjs";
+import config from "../public/default/config.mjs";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 

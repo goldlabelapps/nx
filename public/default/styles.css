@@ -99,22 +99,22 @@
 /* Theme override for dark mode via [data-theme] */
 
 html[data-theme="dark"] {
-    --color-primary: #17A1AC;
-    --color-secondary: #07c7d5ff;
+    --color-primary: #888;
+    --color-secondary: #bbb;
     --color-background: #000;
     --color-paper: #1e1e1eff;
-    --color-border: #17A1AC;
+    --color-border: #444;
     --color-text: #fff;
 }
 
 /* Theme override for light mode via [data-theme] */
 
 html[data-theme="light"] {
-    --color-primary: #17A1AC;
+    --color-primary: #444;
     --color-secondary: #1b595dff;
     --color-background: #fff;
     --color-paper: #f3f3f3ff;
-    --color-border: #17A1AC;
+    --color-border: #bbb;
     --color-text: #000;
 }
 
@@ -123,12 +123,12 @@ html[data-theme="light"] {
 
     :root:not([data-theme]),
     html:not([data-theme]) {
-        --color-primary: #888;
-        --color-secondary: #bbb;
-        --color-background: #111;
-        --color-paper: #222;
-        --color-border: #444;
-        --color-text: #eee;
+        --color-primary: #444;
+        --color-secondary: #888;
+        --color-background: #fff;
+        --color-paper: #f3f3f3;
+        --color-border: #bbb;
+        --color-text: #111;
     }
 
     .goldlabel-nav a:hover,
