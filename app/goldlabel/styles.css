@@ -1,3 +1,24 @@
+/* 404 Not Found Message Styles */
+.not-found-message {
+    margin-top: 2rem;
+    text-align: center;
+    color: #888;
+}
+
+/* Call To Action Card Styles */
+.call-to-action-card {
+    background: var(--color-secondary);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    color: white;
+    text-align: center;
+}
+
 /* Theme toggle styles */
 .goldlabel-theme-toggle {
     margin-left: auto;
