@@ -109,7 +109,7 @@ export default async function Page({ params }: any) {
                     <nav className="col col-right desktop-nav">
                         <div className="ccta-nav-stack">
                             <div className="medium-nav">
-                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} />
+                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
                             </div>
                         </div>
                         <CallToAction label="Call To Action" />

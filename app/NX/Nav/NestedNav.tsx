@@ -18,7 +18,7 @@ function filterIndexMd(items: any[]) {
     });
 }
 
-function NestedNav({ navItems, currentPath }: I_NestedNav & { currentPath?: string }) {
+function NestedNav({ navItems }: I_NestedNav & { currentPath?: string }) {
     const sortedNavItems = sortNavItems(navItems);
     return (
         <Box component={'nav'}
@@ -45,7 +45,13 @@ function NestedNav({ navItems, currentPath }: I_NestedNav & { currentPath?: stri
                     </Link>
                     {item.children && (
                         <Box sx={{ ml: 2, mt: 0.5 }}>
-                            {sortNavItems(item.children.filter(child => !/\/index(\.md)?$/.test(child.path))).map((child: any, j: number) => (
+                            {sortNavItems(
+                                item.children.filter((child: { path: string }) => {
+                                    // Only include if the original filename is not index.md
+                                    // Assume child.path is like /foo/bar or /foo/bar/index or /foo/bar/index.md
+                                    return !/\/index(\.md)?$/.test(child.path);
+                                })
+                            ).map((child: any, j: number) => (
                                 <Link href={child.path} passHref legacyBehavior={false} key={`child_${i}_${j}`}>
                                     <Button
                                         variant="outlined"

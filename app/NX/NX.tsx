@@ -1,13 +1,21 @@
 import React, { ReactNode } from 'react';
 import { T_NX } from './types';
-
+import { Box } from '@mui/material';
 
 const NX: React.FC<T_NX> = ({ children }) => {
     return (
-        <div style={{ border: '2px solid #333', padding: '1rem', borderRadius: '8px' }}>
-            <h3 style={{ marginBottom: '1rem' }}>This is the NX Wrapper</h3>
+        <Box
+            sx={{
+                border: '2px solid #333',
+                m: 1,
+                p: 2,
+                borderRadius: '12px',
+            }}>
+            <p style={{ marginBottom: '1rem' }}>
+                NX Wrapper
+            </p>
             {children}
-        </div>
+        </Box>
     );
 };
 
