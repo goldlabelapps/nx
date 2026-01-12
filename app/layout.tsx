@@ -38,9 +38,7 @@ export default async function RootLayout({
       </head>
       <body>
         <div className="wrapper">
-          <div className="main-content-green-border">
-            {children}
-          </div>
+          {children}
         </div>
       </body>
     </html>
