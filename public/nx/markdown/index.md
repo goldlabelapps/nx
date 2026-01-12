@@ -1,7 +1,7 @@
 ---
 slug: /
 title: NX
-description: Start building your app
+description: Start building your NX app
 icon: default
 image: /nx/assets/default.jpg
 tags: default, 
