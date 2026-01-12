@@ -1,0 +1,13 @@
+/* colours.css: Define your color palette as CSS variables */
+:root {
+    --primary-main: #17A1AC;
+    --primary-light: #17A1AC;
+    --primary-dark: #17A1AC;
+    --secondary-main: #07c7d5ff;
+    --secondary-light: #07c7d5ff;
+    --secondary-dark: #07c7d5ff;
+    --background-default: #fff;
+    --background-paper: #f7f5f5;
+    --text-primary: #333333;
+    --text-secondary: #0f0e0e;
+}

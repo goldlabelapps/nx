@@ -1,19 +1,12 @@
 
 import type { Metadata } from "next";
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-import { Inter } from "next/font/google";
 const config = (await import(`../public/${project}/config.mjs`)).default;
-const inter = Inter({ subsets: ["latin"], display: "swap" });
-
-
-const { title, icon, cartridges } = config;
-const defaultTheme = cartridges.designSystem.defaultTheme;
-const theme = cartridges.designSystem.themes[defaultTheme];
-const primaryColor = theme.primary;
+const { title, icon, description } = config;
 
 export const metadata: Metadata = {
   title,
-  description: config.description,
+  description,
   icons: {
     icon,
     shortcut: icon,
@@ -43,7 +36,7 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-title" content={title} />
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
-      <body className={inter.className}>
+      <body>
         <div className="wrapper">
           <div className="main-content-green-border">
             {children}
