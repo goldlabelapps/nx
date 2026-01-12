@@ -1,7 +1,6 @@
 
 import type { Metadata } from "next";
-const project = process.env.NEXT_PUBLIC_PROJECT;
-import(`../public/${project}/${project}.css`);
+const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 import { Inter } from "next/font/google";
 const config = (await import(`../public/${project}/config.mjs`)).default;
 const inter = Inter({ subsets: ["latin"], display: "swap" });
@@ -32,6 +31,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="stylesheet" href={`/${project}/styles.css`} />
         <link rel="manifest" href={`/${project}/manifest.json`} />
         <link rel="icon" href={`/${project}/favicon.svg`} />
         <link rel="shortcut icon" href={`/${project}/favicon.svg`} type="image/svg+xml" />
@@ -53,3 +53,4 @@ export default async function RootLayout({
     </html>
   );
 }
+

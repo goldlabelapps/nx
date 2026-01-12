@@ -1,6 +1,6 @@
 /* Green border for main content */
 .main-content-green-border {
-    border: 10px solid limegreen;
+    border: 10px solid red;
 }
 
 /* Wrapper container for constraining all content */
