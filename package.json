@@ -2,7 +2,7 @@
   "name": "nx",
   "version": "1.2.9",
   "scripts": {
-    "dev": "yarn kill && next dev -p 1999 --webpack & sleep 1 && yarn open",
+    "dev": "yarn kill && rm -rf .next && next dev -p 1999 --webpack & sleep 1 && yarn open",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",

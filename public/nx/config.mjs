@@ -2,12 +2,10 @@
  * @type {import("./types").TNXConfig}
  */
 const config = {
-    project: "default",
+    project: "nx",
     url: "https://nx.goldlabel.pro",
-    title: "Default",
-    description: "deault",
     icon: `/${process.env.NEXT_PUBLIC_PROJECT || 'default'}/favicon.svg`,
-    image: "/jpg/og.jpg",
+    image: "/nx/assets/default.jpg",
     cartridges: {
         designSystem: {
             defaultTheme: 'light',

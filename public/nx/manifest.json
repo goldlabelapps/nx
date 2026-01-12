@@ -12,7 +12,7 @@
     {
       "src": "/nx/favicon.svg",
       "type": "image/svg+xml",
-      "sizes": "512x512",
+      "sizes": "64x64",
       "purpose": "any maskable"
     }
   ]

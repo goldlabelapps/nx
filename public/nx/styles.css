@@ -1,6 +1,8 @@
+@import url('./colours.css');
+
 /* Green border for main content */
 .main-content-green-border {
-    border: 10px solid red;
+    border: 10px solid var(--secondary-main);
 }
 
 /* Wrapper container for constraining all content */
@@ -29,13 +31,13 @@
 .not-found-message {
     margin-top: 2rem;
     text-align: center;
-    color: #888;
+    color: var(--text-secondary);
 }
 
 
 /* Call To Action Card Styles */
 .call-to-action-card {
-    background: var(--color-primary);
+    background: var(--primary-main);
     padding: 8px;
     cursor: pointer;
     border-radius: 8px;
@@ -60,7 +62,7 @@
 
 .cta-text {
     font-size: 1.2rem;
-    color: white;
+    color: var(--background-paper);
     text-align: center;
 }
 
