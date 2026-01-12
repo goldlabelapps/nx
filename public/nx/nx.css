@@ -1,7 +1,6 @@
 /* Green border for main content */
 .main-content-green-border {
-    border: 20px solid red;
-    padding: 1rem;
+    border: 10px solid limegreen;
 }
 
 /* Wrapper container for constraining all content */
