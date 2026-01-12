@@ -1,0 +1,49 @@
+// /Users/goldlabel/GitHub/core/gl-core/cartridges/DesignSystem/components/AlertAd.tsx
+'use client';
+import * as React from 'react';
+import { Typography, Alert, ButtonBase } from '@mui/material';
+import { Icon, useIsMobile } from '../../../../gl-core';
+
+export type TAdvert = {
+  title?: string | null;
+  description?: string | null;
+  onClick: any;
+  icon?: string;
+};
+
+export default function AlertAd({
+  icon = 'star',
+  title = 'Default Title',
+  description = 'description',
+  onClick = () => {
+    console.log('No onClick for advert');
+  },
+}: TAdvert) {
+  const isMobile = useIsMobile();
+  const showTagline = false;
+
+  return (
+    <>
+      <ButtonBase
+        sx={{
+          textAlign: 'left',
+          mb: 1,
+          width: '100%',
+        }}
+        onClick={onClick}
+      >
+        <Alert
+          sx={{ width: '100%', border: 0 }}
+          severity="success"
+          variant="outlined"
+          icon={<Icon icon={icon as any} color={'inherit'} />}
+        >
+          <Typography variant="body1">{title}</Typography>
+          {!isMobile && showTagline && (
+            <Typography variant="body2">{description}</Typography>
+          )}
+        </Alert>
+      </ButtonBase>
+    </>
+  );
+}
