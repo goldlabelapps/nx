@@ -1,6 +1,6 @@
 /* Green border for main content */
 .main-content-green-border {
-    border: 2px solid red;
+    border: 2px solid green;
     padding: 1rem;
 }
 
