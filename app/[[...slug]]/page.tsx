@@ -91,7 +91,8 @@ import { Navigation } from "../goldlabel/components";
 // No useEffect/useState in server components
 import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
 import Image from "next/image";
-import goldlabelConfig from "../../public/default/config.mjs";
+const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
+const goldlabelConfig = (await import(`../../public/${project}/config.mjs`)).default;
 import fs from "fs";
 import path from "path";
 import { remark } from "remark";
@@ -164,7 +165,8 @@ export default async function Page({ params }: any) {
             </header>
             <main className="page-main container">
                 <div className="col col-left">
-                    {/* Left column intentionally left empty for 900px layout; content moved to right column */}
+                    Left column intentionally left empty for 900px
+                    layout; content moved to right column
                 </div>
                 <div className="col col-center">
                     {featuredImage && (
@@ -182,22 +184,18 @@ export default async function Page({ params }: any) {
                     <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     {title.startsWith("404") && (
                         <div className="not-found-message">
-                            <h2>404 - Page Not Found</h2>
+                            <h2>404 bro :(</h2>
                             <p>Sorry, the page you are looking for does not exist.</p>
                         </div>
                     )}
                 </div>
                 <nav className="col col-right desktop-nav">
                     <div className="ccta-nav-stack">
-
                         <div className="medium-nav">
                             <Navigation items={navItems} />
                         </div>
-
-
-
                     </div>
-                    <CallToAction label="CTA" />
+                    <CallToAction label="Call To Action" />
                 </nav>
             </main>
             <footer className="page-footer">

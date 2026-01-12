@@ -6,13 +6,13 @@ export interface IHeader {
 // GoldLabel Config Type Definition
 export type TNXConfig = {
     project: string;
-    title: string;
-    description: string;
     url: string;
-    icon: string;
+    favicon: string;
     image: string;
     cartridges: {
+        uberedux?: Record<string, unknown>;
         designSystem: {
+            allowTheme: boolean;
             defaultTheme: string;
             themes: {
                 [key: string]: {

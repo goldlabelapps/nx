@@ -1,6 +1,6 @@
 {
-  "short_name": "Default",
-  "name": "Default",
+  "short_name": "NX",
+  "name": "NX",
   "theme_color": "#000",
   "background_color": "#000",
   "display": "fullscreen",
@@ -10,9 +10,9 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/default/favicon.svg",
+      "src": "/nx/favicon.svg",
       "type": "image/svg+xml",
-      "sizes": "512x512",
+      "sizes": "64x64",
       "purpose": "any maskable"
     }
   ]

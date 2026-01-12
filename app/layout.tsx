@@ -1,9 +1,8 @@
 
 import type { Metadata } from "next";
-const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
-import(`../public/${project}/styles.css`);
+const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 import { Inter } from "next/font/google";
-import config from "../public/default/config.mjs";
+const config = (await import(`../public/${project}/config.mjs`)).default;
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 
@@ -32,11 +31,12 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="stylesheet" href={`/${project}/styles.css`} />
         <link rel="manifest" href={`/${project}/manifest.json`} />
         <link rel="icon" href={`/${project}/favicon.svg`} />
         <link rel="shortcut icon" href={`/${project}/favicon.svg`} type="image/svg+xml" />
         <link rel="apple-touch-icon" sizes="180x180" href={`/${project}/favicon.svg`} />
-        <meta name="theme-color" content={primaryColor} />
+        <meta name="theme-color" content={"#000"} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -44,10 +44,13 @@ export default async function RootLayout({
         <meta name="mobile-web-app-capable" content="yes" />
       </head>
       <body className={inter.className}>
-        <div className="umbrella">
-          {children}
+        <div className="wrapper">
+          <div className="main-content-green-border">
+            {children}
+          </div>
         </div>
       </body>
     </html>
   );
 }
+
