@@ -1,33 +1,22 @@
-/**
- * @type {import("./types").TNXConfig}
- */
+
 const config = {
     project: "ed-tech",
+    description: '',
     url: "https://ed-tech.co",
-    title: "Ed-Tech",
-    description: "default",
-    icon: `/${process.env.NEXT_PUBLIC_PROJECT || 'default'}/favicon.svg`,
+    icon: `ed-tech/favicon.svg`,
     cartridges: {
         designSystem: {
+            allowTheme: false,
             defaultTheme: 'light',
             themes: {
-                dark: {
-                    mode: "dark",
-                    primary: "#888",
-                    secondary: "#bbb",
-                    background: "#111",
-                    paper: "#222",
-                    text: "#eee",
-                    border: "#444",
-                },
                 light: {
                     mode: "light",
-                    primary: "#444",
-                    secondary: "#888",
+                    primary: "#33FF66",
+                    secondary: "#33FF66",
                     background: "#fff",
-                    paper: "#f3f3f3",
-                    border: "#bbb",
-                    text: "#111",
+                    paper: "#f7f5f5",
+                    border: "#33FF66",
+                    text: "#333333",
                 },
 
             },

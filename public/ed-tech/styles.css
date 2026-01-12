@@ -8,14 +8,8 @@ h4,
 h5,
 h6 {
     font-weight: normal;
+    color: var(--yellow);
 }
-
-/* Make all headings primary coloured */
-h1 {
-    font-weight: lighter;
-}
-
-
 
 /* nx Header Flex Layout */
 .nx-header-flex {
@@ -276,10 +270,11 @@ h6 {
 body {
     margin: 0;
     padding: 0;
-    background: var(--color-background);
-    color: var(--color-text);
-    font-family: system-ui, sans-serif;
-    font-size: 1.15rem;
+    background: #181a1b;
+    color: #eaeaea;
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 .page-layout {

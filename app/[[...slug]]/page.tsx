@@ -181,6 +181,7 @@ export default async function Page({ params }: any) {
                             />
                         </div>
                     )}
+                    <h2>{description}</h2>
                     <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     {title.startsWith("404") && (
                         <div className="not-found-message">

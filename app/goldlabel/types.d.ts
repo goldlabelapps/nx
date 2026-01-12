@@ -1,6 +1,6 @@
 export interface IHeader {
     title: string;
-    description: string;
+    description?: string;
     icon?: string;
 }
 // GoldLabel Config Type Definition
