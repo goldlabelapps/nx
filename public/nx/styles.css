@@ -1,9 +1,28 @@
+/* Goldlabel Header Flex Layout */
+.goldlabel-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.goldlabel-header-icon-col {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+}
+
+.goldlabel-header-title-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 @import url('./colours.css');
 
-/* Green border for main content */
-.main-content-green-border {
+/* Colored border for main content (let's the dog see the rabbit) */
+/* .main-content-green-border {
     border: 10px solid var(--secondary-main);
-}
+} */
 
 /* Wrapper container for constraining all content */
 .wrapper {
@@ -38,7 +57,7 @@
 /* Call To Action Card Styles */
 .call-to-action-card {
     background: var(--primary-main);
-    padding: 8px;
+    padding: 8px 2.5rem;
     cursor: pointer;
     border-radius: 8px;
     margin-bottom: 2rem;

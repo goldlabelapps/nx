@@ -4,10 +4,12 @@
 const config = {
     project: "nx",
     url: "https://nx.goldlabel.pro",
-    icon: `/${process.env.NEXT_PUBLIC_PROJECT || 'default'}/favicon.svg`,
+    favicon: "/nx/favicon.svg",
     image: "/nx/assets/default.jpg",
     cartridges: {
+        uberedux: {},
         designSystem: {
+            allowTheme: false,
             defaultTheme: 'light',
             themes: {
                 dark: {
