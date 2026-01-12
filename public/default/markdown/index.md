@@ -1,7 +1,7 @@
 ---
 slug: /
-title: Default Title
-description: Default Description
+title: Welcome to NX
+description: Start building your
 icon: default
 image: /default/default.jpg
 tags: default, 
