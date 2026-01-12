@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+const project = process.env.NEXT_PUBLIC_PROJECT;
 import(`../public/${project}/styles.css`);
 import { Inter } from "next/font/google";
 import config from "../public/default/config.mjs";
