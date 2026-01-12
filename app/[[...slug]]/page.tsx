@@ -1,41 +1,17 @@
 // Next.js App Router: set page metadata
 import { Metadata } from "next";
 import { NX } from '../NX';
-import { NestedNav } from '../NX/Nav'
+import type { I_NestedNav } from '../NX/types';
+import { NestedNav, findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/Nav';
 
 // Generate metadata for dynamic title/description
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
-    // Find the markdown file by matching frontmatter.slug
+
+
     const fs = require("fs");
     const path = require("path");
     const matter = require("gray-matter");
-    function findMarkdownBySlug(slugArr: string[] = []) {
-        let foundPath: string | null = null;
-        const walk = (dir: string) => {
-            if (!fs.existsSync(dir)) return;
-            const entries = fs.readdirSync(dir, { withFileTypes: true });
-            for (const entry of entries) {
-                if (entry.isDirectory()) {
-                    walk(path.join(dir, entry.name));
-                } else if (entry.name.endsWith(".md")) {
-                    const filePath = path.join(dir, entry.name);
-                    const { data } = matter(fs.readFileSync(filePath, "utf-8"));
-                    let slug = data.slug;
-                    if (typeof slug === "string") {
-                        slug = slug.replace(/^\/+/, "");
-                        if ((slugArr.length === 0 && (slug === "" || slug === undefined)) || slugArr.join("/") === slug) {
-                            foundPath = filePath;
-                        }
-                    }
-                }
-            }
-        };
-        // Use the NEXT_PUBLIC_PROJECT env variable to determine markdown folder location
-        const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
-        const markdownDir = `public/${project}/markdown`;
-        walk(markdownDir);
-        return foundPath;
-    }
+
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const filePath = findMarkdownBySlug(resolvedParams?.slug || []);
     let title = "NX";
@@ -52,36 +28,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     };
 }
 import { notFound } from "next/navigation";
-// Recursively collect all slugs for markdown files using frontmatter.slug
-function getAllMarkdownSlugsFromFrontmatter(dir = `public/${process.env.NEXT_PUBLIC_PROJECT || "goldlabel"}/markdown`): string[][] {
-    const fs = require("fs");
-    const path = require("path");
-    const matter = require("gray-matter");
-    let slugs: string[][] = [];
-    if (!fs.existsSync(dir)) {
-        // Directory does not exist, return empty array
-        return slugs;
-    }
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
-    for (const entry of entries) {
-        if (entry.isDirectory()) {
-            slugs = slugs.concat(getAllMarkdownSlugsFromFrontmatter(path.join(dir, entry.name)));
-        } else if (entry.name.endsWith(".md")) {
-            const filePath = path.join(dir, entry.name);
-            const { data } = matter(fs.readFileSync(filePath, "utf-8"));
-            let slug = data.slug;
-            if (typeof slug === "string") {
-                slug = slug.replace(/^\/+/, ""); // remove leading slash
-                if (slug === "") {
-                    slugs.push([]); // root
-                } else {
-                    slugs.push(slug.split("/"));
-                }
-            }
-        }
-    }
-    return slugs;
-}
+
 
 export async function generateStaticParams() {
     const slugs = getAllMarkdownSlugsFromFrontmatter();
@@ -90,13 +37,9 @@ export async function generateStaticParams() {
 
 import Header from "../goldlabel/components/Header";
 import Footer from "../goldlabel/components/Footer";
-import { Navigation } from "../goldlabel/components";
 import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
 import Image from "next/image";
-const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-const goldlabelConfig = (await import(`../../public/${project}/config.mjs`)).default;
 import fs from "fs";
-import path from "path";
 import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
@@ -104,47 +47,15 @@ import CallToAction from "../goldlabel/components/CallToAction";
 
 export default async function Page({ params }: any) {
 
-
-    // Unwrap params if it's a Promise (Next.js app router)
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const navItems = await getNavigationTree();
-    // Find the markdown file by matching frontmatter.slug
-    function findMarkdownBySlug(slugArr: string[] = []) {
-        const fs = require("fs");
-        const path = require("path");
-        const matter = require("gray-matter");
-        let foundPath: string | null = null;
-        const walk = (dir: string) => {
-            if (!fs.existsSync(dir)) return;
-            const entries = fs.readdirSync(dir, { withFileTypes: true });
-            for (const entry of entries) {
-                if (entry.isDirectory()) {
-                    walk(path.join(dir, entry.name));
-                } else if (entry.name.endsWith(".md")) {
-                    const filePath = path.join(dir, entry.name);
-                    const { data } = matter(fs.readFileSync(filePath, "utf-8"));
-                    let slug = data.slug;
-                    if (typeof slug === "string") {
-                        slug = slug.replace(/^\/+/, "");
-                        if ((slugArr.length === 0 && (slug === "" || slug === undefined)) || slugArr.join("/") === slug) {
-                            foundPath = filePath;
-                        }
-                    }
-                }
-            }
-        };
-        // Use the project prop from config to determine markdown folder location
-        const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
-        const markdownDir = `public/${project}/markdown`;
-        walk(markdownDir);
-        return foundPath;
-    }
+
 
     const filePath = findMarkdownBySlug(resolvedParams?.slug || []);
     if (!filePath || !fs.existsSync(filePath)) {
         notFound();
     }
-    let htmlContent = "<p>Page not found.</p>";
+    let htmlContent = "<p>404, bro:(</p>";
     let title = "NX";
     let description = "by Goldlabel";
     let featuredImage = undefined;
@@ -198,9 +109,7 @@ export default async function Page({ params }: any) {
                     <nav className="col col-right desktop-nav">
                         <div className="ccta-nav-stack">
                             <div className="medium-nav">
-                                <NestedNav navItems={navItems} />
-                                <Navigation items={navItems} />
-
+                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} />
                             </div>
                         </div>
                         <CallToAction label="Call To Action" />
