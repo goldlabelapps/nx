@@ -176,7 +176,7 @@ export default async function Page({ params }: any) {
                                 alt={title}
                                 width={1200}
                                 height={315}
-                                style={{ objectFit: 'cover', width: '100%', height: '100%', display: 'block', borderRadius: '1rem' }}
+                                style={{ objectFit: 'cover', width: '100%', height: 'auto', display: 'block', borderRadius: '1rem' }}
                                 priority
                             />
                         </div>
