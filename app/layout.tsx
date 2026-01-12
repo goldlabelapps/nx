@@ -1,9 +1,9 @@
 
 import type { Metadata } from "next";
 const project = process.env.NEXT_PUBLIC_PROJECT;
-import(`../public/${project}/styles.css`);
+import(`../public/${project}/${project}.css`);
 import { Inter } from "next/font/google";
-import config from "../public/default/config.mjs";
+const config = (await import(`../public/${project}/config.mjs`)).default;
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 
