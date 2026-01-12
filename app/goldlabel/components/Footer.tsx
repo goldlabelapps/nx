@@ -1,6 +1,5 @@
 import React from "react";
 import LightDark from "./LightDark";
-// Dynamically import config based on NEXT_PUBLIC_PROJECT env var
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require(`../../../public/${project}/config.mjs`).default;

@@ -1,27 +1,37 @@
-/* Goldlabel Header Flex Layout */
-.goldlabel-header-flex {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+@import url('./colours.css');
+
+/* Make all headings primary coloured */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-headings);
 }
 
-.goldlabel-header-icon-col {
+/* nx Header Flex Layout */
+.nx-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nx-header-icon-col {
     display: flex;
     align-items: center;
     margin-right: 16px;
 }
 
-.goldlabel-header-title-col {
+.nx-header-title-col {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-@import url('./colours.css');
-
 /* Colored border for main content (let's the dog see the rabbit) */
 /* .main-content-green-border {
-    border: 10px solid var(--secondary-main);
+    border: 5px solid var(--primary-main);
 } */
 
 /* Wrapper container for constraining all content */
@@ -110,73 +120,6 @@
     box-shadow: none;
 }
 
-/* .nx-theme-toggle-btn.selected {
-    border: 1px solid var(--color-text);
-    color: var(--color-primary);
-    outline: 2px solid var(--color-primary);
-    box-shadow: 0 0 0 2px #17A1AC33;
-    background: none;
-} */
-
-/* .nx-theme-toggle-btn:focus {
-    outline: 1px solid var(--color-primary);
-} */
-
-/* Theme override for dark mode via [data-theme] */
-
-html[data-theme="dark"] {
-    --color-primary: #888;
-    --color-secondary: #bbb;
-    --color-background: #000;
-    --color-paper: #1e1e1eff;
-    --color-border: #444;
-    --color-text: #fff;
-}
-
-/* Theme override for light mode via [data-theme] */
-
-html[data-theme="light"] {
-    --color-primary: #444;
-    --color-secondary: #1b595dff;
-    --color-background: #fff;
-    --color-paper: #f3f3f3ff;
-    --color-border: #bbb;
-    --color-text: #000;
-}
-
-/* Fallback to system if no [data-theme] is set */
-@media (prefers-color-scheme: dark) {
-
-    :root:not([data-theme]),
-    html:not([data-theme]) {
-        --color-primary: #444;
-        --color-secondary: #888;
-        --color-background: #fff;
-        --color-paper: #f3f3f3;
-        --color-border: #bbb;
-        --color-text: #111;
-    }
-
-    .goldlabel-nav a:hover,
-    .goldlabel-nav a:focus {
-        background: #181c1d;
-        color: var(--color-text);
-        border-color: var(--color-primary);
-        text-decoration: none;
-    }
-
-
-
-    button:hover,
-    .button:hover,
-    input[type="submit"]:hover,
-    input[type="button"]:hover {
-        background: #333;
-        color: var(--color-primary);
-        border-color: var(--color-primary);
-    }
-}
-
 .nx-footer {
     display: flex;
     justify-content: flex-end;
@@ -233,12 +176,9 @@ h6 {
     max-width: 100%;
     padding: 0.45em 1em;
     border-radius: 6px;
-    /* background: var(--color-paper); */
+    background: var(--color-paper);
     color: var(--color-text);
     text-decoration: none;
-    font-weight: 500;
-    /* border: 1px solid var(--color-border); */
-    transition: background 0.15s, color 0.15s, border 0.15s;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
@@ -317,34 +257,13 @@ h6 {
 
 /* Header component styles */
 
-.goldlabel-header h1 {
+.nx-header h1 {
     margin: 0;
-    color: var(--color-primary);
+    color: var(--primary-main);
 }
 
-.goldlabel-header h2 {
-    color: var(--color-secondary);
-}
-
-/* Goldlabel Theme Variables from config */
-:root {
-    --color-primary: #444;
-    --color-secondary: #888;
-    --color-background: #fff;
-    --color-paper: #f3f3f3;
-    --color-border: #bbb;
-    --color-text: #111;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-primary: #888;
-        --color-secondary: #bbb;
-        --color-background: #111;
-        --color-paper: #222;
-        --color-border: #444;
-        --color-text: #eee;
-    }
+.nx-header h2 {
+    color: var(--secondary-main);
 }
 
 body {
@@ -427,60 +346,50 @@ body {
 
 .page-footer {
     background: transparent;
-    color: var(--color-text);
+    color: var(--text-primary);
     padding: 1rem 2rem;
     text-align: center;
 }
 
 blockquote {
-    border-left: 2px solid var(--color-primary);
+    border-left: 2px solid var(--primary-main);
     padding-left: 1em;
     padding-top: 0.7em;
     padding-bottom: 0.7em;
     margin-left: 0;
-    color: var(--color-secondary);
-    background: var(--color-paper);
+    color: var(--secondary-main);
+    background: var(--background-paper);
 }
 
 /* Link styles */
 a {
-    color: var(--color-primary);
+    color: var(--primary-main);
     text-decoration: none;
     transition: color 0.2s;
 }
 
 a:hover,
 a:focus {
-    color: var(--color-secondary);
+    color: var(--secondary-main);
     text-decoration: none;
 }
 
-/* Headings styles */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    @media (max-width: 800px) {
-        .nx-header-description {
-            font-size: 1.1rem;
-            font-weight: lighter;
-            line-height: 1.3;
-        }
+@media (max-width: 1000px) {
+    .nx-header-flex {
+        flex-direction: row !important;
+        align-items: center;
+        gap: 16px;
     }
 
-    font-weight: lighter;
-    color: var(--color-primary);
+    .nx-header-title-col {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .nx-header-icon-col {
+        margin-right: 12px;
+    }
 }
-
-/* h1 {}
-
-h2 {} */
-
-/* h3 {
-    font-size: 1.3rem;
-} */
 
 
 /* Responsive adjustments */

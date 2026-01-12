@@ -1,14 +1,14 @@
 /* colours.css: Define your color palette as CSS variables */
 :root {
-    --primary-main: #d2d219;
-    --primary-light: #63a4ff;
-    --primary-dark: #004ba0;
-    --secondary-main: #dc004e;
-    --secondary-light: #ff5c8d;
-    --secondary-dark: #9a0036;
-    --background-default: #f5f5f5;
-    --background-paper: #ffffff;
-    --text-primary: #212121;
-    --text-secondary: #757575;
-    /* Add more as needed */
+    --primary-main: #e7f30c;
+    --primary-light: #e7f30c;
+    --primary-dark: #e7f30c;
+    --secondary-main: #f30c9e;
+    --secondary-light: #f30c9e;
+    --secondary-dark: #f30c9e;
+    --background-default: #fff;
+    --background-paper: #fff;
+    --text-primary: #333333;
+    --text-secondary: #333333;
+    --text-headings: #ff0000;
 }
