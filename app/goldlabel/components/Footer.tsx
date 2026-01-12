@@ -8,7 +8,7 @@ const Footer: React.FC = () => (
 	<footer className="goldlabel-footer">
 
 		{config.cartridges.designSystem.allowTheme && <LightDark />}
-		by <a href="https://goldlabel.pro" target="_blank" rel="noopener noreferrer">Goldlabel</a>
+		{/* by <a href="https://goldlabel.pro" target="_blank" rel="noopener noreferrer">Goldlabel</a> */}
 
 	</footer>
 );

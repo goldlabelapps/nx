@@ -1,13 +1,11 @@
 ---
 order: 1
 slug: /courses
-title: Free Courses
-image: https://live.staticflickr.com/65535/55021544964_727c263c48_b.jpg
-icon: ed-tech
+title: Courses
 tags: ed-tech, free, courses, learning
 ---
 
-> Try some learning. See if you learn anything
+> Try some free learning. See if you learn anything
 
 - [Docker](/courses/docker)
 - [Copilot](/courses/copilot)
