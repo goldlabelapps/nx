@@ -3,3 +3,12 @@
 export interface T_NX {
     children: React.ReactNode;
 }
+
+export type T_NavItem = {
+    label: string;
+    children?: T_NavItem[];
+};
+
+export interface I_NestedNav {
+    navItems: T_NavItem[];
+}
