@@ -8,6 +8,14 @@ icon: mcuk
 tags: medical cannabis, uk, pastoral
 ---
 
+### Traditional dried flower pack sizes
+
+- 1/8 oz, 3.5g
+- 1/4 oz, 7g
+- 1/2 oz, 14g
+- 1oz, 28g
+
+
 > Below is a non-trust analysis of BudBuddies, focused on structure, UX, SEO, content, and affiliate potential
 
 ## 1. Positioning & Intent
