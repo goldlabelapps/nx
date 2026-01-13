@@ -4,6 +4,8 @@ https://budbuddies.cc/bud/listingslab/
 https://budbuddies.cc/product/fullspectrum-clouds/
 https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/
 
+https://budbuddies.cc/product/ferrero-roche/bud/listingslab/
+
 
 Basically, add this to the end of a link: `/bud/listingslab/`
 

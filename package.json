@@ -6,7 +6,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
-    "clean": "bash app/NX/lib/bash/clean.sh",
+    "clean": "yarn kill && bash app/NX/lib/bash/clean.sh",
     "kill": "bash app/NX/lib/bash/kill.sh",
     "open": "node app/goldlabel/lib/openInBrowser.js",
     "firebase": "node app/goldlabel/lib/firebase-cli.js"
