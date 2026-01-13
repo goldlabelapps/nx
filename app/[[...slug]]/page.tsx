@@ -76,10 +76,13 @@ export default async function Page({ params }: any) {
         default:
             config = nxConfig;
     }
-    // Use the correct markdown directory for the project
+    // Debug logging for troubleshooting
+    console.log("[PAGE DEBUG] Incoming slugArr:", slugArr);
     const filePath = findMarkdownBySlug(slugArr, project);
+    console.log("[PAGE DEBUG] Resolved filePath:", filePath);
     const navItems = await getNavigationTree();
     if (!filePath || !fs.existsSync(filePath)) {
+        console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);
         notFound();
     }
     let htmlContent = "<p>404, bro:(</p>";
