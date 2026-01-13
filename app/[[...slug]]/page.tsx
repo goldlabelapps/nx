@@ -1,11 +1,13 @@
-// Next.js App Router: set page metadata
 import { Metadata } from "next";
+import pr0Config from '../../public/pr0/config.mjs';
+import mcukConfig from '../../public/mcuk/config.mjs';
+import nxConfig from '../../public/nx/config.mjs';
+import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NX } from '../NX';
 import type { I_NestedNav } from '../NX/types';
 import { NestedNav } from '../NX/Nav';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
-// Generate metadata for dynamic title/description
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
     const path = require("path");
@@ -13,7 +15,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
-    // Always use the project from .env, not hardcoded
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     // Use the correct markdown directory for the project
     const filePath = findMarkdownBySlug(slugArr, project);
@@ -60,6 +61,21 @@ export default async function Page({ params }: any) {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
+    let config;
+    switch (project) {
+        case 'pr0':
+            config = pr0Config;
+            break;
+        case 'mcuk':
+            config = mcukConfig;
+            break;
+        case 'ed-tech':
+            config = edTechConfig;
+            break;
+        case 'nx':
+        default:
+            config = nxConfig;
+    }
     // Use the correct markdown directory for the project
     const filePath = findMarkdownBySlug(slugArr, project);
     const navItems = await getNavigationTree();
@@ -85,7 +101,7 @@ export default async function Page({ params }: any) {
     htmlContent = result.toString();
 
     return (
-        <NX>
+        <NX config={config}>
             <div className="page-layout">
                 <header className="page-header">
                     <Header title={title} description={description} icon={icon} />
