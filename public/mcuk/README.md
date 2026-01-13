@@ -1,21 +1,18 @@
-Traditional dried flower pack sizes
-
 # budbuddies
 
 https://budbuddies.cc/bud/listingslab/
-
 https://budbuddies.cc/product/fullspectrum-clouds/
-
 https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/
 
+https://budbuddies.cc/product/ferrero-roche/bud/listingslab/
 
-add this to the end of a link: `/bud/listingslab/`
+
+Basically, add this to the end of a link: `/bud/listingslab/`
 
 Full Spectrum Clouds — Ultra Smooth Pulls (Mellow High)
 Fruit-first vape with ultra-smooth pulls for long, easy nights in.
 
 £45.49
-
 
 Flower
 

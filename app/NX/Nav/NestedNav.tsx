@@ -21,15 +21,7 @@ function filterIndexMd(items: any[]) {
 function NestedNav({ navItems }: I_NestedNav & { currentPath?: string }) {
     const sortedNavItems = sortNavItems(navItems);
     return (
-        <Box component={'nav'}
-            sx={{
-                display: 'block',
-                textAlign: 'left',
-                padding: '1rem',
-                border: '1px solid #ccc',
-                borderRadius: '8px',
-            }}
-        >
+        <Box component={'nav'}>
             {sortedNavItems.map((item: any, i: number) => (
                 <Box key={`item_${i}`}
                     sx={{ mb: 1 }}
@@ -40,16 +32,17 @@ function NestedNav({ navItems }: I_NestedNav & { currentPath?: string }) {
                             title={item.description}
                             sx={{ mb: item.children ? 0.5 : 0 }}
                         >
-                            {item.title}
+                            {item.path === '/' ? 'Home' : item.title}
                         </Button>
                     </Link>
                     {item.children && (
                         <Box sx={{ ml: 2, mt: 0.5 }}>
                             {sortNavItems(
                                 item.children.filter((child: { path: string }) => {
-                                    // Only include if the original filename is not index.md
-                                    // Assume child.path is like /foo/bar or /foo/bar/index or /foo/bar/index.md
-                                    return !/\/index(\.md)?$/.test(child.path);
+                                    // Exclude index.md and any child whose path matches the parent item's path
+                                    if (/\/index(\.md)?$/.test(child.path)) return false;
+                                    if (child.path === item.path) return false;
+                                    return true;
                                 })
                             ).map((child: any, j: number) => (
                                 <Link href={child.path} passHref legacyBehavior={false} key={`child_${i}_${j}`}>
@@ -57,7 +50,7 @@ function NestedNav({ navItems }: I_NestedNav & { currentPath?: string }) {
                                         variant="outlined"
                                         sx={{ mb: 0.5 }}
                                     >
-                                        {child.title}
+                                        {child.path === '/' ? 'Home' : child.title}
                                     </Button>
                                 </Link>
                             ))}

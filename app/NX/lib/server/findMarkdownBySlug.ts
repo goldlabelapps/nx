@@ -9,6 +9,9 @@ import matter from "gray-matter";
  * @returns The file path if found, otherwise null
  */
 export function findMarkdownBySlug(slugArr: string[] = [], project: string = "nx"): string | null {
+    if (!project) {
+        project = process.env.NEXT_PUBLIC_PROJECT || "nx";
+    }
     let foundPath: string | null = null;
     const walk = (dir: string) => {
         if (!fs.existsSync(dir)) return;

@@ -9,9 +9,14 @@ import matter from "gray-matter";
  * @returns Array of slug arrays
  */
 export function getAllMarkdownSlugsFromFrontmatter(dir?: string, project: string = "nx"): string[][] {
+    // If no directory is provided, default to public/{project}/markdown
     if (!dir) {
-        dir = `public/${project}/markdown`;
+        dir = path.resolve(process.cwd(), "public", project, "markdown");
+    } else if (!path.isAbsolute(dir)) {
+        // If dir is relative, resolve it from the project root
+        dir = path.resolve(process.cwd(), dir);
     }
+
     let slugs: string[][] = [];
     if (!fs.existsSync(dir)) {
         return slugs;
@@ -29,7 +34,8 @@ export function getAllMarkdownSlugsFromFrontmatter(dir?: string, project: string
                 if (slug === "") {
                     slugs.push([]);
                 } else {
-                    slugs.push(slug.split("/"));
+                    const splitSlug = slug.split("/");
+                    slugs.push(splitSlug);
                 }
             }
         }
