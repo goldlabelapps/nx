@@ -2,7 +2,8 @@
 import { Metadata } from "next";
 import { NX } from '../NX';
 import type { I_NestedNav } from '../NX/types';
-import { NestedNav, findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/Nav';
+import { NestedNav } from '../NX/Nav';
+import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
 // Generate metadata for dynamic title/description
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
