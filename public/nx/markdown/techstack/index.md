@@ -1,8 +1,8 @@
 ---
 order: 110
-title: Skills
+title: Techstack
 description: Fullstack JavaScript & more
-slug: /work/skills
+slug: /techstack
 icon: techstack
 image: https://live.staticflickr.com/65535/54929673394_69c76ac4a3_b.jpg
 tags: expertise, fields, work
