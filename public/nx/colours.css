@@ -1,11 +1,11 @@
 /* colours.css: Define your color palette as CSS variables */
 :root {
-    --primary-main: #C09F52;
-    --primary-light: #eaac1d;
-    --primary-dark: #574b2d;
-    --secondary-main: #5fc052;
-    --secondary-light: #5fc052;
-    --secondary-dark: #5fc052;
+    --primary-main: #C05252;
+    --primary-light: #C05252;
+    --primary-dark: #C05252;
+    --secondary-main: #C09F52;
+    --secondary-light: #C09F52;
+    --secondary-dark: #C09F52;
     --background-default: #fff;
     --background-paper: #f7f5f5;
     --text-primary: #333333;
