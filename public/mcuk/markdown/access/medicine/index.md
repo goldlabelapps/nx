@@ -1,10 +1,9 @@
 ---
-order: 100
-slug: /medicine
 title: Medicine
-description: Medical Cannabis UK
-icon: mcuk
-tags: medical cannabis, uk, medicine
+slug: /access/medicine/
+description: Information about medical cannabis medicines in the UK.
+date: 2026-01-13
+section: Access
 ---
 
 ## UK medical cannabis ordered legally by prescription, supplied by licensed pharmacies, and delivered to your home. Clear information on how the process works and where orders come from.
