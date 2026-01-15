@@ -35,14 +35,35 @@ import { notFound } from "next/navigation";
 
 
 export async function generateStaticParams() {
-    console.log("[generateStaticParams] Generating static params for all projects...");
     const fs = require("fs");
     const path = require("path");
-    const publicDir = path.resolve(process.cwd(), "public");
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const markdownDir = path.resolve(process.cwd(), "public", project, "markdown");
+    let markdownDir;
+    switch (project) {
+        case 'pr0':
+            markdownDir = path.resolve(process.cwd(), "public", "pr0", "markdown");
+            break;
+        case 'mcuk':
+            markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
+            break;
+        case 'ed-tech':
+            markdownDir = path.resolve(process.cwd(), "public", "ed-tech", "markdown");
+            break;
+        case 'nx':
+        default:
+            markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
+    }
+
     let allSlugs = getAllMarkdownSlugsFromFrontmatter(markdownDir, project);
-    return allSlugs.map((slugArr) => ({ slug: slugArr.length ? slugArr : undefined }));
+
+
+    // Normalize slugs: remove empty strings, handle root page
+    return allSlugs.map((slugArr) => {
+        // Remove empty segments and normalize
+        const normalized = slugArr.filter(Boolean);
+        // If normalized is empty, it's the home page
+        return { slug: normalized.length ? normalized : undefined };
+    });
 }
 
 import Header from "../goldlabel/components/Header";
@@ -59,7 +80,11 @@ export default async function Page({ params }: any) {
 
 
     const resolvedParams = typeof params.then === 'function' ? await params : params;
-    const slugArr = resolvedParams?.slug || [];
+    let slugArr = resolvedParams?.slug || [];
+    // Remove trailing empty strings from slugArr
+    while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
+        slugArr.pop();
+    }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let config;
     switch (project) {
@@ -77,9 +102,9 @@ export default async function Page({ params }: any) {
             config = nxConfig;
     }
     // Debug logging for troubleshooting
-    console.log("[PAGE DEBUG] Incoming slugArr:", slugArr);
+
     const filePath = findMarkdownBySlug(slugArr, project);
-    console.log("[PAGE DEBUG] Resolved filePath:", filePath);
+
     const navItems = await getNavigationTree();
     if (!filePath || !fs.existsSync(filePath)) {
         console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);

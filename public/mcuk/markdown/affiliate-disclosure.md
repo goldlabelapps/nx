@@ -1,6 +1,6 @@
 ---
 title: Affiliate Disclosure
-slug: /affiliate-disclosure/
+slug: /affiliate-disclosure
 description: Some links on this site may earn commission. Learn more about our affiliate relationships and how they support MCUK.
 date: 2026-01-13
 section: Trust

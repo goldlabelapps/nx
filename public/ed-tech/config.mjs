@@ -7,16 +7,16 @@ const config = {
     cartridges: {
         designSystem: {
             allowTheme: false,
-            defaultTheme: 'light',
+            defaultTheme: 'dark',
             themes: {
-                light: {
-                    mode: "light",
+                dark: {
+                    mode: "dark",
                     primary: "#33FF66",
                     secondary: "#33FF66",
-                    background: "#fff",
-                    paper: "#f7f5f5",
+                    background: "#000",
+                    paper: "#000",
                     border: "#33FF66",
-                    text: "#333333",
+                    text: "#fff",
                 },
 
             },
