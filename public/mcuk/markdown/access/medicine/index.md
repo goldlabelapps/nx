@@ -1,6 +1,5 @@
----
 title: Medicine
-slug: /access/medicine/
+slug: /access/medicine
 description: Information about medical cannabis medicines in the UK.
 date: 2026-01-13
 section: Access

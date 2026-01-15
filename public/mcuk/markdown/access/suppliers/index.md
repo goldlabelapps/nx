@@ -1,6 +1,5 @@
----
 title: Suppliers
-slug: /access/suppliers/
+slug: /access/suppliers
 description: UK suppliers of medical cannabis.
 date: 2026-01-13
 section: Access

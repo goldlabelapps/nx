@@ -1,6 +1,5 @@
----
 title: Access
-slug: /access/
+slug: /access
 description: Clear, legal access to medical cannabis in the UK. Learn who qualifies, how prescriptions work, and what the process actually looks like from first consultation to approval.
 date: 2026-01-13
 section: Access

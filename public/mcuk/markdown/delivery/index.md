@@ -1,6 +1,5 @@
----
 title: Delivery
-slug: /delivery/
+slug: /delivery
 description: Medical cannabis is dispensed by licensed pharmacies and delivered discreetly to your door. Compare UK suppliers, delivery speeds and pricing.
 date: 2026-01-13
 section: Delivery

@@ -1,6 +1,5 @@
----
 title: THC Vapes
-slug: /access/thc-vapes/
+slug: /access/thc-vapes
 description: Information about THC vape products for medical cannabis patients in the UK.
 date: 2026-01-13
 section: Access
