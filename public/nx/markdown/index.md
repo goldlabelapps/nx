@@ -1,18 +1,17 @@
 ---
 order: 1 
 slug: /
-title: Goldlabel NX
-description: Examples
+title: NX
+description: by Goldlabel
 icon: home
 image: https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg
 tags: default, 
 ---
 
-- [nx.goldlabel.pro](https://nx.goldlabel.pro/)
-- [listingslab.com](https://listingslab.com/)
-- [ed-tech.co](https://ed-tech.co/)
-
-by Goldlabel Apps Ltd
+- [NX](https://nx.goldlabel.pro/)
+- [EchoPay](https://echopay.goldlabel.pro/)
+- [listingslab](https://listingslab.com/)
+- [EdTech](https://ed-tech.co/)
 
 ## Lorem Ipsum
 
