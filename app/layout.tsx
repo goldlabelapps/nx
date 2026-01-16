@@ -2,7 +2,7 @@ import "./NX/styles.css";
 import type { Metadata } from "next";
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 const config = (await import(`../public/${project}/config.mjs`)).default;
-const { title, icon, description } = config;
+const { title, icon, favicon, description } = config;
 
 export const metadata: Metadata = {
   title,
@@ -26,10 +26,9 @@ export default async function RootLayout({
       <head>
         <link rel="stylesheet" href={`/${project}/styles.css`} />
         <link rel="manifest" href={`/${project}/manifest.json`} />
-        <link rel="icon" href={`/${project}/favicon.svg`} />
-        <link rel="shortcut icon" href={`/${project}/favicon.svg`} type="image/svg+xml" />
-        <link rel="apple-touch-icon" sizes="180x180" href={`/${project}/favicon.svg`} />
-        <meta name="theme-color" content={"#000"} />
+        <link rel="icon" href={favicon} />
+        <link rel="shortcut icon" href={favicon} type="image/svg+xml" />
+        <meta name="theme-color" content={"#FFF"} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />

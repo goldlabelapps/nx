@@ -8,8 +8,7 @@
     "lint": "eslint",
     "clean": "yarn kill && bash app/NX/lib/bash/clean.sh",
     "kill": "bash app/NX/lib/bash/kill.sh",
-    "open": "node app/goldlabel/lib/openInBrowser.js",
-    "firebase": "node app/goldlabel/lib/firebase-cli.js"
+    "open": "node app/NX/lib/bash/open.sh"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
