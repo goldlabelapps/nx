@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 import { DesignSystem } from './DesignSystem';
 
 const NX: React.FC<I_NX> = ({ children, config }) => {
-    const themeMode = 'light';
+    const themeMode = 'dark';
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (!theme) {
         return (

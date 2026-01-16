@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import pr0Config from '../../public/pr0/config.mjs';
 import mcukConfig from '../../public/mcuk/config.mjs';
 import nxConfig from '../../public/nx/config.mjs';
 import edTechConfig from '../../public/ed-tech/config.mjs';
@@ -16,7 +15,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    // Use the correct markdown directory for the project
     const filePath = findMarkdownBySlug(slugArr, project);
     let title = project.toUpperCase();
     let description = "by Goldlabel";
@@ -35,14 +33,28 @@ import { notFound } from "next/navigation";
 
 
 export async function generateStaticParams() {
-    console.log("[generateStaticParams] Generating static params for all projects...");
     const fs = require("fs");
     const path = require("path");
-    const publicDir = path.resolve(process.cwd(), "public");
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const markdownDir = path.resolve(process.cwd(), "public", project, "markdown");
+    let markdownDir;
+    switch (project) {
+        case 'mcuk':
+            markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
+            break;
+        case 'ed-tech':
+            markdownDir = path.resolve(process.cwd(), "public", "ed-tech", "markdown");
+            break;
+        case 'nx':
+        default:
+            markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
+    }
+
     let allSlugs = getAllMarkdownSlugsFromFrontmatter(markdownDir, project);
-    return allSlugs.map((slugArr) => ({ slug: slugArr.length ? slugArr : undefined }));
+
+    return allSlugs.map((slugArr) => {
+        const normalized = slugArr.filter(Boolean);
+        return { slug: normalized.length ? normalized : undefined };
+    });
 }
 
 import Header from "../goldlabel/components/Header";
@@ -57,15 +69,14 @@ import CallToAction from "../goldlabel/components/CallToAction";
 
 export default async function Page({ params }: any) {
 
-
     const resolvedParams = typeof params.then === 'function' ? await params : params;
-    const slugArr = resolvedParams?.slug || [];
+    let slugArr = resolvedParams?.slug || [];
+    while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
+        slugArr.pop();
+    }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let config;
     switch (project) {
-        case 'pr0':
-            config = pr0Config;
-            break;
         case 'mcuk':
             config = mcukConfig;
             break;
@@ -76,10 +87,9 @@ export default async function Page({ params }: any) {
         default:
             config = nxConfig;
     }
-    // Debug logging for troubleshooting
-    console.log("[PAGE DEBUG] Incoming slugArr:", slugArr);
+
     const filePath = findMarkdownBySlug(slugArr, project);
-    console.log("[PAGE DEBUG] Resolved filePath:", filePath);
+
     const navItems = await getNavigationTree();
     if (!filePath || !fs.existsSync(filePath)) {
         console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);

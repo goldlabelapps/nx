@@ -12,6 +12,11 @@ export function findMarkdownBySlug(slugArr: string[] = [], project: string = "nx
     if (!project) {
         project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     }
+    // Remove trailing empty strings from slugArr
+    let normalizedSlugArr = Array.isArray(slugArr) ? [...slugArr] : [];
+    while (normalizedSlugArr.length > 1 && normalizedSlugArr[normalizedSlugArr.length - 1] === "") {
+        normalizedSlugArr.pop();
+    }
     let foundPath: string | null = null;
     const walk = (dir: string) => {
         if (!fs.existsSync(dir)) return;
@@ -25,7 +30,7 @@ export function findMarkdownBySlug(slugArr: string[] = [], project: string = "nx
                 let slug = data.slug;
                 if (typeof slug === "string") {
                     slug = slug.replace(/^\/+/, '');
-                    if ((slugArr.length === 0 && (slug === "" || slug === undefined)) || slugArr.join("/") === slug) {
+                    if ((normalizedSlugArr.length === 0 && (slug === "" || slug === undefined)) || normalizedSlugArr.join("/") === slug) {
                         foundPath = filePath;
                     }
                 }

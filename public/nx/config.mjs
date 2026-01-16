@@ -14,8 +14,8 @@ const config = {
             themes: {
                 dark: {
                     mode: "dark",
-                    primary: "#C05252",
-                    secondary: "#C09F52",
+                    primary: "#fab109",
+                    secondary: "#eb0909",
                     background: "#111",
                     paper: "#222",
                     text: "#eee",
