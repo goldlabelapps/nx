@@ -5,7 +5,7 @@ import React from "react";
 import type { IHeader } from "../../types";
 // Dynamically import config based on NEXT_PUBLIC_PROJECT env var
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-kline @typescript-eslint/no-var-requires
 const config = require(`../../../public/${project}/config.mjs`).default;
 
 const Header: React.FC<IHeader> = ({ title }) => {
