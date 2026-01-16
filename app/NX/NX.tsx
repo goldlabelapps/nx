@@ -5,13 +5,15 @@ import { Box } from '@mui/material';
 import { DesignSystem } from './DesignSystem';
 
 const NX: React.FC<I_NX> = ({ children, config }) => {
-    const themeMode = 'dark';
+    const themeMode = 'light';
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (!theme) {
         return (
             <Box sx={{ border: '2px solid red', m: 1, p: 2, borderRadius: '12px', background: '#fff0f0' }}>
-                <p style={{ color: 'red', fontWeight: 'bold' }}>Error: Invalid or missing config for project.</p>
-                <pre style={{ fontSize: '0.8em', background: '#f9f9f9', padding: '1em', borderRadius: '8px' }}>
+                <p style={{ color: 'red', fontWeight: 'bold' }}>
+                    Error: Invalid or missing config.mjs
+                </p>
+                <pre style={{ padding: '1em', borderRadius: '8px' }}>
                     {JSON.stringify(config, null, 2)}
                 </pre>
                 {children}
@@ -20,12 +22,6 @@ const NX: React.FC<I_NX> = ({ children, config }) => {
     }
     return (
         <DesignSystem theme={theme}>
-            {/* <p style={{ marginBottom: '1rem' }}>
-                NX Wrapper
-            </p>
-            <pre style={{ fontSize: '0.8em', background: '#f9f9f9', padding: '1em', borderRadius: '8px' }}>
-                {JSON.stringify(config, null, 2)}
-            </pre> */}
             {children}
         </DesignSystem>
     );

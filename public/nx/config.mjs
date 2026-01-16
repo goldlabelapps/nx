@@ -4,8 +4,8 @@
 const config = {
     project: "nx",
     url: "https://nx.goldlabel.pro",
+    icon: "/nx/favicon.svg",
     favicon: "/nx/favicon.svg",
-    image: "/nx/assets/default.jpg",
     cartridges: {
         uberedux: {},
         designSystem: {

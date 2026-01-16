@@ -4,7 +4,7 @@ import nxConfig from '../../public/nx/config.mjs';
 import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NX } from '../NX';
 import type { I_NestedNav } from '../NX/types';
-import { NestedNav } from '../NX/Nav';
+import { NestedNav } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
@@ -57,15 +57,14 @@ export async function generateStaticParams() {
     });
 }
 
-import Header from "../goldlabel/components/Header";
-import Footer from "../goldlabel/components/Footer";
-import { getNavigationTree } from "../goldlabel/lib/navigation-tree.server";
+import { Header } from "../NX/DesignSystem";
+import { Footer } from "../NX/DesignSystem";
+import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
 import Image from "next/image";
 import fs from "fs";
 import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
-import CallToAction from "../goldlabel/components/CallToAction";
 
 export default async function Page({ params }: any) {
 
@@ -152,7 +151,7 @@ export default async function Page({ params }: any) {
                                 <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
                             </div>
                         </div>
-                        <CallToAction label="Call To Action" />
+
                     </nav>
                 </main>
                 <footer className="page-footer">
