@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import pr0Config from '../../public/pr0/config.mjs';
 import mcukConfig from '../../public/mcuk/config.mjs';
 import nxConfig from '../../public/nx/config.mjs';
 import edTechConfig from '../../public/ed-tech/config.mjs';
@@ -16,7 +15,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    // Use the correct markdown directory for the project
     const filePath = findMarkdownBySlug(slugArr, project);
     let title = project.toUpperCase();
     let description = "by Goldlabel";
@@ -40,9 +38,6 @@ export async function generateStaticParams() {
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let markdownDir;
     switch (project) {
-        case 'pr0':
-            markdownDir = path.resolve(process.cwd(), "public", "pr0", "markdown");
-            break;
         case 'mcuk':
             markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
             break;
@@ -56,12 +51,8 @@ export async function generateStaticParams() {
 
     let allSlugs = getAllMarkdownSlugsFromFrontmatter(markdownDir, project);
 
-
-    // Normalize slugs: remove empty strings, handle root page
     return allSlugs.map((slugArr) => {
-        // Remove empty segments and normalize
         const normalized = slugArr.filter(Boolean);
-        // If normalized is empty, it's the home page
         return { slug: normalized.length ? normalized : undefined };
     });
 }
@@ -78,19 +69,14 @@ import CallToAction from "../goldlabel/components/CallToAction";
 
 export default async function Page({ params }: any) {
 
-
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     let slugArr = resolvedParams?.slug || [];
-    // Remove trailing empty strings from slugArr
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
         slugArr.pop();
     }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let config;
     switch (project) {
-        case 'pr0':
-            config = pr0Config;
-            break;
         case 'mcuk':
             config = mcukConfig;
             break;
@@ -101,7 +87,6 @@ export default async function Page({ params }: any) {
         default:
             config = nxConfig;
     }
-    // Debug logging for troubleshooting
 
     const filePath = findMarkdownBySlug(slugArr, project);
 
