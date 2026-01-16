@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import type { TMarkdown } from '../../goldlabel/types';
+import type { TMarkdown } from '../../NX/types';
 
 export async function GET() {
     // Firestore code removed; always return 'homepage missing' response or add a static doc if desired

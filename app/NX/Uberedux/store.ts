@@ -2,7 +2,7 @@
 'use client';
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { initialState } from '../../initialState';
+import { initialState } from './initialState';
 
 const reduxSlice = createSlice({
   name: 'redux',
