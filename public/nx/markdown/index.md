@@ -4,7 +4,7 @@ slug: /
 title: Goldlabel NX
 description: Examples
 icon: home
-image: https://live.staticflickr.com/65535/55030591105_99dcef2a44_b.jpg
+image: https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg
 tags: default, 
 ---
 
