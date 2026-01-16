@@ -1,8 +1,8 @@
 import React from "react";
-import LightDark from "./LightDark";
+import LightDark from "./LightDarkToggle";
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const config = require(`../../../public/${project}/config.mjs`).default;
+const config = require(`../../../../public/${project}/config.mjs`).default;
 
 const Footer: React.FC = () => (
 	<footer className="goldlabel-footer">

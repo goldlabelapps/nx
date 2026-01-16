@@ -6,7 +6,8 @@ const config = {
     url: "https://echopay.goldlabel.pro",
     title: "EchoPay",
     description: "Reduce your card costs from pounds to pence with EchoPay open banking",
-    icon: `/echopay/favicon.png,
+    icon: '/echopay/favicon.png',
+    favicon: '/echopay/favicon.png',
     cartridges: {
         designSystem: {
             defaultTheme: 'light',

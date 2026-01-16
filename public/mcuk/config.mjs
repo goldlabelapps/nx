@@ -7,7 +7,7 @@ const config = {
     title: "MCUK",
     description: "Medical Cannabis UK",
     icon: `/mcuk/favicon.svg`,
-    image: "/jpg/og.jpg",
+    favicon: `/mcuk/favicon.svg`,
     cartridges: {
         designSystem: {
             defaultTheme: 'light',
