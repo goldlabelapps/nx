@@ -4,6 +4,7 @@ slug: /
 title: EchoPay
 description: A fast, secure payment platform built for modern businesses
 icon: echopay
+image: https://live.staticflickr.com/65535/55044857816_b60d368bf5_b.jpg
 ---
 
 ## Reduce your card costs from pounds to pence with EchoPay open banking

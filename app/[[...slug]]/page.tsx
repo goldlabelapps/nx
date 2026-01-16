@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import mcukConfig from '../../public/mcuk/config.mjs';
 import nxConfig from '../../public/nx/config.mjs';
+import echopayConfig from '../../public/echopay/config.mjs';
 import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NX } from '../NX';
 import type { I_NestedNav } from '../NX/types';
@@ -38,6 +39,9 @@ export async function generateStaticParams() {
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let markdownDir;
     switch (project) {
+        case 'echopay':
+            markdownDir = path.resolve(process.cwd(), "public", "echopay", "markdown");
+            break;
         case 'mcuk':
             markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
             break;
@@ -57,8 +61,7 @@ export async function generateStaticParams() {
     });
 }
 
-import { Header } from "../NX/DesignSystem";
-import { Footer } from "../NX/DesignSystem";
+import { Header, Footer } from "../NX/DesignSystem";
 import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
 import Image from "next/image";
 import fs from "fs";
@@ -81,6 +84,9 @@ export default async function Page({ params }: any) {
             break;
         case 'ed-tech':
             config = edTechConfig;
+            break;
+        case 'echopay':
+            config = echopayConfig;
             break;
         case 'nx':
         default:

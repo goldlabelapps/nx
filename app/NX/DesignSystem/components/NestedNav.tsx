@@ -28,6 +28,7 @@ function NestedNav({ navItems }: I_NestedNav & { currentPath?: string }) {
                 >
                     <Link href={item.path} passHref legacyBehavior={false}>
                         <Button
+                            color="primary"
                             variant="contained"
                             title={item.description}
                             sx={{ mb: item.children ? 0.5 : 0 }}
