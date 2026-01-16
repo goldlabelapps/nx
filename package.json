@@ -8,7 +8,7 @@
     "lint": "eslint",
     "clean": "yarn kill && bash app/NX/lib/bash/clean.sh",
     "kill": "bash app/NX/lib/bash/kill.sh",
-    "open": "node app/NX/lib/bash/open.sh"
+    "open": "bash app/NX/lib/bash/open.sh"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
