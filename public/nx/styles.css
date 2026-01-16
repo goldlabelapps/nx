@@ -1,5 +1,14 @@
 @import url('./colours.css');
 
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+    font-family: system-ui, sans-serif;
+    font-size: 1.15rem;
+}
+
 /* Make all headings primary coloured */
 h1,
 h2,
@@ -10,30 +19,6 @@ h6 {
     font-weight: normal;
 }
 
-/* nx Header Flex Layout */
-.nx-header-flex {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.nx-header-icon-col {
-    display: flex;
-    align-items: center;
-    margin-right: 16px;
-}
-
-.nx-header-title-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-/* Colored border for main content (let's the dog see the rabbit) */
-/* .main-content-green-border {
-    border: 5px solid var(--primary-main);
-} */
-
 /* Wrapper container for constraining all content */
 .wrapper {
     max-width: 900px;
@@ -43,6 +28,7 @@ h6 {
     padding-left: 1rem;
     padding-right: 1rem;
     box-sizing: border-box;
+
 }
 
 @media (min-width: 1000px) {
@@ -51,9 +37,98 @@ h6 {
     }
 }
 
-/* Ensure no min-height on left column */
+/* Layout columns */
 .col-left {
     min-height: 0 !important;
+    display: none;
+}
+
+.col-right {
+    flex: 0 0 320px;
+    min-width: 220px;
+    max-width: 340px;
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media (min-width: 1000px) {
+    .col-left {
+        margin-left: 2rem;
+        margin-right: 0;
+    }
+}
+
+.col-center {
+    flex: 1 1 0;
+    min-width: 0;
+    background: var(--color-background);
+    border-radius: 8px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Remove background from markdown content area */
+.col-center .markdown-content {
+    background: none;
+}
+
+/* Main page layout */
+.page-layout {
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-header {
+    background: transparent;
+    color: var(--color-text);
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: calc(2.5rem - 8px);
+    padding-bottom: 8px;
+}
+
+.page-main {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    gap: 2rem;
+    padding: 1.5rem 0;
+}
+
+@media (max-width: 1000px) {
+    .page-main {
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 100%;
+        padding: 1rem 0;
+    }
+
+    .col-center {
+        width: 100%;
+        min-width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 8px;
+    }
+
+    .col-right {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        margin-left: 0;
+        margin-top: 2rem;
+        flex-direction: column;
+        gap: 2rem;
+        display: flex;
+    }
 }
 
 /* 404 Not Found Message Styles */
@@ -228,7 +303,6 @@ h6 {
     transition: color 0.2s;
 }
 
-
 .nx-header-title-link:hover {
     color: var(--color-secondary);
     text-decoration: none;
@@ -245,8 +319,6 @@ h6 {
     margin: 0;
 }
 
-
-
 .nx-header h1 {
     margin-bottom: 0.2em;
 }
@@ -256,7 +328,6 @@ h6 {
 }
 
 /* Header component styles */
-
 .nx-header h1 {
     margin: 0;
     color: var(--primary-main);
@@ -266,156 +337,6 @@ h6 {
     color: var(--secondary-main);
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    background: var(--color-background);
-    color: var(--color-text);
-    font-family: system-ui, sans-serif;
-    font-size: 1.15rem;
+...existing code...
 }
-
-.page-layout {
-    min-height: 95vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.page-header {
-    background: transparent;
-    color: var(--color-text);
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    padding-top: calc(2.5rem - 8px);
-    padding-bottom: 8px;
-}
-
-
-.page-main {
-    flex: 1;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    box-sizing: border-box;
-    gap: 2rem;
-    padding: 1.5rem 0;
-}
-
-
-
-
-.col-left {
-    display: none;
-}
-
-.col-right {
-    flex: 0 0 320px;
-    min-width: 220px;
-    max-width: 340px;
-    margin-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
-@media (min-width: 1000px) {
-    .col-left {
-        margin-left: 2rem;
-        margin-right: 0;
-    }
-}
-
-
-
-.col-center {
-    flex: 1 1 0;
-    min-width: 0;
-    background: var(--color-background);
-    border-radius: 8px;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Remove background from markdown content area */
-.col-center .markdown-content {
-    background: none;
-}
-
-.page-footer {
-    background: transparent;
-    color: var(--text-primary);
-    padding: 1rem 2rem;
-    text-align: center;
-}
-
-blockquote {
-    border-left: 2px solid var(--primary-main);
-    padding-left: 1em;
-    padding-top: 0.7em;
-    padding-bottom: 0.7em;
-    margin-left: 0;
-    background: var(--background-paper);
-}
-
-/* Link styles */
-a {
-    color: var(--primary-main);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-a:hover,
-a:focus {
-    color: var(--secondary-main);
-    text-decoration: none;
-}
-
-@media (max-width: 1000px) {
-    .nx-header-flex {
-        flex-direction: row !important;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .nx-header-title-col {
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .nx-header-icon-col {
-        margin-right: 12px;
-    }
-}
-
-
-/* Responsive adjustments */
-@media (max-width: 1000px) {
-    .page-main {
-        flex-direction: column;
-        gap: 1.5rem;
-        max-width: 100%;
-        padding: 1rem 0;
-    }
-
-    .col-center {
-        width: 100%;
-        min-width: 0;
-        padding-left: 0;
-        padding-right: 0;
-        border-radius: 8px;
-    }
-
-    .col-right {
-        width: 100%;
-        min-width: 0;
-        max-width: 100%;
-        margin-left: 0;
-        margin-top: 2rem;
-        flex-direction: column;
-        gap: 2rem;
-        display: flex;
-    }
 }

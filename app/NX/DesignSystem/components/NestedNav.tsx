@@ -1,4 +1,4 @@
-import type { I_NestedNav } from "../types";
+import type { I_NestedNav } from "../../types";
 import { Box, Button } from '@mui/material';
 import Link from 'next/link';
 

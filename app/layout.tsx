@@ -1,4 +1,4 @@
-
+import "./NX/styles.css";
 import type { Metadata } from "next";
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 const config = (await import(`../public/${project}/config.mjs`)).default;
