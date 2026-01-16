@@ -1,0 +1,19 @@
+{
+  "short_name": "EchoPay",
+  "name": "EchoPay",
+  "theme_color": "#FFF",
+  "background_color": "#FFF",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/mcuk/favicon.png",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}
