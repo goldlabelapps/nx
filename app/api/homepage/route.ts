@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { TMarkdown } from '../../goldlabel/types';
+import type { TMarkdown } from '../../NX/types';
 
 export async function POST(request: Request) {
     try {
