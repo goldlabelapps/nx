@@ -3,7 +3,7 @@ order: 1
 slug: /
 title: NX
 description: by Goldlabel Apps
-icon: home
+icon: nx
 image: https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg
 flickrSlug: default
 tags: default, 

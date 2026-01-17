@@ -3,7 +3,7 @@ order: 50
 slug: /shortcodes
 title: Shortcodes
 description: Extend your content with reusable, customizable, and maintainable features, all with a simple and intuitive syntax
-icon: about
+icon: shortcodes
 image: https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg
 flickrSlug: default
 tags: features, cartridges, shortcodes
