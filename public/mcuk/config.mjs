@@ -4,8 +4,8 @@
 const config = {
     project: "mcuk",
     url: "https://listingslab.com",
-    title: "MCUK",
-    description: "Medical Cannabis UK",
+    title: "Medical Cannabis UK",
+    description: "Medical cannabis dispensed by licensed pharmacies and delivered to your door",
     icon: `/mcuk/favicon.svg`,
     favicon: `/mcuk/favicon.svg`,
     cartridges: {
