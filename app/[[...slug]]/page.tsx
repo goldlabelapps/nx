@@ -5,7 +5,7 @@ import echopayConfig from '../../public/echopay/config.mjs';
 import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NX } from '../NX';
 import type { I_NestedNav } from '../NX/types';
-import { NestedNav } from '../NX/DesignSystem';
+import { NestedNav, FeaturedImage } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
@@ -104,16 +104,14 @@ export default async function Page({ params }: any) {
     let title = project.toUpperCase();
     let description = "by Goldlabel";
     let featuredImage = undefined;
+    let flickrSlug = undefined;
     let icon = undefined;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-    if (data.image) {
-        featuredImage = data.image;
-    } else {
-        featuredImage = undefined;
-    }
+    if (data.image) featuredImage = data.image;
+    if (data.flickrSlug) flickrSlug = data.flickrSlug;
     if (data.icon) icon = data.icon;
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
@@ -130,18 +128,7 @@ export default async function Page({ params }: any) {
                         layout; content moved to right column
                     </div>
                     <div className="col col-center">
-                        {featuredImage && (
-                            <div className="featured-image" style={{ width: '100%', height: 315, overflow: 'hidden', marginBottom: '1.5rem', borderRadius: '1rem' }}>
-                                <Image
-                                    src={featuredImage}
-                                    alt={title}
-                                    width={1200}
-                                    height={315}
-                                    style={{ objectFit: 'cover', width: '100%', height: 'auto', display: 'block', borderRadius: '1rem' }}
-                                    priority
-                                />
-                            </div>
-                        )}
+                        <FeaturedImage image={featuredImage} flickrSlug={flickrSlug} alt={title} />
                         <h2>{description}</h2>
                         <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
                         {title.startsWith("404") && (
