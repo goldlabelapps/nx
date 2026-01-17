@@ -2,21 +2,22 @@
 order: 1 
 slug: /
 title: NX
-description: by Goldlabel
+description: by Goldlabel Apps
 icon: home
-image: https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg
+image: https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg
+flickrSlug: default
 tags: default, 
 ---
+
+Create and deploy Next.js apps that are super fast, modern, and perfectly optimized for SEO. Anyone can launch scalable, production-ready web apps with lightning-fast frontends and top search engine rankings. 
+
+> Accessibility, performance, and seamless user experience as standard. 
+
+NX empowers developers and businesses to build future-proof web solutions with minimal effort. As ideal for new products as scaling an enterprise solution, NX are the tools and architecture to ensure marketing is always at the cutting edge of web technology.
+
+### Live Examples
 
 - [NX](https://nx.goldlabel.pro/)
 - [EchoPay](https://echopay.goldlabel.pro/)
 - [listingslab](https://listingslab.com/)
 - [EdTech](https://ed-tech.co/)
-
-## Lorem Ipsum
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque bibendum efficitur orci, et ullamcorper libero interdum vitae. In vulputate efficitur quam id dignissim. Aenean pellentesque tempus nibh, condimentum dignissim massa venenatis sit amet. Proin dictum, risus ac blandit vehicula, quam metus malesuada nulla, non porttitor ipsum nisi vel nisl. Curabitur dapibus consectetur odio, at luctus massa bibendum id. Duis vel elit vel nibh gravida vulputate. Duis et eros libero. Sed ultrices lacus a mollis luctus. Morbi ut tempor justo. Duis lobortis lacus quis lectus semper, vel euismod ipsum ullamcorper. Praesent pharetra iaculis magna eget laoreet. Aenean at libero et dolor luctus posuere id ut velit. Vivamus finibus sit amet lectus ut ornare. Curabitur vitae accumsan turpis. Nullam nulla lorem, malesuada bibendum condimentum id, pulvinar non lorem.
-
-Donec sit amet blandit purus, quis blandit neque. Donec laoreet laoreet odio vitae fringilla. Sed dui tortor, finibus ut lectus quis, lacinia ornare purus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed eu ipsum a quam posuere mollis. Proin imperdiet imperdiet commodo. Nam hendrerit lacus elit, a finibus purus porta eget.
-
-Suspendisse eu ligula at sapien ullamcorper sagittis. Nullam mollis magna purus, et facilisis nisl viverra nec. Phasellus a lacinia nulla, nec suscipit orci. Suspendisse luctus neque at egestas mattis. Aenean nisi felis, imperdiet id mattis ut, interdum interdum elit. Suspendisse ante ex, tempor ut magna laoreet, consequat maximus sapien. Duis vitae risus et libero molestie tincidunt. Suspendisse tortor velit, commodo eget iaculis eu, facilisis elementum nulla. Duis euismod ac dui quis cursus. Cras et mollis augue. Nam eget venenatis augue, ut convallis ante. Maecenas diam velit, tincidunt semper ipsum id, placerat semper metus. In vulputate volutpat orci ac lacinia.

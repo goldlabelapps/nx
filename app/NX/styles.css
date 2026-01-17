@@ -2,6 +2,25 @@
 
 
 /* Wrapper container for constraining all content */
-.wrapper {
-    /* border: 1px solid black; */
+.wrapper a {
+    text-decoration: none;
+    color: var(--secondary-main);
+}
+
+.wrapper ul,
+.wrapper ol {
+    list-style: none;
+    padding-left: 1em;
+    /* default is 2em, so half */
+}
+
+.wrapper li {
+    padding-left: 0.5em;
+    /* decrease default padding by half */
+}
+
+/* Change link color to primary on hover, active, or visited */
+.wrapper a:hover,
+.wrapper a:active {
+    color: var(--primary-main);
 }
