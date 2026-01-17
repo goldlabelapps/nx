@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material';
-import { TTheme } from '../../types';
+import { T_Theme } from '../../types';
 
-export function useMUITheme(t: TTheme) {
+export function useMUITheme(t: T_Theme) {
   return createTheme({
     palette: {
       mode: t.mode,

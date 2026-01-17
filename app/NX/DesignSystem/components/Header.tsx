@@ -2,13 +2,13 @@
 
 import React from "react";
 
-import type { IHeader } from "../../types";
+import type { I_Header } from "../../types";
 // Dynamically import config based on NEXT_PUBLIC_PROJECT env var
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 // eslint-disable-next-kline @typescript-eslint/no-var-requires
 const config = require(`../../../../public/${project}/config.mjs`).default;
 
-const Header: React.FC<IHeader> = ({ title }) => {
+const Header: React.FC<I_Header> = ({ title }) => {
 
 	const iconValue = config.favicon || `/${project}/favicon.svg`;
 	// console.log('iconValue', iconValue)

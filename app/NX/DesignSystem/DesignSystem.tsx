@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { TTheme, IDesignSystem } from '../types';
+import { T_Theme, I_DesignSystem } from '../types';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import {
   useMUITheme,
@@ -9,8 +9,8 @@ import {
 export default function DesignSystem({
   theme,
   children = null,
-}: IDesignSystem) {
-  const newtheme = useMUITheme(theme as TTheme);
+}: I_DesignSystem) {
+  const newtheme = useMUITheme(theme as T_Theme);
 
   return (
     <ThemeProvider theme={newtheme}>

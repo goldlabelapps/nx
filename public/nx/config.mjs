@@ -1,36 +1,84 @@
-/**
- * @type {import("./types").TNXConfig}
- */
+
 const config = {
-    project: "nx",
     url: "https://nx.goldlabel.pro",
     icon: "/nx/favicon.svg",
     favicon: "/nx/favicon.svg",
+    defaultFlickrSlug: "team",
+    flickr: [
+        {
+            title: "Default",
+            id: "55043282654",
+            flickrSlug: "default",
+            src: "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg"
+        },
+        {
+            title: "Selfie",
+            id: "55043218958",
+            flickrSlug: "selfie",
+            src: "https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg"
+        },
+        {
+            title: "Team in the park",
+            id: "55043297044",
+            flickrSlug: "team-in-the-park",
+            src: "https://live.staticflickr.com/65535/55043297044_45e9c515ae_b.jpg"
+        },
+        {
+            title: "Mindful",
+            id: "55042136837",
+            flickrSlug: "mindful",
+            src: "https://live.staticflickr.com/65535/55042136837_2c9d12d414_b.jpg"
+        },
+        {
+            title: "Education",
+            id: "55042134422",
+            flickrSlug: "education",
+            src: "https://live.staticflickr.com/65535/55042134422_16df78eb7d_b.jpg"
+        },
+        {
+            title: "Ice Cream",
+            id: "55042131557",
+            flickrSlug: "ice-cream",
+            src: "https://live.staticflickr.com/65535/55042131557_edc53256a7_b.jpg"
+        },
+        {
+            title: "Work",
+            id: "55043207718",
+            flickrSlug: "work",
+            src: "https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg"
+        },
+        {
+            title: "Team",
+            id: "55043024886",
+            flickrSlug: "team",
+            src: "https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg"
+        },
+    ],
+
     cartridges: {
         uberedux: {},
         designSystem: {
             allowTheme: false,
             defaultTheme: 'light',
             themes: {
-                dark: {
-                    mode: "dark",
-                    primary: "#fab109",
-                    secondary: "#eb0909",
-                    background: "#111",
-                    paper: "#222",
-                    text: "#eee",
-                    border: "#444",
-                },
                 light: {
                     mode: "light",
-                    primary: "#C05252",
-                    secondary: "#C09F52",
+                    primary: "#FAB109",
+                    secondary: "#b67d02",
                     background: "#fff",
-                    paper: "#f3f3f3",
-                    border: "#bbb",
-                    text: "#111",
+                    paper: "#fff",
+                    text: "#000",
+                    border: "#FAB109",
                 },
-
+                dark: {
+                    mode: "dark",
+                    primary: "#FAB109",
+                    secondary: "#FAB109",
+                    background: "#000",
+                    paper: "#000",
+                    text: "#fff",
+                    border: "#FAB109",
+                },
             },
         }
     },

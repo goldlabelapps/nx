@@ -22,43 +22,47 @@ function NestedNav({ navItems }: I_NestedNav & { currentPath?: string }) {
     const sortedNavItems = sortNavItems(navItems);
     return (
         <Box component={'nav'}>
-            {sortedNavItems.map((item: any, i: number) => (
-                <Box key={`item_${i}`}
-                    sx={{ mb: 1 }}
-                >
-                    <Link href={item.path} passHref legacyBehavior={false}>
-                        <Button
-                            color="primary"
-                            variant="contained"
-                            title={item.description}
-                            sx={{ mb: item.children ? 0.5 : 0 }}
-                        >
-                            {item.path === '/' ? 'Home' : item.title}
-                        </Button>
-                    </Link>
-                    {item.children && (
-                        <Box sx={{ ml: 2, mt: 0.5 }}>
-                            {sortNavItems(
-                                item.children.filter((child: { path: string }) => {
-                                    // Exclude index.md and any child whose path matches the parent item's path
-                                    if (/\/index(\.md)?$/.test(child.path)) return false;
-                                    if (child.path === item.path) return false;
-                                    return true;
-                                })
-                            ).map((child: any, j: number) => (
-                                <Link href={child.path} passHref legacyBehavior={false} key={`child_${i}_${j}`}>
-                                    <Button
-                                        variant="outlined"
-                                        sx={{ mb: 0.5 }}
-                                    >
-                                        {child.path === '/' ? 'Home' : child.title}
-                                    </Button>
-                                </Link>
-                            ))}
-                        </Box>
-                    )}
-                </Box>
-            ))}
+            {sortedNavItems
+                .filter((item: any) => item.path !== '/')
+                .map((item: any, i: number) => (
+                    <Box key={`item_${i}`}
+                        sx={{ mb: 1 }}
+                    >
+                        <Link href={item.path} passHref legacyBehavior={false}>
+                            <Button
+                                color="secondary"
+                                variant="text"
+                                title={item.description}
+                                sx={{ mb: item.children ? 0.5 : 0 }}
+                            >
+                                {item.title}
+                            </Button>
+                        </Link>
+                        {item.children && (
+                            <Box sx={{ ml: 2, mt: 0.5 }}>
+                                {sortNavItems(
+                                    item.children.filter((child: { path: string }) => {
+                                        // Exclude index.md, Home, and any child whose path matches the parent item's path
+                                        if (/\/index(\.md)?$/.test(child.path)) return false;
+                                        if (child.path === item.path) return false;
+                                        if (child.path === '/') return false;
+                                        return true;
+                                    })
+                                ).map((child: any, j: number) => (
+                                    <Link href={child.path} passHref legacyBehavior={false} key={`child_${i}_${j}`}>
+                                        <Button
+                                            variant="text"
+                                            color="secondary"
+                                            sx={{ mb: 0.5 }}
+                                        >
+                                            {child.title}
+                                        </Button>
+                                    </Link>
+                                ))}
+                            </Box>
+                        )}
+                    </Box>
+                ))}
         </Box>
     );
 }
