@@ -1,12 +1,14 @@
-// Naming conventions 
-// Types start with T_ and interfaces with I_
+export interface I_NX {
+    children: React.ReactNode;
+    config: TNXConfig;
+}
 
-// GoldLabel Config Type Definition
-export type TNXConfig = {
+export type T_Config = {
     project: string;
     url: string;
     favicon: string;
     image: string;
+
     cartridges: {
         uberedux?: Record<string, unknown>;
         designSystem: {
@@ -28,7 +30,6 @@ export type TNXConfig = {
 };
 
 
-// Markdown Type Definition
 export type TMarkdown = {
     id: string;
     published: boolean;
@@ -42,6 +43,7 @@ export type TMarkdown = {
         icon?: string;
         order?: number;
         image?: string;
+        imageSlug?: string;
         author?: string;
         price?: {
             amount: number;
@@ -55,28 +57,16 @@ export type TMarkdown = {
     content?: string;
 };
 
-export interface IHeader {
+export interface I_Header {
     title: string;
     description?: string;
     icon?: string;
 }
 
-export interface INavNode {
+export interface I_NavNode {
     title?: string;
     slug?: string;
     children?: INavNode[];
-}
-
-export interface IContextualNavigationProps {
-    rootNode: INavNode;
-    currentSlug: string;
-}
-
-
-
-export interface I_NX {
-    children: React.ReactNode;
-    config: TNXConfig;
 }
 
 export interface I_NestedNav {
@@ -84,18 +74,18 @@ export interface I_NestedNav {
 }
 
 
-export interface IDesignSystem {
+export interface I_DesignSystem {
     theme?: TTheme;
     children: React.ReactNode;
 }
 
-export type TFeedback = {
+export type T_Feedback = {
     severity?: TSeverity;
     title?: string;
     description?: string;
 } | null;
 
-export type TSeverity = 'success' | 'info' | 'warning' | 'error';
+export type T_Severity = 'success' | 'info' | 'warning' | 'error';
 
 export type T_NavItem = {
     title: string;
@@ -104,7 +94,7 @@ export type T_NavItem = {
     children?: T_NavItem[];
 };
 
-export type TTheme = {
+export type T_Theme = {
     mode: 'light' | 'dark';
     primary: string;
     secondary: string;
@@ -113,4 +103,3 @@ export type TTheme = {
     text: string;
     border: string;
 };
-

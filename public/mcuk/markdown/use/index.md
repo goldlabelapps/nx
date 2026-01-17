@@ -9,7 +9,7 @@ tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 
 * **Methods**: edibles, vape, flower, oils
-* **Formats**: strengths, ratios, onset, duration
+* **Dosage**: strengths, ratios, onset, duration
 * **Terminology**: sativa/indica, hybrids, terpenes, cannabinoids
 * **Choosing products**: what to look for, labels, consistency
 
