@@ -1,10 +1,9 @@
-import { Metadata } from "next";
-import mcukConfig from '../../public/mcuk/config.mjs';
-import nxConfig from '../../public/nx/config.mjs';
-import echopayConfig from '../../public/echopay/config.mjs';
-import edTechConfig from '../../public/ed-tech/config.mjs';
-import { NX } from '../NX';
 import type { I_NestedNav } from '../NX/types';
+import { Metadata } from "next";
+import { NX } from '../NX';
+import nxConfig from '../../public/nx/config.mjs';
+import mcukConfig from '../../public/mcuk/config.mjs';
+import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NestedNav, FeaturedImage } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
@@ -12,7 +11,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const fs = require("fs");
     const path = require("path");
     const matter = require("gray-matter");
-
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
@@ -39,9 +37,6 @@ export async function generateStaticParams() {
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let markdownDir;
     switch (project) {
-        case 'echopay':
-            markdownDir = path.resolve(process.cwd(), "public", "echopay", "markdown");
-            break;
         case 'mcuk':
             markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
             break;
@@ -63,7 +58,6 @@ export async function generateStaticParams() {
 
 import { Header, Footer } from "../NX/DesignSystem";
 import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
-import Image from "next/image";
 import fs from "fs";
 import { remark } from "remark";
 import html from "remark-html";
@@ -84,9 +78,6 @@ export default async function Page({ params }: any) {
             break;
         case 'ed-tech':
             config = edTechConfig;
-            break;
-        case 'echopay':
-            config = echopayConfig;
             break;
         case 'nx':
         default:
@@ -140,11 +131,10 @@ export default async function Page({ params }: any) {
                     </div>
                     <nav className="col col-right desktop-nav">
                         <div className="ccta-nav-stack">
-                            <div className="medium-nav">
+                            <div className="medium-nav mobile-nav-border">
                                 <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
                             </div>
                         </div>
-
                     </nav>
                 </main>
                 <footer className="page-footer">
