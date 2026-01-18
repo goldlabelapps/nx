@@ -1,7 +1,7 @@
 import type { I_NestedNav } from '../NX/types';
 import { Metadata } from "next";
 import { NX } from '../NX';
-import nxConfig from '../../public/nx/config.mjs';
+import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.mjs';
 import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NestedNav, FeaturedImage } from '../NX/DesignSystem';

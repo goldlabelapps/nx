@@ -11,26 +11,24 @@ const config = require(`../../../../public/${project}/config.mjs`).default;
 const Header: React.FC<I_Header> = ({ title }) => {
 
 	const iconValue = config.favicon || `/${project}/favicon.svg`;
-	// console.log('iconValue', iconValue)
 
 	return (
-		<header className="nx-header nx-header-flex">
-			<div className="nx-header-icon-col">
+		<header>
+			<div>
 				{iconValue && typeof iconValue === 'string' && iconValue.match(/^https?:\/\//) ? (
-					<a href="/" className="nx-header-icon-link" aria-label="Home">
-						<img src={iconValue} alt="Project icon" className="nx-header-icon-img nx-header-icon-img-lg" />
+					<a href="/" aria-label="Home">
+						<img src={iconValue} alt="Project icon" />
 					</a>
 				) : iconValue && typeof iconValue === 'string' ? (
-					<a href="/" className="nx-header-icon-link" aria-label="Home">
-						<img src={iconValue} alt="Project icon" className="nx-header-icon-img nx-header-icon-img-lg" />
+					<a href="/" aria-label="Home">
+						<img src={iconValue} alt="Project icon" />
 					</a>
 				) : iconValue ? (
-					<a href="/" className="nx-header-icon-link nx-header-icon-img-lg" aria-label="Home">{iconValue}</a>
+					<a href="/" aria-label="Home">{iconValue}</a>
 				) : null}
 			</div>
-			<div className="nx-header-title-col">
+			<div>
 				<h1>{title}</h1>
-
 			</div>
 		</header>
 	);
