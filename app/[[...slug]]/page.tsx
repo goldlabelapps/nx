@@ -2,7 +2,7 @@ import type { I_NestedNav } from '../NX/types';
 import { Metadata } from "next";
 import { NX } from '../NX';
 import nxConfig from '../../public/nx/config.json';
-import { NestedNav, FeaturedImage } from '../NX/DesignSystem';
+import { Nav, FeaturedImage } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
@@ -102,7 +102,7 @@ export default async function Page(props: any) {
                     <nav className="col col-right desktop-nav mobile-nav-border mobile-menu-content">
                         <div className="ccta-nav-stack">
                             <div className="medium-nav">
-                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
+                                <Nav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
                             </div>
                         </div>
                     </nav>

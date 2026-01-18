@@ -1,6 +1,6 @@
 import DesignSystem from "./DesignSystem";
 import { useMUITheme } from './hooks/useMUITheme';
-import NestedNav from './components/NestedNav'
+import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Header from './components/Header';
 import { FeaturedImage } from './components/FeaturedImage';
@@ -8,7 +8,7 @@ import { FeaturedImage } from './components/FeaturedImage';
 export {
     DesignSystem,
     useMUITheme,
-    NestedNav,
+    Nav,
     Footer,
     Header,
     FeaturedImage,

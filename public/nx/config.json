@@ -1,7 +1,8 @@
 {
+    "project": "nx",
     "title": "NX",
     "description": "by Goldlabel",
-    "ogImage": "/jpg/adobe-commerce.jpg",
+    "image": "/jpg/adobe-commerce.jpg",
     "url": "https://nx.goldlabel.pro",
     "icon": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg",
     "favicon": "/nx/favicon.svg",
