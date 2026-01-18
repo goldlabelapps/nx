@@ -9,7 +9,6 @@ import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/li
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
-    const path = require("path");
     const matter = require("gray-matter");
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
@@ -32,7 +31,6 @@ import { notFound } from "next/navigation";
 
 
 export async function generateStaticParams() {
-    const fs = require("fs");
     const path = require("path");
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let markdownDir;
@@ -62,8 +60,6 @@ import fs from "fs";
 import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
-
-
 
 export default async function Page(props: any) {
     const { params } = props;
@@ -115,15 +111,7 @@ export default async function Page(props: any) {
                     <div className="header-content">
                         <Header title={title} description={description} icon={icon} />
                     </div>
-                    {/* Mobile menu toggle (checkbox hack) and nav must be siblings for ~ selector */}
-                    <input type="checkbox" id="mobile-menu-toggle" className="mobile-menu-checkbox" hidden />
-                    <label htmlFor="mobile-menu-toggle" className="mobile-menu-icon" aria-label="Open menu">
-                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect y="6" width="32" height="4" rx="2" fill="currentColor" />
-                            <rect y="14" width="32" height="4" rx="2" fill="currentColor" />
-                            <rect y="22" width="32" height="4" rx="2" fill="currentColor" />
-                        </svg>
-                    </label>
+
                     <nav className="col col-right desktop-nav mobile-nav-border mobile-menu-content">
                         <div className="ccta-nav-stack">
                             <div className="medium-nav">

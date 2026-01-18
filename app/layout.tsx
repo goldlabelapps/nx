@@ -23,7 +23,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href={`/${project}/styles.css`} />
         <link rel="manifest" href={`/${project}/manifest.json`} />
         <link rel="icon" href={favicon} />
         <link rel="shortcut icon" href={favicon} type="image/svg+xml" />
