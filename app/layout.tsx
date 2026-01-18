@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-const config = (await import(`../public/${project}/config.ts`)).default;
+const config = (await import(`../public/${project}/config.json`)).default;
 const { title, icon, favicon, description } = config;
 import { UbereduxProvider } from './NX/Uberedux';
 
