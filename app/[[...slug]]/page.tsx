@@ -63,9 +63,11 @@ import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
 
-export default async function Page({ params }: any) {
 
-    const resolvedParams = typeof params.then === 'function' ? await params : params;
+
+export default async function Page(props: any) {
+    const { params } = props;
+    const resolvedParams = typeof params?.then === 'function' ? await params : params;
     let slugArr = resolvedParams?.slug || [];
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
         slugArr.pop();
@@ -85,7 +87,6 @@ export default async function Page({ params }: any) {
     }
 
     const filePath = findMarkdownBySlug(slugArr, project);
-
     const navItems = await getNavigationTree();
     if (!filePath || !fs.existsSync(filePath)) {
         console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);
@@ -111,7 +112,25 @@ export default async function Page({ params }: any) {
         <NX config={config}>
             <div className="page-layout">
                 <header className="page-header">
-                    <Header title={title} description={description} icon={icon} />
+                    <div className="header-content">
+                        <Header title={title} description={description} icon={icon} />
+                    </div>
+                    {/* Mobile menu toggle (checkbox hack) and nav must be siblings for ~ selector */}
+                    <input type="checkbox" id="mobile-menu-toggle" className="mobile-menu-checkbox" hidden />
+                    <label htmlFor="mobile-menu-toggle" className="mobile-menu-icon" aria-label="Open menu">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect y="6" width="32" height="4" rx="2" fill="currentColor" />
+                            <rect y="14" width="32" height="4" rx="2" fill="currentColor" />
+                            <rect y="22" width="32" height="4" rx="2" fill="currentColor" />
+                        </svg>
+                    </label>
+                    <nav className="col col-right desktop-nav mobile-nav-border mobile-menu-content">
+                        <div className="ccta-nav-stack">
+                            <div className="medium-nav">
+                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
+                            </div>
+                        </div>
+                    </nav>
                 </header>
                 <main className="page-main container">
                     <div className="col col-left">
@@ -129,13 +148,6 @@ export default async function Page({ params }: any) {
                             </div>
                         )}
                     </div>
-                    <nav className="col col-right desktop-nav">
-                        <div className="ccta-nav-stack">
-                            <div className="medium-nav mobile-nav-border">
-                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
-                            </div>
-                        </div>
-                    </nav>
                 </main>
                 <footer className="page-footer">
                     <Footer />
