@@ -2,8 +2,6 @@ import type { I_NestedNav } from '../NX/types';
 import { Metadata } from "next";
 import { NX } from '../NX';
 import nxConfig from '../../public/nx/config.json';
-import mcukConfig from '../../public/mcuk/config.mjs';
-import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NestedNav, FeaturedImage } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
@@ -69,18 +67,7 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    let config;
-    switch (project) {
-        case 'mcuk':
-            config = mcukConfig;
-            break;
-        case 'ed-tech':
-            config = edTechConfig;
-            break;
-        case 'nx':
-        default:
-            config = nxConfig;
-    }
+    const config = nxConfig;
 
     const filePath = findMarkdownBySlug(slugArr, project);
     const navItems = await getNavigationTree();
