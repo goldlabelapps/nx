@@ -1,18 +1,15 @@
-import { Metadata } from "next";
-import mcukConfig from '../../public/mcuk/config.mjs';
-import nxConfig from '../../public/nx/config.mjs';
-import echopayConfig from '../../public/echopay/config.mjs';
-import edTechConfig from '../../public/ed-tech/config.mjs';
-import { NX } from '../NX';
 import type { I_NestedNav } from '../NX/types';
+import { Metadata } from "next";
+import { NX } from '../NX';
+import nxConfig from '../../public/nx/config.json';
+import mcukConfig from '../../public/mcuk/config.mjs';
+import edTechConfig from '../../public/ed-tech/config.mjs';
 import { NestedNav, FeaturedImage } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
-    const path = require("path");
     const matter = require("gray-matter");
-
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
@@ -34,14 +31,10 @@ import { notFound } from "next/navigation";
 
 
 export async function generateStaticParams() {
-    const fs = require("fs");
     const path = require("path");
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let markdownDir;
     switch (project) {
-        case 'echopay':
-            markdownDir = path.resolve(process.cwd(), "public", "echopay", "markdown");
-            break;
         case 'mcuk':
             markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
             break;
@@ -63,15 +56,14 @@ export async function generateStaticParams() {
 
 import { Header, Footer } from "../NX/DesignSystem";
 import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
-import Image from "next/image";
 import fs from "fs";
 import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
 
-export default async function Page({ params }: any) {
-
-    const resolvedParams = typeof params.then === 'function' ? await params : params;
+export default async function Page(props: any) {
+    const { params } = props;
+    const resolvedParams = typeof params?.then === 'function' ? await params : params;
     let slugArr = resolvedParams?.slug || [];
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
         slugArr.pop();
@@ -85,16 +77,12 @@ export default async function Page({ params }: any) {
         case 'ed-tech':
             config = edTechConfig;
             break;
-        case 'echopay':
-            config = echopayConfig;
-            break;
         case 'nx':
         default:
             config = nxConfig;
     }
 
     const filePath = findMarkdownBySlug(slugArr, project);
-
     const navItems = await getNavigationTree();
     if (!filePath || !fs.existsSync(filePath)) {
         console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);
@@ -120,7 +108,17 @@ export default async function Page({ params }: any) {
         <NX config={config}>
             <div className="page-layout">
                 <header className="page-header">
-                    <Header title={title} description={description} icon={icon} />
+                    <div className="header-content">
+                        <Header title={title} description={description} icon={icon} />
+                    </div>
+
+                    <nav className="col col-right desktop-nav mobile-nav-border mobile-menu-content">
+                        <div className="ccta-nav-stack">
+                            <div className="medium-nav">
+                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
+                            </div>
+                        </div>
+                    </nav>
                 </header>
                 <main className="page-main container">
                     <div className="col col-left">
@@ -138,14 +136,6 @@ export default async function Page({ params }: any) {
                             </div>
                         )}
                     </div>
-                    <nav className="col col-right desktop-nav">
-                        <div className="ccta-nav-stack">
-                            <div className="medium-nav">
-                                <NestedNav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
-                            </div>
-                        </div>
-
-                    </nav>
                 </main>
                 <footer className="page-footer">
                     <Footer />

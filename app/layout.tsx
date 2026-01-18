@@ -1,14 +1,14 @@
-import "./NX/styles.css";
 import type { Metadata } from "next";
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-const config = (await import(`../public/${project}/config.mjs`)).default;
+const config = (await import(`../public/${project}/config.json`)).default;
 const { title, icon, favicon, description } = config;
+import { UbereduxProvider } from './NX/Uberedux';
 
 export const metadata: Metadata = {
   title,
   description,
   icons: {
-    icon,
+    icon: favicon,
     shortcut: icon,
     apple: icon,
   },
@@ -24,7 +24,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="stylesheet" href={`/${project}/styles.css`} />
         <link rel="manifest" href={`/${project}/manifest.json`} />
         <link rel="icon" href={favicon} />
         <link rel="shortcut icon" href={favicon} type="image/svg+xml" />
@@ -37,7 +36,7 @@ export default async function RootLayout({
       </head>
       <body>
         <div className="wrapper">
-          {children}
+          <UbereduxProvider>{children}</UbereduxProvider>
         </div>
       </body>
     </html>

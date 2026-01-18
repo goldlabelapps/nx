@@ -14,10 +14,3 @@ Create and deploy Next.js apps that are super fast, modern, and perfectly optimi
 > Accessibility, performance, and seamless user experience as standard. 
 
 NX empowers developers and businesses to build future-proof web solutions with minimal effort. As ideal for new products as scaling an enterprise solution, NX are the tools and architecture to ensure marketing is always at the cutting edge of web technology.
-
-### Live Examples
-
-- [NX](https://nx.goldlabel.pro/)
-- [EchoPay](https://echopay.goldlabel.pro/)
-- [listingslab](https://listingslab.com/)
-- [EdTech](https://ed-tech.co/)

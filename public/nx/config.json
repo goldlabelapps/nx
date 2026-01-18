@@ -1,0 +1,79 @@
+{
+    "title": "NX",
+    "description": "by Goldlabel",
+    "ogImage": "/jpg/adobe-commerce.jpg",
+    "url": "https://nx.goldlabel.pro",
+    "icon": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg",
+    "favicon": "/nx/favicon.svg",
+    "cartridges": {
+        "designSystem": {
+            "allowTheme": false,
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#FAB109",
+                    "secondary": "#b67d02",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#000",
+                    "border": "#FAB109"
+                }
+            }
+        },
+        "flickr": {
+            "enabled": true,
+            "description": "Flickr for NX",
+            "defaultSlug": "random",
+            "photos": [
+                {
+                    "title": "Default",
+                    "id": "55043282654",
+                    "flickrSlug": "default",
+                    "src": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg"
+                },
+                {
+                    "title": "Selfie",
+                    "id": "55043218958",
+                    "flickrSlug": "selfie",
+                    "src": "https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg"
+                },
+                {
+                    "title": "Team in the park",
+                    "id": "55043297044",
+                    "flickrSlug": "team-in-the-park",
+                    "src": "https://live.staticflickr.com/65535/55043297044_45e9c515ae_b.jpg"
+                },
+                {
+                    "title": "Mindful",
+                    "id": "55042136837",
+                    "flickrSlug": "mindful",
+                    "src": "https://live.staticflickr.com/65535/55042136837_2c9d12d414_b.jpg"
+                },
+                {
+                    "title": "Education",
+                    "id": "55042134422",
+                    "flickrSlug": "education",
+                    "src": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_b.jpg"
+                },
+                {
+                    "title": "Ice Cream",
+                    "id": "55042131557",
+                    "flickrSlug": "ice-cream",
+                    "src": "https://live.staticflickr.com/65535/55042131557_edc53256a7_b.jpg"
+                },
+                {
+                    "title": "Work",
+                    "id": "55043207718",
+                    "flickrSlug": "work",
+                    "src": "https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg"
+                },
+                {
+                    "title": "Team",
+                    "id": "55043024886",
+                    "flickrSlug": "team",
+                    "src": "https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg"
+                }
+            ]
+        }
+    }
+}
