@@ -2,6 +2,7 @@ import type { I_NestedNav } from '../NX/types';
 import { Metadata } from "next";
 import { NX } from '../NX';
 import nxConfig from '../../public/nx/config.json';
+import type { T_Config } from '../NX/types';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 
@@ -67,7 +68,7 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const config = nxConfig;
+    const config: T_Config = nxConfig as T_Config;
 
     const filePath = findMarkdownBySlug(slugArr, project);
     const navItems = await getNavigationTree();

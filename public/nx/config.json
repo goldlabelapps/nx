@@ -9,6 +9,7 @@
     "cartridges": {
         "designSystem": {
             "allowTheme": false,
+            "defaultTheme": "light",
             "themes": {
                 "light": {
                     "mode": "light",

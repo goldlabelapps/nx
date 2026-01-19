@@ -1,10 +1,11 @@
 "use client";
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { I_NavNode } from '../../types';
 import {
     Box,
     List,
-    ListItemButton
+    ListItemButton,
+    ListItemText
 } from '@mui/material';
 
 function sortNavItems(items: any[]) {
@@ -16,21 +17,40 @@ function sortNavItems(items: any[]) {
     });
 }
 
+
 function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
+    const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
-    return (
-        <Box component={'nav'}>
-            {sortedNavItems
-                .filter((item: any) => item.path !== '/')
-                .map((item: any, i: number) => (
-                    <Link href={item.path} passHref key={`item_${i}`} style={{ textDecoration: 'none' }}>
-                        <ListItemButton sx={{ mb: 1 }}>
-                            {item.title}
+
+    function handleNavClick(slug?: string) {
+        if (slug) router.push(slug);
+    }
+
+    function renderNavItems(items: I_NavNode[], parentKey = ''): React.ReactNode {
+        return items
+            .filter((item) => item.slug !== '/')
+            .map((item, i) => {
+                const key = `${parentKey}item_${i}`;
+                const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+                return (
+                    <Box key={key} sx={{ mb: 1 }}>
+                        <ListItemButton onClick={() => handleNavClick(item.slug)}>
+                            <ListItemText primary={item.title} />
                         </ListItemButton>
-                    </Link>
-                ))
-            }
-        </Box >
+                        {hasChildren && (
+                            <List sx={{ ml: 2 }}>
+                                {renderNavItems(sortNavItems(item.children!), key + '_')}
+                            </List>
+                        )}
+                    </Box>
+                );
+            });
+    }
+
+    return (
+        <List component={'nav'}>
+            {renderNavItems(sortedNavItems)}
+        </List>
     );
 }
 
