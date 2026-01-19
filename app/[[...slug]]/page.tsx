@@ -1,15 +1,18 @@
-import type { I_NestedNav } from '../NX/types';
+import type { I_NestedNav, T_Config } from '../NX/types';
 import { Metadata } from "next";
+import {
+    findMarkdownBySlug,
+    getAllMarkdownSlugsFromFrontmatter,
+} from '../NX/lib';
 import { NX } from '../NX';
-import nxConfig from '../../public/nx/config.json';
-import type { T_Config } from '../NX/types';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
-import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
 import {
     Box,
     Container,
     Typography,
-} from '@mui/material'
+} from '@mui/material';
+
+import nxConfig from '../../public/nx/config.json';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
