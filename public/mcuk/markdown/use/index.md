@@ -4,7 +4,7 @@ slug: /use
 title: Use & Products
 description: Practical, user-facing education.
 icon: mcuk
-image: https://live.staticflickr.com/65535/55017672828_1753510293_b.jpg
+flickrSlug: random
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 
