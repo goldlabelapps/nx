@@ -13,13 +13,15 @@ import {
 import { NX } from '../NX';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
 import {
-    useTheme,
     AppBar,
     Avatar,
     Box,
     Container,
+    Divider,
     IconButton,
     Typography,
+    Grid,
+    Alert,
 } from '@mui/material';
 
 import nxConfig from '../../public/nx/config.json';
@@ -167,38 +169,58 @@ export default async function Page(props: any) {
                     }}
                 ></Box>
 
-                <nav>
-                    <Nav
-                        navItems={navItems as I_NestedNav["navItems"]}
-                        currentPath={filePath} />
-                </nav>
-                <main>
-                    <Box sx={{ mt: { xs: 7, sm: 8 } }}>
-                        <Typography>
-                            Left column intentionally left empty for 900px
-                            layout; content moved to right column
-                        </Typography>
-                    </Box>
-                    <FeaturedImage
-                        image={featuredImage}
-                        flickrSlug={flickrSlug}
-                        alt={title}
-                    />
-                    <h2>{description}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-
-                    {title.startsWith("404") && (
-                        <Box>
-                            <Typography variant='h2'>404 bro :(</Typography>
-                            <p>Sorry, the page you are looking for does not exist.</p>
+                <Grid container spacing={2}>
+                    <Grid size={{ xs: 12, sm: 3, md: 4 }}>
+                        <nav>
+                            <Nav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
+                        </nav>
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 3, md: 4 }}>
+                        <main>
+                            <FeaturedImage image={featuredImage} flickrSlug={flickrSlug} alt={title} />
+                            <h2>{description}</h2>
+                            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                        </main>
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 3, md: 4 }}>
+                        {/* CTA Alert at top of column */}
+                        <Box sx={{ width: '100%', display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' }, alignItems: 'flex-start', mb: 2 }}>
+                            <a href="/cta" style={{ textDecoration: 'none', width: '100%' }}>
+                                <Alert
+                                    severity="info"
+                                    sx={{
+                                        cursor: 'pointer',
+                                        width: '100%',
+                                        fontWeight: 'bold',
+                                        fontSize: { xs: '1rem', md: '1.1rem' },
+                                        boxShadow: 2,
+                                        transition: 'box-shadow 0.2s',
+                                        '&:hover': {
+                                            boxShadow: 6,
+                                        },
+                                    }}
+                                >
+                                    🚀 Check out our Call To Action!
+                                </Alert>
+                            </a>
                         </Box>
-                    )}
-                </main>
-                <footer>
-                    <Footer />
-                </footer>
-            </Container>
-        </NX>
+                    </Grid>
+                </Grid>
 
+            </Container>
+            <Box
+                sx={{
+                    width: '100%',
+                    position: 'sticky',
+                    bottom: 0,
+                    left: 0,
+                    mt: 'auto',
+                    zIndex: 1300,
+                }}
+            >
+                <Divider />
+                <footer></footer>
+            </Box>
+        </NX>
     );
 }
