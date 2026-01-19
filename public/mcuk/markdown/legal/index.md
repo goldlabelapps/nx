@@ -4,7 +4,7 @@ slug: /legal
 title: Legal
 description: What is the current law in the UK?
 icon: mcuk
-flickrSlug: monkeys-at-play
+flickrSlug: random
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 
