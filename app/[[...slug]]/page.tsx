@@ -5,6 +5,11 @@ import nxConfig from '../../public/nx/config.json';
 import type { T_Config } from '../NX/types';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
 import { findMarkdownBySlug, getAllMarkdownSlugsFromFrontmatter } from '../NX/lib';
+import {
+    Box,
+    Container,
+    Typography,
+} from '@mui/material'
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -36,9 +41,6 @@ export async function generateStaticParams() {
     switch (project) {
         case 'mcuk':
             markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
-            break;
-        case 'ed-tech':
-            markdownDir = path.resolve(process.cwd(), "public", "ed-tech", "markdown");
             break;
         case 'nx':
         default:
@@ -93,42 +95,43 @@ export default async function Page(props: any) {
     htmlContent = result.toString();
 
     return (
-        <NX config={config}>
-            <div className="page-layout">
-                <header className="page-header">
-                    <div className="header-content">
-                        <Header title={title} description={description} icon={icon} />
-                    </div>
-
-                    <nav className="col col-right desktop-nav mobile-nav-border mobile-menu-content">
-                        <div className="ccta-nav-stack">
-                            <div className="medium-nav">
-                                <Nav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
-                            </div>
-                        </div>
+        <Container>
+            <NX config={config}>
+                <header>
+                    <Header
+                        title={title}
+                        description={description}
+                        icon={icon} />
+                    <nav>
+                        <Nav
+                            navItems={navItems as I_NestedNav["navItems"]}
+                            currentPath={filePath} />
                     </nav>
                 </header>
-                <main className="page-main container">
-                    <div className="col col-left">
+                <main>
+                    <Typography>
                         Left column intentionally left empty for 900px
                         layout; content moved to right column
-                    </div>
-                    <div className="col col-center">
-                        <FeaturedImage image={featuredImage} flickrSlug={flickrSlug} alt={title} />
-                        <h2>{description}</h2>
-                        <div className="markdown-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
-                        {title.startsWith("404") && (
-                            <div className="not-found-message">
-                                <h2>404 bro :(</h2>
-                                <p>Sorry, the page you are looking for does not exist.</p>
-                            </div>
-                        )}
-                    </div>
+                    </Typography>
+                    <FeaturedImage
+                        image={featuredImage}
+                        flickrSlug={flickrSlug}
+                        alt={title}
+                    />
+                    <h2>{description}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+
+                    {title.startsWith("404") && (
+                        <Box>
+                            <Typography variant='h2'>404 bro :(</Typography>
+                            <p>Sorry, the page you are looking for does not exist.</p>
+                        </Box>
+                    )}
                 </main>
-                <footer className="page-footer">
+                <footer>
                     <Footer />
                 </footer>
-            </div>
-        </NX>
+            </NX>
+        </Container>
     );
 }
