@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 
 import nxConfig from '../../public/nx/config.json';
+import mcukConfig from '../../public/mcuk/config.json';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -73,7 +74,7 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const config: T_Config = nxConfig as T_Config;
+    const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
 
     const filePath = findMarkdownBySlug(slugArr, project);
     const navItems = await getNavigationTree();
