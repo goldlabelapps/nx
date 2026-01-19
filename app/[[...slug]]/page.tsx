@@ -13,6 +13,7 @@ import {
 import { NX } from '../NX';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
 import {
+    useTheme,
     AppBar,
     Avatar,
     Box,
@@ -68,8 +69,6 @@ export async function generateStaticParams() {
     });
 }
 
-
-
 export default async function Page(props: any) {
     const { params } = props;
     const resolvedParams = typeof params?.then === 'function' ? await params : params;
@@ -80,6 +79,8 @@ export default async function Page(props: any) {
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
 
+    // Theme detection logic
+    const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
     const filePath = findMarkdownBySlug(slugArr, project);
     const navItems = await getNavigationTree();
     if (!filePath || !fs.existsSync(filePath)) {
@@ -107,46 +108,64 @@ export default async function Page(props: any) {
         <NX config={config}>
             <header>
                 <Box sx={{ flexGrow: 1 }}>
-                    <AppBar position="fixed" color="primary" sx={{ top: 0 }}>
-                        <Box
-                            sx={{
-                                display: 'flex',
-                                minHeight: { xs: 56, sm: 64 }
-                            }}
-                        >
-                            <Box>
-                                <IconButton
-                                    sx={{ background: 'white', mr: 2 }}
-                                >
-                                    <Avatar
-                                        alt={config.title}
-                                        src={config.favicon}
-                                        sx={{ width: 40, height: 40 }}
-                                    />
-                                </IconButton>
-                            </Box>
-                            <Box sx={{ flexGrow: 1 }}>
-                                <Typography variant="h6" component="div" sx={{ fontWeight: 700 }}>
-                                    {title}
-                                </Typography>
-                                <Typography variant="body2" color="inherit" sx={{ display: { xs: 'none', sm: 'block' } }}>
-                                    {description}
-                                </Typography>
-                            </Box>
-                            {/* Optionally add icon or actions here */}
-                            {icon && (
-                                <Box sx={{ ml: 2 }}>
-                                    <img src={config.favicon}
-                                        alt="icon"
-                                        style={{ height: 32 }} />
+                    <AppBar position="fixed" sx={{ top: 0, boxShadow: 0, bgcolor: bg }}>
+                        <Container maxWidth="xl" sx={{ py: 1 }}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    minHeight: { xs: 56, sm: 64 }
+                                }}
+                            >
+                                <Box>
+                                    <IconButton
+                                        edge="start"
+                                        color="inherit"
+                                        aria-label={title}
+                                        sx={{ mr: 1 }}>
+                                        <Avatar
+                                            alt={config.title}
+                                            src={config.favicon}
+                                            sx={{ width: 40, height: 40 }}
+                                        />
+                                    </IconButton>
                                 </Box>
-                            )}
-                        </Box>
+                                <Box sx={{ flexGrow: 1 }}>
+                                    <Typography variant="h6" component="h1" color="primary">
+                                        {title}
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        color="secondary"
+                                        sx={{
+                                            display: {
+                                                xs: 'none',
+                                                sm: 'block',
+                                            }
+                                        }}>
+                                        {description}
+                                    </Typography>
+                                </Box>
+                                {/* Optionally add icon or actions here */}
+                                {icon && (
+                                    <Box sx={{ ml: 2 }}>
+                                        <img src={config.favicon}
+                                            alt="icon"
+                                            style={{ height: 32 }} />
+                                    </Box>
+                                )}
+                            </Box>
+                        </Container>
                     </AppBar>
                 </Box>
 
             </header>
             <Container maxWidth="xl">
+                <Box
+                    sx={{
+                        minHeight: { xs: 56, sm: 64 },
+                        my: 1
+                    }}
+                ></Box>
 
                 <nav>
                     <Nav
