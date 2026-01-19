@@ -1,6 +1,6 @@
 export interface I_NX {
     children: React.ReactNode;
-    config: TNXConfig;
+    config: T_Config;
 }
 
 export type T_Config = {
@@ -66,7 +66,7 @@ export interface I_Header {
 export interface I_NavNode {
     title?: string;
     slug?: string;
-    children?: INavNode[];
+    children?: I_NavNode[];
 }
 
 export interface I_NestedNav {
@@ -75,12 +75,12 @@ export interface I_NestedNav {
 
 
 export interface I_DesignSystem {
-    theme?: TTheme;
+    theme?: T_Theme;
     children: React.ReactNode;
 }
 
 export type T_Feedback = {
-    severity?: TSeverity;
+    severity?: T_Severity;
     title?: string;
     description?: string;
 } | null;

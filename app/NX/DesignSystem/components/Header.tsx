@@ -3,10 +3,8 @@
 import React from "react";
 
 import type { I_Header } from "../../types";
-// Dynamically import config based on NEXT_PUBLIC_PROJECT env var
-const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-// eslint-disable-next-kline @typescript-eslint/no-var-requires
-const config = require(`../../../../public/${project}/config.mjs`).default;
+import config from '../../../../public/nx/config.json';
+const project = 'nx';
 
 const Header: React.FC<I_Header> = ({ title }) => {
 

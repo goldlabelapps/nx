@@ -1,8 +1,8 @@
 ---
 order: 100
 slug: /examples
-title: Examples
-description: See us socially
+title: Examples of apps
+description: Apps in the wild
 icon: examples
 image: https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg
 tags: examples 
