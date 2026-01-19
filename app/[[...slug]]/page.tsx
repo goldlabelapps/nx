@@ -1,5 +1,11 @@
 import type { I_NestedNav, T_Config } from '../NX/types';
 import { Metadata } from "next";
+import { Footer } from "../NX/DesignSystem";
+import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
+import fs from "fs";
+import { remark } from "remark";
+import html from "remark-html";
+import matter from "gray-matter";
 import {
     findMarkdownBySlug,
     getAllMarkdownSlugsFromFrontmatter,
@@ -7,8 +13,12 @@ import {
 import { NX } from '../NX';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
 import {
+    useTheme,
+    AppBar,
+    Avatar,
     Box,
     Container,
+    IconButton,
     Typography,
 } from '@mui/material';
 
@@ -59,13 +69,6 @@ export async function generateStaticParams() {
     });
 }
 
-import { Header, Footer } from "../NX/DesignSystem";
-import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
-import fs from "fs";
-import { remark } from "remark";
-import html from "remark-html";
-import matter from "gray-matter";
-
 export default async function Page(props: any) {
     const { params } = props;
     const resolvedParams = typeof params?.then === 'function' ? await params : params;
@@ -76,6 +79,8 @@ export default async function Page(props: any) {
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
 
+    // Theme detection logic
+    const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
     const filePath = findMarkdownBySlug(slugArr, project);
     const navItems = await getNavigationTree();
     if (!filePath || !fs.existsSync(filePath)) {
@@ -99,24 +104,81 @@ export default async function Page(props: any) {
     htmlContent = result.toString();
 
     return (
-        <Container>
-            <NX config={config}>
-                <header>
-                    <Header
-                        title={title}
-                        description={description}
-                        icon={icon} />
-                    <nav>
-                        <Nav
-                            navItems={navItems as I_NestedNav["navItems"]}
-                            currentPath={filePath} />
-                    </nav>
-                </header>
+
+        <NX config={config}>
+            <header>
+                <Box sx={{ flexGrow: 1 }}>
+                    <AppBar position="fixed" sx={{ top: 0, boxShadow: 0, bgcolor: bg }}>
+                        <Container maxWidth="xl" sx={{ py: 1 }}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    minHeight: { xs: 56, sm: 64 }
+                                }}
+                            >
+                                <Box>
+                                    <IconButton
+                                        edge="start"
+                                        color="inherit"
+                                        aria-label={title}
+                                        sx={{ mr: 1 }}>
+                                        <Avatar
+                                            alt={config.title}
+                                            src={config.favicon}
+                                            sx={{ width: 40, height: 40 }}
+                                        />
+                                    </IconButton>
+                                </Box>
+                                <Box sx={{ flexGrow: 1 }}>
+                                    <Typography variant="h6" component="h1" color="primary">
+                                        {title}
+                                    </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        color="secondary"
+                                        sx={{
+                                            display: {
+                                                xs: 'none',
+                                                sm: 'block',
+                                            }
+                                        }}>
+                                        {description}
+                                    </Typography>
+                                </Box>
+                                {/* Optionally add icon or actions here */}
+                                {icon && (
+                                    <Box sx={{ ml: 2 }}>
+                                        <img src={config.favicon}
+                                            alt="icon"
+                                            style={{ height: 32 }} />
+                                    </Box>
+                                )}
+                            </Box>
+                        </Container>
+                    </AppBar>
+                </Box>
+
+            </header>
+            <Container maxWidth="xl">
+                <Box
+                    sx={{
+                        minHeight: { xs: 56, sm: 64 },
+                        my: 1
+                    }}
+                ></Box>
+
+                <nav>
+                    <Nav
+                        navItems={navItems as I_NestedNav["navItems"]}
+                        currentPath={filePath} />
+                </nav>
                 <main>
-                    <Typography>
-                        Left column intentionally left empty for 900px
-                        layout; content moved to right column
-                    </Typography>
+                    <Box sx={{ mt: { xs: 7, sm: 8 } }}>
+                        <Typography>
+                            Left column intentionally left empty for 900px
+                            layout; content moved to right column
+                        </Typography>
+                    </Box>
                     <FeaturedImage
                         image={featuredImage}
                         flickrSlug={flickrSlug}
@@ -135,7 +197,8 @@ export default async function Page(props: any) {
                 <footer>
                     <Footer />
                 </footer>
-            </NX>
-        </Container>
+            </Container>
+        </NX>
+
     );
 }

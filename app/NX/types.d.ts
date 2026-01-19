@@ -5,10 +5,11 @@ export interface I_NX {
 
 export type T_Config = {
     project: string;
+    title: string;
+    description: string;
     url: string;
     favicon: string;
     image: string;
-
     cartridges: {
         uberedux?: Record<string, unknown>;
         designSystem: {
