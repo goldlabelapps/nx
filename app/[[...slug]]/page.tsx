@@ -1,5 +1,11 @@
 import type { I_NestedNav, T_Config } from '../NX/types';
 import { Metadata } from "next";
+import { Footer } from "../NX/DesignSystem";
+import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
+import fs from "fs";
+import { remark } from "remark";
+import html from "remark-html";
+import matter from "gray-matter";
 import {
     findMarkdownBySlug,
     getAllMarkdownSlugsFromFrontmatter,
@@ -7,8 +13,11 @@ import {
 import { NX } from '../NX';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
 import {
+    AppBar,
+    Avatar,
     Box,
     Container,
+    IconButton,
     Typography,
 } from '@mui/material';
 
@@ -59,12 +68,7 @@ export async function generateStaticParams() {
     });
 }
 
-import { Header, Footer } from "../NX/DesignSystem";
-import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
-import fs from "fs";
-import { remark } from "remark";
-import html from "remark-html";
-import matter from "gray-matter";
+
 
 export default async function Page(props: any) {
     const { params } = props;
@@ -99,24 +103,63 @@ export default async function Page(props: any) {
     htmlContent = result.toString();
 
     return (
-        <Container>
-            <NX config={config}>
-                <header>
-                    <Header
-                        title={title}
-                        description={description}
-                        icon={icon} />
-                    <nav>
-                        <Nav
-                            navItems={navItems as I_NestedNav["navItems"]}
-                            currentPath={filePath} />
-                    </nav>
-                </header>
+
+        <NX config={config}>
+            <header>
+                <Box sx={{ flexGrow: 1 }}>
+                    <AppBar position="fixed" color="primary" sx={{ top: 0 }}>
+                        <Box
+                            sx={{
+                                display: 'flex',
+                                minHeight: { xs: 56, sm: 64 }
+                            }}
+                        >
+                            <Box>
+                                <IconButton
+                                    sx={{ background: 'white', mr: 2 }}
+                                >
+                                    <Avatar
+                                        alt={config.title}
+                                        src={config.favicon}
+                                        sx={{ width: 40, height: 40 }}
+                                    />
+                                </IconButton>
+                            </Box>
+                            <Box sx={{ flexGrow: 1 }}>
+                                <Typography variant="h6" component="div" sx={{ fontWeight: 700 }}>
+                                    {title}
+                                </Typography>
+                                <Typography variant="body2" color="inherit" sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                    {description}
+                                </Typography>
+                            </Box>
+                            {/* Optionally add icon or actions here */}
+                            {icon && (
+                                <Box sx={{ ml: 2 }}>
+                                    <img src={config.favicon}
+                                        alt="icon"
+                                        style={{ height: 32 }} />
+                                </Box>
+                            )}
+                        </Box>
+                    </AppBar>
+                </Box>
+
+            </header>
+            <Container maxWidth="xl">
+
+                <nav>
+                    <Nav
+                        navItems={navItems as I_NestedNav["navItems"]}
+                        currentPath={filePath} />
+                </nav>
                 <main>
-                    <Typography>
-                        Left column intentionally left empty for 900px
-                        layout; content moved to right column
-                    </Typography>
+                    <Box sx={{ mt: { xs: 7, sm: 8 } }}>
+                        <Typography>
+                            Left column intentionally left empty for 900px
+                            layout; content moved to right column
+                        </Typography>
+                    </Box>
                     <FeaturedImage
                         image={featuredImage}
                         flickrSlug={flickrSlug}
@@ -135,7 +178,8 @@ export default async function Page(props: any) {
                 <footer>
                     <Footer />
                 </footer>
-            </NX>
-        </Container>
+            </Container>
+        </NX>
+
     );
 }

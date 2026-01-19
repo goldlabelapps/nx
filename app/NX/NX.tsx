@@ -11,7 +11,7 @@ const NX: React.FC<I_NX> = ({ children, config }) => {
         return (
             <Box sx={{ border: '2px solid red', m: 1, p: 2, borderRadius: '12px', background: '#fff0f0' }}>
                 <p style={{ color: 'red', fontWeight: 'bold' }}>
-                    Error: Invalid or missing config.mjs
+                    Error: Invalid or missing config.json
                 </p>
                 <pre style={{ padding: '1em', borderRadius: '8px' }}>
                     {JSON.stringify(config, null, 2)}
