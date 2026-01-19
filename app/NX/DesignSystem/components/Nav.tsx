@@ -2,6 +2,9 @@
 import { useRouter } from 'next/navigation';
 import { I_NavNode } from '../../types';
 import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
     Box,
     List,
     ListItemButton,
@@ -48,9 +51,19 @@ function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
     }
 
     return (
-        <List component={'nav'}>
-            {renderNavItems(sortedNavItems)}
-        </List>
+        <Accordion sx={{ width: 300, maxWidth: '100%' }}>
+            <AccordionSummary
+                aria-controls="nav-content"
+                id="nav-header"
+            >
+                Nav
+            </AccordionSummary>
+            <AccordionDetails>
+                <List component={'nav'}>
+                    {renderNavItems(sortedNavItems)}
+                </List>
+            </AccordionDetails>
+        </Accordion>
     );
 }
 
