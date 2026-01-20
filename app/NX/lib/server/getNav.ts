@@ -72,7 +72,7 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
     return navItems;
 }
 
-export async function getNavigationTree(): Promise<NavItem[]> {
+export async function getNav(): Promise<NavItem[]> {
     const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
     const markdownRoot = await getMarkdownRoot();
     const baseUrl = `/${project}/markdown`;

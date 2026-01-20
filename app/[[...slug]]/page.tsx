@@ -1,7 +1,6 @@
 import type { I_NestedNav, T_Config } from '../NX/types';
 import { Metadata } from "next";
-import { Footer } from "../NX/DesignSystem";
-import { getNavigationTree } from "../NX/lib/server/navigation-tree.server";
+import { getNav } from "../NX/lib/server/getNav";
 import fs from "fs";
 import { remark } from "remark";
 import html from "remark-html";
@@ -35,7 +34,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     const filePath = findMarkdownBySlug(slugArr, project);
     let title = project.toUpperCase();
-    let description = "by Goldlabel";
+    let description = "";
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
@@ -80,18 +79,16 @@ export default async function Page(props: any) {
     }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
-
-    // Theme detection logic
     const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
     const filePath = findMarkdownBySlug(slugArr, project);
-    const navItems = await getNavigationTree();
+    const navItems = await getNav();
     if (!filePath || !fs.existsSync(filePath)) {
         console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);
         notFound();
     }
     let htmlContent = "<p>404, bro:(</p>";
     let title = project.toUpperCase();
-    let description = "by Goldlabel";
+    let description = "";
     let featuredImage = undefined;
     let flickrSlug = undefined;
     let icon = undefined;
@@ -106,7 +103,6 @@ export default async function Page(props: any) {
     htmlContent = result.toString();
 
     return (
-
         <NX config={config}>
             <header>
                 <Box sx={{ flexGrow: 1 }}>
@@ -159,54 +155,80 @@ export default async function Page(props: any) {
                         </Container>
                     </AppBar>
                 </Box>
-
             </header>
             <Container maxWidth="xl">
+                <Box sx={{ minHeight: { xs: 56, sm: 64 }, my: 1 }}></Box>
                 <Box
                     sx={{
-                        minHeight: { xs: 56, sm: 64 },
-                        my: 1
+                        display: 'grid',
+                        gridTemplateColumns: {
+                            xs: '1fr',
+                            md: '250px 1fr 250px'
+                        },
+                        gap: 2,
+                        alignItems: 'start',
+                        width: '100%'
                     }}
-                ></Box>
-
-                <Grid container spacing={2}>
-                    <Grid size={{ xs: 12, sm: 3, md: 4 }}>
-                        <nav>
-                            <Nav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
-                        </nav>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 3, md: 4 }}>
-                        <main>
-                            <FeaturedImage image={featuredImage} flickrSlug={flickrSlug} alt={title} />
-                            <h2>{description}</h2>
-                            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
-                        </main>
-                    </Grid>
-                    <Grid size={{ xs: 12, sm: 3, md: 4 }}>
-                        {/* CTA Alert at top of column */}
-                        <Box sx={{ width: '100%', display: 'flex', justifyContent: { xs: 'center', md: 'flex-end' }, alignItems: 'flex-start', mb: 2 }}>
+                >
+                    {/* Left nav */}
+                    <Box
+                        component="nav"
+                        sx={{
+                            display: { xs: 'none', md: 'block' },
+                            width: { md: '250px' },
+                            minWidth: { md: '250px' },
+                            maxWidth: { md: '250px' },
+                            gridColumn: { md: '1' },
+                        }}
+                    >
+                        <Nav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
+                    </Box>
+                    {/* Main content */}
+                    <Box
+                        component="main"
+                        sx={{
+                            gridColumn: { md: '2' },
+                            width: '100%',
+                            minWidth: 0,
+                        }}
+                    >
+                        <FeaturedImage image={featuredImage} flickrSlug={flickrSlug} alt={title} />
+                        <h2>{description}</h2>
+                        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                    </Box>
+                    {/* Right column (CTA) */}
+                    <Box
+                        sx={{
+                            display: { xs: 'none', md: 'block' },
+                            width: { md: '250px' },
+                            minWidth: { md: '250px' },
+                            maxWidth: { md: '250px' },
+                            gridColumn: { md: '3' },
+                        }}
+                    >
+                        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', mb: 2 }}>
                             <a href="/cta" style={{ textDecoration: 'none', width: '100%' }}>
                                 <Alert
-                                    severity="info"
+                                    variant='filled'
+                                    severity="warning"
                                     sx={{
                                         cursor: 'pointer',
                                         width: '100%',
-                                        fontWeight: 'bold',
-                                        fontSize: { xs: '1rem', md: '1.1rem' },
-                                        boxShadow: 2,
                                         transition: 'box-shadow 0.2s',
                                         '&:hover': {
-                                            boxShadow: 6,
+                                            border: '1px solid black',
                                         },
                                     }}
                                 >
-                                    🚀 Check out our Call To Action!
+                                    <Typography variant='h6'>
+                                        Call To Action!
+                                    </Typography>
+
                                 </Alert>
                             </a>
                         </Box>
-                    </Grid>
-                </Grid>
-
+                    </Box>
+                </Box>
             </Container>
             <Box
                 sx={{

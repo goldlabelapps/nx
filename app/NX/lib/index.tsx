@@ -1,9 +1,9 @@
-// lib barrel file. Import and export all shared libraries here.
-
+import { getNav } from './server/getNav';
 import { findMarkdownBySlug } from './server/findMarkdownBySlug';
 import { getAllMarkdownSlugsFromFrontmatter } from './server/getAllMarkdownSlugsFromFrontmatter';
 
 export {
+    getNav,
     findMarkdownBySlug,
     getAllMarkdownSlugsFromFrontmatter,
 };
