@@ -92,7 +92,13 @@ function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
     }
 
     return (
-        <Accordion expanded={expanded} onChange={(_, exp) => setExpanded(exp)}>
+        <Accordion
+            sx={{
+                boxShadow: 'none',
+            }}
+            expanded={expanded}
+            onChange={(_, exp) => setExpanded(exp)}
+        >
             <AccordionSummary
                 aria-controls="nav-content"
                 id="nav-header"

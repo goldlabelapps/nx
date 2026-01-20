@@ -130,7 +130,14 @@ export default async function Page(props: any) {
                                     </a>
                                 </Box>
                                 <Box sx={{ flexGrow: 1 }}>
-                                    <Typography color='primary' variant="h6" component="h1">
+                                    <Typography
+                                        sx={{
+                                            mt: 0.5,
+                                        }}
+                                        color='secondary'
+                                        variant="h6"
+                                        component="h1"
+                                    >
                                         {title}
                                     </Typography>
                                     <Typography
@@ -176,9 +183,12 @@ export default async function Page(props: any) {
                             gridColumn: { md: '1' },
                         }}
                     >
-                        <Nav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
+                        <Nav
+                            navItems={navItems as I_NestedNav["navItems"]}
+                            currentPath={filePath}
+                        />
                     </Box>
-                    {/* Main content */}
+
                     <Box
                         component="main"
                         sx={{
@@ -191,7 +201,8 @@ export default async function Page(props: any) {
                         <Typography variant='h2'>{description}</Typography>
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
-                    {/* Right column (CTA) */}
+
+
                     <Box
                         sx={{
                             display: { xs: 'none', md: 'block' },
@@ -209,9 +220,8 @@ export default async function Page(props: any) {
                                     sx={{
                                         cursor: 'pointer',
                                         width: '100%',
-                                        transition: 'box-shadow 0.2s',
                                         '&:hover': {
-                                            border: '1px solid black',
+                                            background: 'black',
                                         },
                                     }}
                                 >
