@@ -146,14 +146,6 @@ export default async function Page(props: any) {
                                         {description}
                                     </Typography>
                                 </Box>
-                                {/* Optionally add icon or actions here */}
-                                {icon && (
-                                    <Box sx={{ ml: 2 }}>
-                                        <img src={config.favicon}
-                                            alt="icon"
-                                            style={{ height: 32 }} />
-                                    </Box>
-                                )}
                             </Box>
                         </Container>
                     </AppBar>
