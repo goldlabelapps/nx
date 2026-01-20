@@ -1,15 +1,17 @@
 import React from "react";
-// import LightDark from "./LightDarkToggle";
-// import config from '../../../../public/nx/config.json';
-// const project = 'nx';
+import type { T_Config, T_Frontmatter } from '../../types';
 
-const Footer: React.FC = () => (
-	<footer>
+export interface IFooterProps {
+	config: T_Config;
+	frontmatter?: T_Frontmatter;
+}
 
-		{/* {config.cartridges.designSystem.allowTheme && <LightDark />}
-		by <a href="https://goldlabel.pro" target="_blank" rel="noopener noreferrer">Goldlabel</a> */}
-
-	</footer >
+const Footer: React.FC<IFooterProps> = ({ config, frontmatter }) => (
+	<>
+		{/* {config.cartridges.designSystem.allowTheme && <LightDark />} */}
+		{/* You can use frontmatter here if needed */}
+		by <a href="https://goldlabel.pro" target="_blank" rel="noopener noreferrer">Goldlabel</a>
+	</>
 );
 
 export default Footer;

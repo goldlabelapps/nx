@@ -11,7 +11,7 @@ import {
     serverUseAllMd,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Nav, FeaturedImage } from '../NX/DesignSystem';
+import { Nav, FeaturedImage, Footer } from '../NX/DesignSystem';
 import {
     AppBar,
     Avatar,
@@ -251,7 +251,9 @@ export default async function Page(props: any) {
                 }}
             >
                 <Divider />
-                <footer></footer>
+                <footer>
+                    <Footer config={config} frontmatter={data} />
+                </footer>
             </Box>
         </NX>
     );
