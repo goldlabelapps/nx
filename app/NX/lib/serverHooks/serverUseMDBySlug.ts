@@ -8,7 +8,7 @@ import matter from "gray-matter";
  * @param project Project name (default: "nx")
  * @returns The file path if found, otherwise null
  */
-export function findMarkdownBySlug(slugArr: string[] = [], project: string = "nx"): string | null {
+export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nx"): string | null {
     if (!project) {
         project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     }

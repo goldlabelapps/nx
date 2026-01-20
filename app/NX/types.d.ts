@@ -55,24 +55,27 @@ export type T_Theme = {
     border: string;
 };
 
+
+export type T_Frontmatter = {
+    title?: string;
+    description?: string;
+    slug?: string;
+    tags?: string;
+    icon?: string;
+    order?: number;
+    image?: string;
+    flickrSlug?: string;
+    author?: string;
+    price?: number;
+    clickThru?: string;
+};
+
 export type TMarkdown = {
     id: string;
     published: boolean;
     createdAt: string;
     updatedAt: string;
-    frontmatter?: {
-        title?: string;
-        description?: string;
-        slug?: string;
-        tags?: string;
-        icon?: string;
-        order?: number;
-        image?: string;
-        flickrSlug: string;
-        author?: string;
-        price?: number;
-        clickThru?: string;
-    }
+    frontmatter?: T_Frontmatter;
 };
 
 export interface I_Header {

@@ -1,9 +1,11 @@
-import { getNav } from './server/getNav';
-import { findMarkdownBySlug } from './server/findMarkdownBySlug';
-import { getAllMarkdownSlugsFromFrontmatter } from './server/getAllMarkdownSlugsFromFrontmatter';
+import { serverUseNav } from './serverHooks/serverUseNav';
+import { serverUseConfig } from './serverHooks/serverUseConfig';
+import { serverUseMDBySlug } from './serverHooks/serverUseMDBySlug';
+import { serverUseAllMd } from './serverHooks/serverUseAllMd';
 
 export {
-    getNav,
-    findMarkdownBySlug,
-    getAllMarkdownSlugsFromFrontmatter,
+    serverUseNav,
+    serverUseConfig,
+    serverUseMDBySlug,
+    serverUseAllMd,
 };

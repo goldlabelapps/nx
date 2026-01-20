@@ -1,13 +1,15 @@
 import React from "react";
+import { T_Frontmatter } from '../../types'
 import Image from "next/image";
 
-interface FeaturedImageProps {
+export interface I_FeaturedImage {
     image?: string;
     flickrSlug?: string;
     alt?: string;
+    frontmatter?: T_Frontmatter;
 }
 
-export const FeaturedImage: React.FC<FeaturedImageProps> = ({ image, flickrSlug, alt }) => {
+export const FeaturedImage: React.FC<I_FeaturedImage> = ({ image, flickrSlug, alt, frontmatter }) => {
     // If neither image nor flickrSlug is provided, show error
     if (!image && !flickrSlug) {
         return (
@@ -21,6 +23,17 @@ export const FeaturedImage: React.FC<FeaturedImageProps> = ({ image, flickrSlug,
                 textAlign: 'center',
             }}>
                 <strong>Error:</strong> No featured image or Flickr slug provided.
+                {frontmatter && (
+                    <pre style={{
+                        background: '#fff0f0',
+                        color: '#333',
+                        textAlign: 'left',
+                        marginTop: '1em',
+                        padding: '0.5em',
+                        borderRadius: '0.25em',
+                        overflowX: 'auto',
+                    }}>{JSON.stringify(frontmatter, null, 2)}</pre>
+                )}
             </div>
         );
     }
