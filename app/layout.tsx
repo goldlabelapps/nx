@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "./globals.css";
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 const config = (await import(`../public/${project}/config.json`)).default;
 const { title, icon, favicon, description } = config;

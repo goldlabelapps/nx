@@ -11,7 +11,8 @@ import {
     serverUseAllMd,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Nav, FeaturedImage, Footer } from '../NX/DesignSystem';
+import { Nav, Footer } from '../NX/DesignSystem';
+import { FeaturedImage } from '../NX/Images';
 import {
     AppBar,
     Avatar,
@@ -20,9 +21,7 @@ import {
     Container,
     IconButton,
     Typography,
-    Alert,
 } from '@mui/material';
-
 
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
@@ -217,7 +216,8 @@ export default async function Page(props: any) {
                             pr: 3,
                         }}
                     >
-                        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', mb: 2 }}>
+
+                        {/* <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', mb: 2 }}>
                             <a href="/cta" style={{ textDecoration: 'none', width: '100%' }}>
                                 <Alert
                                     variant='outlined'
@@ -235,7 +235,7 @@ export default async function Page(props: any) {
                                     </Typography>
                                 </Alert>
                             </a>
-                        </Box>
+                        </Box> */}
                     </Box>
                 </Box>
             </Container>
