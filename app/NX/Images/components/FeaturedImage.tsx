@@ -8,6 +8,9 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
     config,
 }) => {
 
+    const fallbackImage = config?.image || '/shared/wombat.gif';
+    const imageSrc = fallbackImage;
+
     return <>
         <Box
             sx={{
@@ -21,35 +24,20 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
                 overflow: 'hidden',
             }}
         >
-            <Skeleton
-                variant="rectangular"
-                width="100%"
+            <Image
+                src={imageSrc}
+                alt={frontmatter?.title || 'Featured image'}
+                width={1200}
                 height={315}
-                sx={{
+                style={{
+                    objectFit: 'cover',
+                    width: '100%',
+                    height: '100%',
                     borderRadius: '1rem',
-                    maxWidth: 1200,
-                    mx: 'auto',
                 }}
+                priority
             />
         </Box>
-        {/* <pre style={{
-            background: '#fff0f0',
-            color: '#333',
-            textAlign: 'left',
-            marginTop: '1em',
-            padding: '0.5em',
-            borderRadius: '0.25em',
-            overflowX: 'auto',
-        }}>config: {JSON.stringify(config, null, 2)}</pre>
-        <pre style={{
-            background: '#fff0f0',
-            color: '#333',
-            textAlign: 'left',
-            marginTop: '1em',
-            padding: '0.5em',
-            borderRadius: '0.25em',
-            overflowX: 'auto',
-        }}>frontmatter: {JSON.stringify(frontmatter, null, 2)}</pre> */}
     </>;
 
 };
