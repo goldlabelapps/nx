@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import type { TMarkdown } from '../../NX/types';
+import type { T_Markdown } from '../../NX/types';
 
 export async function POST(request: Request) {
     try {
-        // Create a homepage doc using TMarkdown type
-        const homepageDoc: TMarkdown = {
+        // Create a homepage doc using T_Markdown type
+        const homepageDoc: T_Markdown = {
             id: "/",
             published: true,
             createdAt: new Date().toISOString(),

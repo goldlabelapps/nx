@@ -1,10 +1,11 @@
 ---
 order: 1
 slug: /
-title: Medical Cannabis UK
-description: Medical cannabis dispensed by licensed pharmacies and delivered to your door
+title: MCUK
+description: Medical Cannabis UK
 tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  
 ---
+Medical cannabis dispensed by licensed pharmacies and delivered to your door
 
 > A comprehensive guide to medical cannabis in the UK, covering legal, medical, and practical aspects. Below is an overview of the available sections
 
