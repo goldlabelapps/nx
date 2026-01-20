@@ -91,6 +91,7 @@ export type T_Frontmatter = {
     author?: string;
     price?: number;
     clickThru?: string;
+    flickrSlug?: string;
 };
 
 export type T_Markdown = {
