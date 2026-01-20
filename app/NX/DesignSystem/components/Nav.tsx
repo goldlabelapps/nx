@@ -1,20 +1,17 @@
 "use client";
 import React from 'react';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
 import { useRouter } from 'next/navigation';
 import { I_NavNode } from '../../types';
 import {
-    Accordion,
-    AccordionDetails,
-    AccordionSummary,
     Box,
     List,
     ListItemButton,
     ListItemText,
-    useMediaQuery,
-    ListItemIcon
+    // ListItemIcon
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useTheme } from '@mui/material/styles';
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
@@ -25,24 +22,24 @@ function sortNavItems(items: any[]) {
     });
 }
 
+interface NavProps {
+    navItems: I_NavNode[];
+    currentPath?: string;
+    mode?: 'mobile' | 'desktop';
+}
 
-function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
+const Nav: React.FC<NavProps> = ({
+    navItems,
+    mode = 'desktop',
+}) => {
     const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
-    const theme = useTheme();
-    // true if screen is medium or larger (desktop)
-    const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
-    const [expanded, setExpanded] = React.useState(isDesktop);
-
-    // Update expanded state when screen size changes
-    React.useEffect(() => {
-        setExpanded(isDesktop);
-    }, [isDesktop]);
-
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
 
     function handleNavClick(slug?: string) {
         if (typeof slug === 'string' && slug.trim().length > 0) {
             router.push(slug);
+            setDrawerOpen(false);
         } else {
             console.log('No valid slug for nav item:', slug);
         }
@@ -52,14 +49,11 @@ function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
         return items.map((item, i) => {
             const key = `${parentKey}item_${i}`;
             const hasChildren = Array.isArray(item.children) && item.children.length > 0;
-            // Use slug if present, otherwise path (for compatibility with NavItem from getNav)
             const navTarget = (typeof item.slug === 'string' && item.slug.trim().length > 0)
                 ? item.slug
                 : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
             const isRoutable = typeof navTarget === 'string' && navTarget.trim().length > 0;
-            // If this is the home page, label as Home
             const label = navTarget === '/' ? 'Home' : item.title;
-            // Filter out children whose navTarget matches this navTarget (i.e., index page)
             let filteredChildren = item.children;
             if (hasChildren && navTarget) {
                 filteredChildren = item.children!.filter(child => {
@@ -91,31 +85,31 @@ function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
         });
     }
 
-    return (
-        <Accordion
-            sx={{
-                boxShadow: 'none',
-            }}
-            expanded={expanded}
-            onChange={(_, exp) => setExpanded(exp)}
-        >
-            <AccordionSummary
-                aria-controls="nav-content"
-                id="nav-header"
-                sx={{ display: 'flex', alignItems: 'center' }}
-            >
-                <ListItemIcon sx={{ minWidth: 32, mr: 1 }}>
-                    <MenuIcon />
-                </ListItemIcon>
+    if (mode === 'mobile') {
+        return (
+            <>
+                <IconButton color="inherit" onClick={() => setDrawerOpen(true)} aria-label="Open navigation menu">
+                    <MenuIcon color='primary' />
+                </IconButton>
+                <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+                    <Box sx={{ width: 250, mt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
+                        <List component={'nav'}>
+                            {renderNavItems(sortedNavItems)}
+                        </List>
+                    </Box>
+                </Drawer>
+            </>
+        );
+    }
 
-            </AccordionSummary>
-            <AccordionDetails>
-                <List component={'nav'}>
-                    {renderNavItems(sortedNavItems)}
-                </List>
-            </AccordionDetails>
-        </Accordion>
+    // Desktop mode
+    return (
+        <Box>
+            <List component={'nav'}>
+                {renderNavItems(sortedNavItems)}
+            </List>
+        </Box>
     );
-}
+};
 
 export default Nav;
