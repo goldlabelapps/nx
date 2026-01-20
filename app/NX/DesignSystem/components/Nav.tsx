@@ -41,21 +41,49 @@ function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
 
 
     function handleNavClick(slug?: string) {
-        if (slug) router.push(slug);
+        if (typeof slug === 'string' && slug.trim().length > 0) {
+            router.push(slug);
+        } else {
+            console.log('No valid slug for nav item:', slug);
+        }
     }
 
-    function renderNavItems(items: I_NavNode[], parentKey = ''): React.ReactNode {
+    function renderNavItems(items: I_NavNode[], parentKey = '', parentNavTarget?: string): React.ReactNode {
         return items.map((item, i) => {
             const key = `${parentKey}item_${i}`;
             const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+            // Use slug if present, otherwise path (for compatibility with NavItem from getNav)
+            const navTarget = (typeof item.slug === 'string' && item.slug.trim().length > 0)
+                ? item.slug
+                : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
+            const isRoutable = typeof navTarget === 'string' && navTarget.trim().length > 0;
+            // If this is the home page, label as Home
+            const label = navTarget === '/' ? 'Home' : item.title;
+            // Filter out children whose navTarget matches this navTarget (i.e., index page)
+            let filteredChildren = item.children;
+            if (hasChildren && navTarget) {
+                filteredChildren = item.children!.filter(child => {
+                    const childNavTarget = (typeof child.slug === 'string' && child.slug.trim().length > 0)
+                        ? child.slug
+                        : (typeof (child as any).path === 'string' && (child as any).path.trim().length > 0 ? (child as any).path : undefined);
+                    return childNavTarget !== navTarget;
+                });
+            }
             return (
                 <Box key={key} sx={{ mb: 1 }}>
-                    <ListItemButton onClick={() => handleNavClick(item.slug)}>
-                        <ListItemText primary={item.title} />
+                    <ListItemButton
+                        onClick={isRoutable ? (e) => {
+                            e.preventDefault();
+                            handleNavClick(navTarget);
+                        } : undefined}
+                        disabled={!isRoutable}
+                        sx={!isRoutable ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
+                    >
+                        <ListItemText primary={label} />
                     </ListItemButton>
-                    {hasChildren && (
+                    {hasChildren && filteredChildren && filteredChildren.length > 0 && (
                         <List sx={{ ml: 2 }}>
-                            {renderNavItems(sortNavItems(item.children!), key + '_')}
+                            {renderNavItems(sortNavItems(filteredChildren), key + '_', navTarget)}
                         </List>
                     )}
                 </Box>
@@ -77,10 +105,6 @@ function Nav({ navItems }: { navItems: I_NavNode[]; currentPath?: string }) {
             </AccordionSummary>
             <AccordionDetails>
                 <List component={'nav'}>
-                    {/* Home link at the top */}
-                    <ListItemButton onClick={() => handleNavClick('/')}>
-                        <ListItemText primary="Home" />
-                    </ListItemButton>
                     {renderNavItems(sortedNavItems)}
                 </List>
             </AccordionDetails>

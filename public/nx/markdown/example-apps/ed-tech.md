@@ -1,6 +1,6 @@
 ---
 order: 10
-slug: /examples/ed-tech
+slug: /example-apps/ed-tech
 title: Ed Tech
 description: learning
 tags: examples, ed-tech, learning,

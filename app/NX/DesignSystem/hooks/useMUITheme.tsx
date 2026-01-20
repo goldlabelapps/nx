@@ -8,7 +8,6 @@ export function useMUITheme(t: T_Theme) {
       primary: { main: t.primary },
       secondary: { main: t.secondary },
       success: { main: t.primary },
-      info: { main: t.secondary },
       divider: t.border,
       background: {
         default: t.background,
@@ -50,12 +49,12 @@ export function useMUITheme(t: T_Theme) {
       },
       MuiTypography: {
         styleOverrides: {
-          h1: { fontWeight: 400 },
-          h2: { fontWeight: 400 },
-          h3: { fontWeight: 400 },
-          h4: { fontWeight: 400 },
-          h5: { fontWeight: 400 },
-          h6: { fontWeight: 400 },
+          h1: { fontWeight: "lighter" },
+          h2: { fontWeight: "lighter" },
+          h3: { fontWeight: "lighter" },
+          h4: { fontWeight: "lighter" },
+          h5: { fontWeight: "lighter" },
+          h6: { fontWeight: "lighter" },
           subtitle1: { color: t.primary },
           subtitle2: { color: t.primary },
         },

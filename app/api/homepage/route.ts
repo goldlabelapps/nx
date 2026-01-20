@@ -13,13 +13,13 @@ export async function POST(request: Request) {
                 title: "Home",
                 description: "Welcome to Goldlabel!",
                 slug: "/",
+                flickrSlug: 'random',
                 tags: "home,main",
                 icon: "home",
                 order: 1,
                 image: "/png/og.png",
                 author: "Goldlabel Team"
-            },
-            content: "# Welcome to Goldlabel!\nThis is your homepage."
+            }
         };
         return new NextResponse(JSON.stringify(homepageDoc), { status: 200 });
     } catch (error) {

@@ -1,4 +1,5 @@
 import type { I_NestedNav, T_Config } from '../NX/types';
+import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { getNav } from "../NX/lib/server/getNav";
 import fs from "fs";
@@ -46,7 +47,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         description,
     };
 }
-import { notFound } from "next/navigation";
 
 
 export async function generateStaticParams() {
@@ -115,26 +115,29 @@ export default async function Page(props: any) {
                                 }}
                             >
                                 <Box>
-                                    <IconButton
-                                        edge="start"
-                                        color="inherit"
-                                        aria-label={title}
-                                        sx={{ mr: 1 }}>
-                                        <Avatar
-                                            alt={config.title}
-                                            src={config.favicon}
-                                            sx={{ width: 40, height: 40 }}
-                                        />
-                                    </IconButton>
+                                    <a href='/'>
+                                        <IconButton
+                                            edge="start"
+                                            color="inherit"
+                                            aria-label={title}
+                                            sx={{ mr: 1 }}>
+                                            <Avatar
+                                                alt={config.title}
+                                                src={config.favicon}
+                                                sx={{ width: 40, height: 40 }}
+                                            />
+                                        </IconButton>
+                                    </a>
                                 </Box>
                                 <Box sx={{ flexGrow: 1 }}>
-                                    <Typography variant="h6" component="h1" color="primary">
+                                    <Typography color='primary' variant="h6" component="h1">
                                         {title}
                                     </Typography>
                                     <Typography
                                         variant="body2"
                                         color="secondary"
                                         sx={{
+                                            mt: -1,
                                             display: {
                                                 xs: 'none',
                                                 sm: 'block',
@@ -193,7 +196,7 @@ export default async function Page(props: any) {
                         }}
                     >
                         <FeaturedImage image={featuredImage} flickrSlug={flickrSlug} alt={title} />
-                        <h2>{description}</h2>
+                        <Typography variant='h2'>{description}</Typography>
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
                     {/* Right column (CTA) */}
@@ -210,7 +213,7 @@ export default async function Page(props: any) {
                             <a href="/cta" style={{ textDecoration: 'none', width: '100%' }}>
                                 <Alert
                                     variant='filled'
-                                    severity="warning"
+                                    severity="success"
                                     sx={{
                                         cursor: 'pointer',
                                         width: '100%',
