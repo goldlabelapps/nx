@@ -11,7 +11,8 @@ import {
     serverUseAllMd,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Nav, FeaturedImage, Footer } from '../NX/DesignSystem';
+import { Nav, Footer } from '../NX/DesignSystem';
+import { FeaturedImage } from '../NX/Images';
 import {
     AppBar,
     Avatar,
@@ -20,9 +21,7 @@ import {
     Container,
     IconButton,
     Typography,
-    Alert,
 } from '@mui/material';
-
 
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
@@ -33,18 +32,41 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
+    const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
     const filePath = serverUseMDBySlug(slugArr, project);
-    let title = project.toUpperCase();
-    let description = "";
+    let title = config.title || project.toUpperCase();
+    let description = config.description || "";
+    let image = config.image || config.favicon || config.icon || "/og.png";
+    let url = config.url || "";
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
         if (data.title) title = data.title;
         if (data.description) description = data.description;
+        if (data.image) image = data.image;
+        if (data.url) url = data.url;
     }
+    // Compose canonical url for the page
+    const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
+    const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
     return {
-        title: `${title}, ${description}`,
+        title,
         description,
+        openGraph: {
+            title,
+            description,
+            url: pageUrl,
+            siteName: config.title,
+            images: [image],
+            type: "website",
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description,
+            images: [image],
+            site: config.title,
+        },
     };
 }
 
@@ -200,10 +222,10 @@ export default async function Page(props: any) {
                             pl: { xs: 2, md: 0 },
                         }}
                     >
-                        {/* <FeaturedImage
+                        <FeaturedImage
                             frontmatter={data}
                             config={config}
-                        /> */}
+                        />
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
 
@@ -217,7 +239,8 @@ export default async function Page(props: any) {
                             pr: 3,
                         }}
                     >
-                        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', mb: 2 }}>
+
+                        {/* <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', mb: 2 }}>
                             <a href="/cta" style={{ textDecoration: 'none', width: '100%' }}>
                                 <Alert
                                     variant='outlined'
@@ -235,7 +258,7 @@ export default async function Page(props: any) {
                                     </Typography>
                                 </Alert>
                             </a>
-                        </Box>
+                        </Box> */}
                     </Box>
                 </Box>
             </Container>

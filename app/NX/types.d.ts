@@ -10,24 +10,47 @@ export type T_Config = {
     url: string;
     favicon: string;
     image: string;
+    icon: string;
     cartridges: {
-        uberedux?: Record<string, unknown>;
-        designSystem: {
-            allowTheme: boolean;
-            defaultTheme: string;
-            themes: {
-                [key: string]: {
-                    mode: 'light' | 'dark';
-                    primary: string;
-                    secondary: string;
-                    background: string;
-                    paper: string;
-                    border: string;
-                    text: string;
-                };
-            };
+        uberedux?: T_UbereduxCartridge;
+        designSystem?: T_DesignSystemCartridge;
+        images?: T_ImagesCartridge;
+    };
+};
+
+// Uberedux cartridge type
+export type T_UbereduxCartridge = Record<string, unknown>;
+
+// DesignSystem cartridge type
+export type T_DesignSystemCartridge = {
+    allowTheme: boolean;
+    defaultTheme: string;
+    themes: {
+        [key: string]: {
+            mode: 'light' | 'dark';
+            primary: string;
+            secondary: string;
+            background: string;
+            paper: string;
+            border: string;
+            text: string;
         };
     };
+};
+
+// Images cartridge types
+export type T_ImagesCartridge = {
+    enabled: boolean;
+    description?: string;
+    mode?: string;
+    flickr: T_FlickrImage[];
+};
+
+export type T_FlickrImage = {
+    title: string;
+    slug: string;
+    flickrId: string;
+    src: string;
 };
 
 export type T_Feedback = {
@@ -101,3 +124,12 @@ export interface I_DesignSystem {
 }
 
 
+export interface I_FeaturedImage {
+    frontmatter?: T_Frontmatter;
+    config?: T_Config;
+}
+
+export interface I_Ad {
+    frontmatter?: T_Frontmatter;
+    config?: T_Config;
+}

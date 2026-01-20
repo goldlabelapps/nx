@@ -7,7 +7,7 @@ import {
 	Fab,
 	useTheme,
 } from '@mui/material';
-import CTAIcon from '@mui/icons-material/RocketLaunch';
+import CTAIcon from '@mui/icons-material/Fingerprint';
 
 export interface I_Footer {
 	config: T_Config;
@@ -39,9 +39,7 @@ const Footer: React.FC<I_Footer> = ({
 						position: 'absolute',
 						zIndex: 12345,
 						top: -8,
-						left: 0,
-						right: 0,
-						margin: '0 auto',
+						right: 16,
 						boxShadow: 0,
 					}}>
 					<CTAIcon />
