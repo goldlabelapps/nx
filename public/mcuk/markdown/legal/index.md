@@ -3,8 +3,6 @@ order: 999
 slug: /legal
 title: Legal
 description: What is the current law in the UK?
-icon: mcuk
-flickrSlug: random
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 

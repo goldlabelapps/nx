@@ -3,6 +3,5 @@ order: 2000
 slug: /cta
 title: Click Here
 description: Now do this
-icon: mcuk
-flickrSlug: random
+tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  
 ---

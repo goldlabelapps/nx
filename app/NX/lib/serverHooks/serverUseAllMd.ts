@@ -8,7 +8,7 @@ import matter from "gray-matter";
  * @param project Project name (default: "nx")
  * @returns Array of slug arrays
  */
-export function getAllMarkdownSlugsFromFrontmatter(dir?: string, project: string = "nx"): string[][] {
+export function serverUseAllMd(dir?: string, project: string = "nx"): string[][] {
     // If no directory is provided, default to public/{project}/markdown
     if (!dir) {
         dir = path.resolve(process.cwd(), "public", project, "markdown");
@@ -24,7 +24,7 @@ export function getAllMarkdownSlugsFromFrontmatter(dir?: string, project: string
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
         if (entry.isDirectory()) {
-            slugs = slugs.concat(getAllMarkdownSlugsFromFrontmatter(path.join(dir, entry.name), project));
+            slugs = slugs.concat(serverUseAllMd(path.join(dir, entry.name), project));
         } else if (entry.name.endsWith(".md")) {
             const filePath = path.join(dir, entry.name);
             const { data } = matter(fs.readFileSync(filePath, "utf-8"));

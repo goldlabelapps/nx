@@ -1,14 +1,14 @@
 import type { I_NestedNav, T_Config } from '../NX/types';
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { getNav } from "../NX/lib/server/getNav";
+import { serverUseNav } from "../NX/lib/";
 import fs from "fs";
 import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
 import {
-    findMarkdownBySlug,
-    getAllMarkdownSlugsFromFrontmatter,
+    serverUseMDBySlug,
+    serverUseAllMd,
 } from '../NX/lib';
 import { NX } from '../NX';
 import { Nav, FeaturedImage } from '../NX/DesignSystem';
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const filePath = findMarkdownBySlug(slugArr, project);
+    const filePath = serverUseMDBySlug(slugArr, project);
     let title = project.toUpperCase();
     let description = "";
     if (filePath && fs.existsSync(filePath)) {
@@ -62,7 +62,7 @@ export async function generateStaticParams() {
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
     }
 
-    let allSlugs = getAllMarkdownSlugsFromFrontmatter(markdownDir, project);
+    let allSlugs = serverUseAllMd(markdownDir, project);
 
     return allSlugs.map((slugArr) => {
         const normalized = slugArr.filter(Boolean);
@@ -80,10 +80,10 @@ export default async function Page(props: any) {
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
     const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
-    const filePath = findMarkdownBySlug(slugArr, project);
-    const navItems = await getNav();
+    const filePath = serverUseMDBySlug(slugArr, project);
+    const navItems = await serverUseNav();
     if (!filePath || !fs.existsSync(filePath)) {
-        console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);
+        // console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);
         notFound();
     }
     let htmlContent = "<p>404, bro:(</p>";
@@ -130,7 +130,14 @@ export default async function Page(props: any) {
                                     </a>
                                 </Box>
                                 <Box sx={{ flexGrow: 1 }}>
-                                    <Typography color='primary' variant="h6" component="h1">
+                                    <Typography
+                                        sx={{
+                                            mt: 0.5,
+                                        }}
+                                        color='secondary'
+                                        variant="h6"
+                                        component="h1"
+                                    >
                                         {title}
                                     </Typography>
                                     <Typography
@@ -146,14 +153,6 @@ export default async function Page(props: any) {
                                         {description}
                                     </Typography>
                                 </Box>
-                                {/* Optionally add icon or actions here */}
-                                {icon && (
-                                    <Box sx={{ ml: 2 }}>
-                                        <img src={config.favicon}
-                                            alt="icon"
-                                            style={{ height: 32 }} />
-                                    </Box>
-                                )}
                             </Box>
                         </Container>
                     </AppBar>
@@ -184,9 +183,12 @@ export default async function Page(props: any) {
                             gridColumn: { md: '1' },
                         }}
                     >
-                        <Nav navItems={navItems as I_NestedNav["navItems"]} currentPath={filePath} />
+                        <Nav
+                            navItems={navItems as I_NestedNav["navItems"]}
+                            currentPath={filePath}
+                        />
                     </Box>
-                    {/* Main content */}
+
                     <Box
                         component="main"
                         sx={{
@@ -195,11 +197,17 @@ export default async function Page(props: any) {
                             minWidth: 0,
                         }}
                     >
-                        <FeaturedImage image={featuredImage} flickrSlug={flickrSlug} alt={title} />
+                        <FeaturedImage
+                            frontmatter={data}
+                            image={featuredImage}
+                            flickrSlug={flickrSlug}
+                            alt={title}
+                        />
                         <Typography variant='h2'>{description}</Typography>
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
-                    {/* Right column (CTA) */}
+
+
                     <Box
                         sx={{
                             display: { xs: 'none', md: 'block' },
@@ -217,9 +225,8 @@ export default async function Page(props: any) {
                                     sx={{
                                         cursor: 'pointer',
                                         width: '100%',
-                                        transition: 'box-shadow 0.2s',
                                         '&:hover': {
-                                            border: '1px solid black',
+                                            background: 'black',
                                         },
                                     }}
                                 >

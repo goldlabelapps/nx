@@ -3,8 +3,6 @@ order: 20
 slug: /use/terminology
 title: Terminology
 description: sativa/indica, hybrids, terpenes, cannabinoids
-icon: mcuk
-flickrSlug: random
 tags: sativa/indica, hybrids, terpenes, cannabinoids, UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 
