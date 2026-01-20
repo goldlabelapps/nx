@@ -1,10 +1,8 @@
 ---
-order: 60
-slug: /paywall
+order: 50
+slug: /features/paywall
 title: Paywall
 description: User authentication, membership, payments and more
-icon: paywall
-flickrSlug: default
 tags: features, cartridges, 
 ---
 

@@ -15,18 +15,28 @@ async function getMarkdownRoot() {
     return path.join(process.cwd(), `public/${project}/markdown`);
 }
 
-function getFrontmatterFromMarkdown(filePath: string): { title: string; order?: number; slug?: string } {
-    const content = fs.readFileSync(filePath, "utf-8");
-    const { data } = matter(content);
-    let slug = data.slug;
-    if (typeof slug === "string" && !slug.startsWith("/")) {
+function normalizeSlug(slug: string | undefined, fallback: string): string {
+    if (!slug || typeof slug !== "string" || slug.trim() === "") {
+        slug = fallback;
+    }
+    // Ensure leading slash
+    if (!slug.startsWith("/")) {
         slug = "/" + slug;
     }
-    return {
-        title: data.title || path.basename(filePath, ".md"),
-        order: typeof data.order === "number" ? data.order : undefined,
-        slug,
-    };
+    // Remove trailing slash unless root
+    if (slug.length > 1 && slug.endsWith("/")) {
+        slug = slug.replace(/\/+$/, "");
+    }
+    return slug;
+}
+
+function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title: string; order?: number; slug: string } {
+    const content = fs.readFileSync(filePath, "utf-8");
+    const { data } = matter(content);
+    const title = data.title || path.basename(filePath, ".md");
+    const order = typeof data.order === "number" ? data.order : undefined;
+    const slug = normalizeSlug(data.slug, fallback);
+    return { title, order, slug };
 }
 
 function buildNavTree(dir: string, baseUrl: string): NavItem[] {
@@ -42,10 +52,10 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
                 const children = buildNavTree(path.join(dir, entry.name), `${baseUrl}/${entry.name}`);
                 // Try to find an index.md for directory metadata
                 const indexPath = path.join(dir, entry.name, "index.md");
-                let meta: { title: string; slug: string; order?: number } = { title: entry.name, slug: `/${entry.name}`, order: undefined };
+                let meta: { title: string; slug: string; order?: number } = { title: entry.name, slug: normalizeSlug(undefined, `/${entry.name}`), order: undefined };
                 if (fs.existsSync(indexPath)) {
-                    const { title, order, slug } = getFrontmatterFromMarkdown(indexPath);
-                    meta = { title, slug: slug || `/${entry.name}`, order: order };
+                    const { title, order, slug } = getFrontmatterFromMarkdown(indexPath, `/${entry.name}`);
+                    meta = { title, slug, order };
                 }
                 return {
                     ...meta,
@@ -54,11 +64,12 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
                 };
             } else {
                 const filePath = path.join(dir, entry.name);
-                const { title, order, slug } = getFrontmatterFromMarkdown(filePath);
+                const fallback = `/${entry.name.replace(/\.md$/, "")}`;
+                const { title, order, slug } = getFrontmatterFromMarkdown(filePath, fallback);
                 return {
                     title,
                     order,
-                    path: slug || `/${entry.name.replace(/\.md$/, "")}`,
+                    path: slug,
                 };
             }
         });
@@ -72,7 +83,7 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
     return navItems;
 }
 
-export async function getNavigationTree(): Promise<NavItem[]> {
+export async function getNav(): Promise<NavItem[]> {
     const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
     const markdownRoot = await getMarkdownRoot();
     const baseUrl = `/${project}/markdown`;
