@@ -87,10 +87,11 @@ export type T_Frontmatter = {
     icon?: string;
     order?: number;
     image?: string;
-    flickrSlug?: string;
+    flickr?: string;
     author?: string;
     price?: number;
     clickThru?: string;
+    flickrSlug?: string;
 };
 
 export type T_Markdown = {

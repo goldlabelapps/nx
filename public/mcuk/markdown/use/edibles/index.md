@@ -3,12 +3,14 @@ order: 20
 slug: /use/edibles
 title: Edibles
 tags: edibles, Edible Products, Baked Goods, Chocolates
-image: https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp
+image: https://live.staticflickr.com/65535/55021434005_3cb12dc491_b.jpg
 ---
 
 ## Ferrero Roche 
 
 > THC Infused chocolate truffles
+
+https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp
 
 #### Wellbeing Notes & Responsible Use
 

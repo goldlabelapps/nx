@@ -1,7 +1,7 @@
 ---
 order: 555
-slug: /terminology
-title: Terminology
+slug: /glossary
+title: Glossary
 ---
 
 **Access routes**: The ways patients can legally obtain medical cannabis, such as prescriptions or clinics.
