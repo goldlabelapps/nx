@@ -3,8 +3,6 @@ order: 60
 slug: /paywall
 title: Paywall
 description: User authentication, membership, payments and more
-icon: paywall
-flickrSlug: default
 tags: features, cartridges, 
 ---
 

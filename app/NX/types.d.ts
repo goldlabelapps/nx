@@ -30,56 +30,6 @@ export type T_Config = {
     };
 };
 
-
-export type TMarkdown = {
-    id: string;
-    published: boolean;
-    createdAt: string;
-    updatedAt: string;
-    frontmatter?: {
-        title?: string;
-        description?: string;
-        slug?: string;
-        tags?: string;
-        icon?: string;
-        order?: number;
-        image?: string;
-        imageSlug?: string;
-        author?: string;
-        price?: {
-            amount: number;
-            currency: string;
-        };
-    };
-    /**
-     * The featured image for the markdown, or the fallback from config if not present
-     */
-    image?: string;
-    content?: string;
-};
-
-export interface I_Header {
-    title: string;
-    description?: string;
-    icon?: string;
-}
-
-export interface I_NavNode {
-    title?: string;
-    slug?: string;
-    children?: I_NavNode[];
-}
-
-export interface I_NestedNav {
-    navItems: T_NavItem[];
-}
-
-
-export interface I_DesignSystem {
-    theme?: T_Theme;
-    children: React.ReactNode;
-}
-
 export type T_Feedback = {
     severity?: T_Severity;
     title?: string;
@@ -104,3 +54,47 @@ export type T_Theme = {
     text: string;
     border: string;
 };
+
+export type TMarkdown = {
+    id: string;
+    published: boolean;
+    createdAt: string;
+    updatedAt: string;
+    frontmatter?: {
+        title?: string;
+        description?: string;
+        slug?: string;
+        tags?: string;
+        icon?: string;
+        order?: number;
+        image?: string;
+        flickrSlug: string;
+        author?: string;
+        price?: number;
+        clickThru?: string;
+    }
+};
+
+export interface I_Header {
+    title: string;
+    description?: string;
+    icon?: string;
+}
+
+export interface I_NavNode {
+    title?: string;
+    slug?: string;
+    children?: I_NavNode[];
+}
+
+export interface I_NestedNav {
+    navItems: T_NavItem[];
+}
+
+
+export interface I_DesignSystem {
+    theme?: T_Theme;
+    children: React.ReactNode;
+}
+
+
