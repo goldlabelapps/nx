@@ -93,7 +93,7 @@ export type T_Frontmatter = {
     clickThru?: string;
 };
 
-export type TMarkdown = {
+export type T_Markdown = {
     id: string;
     published: boolean;
     createdAt: string;

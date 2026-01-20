@@ -13,6 +13,7 @@ import {
 import { NX } from '../NX';
 import { Nav, Footer } from '../NX/DesignSystem';
 import { FeaturedImage } from '../NX/Images';
+import { Ad } from '../NX/Commerce';
 import {
     AppBar,
     Avatar,
@@ -111,9 +112,6 @@ export default async function Page(props: any) {
     let htmlContent = "<p>404, bro:(</p>";
     let title = project.toUpperCase();
     let description = "";
-    // let featuredImage = undefined;
-    // let flickrSlug = undefined;
-    // let icon = undefined;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
     if (data.title) title = data.title;
@@ -134,12 +132,13 @@ export default async function Page(props: any) {
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
+                                sx={{ alignItems: 'flex-start' }}
                                 avatar={<a href='/'>
                                     <IconButton
                                         edge="start"
                                         color="inherit"
                                         aria-label={title}
-                                        sx={{ mr: 1 }}>
+                                        sx={{}}>
                                         <Avatar
                                             alt={config.title}
                                             src={config.favicon}
@@ -240,25 +239,17 @@ export default async function Page(props: any) {
                         }}
                     >
 
-                        {/* <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', mb: 2 }}>
-                            <a href="/cta" style={{ textDecoration: 'none', width: '100%' }}>
-                                <Alert
-                                    variant='outlined'
-                                    severity="success"
-                                    sx={{
-                                        cursor: 'pointer',
-                                        width: '100%',
-                                        '&:hover': {
-                                            border: '1px solid black',
-                                        },
-                                    }}
-                                >
-                                    <Typography variant='h5'>
-                                        Click Here
-                                    </Typography>
-                                </Alert>
-                            </a>
-                        </Box> */}
+                        <Box sx={{
+
+                        }}>
+                            <Ad ad={{
+                                title: "NEW!",
+                                description: "Discover more with our latest update. Click to learn more.",
+                                actionType: "routeTo",
+                                route: "/cta",
+                                ctaLabel: "Click Here",
+                            }} />
+                        </Box>
                     </Box>
                 </Box>
             </Container>
