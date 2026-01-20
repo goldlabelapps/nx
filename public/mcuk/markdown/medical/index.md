@@ -5,7 +5,6 @@ title: Medical
 description: Evidence-based benefits, conditions, outcomes, safety.
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
-Evidence-based benefits, conditions, outcomes, safety.
 
 * Conditions & symptoms
 * How medical cannabis works (endocannabinoid system)

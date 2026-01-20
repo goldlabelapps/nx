@@ -11,18 +11,18 @@ import {
     serverUseAllMd,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Nav, FeaturedImage } from '../NX/DesignSystem';
+import { Nav, FeaturedImage, Footer } from '../NX/DesignSystem';
 import {
     AppBar,
     Avatar,
     Box,
+    CardHeader,
     Container,
-    Divider,
     IconButton,
     Typography,
-    Grid,
     Alert,
 } from '@mui/material';
+
 
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
@@ -70,6 +70,7 @@ export async function generateStaticParams() {
     });
 }
 
+
 export default async function Page(props: any) {
     const { params } = props;
     const resolvedParams = typeof params?.then === 'function' ? await params : params;
@@ -83,22 +84,18 @@ export default async function Page(props: any) {
     const filePath = serverUseMDBySlug(slugArr, project);
     const navItems = await serverUseNav();
     if (!filePath || !fs.existsSync(filePath)) {
-        // console.error("[PAGE DEBUG] Not found for slugArr:", slugArr, "filePath:", filePath);
         notFound();
     }
     let htmlContent = "<p>404, bro:(</p>";
     let title = project.toUpperCase();
     let description = "";
-    let featuredImage = undefined;
-    let flickrSlug = undefined;
-    let icon = undefined;
+    // let featuredImage = undefined;
+    // let flickrSlug = undefined;
+    // let icon = undefined;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-    if (data.image) featuredImage = data.image;
-    if (data.flickrSlug) flickrSlug = data.flickrSlug;
-    if (data.icon) icon = data.icon;
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
 
@@ -106,59 +103,62 @@ export default async function Page(props: any) {
         <NX config={config}>
             <header>
                 <Box sx={{ flexGrow: 1 }}>
-                    <AppBar position="fixed" sx={{ top: 0, boxShadow: 0, bgcolor: bg }}>
-                        <Container maxWidth="xl" sx={{ py: 1 }}>
-                            <Box
-                                sx={{
-                                    display: 'flex',
-                                    minHeight: { xs: 56, sm: 64 }
-                                }}
-                            >
-                                <Box>
-                                    <a href='/'>
-                                        <IconButton
-                                            edge="start"
-                                            color="inherit"
-                                            aria-label={title}
-                                            sx={{ mr: 1 }}>
-                                            <Avatar
-                                                alt={config.title}
-                                                src={config.favicon}
-                                                sx={{ width: 40, height: 40 }}
-                                            />
-                                        </IconButton>
-                                    </a>
-                                </Box>
-                                <Box sx={{ flexGrow: 1 }}>
-                                    <Typography
-                                        sx={{
-                                            mt: 0.5,
-                                        }}
-                                        color='secondary'
-                                        variant="h6"
-                                        component="h1"
-                                    >
-                                        {title}
-                                    </Typography>
-                                    <Typography
-                                        variant="body2"
-                                        color="secondary"
-                                        sx={{
-                                            mt: -1,
-                                            display: {
-                                                xs: 'none',
-                                                sm: 'block',
-                                            }
-                                        }}>
-                                        {description}
-                                    </Typography>
-                                </Box>
-                            </Box>
+                    <AppBar
+                        position="fixed"
+                        sx={{
+                            top: 0,
+                            boxShadow: 0,
+                            bgcolor: bg,
+                        }}>
+                        <Container maxWidth="xl">
+                            <CardHeader
+                                avatar={<a href='/'>
+                                    <IconButton
+                                        edge="start"
+                                        color="inherit"
+                                        aria-label={title}
+                                        sx={{ mr: 1 }}>
+                                        <Avatar
+                                            alt={config.title}
+                                            src={config.favicon}
+                                            sx={{ width: 40, height: 40 }}
+                                        />
+                                    </IconButton>
+                                </a>}
+                                title={<Typography
+                                    sx={{
+                                    }}
+                                    color='secondary'
+                                    variant="h6"
+                                    component="h1"
+                                >
+                                    {title}
+                                </Typography>}
+
+                                subheader={<Typography
+                                    sx={{
+                                    }}
+                                    color='secondary'
+                                    variant="body2"
+                                    component="h2"
+                                >
+                                    {description}
+                                </Typography>}
+                                action={
+                                    <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                                        <Nav
+                                            mode="mobile"
+                                            navItems={navItems as I_NestedNav["navItems"]}
+                                            currentPath={filePath}
+                                        />
+                                    </Box>
+                                }
+                            />
                         </Container>
                     </AppBar>
                 </Box>
             </header>
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{ my: '60px' }}>
                 <Box sx={{ minHeight: { xs: 56, sm: 64 }, my: 1 }}></Box>
                 <Box
                     sx={{
@@ -172,7 +172,7 @@ export default async function Page(props: any) {
                         width: '100%'
                     }}
                 >
-                    {/* Left nav */}
+
                     <Box
                         component="nav"
                         sx={{
@@ -186,6 +186,7 @@ export default async function Page(props: any) {
                         <Nav
                             navItems={navItems as I_NestedNav["navItems"]}
                             currentPath={filePath}
+                            mode="desktop"
                         />
                     </Box>
 
@@ -195,18 +196,16 @@ export default async function Page(props: any) {
                             gridColumn: { md: '2' },
                             width: '100%',
                             minWidth: 0,
+                            pr: { xs: 2, md: 3 },
+                            pl: { xs: 2, md: 0 },
                         }}
                     >
-                        <FeaturedImage
+                        {/* <FeaturedImage
                             frontmatter={data}
-                            image={featuredImage}
-                            flickrSlug={flickrSlug}
-                            alt={title}
-                        />
-                        <Typography variant='h2'>{description}</Typography>
+                            config={config}
+                        /> */}
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
-
 
                     <Box
                         sx={{
@@ -215,44 +214,34 @@ export default async function Page(props: any) {
                             minWidth: { md: '250px' },
                             maxWidth: { md: '250px' },
                             gridColumn: { md: '3' },
+                            pr: 3,
                         }}
                     >
                         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', mb: 2 }}>
                             <a href="/cta" style={{ textDecoration: 'none', width: '100%' }}>
                                 <Alert
-                                    variant='filled'
+                                    variant='outlined'
                                     severity="success"
                                     sx={{
                                         cursor: 'pointer',
                                         width: '100%',
                                         '&:hover': {
-                                            background: 'black',
+                                            border: '1px solid black',
                                         },
                                     }}
                                 >
-                                    <Typography variant='h6'>
-                                        Call To Action!
+                                    <Typography variant='h5'>
+                                        Click Here
                                     </Typography>
-
                                 </Alert>
                             </a>
                         </Box>
                     </Box>
                 </Box>
             </Container>
-            <Box
-                sx={{
-                    width: '100%',
-                    position: 'sticky',
-                    bottom: 0,
-                    left: 0,
-                    mt: 'auto',
-                    zIndex: 1300,
-                }}
-            >
-                <Divider />
-                <footer></footer>
-            </Box>
+            <footer>
+                <Footer config={config} frontmatter={data} bgcolor={bg} />
+            </footer>
         </NX>
     );
 }

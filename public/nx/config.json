@@ -1,10 +1,10 @@
 {
+    "url": "https://nx.goldlabel.pro",
     "project": "nx",
     "title": "NX",
     "description": "by Goldlabel",
-    "image": "/jpg/adobe-commerce.jpg",
-    "url": "https://nx.goldlabel.pro",
-    "icon": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg",
+    "image": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg",
+    "icon": "/nx/favicon.svg",
     "favicon": "/nx/favicon.svg",
     "cartridges": {
         "designSystem": {
