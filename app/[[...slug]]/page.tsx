@@ -200,10 +200,10 @@ export default async function Page(props: any) {
                             pl: { xs: 2, md: 0 },
                         }}
                     >
-                        {/* <FeaturedImage
+                        <FeaturedImage
                             frontmatter={data}
                             config={config}
-                        /> */}
+                        />
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
 

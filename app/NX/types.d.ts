@@ -101,3 +101,7 @@ export interface I_DesignSystem {
 }
 
 
+export interface I_FeaturedImage {
+    frontmatter?: T_Frontmatter;
+    config?: T_Config;
+}
