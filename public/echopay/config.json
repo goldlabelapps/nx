@@ -25,12 +25,12 @@
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#b67d02",
-                    "secondary": "#b67d02",
+                    "primary": "#002a67",
+                    "secondary": "#134a9b",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#FAB109"
+                    "border": "#002a67"
                 },
                 "dark": {
                     "mode": "dark",
