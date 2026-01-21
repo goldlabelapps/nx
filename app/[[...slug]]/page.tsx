@@ -26,6 +26,7 @@ import {
 
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
+import echopayConfig from '../../public/echopay/config.json';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -33,11 +34,20 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
+    let config: T_Config;
+    if (project === 'mcuk') {
+        config = mcukConfig as T_Config;
+    } else if (project === 'echopay') {
+        config = echopayConfig as T_Config;
+    } else {
+        config = nxConfig as T_Config;
+    }
     const filePath = serverUseMDBySlug(slugArr, project);
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
-    let image = config.image || config.favicon || config.icon || "/og.png";
+    let image = "/nx/og.jpg";
+    if (config.image) image = config.image;
+
     let url = config.url || "";
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
@@ -47,14 +57,13 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         if (data.image) image = data.image;
         if (data.url) url = data.url;
     }
-    // Compose canonical url for the page
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
     return {
         title,
         description,
         openGraph: {
-            title,
+            title: `${title}, ${description}`,
             description,
             url: pageUrl,
             siteName: config.title,
@@ -80,6 +89,9 @@ export async function generateStaticParams() {
         case 'mcuk':
             markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
             break;
+        case 'echopay':
+            markdownDir = path.resolve(process.cwd(), "public", "echopay", "markdown");
+            break;
         case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
@@ -102,7 +114,14 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
+    let config: T_Config;
+    if (project === 'mcuk') {
+        config = mcukConfig as T_Config;
+    } else if (project === 'echopay') {
+        config = echopayConfig as T_Config;
+    } else {
+        config = nxConfig as T_Config;
+    }
     const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
     const filePath = serverUseMDBySlug(slugArr, project);
     const navItems = await serverUseNav();
@@ -118,9 +137,6 @@ export default async function Page(props: any) {
     if (data.description) description = data.description;
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
-
-    // Use client-side viewport detection for mobile/desktop
-    // This will require a small client component for the subheader
 
     return (
         <NX config={config}>
@@ -143,7 +159,7 @@ export default async function Page(props: any) {
                                         sx={{}}>
                                         <Avatar
                                             alt={config.title}
-                                            src={config.favicon}
+                                            src={config.icon}
                                         />
                                     </IconButton>
                                 </a>}
@@ -212,10 +228,12 @@ export default async function Page(props: any) {
                             pl: { xs: 2, md: 0 },
                         }}
                     >
-                        <FeaturedImage
-                            frontmatter={data}
-                            config={config}
-                        />
+                        {(data.image || data.flickr) && (
+                            <FeaturedImage
+                                frontmatter={data}
+                                config={config}
+                            />
+                        )}
                         <Typography
                             sx={{
                                 display: 'flex',

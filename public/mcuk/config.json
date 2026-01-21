@@ -1,25 +1,16 @@
 {
     "project": "mcuk",
-    "url": "https://listingslab.com",
     "title": "Medical Cannabis UK",
-    "description": "Medical cannabis dispensed by licensed pharmacies and delivered to your door",
+    "description": "Medical cannabis dispensed by licensed pharmacies. Delivered to your door",
+    "url": "https://listingslab.com",
     "image": "https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg",
-    "icon": "/mcuk/favicon.svg",
-    "favicon": "/mcuk/favicon.svg",
+    "icon": "/mcuk/favicon.ico",
+    "favicon": "/mcuk/favicon.png",
     "cartridges": {
         "designSystem": {
             "allowTheme": false,
             "defaultTheme": "light",
             "themes": {
-                "dark": {
-                    "mode": "dark",
-                    "primary": "#17A1AC",
-                    "secondary": "#07c7d5ff",
-                    "background": "#000",
-                    "paper": "#1e1e1eff",
-                    "text": "#fff",
-                    "border": "#17A1AC"
-                },
                 "light": {
                     "mode": "light",
                     "primary": "#17A1AC",
@@ -28,12 +19,20 @@
                     "paper": "#f3f3f3ff",
                     "border": "#17A1AC",
                     "text": "#000"
+                },
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#17A1AC",
+                    "secondary": "#07c7d5ff",
+                    "background": "#000",
+                    "paper": "#1e1e1eff",
+                    "text": "#fff",
+                    "border": "#17A1AC"
                 }
             }
         },
         "images": {
             "enabled": true,
-            "description": "Flickr for MCUK",
             "mode": "flickr",
             "flickr": [
                 {

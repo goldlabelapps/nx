@@ -1,8 +1,13 @@
-import pJSON from '../../../package.json';
-// import config from './config.json';
-// import { initialStateDesignSystem } from './cartridges/DesignSystem';
+import { initialStateDesignSystem } from '../DesignSystem';
+import { initialStateImages } from '../Images';
+import { initialStatePaywall } from '../Paywall';
+import { initialStateCommerce } from '../Commerce';
+import { initialStateShortcodes } from '../Shortcodes';
 
 export const initialState: any = {
-  pJSON,
-  // designSystem: initialStateDesignSystem,
+  commerce: initialStateCommerce,
+  designSystem: initialStateDesignSystem,
+  images: initialStateImages,
+  paywall: initialStatePaywall,
+  shortcodes: initialStateShortcodes,
 };

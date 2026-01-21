@@ -1,0 +1,51 @@
+{
+    "project": "echopay",
+    "title": "EchoPay",
+    "description": "API Test Harness",
+    "url": "https://echopay.goldlabel.pro",
+    "image": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg",
+    "icon": "/echopay/favicon/favicon.png",
+    "favicon": "/echopay/favicon/favicon.webp",
+    "cartridges": {
+        "paywall": {
+            "enabled": true,
+            "mode": "full"
+        },
+        "images": {
+            "enabled": true,
+            "mode": "flickr",
+            "flickr": [
+                {
+                    "title": "EchoPay",
+                    "slug": "echopay",
+                    "flickrId": "55047631940",
+                    "src": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg"
+                }
+            ]
+        },
+        "designSystem": {
+            "allowTheme": false,
+            "defaultTheme": "light",
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#002a67",
+                    "secondary": "#134a9b",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#000",
+                    "border": "#002a67"
+                },
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#17A1AC",
+                    "secondary": "#07c7d5ff",
+                    "background": "#000",
+                    "paper": "#1e1e1eff",
+                    "text": "#fff",
+                    "border": "#17A1AC"
+                }
+            }
+        }
+    }
+}

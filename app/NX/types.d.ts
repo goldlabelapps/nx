@@ -78,7 +78,6 @@ export type T_Theme = {
     border: string;
 };
 
-
 export type T_Frontmatter = {
     title?: string;
     description?: string;
@@ -91,7 +90,6 @@ export type T_Frontmatter = {
     author?: string;
     price?: number;
     clickThru?: string;
-    flickrSlug?: string;
 };
 
 export type T_Markdown = {
@@ -126,6 +124,9 @@ export interface I_DesignSystem {
     children: React.ReactNode;
 }
 
+export interface I_Paywall {
+    children: React.ReactNode;
+}
 
 export interface I_FeaturedImage {
     frontmatter?: T_Frontmatter;

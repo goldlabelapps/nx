@@ -1,17 +1,13 @@
-// /Users/milky/My Drive/GitHub/goldlabel-pro/gl-core/cartridges/Uberedux/index.tsx
 import UbereduxProvider from './UbereduxProvider';
-import { TRootState, TUbereduxDispatch } from './store';
-// import { useSlice } from './hooks/useSlice';
-// import { fetchGlobalNav } from './actions/fetchGlobalNav';
-
+import { T_RootState, T_Dispatch } from './store';
 import { setUbereduxKey, resetUberedux } from './store';
-
-
-
+import { setSomething } from './actions/setSomething';
+import { useAll } from './hooks/useAll';
+export type { T_RootState, T_Dispatch };
 export {
   UbereduxProvider,
   setUbereduxKey,
   resetUberedux,
+  useAll,
+  setSomething,
 };
-
-export type { TRootState, TUbereduxDispatch };
