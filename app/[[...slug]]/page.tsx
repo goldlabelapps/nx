@@ -268,13 +268,13 @@ export default async function Page(props: any) {
                         <Box sx={{
 
                         }}>
-                            <Ad ad={{
+                            {/* <Ad ad={{
                                 title: "NEW!",
                                 description: "Discover more with our latest update. Click to learn more.",
                                 actionType: "routeTo",
                                 route: "/cta",
                                 ctaLabel: "Click Here",
-                            }} />
+                            }} /> */}
                         </Box>
                     </Box>
                 </Box>
