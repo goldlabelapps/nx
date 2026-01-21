@@ -2,6 +2,7 @@
 order: 20
 slug: /use/flower/insane-og
 title: Insane OG
+icon: leaf
 description: OG Kush × Bubba Kush × Granddaddy Purple
 flickr: research
 tags: flower,

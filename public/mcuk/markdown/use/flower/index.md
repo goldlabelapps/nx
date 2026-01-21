@@ -2,6 +2,7 @@
 order: 20
 slug: /use/flower
 title: Flower
+icon: leaf
 flickr: research
 tags: flower,
 ---

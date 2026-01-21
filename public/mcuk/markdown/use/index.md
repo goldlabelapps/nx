@@ -2,6 +2,7 @@
 order: 20
 slug: /use
 title: Use
+icon: work
 description: Different ways to consume cannabis, including smoking, vaping, and edibles, with tips for safe and responsible use.
 image: https://live.staticflickr.com/65535/55021434005_3cb12dc491_b.jpg
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.

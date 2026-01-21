@@ -11,7 +11,7 @@ import {
     serverUseAllMd,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Nav, Footer } from '../NX/DesignSystem';
+import { Icon, Nav, Footer } from '../NX/DesignSystem';
 import { FeaturedImage } from '../NX/Images';
 import { Ad } from '../NX/Commerce';
 import {
@@ -119,6 +119,9 @@ export default async function Page(props: any) {
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
 
+    // Use client-side viewport detection for mobile/desktop
+    // This will require a small client component for the subheader
+
     return (
         <NX config={config}>
             <header>
@@ -132,7 +135,6 @@ export default async function Page(props: any) {
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
-                                sx={{ alignItems: 'flex-start' }}
                                 avatar={<a href='/'>
                                     <IconButton
                                         edge="start"
@@ -142,7 +144,6 @@ export default async function Page(props: any) {
                                         <Avatar
                                             alt={config.title}
                                             src={config.favicon}
-                                            sx={{ width: 40, height: 40 }}
                                         />
                                     </IconButton>
                                 </a>}
@@ -150,20 +151,10 @@ export default async function Page(props: any) {
                                     sx={{
                                     }}
                                     color='secondary'
-                                    variant="h6"
+                                    variant="h4"
                                     component="h1"
                                 >
                                     {title}
-                                </Typography>}
-
-                                subheader={<Typography
-                                    sx={{
-                                    }}
-                                    color='secondary'
-                                    variant="body2"
-                                    component="h2"
-                                >
-                                    {description}
                                 </Typography>}
                                 action={
                                     <Box sx={{ display: { xs: 'block', md: 'none' } }}>
@@ -225,6 +216,19 @@ export default async function Page(props: any) {
                             frontmatter={data}
                             config={config}
                         />
+                        <Typography
+                            sx={{
+                                display: 'flex',
+                            }}
+                            color='secondary'
+                            variant="h5"
+                            component="h2"
+                        >
+                            <Box sx={{ mr: 2 }}>
+                                <Icon icon={data.icon ? data.icon : "right"} color="primary" />
+                            </Box>
+                            {description}
+                        </Typography>
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
 
