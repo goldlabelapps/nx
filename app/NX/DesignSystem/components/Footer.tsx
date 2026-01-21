@@ -47,7 +47,7 @@ const Footer: React.FC<I_Footer> = ({
 			}}>
 			<Toolbar>
 				<IconButton
-					color="default"
+					color="primary"
 					aria-label="Call To Action"
 					sx={{
 						position: 'absolute',

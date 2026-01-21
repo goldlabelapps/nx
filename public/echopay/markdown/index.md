@@ -1,11 +1,9 @@
 ---
 order: 1 
+type: terminal
 slug: /
 title: EchoPay
-description: API Terminal Tester
-icon: home
-tags: echopay
+description: API Terminal
+icon: terminal
+tags: echopay, terminal
 ---
-
-Here is what we're doing... 
-

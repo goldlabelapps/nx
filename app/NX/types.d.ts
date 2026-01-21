@@ -124,6 +124,11 @@ export interface I_DesignSystem {
     children: React.ReactNode;
 }
 
+export interface I_Terminal {
+    children: React.ReactNode;
+}
+
+
 export interface I_Paywall {
     children: React.ReactNode;
 }
@@ -322,6 +327,7 @@ export type I_Icon = {
     | 'files'
     | 'expertise'
     | 'tags'
+    | 'terminal'
     | 'bouncer';
     color?: any;
 };

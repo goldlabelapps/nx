@@ -160,13 +160,15 @@ import BooksIcon from '@mui/icons-material/MenuBook';
 import FreeIcon from '@mui/icons-material/CurrencyExchange';
 import WritingIcon from '@mui/icons-material/BorderColor';
 import TagsIcon from '@mui/icons-material/LocalOffer';
-
-
+import TerminalIcon from '@mui/icons-material/Terminal';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'terminal':
+      iconFragment = <TerminalIcon color={color} />;
+      break;
     case 'core':
       iconFragment = <CoreIcon color={color} />;
       break;

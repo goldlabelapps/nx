@@ -17,7 +17,7 @@ export type I_Share = {
 
 export default function Share({
     frontmatter = null,
-    metaImage = '/nx/og.jpg',
+    metaImage = '/shared/target.jpg',
 }: I_Share) {
 
     const [copied, setCopied] = React.useState(false);

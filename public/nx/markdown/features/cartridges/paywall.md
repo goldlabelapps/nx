@@ -1,12 +1,12 @@
 ---
 order: 50
-slug: /features/paywall
+slug: /features/cartridges/paywall
 title: Paywall
 description: User authentication, membership, payments and more
 tags: features, cartridges, 
 ---
 
-All handled seamlessly with Firebase Auth and Stripe integration
+> All handled seamlessly with Firebase Auth and Stripe integration
 
 - Authentication
   - User accounts & management

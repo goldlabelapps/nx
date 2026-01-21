@@ -24,10 +24,13 @@ const NX: React.FC<I_NX> = ({ children, config }) => {
     }
     return (
         <DesignSystem theme={theme}>
-            {/* <pre style={{ zIndex: 123456 }}>
+
+            {children}
+
+            {/* <pre>
                 all: {JSON.stringify(all, null, 2)}
             </pre> */}
-            {children}
+
         </DesignSystem>
     );
 };
