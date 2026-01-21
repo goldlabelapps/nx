@@ -1,18 +1,11 @@
 ---
-order: 20
-slug: /use/edibles
-title: Edibles
-icon: food
-description: A carefully controlled dose and experience
+order: 50
+slug: /how-to-use/edibles/ferrero-roche
+title: Ferrero Roche
+description: THC Infused chocolate truffles
 tags: edibles, Edible Products, Baked Goods, Chocolates
-image: https://live.staticflickr.com/65535/55021434005_3cb12dc491_b.jpg
+image: https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp
 ---
-
-## Ferrero Roche 
-
-> THC Infused chocolate truffles
-
-https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp
 
 #### Wellbeing Notes & Responsible Use
 

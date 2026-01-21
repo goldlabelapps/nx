@@ -36,7 +36,7 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
                         width={1200}
                         height={315}
                         style={{
-                            objectFit: 'cover',
+                            objectFit: 'contain',
                             width: '100%',
                             height: '100%',
                             borderRadius: '1rem',
@@ -75,7 +75,7 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
 
 
     // Fallback order: frontmatter.image > config.image > /nx/oj.jpg
-    let imageSrc = '/nx/oj.jpg';
+    let imageSrc = '/shared/target.jpg';
     if (config?.image) imageSrc = config.image;
     if (frontmatter?.image) imageSrc = frontmatter.image;
 
@@ -99,7 +99,7 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
                 width={1200}
                 height={315}
                 style={{
-                    objectFit: 'cover',
+                    objectFit: 'contain',
                     width: '100%',
                     height: '100%',
                     borderRadius: '1rem',

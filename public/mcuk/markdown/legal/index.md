@@ -1,5 +1,5 @@
 ---
-order: 999
+order: 25
 slug: /legal
 title: Legal
 icon: legal
