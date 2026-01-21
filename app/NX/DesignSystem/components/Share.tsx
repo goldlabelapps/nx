@@ -1,6 +1,6 @@
 'use client';
-
 import * as React from 'react';
+import Image from "next/image";
 import {
     FacebookShareButton,
     LinkedinShareButton,
@@ -10,12 +10,16 @@ import {
 import { Box, MenuItem, ListItemIcon, ListItemText } from '@mui/material';
 import { Icon } from '../';
 
-export type T_Share = {
+export type I_Share = {
     frontmatter?: any;
-    [key: string]: any;
+    metaImage?: string;
 };
 
-export default function Share({ frontmatter = null }: T_Share) {
+export default function Share({
+    frontmatter = null,
+    metaImage = '/nx/og.jpg',
+}: I_Share) {
+
     const [copied, setCopied] = React.useState(false);
     const { title, description, icon } = frontmatter;
     const fullWidth = { display: 'block' };
@@ -23,6 +27,37 @@ export default function Share({ frontmatter = null }: T_Share) {
 
     return (
         <>
+
+            <Box
+                sx={{
+                    width: '100%',
+                    height: { xs: 150, sm: 250, md: 315 },
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mt: { xs: '0.25rem', md: '1rem' },
+                    mb: { xs: '1rem', md: '1.5rem' },
+                    borderRadius: '1rem',
+                    overflow: 'hidden',
+                }}
+            >
+                <Image
+                    alt={`${title}, ${description}`}
+                    src={metaImage}
+                    width={1200}
+                    height={315}
+                    style={{
+                        objectFit: 'cover',
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: '1rem',
+                        display: 'block',
+                        maxHeight: '100%',
+                    }}
+                    priority
+                />
+            </Box>
+
             <MenuItem
                 onClick={() => {
                     navigator.clipboard.writeText(url);
