@@ -1,10 +1,11 @@
 ---
-order: 20
-slug: /use/flower
+order: 30
+slug: /how-to-use/flower
 title: Flower
+description: Don’t drive or operate machinery
 icon: leaf
-flickr: research
 tags: flower,
+image: https://budbuddies.cc/wp-content/uploads/2025/01/D620042.webp
 ---
 
 - Glookies — exotic dessert-gas hybrid energy with a heavy calm tail.
