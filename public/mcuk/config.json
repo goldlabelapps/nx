@@ -33,7 +33,6 @@
         },
         "images": {
             "enabled": true,
-            "description": "Flickr for MCUK",
             "mode": "flickr",
             "flickr": [
                 {

@@ -1,0 +1,19 @@
+{
+  "short_name": "NX",
+  "name": "NX",
+  "theme_color": "#FFF",
+  "background_color": "#FFF",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/nx/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "64x64",
+      "purpose": "any maskable"
+    }
+  ]
+}
