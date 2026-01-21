@@ -26,6 +26,7 @@ import {
 
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
+import echopayConfig from '../../public/echopay/config.json';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -33,7 +34,14 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
+    let config: T_Config;
+    if (project === 'mcuk') {
+        config = mcukConfig as T_Config;
+    } else if (project === 'echopay') {
+        config = echopayConfig as T_Config;
+    } else {
+        config = nxConfig as T_Config;
+    }
     const filePath = serverUseMDBySlug(slugArr, project);
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
@@ -80,6 +88,9 @@ export async function generateStaticParams() {
         case 'mcuk':
             markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
             break;
+        case 'echopay':
+            markdownDir = path.resolve(process.cwd(), "public", "echopay", "markdown");
+            break;
         case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
@@ -102,7 +113,14 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const config: T_Config = project === 'mcuk' ? (mcukConfig as T_Config) : (nxConfig as T_Config);
+    let config: T_Config;
+    if (project === 'mcuk') {
+        config = mcukConfig as T_Config;
+    } else if (project === 'echopay') {
+        config = echopayConfig as T_Config;
+    } else {
+        config = nxConfig as T_Config;
+    }
     const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
     const filePath = serverUseMDBySlug(slugArr, project);
     const navItems = await serverUseNav();
