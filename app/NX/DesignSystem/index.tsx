@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Icon from './components/Icon';
 import Share from './components/Share';
 import { useMUITheme } from './hooks/useMUITheme';
+import { initialState as initialStateDesignSystem } from './initialState';
 
 export {
     DesignSystem,
@@ -14,4 +15,5 @@ export {
     Footer,
     Tags,
     Share,
+    initialStateDesignSystem,
 };

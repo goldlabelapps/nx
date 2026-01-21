@@ -1,7 +1,6 @@
-// /Users/goldlabel/GitHub/core/gl-core/cartridges/DesignSystem/hooks/useDesignSystem.tsx
 import { useSelector } from 'react-redux';
-import { TRootState } from '../../Uberedux/store';
+import { T_RootState } from '../../Uberedux';
 
 export function useDesignSystem() {
-  return useSelector((state: TRootState) => state.redux.designSystem);
+  return useSelector((state: T_RootState) => state.redux.designSystem);
 }
