@@ -1,4 +1,4 @@
-name: NX Build and Type Check
+name: NX pre deploy
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v4
       - name: Set up Node.js
         uses: actions/setup-node@v4
