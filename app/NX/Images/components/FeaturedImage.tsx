@@ -74,8 +74,11 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
         }
     }
 
-    const fallbackImage = config?.image || '/shared/wombat.gif';
-    const imageSrc = frontmatter?.image ? frontmatter.image : fallbackImage;
+
+    // Fallback order: frontmatter.image > config.image > /nx/oj.jpg
+    let imageSrc = '/nx/oj.jpg';
+    if (config?.image) imageSrc = config.image;
+    if (frontmatter?.image) imageSrc = frontmatter.image;
 
     return (
         <Box
