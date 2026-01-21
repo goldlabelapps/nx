@@ -1,8 +1,8 @@
+
 import type { T_Dispatch } from '../../Uberedux';
-import { setUbereduxKey } from '../../Uberedux';
 
 export const setSomething =
-  (lang: string): any =>
+  (setUbereduxKey: any) => (lang: string): any =>
     async (dispatch: T_Dispatch, getState: () => any) => {
       try {
         const current = getState().redux.lingua;

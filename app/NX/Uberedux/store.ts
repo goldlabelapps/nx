@@ -1,11 +1,11 @@
 'use client';
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { initialState } from './initialState';
+import { getInitialState } from './initialState';
 
-const reduxSlice = createSlice({
+const createReduxSlice = (config: any) => createSlice({
   name: 'redux',
-  initialState,
+  initialState: config ? config : getInitialState(config),
   reducers: {
     setUbereduxKey: (
       state,
@@ -25,24 +25,35 @@ const reduxSlice = createSlice({
       target[keys[keys.length - 1]] = value;
     },
 
-    resetUberedux: () => initialState,
+    resetUberedux: () => getInitialState({}),
   },
 });
 
-const rootReducer = combineReducers({
-  redux: reduxSlice.reducer,
-});
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+export function makeStore(config: any) {
+  const reduxSlice = createReduxSlice(config);
+  const rootReducer = combineReducers({
+    redux: reduxSlice.reducer,
+  });
+  const store = configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+  });
+  return store;
+}
 
-export const setUbereduxKey = reduxSlice.actions.setUbereduxKey;
-export const resetUberedux = reduxSlice.actions.resetUberedux;
+// Action creators for use with dynamic store
+export const getUbereduxActions = (config: any) => {
+  const slice = createReduxSlice(config);
+  return {
+    setUbereduxKey: slice.actions.setUbereduxKey,
+    resetUberedux: slice.actions.resetUberedux,
+  };
+};
 
-export type T_RootState = ReturnType<typeof store.getState>;
-export type T_Dispatch = typeof store.dispatch;
+// Types for dynamic store
+export type T_RootState = ReturnType<ReturnType<typeof makeStore>["getState"]>;
+export type T_Dispatch = ReturnType<typeof makeStore>["dispatch"];
