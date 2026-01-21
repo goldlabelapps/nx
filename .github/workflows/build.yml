@@ -1,4 +1,4 @@
-name: NX pre deploy
+name: NX Build and Type Check
 
 on:
   push:
