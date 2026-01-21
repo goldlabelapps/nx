@@ -129,12 +129,16 @@ export default async function Page(props: any) {
         notFound();
     }
     let htmlContent = "<p>404, bro:(</p>";
+
     let title = project.toUpperCase();
     let description = "";
+    let image = "/nx/og.jpg";
+    if (config.image) image = config.image;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
+    if (data.image) image = data.image;
     const result = await remark().use(html).process(content);
     htmlContent = result.toString();
 
@@ -276,7 +280,12 @@ export default async function Page(props: any) {
                 </Box>
             </Container>
             <footer>
-                <Footer config={config} frontmatter={data} bgcolor={bg} />
+                <Footer
+                    metaImage={image}
+                    config={config}
+                    frontmatter={data}
+                    bgcolor={bg}
+                />
             </footer>
         </NX>
     );

@@ -12,7 +12,6 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
     const imagesCartridge = cartridges?.images;
     const isFlickrMode = imagesCartridge && imagesCartridge.mode === 'flickr';
 
-
     // If flickr in frontmatter and isFlickrMode, try to match slug in imagesCartridge.flickr
     if (frontmatter?.flickr && isFlickrMode) {
         const flickrMatch = imagesCartridge.flickr.find((img) => img.slug === frontmatter.flickr);

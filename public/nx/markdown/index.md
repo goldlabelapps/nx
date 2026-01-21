@@ -4,6 +4,8 @@ slug: /
 title: NX
 description: by Goldlabel
 tags: nx, goldlabel
+icon: home
+flickr: selfie
 ---
 
 Create and deploy super fast, modern Next.js apps. Perfectly optimised for SEO. Anyone can launch scalable, production-ready web apps with lightning-fast frontends and top search engine rankings. 
