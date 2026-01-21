@@ -4,8 +4,8 @@
     "description": "Medical cannabis dispensed by licensed pharmacies. Delivered to your door",
     "url": "https://listingslab.com",
     "image": "https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg",
-    "icon": "/mcuk/favicon.ico",
-    "favicon": "/mcuk/favicon.png",
+    "icon": "/mcuk/favicon.png",
+    "favicon": "/mcuk/favicon.ico",
     "cartridges": {
         "designSystem": {
             "allowTheme": false,

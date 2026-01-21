@@ -8,6 +8,7 @@ export interface NavItem {
     path: string;
     order?: number;
     icon?: string;
+    type?: string; // 'terminal' or undefined
     children?: NavItem[];
 }
 
@@ -31,14 +32,15 @@ function normalizeSlug(slug: string | undefined, fallback: string): string {
     return slug;
 }
 
-function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title: string; order?: number; slug: string; icon?: string } {
+function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title: string; order?: number; slug: string; icon?: string; type?: string } {
     const content = fs.readFileSync(filePath, "utf-8");
     const { data } = matter(content);
     const title = data.title || path.basename(filePath, ".md");
     const order = typeof data.order === "number" ? data.order : undefined;
     const slug = normalizeSlug(data.slug, fallback);
     const icon = typeof data.icon === "string" ? data.icon : undefined;
-    return { title, order, slug, icon };
+    const type = typeof data.type === "string" ? data.type : undefined;
+    return { title, order, slug, icon, type };
 }
 
 function buildNavTree(dir: string, baseUrl: string): NavItem[] {
@@ -54,10 +56,10 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
                 const children = buildNavTree(path.join(dir, entry.name), `${baseUrl}/${entry.name}`);
                 // Try to find an index.md for directory metadata
                 const indexPath = path.join(dir, entry.name, "index.md");
-                let meta: { title: string; slug: string; order?: number; icon?: string } = { title: entry.name, slug: normalizeSlug(undefined, `/${entry.name}`), order: undefined, icon: undefined };
+                let meta: { title: string; slug: string; order?: number; icon?: string; type?: string } = { title: entry.name, slug: normalizeSlug(undefined, `/${entry.name}`), order: undefined, icon: undefined, type: undefined };
                 if (fs.existsSync(indexPath)) {
-                    const { title, order, slug, icon } = getFrontmatterFromMarkdown(indexPath, `/${entry.name}`);
-                    meta = { title, slug, order, icon };
+                    const { title, order, slug, icon, type } = getFrontmatterFromMarkdown(indexPath, `/${entry.name}`);
+                    meta = { title, slug, order, icon, type };
                 }
                 return {
                     ...meta,
@@ -67,12 +69,13 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
             } else {
                 const filePath = path.join(dir, entry.name);
                 const fallback = `/${entry.name.replace(/\.md$/, "")}`;
-                const { title, order, slug, icon } = getFrontmatterFromMarkdown(filePath, fallback);
+                const { title, order, slug, icon, type } = getFrontmatterFromMarkdown(filePath, fallback);
                 return {
                     title,
                     order,
                     path: slug,
                     icon,
+                    type,
                 };
             }
         });

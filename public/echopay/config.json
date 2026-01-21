@@ -1,7 +1,7 @@
 {
     "project": "echopay",
     "title": "EchoPay",
-    "description": "API Test Harness",
+    "description": "API Terminal",
     "url": "https://echopay.goldlabel.pro",
     "image": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg",
     "icon": "/echopay/favicon/favicon.png",
@@ -11,21 +11,9 @@
             "enabled": true,
             "mode": "full"
         },
-        "images": {
-            "enabled": true,
-            "mode": "flickr",
-            "flickr": [
-                {
-                    "title": "EchoPay",
-                    "slug": "echopay",
-                    "flickrId": "55047631940",
-                    "src": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg"
-                }
-            ]
-        },
         "designSystem": {
-            "allowTheme": false,
-            "defaultTheme": "light",
+            "allowTheme": true,
+            "defaultTheme": "dark",
             "themes": {
                 "light": {
                     "mode": "light",
@@ -46,6 +34,18 @@
                     "border": "#17A1AC"
                 }
             }
+        },
+        "images": {
+            "enabled": true,
+            "mode": "flickr",
+            "flickr": [
+                {
+                    "title": "EchoPay",
+                    "slug": "echopay",
+                    "flickrId": "55047631940",
+                    "src": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg"
+                }
+            ]
         }
     }
 }

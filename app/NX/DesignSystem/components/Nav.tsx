@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import type { I_Icon } from '../../types';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import { useRouter } from 'next/navigation';
@@ -30,6 +31,7 @@ interface I_Nav {
 
 const Nav: React.FC<I_Nav> = ({
     navItems,
+    currentPath,
     mode = 'desktop',
 }) => {
     const router = useRouter();
@@ -46,46 +48,66 @@ const Nav: React.FC<I_Nav> = ({
     }
 
     function renderNavItems(items: I_NavNode[], parentKey = '', parentNavTarget?: string): React.ReactNode {
-        return items.map((item, i) => {
-            const key = `${parentKey}item_${i}`;
-            const hasChildren = Array.isArray(item.children) && item.children.length > 0;
-            const navTarget = (typeof item.slug === 'string' && item.slug.trim().length > 0)
-                ? item.slug
-                : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
-            const isRoutable = typeof navTarget === 'string' && navTarget.trim().length > 0;
-            const label = navTarget === '/' ? 'Home' : item.title;
-            let filteredChildren = item.children;
-            if (hasChildren && navTarget) {
-                filteredChildren = item.children!.filter(child => {
-                    const childNavTarget = (typeof child.slug === 'string' && child.slug.trim().length > 0)
-                        ? child.slug
-                        : (typeof (child as any).path === 'string' && (child as any).path.trim().length > 0 ? (child as any).path : undefined);
-                    return childNavTarget !== navTarget;
-                });
-            }
-            return (
-                <Box key={key} sx={{ mb: 0 }}>
-                    <ListItemButton
-                        onClick={isRoutable ? (e) => {
-                            e.preventDefault();
-                            handleNavClick(navTarget);
-                        } : undefined}
-                        disabled={!isRoutable}
-                        sx={!isRoutable ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
-                    >
-                        <ListItemIcon>
-                            <Icon icon={(item as any).icon ? (item as any).icon : "right"} color="primary" />
-                        </ListItemIcon>
-                        <ListItemText primary={label} />
-                    </ListItemButton>
-                    {hasChildren && filteredChildren && filteredChildren.length > 0 && (
-                        <List dense sx={{ ml: 2 }}>
-                            {renderNavItems(sortNavItems(filteredChildren), key + '_', navTarget)}
-                        </List>
-                    )}
-                </Box>
-            );
-        });
+        return items
+            .filter(item => {
+                // Hide Home link if on homepage
+                const navTarget = (typeof item.slug === 'string' && item.slug.trim().length > 0)
+                    ? item.slug
+                    : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
+                if (navTarget === '/' && (currentPath === '/' || currentPath === '' || currentPath === undefined)) {
+                    return false;
+                }
+                return true;
+            })
+            .map((item, i) => {
+                const key = `${parentKey}item_${i}`;
+                const hasChildren = Array.isArray(item.children) && item.children.length > 0;
+                const navTarget = (typeof item.slug === 'string' && item.slug.trim().length > 0)
+                    ? item.slug
+                    : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
+                const isRoutable = typeof navTarget === 'string' && navTarget.trim().length > 0;
+                const label = navTarget === '/' ? 'Home' : item.title;
+                let filteredChildren = item.children;
+                if (hasChildren && navTarget) {
+                    filteredChildren = item.children!.filter(child => {
+                        const childNavTarget = (typeof child.slug === 'string' && child.slug.trim().length > 0)
+                            ? child.slug
+                            : (typeof (child as any).path === 'string' && (child as any).path.trim().length > 0 ? (child as any).path : undefined);
+                        return childNavTarget !== navTarget;
+                    });
+                }
+                return (
+                    <Box key={key} sx={{ mb: 0 }}>
+                        <ListItemButton
+                            onClick={isRoutable ? (e) => {
+                                e.preventDefault();
+                                handleNavClick(navTarget);
+                            } : undefined}
+                            disabled={!isRoutable}
+                            sx={!isRoutable ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
+                        >
+                            {item.icon && typeof item.icon === 'string' && (
+                                <ListItemIcon>
+                                    {/* Only pass icon if it matches allowed values, fallback: render nothing if not allowed */}
+                                    {(
+                                        [
+                                            'more', 'free', 'writing', 'books', 'ski', 'skiing', 'typescript', 'van', 'fullstack', 'web3d', 'rocket', 'logs', 'dashboard', 'bike', 'user', 'visitors', 'visitor', 'ki', 'users', 'pdf', 'tick', 'case', 'caseclosed', 'cases', 'caseclock', 'upload', 'plus', 'dog', 'about', 'experience', 'clients', 'link', 'album', 'flickr', 'photo', 'film', 'preview', 'add', 'account', 'download', 'job', 'copy', 'linkedin', 'core', 'cartridge', 'uberedux', 'good-fit', 'products', 'flash', 'speak-write', 'admin', 'private', 'company', 'feature', 'auth', 'design', 'ai', 'ask', 'forget', 'folder', 'fingerprint', 'fallmanager', 'youtube', 'boot', 'hide', 'show', 'save', 'filters', 'filter', 'fullscreen', 'examples', 'signup', 'what', 'when', 'who', 'how', 'legal', 'geo', 'docker', 'scuba', 'js', 'javascript', 'oliver', 'life', 'balance', 'bug', 'geolocator', 'google', 'lingua', 'plugin', 'doc', 'reset', 'accommodation', 'spy', 'seed', 'github', 'members', 'notifyer', 'notifyr', 'pingpong', 'close', 'bus', 'darkmode', 'lightmode', 'pool', 'boat', 'car', 'bar', 'shop', 'home', 'fish', 'mobile', 'blog', 'search', 'cancel', 'delete', 'techstack', 'backoffice', 'edit', 'example', 'goldlabel', 'wordpress', 'where', 'whatsapp', 'expand', 'web', 'twitter', 'facebook', 'ting', 'settings', 'team', 'email', 'contact', 'share', 'leaf', 'star', 'food', 'medical', 'scooter', 'diveshop', 'diving', 'news', 'aicase', 'activities', 'left', 'down', 'up', 'sitemap', 'right', 'menu', 'success', 'categories', 'category', 'tings', 'info', 'warning', 'error', 'signout', 'api', 'work', 'macos', 'signin', 'blokey', 'android', 'openai', 'chrome', 'desktop', 'desktopmac', 'edge', 'linux', 'windows', 'xbox', 'mac', 'why', 'iphone', 'paywall', 'safari', 'firefox', 'plugins', 'files', 'expertise', 'tags', 'terminal', 'bouncer'
+                                        ].includes(item.icon)
+                                    ) ? (
+                                        <Icon icon={item.icon as any} color="primary" />
+                                    ) : null}
+                                </ListItemIcon>
+                            )}
+                            <ListItemText primary={label} />
+                        </ListItemButton>
+                        {hasChildren && filteredChildren && filteredChildren.length > 0 && (
+                            <List dense sx={{ ml: 2 }}>
+                                {renderNavItems(sortNavItems(filteredChildren), key + '_', navTarget)}
+                            </List>
+                        )}
+                    </Box>
+                );
+            });
     }
 
     if (mode === 'mobile') {

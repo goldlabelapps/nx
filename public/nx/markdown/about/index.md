@@ -2,7 +2,8 @@
 order: 10
 slug: /about
 title: About
-description: See us socially
+icon: goldlabel
+description: Goldlabel Apps Ltd
 tags: goldlabel
 ---
 

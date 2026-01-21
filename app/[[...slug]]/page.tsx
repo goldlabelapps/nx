@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const filePath = serverUseMDBySlug(slugArr, project);
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
-    let image = "/nx/og.jpg";
+    let image = "/shared/target.jpg";
     if (config.image) image = config.image;
 
     let url = config.url || "";
@@ -113,6 +113,8 @@ export default async function Page(props: any) {
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
         slugArr.pop();
     }
+    // Define slugPath for use as currentPath
+    const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let config: T_Config;
     if (project === 'mcuk') {
@@ -132,7 +134,7 @@ export default async function Page(props: any) {
 
     let title = project.toUpperCase();
     let description = "";
-    let image = "/nx/og.jpg";
+    let image = "/shared/target.jpg";
     if (config.image) image = config.image;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
@@ -181,7 +183,7 @@ export default async function Page(props: any) {
                                         <Nav
                                             mode="mobile"
                                             navItems={navItems as I_NestedNav["navItems"]}
-                                            currentPath={filePath}
+                                            currentPath={slugPath || '/'}
                                         />
                                     </Box>
                                 }
@@ -217,7 +219,7 @@ export default async function Page(props: any) {
                     >
                         <Nav
                             navItems={navItems as I_NestedNav["navItems"]}
-                            currentPath={filePath}
+                            currentPath={slugPath || '/'}
                             mode="desktop"
                         />
                     </Box>
@@ -232,12 +234,7 @@ export default async function Page(props: any) {
                             pl: { xs: 2, md: 0 },
                         }}
                     >
-                        {(data.image || data.flickr) && (
-                            <FeaturedImage
-                                frontmatter={data}
-                                config={config}
-                            />
-                        )}
+
                         <Typography
                             sx={{
                                 display: 'flex',
@@ -246,11 +243,21 @@ export default async function Page(props: any) {
                             variant="h5"
                             component="h2"
                         >
-                            <Box sx={{ mr: 2 }}>
-                                <Icon icon={data.icon ? data.icon : "right"} color="primary" />
-                            </Box>
+                            {data.icon && (
+                                <Box sx={{ mr: 2 }}>
+                                    <Icon icon={data.icon} color="primary" />
+                                </Box>
+                            )}
                             {description}
                         </Typography>
+
+                        {(data.image || data.flickr) && (
+                            <FeaturedImage
+                                frontmatter={data}
+                                config={config}
+                            />
+                        )}
+
                         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
                     </Box>
 
@@ -268,13 +275,11 @@ export default async function Page(props: any) {
                         <Box sx={{
 
                         }}>
-                            {/* <Ad ad={{
-                                title: "NEW!",
-                                description: "Discover more with our latest update. Click to learn more.",
-                                actionType: "routeTo",
-                                route: "/cta",
-                                ctaLabel: "Click Here",
-                            }} /> */}
+                            {data.type && (
+                                <Typography color="primary" variant="body1">
+                                    type: {data.type}
+                                </Typography>
+                            )}
                         </Box>
                     </Box>
                 </Box>

@@ -4,8 +4,8 @@
     "title": "NX",
     "description": "by Goldlabel",
     "image": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg",
-    "icon": "/nx/favicon.svg",
-    "favicon": "/nx/favicon.svg",
+    "icon": "/nx/favicon.png",
+    "favicon": "/nx/favicon.ico",
     "cartridges": {
         "designSystem": {
             "allowTheme": false,
