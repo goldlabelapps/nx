@@ -45,10 +45,15 @@ export function makeStore(config: any) {
   return store;
 }
 
-// For actions, you may want to export creators from a default config instance, or refactor further as needed
-// export const setUbereduxKey = reduxSlice.actions.setUbereduxKey;
-// export const resetUberedux = reduxSlice.actions.resetUberedux;
+// Action creators for use with dynamic store
+export const getUbereduxActions = (config: any) => {
+  const slice = createReduxSlice(config);
+  return {
+    setUbereduxKey: slice.actions.setUbereduxKey,
+    resetUberedux: slice.actions.resetUberedux,
+  };
+};
 
-// Types can be exported from a default store if needed, or refactored for dynamic store
-// export type T_RootState = ReturnType<typeof store.getState>;
-// export type T_Dispatch = typeof store.dispatch;
+// Types for dynamic store
+export type T_RootState = ReturnType<ReturnType<typeof makeStore>["getState"]>;
+export type T_Dispatch = ReturnType<typeof makeStore>["dispatch"];
