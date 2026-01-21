@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '20'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Run Next.js build
         run: npm run build
       - name: TypeScript type check
