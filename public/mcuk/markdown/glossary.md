@@ -2,6 +2,8 @@
 order: 555
 slug: /glossary
 title: Glossary
+description: Medical Cannabis Terms and Definitions
+icon: doc
 ---
 
 **Access routes**: The ways patients can legally obtain medical cannabis, such as prescriptions or clinics.

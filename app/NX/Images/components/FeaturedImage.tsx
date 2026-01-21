@@ -21,11 +21,12 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
                 <Box
                     sx={{
                         width: '100%',
-                        height: 315,
+                        height: { xs: 180, sm: 250, md: 315 },
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        marginBottom: '1.5rem',
+                        mt: { xs: '0.25rem', md: '1rem' },
+                        mb: { xs: '1rem', md: '1.5rem' },
                         borderRadius: '1rem',
                         overflow: 'hidden',
                     }}
@@ -38,7 +39,7 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
                         style={{
                             objectFit: 'cover',
                             width: '100%',
-                            height: 'auto',
+                            height: '100%',
                             borderRadius: '1rem',
                             display: 'block',
                             maxHeight: '100%',
@@ -52,11 +53,12 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
                 <Box
                     sx={{
                         width: '100%',
-                        height: 315,
+                        height: { xs: 180, sm: 250, md: 315 },
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        marginBottom: '1.5rem',
+                        mt: { xs: '0.25rem', md: '1rem' },
+                        mb: { xs: '1rem', md: '1.5rem' },
                         borderRadius: '1rem',
                         overflow: 'auto',
                         background: '#fff3cd',
@@ -79,11 +81,12 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
         <Box
             sx={{
                 width: '100%',
-                height: 315,
+                height: { xs: 180, sm: 250, md: 315 },
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                marginBottom: '1.5rem',
+                mt: { xs: '0.25rem', md: '1rem' },
+                mb: { xs: '1rem', md: '1.5rem' },
                 borderRadius: '1rem',
                 overflow: 'hidden',
             }}
@@ -96,7 +99,7 @@ export const FeaturedImage: React.FC<I_FeaturedImage> = ({
                 style={{
                     objectFit: 'cover',
                     width: '100%',
-                    height: 'auto',
+                    height: '100%',
                     borderRadius: '1rem',
                     display: 'block',
                     maxHeight: '100%',

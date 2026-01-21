@@ -2,6 +2,8 @@
 order: 20
 slug: /use/edibles
 title: Edibles
+icon: food
+description: A carefully controlled dose and experience
 tags: edibles, Edible Products, Baked Goods, Chocolates
 image: https://live.staticflickr.com/65535/55021434005_3cb12dc491_b.jpg
 ---

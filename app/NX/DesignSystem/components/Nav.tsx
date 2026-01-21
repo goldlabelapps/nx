@@ -9,9 +9,9 @@ import {
     List,
     ListItemButton,
     ListItemText,
-    // ListItemIcon
+    ListItemIcon,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Icon } from '../../DesignSystem';
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
@@ -22,13 +22,13 @@ function sortNavItems(items: any[]) {
     });
 }
 
-interface NavProps {
+interface I_Nav {
     navItems: I_NavNode[];
     currentPath?: string;
     mode?: 'mobile' | 'desktop';
 }
 
-const Nav: React.FC<NavProps> = ({
+const Nav: React.FC<I_Nav> = ({
     navItems,
     mode = 'desktop',
 }) => {
@@ -64,7 +64,7 @@ const Nav: React.FC<NavProps> = ({
                 });
             }
             return (
-                <Box key={key} sx={{ mb: 1 }}>
+                <Box key={key} sx={{ mb: 0 }}>
                     <ListItemButton
                         onClick={isRoutable ? (e) => {
                             e.preventDefault();
@@ -73,10 +73,13 @@ const Nav: React.FC<NavProps> = ({
                         disabled={!isRoutable}
                         sx={!isRoutable ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
                     >
+                        <ListItemIcon>
+                            <Icon icon={(item as any).icon ? (item as any).icon : "right"} color="primary" />
+                        </ListItemIcon>
                         <ListItemText primary={label} />
                     </ListItemButton>
                     {hasChildren && filteredChildren && filteredChildren.length > 0 && (
-                        <List sx={{ ml: 2 }}>
+                        <List dense sx={{ ml: 2 }}>
                             {renderNavItems(sortNavItems(filteredChildren), key + '_', navTarget)}
                         </List>
                     )}
@@ -88,12 +91,12 @@ const Nav: React.FC<NavProps> = ({
     if (mode === 'mobile') {
         return (
             <>
-                <IconButton color="inherit" onClick={() => setDrawerOpen(true)} aria-label="Open navigation menu">
-                    <MenuIcon color='primary' />
+                <IconButton color="inherit" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
+                    <Icon icon='menu' color="primary" />
                 </IconButton>
                 <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                     <Box sx={{ width: 250, mt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
-                        <List component={'nav'}>
+                        <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
                     </Box>
@@ -105,7 +108,7 @@ const Nav: React.FC<NavProps> = ({
     // Desktop mode
     return (
         <Box>
-            <List component={'nav'}>
+            <List dense component={'nav'}>
                 {renderNavItems(sortedNavItems)}
             </List>
         </Box>
