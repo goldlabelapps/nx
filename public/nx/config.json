@@ -7,7 +7,32 @@
     "icon": "/nx/favicon.png",
     "favicon": "/nx/favicon.ico",
     "cartridges": {
+        "commerce": {
+            "enabled": true,
+            "ads": [
+                {
+                    "title": "Flickr",
+                    "type": "link",
+                    "url": "https://www.flickr.com/photos/listingslab/",
+                    "description": "This flickr blog has been kept since.... well for a long time. Several decades. "
+                },
+                {
+                    "title": "EchoPay",
+                    "type": "route",
+                    "path": "/example-apps/echopay",
+                    "description": "Magento 2 Plugin",
+                    "image": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_q.jpg"
+                },
+                {
+                    "title": "Instagram",
+                    "type": "link",
+                    "url": "https://www.instagram.com/milkylackstoes",
+                    "description": "Insta. Really?"
+                }
+            ]
+        },
         "designSystem": {
+            "enabled": true,
             "allowTheme": false,
             "defaultTheme": "light",
             "themes": {

@@ -11,6 +11,18 @@
             "enabled": true,
             "mode": "full"
         },
+        "commerce": {
+            "enabled": true,
+            "ads": [
+                {
+                    "title": "Magento Demo",
+                    "type": "link",
+                    "url": "https://srv1269941.hstgr.cloud/",
+                    "description": "Demo store for Magento Commerce Plugin",
+                    "image": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_q.jpg"
+                }
+            ]
+        },
         "designSystem": {
             "allowTheme": true,
             "defaultTheme": "dark",

@@ -161,11 +161,16 @@ import FreeIcon from '@mui/icons-material/CurrencyExchange';
 import WritingIcon from '@mui/icons-material/BorderColor';
 import TagsIcon from '@mui/icons-material/LocalOffer';
 import TerminalIcon from '@mui/icons-material/Terminal';
+import VapeIcon from '@mui/icons-material/SmokeFree';
+
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'vape':
+      iconFragment = <VapeIcon color={color} />;
+      break;
     case 'terminal':
       iconFragment = <TerminalIcon color={color} />;
       break;

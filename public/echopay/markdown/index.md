@@ -1,6 +1,6 @@
 ---
 order: 1 
-type: terminal
+cartridge: terminal
 slug: /
 title: EchoPay
 description: API Terminal
