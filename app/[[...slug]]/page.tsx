@@ -23,6 +23,8 @@ import { NX } from '../NX';
 import { Icon, Nav, Footer } from '../NX/DesignSystem';
 import { FeaturedImage } from '../NX/Images';
 import { Commerce } from '../NX/Commerce';
+import { RenderMarkdown } from '../NX/Shortcodes';
+
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
@@ -259,8 +261,9 @@ export default async function Page(props: any) {
                                 config={config}
                             />
                         )}
-
-                        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+                        <RenderMarkdown>
+                            {content}
+                        </RenderMarkdown>
                     </Box>
 
                     <Box
