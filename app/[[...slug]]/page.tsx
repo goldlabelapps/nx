@@ -202,7 +202,7 @@ export default async function Page(props: any) {
                         display: 'grid',
                         gridTemplateColumns: {
                             xs: '1fr',
-                            md: '250px 1fr 400px'
+                            lg: '250px 1fr 400px'
                         },
                         gap: 2,
                         alignItems: 'start',
@@ -213,11 +213,11 @@ export default async function Page(props: any) {
                     <Box
                         component="nav"
                         sx={{
-                            display: { xs: 'none', md: 'block' },
-                            width: { md: '250px' },
-                            minWidth: { md: '250px' },
-                            maxWidth: { md: '250px' },
-                            gridColumn: { md: '1' },
+                            display: { xs: 'none', lg: 'block' },
+                            width: { lg: '250px' },
+                            minWidth: { lg: '250px' },
+                            maxWidth: { lg: '250px' },
+                            gridColumn: { lg: '1' },
                         }}
                     >
                         <Nav
@@ -231,11 +231,11 @@ export default async function Page(props: any) {
                     <Box
                         component="main"
                         sx={{
-                            gridColumn: { md: '2' },
+                            gridColumn: { lg: '2' },
                             width: '100%',
                             minWidth: 0,
-                            pr: { xs: 2, md: 3 },
-                            pl: { xs: 2, md: 0 },
+                            pr: { xs: 2, lg: 3 },
+                            pl: { xs: 2, lg: 0 },
                         }}
                     >
 
@@ -261,18 +261,18 @@ export default async function Page(props: any) {
                                 config={config}
                             />
                         )}
-                        <RenderMarkdown>
+                        <RenderMarkdown config={config}>
                             {content}
                         </RenderMarkdown>
                     </Box>
 
                     <Box
                         sx={{
-                            display: { xs: 'none', md: 'block' },
-                            width: { md: '400px' },
-                            minWidth: { md: '400px' },
-                            maxWidth: { md: '400px' },
-                            gridColumn: { md: '3' },
+                            display: { xs: 'none', lg: 'block' },
+                            width: { lg: '400px' },
+                            minWidth: { lg: '400px' },
+                            maxWidth: { lg: '400px' },
+                            gridColumn: { lg: '3' },
                             pr: 3,
                         }}
                     >

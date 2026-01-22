@@ -22,3 +22,5 @@ When markdown is rendered, the system automatically detects these shortcodes and
 - Displaying dynamic data
 - Reusing content blocks
 - Simplifying complex markup
+
+
