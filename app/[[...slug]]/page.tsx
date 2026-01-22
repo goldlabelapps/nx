@@ -25,9 +25,11 @@ import { FeaturedImage } from '../NX/Images';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
+
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
+import edtechConfig from '../../public/edtech/config.json';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -40,6 +42,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         config = mcukConfig as T_Config;
     } else if (project === 'echopay') {
         config = echopayConfig as T_Config;
+    } else if (project === 'edtech') {
+        config = edtechConfig as T_Config;
     } else {
         config = nxConfig as T_Config;
     }
@@ -93,6 +97,9 @@ export async function generateStaticParams() {
         case 'echopay':
             markdownDir = path.resolve(process.cwd(), "public", "echopay", "markdown");
             break;
+        case 'edtech':
+            markdownDir = path.resolve(process.cwd(), "public", "edtech", "markdown");
+            break;
         case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
@@ -122,6 +129,8 @@ export default async function Page(props: any) {
         config = mcukConfig as T_Config;
     } else if (project === 'echopay') {
         config = echopayConfig as T_Config;
+    } else if (project === 'edtech') {
+        config = edtechConfig as T_Config;
     } else {
         config = nxConfig as T_Config;
     }
