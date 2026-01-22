@@ -7,14 +7,6 @@ import { remark } from "remark";
 import html from "remark-html";
 import matter from "gray-matter";
 import {
-    serverUseMDBySlug,
-    serverUseAllMd,
-} from '../NX/lib';
-import { NX } from '../NX';
-import { Icon, Nav, Footer } from '../NX/DesignSystem';
-import { FeaturedImage } from '../NX/Images';
-import { Commerce } from '../NX/Commerce';
-import {
     AppBar,
     Avatar,
     Box,
@@ -23,7 +15,14 @@ import {
     IconButton,
     Typography,
 } from '@mui/material';
-
+import {
+    serverUseMDBySlug,
+    serverUseAllMd,
+} from '../NX/lib';
+import { NX } from '../NX';
+import { Icon, Nav, Footer } from '../NX/DesignSystem';
+import { FeaturedImage } from '../NX/Images';
+import { Commerce } from '../NX/Commerce';
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
@@ -201,7 +200,7 @@ export default async function Page(props: any) {
                         display: 'grid',
                         gridTemplateColumns: {
                             xs: '1fr',
-                            md: '250px 1fr 500px'
+                            md: '250px 1fr 400px'
                         },
                         gap: 2,
                         alignItems: 'start',
@@ -267,18 +266,14 @@ export default async function Page(props: any) {
                     <Box
                         sx={{
                             display: { xs: 'none', md: 'block' },
-                            width: { md: '500px' },
-                            minWidth: { md: '500px' },
-                            maxWidth: { md: '500px' },
+                            width: { md: '400px' },
+                            minWidth: { md: '400px' },
+                            maxWidth: { md: '400px' },
                             gridColumn: { md: '3' },
                             pr: 3,
                         }}
                     >
-
-                        <Box sx={{
-
-                        }}>
-
+                        <Box sx={{}}>
                             {data.cartridge && (
                                 <Typography color="primary" variant="body1">
                                     cartridge: {data.cartridge}

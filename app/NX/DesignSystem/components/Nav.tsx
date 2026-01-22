@@ -89,18 +89,15 @@ const Nav: React.FC<I_Nav> = ({
                             disabled={!isRoutable}
                             sx={!isRoutable ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
                         >
-                            {item.icon && typeof item.icon === 'string' && (
+                            {/* {item.icon && typeof item.icon === 'string' && (
                                 <ListItemIcon>
-                                    {/* Only pass icon if it matches allowed values, fallback: render nothing if not allowed */}
-                                    {(
-                                        [
-                                            'more', 'free', 'writing', 'books', 'ski', 'skiing', 'typescript', 'van', 'fullstack', 'web3d', 'rocket', 'logs', 'dashboard', 'bike', 'user', 'visitors', 'visitor', 'ki', 'users', 'pdf', 'tick', 'case', 'caseclosed', 'cases', 'caseclock', 'upload', 'plus', 'dog', 'about', 'experience', 'clients', 'link', 'album', 'flickr', 'photo', 'film', 'preview', 'add', 'account', 'download', 'job', 'copy', 'linkedin', 'core', 'cartridge', 'uberedux', 'good-fit', 'products', 'flash', 'speak-write', 'admin', 'private', 'company', 'feature', 'auth', 'design', 'ai', 'ask', 'forget', 'folder', 'fingerprint', 'fallmanager', 'youtube', 'boot', 'hide', 'show', 'save', 'filters', 'filter', 'fullscreen', 'examples', 'signup', 'what', 'when', 'who', 'how', 'legal', 'geo', 'docker', 'scuba', 'js', 'javascript', 'oliver', 'life', 'balance', 'bug', 'geolocator', 'google', 'lingua', 'plugin', 'doc', 'reset', 'accommodation', 'spy', 'seed', 'github', 'members', 'notifyer', 'notifyr', 'pingpong', 'close', 'bus', 'darkmode', 'lightmode', 'pool', 'boat', 'car', 'bar', 'shop', 'home', 'fish', 'mobile', 'blog', 'search', 'cancel', 'delete', 'techstack', 'backoffice', 'edit', 'example', 'goldlabel', 'wordpress', 'where', 'whatsapp', 'expand', 'web', 'twitter', 'facebook', 'ting', 'settings', 'team', 'email', 'contact', 'share', 'leaf', 'star', 'food', 'medical', 'scooter', 'diveshop', 'diving', 'news', 'aicase', 'activities', 'left', 'down', 'up', 'sitemap', 'right', 'menu', 'success', 'categories', 'category', 'tings', 'info', 'warning', 'error', 'signout', 'api', 'work', 'macos', 'signin', 'blokey', 'android', 'openai', 'chrome', 'desktop', 'desktopmac', 'edge', 'linux', 'windows', 'xbox', 'mac', 'why', 'iphone', 'paywall', 'safari', 'firefox', 'plugins', 'files', 'expertise', 'tags', 'terminal', 'bouncer'
-                                        ].includes(item.icon)
-                                    ) ? (
+                                    {([
+                                        'more', 'free', 'writing', 'books', 'ski', 'skiing', 'typescript', 'van', 'fullstack', 'web3d', 'rocket', 'logs', 'dashboard', 'bike', 'user', 'visitors', 'visitor', 'ki', 'users', 'pdf', 'tick', 'case', 'caseclosed', 'cases', 'caseclock', 'upload', 'plus', 'dog', 'about', 'experience', 'clients', 'link', 'album', 'flickr', 'photo', 'film', 'preview', 'add', 'account', 'download', 'job', 'copy', 'linkedin', 'core', 'cartridge', 'uberedux', 'good-fit', 'products', 'flash', 'speak-write', 'admin', 'private', 'company', 'feature', 'auth', 'design', 'ai', 'ask', 'forget', 'folder', 'fingerprint', 'fallmanager', 'youtube', 'boot', 'hide', 'show', 'save', 'filters', 'filter', 'fullscreen', 'examples', 'signup', 'what', 'when', 'who', 'how', 'legal', 'geo', 'docker', 'scuba', 'js', 'javascript', 'oliver', 'life', 'balance', 'bug', 'geolocator', 'google', 'lingua', 'plugin', 'doc', 'reset', 'accommodation', 'spy', 'seed', 'github', 'members', 'notifyer', 'notifyr', 'pingpong', 'close', 'bus', 'darkmode', 'lightmode', 'pool', 'boat', 'car', 'bar', 'shop', 'home', 'fish', 'mobile', 'blog', 'search', 'cancel', 'delete', 'techstack', 'backoffice', 'edit', 'example', 'goldlabel', 'wordpress', 'where', 'whatsapp', 'expand', 'web', 'twitter', 'facebook', 'ting', 'settings', 'team', 'email', 'contact', 'share', 'leaf', 'star', 'food', 'medical', 'scooter', 'diveshop', 'diving', 'news', 'aicase', 'activities', 'left', 'down', 'up', 'sitemap', 'right', 'menu', 'success', 'categories', 'category', 'tings', 'info', 'warning', 'error', 'signout', 'api', 'work', 'macos', 'signin', 'blokey', 'android', 'openai', 'chrome', 'desktop', 'desktopmac', 'edge', 'linux', 'windows', 'xbox', 'mac', 'why', 'iphone', 'paywall', 'safari', 'firefox', 'plugins', 'files', 'expertise', 'tags', 'terminal', 'bouncer'
+                                    ].includes(item.icon)) ? (
                                         <Icon icon={item.icon as any} color="primary" />
                                     ) : null}
                                 </ListItemIcon>
-                            )}
+                            )} */}
                             <ListItemText primary={label} />
                         </ListItemButton>
                         {hasChildren && filteredChildren && filteredChildren.length > 0 && (
@@ -113,16 +110,19 @@ const Nav: React.FC<I_Nav> = ({
             });
     }
 
+
     if (mode === 'mobile') {
         return (
             <>
-
                 <IconButton color="inherit" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
                     <Icon icon='menu' color="primary" />
                 </IconButton>
                 <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                    <Box sx={{ width: 250, mt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
-                        <Commerce config={config} />
+                    <Box sx={{ width: 300, mt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
+                        <Box sx={{ m: 1 }}>
+                            <Commerce config={config} />
+                        </Box>
+
                         <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>

@@ -15,7 +15,7 @@
                     "type": "route",
                     "path": "/how-to-use/edibles/ferrero-roche",
                     "price": "£14.99 (100mg THC)",
-                    "description": "Non-inhaled cannabinoids can show on-average improvements for pain and sleep for some adults compared with placebo",
+                    "description": "Two luscious truffles packed with 50mg each",
                     "icon": "food",
                     "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
                     "affiliate": "https://budbuddies.cc/product/ferrero-roche/bud/listingslab/?campaign=MCUK"
@@ -25,7 +25,7 @@
                     "type": "route",
                     "path": "/how-to-use/vape",
                     "price": "£45.49",
-                    "description": "No scratch in the throat, no surprise cough, no harsh burn.",
+                    "description": "No scratch in the throat, no surprise cough, no harsh burn",
                     "icon": "vape",
                     "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D620004.webp",
                     "affiliate": "https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/"
@@ -34,8 +34,18 @@
                     "title": "Nazi Killer Death Weed",
                     "type": "route",
                     "path": "/how-to-use/flower/insane-og",
-                    "price": "From £30 per gram",
-                    "description": "Insane OG is a potent hybrid strain known for its relaxing effects and earthy aroma.",
+                    "price": "Buy from £46.99/3.5g",
+                    "description": "Potent hybrid strain known for its relaxing effects and earthy aroma",
+                    "icon": "leaf",
+                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
+                    "affiliate": "https://budbuddies.cc/product/insane-og/bud/listingslab"
+                },
+                {
+                    "title": "Rainbow Sherbet #11",
+                    "type": "route",
+                    "path": "/how-to-use/flower/rs11",
+                    "price": "Buy from £37.59/3.5g",
+                    "description": "Uplifting head high and mellow body relaxation",
                     "icon": "leaf",
                     "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
                     "affiliate": "https://budbuddies.cc/product/insane-og/bud/listingslab"
