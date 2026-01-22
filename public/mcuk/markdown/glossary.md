@@ -2,6 +2,7 @@
 order: 555
 slug: /glossary
 title: Glossary
+icon: doc
 description: Medical Cannabis Terms and Definitions
 ---
 

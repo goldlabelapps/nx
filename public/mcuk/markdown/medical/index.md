@@ -4,7 +4,7 @@ slug: /medical
 title: Medical
 icon: medical
 description: Evidence-based benefits, conditions, outcomes, safety.
-flickr: adventure-monkeys
+flickr: monkey-doctor
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 

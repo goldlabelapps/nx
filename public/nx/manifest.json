@@ -10,9 +10,9 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/nx/favicon.svg",
-      "type": "image/svg+xml",
-      "sizes": "64x64",
+      "src": "/nx/favicon.png",
+      "type": "image/png",
+      "sizes": "180x180",
       "purpose": "any maskable"
     }
   ]

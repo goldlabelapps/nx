@@ -2,13 +2,14 @@
 order: 50
 slug: /how-to-use/edibles/ferrero-roche
 title: Ferrero Roche
+icon: food
 description: THC Infused chocolate truffles
 tags: edibles, Edible Products, Baked Goods, Chocolates
 image: https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp
 affiliate: https://budbuddies.cc/product/ferrero-roche/bud/listingslab/?campaign=MCUK
 ---
 
-# [Buy for £14.99](https://budbuddies.cc/product/ferrero-roche/bud/listingslab/?campaign=MCUK)
+[BuyNow url="https://budbuddies.cc/product/ferrero-roche/bud/listingslab/?campaign=MCUK" label="Buy for £14.99"]
 
 #### Wellbeing Notes & Responsible Use
 

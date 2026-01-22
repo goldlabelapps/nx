@@ -35,7 +35,7 @@ export const Ad: React.FC<{ ad: T_Ad }> = ({ ad }) => {
                 sx={{ width: '100%', borderRadius: 2 }}
             >
                 <CardHeader
-                    avatar={icon ? <Icon icon={icon as any} /> : undefined}
+                    avatar={icon ? <Icon icon={icon as any} color="primary" /> : undefined}
                     title={title}
                     subheader={description}
                     sx={{ alignItems: 'flex-start' }}
