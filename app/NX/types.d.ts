@@ -3,6 +3,31 @@ export interface I_NX {
     config: T_Config;
 }
 
+export type T_Ad =
+    | {
+        type: 'link';
+        title: string;
+        url: string;
+        description?: string;
+        icon?: string;
+        image?: string;
+    }
+    | {
+        type: 'route';
+        title: string;
+        path: string;
+        price?: string;
+        description?: string;
+        icon?: string;
+        image?: string;
+        affiliate?: string;
+    };
+
+export type T_CommerceCartridge = {
+    enabled: boolean;
+    ads: T_Ad[];
+};
+
 export type T_Config = {
     project: string;
     title: string;
@@ -15,6 +40,7 @@ export type T_Config = {
         uberedux?: T_UbereduxCartridge;
         designSystem?: T_DesignSystemCartridge;
         images?: T_ImagesCartridge;
+        commerce?: T_CommerceCartridge;
     };
 };
 
@@ -37,6 +63,10 @@ export type T_DesignSystemCartridge = {
         };
     };
 };
+
+
+
+
 
 // Images cartridge types
 export type T_ImagesCartridge = {
@@ -327,6 +357,7 @@ export type I_Icon = {
     | 'files'
     | 'expertise'
     | 'tags'
+    | 'vape'
     | 'terminal'
     | 'bouncer';
     color?: any;

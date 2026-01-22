@@ -13,7 +13,7 @@ import {
 import { NX } from '../NX';
 import { Icon, Nav, Footer } from '../NX/DesignSystem';
 import { FeaturedImage } from '../NX/Images';
-import { Ad } from '../NX/Commerce';
+import { Commerce } from '../NX/Commerce';
 import {
     AppBar,
     Avatar,
@@ -180,10 +180,12 @@ export default async function Page(props: any) {
                                 </Typography>}
                                 action={
                                     <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+
                                         <Nav
                                             mode="mobile"
                                             navItems={navItems as I_NestedNav["navItems"]}
                                             currentPath={slugPath || '/'}
+                                            config={config}
                                         />
                                     </Box>
                                 }
@@ -199,7 +201,7 @@ export default async function Page(props: any) {
                         display: 'grid',
                         gridTemplateColumns: {
                             xs: '1fr',
-                            md: '250px 1fr 250px'
+                            md: '250px 1fr 500px'
                         },
                         gap: 2,
                         alignItems: 'start',
@@ -218,6 +220,7 @@ export default async function Page(props: any) {
                         }}
                     >
                         <Nav
+                            config={config}
                             navItems={navItems as I_NestedNav["navItems"]}
                             currentPath={slugPath || '/'}
                             mode="desktop"
@@ -264,9 +267,9 @@ export default async function Page(props: any) {
                     <Box
                         sx={{
                             display: { xs: 'none', md: 'block' },
-                            width: { md: '250px' },
-                            minWidth: { md: '250px' },
-                            maxWidth: { md: '250px' },
+                            width: { md: '500px' },
+                            minWidth: { md: '500px' },
+                            maxWidth: { md: '500px' },
                             gridColumn: { md: '3' },
                             pr: 3,
                         }}
@@ -275,11 +278,13 @@ export default async function Page(props: any) {
                         <Box sx={{
 
                         }}>
-                            {data.type && (
+
+                            {data.cartridge && (
                                 <Typography color="primary" variant="body1">
-                                    type: {data.type}
+                                    cartridge: {data.cartridge}
                                 </Typography>
                             )}
+                            <Commerce config={config} />
                         </Box>
                     </Box>
                 </Box>

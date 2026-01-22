@@ -13,6 +13,7 @@ import {
     ListItemIcon,
 } from '@mui/material';
 import { Icon } from '../../DesignSystem';
+import { Commerce } from '../../Commerce';
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
@@ -27,12 +28,14 @@ interface I_Nav {
     navItems: I_NavNode[];
     currentPath?: string;
     mode?: 'mobile' | 'desktop';
+    config: any;
 }
 
 const Nav: React.FC<I_Nav> = ({
     navItems,
     currentPath,
     mode = 'desktop',
+    config,
 }) => {
     const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
@@ -113,11 +116,13 @@ const Nav: React.FC<I_Nav> = ({
     if (mode === 'mobile') {
         return (
             <>
+
                 <IconButton color="inherit" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
                     <Icon icon='menu' color="primary" />
                 </IconButton>
                 <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                     <Box sx={{ width: 250, mt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
+                        <Commerce config={config} />
                         <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>

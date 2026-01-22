@@ -8,6 +8,8 @@ flickr: adventure-monkeys
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 
+> Non-inhaled cannabinoids can show on-average improvements for pain and sleep for some adults compared with placebo
+
 * Conditions & symptoms
 * How medical cannabis works (endocannabinoid system)
 * Dosing basics & harm reduction

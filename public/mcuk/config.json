@@ -7,6 +7,41 @@
     "icon": "/mcuk/favicon.png",
     "favicon": "/mcuk/favicon.ico",
     "cartridges": {
+        "commerce": {
+            "enabled": true,
+            "ads": [
+                {
+                    "title": "THC Infused chocolate truffles",
+                    "type": "route",
+                    "path": "/how-to-use/edibles/ferrero-roche",
+                    "price": "£14.99 (100mg THC)",
+                    "description": "Non-inhaled cannabinoids can show on-average improvements for pain and sleep for some adults compared with placebo",
+                    "icon": "food",
+                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
+                    "affiliate": "https://budbuddies.cc/product/ferrero-roche/bud/listingslab/?campaign=MCUK"
+                },
+                {
+                    "title": "THC Vapes",
+                    "type": "route",
+                    "path": "/how-to-use/vape",
+                    "price": "£45.49",
+                    "description": "No scratch in the throat, no surprise cough, no harsh burn.",
+                    "icon": "vape",
+                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D620004.webp",
+                    "affiliate": "https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/"
+                },
+                {
+                    "title": "Nazi Killer Death Weed",
+                    "type": "route",
+                    "path": "/how-to-use/flower/insane-og",
+                    "price": "From £30 per gram",
+                    "description": "Insane OG is a potent hybrid strain known for its relaxing effects and earthy aroma.",
+                    "icon": "leaf",
+                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
+                    "affiliate": "https://budbuddies.cc/product/insane-og/bud/listingslab"
+                }
+            ]
+        },
         "designSystem": {
             "allowTheme": false,
             "defaultTheme": "light",

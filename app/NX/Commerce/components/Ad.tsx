@@ -1,32 +1,47 @@
+"use client";
+
 import React from "react";
-import { Typography, Box, Button } from '@mui/material';
+import type { T_Ad } from '../../types';
+import { useRouter } from 'next/navigation';
+import {
+    Card,
+    CardHeader,
+    ButtonBase,
+} from '@mui/material';
+import { Icon } from '../../DesignSystem'
 
-export type T_AdAction = 'routeTo' | 'alert';
 
-export interface AdProps {
-    ad: {
-        title: string;
-        description: string;
-        actionType: T_AdAction;
-        route: string;
-        ctaLabel: string;
+export const Ad: React.FC<{ ad: T_Ad }> = ({ ad }) => {
+    const { type, description, title, icon } = ad;
+    const router = useRouter();
+
+    const handleClick = () => {
+        if (type === 'link' && 'url' in ad && ad.url) {
+            window.open(ad.url, '_blank', 'noopener,noreferrer');
+        } else if (type === 'route' && 'path' in ad && ad.path) {
+            router.push(ad.path);
+        } else {
+            console.log("handleClick for ad", ad);
+        }
     };
-}
 
-export const Ad: React.FC<AdProps> = ({ ad }) => {
-    const { title, description, actionType, route, ctaLabel } = ad;
     return (
-        <Box sx={{ p: 2, border: '1px solid #eee', borderRadius: 2, textAlign: 'center' }}>
-            <Typography variant="h6" gutterBottom>{title}</Typography>
-            <Typography variant="body2" gutterBottom>{description}</Typography>
-            <Button
-                variant={'outlined'}
-                color={'primary'}
-                href={actionType === 'routeTo' ? route : undefined}
-                onClick={actionType === 'alert' ? () => alert('Action!') : undefined}
+        <ButtonBase
+            onClick={handleClick}
+            sx={{ width: '100%', mb: 1, borderRadius: 2, textAlign: 'left' }}
+        >
+            <Card
+                variant="outlined"
+                sx={{ width: '100%', borderRadius: 2 }}
             >
-                {ctaLabel}
-            </Button>
-        </Box>
+                <CardHeader
+                    avatar={icon ? <Icon icon={icon as any} /> : undefined}
+                    title={title}
+                    subheader={description}
+                    sx={{ alignItems: 'flex-start' }}
+                />
+                {/* <pre>ad: {JSON.stringify(ad, null, 2)}</pre> */}
+            </Card>
+        </ButtonBase>
     );
 };
