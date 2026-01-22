@@ -1,0 +1,49 @@
+{
+    "project": "edtech",
+    "url": "https://ed-tech.co",
+    "title": "EdTech",
+    "description": "Teach your kids to code",
+    "image": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg",
+    "icon": "/edtech/favicon.png",
+    "favicon": "/edtech/favicon.ico",
+    "cartridges": {
+        "commerce": {
+            "enabled": true,
+            "ads": [
+                {
+                    "title": "Python",
+                    "type": "link",
+                    "url": "https://www.learnpython.org/",
+                    "description": "Get started learning Python by completing interactive coding challenges"
+                }
+            ]
+        },
+        "designSystem": {
+            "enabled": true,
+            "allowTheme": false,
+            "defaultTheme": "light",
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#b67d02",
+                    "secondary": "#b67d02",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#000",
+                    "border": "#FAB109"
+                }
+            }
+        },
+        "flickr": {
+            "enabled": true,
+            "photos": [
+                {
+                    "title": "Wei Zang teaching Flash",
+                    "id": "54802570139",
+                    "flickrSlug": "weizang-teaching-flash",
+                    "src": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg"
+                }
+            ]
+        }
+    }
+}
