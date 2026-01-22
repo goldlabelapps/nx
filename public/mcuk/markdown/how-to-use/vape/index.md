@@ -9,7 +9,7 @@ image: https://budbuddies.cc/wp-content/uploads/2025/11/FullSpectrum-Clouds-Fron
 affiliate: https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/
 ---
 
-[BuyNow url="https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/" label="Buy for £45.49"]
+[BuyNow url="https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/" label="Buy now for £45.49"]
 
 > Notice what doesn’t happen. No scratch in the throat, no surprise cough, no harsh burn. Full Spectrum Clouds is the vape you reach for when you want big fruit flavour, a softer edge and a more “whole plant” feel than straight distillate
 

@@ -1,4 +1,3 @@
-// /Users/goldlabel/GitHub/example-app/gl-core/cartridges/DesignSystem/components/RenderMarkdown.tsx
 'use client';
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -10,29 +9,16 @@ import {
   alpha,
 } from '@mui/material';
 import {
-  GoogleMap,
-  YouTube,
-  PageAd,
-  Mapbox,
-  PrevNext,
-  GitHub,
-  ChildPages,
-  PageGrid,
-  LinkOut,
-} from '../../../../gl-core';
+  BuyNow,
+} from '../../Shortcodes';
 
-type TRenderMarkdown = {
+export type I_RenderMarkdown = {
   children: React.ReactNode;
-  height?: number | string;
-  width?: number | string;
-  maxWidth?: number | string | null;
 };
 
 export default function RenderMarkdown({
   children = '',
-  width,
-  maxWidth,
-}: TRenderMarkdown) {
+}: I_RenderMarkdown) {
   const theme = useTheme();
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
@@ -66,49 +52,10 @@ export default function RenderMarkdown({
       return <Component {...props} />;
     };
 
-    // GoogleMap
-    const google = parseShortcode(/\[GoogleMap\s+(.*?)\]/, GoogleMap);
-    if (google) return google;
 
-    // FlickrAlbum
-    // const flickr = parseShortcode(/\[FlickrAlbum\s+(.*?)\]/, FlickrAlbum);
-    // if (flickr) return flickr;
-
-    // YouTube
-    const youtube = parseShortcode(/\[YouTube\s+(.*?)\]/, YouTube);
-    if (youtube) return youtube;
-
-    // Flash
-    // const flash = parseShortcode(/\[Flash\s+(.*?)\]/, Flash);
-    // if (flash) return flash;
-
-    // PageAd
-    const pageAd = parseShortcode(/\[PageAd\s+(.*?)\]/, PageAd);
-    if (pageAd) return pageAd;
-
-    // Mapbox shortcode
-    const mapbox = parseShortcode(/\[Mapbox\s+(.*?)\]/, Mapbox);
-    if (mapbox) return mapbox;
-
-    // PrevNext
-    const prevNext = parseShortcode(/\[PrevNext\s+(.*?)\]/, PrevNext);
-    if (prevNext) return prevNext;
-
-    // GitHub
-    const github = parseShortcode(/\[GitHub\s+(.*?)\]/, GitHub);
-    if (github) return github;
-
-    // ChildPages
-    const childPages = parseShortcode(/\[ChildPages\s+(.*?)\]/, ChildPages);
-    if (childPages) return childPages;
-
-    // PageGrid
-    const pageGrid = parseShortcode(/\[PageGrid\s+(.*?)\]/, PageGrid);
-    if (pageGrid) return pageGrid;
-
-    // LinkOut
-    const linkOut = parseShortcode(/\[LinkOut\s+(.*?)\]/, LinkOut);
-    if (linkOut) return linkOut;
+    // BuyNow
+    const buyNow = parseShortcode(/\[BuyNow\s+(.*?)\]/, BuyNow);
+    if (buyNow) return buyNow;
 
     // fallback: simply return text
     return text;
@@ -117,9 +64,6 @@ export default function RenderMarkdown({
   return (
     <Box
       sx={{
-        width: width ?? '100%',
-        maxWidth: maxWidth ?? '100%',
-        minHeight: 0,
         display: 'flex',
         flexDirection: 'column',
         gap: 1,
@@ -130,7 +74,6 @@ export default function RenderMarkdown({
         sx={{
           flexGrow: 1,
           overflowY: 'auto',
-          minHeight: 0,
           scrollbarWidth: 'auto',
           scrollbarColor: `${theme.palette.primary.main} ${theme.palette.background.paper}`,
           '&::-webkit-scrollbar': { width: '12px' },
