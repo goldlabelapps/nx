@@ -11,13 +11,18 @@ import {
 import {
   BuyNow,
 } from '../../Shortcodes';
+import {
+  CommerceShortcode,
+} from '../../Commerce';
 
 export type I_RenderMarkdown = {
   children: React.ReactNode;
+  config: any;
 };
 
 export default function RenderMarkdown({
   children = '',
+  config,
 }: I_RenderMarkdown) {
   const theme = useTheme();
   const scrollRef = React.useRef<HTMLDivElement>(null);
@@ -49,13 +54,16 @@ export default function RenderMarkdown({
         props[attrMatch[1]] = val;
       }
 
-      return <Component {...props} />;
+      return <Component {...props} config={config} />;
     };
-
 
     // BuyNow
     const buyNow = parseShortcode(/\[BuyNow\s+(.*?)\]/, BuyNow);
     if (buyNow) return buyNow;
+
+    // Commerce
+    const commerce = parseShortcode(/\[CommerceShortcode\s+(.*?)\]/, CommerceShortcode);
+    if (commerce) return commerce;
 
     // fallback: simply return text
     return text;
@@ -90,17 +98,17 @@ export default function RenderMarkdown({
         <ReactMarkdown
           components={{
             h1: ({ children }) => (
-              <Typography variant="h4" sx={{ my: 1, fontWeight: 'normal' }}>
+              <Typography variant="h4" sx={{ my: 1, fontWeight: 'lighter' }}>
                 {children}
               </Typography>
             ),
             h2: ({ children }) => (
-              <Typography variant="h5" sx={{ my: 1, fontWeight: 'normal' }}>
+              <Typography variant="h5" sx={{ my: 1, fontWeight: 'lighter' }}>
                 {children}
               </Typography>
             ),
             h3: ({ children }) => (
-              <Typography variant="h6" sx={{ my: 1, fontWeight: 'normal' }}>
+              <Typography variant="h6" sx={{ my: 1, fontWeight: 'lighter' }}>
                 {children}
               </Typography>
             ),

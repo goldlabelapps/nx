@@ -28,6 +28,10 @@ export type T_CommerceCartridge = {
     ads: T_Ad[];
 };
 
+export type T_CommerceShortcode = {
+    [key: string]: any;
+};
+
 export type T_Config = {
     project: string;
     title: string;
