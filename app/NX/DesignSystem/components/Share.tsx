@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import type { T_SmartImage } from '../../types';
 import {
     FacebookShareButton,
     LinkedinShareButton,
@@ -12,14 +13,19 @@ import {
     ListItemIcon,
     ListItemText,
 } from '@mui/material';
-import { Icon } from '../';
+import {
+    Icon,
+    SmartImage,
+} from '../../DesignSystem';
 
 export type I_Share = {
     frontmatter?: any;
+    smartImage?: T_SmartImage;
 };
 
 export default function Share({
     frontmatter = null,
+    smartImage,
 }: I_Share) {
 
     const [copied, setCopied] = React.useState(false);
@@ -29,6 +35,9 @@ export default function Share({
 
     return (
         <>
+            <Box sx={{ mx: 2 }}>
+                <SmartImage smartImage={smartImage} />
+            </Box>
             <MenuItem
                 onClick={() => {
                     navigator.clipboard.writeText(url);

@@ -2,13 +2,15 @@ export interface I_NX {
     children: React.ReactNode;
     config: T_Config;
 }
+smartImage ?: T_SmartImage;
+}
 
-export type T_Photo = {
+export type T_SmartImage = {
     src: string;
     meta: {
         title?: string;
         alt?: string;
-        message: string;
+        message?: string;
     };
 };
 

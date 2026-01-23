@@ -16,10 +16,10 @@ import {
 import {
     serverUseMDBySlug,
     serverUseAllMd,
-    serverUsePhoto,
+    serverUseSmartImage,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Icon, Nav, Footer } from '../NX/DesignSystem';
+import { Icon, Nav, Footer, SmartImage } from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import nxConfig from '../../public/nx/config.json';
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         frontmatter = data;
     }
     let url = config.url || "";
-    const photo = await serverUsePhoto(config, frontmatter);
+    const smartImage = await serverUseSmartImage(config, frontmatter);
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
 
@@ -73,14 +73,14 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             description,
             url: pageUrl,
             siteName: config.title,
-            images: [photo.src],
+            images: [smartImage.src],
             type: "website",
         },
         twitter: {
             card: "summary_large_image",
             title,
             description,
-            images: [photo.src],
+            images: [smartImage.src],
             site: config.title,
         },
     };
@@ -145,7 +145,7 @@ export default async function Page(props: any) {
     let description = "";
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
-    const photo = await serverUsePhoto(config, data);
+    const smartImage = await serverUseSmartImage(config, data);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
 
@@ -252,10 +252,8 @@ export default async function Page(props: any) {
                             )}
                             {description}
                         </Typography>
+                        <SmartImage smartImage={smartImage} />
 
-                        <pre>
-                            {JSON.stringify(photo, null, 2)}
-                        </pre>
                         <RenderMarkdown config={config}>
                             {content}
                         </RenderMarkdown>
@@ -286,6 +284,7 @@ export default async function Page(props: any) {
                 <Footer
                     config={config}
                     frontmatter={data}
+                    smartImage={smartImage}
                 />
             </footer>
         </NX>

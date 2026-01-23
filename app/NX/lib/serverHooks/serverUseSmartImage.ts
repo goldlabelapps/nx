@@ -1,14 +1,14 @@
-import { T_Config, T_Frontmatter, T_Photo } from '../../types';
+import { T_Config, T_Frontmatter, T_SmartImage } from '../../types';
 
-export async function serverUsePhoto(config: T_Config, frontmatter: T_Frontmatter): Promise<T_Photo> {
-    // Priority: frontmatter.image > frontmatter.flickr (lookup) > config.image
+export async function serverUseSmartImage(config: T_Config, frontmatter: T_Frontmatter): Promise<T_SmartImage> {
+
     if (frontmatter?.image) {
         return {
             src: frontmatter.image,
             meta: {
                 title: frontmatter.title || '',
                 alt: frontmatter.title || '',
-                message: 'Using image from frontmatter.image'
+                message: 'From frontmatter.image'
             }
         };
     }
@@ -21,7 +21,7 @@ export async function serverUsePhoto(config: T_Config, frontmatter: T_Frontmatte
                 meta: {
                     title: flickrObj.title || '',
                     alt: flickrObj.title || '',
-                    message: 'Using image from config Flickr array via frontmatter.flickr'
+                    message: 'From config Flickr array via frontmatter.flickr'
                 }
             };
         }
@@ -32,7 +32,7 @@ export async function serverUsePhoto(config: T_Config, frontmatter: T_Frontmatte
             meta: {
                 title: config.title || '',
                 alt: config.title || '',
-                message: 'Using fallback image from config.image'
+                message: 'Fallback image from config.image'
             }
         };
     }

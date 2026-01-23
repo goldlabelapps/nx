@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from "react";
-import type { T_Config, T_Frontmatter } from '../../types';
+import type { T_Config, T_Frontmatter, T_SmartImage } from '../../types';
 import {
 	Box,
 	useTheme,
@@ -16,10 +16,12 @@ import { Share } from '../../DesignSystem';
 export interface I_Footer {
 	config: T_Config;
 	frontmatter?: T_Frontmatter;
+	smartImage?: T_SmartImage;
 }
 
 const Footer: React.FC<I_Footer> = ({
 	frontmatter,
+	smartImage,
 }) => {
 	const theme = useTheme();
 	const [open, setOpen] = useState(false);
@@ -29,7 +31,6 @@ const Footer: React.FC<I_Footer> = ({
 
 	return (
 		<>
-
 			<IconButton
 				color="primary"
 				aria-label="Call To Action"
@@ -62,6 +63,7 @@ const Footer: React.FC<I_Footer> = ({
 				/>
 				<Share
 					frontmatter={frontmatter}
+					smartImage={smartImage}
 				/>
 				<Box sx={{ height: 16 }} />
 			</Dialog>
