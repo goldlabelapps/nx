@@ -18,10 +18,11 @@ import {
 import {
     serverUseMDBySlug,
     serverUseAllMd,
+    serverUsePhoto,
 } from '../NX/lib';
 import { NX } from '../NX';
 import { Icon, Nav, Footer } from '../NX/DesignSystem';
-import { FeaturedImage } from '../NX/Images';
+// import { FeaturedImage } from '../NX/Images';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
@@ -48,6 +49,16 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         config = nxConfig as T_Config;
     }
     const filePath = serverUseMDBySlug(slugArr, project);
+    let frontmatter = {};
+    if (filePath && fs.existsSync(filePath)) {
+        const md = fs.readFileSync(filePath, "utf-8");
+        const { data } = matter(md);
+        frontmatter = data;
+    }
+
+    const photo = await serverUsePhoto(config, frontmatter);
+    console.log('photo', photo)
+
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
     let image = "/shared/target.jpg";
@@ -72,14 +83,14 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             description,
             url: pageUrl,
             siteName: config.title,
-            images: [image],
+            images: [image, photo], // include photo in images array
             type: "website",
         },
         twitter: {
             card: "summary_large_image",
             title,
             description,
-            images: [image],
+            images: [image, photo], // include photo in images array
             site: config.title,
         },
     };
@@ -139,20 +150,17 @@ export default async function Page(props: any) {
     const navItems = await serverUseNav();
     if (!filePath || !fs.existsSync(filePath)) {
         notFound();
-    }
-    let htmlContent = "<p>404, bro:(</p>";
-
+    };
     let title = project.toUpperCase();
     let description = "";
-    let image = "/shared/target.jpg";
+    let image = "/shared/jpg/target.jpg";
     if (config.image) image = config.image;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
+    const photo = await serverUsePhoto(config, data);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
     if (data.image) image = data.image;
-    const result = await remark().use(html).process(content);
-    htmlContent = result.toString();
 
     return (
         <NX config={config}>
@@ -264,12 +272,12 @@ export default async function Page(props: any) {
                             {description}
                         </Typography>
 
-                        {(data.image || data.flickr) && (
+                        {/* {(data.image || data.flickr || photo) && (
                             <FeaturedImage
-                                frontmatter={data}
+                                frontmatter={{ ...data, image: photo }}
                                 config={config}
                             />
-                        )}
+                        )} */}
                         <RenderMarkdown config={config}>
                             {content}
                         </RenderMarkdown>
@@ -298,10 +306,8 @@ export default async function Page(props: any) {
             </Container>
             <footer>
                 <Footer
-                    metaImage={image}
                     config={config}
                     frontmatter={data}
-                    bgcolor={bg}
                 />
             </footer>
         </NX>

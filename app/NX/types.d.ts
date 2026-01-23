@@ -3,6 +3,15 @@ export interface I_NX {
     config: T_Config;
 }
 
+export type T_Photo = {
+    src: string;
+    meta: {
+        title?: string;
+        alt?: string;
+        message: string;
+    };
+};
+
 export type T_Ad =
     | {
         type: 'link';
@@ -67,10 +76,6 @@ export type T_DesignSystemCartridge = {
         };
     };
 };
-
-
-
-
 
 // Images cartridge types
 export type T_ImagesCartridge = {

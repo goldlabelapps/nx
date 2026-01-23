@@ -36,7 +36,7 @@ export const Shortcode: React.FC<I_Shortcode> = ({ slug, config }) => {
         return <div style={{ color: 'red' }}>{error}</div>;
     }
     if (!ad) {
-        return <div>Loading...</div>;
+        return <Typography variant="body2" color="primary">Loading Shortcode...</Typography>;
     }
 
     const handleClick = () => {
@@ -59,7 +59,7 @@ export const Shortcode: React.FC<I_Shortcode> = ({ slug, config }) => {
                                 <Icon icon={'shop'} color="primary" />
                             </Box>
                         )}
-                        <Typography variant="h4" component="h2" color="primary">
+                        <Typography variant="h6" component="h2" color="primary">
                             {ad.price.toUpperCase()}
                         </Typography>
                     </Box>

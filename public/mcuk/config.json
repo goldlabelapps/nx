@@ -65,7 +65,7 @@
                     "primary": "#17A1AC",
                     "secondary": "#1b595dff",
                     "background": "#fff",
-                    "paper": "#f3f3f3ff",
+                    "paper": "#fff",
                     "border": "#17A1AC",
                     "text": "#000"
                 },
@@ -74,7 +74,7 @@
                     "primary": "#17A1AC",
                     "secondary": "#07c7d5ff",
                     "background": "#000",
-                    "paper": "#1e1e1eff",
+                    "paper": "#000",
                     "text": "#fff",
                     "border": "#17A1AC"
                 }
