@@ -35,22 +35,6 @@
             "enabled": true,
             "allowTheme": false,
             "defaultTheme": "light",
-            "themes": {
-                "light": {
-                    "mode": "light",
-                    "primary": "#b67d02",
-                    "secondary": "#b67d02",
-                    "background": "#fff",
-                    "paper": "#fff",
-                    "text": "#000",
-                    "border": "#FAB109"
-                }
-            }
-        },
-        "flickr": {
-            "enabled": true,
-            "description": "Flickr for NX",
-            "defaultSlug": "random",
             "photos": [
                 {
                     "title": "Default",
@@ -100,7 +84,18 @@
                     "flickrSlug": "team",
                     "src": "https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg"
                 }
-            ]
+            ],
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#b67d02",
+                    "secondary": "#b67d02",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#000",
+                    "border": "#FAB109"
+                }
+            }
         }
     }
 }

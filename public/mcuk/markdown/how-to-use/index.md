@@ -6,6 +6,7 @@ icon: activities
 description: Different ways to consume cannabis, including smoking, vaping, and edibles
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 affiliate: https://budbuddies.cc/bud/listingslab/
+smartImage: adventure-monkeys
 ---
 
 ### Practical, user-facing education

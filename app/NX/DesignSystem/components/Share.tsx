@@ -1,23 +1,31 @@
 'use client';
 import * as React from 'react';
-import Image from "next/image";
+import type { T_SmartImage } from '../../types';
 import {
     FacebookShareButton,
     LinkedinShareButton,
     WhatsappShareButton,
     TwitterShareButton,
 } from 'react-share';
-import { Box, MenuItem, ListItemIcon, ListItemText } from '@mui/material';
-import { Icon } from '../';
+import {
+    Box,
+    MenuItem,
+    ListItemIcon,
+    ListItemText,
+} from '@mui/material';
+import {
+    Icon,
+    SmartImage,
+} from '../../DesignSystem';
 
 export type I_Share = {
     frontmatter?: any;
-    metaImage?: string;
+    smartImage?: T_SmartImage;
 };
 
 export default function Share({
     frontmatter = null,
-    metaImage = '/shared/target.jpg',
+    smartImage,
 }: I_Share) {
 
     const [copied, setCopied] = React.useState(false);
@@ -27,37 +35,9 @@ export default function Share({
 
     return (
         <>
-
-            <Box
-                sx={{
-                    width: '100%',
-                    height: { xs: 150, sm: 250, md: 315 },
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    mt: { xs: '0.25rem', md: '1rem' },
-                    mb: { xs: '1rem', md: '1.5rem' },
-                    borderRadius: '1rem',
-                    overflow: 'hidden',
-                }}
-            >
-                <Image
-                    alt={`${title}, ${description}`}
-                    src={metaImage}
-                    width={1200}
-                    height={315}
-                    style={{
-                        objectFit: 'cover',
-                        width: '100%',
-                        height: '100%',
-                        borderRadius: '1rem',
-                        display: 'block',
-                        maxHeight: '100%',
-                    }}
-                    priority
-                />
+            <Box sx={{ mx: 2 }}>
+                <SmartImage smartImage={smartImage} />
             </Box>
-
             <MenuItem
                 onClick={() => {
                     navigator.clipboard.writeText(url);
@@ -67,16 +47,19 @@ export default function Share({
                     }, 1500);
                 }}
             >
-                <ListItemIcon>
+                <ListItemIcon sx={{ mr: 1 }}>
                     <Icon icon="copy" color="secondary" />
                 </ListItemIcon>
-                <ListItemText primary={copied ? 'Copied!' : 'Copy Link'} />
+                <ListItemText
+                    primary={copied ? 'Copied!' : 'Copy Link'}
+                    secondary={url}
+                />
             </MenuItem>
 
             <MenuItem sx={{ p: 0 }}>
                 <FacebookShareButton url={url} style={fullWidth}>
                     <Box display="flex" alignItems="center" px={2} py={1}>
-                        <ListItemIcon>
+                        <ListItemIcon sx={{ mr: 1 }}>
                             <Icon icon="facebook" color="secondary" />
                         </ListItemIcon>
                         <ListItemText primary="Facebook" />
@@ -87,7 +70,7 @@ export default function Share({
             <MenuItem sx={{ p: 0 }}>
                 <TwitterShareButton title={title} url={url}>
                     <Box display="flex" alignItems="center" px={2} py={1}>
-                        <ListItemIcon>
+                        <ListItemIcon sx={{ mr: 1 }}>
                             <Icon icon="twitter" color="secondary" />
                         </ListItemIcon>
                         <ListItemText primary="Twitter (X)" />
@@ -104,7 +87,7 @@ export default function Share({
                     style={fullWidth}
                 >
                     <Box display="flex" alignItems="center" px={2} py={1}>
-                        <ListItemIcon>
+                        <ListItemIcon sx={{ mr: 1 }}>
                             <Icon icon="linkedin" color="secondary" />
                         </ListItemIcon>
                         <ListItemText primary="LinkedIn" />
@@ -120,7 +103,7 @@ export default function Share({
                     style={fullWidth}
                 >
                     <Box display="flex" alignItems="center" px={2} py={1}>
-                        <ListItemIcon>
+                        <ListItemIcon sx={{ mr: 1 }}>
                             <Icon icon="whatsapp" color="secondary" />
                         </ListItemIcon>
                         <ListItemText primary="WhatsApp" />
