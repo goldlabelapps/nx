@@ -3,8 +3,6 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { serverUseNav } from "../NX/lib/";
 import fs from "fs";
-import { remark } from "remark";
-import html from "remark-html";
 import matter from "gray-matter";
 import {
     AppBar,
@@ -22,11 +20,8 @@ import {
 } from '../NX/lib';
 import { NX } from '../NX';
 import { Icon, Nav, Footer } from '../NX/DesignSystem';
-// import { FeaturedImage } from '../NX/Images';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
-
-
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
@@ -55,42 +50,37 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         const { data } = matter(md);
         frontmatter = data;
     }
-
+    let url = config.url || "";
     const photo = await serverUsePhoto(config, frontmatter);
-    console.log('photo', photo)
-
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
-    let image = "/shared/target.jpg";
-    if (config.image) image = config.image;
 
-    let url = config.url || "";
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
         if (data.title) title = data.title;
         if (data.description) description = data.description;
-        if (data.image) image = data.image;
         if (data.url) url = data.url;
     }
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
+
     return {
-        title,
+        title: `${title}, ${description}`,
         description,
         openGraph: {
             title: `${title}, ${description}`,
             description,
             url: pageUrl,
             siteName: config.title,
-            images: [image, photo], // include photo in images array
+            images: [photo.src],
             type: "website",
         },
         twitter: {
             card: "summary_large_image",
             title,
             description,
-            images: [image, photo], // include photo in images array
+            images: [photo.src],
             site: config.title,
         },
     };
@@ -153,14 +143,11 @@ export default async function Page(props: any) {
     };
     let title = project.toUpperCase();
     let description = "";
-    let image = "/shared/jpg/target.jpg";
-    if (config.image) image = config.image;
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
     const photo = await serverUsePhoto(config, data);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-    if (data.image) image = data.image;
 
     return (
         <NX config={config}>
@@ -188,8 +175,6 @@ export default async function Page(props: any) {
                                     </IconButton>
                                 </a>}
                                 title={<Typography
-                                    sx={{
-                                    }}
                                     color='secondary'
                                     variant="h4"
                                     component="h1"
@@ -198,7 +183,6 @@ export default async function Page(props: any) {
                                 </Typography>}
                                 action={
                                     <Box sx={{ display: { xs: 'block', md: 'none' } }}>
-
                                         <Nav
                                             mode="mobile"
                                             navItems={navItems as I_NestedNav["navItems"]}
@@ -226,7 +210,6 @@ export default async function Page(props: any) {
                         width: '100%'
                     }}
                 >
-
                     <Box
                         component="nav"
                         sx={{
@@ -244,7 +227,6 @@ export default async function Page(props: any) {
                             mode="desktop"
                         />
                     </Box>
-
                     <Box
                         component="main"
                         sx={{
@@ -255,7 +237,6 @@ export default async function Page(props: any) {
                             pl: { xs: 2, lg: 0 },
                         }}
                     >
-
                         <Typography
                             sx={{
                                 display: 'flex',
@@ -272,12 +253,9 @@ export default async function Page(props: any) {
                             {description}
                         </Typography>
 
-                        {/* {(data.image || data.flickr || photo) && (
-                            <FeaturedImage
-                                frontmatter={{ ...data, image: photo }}
-                                config={config}
-                            />
-                        )} */}
+                        <pre>
+                            {JSON.stringify(photo, null, 2)}
+                        </pre>
                         <RenderMarkdown config={config}>
                             {content}
                         </RenderMarkdown>
