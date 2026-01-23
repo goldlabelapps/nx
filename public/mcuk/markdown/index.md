@@ -4,7 +4,7 @@ slug: /
 icon: home
 title: MCUK
 description:  Medical Cannabis UK. Legal, medical, and practical aspects
-flickr: monkey-doctor
+smartImage: monkey-doctor
 tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  
 ---
 

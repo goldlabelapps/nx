@@ -59,31 +59,7 @@
         "designSystem": {
             "allowTheme": false,
             "defaultTheme": "light",
-            "themes": {
-                "light": {
-                    "mode": "light",
-                    "primary": "#17A1AC",
-                    "secondary": "#1b595dff",
-                    "background": "#fff",
-                    "paper": "#fff",
-                    "border": "#17A1AC",
-                    "text": "#000"
-                },
-                "dark": {
-                    "mode": "dark",
-                    "primary": "#17A1AC",
-                    "secondary": "#07c7d5ff",
-                    "background": "#000",
-                    "paper": "#000",
-                    "text": "#fff",
-                    "border": "#17A1AC"
-                }
-            }
-        },
-        "images": {
-            "enabled": true,
-            "mode": "flickr",
-            "flickr": [
+            "smartImages": [
                 {
                     "title": "Adventure monkeys",
                     "slug": "adventure-monkeys",
@@ -126,7 +102,27 @@
                     "flickrId": "55016269007",
                     "src": "https://live.staticflickr.com/65535/55016269007_092c55e1ba_b.jpg"
                 }
-            ]
+            ],
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#17A1AC",
+                    "secondary": "#1b595dff",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "border": "#17A1AC",
+                    "text": "#000"
+                },
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#17A1AC",
+                    "secondary": "#07c7d5ff",
+                    "background": "#000",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#17A1AC"
+                }
+            }
         }
     }
 }

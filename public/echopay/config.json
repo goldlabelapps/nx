@@ -26,6 +26,14 @@
         "designSystem": {
             "allowTheme": true,
             "defaultTheme": "dark",
+            "smartImages": [
+                {
+                    "title": "EchoPay",
+                    "slug": "echopay",
+                    "flickrId": "55047631940",
+                    "src": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg"
+                }
+            ],
             "themes": {
                 "light": {
                     "mode": "light",
@@ -46,18 +54,6 @@
                     "border": "#17A1AC"
                 }
             }
-        },
-        "images": {
-            "enabled": true,
-            "mode": "flickr",
-            "flickr": [
-                {
-                    "title": "EchoPay",
-                    "slug": "echopay",
-                    "flickrId": "55047631940",
-                    "src": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg"
-                }
-            ]
         }
     }
 }

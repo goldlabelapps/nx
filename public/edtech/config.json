@@ -22,6 +22,14 @@
             "enabled": true,
             "allowTheme": false,
             "defaultTheme": "light",
+            "smartImages": [
+                {
+                    "title": "Wei Zang teaching Flash",
+                    "id": "54802570139",
+                    "flickrSlug": "weizang-teaching-flash",
+                    "src": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg"
+                }
+            ],
             "themes": {
                 "light": {
                     "mode": "light",
@@ -33,17 +41,6 @@
                     "border": "#FAB109"
                 }
             }
-        },
-        "flickr": {
-            "enabled": true,
-            "photos": [
-                {
-                    "title": "Wei Zang teaching Flash",
-                    "id": "54802570139",
-                    "flickrSlug": "weizang-teaching-flash",
-                    "src": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg"
-                }
-            ]
         }
     }
 }

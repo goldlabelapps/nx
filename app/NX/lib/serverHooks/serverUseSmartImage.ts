@@ -8,20 +8,20 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
             meta: {
                 title: frontmatter.title || '',
                 alt: frontmatter.title || '',
-                message: 'From frontmatter.image'
+                mode: 'image',
             }
         };
     }
-    if (frontmatter?.flickr && config?.cartridges?.images?.flickr) {
-        const flickrArr = config.cartridges.images.flickr;
-        const flickrObj = flickrArr.find((item: any) => item.slug === frontmatter.flickr);
-        if (flickrObj && flickrObj.src) {
+    if (frontmatter?.smartImage && config?.cartridges?.designSystem?.smartImages) {
+        const smartImagesArr = config.cartridges.designSystem.smartImages;
+        const smartImageObj = smartImagesArr.find((item: any) => item.slug === frontmatter.smartImage);
+        if (smartImageObj && smartImageObj.src) {
             return {
-                src: flickrObj.src,
+                src: smartImageObj.src,
                 meta: {
-                    title: flickrObj.title || '',
-                    alt: flickrObj.title || '',
-                    message: 'From config Flickr array via frontmatter.flickr'
+                    title: smartImageObj.title || '',
+                    alt: smartImageObj.title || '',
+                    mode: 'smartImage'
                 }
             };
         }
@@ -32,7 +32,7 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
             meta: {
                 title: config.title || '',
                 alt: config.title || '',
-                message: 'Fallback image from config.image'
+                mode: 'config'
             }
         };
     }
@@ -40,7 +40,7 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
     return {
         src: '',
         meta: {
-            message: 'No image found in frontmatter or config.'
+            mode: 'none'
         }
     };
 }

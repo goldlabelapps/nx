@@ -4,7 +4,7 @@ slug: /medical
 title: Medical
 icon: medical
 description: Evidence-based benefits, conditions, outcomes, safety.
-flickr: research
+smartImage: research
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.
 ---
 

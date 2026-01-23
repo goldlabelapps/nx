@@ -2,15 +2,18 @@ export interface I_NX {
     children: React.ReactNode;
     config: T_Config;
 }
-smartImage ?: T_SmartImage;
+export interface I_SmartImage {
+    smartImage?: T_SmartImage;
 }
 
 export type T_SmartImage = {
     src: string;
-    meta: {
+    title?: string;
+    alt?: string;
+    meta?: {
         title?: string;
         alt?: string;
-        message?: string;
+        mode?: 'image' | 'config' | 'smartImage' | 'none';
     };
 };
 
@@ -52,10 +55,9 @@ export type T_Config = {
     image: string;
     icon: string;
     cartridges: {
-        uberedux?: T_UbereduxCartridge;
-        designSystem?: T_DesignSystemCartridge;
-        images?: T_ImagesCartridge;
         commerce?: T_CommerceCartridge;
+        designSystem?: T_DesignSystemCartridge;
+        uberedux?: T_UbereduxCartridge;
     };
 };
 
@@ -66,6 +68,7 @@ export type T_UbereduxCartridge = Record<string, unknown>;
 export type T_DesignSystemCartridge = {
     allowTheme: boolean;
     defaultTheme: string;
+    smartImages?: T_SmartImage[];
     themes: {
         [key: string]: {
             mode: 'light' | 'dark';
@@ -127,10 +130,7 @@ export type T_Frontmatter = {
     icon?: string;
     order?: number;
     image?: string;
-    flickr?: string;
-    author?: string;
-    price?: number;
-    clickThru?: string;
+    smartImage?: string;
 };
 
 export type T_Markdown = {
