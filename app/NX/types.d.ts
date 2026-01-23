@@ -8,10 +8,7 @@ export interface I_SmartImage {
 
 export type T_SmartImage = {
     src: string;
-    title?: string;
-    alt?: string;
     meta?: {
-        title?: string;
         alt?: string;
         mode?: 'image' | 'config' | 'smartImage' | 'none';
     };

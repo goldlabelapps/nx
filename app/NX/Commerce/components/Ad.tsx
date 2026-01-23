@@ -8,12 +8,14 @@ import {
     CardHeader,
     ButtonBase,
 } from '@mui/material';
+import { alpha, useTheme } from '@mui/material/styles';
 import { Icon } from '../../DesignSystem'
 
 
 export const Ad: React.FC<{ ad: T_Ad }> = ({ ad }) => {
     const { type, description, title, icon } = ad;
     const router = useRouter();
+    const theme = useTheme();
 
     const handleClick = () => {
         if (type === 'link' && 'url' in ad && ad.url) {
@@ -32,7 +34,11 @@ export const Ad: React.FC<{ ad: T_Ad }> = ({ ad }) => {
         >
             <Card
                 variant="outlined"
-                sx={{ width: '100%', borderRadius: 2 }}
+                sx={{
+                    width: '100%',
+                    borderRadius: 2,
+                    bgcolor: alpha(theme.palette.primary.main, 0.1),
+                }}
             >
                 <CardHeader
                     avatar={icon ? <Icon icon={icon as any} color="primary" /> : undefined}

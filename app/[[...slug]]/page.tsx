@@ -5,9 +5,9 @@ import { serverUseNav } from "../NX/lib/";
 import fs from "fs";
 import matter from "gray-matter";
 import {
+    Box,
     AppBar,
     Avatar,
-    Box,
     CardHeader,
     Container,
     IconButton,
@@ -253,7 +253,9 @@ export default async function Page(props: any) {
                             {description}
                         </Typography>
                         {smartImage?.meta?.mode !== 'config' && (
-                            <SmartImage smartImage={smartImage} />
+                            <Box sx={{ my: 2 }}>
+                                <SmartImage smartImage={smartImage} />
+                            </Box>
                         )}
 
                         <RenderMarkdown config={config}>

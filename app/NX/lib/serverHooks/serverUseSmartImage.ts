@@ -6,7 +6,6 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
         return {
             src: frontmatter.image,
             meta: {
-                title: frontmatter.title || '',
                 alt: frontmatter.title || '',
                 mode: 'image',
             }
@@ -19,8 +18,7 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
             return {
                 src: smartImageObj.src,
                 meta: {
-                    title: smartImageObj.title || '',
-                    alt: smartImageObj.title || '',
+                    alt: (smartImageObj.meta?.alt || ''),
                     mode: 'smartImage'
                 }
             };
@@ -30,7 +28,6 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
         return {
             src: config.image,
             meta: {
-                title: config.title || '',
                 alt: config.title || '',
                 mode: 'config'
             }

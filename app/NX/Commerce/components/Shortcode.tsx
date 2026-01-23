@@ -3,6 +3,7 @@
 import React from "react";
 import { T_Ad, T_CommerceShortcode, T_Config } from '../../types';
 import { Box, Card, Typography, ButtonBase } from '@mui/material';
+import { alpha, useTheme } from '@mui/material/styles';
 import { Icon } from '../../DesignSystem';
 
 
@@ -12,6 +13,7 @@ export type I_Shortcode = {
 };
 
 export const Shortcode: React.FC<I_Shortcode> = ({ slug, config }) => {
+    const theme = useTheme();
     const [ad, setAd] = React.useState<T_CommerceShortcode | null>(null);
     const [error, setError] = React.useState<string | null>(null);
 
@@ -50,8 +52,17 @@ export const Shortcode: React.FC<I_Shortcode> = ({ slug, config }) => {
             onClick={handleClick}
             sx={{ width: '100%', mb: 2, borderRadius: 2, textAlign: 'left', display: 'block' }}
         >
-            <Card variant="outlined" sx={{ width: '100%', borderRadius: 2, overflow: 'hidden', display: 'flex', flexDirection: { xs: 'column', sm: 'row' } }}>
-
+            <Card
+                variant="outlined"
+                sx={{
+                    width: '100%',
+                    borderRadius: 2,
+                    overflow: 'hidden',
+                    display: 'flex',
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    bgcolor: alpha(theme.palette.primary.main, 0.1),
+                }}
+            >
                 <Box sx={{ flex: 1, p: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <Box sx={{ display: 'flex' }}>
                         {ad.icon && (
