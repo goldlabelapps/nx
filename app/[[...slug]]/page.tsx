@@ -252,7 +252,9 @@ export default async function Page(props: any) {
                             )}
                             {description}
                         </Typography>
-                        <SmartImage smartImage={smartImage} />
+                        {smartImage?.meta?.mode !== 'config' && (
+                            <SmartImage smartImage={smartImage} />
+                        )}
 
                         <RenderMarkdown config={config}>
                             {content}
