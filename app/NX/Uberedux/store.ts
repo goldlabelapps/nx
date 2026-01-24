@@ -3,8 +3,11 @@
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import { initialState } from './initialState';
+import type { T_Config } from '../types';
 
-const reduxSlice = createSlice({
+
+
+export const reduxSlice = createSlice({
   name: 'redux',
   initialState,
   reducers: {
@@ -30,20 +33,10 @@ const reduxSlice = createSlice({
   },
 });
 
-const rootReducer = combineReducers({
-  redux: reduxSlice.reducer,
-});
 
-export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
-});
+// Note: store is now created in UbereduxProvider with config, not here
 
 export const setUbereduxKey = reduxSlice.actions.setUbereduxKey;
 export const resetUberedux = reduxSlice.actions.resetUberedux;
 
-export type TRootState = ReturnType<typeof store.getState>;
-export type TUbereduxDispatch = typeof store.dispatch;
+
