@@ -2,7 +2,7 @@
 order: 2
 cartridge: EchoPay
 slug: /terminal
-title: Virtual Terminal
+title: Terminal
 description: Simple web-based interface
 icon: terminal
 tags: echopay, terminal, api, virtual terminal,

@@ -13,7 +13,11 @@ export default function EchoPay({ config }: I_EchoPay) {
   if (!echopay || !echopay.enabled) return null;
 
   return (
-    <Box id="commerce" sx={{ border: '1px solid gold' }}>
+    <Box
+      id="echopay"
+      sx={{
+        border: '1px solid black',
+      }}>
       EchoPay
     </Box>
   );

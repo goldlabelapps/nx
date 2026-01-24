@@ -25,6 +25,8 @@ import { RenderMarkdown } from '../NX/Shortcodes';
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
+import { EchoPay } from '../NX/EchoPay';
+
 import edtechConfig from '../../public/edtech/config.json';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
@@ -196,99 +198,102 @@ export default async function Page(props: any) {
                     </AppBar>
                 </Box>
             </header>
-
-            <Container maxWidth="xl" sx={{ my: '60px' }}>
-                <Box sx={{ minHeight: { xs: 56, sm: 64 }, my: 1 }}></Box>
-
-                <Box
-                    sx={{
-                        display: 'grid',
-                        gridTemplateColumns: {
-                            xs: '1fr',
-                            lg: '250px 1fr 400px'
-                        },
-                        gap: 2,
-                        alignItems: 'start',
-                        width: '100%'
-                    }}
-                >
-                    {/* {data.cartridge && (
-                        <Typography color="primary" variant="body1">
-                            cartridge: {data.cartridge}
-                        </Typography>
-                    )} */}
+            {/* Start Main */}
+            {data.cartridge && String(data.cartridge).toLowerCase() === 'echopay' ? (
+                <Container id="main" maxWidth="xl">
+                    <Box sx={{ minHeight: { xs: 75, sm: 100 }, my: 1 }}></Box>
+                    <EchoPay config={config} />
+                </Container>
+            ) : (
+                <Container id="main" maxWidth="xl" sx={{ my: '60px' }}>
+                    <Box sx={{ minHeight: { xs: 75, sm: 100 }, my: 1 }}></Box>
                     <Box
-                        component="nav"
                         sx={{
-                            display: { xs: 'none', lg: 'block' },
-                            width: { lg: '250px' },
-                            minWidth: { lg: '250px' },
-                            maxWidth: { lg: '250px' },
-                            gridColumn: { lg: '1' },
+                            display: 'grid',
+                            gridTemplateColumns: {
+                                xs: '1fr',
+                                lg: '250px 1fr 400px'
+                            },
+                            gap: 2,
+                            alignItems: 'start',
+                            width: '100%'
                         }}
                     >
-                        <Nav
-                            config={config}
-                            navItems={navItems as I_NestedNav["navItems"]}
-                            currentPath={slugPath || '/'}
-                            mode="desktop"
-                        />
-                    </Box>
-                    <Box
-                        component="main"
-                        sx={{
-                            gridColumn: { lg: '2' },
-                            width: '100%',
-                            minWidth: 0,
-                            pr: { xs: 2, lg: 3 },
-                            pl: { xs: 2, lg: 0 },
-                        }}
-                    >
-                        <Typography
+                        {data.cartridge && (
+                            <Typography color="primary" variant="body1">
+                                cartridge: {data.cartridge}
+                            </Typography>
+                        )}
+                        <Box
+                            component="nav"
                             sx={{
-                                display: 'flex',
+                                display: { xs: 'none', lg: 'block' },
+                                width: { lg: '250px' },
+                                minWidth: { lg: '250px' },
+                                maxWidth: { lg: '250px' },
+                                gridColumn: { lg: '1' },
                             }}
-                            color='secondary'
-                            variant="h5"
-                            component="h2"
                         >
-                            {data.icon && (
-                                <Box sx={{ mr: 2 }}>
-                                    <Icon icon={data.icon} color="primary" />
+                            <Nav
+                                config={config}
+                                navItems={navItems as I_NestedNav["navItems"]}
+                                currentPath={slugPath || '/'}
+                                mode="desktop"
+                            />
+                        </Box>
+                        <Box
+                            component="main"
+                            sx={{
+                                gridColumn: { lg: '2' },
+                                width: '100%',
+                                minWidth: 0,
+                                pr: { xs: 2, lg: 3 },
+                                pl: { xs: 2, lg: 0 },
+                            }}
+                        >
+                            <Typography
+                                sx={{
+                                    display: 'flex',
+                                }}
+                                color='secondary'
+                                variant="h5"
+                                component="h2"
+                            >
+                                {data.icon && (
+                                    <Box sx={{ mr: 2 }}>
+                                        <Icon icon={data.icon} color="primary" />
+                                    </Box>
+                                )}
+                                {description}
+                            </Typography>
+                            {smartImage?.meta?.mode !== 'config' && (
+                                <Box sx={{ my: 2 }}>
+                                    <SmartImage smartImage={smartImage} />
                                 </Box>
                             )}
-                            {description}
-                        </Typography>
-                        {smartImage?.meta?.mode !== 'config' && (
-                            <Box sx={{ my: 2 }}>
-                                <SmartImage smartImage={smartImage} />
+
+                            <RenderMarkdown config={config}>
+                                {content}
+                            </RenderMarkdown>
+                        </Box>
+                        <Box
+                            sx={{
+                                display: { xs: 'none', lg: 'block' },
+                                width: { lg: '400px' },
+                                minWidth: { lg: '400px' },
+                                maxWidth: { lg: '400px' },
+                                gridColumn: { lg: '3' },
+                                pr: 3,
+                            }}
+                        >
+                            <Box sx={{}}>
+                                <Commerce config={config} />
                             </Box>
-                        )}
-
-                        <RenderMarkdown config={config}>
-                            {content}
-                        </RenderMarkdown>
-                    </Box>
-
-                    <Box
-                        sx={{
-                            display: { xs: 'none', lg: 'block' },
-                            width: { lg: '400px' },
-                            minWidth: { lg: '400px' },
-                            maxWidth: { lg: '400px' },
-                            gridColumn: { lg: '3' },
-                            pr: 3,
-                        }}
-                    >
-                        <Box sx={{}}>
-
-
-
-                            <Commerce config={config} />
                         </Box>
                     </Box>
-                </Box>
-            </Container>
+                </Container>
+            )}
+            {/* End Main */}
             <footer>
                 <Footer
                     config={config}
