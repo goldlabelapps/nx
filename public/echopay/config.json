@@ -3,7 +3,7 @@
     "title": "EchoPay",
     "description": "Magento Payment Module",
     "url": "https://echopay.goldlabel.pro",
-    "image": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg",
+    "image": "https://live.staticflickr.com/65535/55058325693_ebebd3d5ca_b.jpg",
     "icon": "/echopay/favicon/favicon.png",
     "favicon": "/echopay/favicon/favicon.webp",
     "cartridges": {
@@ -15,11 +15,18 @@
             "enabled": true,
             "ads": [
                 {
-                    "title": "Magento Demo",
+                    "title": "EchoPay Magento Demo",
                     "type": "link",
                     "url": "https://srv1269941.hstgr.cloud/",
-                    "description": "Demo store for Magento Commerce Plugin",
-                    "image": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_q.jpg"
+                    "description": "Demo store on Hostinger",
+                    "icon": "link"
+                },
+                {
+                    "title": "Adobe Commerce Marketplace",
+                    "type": "link",
+                    "url": "https://developer.adobe.com/commerce/php/best-practices/",
+                    "description": "Best practices for extension developers",
+                    "icon": "link"
                 }
             ]
         },
@@ -28,10 +35,10 @@
             "defaultTheme": "dark",
             "smartImages": [
                 {
-                    "title": "EchoPay",
-                    "slug": "echopay",
-                    "flickrId": "55047631940",
-                    "src": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg"
+                    "title": "Magento",
+                    "slug": "magento",
+                    "flickrId": "55058325693",
+                    "src": "https://live.staticflickr.com/65535/55058325693_ebebd3d5ca_b.jpg"
                 }
             ],
             "themes": {

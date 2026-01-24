@@ -196,8 +196,10 @@ export default async function Page(props: any) {
                     </AppBar>
                 </Box>
             </header>
+
             <Container maxWidth="xl" sx={{ my: '60px' }}>
                 <Box sx={{ minHeight: { xs: 56, sm: 64 }, my: 1 }}></Box>
+
                 <Box
                     sx={{
                         display: 'grid',
@@ -210,6 +212,11 @@ export default async function Page(props: any) {
                         width: '100%'
                     }}
                 >
+                    {/* {data.cartridge && (
+                        <Typography color="primary" variant="body1">
+                            cartridge: {data.cartridge}
+                        </Typography>
+                    )} */}
                     <Box
                         component="nav"
                         sx={{
@@ -274,11 +281,9 @@ export default async function Page(props: any) {
                         }}
                     >
                         <Box sx={{}}>
-                            {data.cartridge && (
-                                <Typography color="primary" variant="body1">
-                                    cartridge: {data.cartridge}
-                                </Typography>
-                            )}
+
+
+
                             <Commerce config={config} />
                         </Box>
                     </Box>
