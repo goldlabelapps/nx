@@ -1,9 +1,10 @@
 ---
 order: 50
-slug: /features/cartridges/paywall
+slug: /work/nx/cartridges/paywall
 title: Paywall
 description: User authentication, membership, payments and more
-tags: features, cartridges, 
+tags: features, cartridges,
+icon: cartridge
 ---
 
 > All handled seamlessly with Firebase Auth and Stripe integration
