@@ -1,6 +1,6 @@
 'use client';
 
 import { useDispatch as useReduxDispatch } from 'react-redux';
-import type { TUbereduxDispatch } from '../';
+import type { Dispatch } from 'redux';
 
-export const useDispatch: () => TUbereduxDispatch = useReduxDispatch;
+export const useDispatch: () => Dispatch = useReduxDispatch;

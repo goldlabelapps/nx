@@ -1,8 +1,7 @@
 import UbereduxProvider from './UbereduxProvider';
 import { useAll } from './hooks/useAll';
 import { useDispatch } from './hooks/useDispatch';
-import { setUbereduxKey, resetUberedux } from './store';
-import { TRootState, TUbereduxDispatch } from './store';
+import { setUbereduxKey, resetUberedux, updateConfig } from './store';
 
 export {
   UbereduxProvider,
@@ -10,7 +9,5 @@ export {
   useAll,
   setUbereduxKey,
   resetUberedux,
-
+  updateConfig,
 };
-
-export type { TRootState, TUbereduxDispatch };

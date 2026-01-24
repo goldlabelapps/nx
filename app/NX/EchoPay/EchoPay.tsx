@@ -14,7 +14,7 @@ export default function EchoPay({ config }: I_EchoPay) {
   const dispatch = useDispatch();
   const echopay = config.cartridges?.echopay;
   if (!echopay || !echopay.enabled) return null;
-  const cartridge = useAll().config.cartridges.echopay;
+  const all = useAll();
 
   const handleClick = () => {
     console.log('handleClick');
@@ -31,7 +31,7 @@ export default function EchoPay({ config }: I_EchoPay) {
         Button
       </Button>
       <pre style={{ padding: '1em', borderRadius: '8px' }}>
-        cartridge: {JSON.stringify(cartridge, null, 2)}
+        all: {JSON.stringify(all, null, 2)}
       </pre>
     </Box>
   );

@@ -1,4 +1,5 @@
 'use client';
+import type { T_Config } from '../types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
 
@@ -11,6 +12,7 @@ export const reduxSlice = createSlice({
       action: PayloadAction<{ key: string; value: any }>,
     ) => {
       const { key, value } = action.payload;
+      console.log('Setting key:', key, 'to value:', value);
       const keys = key.split('.');
       let target: any = state;
 
@@ -25,6 +27,11 @@ export const reduxSlice = createSlice({
     },
 
     resetUberedux: () => initialState,
+
+    updateConfig: (state, action: PayloadAction<{ config: any }>) => {
+      console.log("hey.")
+      state.config = action.payload.config;
+    },
   },
 });
 
@@ -33,5 +40,6 @@ export const reduxSlice = createSlice({
 
 export const setUbereduxKey = reduxSlice.actions.setUbereduxKey;
 export const resetUberedux = reduxSlice.actions.resetUberedux;
+export const updateConfig = reduxSlice.actions.updateConfig;
 
 

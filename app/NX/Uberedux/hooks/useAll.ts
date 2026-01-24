@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import type { TRootState } from '../';
 
+
+// Use this if your state shape is { redux: { ... } }
 export function useAll() {
-  const slice = useSelector((state: TRootState) => state.redux);
-
+  const all = useSelector((state: any) => state.redux?.config);
   return {
-    ...slice,
+    ...all,
   };
 }
