@@ -1,6 +1,6 @@
 ---
 order: 30
-slug: /features/other/pwa
+slug: /features/pwa
 title: PWA
 description: Progressive Web Apps
 tags: features, pwa, 

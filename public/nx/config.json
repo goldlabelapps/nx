@@ -11,16 +11,53 @@
             "enabled": true,
             "ads": [
                 {
+                    "title": "GitHub",
+                    "type": "link",
+                    "description": "Open Source and Free forever",
+                    "url": "https://github.com/goldlabelapps",
+                    "icon": "github"
+                },
+                {
+                    "title": "LinkedIn",
+                    "type": "link",
+                    "description": "Social Media for grown ups",
+                    "url": "https://www.linkedin.com/in/chris-dorward/",
+                    "icon": "linkedin"
+                },
+                {
+                    "title": "Facebook",
+                    "type": "link",
+                    "description": "Social Media for kids",
+                    "url": "https://www.facebook.com/goldlabelapps",
+                    "icon": "facebook"
+                },
+                {
+                    "title": "X (Twitter)",
+                    "type": "link",
+                    "description": "Small acts of sedition",
+                    "url": "https://x.com/goldlabelapps",
+                    "icon": "twitter"
+                },
+                {
+                    "title": "YouTube",
+                    "type": "link",
+                    "description": "The internet is made of cats",
+                    "url": "https://www.youtube.com/@goldlabelApps",
+                    "icon": "youtube"
+                },
+                {
                     "title": "Flickr",
                     "type": "link",
                     "url": "https://www.flickr.com/photos/listingslab/",
-                    "description": "This flickr blog has been kept since.... well for a long time. Several decades. "
+                    "description": "Using Flickr as a CDN for 20 years",
+                    "icon": "flickr"
                 },
                 {
                     "title": "Instagram",
                     "type": "link",
                     "url": "https://www.instagram.com/milkylackstoes",
-                    "description": "Insta. Really?"
+                    "description": "Insta. Really?",
+                    "icon": "photo"
                 }
             ]
         },

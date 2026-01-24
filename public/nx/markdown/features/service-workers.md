@@ -1,6 +1,6 @@
 ---
 order: 45
-slug: /features/other/service-workers
+slug: /features/service-workers
 title: Service Workers
 description: Background JavaScript that runs separately from the main browser thread
 tags: Features, PWA, Service Workers,
