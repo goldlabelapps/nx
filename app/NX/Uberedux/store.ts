@@ -1,11 +1,12 @@
+// core/gl-core/cartridges/Uberedux/store.ts
 'use client';
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { getInitialState } from './initialState';
+import { initialState } from './initialState';
 
-const createReduxSlice = (config: any) => createSlice({
+const reduxSlice = createSlice({
   name: 'redux',
-  initialState: config ? config : getInitialState(config),
+  initialState,
   reducers: {
     setUbereduxKey: (
       state,
@@ -25,35 +26,24 @@ const createReduxSlice = (config: any) => createSlice({
       target[keys[keys.length - 1]] = value;
     },
 
-    resetUberedux: () => getInitialState({}),
+    resetUberedux: () => initialState,
   },
 });
 
+const rootReducer = combineReducers({
+  redux: reduxSlice.reducer,
+});
 
-export function makeStore(config: any) {
-  const reduxSlice = createReduxSlice(config);
-  const rootReducer = combineReducers({
-    redux: reduxSlice.reducer,
-  });
-  const store = configureStore({
-    reducer: rootReducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false,
-      }),
-  });
-  return store;
-}
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+});
 
-// Action creators for use with dynamic store
-export const getUbereduxActions = (config: any) => {
-  const slice = createReduxSlice(config);
-  return {
-    setUbereduxKey: slice.actions.setUbereduxKey,
-    resetUberedux: slice.actions.resetUberedux,
-  };
-};
+export const setUbereduxKey = reduxSlice.actions.setUbereduxKey;
+export const resetUberedux = reduxSlice.actions.resetUberedux;
 
-// Types for dynamic store
-export type T_RootState = ReturnType<ReturnType<typeof makeStore>["getState"]>;
-export type T_Dispatch = ReturnType<typeof makeStore>["dispatch"];
+export type TRootState = ReturnType<typeof store.getState>;
+export type TUbereduxDispatch = typeof store.dispatch;

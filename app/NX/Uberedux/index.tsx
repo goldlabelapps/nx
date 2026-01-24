@@ -1,13 +1,16 @@
 import UbereduxProvider from './UbereduxProvider';
-import type { T_RootState, T_Dispatch } from './store';
-import { getUbereduxActions } from './store';
-import { setSomething } from './actions/setSomething';
 import { useAll } from './hooks/useAll';
+import { useDispatch } from './hooks/useDispatch';
+import { setUbereduxKey, resetUberedux } from './store';
+import { TRootState, TUbereduxDispatch } from './store';
 
-export type { T_RootState, T_Dispatch };
 export {
   UbereduxProvider,
-  getUbereduxActions,
+  useDispatch,
   useAll,
-  setSomething,
+  setUbereduxKey,
+  resetUberedux,
+
 };
+
+export type { TRootState, TUbereduxDispatch };

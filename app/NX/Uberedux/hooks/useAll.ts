@@ -1,8 +1,9 @@
-import type { T_RootState } from '../../Uberedux';
 import { useSelector } from 'react-redux';
+import type { TRootState } from '../';
 
 export function useAll() {
-  const slice = useSelector((state: T_RootState) => state.redux);
+  const slice = useSelector((state: TRootState) => state.redux);
+
   return {
     ...slice,
   };

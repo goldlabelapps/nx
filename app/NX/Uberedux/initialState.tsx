@@ -1,6 +1,17 @@
+// /Users/goldlabel/GitHub/core/gl-core/initialState.tsx
+import pJSON from '../../../package.json';
+// import config from './config.json';
+// import { initialStateLingua } from './cartridges/Lingua';
+// import { initialStatePaywall } from './cartridges/Paywall';
+// import { initialStateDesignSystem } from './cartridges/DesignSystem';
 
-export function getInitialState(config: any) {
-  return {
-    hello: "world"
-  };
-}
+export const initialState: any = {
+  // config,
+  version: pJSON.version,
+  // persisted: Date.now(),
+  // globalNav: null,
+  // search: null,
+  // lingua: initialStateLingua,
+  // paywall: initialStatePaywall,
+  // designSystem: initialStateDesignSystem,
+};
