@@ -1,6 +1,6 @@
 ---
 order: 70
-slug: /features/cartridges/uberedux
+slug: /work/nx/cartridges/uberedux
 title: Uberedux
 description: All apps need state management
 tags: features, uberedux
