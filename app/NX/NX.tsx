@@ -6,7 +6,6 @@ import { DesignSystem } from './DesignSystem';
 import { useAll } from './Uberedux';
 
 const NX: React.FC<I_NX> = ({ children, config }) => {
-    const all = useAll()
     const themeMode = 'light';
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (!theme) {
@@ -24,13 +23,7 @@ const NX: React.FC<I_NX> = ({ children, config }) => {
     }
     return (
         <DesignSystem theme={theme}>
-
             {children}
-
-            {/* <pre>
-                all: {JSON.stringify(all, null, 2)}
-            </pre> */}
-
         </DesignSystem>
     );
 };

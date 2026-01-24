@@ -1,7 +1,7 @@
 {
     "project": "echopay",
     "title": "EchoPay",
-    "description": "API Terminal",
+    "description": "Magento Payment Module",
     "url": "https://echopay.goldlabel.pro",
     "image": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg",
     "icon": "/echopay/favicon/favicon.png",
