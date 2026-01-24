@@ -1,9 +1,11 @@
 ---
 order: 45
-slug: /features/other/service-workers
+slug: /features/service-workers
 title: Service Workers
 description: Background JavaScript that runs separately from the main browser thread
 tags: Features, PWA, Service Workers,
+icon: cartridge
+smartImage: default
 ---
 
 > Service Workers are background scripts that run separately from the main browser thread. They act as a programmable network proxy, allowing developers to intercept and manage network requests, cache resources, and deliver rich offline experiences. Service Workers are a core technology behind Progressive Web Apps (PWAs).

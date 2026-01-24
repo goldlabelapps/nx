@@ -35,7 +35,7 @@ export default function Share({
 
     return (
         <>
-            <Box sx={{ mx: 2 }}>
+            <Box sx={{ mx: 2, mb: 2 }}>
                 <SmartImage smartImage={smartImage} />
             </Box>
             <MenuItem
