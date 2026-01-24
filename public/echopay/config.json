@@ -15,6 +15,13 @@
             "enabled": true,
             "ads": [
                 {
+                    "title": "Terminal",
+                    "type": "link",
+                    "url": "/terminal",
+                    "description": "Simple web-based interface",
+                    "icon": "right"
+                },
+                {
                     "title": "EchoPay Magento Demo",
                     "type": "link",
                     "url": "https://srv1269941.hstgr.cloud/",

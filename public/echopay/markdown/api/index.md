@@ -5,6 +5,7 @@ title: EchoPay API
 description: EchoPay API V2
 icon: terminal
 tags: echopay, terminal, api
+image: https://live.staticflickr.com/65535/55044857816_b60d368bf5_b.jpg
 ---
 
 This guide is a **hands-on, tutorial-style walkthrough** of the EchoPay API V2.

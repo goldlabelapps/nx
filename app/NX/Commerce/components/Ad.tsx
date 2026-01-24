@@ -19,7 +19,13 @@ export const Ad: React.FC<{ ad: T_Ad }> = ({ ad }) => {
 
     const handleClick = () => {
         if (type === 'link' && 'url' in ad && ad.url) {
-            window.open(ad.url, '_blank', 'noopener,noreferrer');
+            if (ad.url.startsWith('/')) {
+                // Internal route, open in same tab
+                window.open(ad.url, '_self');
+            } else {
+                // External link, open in new tab
+                window.open(ad.url, '_blank', 'noopener,noreferrer');
+            }
         } else if (type === 'route' && 'path' in ad && ad.path) {
             router.push(ad.path);
         } else {
