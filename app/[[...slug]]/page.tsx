@@ -19,7 +19,7 @@ import {
     serverUseSmartImage,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Icon, Nav, Footer, SmartImage } from '../NX/DesignSystem';
+import { Icon, Nav, Settings, SmartImage } from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import nxConfig from '../../public/nx/config.json';
@@ -184,7 +184,14 @@ export default async function Page(props: any) {
                                     {title}
                                 </Typography>}
                                 action={
-                                    <Box sx={{ display: { xs: 'block', md: 'none' } }}>
+                                    <Box sx={{
+                                        display: "flex"
+                                    }}>
+                                        <Settings
+                                            config={config}
+                                            frontmatter={data}
+                                            smartImage={smartImage}
+                                        />
                                         <Nav
                                             mode="mobile"
                                             navItems={navItems as I_NestedNav["navItems"]}
@@ -295,11 +302,7 @@ export default async function Page(props: any) {
             )}
             {/* End Main */}
             <footer>
-                <Footer
-                    config={config}
-                    frontmatter={data}
-                    smartImage={smartImage}
-                />
+
             </footer>
         </NX>
     );

@@ -1,11 +1,6 @@
-// core/gl-core/cartridges/Uberedux/store.ts
 'use client';
-import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { initialState } from './initialState';
-import type { T_Config } from '../types';
-
-
 
 export const reduxSlice = createSlice({
   name: 'redux',

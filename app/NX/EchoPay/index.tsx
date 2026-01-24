@@ -1,6 +1,6 @@
 import EchoPay from './EchoPay';
-import { setEchoPayKey } from './actions/setEchoPayKey'
+import { setEchoPayCartridge } from './actions/setEchoPayCartridge';
 export {
     EchoPay,
-    setEchoPayKey,
+    setEchoPayCartridge,
 };

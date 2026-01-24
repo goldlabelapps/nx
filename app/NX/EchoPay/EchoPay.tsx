@@ -3,7 +3,7 @@ import * as React from 'react';
 import { T_Config, T_Frontmatter } from '../types.d';
 import { Box, Button } from '@mui/material';
 import { useAll, useDispatch } from '../Uberedux';
-import { setEchoPayKey } from '../EchoPay';
+import { setEchoPayCartridge } from '../EchoPay';
 
 export interface I_EchoPay {
   config: T_Config;
@@ -14,11 +14,11 @@ export default function EchoPay({ config }: I_EchoPay) {
   const dispatch = useDispatch();
   const echopay = config.cartridges?.echopay;
   if (!echopay || !echopay.enabled) return null;
-  const redux = useAll();
+  const cartridge = useAll().config.cartridges.echopay;
 
   const handleClick = () => {
     console.log('handleClick');
-
+    dispatch(setEchoPayCartridge('sample-echo-pay-key-12345', 'ads'));
   };
 
   return (
@@ -31,7 +31,7 @@ export default function EchoPay({ config }: I_EchoPay) {
         Button
       </Button>
       <pre style={{ padding: '1em', borderRadius: '8px' }}>
-        redux: {JSON.stringify(redux, null, 2)}
+        cartridge: {JSON.stringify(cartridge, null, 2)}
       </pre>
     </Box>
   );

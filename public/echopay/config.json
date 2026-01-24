@@ -7,10 +7,11 @@
     "icon": "/echopay/favicon/favicon.png",
     "favicon": "/echopay/favicon/favicon.webp",
     "cartridges": {
-        "paywall": {
-            "enabled": true
-        },
         "echopay": {
+            "enabled": true,
+            "ECHOPAY_APIKEY": "Zd77rh7uLg5lvMKdn1yj"
+        },
+        "paywall": {
             "enabled": true
         },
         "commerce": {
