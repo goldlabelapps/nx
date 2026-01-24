@@ -17,13 +17,6 @@
                     "description": "This flickr blog has been kept since.... well for a long time. Several decades. "
                 },
                 {
-                    "title": "EchoPay",
-                    "type": "route",
-                    "path": "/example-apps/echopay",
-                    "description": "Magento 2 Plugin",
-                    "image": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_q.jpg"
-                },
-                {
                     "title": "Instagram",
                     "type": "link",
                     "url": "https://www.instagram.com/milkylackstoes",
@@ -35,53 +28,53 @@
             "enabled": true,
             "allowTheme": false,
             "defaultTheme": "light",
-            "photos": [
+            "smartImages": [
                 {
                     "title": "Default",
                     "id": "55043282654",
-                    "flickrSlug": "default",
+                    "slug": "default",
                     "src": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg"
                 },
                 {
                     "title": "Selfie",
                     "id": "55043218958",
-                    "flickrSlug": "selfie",
+                    "slug": "selfie",
                     "src": "https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg"
                 },
                 {
                     "title": "Team in the park",
                     "id": "55043297044",
-                    "flickrSlug": "team-in-the-park",
+                    "slug": "team-in-the-park",
                     "src": "https://live.staticflickr.com/65535/55043297044_45e9c515ae_b.jpg"
                 },
                 {
                     "title": "Mindful",
                     "id": "55042136837",
-                    "flickrSlug": "mindful",
+                    "slug": "mindful",
                     "src": "https://live.staticflickr.com/65535/55042136837_2c9d12d414_b.jpg"
                 },
                 {
                     "title": "Education",
                     "id": "55042134422",
-                    "flickrSlug": "education",
+                    "slug": "education",
                     "src": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_b.jpg"
                 },
                 {
                     "title": "Ice Cream",
                     "id": "55042131557",
-                    "flickrSlug": "ice-cream",
+                    "slug": "ice-cream",
                     "src": "https://live.staticflickr.com/65535/55042131557_edc53256a7_b.jpg"
                 },
                 {
                     "title": "Work",
                     "id": "55043207718",
-                    "flickrSlug": "work",
+                    "slug": "work",
                     "src": "https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg"
                 },
                 {
                     "title": "Team",
                     "id": "55043024886",
-                    "flickrSlug": "team",
+                    "slug": "team",
                     "src": "https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg"
                 }
             ],

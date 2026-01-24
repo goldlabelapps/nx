@@ -3,11 +3,10 @@ order: 50
 slug: /features
 title: Features
 description: Apart from NextJS, what else does NX do?
+smartImage: random
 tags: nx, features
-iconX: features
+icon: activities
 ---
-
-## [Features](/features)
 
 #### [Cartridges](/features/cartridges)
 
@@ -21,4 +20,4 @@ iconX: features
 
 #### [Other]()
 - [Progressive Web App](/features/other/pwa)
-- [Progressive Web App](/features/other/pwa)
+- [Service Workers](/features/other/service-workers)

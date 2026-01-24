@@ -4,6 +4,8 @@ slug: /features/cartridges/shortcodes
 title: Shortcodes
 description: Extend your content with reusable, customizable, and maintainable features, all with a simple and intuitive syntax
 tags: features, cartridges, shortcodes
+smartImage: mindful
+icon: cartridge
 ---
 
 > Shortcodes are a powerful feature inspired by WordPress, allowing you to embed dynamic content or functionality directly within your text or markdown files. A shortcode is a simple, bracketed tag—such as 

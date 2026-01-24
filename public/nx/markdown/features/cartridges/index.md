@@ -2,22 +2,21 @@
 order: 50
 slug: /features/cartridges
 title: Cartridges
-description: Because we played Goldeneye on n64
+description: NX modules
 tags: nx, features, n64
-iconX: features
+icon: cartridge
+smartImage: ice-cream
 ---
 
-## Cartridges
+> They're called Cartridges Because we're old enough to have played Goldeneye on the N64
 
-- Commerce
 - [Shortcodes](/features/cartridges/shortcodes)
 - [Paywall](/features/cartridges/paywall)
 - [Uberedux](/features/cartridges/uberedux)
-- Design System
-- Images
-- Terminal
+- [Design System](/features/cartridges/design-system)
 
-## Other
+### Other
 
 - [Progressive Web App](/features/other/pwa)
 - [Service Workers](/features/other/service-workers)
+- Commerce

@@ -4,6 +4,8 @@ slug: /features/other/pwa
 title: PWA
 description: Progressive Web Apps
 tags: features, pwa, 
+icon: cartridge
+smartImage: random
 ---
 
 > A Progressive Web App (PWA) is a type of web application that uses modern web technologies to deliver an app-like experience to users. PWAs combine the best features of web and native apps, including reliability, speed, and engagement, while remaining accessible through a browser.

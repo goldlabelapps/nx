@@ -4,7 +4,8 @@ slug: /features/other
 title: Other
 description: This stuff is standard
 tags: nx, features, n64
-iconX: features
+icon: cartridge
+smartImage: default
 ---
 
 #### [Progressive Web App](/features/other/pwa)
