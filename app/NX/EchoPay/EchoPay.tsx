@@ -19,6 +19,7 @@ export default function EchoPay({ config }: I_EchoPay) {
         border: '1px solid black',
       }}>
       EchoPay
+      hello world
     </Box>
   );
 }
