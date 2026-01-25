@@ -7,6 +7,7 @@ import {
     Card,
     CardHeader,
     ButtonBase,
+    Typography,
 } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Icon } from '../../DesignSystem'
@@ -48,7 +49,7 @@ export const Ad: React.FC<{ ad: T_Ad }> = ({ ad }) => {
             >
                 <CardHeader
                     avatar={icon ? <Icon icon={icon as any} color="primary" /> : undefined}
-                    title={title}
+                    title={<Typography>{title}</Typography>}
                     subheader={description}
                     sx={{ alignItems: 'flex-start' }}
                 />

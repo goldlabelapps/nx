@@ -1,6 +1,6 @@
 ---
-order: 20
-slug: /api/curl
+order: 60
+slug: /api/connecting/curl
 title: curl
 description: Connecting to EchoPay API with curl
 icon: terminal

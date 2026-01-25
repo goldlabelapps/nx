@@ -1,6 +1,6 @@
 ---
-order: 20
-slug: /api/postman
+order: 50
+slug: /api/connecting/postman
 title: Postman
 description: Connect to and test the EchoPay API using Postman
 icon: terminal

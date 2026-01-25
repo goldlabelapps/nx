@@ -1,5 +1,5 @@
 ---
-order: 20
+order: 25
 slug: /magento
 title: Magento
 description: Magento punishes elegance

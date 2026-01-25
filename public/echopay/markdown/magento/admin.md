@@ -1,7 +1,7 @@
 ---
 order: 40
 slug: /magento/admin
-title: Admin
+title: Administrate
 description: Using Magento's Backend
 icon: terminal
 tags: echopay, terminal, api, magento

@@ -21,7 +21,7 @@ export default function EchoPay({ config }: I_EchoPay) {
     <Box
       id="echopay"
       sx={{
-        border: '1px solid black',
+        // border: '1px solid black',
       }}>
       <Button onClick={handleClick} sx={{ m: 2 }} variant="contained">
         Start Paying
