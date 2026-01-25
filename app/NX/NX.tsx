@@ -3,7 +3,7 @@ import React from 'react';
 import { I_NX } from './types';
 import { Box } from '@mui/material';
 import { DesignSystem } from './DesignSystem';
-import { useAll } from './Uberedux';
+// import { useAll } from './Uberedux';
 
 const NX: React.FC<I_NX> = ({ children, config }) => {
     const themeMode = 'light';
