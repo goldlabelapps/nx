@@ -2,7 +2,7 @@ import DesignSystem from "./DesignSystem";
 import { useMUITheme } from './hooks/useMUITheme';
 import Nav from './components/Nav';
 import Tags from './components/Tags';
-import Footer from './components/Footer';
+import Settings from './components/Settings';
 import Icon from './components/Icon';
 import Share from './components/Share';
 import SmartImage from './components/SmartImage';
@@ -13,7 +13,7 @@ export {
     Icon,
     Share,
     Nav,
-    Footer,
+    Settings,
     Tags,
     SmartImage,
 };

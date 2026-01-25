@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'budbuddies.cc',
       },
+      {
+        protocol: 'https',
+        hostname: 'img1.wsimg.com',
+      },
     ],
   },
 };

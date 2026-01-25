@@ -7,19 +7,19 @@ import {
 	IconButton,
 	Dialog,
 	CardHeader,
+	CardContent,
 	useMediaQuery,
+	Typography,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
-import CTAIcon from '@mui/icons-material/Share';
-import { Share } from '../../DesignSystem';
+import { Share, Icon } from '../../DesignSystem';
 
-export interface I_Footer {
+export interface I_Settings {
 	config: T_Config;
 	frontmatter?: T_Frontmatter;
 	smartImage?: T_SmartImage;
 }
 
-const Footer: React.FC<I_Footer> = ({
+const Settings: React.FC<I_Settings> = ({
 	frontmatter,
 	smartImage,
 }) => {
@@ -34,16 +34,9 @@ const Footer: React.FC<I_Footer> = ({
 			<IconButton
 				color="primary"
 				aria-label="Call To Action"
-				sx={{
-					position: 'absolute',
-					zIndex: 12345,
-					bottom: 8,
-					right: 8,
-					boxShadow: 0,
-				}}
 				onClick={handleOpen}
 			>
-				<CTAIcon />
+				<Icon icon="settings" />
 			</IconButton>
 			<Dialog
 				open={open}
@@ -53,14 +46,19 @@ const Footer: React.FC<I_Footer> = ({
 				fullWidth
 			>
 				<CardHeader
-					title={frontmatter?.title}
-					subheader={frontmatter?.description}
+					avatar={<Icon icon="settings" />}
+					title={'Settings'}
+					// subheader={frontmatter?.description}
 					action={
 						<IconButton aria-label="close" onClick={handleClose}>
-							<CloseIcon />
+							<Icon icon="close" />
 						</IconButton>
 					}
 				/>
+				<CardContent>
+					<Typography variant="h6">Share</Typography>
+
+				</CardContent>
 				<Share
 					frontmatter={frontmatter}
 					smartImage={smartImage}
@@ -71,4 +69,4 @@ const Footer: React.FC<I_Footer> = ({
 	);
 };
 
-export default Footer;
+export default Settings;

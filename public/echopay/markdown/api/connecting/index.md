@@ -1,14 +1,11 @@
 ---
 order: 1
-slug: /
-title: EchoPay
-description: Simple web payment interface
+slug: /api/connecting
+title: Connecting
+description: EchoPay API V2
 icon: terminal
 tags: echopay, terminal, api
-image: https://live.staticflickr.com/65535/55044857816_b60d368bf5_b.jpg
 ---
-
-> Securely process payments from any device with an internet connection
 
 ## Real production integration flow
 
@@ -18,7 +15,6 @@ image: https://live.staticflickr.com/65535/55044857816_b60d368bf5_b.jpg
 - Complete a payment using mock banks
 - Retrieve payment status
 - Handle webhooks and callbacks
-
 
 A virtual terminal allows businesses to securely process payments from any device with an internet connection—no physical card reader required.
 

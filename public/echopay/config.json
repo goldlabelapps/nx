@@ -1,25 +1,40 @@
 {
     "project": "echopay",
     "title": "EchoPay",
-    "description": "API Terminal",
+    "description": "Simple web payment interface",
     "url": "https://echopay.goldlabel.pro",
-    "image": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg",
+    "image": "https://live.staticflickr.com/65535/55059808356_43dc571962_b.jpg",
     "icon": "/echopay/favicon/favicon.png",
     "favicon": "/echopay/favicon/favicon.webp",
     "cartridges": {
-        "paywall": {
+        "echopay": {
             "enabled": true,
-            "mode": "full"
+            "ECHOPAY_APIKEY": "Zd77rh7uLg5lvMKdn1yj"
+        },
+        "paywall": {
+            "enabled": true
         },
         "commerce": {
             "enabled": true,
             "ads": [
                 {
-                    "title": "Magento Demo",
+                    "title": "Terminal",
+                    "type": "link",
+                    "url": "/terminal",
+                    "description": "Simple web payment interface",
+                    "icon": "terminal"
+                },
+                {
+                    "title": "Adobe Commerce Marketplace",
+                    "type": "link",
+                    "url": "https://developer.adobe.com/commerce/php/best-practices/",
+                    "icon": "right"
+                },
+                {
+                    "title": "Hostinger Magento Demo",
                     "type": "link",
                     "url": "https://srv1269941.hstgr.cloud/",
-                    "description": "Demo store for Magento Commerce Plugin",
-                    "image": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_q.jpg"
+                    "icon": "right"
                 }
             ]
         },
@@ -28,10 +43,10 @@
             "defaultTheme": "dark",
             "smartImages": [
                 {
-                    "title": "EchoPay",
-                    "slug": "echopay",
-                    "flickrId": "55047631940",
-                    "src": "https://live.staticflickr.com/65535/55047631940_9b8e675631_b.jpg"
+                    "title": "Cartridge",
+                    "slug": "cartridge",
+                    "flickrId": "55059808356",
+                    "src": "https://live.staticflickr.com/65535/55059808356_43dc571962_b.jpg"
                 }
             ],
             "themes": {
