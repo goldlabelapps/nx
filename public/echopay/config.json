@@ -17,13 +17,6 @@
             "enabled": true,
             "ads": [
                 {
-                    "title": "Terminal",
-                    "type": "link",
-                    "url": "/terminal",
-                    "description": "Simple web payment interface",
-                    "icon": "terminal"
-                },
-                {
                     "title": "Adobe Commerce Marketplace",
                     "type": "link",
                     "url": "https://developer.adobe.com/commerce/php/best-practices/",
