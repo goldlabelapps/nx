@@ -8,8 +8,7 @@
     "favicon": "/echopay/favicon/favicon.webp",
     "cartridges": {
         "echopay": {
-            "enabled": true,
-            "ECHOPAY_APIKEY": "Zd77rh7uLg5lvMKdn1yj"
+            "enabled": true
         },
         "paywall": {
             "enabled": true
