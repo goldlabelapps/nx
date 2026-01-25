@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import fs from 'fs';
 import path from 'path';
-// import { UbereduxProvider } from './NX/Uberedux';
+import { UbereduxProvider } from './NX/Uberedux';
 
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 const configPath = path.join(process.cwd(), 'public', project, 'config.json');
@@ -41,12 +41,9 @@ export default async function RootLayout({
       </head>
       <body>
         <div className="wrapper">
-          {/* <UbereduxProvider config={config}>
+          <UbereduxProvider config={config}>
             {children}
-          </UbereduxProvider> */}
-
-          {children}
-
+          </UbereduxProvider>
         </div>
       </body>
     </html>
