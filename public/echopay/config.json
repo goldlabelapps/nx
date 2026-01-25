@@ -11,7 +11,9 @@
             "enabled": true
         },
         "paywall": {
-            "enabled": true
+            "enabled": true,
+            "userMode": "single",
+            "email": "echopay@goldlabel.pro"
         },
         "commerce": {
             "enabled": true,

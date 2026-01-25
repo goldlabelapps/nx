@@ -6,10 +6,10 @@ export default function RequireAuth({ children }: { children: React.ReactNode })
     const [user, setUser] = useState<any>(null);
     const [loading, setLoading] = useState(false);
 
-    const handleSignIn = async () => {
+    const handleSignIn = async (email: string, password: string) => {
         setLoading(true);
         try {
-            const user = await firebaseLogin();
+            const user = await firebaseLogin(email, password);
             setUser(user);
         } catch (e) {
             alert('Sign in failed');
