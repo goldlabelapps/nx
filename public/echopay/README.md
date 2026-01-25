@@ -9,3 +9,11 @@
     "favicon": "/assets/favicon.webp",
 }
 ```
+
+```
+        "paywall": {
+            "enabled": true,
+            "userMode": "single",
+            "email": "echopay@goldlabel.pro"
+        },
+```
