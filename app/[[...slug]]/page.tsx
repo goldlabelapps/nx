@@ -226,11 +226,6 @@ export default async function Page(props: any) {
                             width: '100%'
                         }}
                     >
-                        {data.cartridge && (
-                            <Typography color="primary" variant="body1">
-                                cartridge: {data.cartridge}
-                            </Typography>
-                        )}
                         <Box
                             component="nav"
                             sx={{
