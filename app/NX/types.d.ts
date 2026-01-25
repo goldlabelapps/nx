@@ -55,13 +55,17 @@ export type T_Config = {
         commerce?: T_CommerceCartridge;
         designSystem?: T_DesignSystemCartridge;
         uberedux?: T_UbereduxCartridge;
+        echopay?: T_EchoPayCartridge;
     };
 };
 
-// Uberedux cartridge type
+// EchoPay
+export type T_EchoPayCartridge = Record<string, unknown>;
+
+// Uberedux
 export type T_UbereduxCartridge = Record<string, unknown>;
 
-// DesignSystem cartridge type
+// DesignSystem
 export type T_DesignSystemCartridge = {
     allowTheme: boolean;
     defaultTheme: string;
