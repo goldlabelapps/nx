@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 
 export default function UbereduxProvider({
-  config,
+  // config,
   children,
 }: {
-  config: T_Config;
+  config?: T_Config;
   children: ReactNode;
 }) {
   return <Provider store={store}>{children}</Provider>;

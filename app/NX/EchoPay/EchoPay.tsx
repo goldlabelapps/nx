@@ -17,34 +17,30 @@ export default function EchoPay({ config }: I_EchoPay) {
   const echoPayCartridge = useEchopay();
   const eConfig = config.cartridges?.echopay || {};
 
-  const handle2 = () => {
-    dispatch(setEchoPay('eConfig', eConfig));
-  };
+  if (!eConfig.enabled) {
+    return null;
+  }
+
+  React.useEffect(() => {
+    dispatch(setEchoPay('initted', true));
+    dispatch(setEchoPay('enabled', eConfig.enabled));
+  }, [dispatch, eConfig]);
+
 
   return (
     <Box
       id="echopay"
       sx={{
       }}>
-
-
       <Button
+        fullWidth
         endIcon={<Icon icon="right" />}
-        color="secondary" onClick={handle2} variant="contained">
-        Another Action
+        color="secondary"
+        variant="outlined">
+        Start
       </Button>
-
-
-      <Button
-        endIcon={<Icon icon="right" />}
-        color="error"
-        variant="contained">
-        STOP!
-      </Button>
-
-
       <pre style={{ padding: '1em', borderRadius: '8px' }}>
-        echoPayCartridge: {JSON.stringify(echoPayCartridge, null, 2)}
+        {JSON.stringify(echoPayCartridge, null, 2)}
       </pre>
     </Box>
   );
