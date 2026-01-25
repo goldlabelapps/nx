@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import fs from 'fs';
 import path from 'path';
+
 import { UbereduxProvider } from './NX/Uberedux';
+
+import RequireAuthWrapper from './NX/Paywall/components/RequireAuthWrapper';
 
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
 const configPath = path.join(process.cwd(), 'public', project, 'config.json');
@@ -27,6 +30,8 @@ export default async function RootLayout({
 }>) {
 
 
+  const paywall = config.cartridges?.paywall?.enabled === true;
+
   return (
     <html lang="en">
       <head>
@@ -42,11 +47,14 @@ export default async function RootLayout({
       <body>
         <div className="wrapper">
           <UbereduxProvider config={config}>
-            {children}
+            {paywall ? (
+              <RequireAuthWrapper>{children}</RequireAuthWrapper>
+            ) : (
+              children
+            )}
           </UbereduxProvider>
         </div>
       </body>
     </html>
   );
 }
-
