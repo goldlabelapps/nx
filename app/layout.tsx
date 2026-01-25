@@ -26,6 +26,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
 
+  const paywall = config.cartridges.paywall?.enabled || false;
+
+  console.log("paywall", paywall);
 
   return (
     <html lang="en">
