@@ -2,7 +2,9 @@
 import * as React from 'react';
 import { T_Config, T_Frontmatter } from '../types.d';
 import { Box, Button } from '@mui/material';
-// import { setEchoPayCartridge } from '../EchoPay';
+import { useDispatch } from '../Uberedux';
+import { setEchoPay, useEchopay } from '../EchoPay'
+import { Icon } from '../DesignSystem';
 
 export interface I_EchoPay {
   config: T_Config;
@@ -10,25 +12,36 @@ export interface I_EchoPay {
 }
 
 export default function EchoPay({ config }: I_EchoPay) {
-  const echopay = config.cartridges?.echopay;
-  if (!echopay || !echopay.enabled) return null;
 
-  const handleClick = () => {
-    console.log('handleClick');
-  };
+  const dispatch = useDispatch();
+  const echoPayCartridge = useEchopay();
+  const eConfig = config.cartridges?.echopay || {};
+
+  if (!eConfig.enabled) {
+    return null;
+  }
+
+  React.useEffect(() => {
+    dispatch(setEchoPay('initted', true));
+    dispatch(setEchoPay('enabled', eConfig.enabled));
+  }, [dispatch, eConfig]);
+
 
   return (
     <Box
       id="echopay"
       sx={{
-        // border: '1px solid black',
       }}>
-      <Button onClick={handleClick} sx={{ m: 2 }} variant="contained">
-        Start Paying
+      <Button
+        fullWidth
+        endIcon={<Icon icon="right" />}
+        color="secondary"
+        variant="outlined">
+        Start
       </Button>
-      {/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
-        all: {JSON.stringify(all, null, 2)}
-      </pre> */}
+      <pre style={{ padding: '1em', borderRadius: '8px' }}>
+        {JSON.stringify(echoPayCartridge, null, 2)}
+      </pre>
     </Box>
   );
 }

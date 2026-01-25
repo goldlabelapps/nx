@@ -5,10 +5,11 @@ title: EchoPay
 description: Simple web payment interface
 icon: terminal
 tags: echopay, terminal, api
-image: https://live.staticflickr.com/65535/55044857816_b60d368bf5_b.jpg
 ---
 
 > Securely process payments from any device with an internet connection
+
+A virtual terminal allows businesses to securely process payments from any device with an internet connection—no physical card reader required. Take phone, mail, or remote orders, it's a simple web-based interface to enter customer payment details, process transactions in real time, and generate receipts. 
 
 ## Real production integration flow
 
@@ -20,6 +21,3 @@ image: https://live.staticflickr.com/65535/55044857816_b60d368bf5_b.jpg
 - Handle webhooks and callbacks
 
 
-A virtual terminal allows businesses to securely process payments from any device with an internet connection—no physical card reader required.
-
-Take phone, mail, or remote orders, it's a simple web-based interface to enter customer payment details, process transactions in real time, and generate receipts. 
