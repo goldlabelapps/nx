@@ -8,8 +8,6 @@ icon: goldlabel
 smartImage: random
 ---
 
-[FeedbackBtn label="fajshgdkh kjdfhasi d"]
-
 Create and deploy super fast, modern Next.js apps. Perfectly optimised for SEO. Anyone can launch scalable, production-ready web apps with lightning-fast frontends and top search engine rankings. 
 
 > Accessibility, performance, and seamless user experience as standard. 

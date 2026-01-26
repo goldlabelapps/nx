@@ -1,25 +1,30 @@
-// /Users/goldlabel/GitHub/example-app/gl-core/cartridges/Shortcodes/components/LinkOut.tsx
 'use client';
 import React from 'react';
 import {
-  Box,
+  Button,
 } from '@mui/material';
-import { Icon } from '../../DesignSystem';
+import { setFeedback } from '../../DesignSystem';
+import { useDispatch } from '../../Uberedux';
 
 export default function FeedbackBtn({
   url,
   label = 'Buy Now',
-  icon = 'link',
 }: {
   url: string;
   label?: string;
-  icon?: string;
 }) {
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    dispatch(setFeedback({
+      severity: 'success',
+      title: 'Feedback',
+      description: `You clicked the feedback button for ${url}`,
+    }));
+  };
 
   return (
-    <Box>
-      FeedbackBtn
+    <Button variant='contained' onClick={handleClick}>
       {label}
-    </Box>
+    </Button>
   );
 }
