@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import {
   BuyNow,
+  FeedbackBtn,
 } from '../../Shortcodes';
 import {
   CommerceShortcode,
@@ -64,6 +65,10 @@ export default function RenderMarkdown({
     // Commerce
     const commerce = parseShortcode(/\[CommerceShortcode\s+(.*?)\]/, CommerceShortcode);
     if (commerce) return commerce;
+
+    // FeedbackBtn
+    const feedbackBtn = parseShortcode(/\[FeedbackBtn\s+(.*?)\]/, FeedbackBtn);
+    if (feedbackBtn) return feedbackBtn;
 
     // fallback: simply return text
     return text;

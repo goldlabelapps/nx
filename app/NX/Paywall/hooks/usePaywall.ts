@@ -1,8 +1,7 @@
+
 import { useSelector } from 'react-redux';
-import { useMemo } from 'react';
 
 export function usePaywall() {
-  const slice = useSelector((state: any) => state.redux.paywall || {});
-  // Memoize the returned object to avoid unnecessary rerenders
-  return useMemo(() => ({ ...slice }), [slice]);
+  // Return the slice directly to avoid creating a new object reference
+  return useSelector((state: any) => state.redux.paywall || {});
 }
