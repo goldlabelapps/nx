@@ -1,8 +1,10 @@
 import EchoPay from './EchoPay';
-import { init } from './actions/init';
+import { initPayment } from './actions/initPayment';
 
 import Terminal from './components/Terminal';
 import Controls from './components/Controls';
+import PayNow from './components/PayNow';
+
 import { setEchoPay } from './actions/setEchoPay';
 import { addTerminalMessage } from './actions/addTerminalMessage';
 import { getToken } from './actions/getToken';
@@ -12,9 +14,10 @@ export {
     EchoPay,
     Terminal,
     Controls,
+    PayNow,
     setEchoPay,
     addTerminalMessage,
-    init,
+    initPayment,
     getToken,
     useEchopay,
 };

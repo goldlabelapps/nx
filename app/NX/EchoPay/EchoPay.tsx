@@ -1,9 +1,9 @@
 'use client';
 import * as React from 'react';
 import { T_Config, T_Frontmatter } from '../types.d';
-import { Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { useDispatch } from '../Uberedux';
-import { setEchoPay, Terminal, Controls } from '../EchoPay';
+import { setEchoPay, Terminal, Controls, PayNow } from '../EchoPay';
 
 export interface I_EchoPay {
   config: T_Config;
@@ -23,9 +23,13 @@ export default function EchoPay({ config }: I_EchoPay) {
   }, [dispatch, eConfig]);
 
   return (
-    <Box id="echopay">
-      <Controls />
-      <Terminal />
-    </Box>
+    <Grid container id="echopay" spacing={2}>
+      <Grid size={{ xs: 12, md: 6 }}>
+        <PayNow />
+      </Grid>
+      <Grid size={{ xs: 12, md: 6 }}>
+        <Terminal />
+      </Grid>
+    </Grid>
   );
 }

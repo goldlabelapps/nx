@@ -1,5 +1,5 @@
 ---
-order: 250
+order: 3
 slug: /free-ipad
 title: Free iPad
 description: Sign up now

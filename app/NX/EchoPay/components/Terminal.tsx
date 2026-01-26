@@ -18,10 +18,10 @@ const Terminal: React.FC = () => {
 		<Box
 			data-testid="terminal-screen"
 			sx={{
-				background: '#111',
+				background: '#f0f0f0',
 				borderRadius: 3,
-				height: 420,
-				maxHeight: 420,
+				height: 385,
+				maxHeight: 385,
 				minHeight: 200,
 				width: '100%',
 				overflowY: 'auto',
@@ -30,8 +30,8 @@ const Terminal: React.FC = () => {
 				p: 2,
 				fontFamily: 'monospace',
 				fontSize: 16,
-				color: '#fff',
-				'& .gold': { color: '#FFD700' },
+				color: '#1d1d1d',
+				'& .gold': { color: '#938014' },
 			}}
 		>
 			{messages.length === 0 ? (
