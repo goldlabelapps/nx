@@ -2,7 +2,7 @@
 import React from 'react';
 import { I_NX } from './types';
 import { Box } from '@mui/material';
-import { DesignSystem } from './DesignSystem';
+import { DesignSystem, Feedback } from './DesignSystem';
 // import { useAll } from './Uberedux';
 
 const NX: React.FC<I_NX> = ({ children, config }) => {
@@ -23,6 +23,7 @@ const NX: React.FC<I_NX> = ({ children, config }) => {
     }
     return (
         <DesignSystem theme={theme}>
+            <Feedback />
             {children}
         </DesignSystem>
     );

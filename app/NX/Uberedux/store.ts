@@ -1,4 +1,3 @@
-// core/gl-core/cartridges/Uberedux/store.ts
 'use client';
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
@@ -42,3 +41,6 @@ const rootReducer = combineReducers({
 export const store = configureStore({
   reducer: rootReducer,
 });
+
+export type T_RootState = ReturnType<typeof store.getState>;
+export type T_UbereduxDispatch = typeof store.dispatch;

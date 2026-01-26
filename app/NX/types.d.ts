@@ -1,3 +1,9 @@
+import type { T_UbereduxDispatch } from '../../Uberedux/store';
+
+export {
+    T_UbereduxDispatch,
+}
+
 export interface I_NX {
     children: React.ReactNode;
     config: T_Config;
