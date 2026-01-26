@@ -37,7 +37,7 @@ const Terminal: React.FC = () => {
 			{messages.length === 0 ? (
 				<span style={{ color: '#c5c5c5' }}>&gt; </span>
 			) : (
-				messages.slice().reverse().map((msg, idx) => (
+				messages.map((msg, idx) => (
 					<div key={idx} style={{ marginBottom: 4 }}>
 						<span className="gold">&gt;</span> {msg}
 					</div>

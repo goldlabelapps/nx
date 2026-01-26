@@ -1,14 +1,16 @@
 {
     "project": "echopay",
     "title": "EchoPay",
-    "description": "Simple web payment interface",
+    "description": "Get a free iPad",
     "url": "https://echopay.goldlabel.pro",
-    "image": "https://live.staticflickr.com/65535/55059808356_43dc571962_b.jpg",
+    "image": "https://live.staticflickr.com/65535/55060018321_1fb27c99e1_b.jpg",
     "icon": "/echopay/favicon/favicon.png",
     "favicon": "/echopay/favicon/favicon.webp",
     "cartridges": {
         "paywall": {
-            "enabled": true
+            "enabled": true,
+            "userMode": "single",
+            "email": "echopay@goldlabel.pro"
         },
         "echopay": {
             "enabled": true

@@ -8,7 +8,7 @@ export const setPaywall =
                 const state = getState();
                 const current = (state?.redux?.paywall) || {};
                 const updated = { ...current, [key]: value };
-                dispatch(setUbereduxKey({ key: 'echopay', value: updated }));
+                dispatch(setUbereduxKey({ key: 'paywall', value: updated }));
             } catch (e: unknown) {
                 const msg = e instanceof Error ? e.message : String(e);
                 dispatch(setUbereduxKey({ key: 'error', value: msg }));

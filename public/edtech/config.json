@@ -2,11 +2,16 @@
     "project": "edtech",
     "url": "https://ed-tech.co",
     "title": "EdTech",
-    "description": "Teach your kids to code",
+    "description": "Teach kids to code",
     "image": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg",
     "icon": "/edtech/favicon.png",
     "favicon": "/edtech/favicon.ico",
     "cartridges": {
+        "paywall": {
+            "enabled": true,
+            "userMode": "single",
+            "email": "ed-tech@goldlabel.pro"
+        },
         "commerce": {
             "enabled": true,
             "ads": [
@@ -33,12 +38,12 @@
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#b67d02",
-                    "secondary": "#b67d02",
+                    "primary": "#3877cf",
+                    "secondary": "#3877cf",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#FAB109"
+                    "border": "#3877cf"
                 }
             }
         }

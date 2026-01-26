@@ -6,7 +6,7 @@ import {
 	Box,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
-import { addTerminalMessage } from '../../EchoPay';
+import { addTerminalMessage, initPayment } from '../../EchoPay';
 
 const mockItems = [
 	{
@@ -40,7 +40,8 @@ const PayNow: React.FC = () => {
 	const dispatch = useDispatch();
 
 	const handlePayNow = () => {
-		dispatch(addTerminalMessage(`Initiating payment of ${total} via EchoPay...`));
+		// dispatch(addTerminalMessage(`Initiating payment of ${total} via EchoPay...`));
+		dispatch(initPayment());
 	};
 
 	return (

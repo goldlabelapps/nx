@@ -9,9 +9,15 @@ import {
 	CardHeader,
 	CardContent,
 	useMediaQuery,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
 	Typography,
 } from '@mui/material';
 import { Share, Icon } from '../../DesignSystem';
+import { usePaywall, firebaseLogout } from '../../Paywall';
+import { useDispatch } from '../../Uberedux';
+
 
 export interface I_Settings {
 	config: T_Config;
@@ -24,10 +30,17 @@ const Settings: React.FC<I_Settings> = ({
 	smartImage,
 }) => {
 	const theme = useTheme();
+	const dispatch = useDispatch();
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+	const paywall = usePaywall();
+
+	const handleLogout = async () => {
+		await firebaseLogout();
+		// Optionally, dispatch a logout action here if you have one, or trigger state update as needed
+	};
 
 	return (
 		<>
@@ -51,19 +64,27 @@ const Settings: React.FC<I_Settings> = ({
 					// subheader={frontmatter?.description}
 					action={
 						<IconButton aria-label="close" onClick={handleClose}>
-							<Icon icon="close" />
+							<Icon icon="close" color="primary" />
 						</IconButton>
 					}
 				/>
 				<CardContent>
-					<Typography variant="h6">Share</Typography>
+					<Share
+						frontmatter={frontmatter}
+						smartImage={smartImage}
+					/>
+					{paywall.firebaseUser && (
+						<ListItemButton onClick={handleLogout} sx={{ mb: 2 }}>
+							<ListItemIcon>
+								<Icon icon="signout" color="primary" />
+							</ListItemIcon>
+							<ListItemText
+								primary={<Typography color="primary">Sign Out</Typography>}
+							/>
+						</ListItemButton>
+					)}
 
 				</CardContent>
-				<Share
-					frontmatter={frontmatter}
-					smartImage={smartImage}
-				/>
-				<Box sx={{ height: 16 }} />
 			</Dialog>
 		</>
 	);

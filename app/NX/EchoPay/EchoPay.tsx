@@ -1,24 +1,23 @@
 'use client';
 import * as React from 'react';
 import { T_Config, T_Frontmatter } from '../types.d';
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { useDispatch } from '../Uberedux';
-import { setEchoPay, Terminal, Controls, PayNow } from '../EchoPay';
+import { useEchopay, setEchoPay, Terminal, PayNow } from '../EchoPay';
 
 export interface I_EchoPay {
   config: T_Config;
-  frontmatter?: T_Frontmatter;
 }
 
 export default function EchoPay({ config }: I_EchoPay) {
 
   const dispatch = useDispatch();
+  const data = useEchopay();
   const eConfig = config.cartridges?.echopay || {};
 
   if (!eConfig.enabled) return null;
 
   React.useEffect(() => {
-    dispatch(setEchoPay('initted', true));
     dispatch(setEchoPay('enabled', eConfig.enabled));
   }, [dispatch, eConfig]);
 
@@ -29,6 +28,11 @@ export default function EchoPay({ config }: I_EchoPay) {
       </Grid>
       <Grid size={{ xs: 12, md: 6 }}>
         <Terminal />
+      </Grid>
+      <Grid size={{ xs: 12 }}>
+        <pre>
+          data {JSON.stringify(data, null, 2)}
+        </pre>
       </Grid>
     </Grid>
   );
