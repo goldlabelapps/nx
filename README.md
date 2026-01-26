@@ -14,6 +14,7 @@ export type T_Config = {
     image: string;
     icon: string;
     cartridges: {
+        
         uberedux?: T_UbereduxCartridge;
         designSystem?: T_DesignSystemCartridge;
         commerce?: T_CommerceCartridge;
