@@ -45,7 +45,7 @@ export default async function RootLayout({
         <div className="wrapper">
           <UbereduxProvider config={config}>
             {paywall ? (
-              <RequireAuthWrapper>{children}</RequireAuthWrapper>
+              <RequireAuthWrapper config={config}>{children}</RequireAuthWrapper>
             ) : (
               children
             )}

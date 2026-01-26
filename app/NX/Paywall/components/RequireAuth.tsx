@@ -1,14 +1,14 @@
-
 import React, { useEffect, useState } from 'react';
+import type { T_Config } from "../../types";
 import SignIn from './SignIn';
-import { firebaseLogin } from '../actions/firebaseLogin';
+import { firebaseLogin } from '../../Paywall';
 import { getFirebaseAuth } from '../../lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { Typography } from "@mui/material";
 import { useDispatch } from '../../Uberedux';
-import { usePaywall, setPaywall } from '../../Paywall';
+import { setPaywall } from '../../Paywall';
 
-export default function RequireAuth({ children }: { children: React.ReactNode }) {
+export default function RequireAuth({ children, config }: { children: React.ReactNode; config: T_Config }) {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
@@ -24,7 +24,6 @@ export default function RequireAuth({ children }: { children: React.ReactNode })
             setLoading(false);
         }
     };
-
 
     useEffect(() => {
         const auth = getFirebaseAuth();
@@ -56,7 +55,9 @@ export default function RequireAuth({ children }: { children: React.ReactNode })
         return () => unsubscribe();
     }, []);
 
-    if (loading) return <Typography>Authing...</Typography>;
-    if (!user) return <SignIn onSignIn={handleSignIn} />;
+    if (loading) return <Typography variant='caption' color="text.secondary">
+        Checking your credentials ...
+    </Typography>;
+    if (!user) return <SignIn config={config} onSignIn={handleSignIn} />;
     return <>{children}</>;
 }
