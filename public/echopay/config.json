@@ -17,6 +17,12 @@
             "enabled": true,
             "ads": [
                 {
+                    "title": "Terminal",
+                    "type": "link",
+                    "url": "/terminal",
+                    "icon": "terminal"
+                },
+                {
                     "title": "Adobe Commerce Marketplace",
                     "type": "link",
                     "url": "https://developer.adobe.com/commerce/php/best-practices/",
