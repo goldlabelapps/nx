@@ -1,10 +1,8 @@
-import type { Metadata } from "next";
 import "./globals.css";
+import type { Metadata } from "next";
 import fs from 'fs';
 import path from 'path';
-
 import { UbereduxProvider } from './NX/Uberedux';
-
 import RequireAuthWrapper from './NX/Paywall/components/RequireAuthWrapper';
 
 const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
@@ -28,7 +26,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
 
   const paywall = config.cartridges?.paywall?.enabled === true;
 

@@ -6,6 +6,8 @@ import Controls from './components/Controls';
 import PayNow from './components/PayNow';
 
 import { setEchoPay } from './actions/setEchoPay';
+import { clearTerminal } from './actions/clearTerminal';
+
 import { addTerminalMessage } from './actions/addTerminalMessage';
 import { getToken } from './actions/getToken';
 import { useEchopay } from './hooks/useEchopay';
@@ -17,6 +19,7 @@ export {
     PayNow,
     setEchoPay,
     addTerminalMessage,
+    clearTerminal,
     initPayment,
     getToken,
     useEchopay,

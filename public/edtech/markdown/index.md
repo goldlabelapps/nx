@@ -2,7 +2,7 @@
 order: 1 
 slug: /
 title: EdTech
-description: Teaching you kids to code
+description: Learn to code
 tags: nx, goldlabel, coding
 icon: flash
 smartImage: default
