@@ -1,11 +1,11 @@
 import type { Dispatch } from 'redux';
 import { setUbereduxKey } from '../../Uberedux';
-import { setEchoPay } from '../../EchoPay';
+import { addTerminalMessage } from '../../EchoPay';
 
-export const init = (): any =>
+export const initPayment = (): any =>
     async (dispatch: Dispatch, getState: () => any) => {
         try {
-            dispatch(setEchoPay('message', ['Hello from init!']));
+            dispatch(addTerminalMessage('Initialising payment...'));
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             dispatch(setUbereduxKey({ key: 'error', value: msg }));

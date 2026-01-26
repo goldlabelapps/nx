@@ -17,9 +17,9 @@
             "enabled": true,
             "ads": [
                 {
-                    "title": "Terminal",
+                    "title": "Example",
                     "type": "link",
-                    "url": "/terminal",
+                    "url": "/example",
                     "icon": "terminal"
                 },
                 {
