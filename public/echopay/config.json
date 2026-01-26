@@ -7,13 +7,11 @@
     "icon": "/echopay/favicon/favicon.png",
     "favicon": "/echopay/favicon/favicon.webp",
     "cartridges": {
-        "echopay": {
+        "paywall": {
             "enabled": true
         },
-        "paywall": {
-            "enabled": true,
-            "userMode": "single",
-            "email": "echopay@goldlabel.pro"
+        "echopay": {
+            "enabled": true
         },
         "commerce": {
             "enabled": true,
@@ -22,7 +20,6 @@
                     "title": "Terminal",
                     "type": "link",
                     "url": "/terminal",
-                    "description": "Simple web payment interface",
                     "icon": "terminal"
                 },
                 {

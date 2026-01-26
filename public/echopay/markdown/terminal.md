@@ -1,9 +1,9 @@
 ---
-order: 200
-cartridge: EchoPay
+order: 1234
 slug: /terminal
-title: Virtual Terminal
-description: Simple web-based interface
+cartridge: EchoPay
+title: EchoPay
+description: React payment interface
 icon: terminal
-tags: echopay, terminal, api, virtual terminal,
+tags: echopay, terminal, api, react
 ---

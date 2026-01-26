@@ -19,5 +19,3 @@ A virtual terminal allows businesses to securely process payments from any devic
 - Complete a payment using mock banks
 - Retrieve payment status
 - Handle webhooks and callbacks
-
-
