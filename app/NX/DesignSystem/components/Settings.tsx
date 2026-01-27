@@ -35,7 +35,8 @@ const Settings: React.FC<I_Settings> = ({
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-	const paywall = usePaywall();
+	const paywallRaw = usePaywall();
+	const paywall = paywallRaw && typeof paywallRaw === 'object' ? paywallRaw : {};
 
 	const handleLogout = async () => {
 		await firebaseLogout();
@@ -73,7 +74,7 @@ const Settings: React.FC<I_Settings> = ({
 						frontmatter={frontmatter}
 						smartImage={smartImage}
 					/>
-					{paywall.firebaseUser && (
+					{paywall && paywall.firebaseUser && (
 						<ListItemButton onClick={handleLogout} sx={{ mb: 2 }}>
 							<ListItemIcon>
 								<Icon icon="signout" color="primary" />

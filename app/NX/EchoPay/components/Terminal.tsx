@@ -1,18 +1,26 @@
 'use client';
 import React from "react";
 import {
-	useTheme,
 	Box,
+	IconButton,
 } from '@mui/material';
-import { useEchopay } from '../../EchoPay';
+import { useEchopay, setEchoPay } from '../../EchoPay';
+import { useDispatch } from '../../Uberedux';
+import { Icon } from '../../DesignSystem';
 
 const Terminal: React.FC = () => {
+
+	const dispatch = useDispatch();
 	const echopay = useEchopay();
 	const messages: string[] = Array.isArray(echopay?.message)
 		? echopay.message
 		: echopay?.message
 			? [String(echopay.message)]
 			: [];
+
+	const handleHideTerminal = () => {
+		dispatch(setEchoPay('hideTerminal', true));
+	}
 
 	return (
 		<Box
@@ -31,15 +39,27 @@ const Terminal: React.FC = () => {
 				fontFamily: 'monospace',
 				fontSize: 16,
 				color: '#1d1d1d',
-				'& .gold': { color: '#938014' },
+				position: 'relative',
+				'& .cursor': { color: '#002a67' },
 			}}
 		>
+			<IconButton
+				onClick={handleHideTerminal}
+				sx={{
+					position: 'absolute',
+					top: 8,
+					right: 8,
+					zIndex: 1,
+				}}
+			>
+				<Icon icon="hide" />
+			</IconButton>
 			{messages.length === 0 ? (
-				<span style={{ color: '#c5c5c5' }}>&gt; </span>
+				<span style={{ color: '#002a67' }}>&gt; </span>
 			) : (
 				messages.map((msg, idx) => (
 					<div key={idx} style={{ marginBottom: 4 }}>
-						<span className="gold">&gt;</span> {msg}
+						<span className="cursor">&gt;</span> {msg}
 					</div>
 				))
 			)}

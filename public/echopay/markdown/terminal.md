@@ -1,7 +1,7 @@
 ---
 order: 2
-title: Example
-slug: /example
+title: NX Terminal
+slug: /terminal
 cartridge: EchoPay
 description: Magento Shopping Cart
 icon: terminal

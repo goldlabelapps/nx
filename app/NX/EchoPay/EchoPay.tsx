@@ -1,8 +1,9 @@
 'use client';
 import * as React from 'react';
 import { T_Config, T_Frontmatter } from '../types.d';
-import { Grid } from '@mui/material';
+import { Box, Grid, IconButton } from '@mui/material';
 import { useDispatch } from '../Uberedux';
+import { Icon } from '../DesignSystem';
 import { useEchopay, setEchoPay, Terminal, PayNow } from '../EchoPay';
 
 export interface I_EchoPay {
@@ -17,23 +18,46 @@ export default function EchoPay({ config }: I_EchoPay) {
 
   if (!eConfig.enabled) return null;
 
+  const handleShowTerminal = () => {
+    dispatch(setEchoPay('hideTerminal', false));
+  }
+
   React.useEffect(() => {
     dispatch(setEchoPay('enabled', eConfig.enabled));
   }, [dispatch, eConfig]);
 
   return (
     <Grid container id="echopay" spacing={2}>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <PayNow />
+
+      <Grid>
+        <Box sx={{
+          display: 'flex',
+        }}>
+          <Box>
+            <PayNow />
+          </Box>
+          <Box>
+            {data?.hideTerminal && (
+              <IconButton
+                color="primary"
+                onClick={handleShowTerminal}
+              >
+                <Icon icon="show" />
+              </IconButton>
+            )}</Box>
+        </Box>
       </Grid>
-      <Grid size={{ xs: 12, md: 6 }}>
-        <Terminal />
-      </Grid>
-      <Grid size={{ xs: 12 }}>
+      {!data?.hideTerminal && (
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Terminal />
+        </Grid>
+      )}
+
+      {/* <Grid size={{ xs: 12 }}>
         <pre>
           data {JSON.stringify(data, null, 2)}
         </pre>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 }

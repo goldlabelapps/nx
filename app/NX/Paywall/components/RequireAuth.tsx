@@ -56,7 +56,7 @@ export default function RequireAuth({ children, config }: { children: React.Reac
     }, []);
 
     if (loading) return <Typography variant='caption' color="text.secondary">
-        Checking your credentials ...
+        Checking credentials ...
     </Typography>;
     if (!user) return <SignIn config={config} onSignIn={handleSignIn} />;
     return <>{children}</>;

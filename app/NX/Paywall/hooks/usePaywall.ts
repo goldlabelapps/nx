@@ -1,7 +1,9 @@
 
+
 import { useSelector } from 'react-redux';
+import { selectPaywall } from './selectPaywall';
 
 export function usePaywall() {
-  // Return the slice directly to avoid creating a new object reference
-  return useSelector((state: any) => state.redux.paywall || {});
+  // Use a memoized selector to avoid unnecessary re-renders
+  return useSelector(selectPaywall);
 }
