@@ -34,7 +34,7 @@ const mockItems = [
 		img: 'https://cdn-icons-png.flaticon.com/512/3075/3075975.png',
 	},
 ];
-const total = '$49.97';
+const total = '$77.95';
 
 const PayNow: React.FC = () => {
 	const dispatch = useDispatch();

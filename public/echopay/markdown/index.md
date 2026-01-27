@@ -2,7 +2,7 @@
 order: 1
 slug: /
 title: EchoPay
-description: Simple web payment interface
+description: Terminal
 icon: terminal
 tags: echopay, terminal, api
 ---

@@ -2,8 +2,6 @@
 
 Create a new project in /public based on the ones you find there. Create your .env file and configure 
 
-
-
 ```typescript
 export type T_Config = {
     project: string;
@@ -13,11 +11,6 @@ export type T_Config = {
     favicon: string;
     image: string;
     icon: string;
-    cartridges: {
-        
-        uberedux?: T_UbereduxCartridge;
-        designSystem?: T_DesignSystemCartridge;
-        commerce?: T_CommerceCartridge;
-    };
+    ...
 };
 ```

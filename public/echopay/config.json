@@ -1,7 +1,7 @@
 {
     "project": "echopay",
     "title": "EchoPay",
-    "description": "Get a free iPad",
+    "description": "Terminal",
     "url": "https://echopay.goldlabel.pro",
     "image": "https://live.staticflickr.com/65535/55060018321_1fb27c99e1_b.jpg",
     "icon": "/echopay/favicon/favicon.png",
@@ -19,22 +19,22 @@
             "enabled": true,
             "ads": [
                 {
-                    "title": "Example",
+                    "title": "Terminal",
                     "type": "link",
-                    "url": "/example",
+                    "url": "/terminal",
                     "icon": "terminal"
                 },
                 {
                     "title": "Adobe Commerce Marketplace",
                     "type": "link",
                     "url": "https://developer.adobe.com/commerce/php/best-practices/",
-                    "icon": "right"
+                    "icon": "link"
                 },
                 {
-                    "title": "Hostinger Magento Demo",
+                    "title": "EchoPay Magento",
                     "type": "link",
                     "url": "https://srv1269941.hstgr.cloud/",
-                    "icon": "right"
+                    "icon": "link"
                 }
             ]
         },
