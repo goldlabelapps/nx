@@ -1,5 +1,7 @@
 cY?2LkhiDlCWVIb1#4tM
 
+Merchant EchoPay configuration does not exist or not activated.
+
 # Echopay NX Documentation
 
 This directory contains documentation and resources for the Echopay project. Below is an overview of its structure and contents:

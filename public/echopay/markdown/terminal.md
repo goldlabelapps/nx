@@ -1,6 +1,6 @@
 ---
 order: 2
-title: Terminal
+title: NX Terminal
 slug: /terminal
 cartridge: EchoPay
 description: Magento Shopping Cart

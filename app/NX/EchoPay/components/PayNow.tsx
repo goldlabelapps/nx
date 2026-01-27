@@ -28,7 +28,7 @@ const mockItems = [
 		img: 'https://cdn-icons-png.flaticon.com/512/892/892462.png',
 	},
 	{
-		name: 'Magento Water Bottle',
+		name: 'Magento Booze',
 		price: '$12.99',
 		qty: 1,
 		img: 'https://cdn-icons-png.flaticon.com/512/3075/3075975.png',
@@ -46,7 +46,7 @@ const PayNow: React.FC = () => {
 
 	return (
 		<Box component="section">
-			<Box sx={{ bgcolor: '#fff', borderRadius: 3, boxShadow: 2, p: 2 }}>
+			<Box sx={{ minWidth: 320, bgcolor: '#fff', borderRadius: 3, boxShadow: 2, p: 2 }}>
 				{mockItems.map((item, idx) => (
 					<Box key={idx} display="flex" alignItems="center" mb={2}>
 						<Box component="img" src={item.img} alt={item.name} sx={{ width: 48, height: 48, bgcolor: '#fff', border: '1px solid #eee', borderRadius: 2, mr: 2 }} />

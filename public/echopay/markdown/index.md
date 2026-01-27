@@ -2,9 +2,10 @@
 order: 1
 slug: /
 title: EchoPay
-description: Terminal
+description: NX Terminal
 icon: terminal
-tags: echopay, terminal, api
+tags: echopay, terminal, api, nx
+image: https://live.staticflickr.com/65535/55064167984_ec7501758f_b.jpg
 ---
 
 > Securely process payments from any device with an internet connection
