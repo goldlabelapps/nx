@@ -2,26 +2,15 @@
     "project": "edtech",
     "url": "https://ed-tech.co",
     "title": "EdTech",
-    "description": "Teach kids to code",
-    "image": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg",
+    "description": "Educational Technology",
+    "image": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
     "icon": "/edtech/favicon.png",
     "favicon": "/edtech/favicon.ico",
     "cartridges": {
         "paywall": {
-            "enabled": true,
+            "enabled": false,
             "userMode": "single",
             "email": "ed-tech@goldlabel.pro"
-        },
-        "commerce": {
-            "enabled": true,
-            "ads": [
-                {
-                    "title": "Python",
-                    "type": "link",
-                    "url": "https://www.learnpython.org/",
-                    "description": "Get started learning Python by completing interactive coding challenges"
-                }
-            ]
         },
         "designSystem": {
             "enabled": true,
@@ -29,10 +18,19 @@
             "defaultTheme": "light",
             "smartImages": [
                 {
-                    "title": "Wei Zang teaching Flash",
-                    "id": "54802570139",
-                    "slug": "default",
-                    "src": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg"
+                    "title": "Global Teams",
+                    "slug": "teams",
+                    "src": "https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg"
+                },
+                {
+                    "title": "Learn Docker fundamentals for developers.",
+                    "slug": "docker",
+                    "src": "https://live.staticflickr.com/65535/55066171380_fffff7370e_b.jpg"
+                },
+                {
+                    "title": "Wei Zang teaching Next.js",
+                    "slug": "nextjs",
+                    "src": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg"
                 }
             ],
             "themes": {
