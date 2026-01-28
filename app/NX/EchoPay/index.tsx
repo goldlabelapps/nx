@@ -9,7 +9,6 @@ import { setEchoPay } from './actions/setEchoPay';
 import { clearTerminal } from './actions/clearTerminal';
 
 import { addTerminalMessage } from './actions/addTerminalMessage';
-import { getToken } from './actions/getToken';
 import { useEchopay } from './hooks/useEchopay';
 
 export {
@@ -21,6 +20,5 @@ export {
     addTerminalMessage,
     clearTerminal,
     initPayment,
-    getToken,
     useEchopay,
 };

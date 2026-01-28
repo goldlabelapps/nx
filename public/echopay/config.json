@@ -13,15 +13,16 @@
             "email": "echopay@goldlabel.pro"
         },
         "echopay": {
-            "enabled": true
+            "enabled": true,
+            "hideTerminal": true
         },
         "commerce": {
             "enabled": true,
             "ads": [
                 {
-                    "title": "NX Terminal",
+                    "title": "NX",
                     "type": "link",
-                    "url": "/terminal",
+                    "url": "/nx",
                     "icon": "terminal"
                 },
                 {

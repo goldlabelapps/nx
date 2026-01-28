@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { T_Config, T_Frontmatter } from '../types.d';
+import { T_Config } from '../types.d';
 import { Box, Grid, IconButton } from '@mui/material';
 import { useDispatch } from '../Uberedux';
 import { Icon } from '../DesignSystem';
@@ -23,7 +23,7 @@ export default function EchoPay({ config }: I_EchoPay) {
   }
 
   React.useEffect(() => {
-    dispatch(setEchoPay('enabled', eConfig.enabled));
+    dispatch(setEchoPay('hideTerminal', eConfig.hideTerminal ?? false));
   }, [dispatch, eConfig]);
 
   return (
@@ -53,11 +53,11 @@ export default function EchoPay({ config }: I_EchoPay) {
         </Grid>
       )}
 
-      {/* <Grid size={{ xs: 12 }}>
+      <Grid size={{ xs: 12 }}>
         <pre>
           data {JSON.stringify(data, null, 2)}
         </pre>
-      </Grid> */}
+      </Grid>
     </Grid>
   );
 }
