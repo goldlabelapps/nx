@@ -45,7 +45,7 @@ const Cart: React.FC = () => {
 		const apiPayload = {
 			hideUntilClicked: true,
 			notification: 'api',
-			amount: total.toFixed(2), // dollars as string with 2 decimals
+			amount: parseFloat(total.toFixed(2)),
 			reference: randomRef,
 			linkType: 'echopay',
 			accountNumber: 'GOLDLABEL01',

@@ -10,13 +10,11 @@ export const initPayment = (apiPayload: any): any =>
             dispatch(clearTerminal());
             dispatch(addTerminalMessage('Initialising payment'));
             dispatch(addTerminalMessage('Getting EchoPay API token...'));
-            dispatch(setFeedback({
-                severity: 'success',
-                title: 'Initialising payment',
-                description: 'Getting EchoPay API token...',
-            }));
+            // dispatch(setFeedback({
+            //     severity: 'success',
+            //     title: 'Getting EchoPay API token...',
+            // }));
 
-            // --- getToken logic inlined ---
             const apiKey = process.env.NEXT_PUBLIC_ECHOPAY_APIKEY;
             if (!apiKey) {
                 dispatch(addTerminalMessage('EchoPay API key not found in config'));
@@ -30,7 +28,8 @@ export const initPayment = (apiPayload: any): any =>
                     'Content-Type': 'application/json',
                 },
             });
-            dispatch(addTerminalMessage('Response received. Parsing & saving to Redux...'));
+            dispatch(addTerminalMessage('Response received. Parsing token ...'));
+
             const tokenResponse = await tokenRes.json();
             const status = tokenResponse?.status;
             const statusCode = tokenResponse?.statusCode;
@@ -44,15 +43,15 @@ export const initPayment = (apiPayload: any): any =>
                 await dispatch(setEchoPay('token', null));
                 await dispatch(setFeedback({
                     severity: 'error',
-                    title: 'failed',
-                    description: 'Token not received',
+                    title: 'EchoPay payment error',
+                    description: 'No token received',
                 }));
-                await dispatch(addTerminalMessage('Token retrieval failed. Saved null token to echopay.'));
+                await dispatch(addTerminalMessage('Token retrieval failed'));
                 return;
             }
 
-            // --- getPaymentLink logic inlined ---
             dispatch(addTerminalMessage('Requesting payment link...'));
+
             const linkRes = await fetch(`${baseUrl}/links`, {
                 method: 'POST',
                 headers: {
@@ -69,27 +68,27 @@ export const initPayment = (apiPayload: any): any =>
                 dispatch(addTerminalMessage(`Payment link received: ${paymentLink}`));
                 dispatch(setFeedback({
                     severity: 'success',
-                    title: 'Opening Payment Link',
-                    description: paymentLink,
+                    title: 'Redirecting to EchoPay...',
                 }));
                 setTimeout(() => {
-                    // alert(`Simulated opening payment link:\n\n${paymentLink}`);
                     window.location.href = paymentLink;
-                }, 2000);
-
-
+                }, 1000);
             } else {
                 dispatch(addTerminalMessage('Failed to create payment link.'));
                 dispatch(setFeedback({
                     severity: 'error',
-                    title: 'Payment link error',
+                    title: 'EchoPay payment error',
                     description: 'Could not create payment link.',
                 }));
             }
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
-            await dispatch(setUbereduxKey({ key: 'echopay', value: { token: null } }));
             dispatch(setUbereduxKey({ key: 'error', value: msg }));
-            dispatch(addTerminalMessage(`Error during payment init: ${msg}`));
+            dispatch(addTerminalMessage(`EchoPay payment error: ${msg}`));
+            dispatch(setFeedback({
+                severity: 'error',
+                title: 'EchoPay payment error',
+                description: msg,
+            }));
         }
     };
