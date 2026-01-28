@@ -14,17 +14,11 @@
         },
         "echopay": {
             "enabled": true,
-            "hideTerminal": false
+            "hideTerminal": true
         },
         "commerce": {
             "enabled": true,
             "ads": [
-                {
-                    "title": "NX",
-                    "type": "link",
-                    "url": "/nx",
-                    "icon": "terminal"
-                },
                 {
                     "title": "EchoPay Dashboard",
                     "type": "link",
@@ -38,10 +32,16 @@
                     "icon": "link"
                 },
                 {
-                    "title": "EchoPay Magento",
+                    "title": "GitHub Project",
+                    "type": "link",
+                    "url": "https://github.com/users/goldlabelapps/projects/7",
+                    "icon": "github"
+                },
+                {
+                    "title": "Magento",
                     "type": "link",
                     "url": "https://srv1269941.hstgr.cloud/",
-                    "icon": "link"
+                    "icon": "shop"
                 }
             ]
         },

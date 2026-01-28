@@ -1,5 +1,6 @@
 'use client';
 import React from "react";
+import { Alert } from '@mui/material';
 import {
 	Avatar,
 	Card,
@@ -14,9 +15,28 @@ import { useEchopay, addTerminalMessage, initPayment, setEchoPay } from '../../E
 import { useDispatch } from '../../Uberedux';
 import { mockProducts } from './mockProducts';
 
+
 const Cart: React.FC = () => {
 	const dispatch = useDispatch();
 	const { cart, apiPayload } = useEchopay();
+
+	// Check for API callback params in URL
+	const [feedbackParams, setFeedbackParams] = React.useState<null | Record<string, string>>(null);
+	React.useEffect(() => {
+		if (typeof window !== 'undefined') {
+			const params = new URLSearchParams(window.location.search);
+			const status = params.get('status');
+			const info = params.get('info');
+			const id = params.get('id');
+			if (status || info || id) {
+				setFeedbackParams({
+					...(status ? { status } : {}),
+					...(info ? { info } : {}),
+					...(id ? { id } : {}),
+				});
+			}
+		}
+	}, []);
 
 	const getTotal = () => {
 		if (!cart || !Array.isArray(cart?.items)) return 0;
@@ -64,12 +84,28 @@ const Cart: React.FC = () => {
 	const isEmpty = !cart || !Array.isArray(cart?.items) || cart.items.length === 0;
 	const total = getTotal();
 
+	if (feedbackParams) {
+		return (
+			<Alert
+				severity={feedbackParams.status === 'SUCCESS' ? 'success' : feedbackParams.status === 'FAIL' ? 'error' : 'info'}
+				variant="filled"
+				sx={{ width: '100%', alignItems: 'flex-start', flexDirection: 'column' }}
+			>
+				<strong>Payment Feedback</strong>
+				<ul style={{ margin: 0, paddingLeft: 20 }}>
+					{Object.entries(feedbackParams).map(([key, value]) => (
+						<li key={key}><b>{key}:</b> {decodeURIComponent(value)}</li>
+					))}
+				</ul>
+			</Alert>
+		);
+	}
+
 	return (
 		<Card variant="outlined" sx={{}}>
 			<CardHeader
 				avatar={<Icon icon="shop" />}
 				title="Mock Magento Shopping Cart"
-			// subheader="Create a mock Payment Request"
 			/>
 			<CardContent>
 				<Typography gutterBottom>
@@ -95,19 +131,15 @@ const Cart: React.FC = () => {
 						</div>
 					</>
 				)}
-
-				{/* <pre style={{ padding: '1em', borderRadius: '8px', background: '#f6f6f6', fontSize: 12, marginTop: 16 }}>
-					apiPayload: {JSON.stringify(apiPayload, null, 2)}
-				</pre> */}
 			</CardContent>
 			<CardActions>
 				<Button
 					fullWidth
-					startIcon={<Icon icon="reset" />}
+					startIcon={<Icon icon="shop" />}
 					onClick={handleCreateCart}
 					variant={cart && apiPayload && !isEmpty ? 'outlined' : 'contained'}
 				>
-					Randomise Cart
+					New Cart
 				</Button>
 				{cart && apiPayload && !isEmpty && (
 					<Button

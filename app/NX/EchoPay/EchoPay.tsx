@@ -23,6 +23,14 @@ export default function EchoPay({ config }: I_EchoPay) {
 
   if (!eConfig.enabled) return null;
 
+  const handleRestart = () => {
+    window.open('/', '_self');
+  }
+
+  const handleOpenDashboard = () => {
+    window.open('https://dev-dashboard.a2apay.co.uk/', '_blank');
+  }
+
   const handleShowTerminal = () => {
     dispatch(setEchoPay('hideTerminal', false));
   }
@@ -34,20 +42,39 @@ export default function EchoPay({ config }: I_EchoPay) {
   return (
     <Grid container id="echopay" spacing={2}>
 
-      <Grid size={{ xs: 12, md: 6 }}>
-        <Cart />
+      <Grid size={{ xs: 12 }}>
+
+        <Button
+          sx={{ mr: 1 }}
+          variant='outlined'
+          startIcon={<Icon icon="reset" />}
+          color="primary"
+          onClick={handleRestart}
+        >
+          Reset
+        </Button>
+
+        <Button
+          sx={{ mr: 1 }}
+          variant='outlined'
+          startIcon={<Icon icon="link" />}
+          color="primary"
+          onClick={handleOpenDashboard}
+        >
+          EchoPay Dashboard
+        </Button>
         {data?.hideTerminal && (
           <Button
-            sx={{ mt: 2 }}
-            startIcon={<Icon icon="show" />}
+            sx={{ mr: 1 }}
+            variant='outlined'
+            startIcon={<Icon icon="bug" />}
             color="primary"
             onClick={handleShowTerminal}
           >
-            Show Output
+            Debugger
           </Button>
         )}
       </Grid>
-
 
       {!data?.hideTerminal && (
         <Grid size={{ xs: 12, md: 6 }}>
@@ -55,11 +82,9 @@ export default function EchoPay({ config }: I_EchoPay) {
         </Grid>
       )}
 
-      {/* <Grid size={{ xs: 12 }}>
-        <pre>
-          data {JSON.stringify(data, null, 2)}
-        </pre>
-      </Grid> */}
+      <Grid size={{ xs: 12, md: 6 }}>
+        <Cart />
+      </Grid>
 
     </Grid>
   );
