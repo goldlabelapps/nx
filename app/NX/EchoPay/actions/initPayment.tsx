@@ -2,10 +2,9 @@ import type { Dispatch } from 'redux';
 import { setUbereduxKey } from '../../Uberedux';
 import { addTerminalMessage, setEchoPay } from '../../EchoPay';
 import { setFeedback } from '../../DesignSystem';
-
 import { clearTerminal } from './clearTerminal';
 
-export const initPayment = (): any =>
+export const initPayment = (apiPayload: any): any =>
     async (dispatch: Dispatch) => {
         try {
             dispatch(clearTerminal());
@@ -36,6 +35,9 @@ export const initPayment = (): any =>
             const status = tokenResponse?.status;
             const statusCode = tokenResponse?.statusCode;
             const idToken = tokenResponse?.data?.idToken || null;
+
+            dispatch(addTerminalMessage(`token: ${idToken}`));
+
             if (status === 'success' && statusCode === 201 && idToken) {
                 await dispatch(setEchoPay('token', idToken));
             } else {
@@ -51,21 +53,13 @@ export const initPayment = (): any =>
 
             // --- getPaymentLink logic inlined ---
             dispatch(addTerminalMessage('Requesting payment link...'));
-            const body = {
-                hideUntilClicked: true,
-                notification: 'api',
-                amount: 100,
-                reference: 'ORDER123',
-                linkType: 'echopay',
-                accountNumber: '1234',
-            };
             const linkRes = await fetch(`${baseUrl}/links`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${idToken}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(body),
+                body: JSON.stringify(apiPayload),
             });
             const linkResponse = await linkRes.json();
             const linkStatus = linkResponse?.status;
@@ -75,9 +69,15 @@ export const initPayment = (): any =>
                 dispatch(addTerminalMessage(`Payment link received: ${paymentLink}`));
                 dispatch(setFeedback({
                     severity: 'success',
-                    title: 'Payment link created',
+                    title: 'Opening Payment Link',
                     description: paymentLink,
                 }));
+                setTimeout(() => {
+                    // alert(`Simulated opening payment link:\n\n${paymentLink}`);
+                    window.location.href = paymentLink;
+                }, 2000);
+
+
             } else {
                 dispatch(addTerminalMessage('Failed to create payment link.'));
                 dispatch(setFeedback({

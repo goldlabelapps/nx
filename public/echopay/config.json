@@ -14,7 +14,7 @@
         },
         "echopay": {
             "enabled": true,
-            "hideTerminal": true
+            "hideTerminal": false
         },
         "commerce": {
             "enabled": true,

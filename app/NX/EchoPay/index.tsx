@@ -2,7 +2,7 @@ import EchoPay from './EchoPay';
 import { initPayment } from './actions/initPayment';
 
 import Terminal from './components/Terminal';
-import Controls from './components/Controls';
+import Cart from './components/Cart';
 import PayNow from './components/PayNow';
 
 import { setEchoPay } from './actions/setEchoPay';
@@ -14,7 +14,7 @@ import { useEchopay } from './hooks/useEchopay';
 export {
     EchoPay,
     Terminal,
-    Controls,
+    Cart,
     PayNow,
     setEchoPay,
     addTerminalMessage,

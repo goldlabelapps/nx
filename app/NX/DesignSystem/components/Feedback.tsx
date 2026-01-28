@@ -30,7 +30,7 @@ export default function Feedback() {
       open
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'left',
+        horizontal: 'center',
       }}
       onClose={handleClose}
     >
