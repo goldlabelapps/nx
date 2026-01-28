@@ -7,7 +7,7 @@ export function useMUITheme(t: T_Theme) {
       mode: t.mode,
       primary: { main: t.primary },
       secondary: { main: t.secondary },
-      success: { main: t.primary },
+      // success: { main: t.primary },
       divider: t.border,
       background: {
         default: t.background,

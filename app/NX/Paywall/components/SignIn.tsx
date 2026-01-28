@@ -100,12 +100,11 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
                             label="Password"
                             type={showPassword ? 'text' : 'password'}
                             value={password}
-                            variant='filled'
+                            variant='outlined'
                             onChange={e => setPassword(e.target.value)}
                             fullWidth
                             required
                             margin="normal"
-                            autoFocus={userMode === 'single'}
                             InputProps={{
                                 endAdornment: (
                                     <InputAdornment position="end">

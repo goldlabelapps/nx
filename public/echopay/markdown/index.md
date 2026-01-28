@@ -2,7 +2,7 @@
 order: 1
 slug: /
 title: EchoPay
-description: NX Terminal
+description: NX
 icon: terminal
 tags: echopay, terminal, api, nx
 image: https://live.staticflickr.com/65535/55064167984_ec7501758f_b.jpg

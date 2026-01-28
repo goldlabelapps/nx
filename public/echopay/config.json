@@ -1,7 +1,7 @@
 {
     "project": "echopay",
     "title": "EchoPay",
-    "description": "Terminal",
+    "description": "NX Terminal",
     "url": "https://echopay.goldlabel.pro",
     "image": "https://live.staticflickr.com/65535/55064167984_ec7501758f_b.jpg",
     "icon": "/echopay/favicon/favicon.png",
@@ -13,15 +13,16 @@
             "email": "echopay@goldlabel.pro"
         },
         "echopay": {
-            "enabled": true
+            "enabled": true,
+            "hideTerminal": false
         },
         "commerce": {
             "enabled": true,
             "ads": [
                 {
-                    "title": "Terminal",
+                    "title": "NX",
                     "type": "link",
-                    "url": "/terminal",
+                    "url": "/nx",
                     "icon": "terminal"
                 },
                 {
@@ -49,9 +50,8 @@
             "defaultTheme": "dark",
             "smartImages": [
                 {
-                    "title": "Cartridge",
-                    "slug": "cartridge",
-                    "flickrId": "55059808356",
+                    "title": "Blue Cartridge",
+                    "slug": "blue-cartridge",
                     "src": "https://live.staticflickr.com/65535/55059808356_43dc571962_b.jpg"
                 }
             ],
