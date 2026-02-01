@@ -1,0 +1,54 @@
+{
+    "url": "https://aki.goldlabel.pro",
+    "project": "aki",
+    "title": "AKI",
+    "description": "Abgeschottet Künstliche Intelligenz",
+    "image": "https://live.staticflickr.com/65535/54662806019_1eaf5bf739_b.jpg",
+    "icon": "/aki/favicon.png",
+    "favicon": "/aki/favicon.ico",
+    "cartridges": {
+        "commerce": {
+            "enabled": true,
+            "ads": [
+                {
+                    "title": "GitHub",
+                    "type": "link",
+                    "url": "https://github.com/javascript-pro/aki",
+                    "icon": "github"
+                }
+            ]
+        },
+        "designSystem": {
+            "enabled": true,
+            "allowTheme": true,
+            "smartImages": [
+                {
+                    "title": "Default",
+                    "slug": "default",
+                    "src": "https://live.staticflickr.com/65535/54662806019_1eaf5bf739_b.jpg"
+                }
+            ],
+            "defaultTheme": "dark",
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#36a49d",
+                    "secondary": "#11645d",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#000",
+                    "border": "#11645d"
+                },
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#36a49d",
+                    "secondary": "#11645d",
+                    "background": "#000",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#11645d"
+                }
+            }
+        }
+    }
+}

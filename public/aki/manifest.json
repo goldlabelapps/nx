@@ -1,0 +1,19 @@
+{
+  "short_name": "AKI",
+  "name": "AKI",
+  "theme_color": "#FFF",
+  "background_color": "#FFF",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/aki/favicon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any maskable"
+    }
+  ]
+}

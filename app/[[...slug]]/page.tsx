@@ -22,12 +22,15 @@ import { NX } from '../NX';
 import { Icon, Nav, Settings, SmartImage } from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
+
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
 import { EchoPay } from '../NX/EchoPay';
-
+import akiConfig from '../../public/aki/config.json';
+import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
+import { Flash } from '../NX/Flash';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -42,6 +45,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         config = echopayConfig as T_Config;
     } else if (project === 'edtech') {
         config = edtechConfig as T_Config;
+    } else if (project === 'aki') {
+        config = akiConfig as T_Config;
     } else {
         config = nxConfig as T_Config;
     }
@@ -103,6 +108,9 @@ export async function generateStaticParams() {
         case 'edtech':
             markdownDir = path.resolve(process.cwd(), "public", "edtech", "markdown");
             break;
+        case 'aki':
+            markdownDir = path.resolve(process.cwd(), "public", "aki", "markdown");
+            break;
         case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
@@ -132,8 +140,12 @@ export default async function Page(props: any) {
         config = mcukConfig as T_Config;
     } else if (project === 'echopay') {
         config = echopayConfig as T_Config;
+    } else if (project === 'aki') {
+        config = akiConfig as T_Config;
     } else if (project === 'edtech') {
         config = edtechConfig as T_Config;
+    } else if (project === 'flash') {
+        config = flashConfig as T_Config;
     } else {
         config = nxConfig as T_Config;
     }
@@ -210,6 +222,11 @@ export default async function Page(props: any) {
                 <Container id="main" maxWidth="xl">
                     <Box sx={{ minHeight: { xs: 75, sm: 100 }, my: 1 }}></Box>
                     <EchoPay config={config} />
+                </Container>
+            ) : data.cartridge && String(data.cartridge).toLowerCase() === 'flash' ? (
+                <Container id="main" maxWidth="xl">
+                    <Box sx={{ minHeight: { xs: 75, sm: 100 }, my: 1 }}></Box>
+                    <Flash config={config} />
                 </Container>
             ) : (
                 <Container id="main" maxWidth="xl" sx={{ my: '60px' }}>
