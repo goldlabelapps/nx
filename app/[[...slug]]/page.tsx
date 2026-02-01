@@ -31,6 +31,7 @@ import akiConfig from '../../public/aki/config.json';
 import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
 import { Flash } from '../NX/Flash';
+import { DesignSystem } from '../NX/DesignSystem';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -61,6 +62,10 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const smartImage = await serverUseSmartImage(config, frontmatter);
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
+
+    const themeMode = 'light';
+    const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+
 
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
@@ -163,6 +168,24 @@ export default async function Page(props: any) {
     if (data.title) title = data.title;
     if (data.description) description = data.description;
 
+    // If a cartridge is present and is 'echopay' or 'flash', render only the cartridge, no other UI
+    const cartridge = data.cartridge && String(data.cartridge).toLowerCase();
+
+    const themeMode = 'light';
+    const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+
+    if (cartridge === 'echopay') {
+        return <DesignSystem theme={theme}>
+            <EchoPay config={config} />
+        </DesignSystem>;
+    }
+    if (cartridge === 'flash') {
+        return <DesignSystem theme={theme}>
+            <Flash config={config} />
+        </DesignSystem>;
+    };
+
+    // Otherwise, render the full app UI
     return (
         <NX config={config}>
             <header>
@@ -218,104 +241,91 @@ export default async function Page(props: any) {
                 </Box>
             </header>
             {/* Start Main */}
-            {data.cartridge && String(data.cartridge).toLowerCase() === 'echopay' ? (
-                <Container id="main" maxWidth="xl">
-                    <Box sx={{ minHeight: { xs: 75, sm: 100 }, my: 1 }}></Box>
-                    <EchoPay config={config} />
-                </Container>
-            ) : data.cartridge && String(data.cartridge).toLowerCase() === 'flash' ? (
-                <Container id="main" maxWidth="xl">
-                    <Box sx={{ minHeight: { xs: 75, sm: 100 }, my: 1 }}></Box>
-                    <Flash config={config} />
-                </Container>
-            ) : (
-                <Container id="main" maxWidth="xl" sx={{ my: '60px' }}>
-                    <Box sx={{ minHeight: { xs: 75, sm: 100 }, my: 1 }}></Box>
+            <Container id="main" maxWidth="xl" sx={{ mt: '100px', mb: '60px' }}>
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: {
+                            xs: '1fr',
+                            lg: '250px 1fr 400px'
+                        },
+                        gap: 2,
+                        alignItems: 'start',
+                        width: '100%'
+                    }}
+                >
                     <Box
+                        component="nav"
                         sx={{
-                            display: 'grid',
-                            gridTemplateColumns: {
-                                xs: '1fr',
-                                lg: '250px 1fr 400px'
-                            },
-                            gap: 2,
-                            alignItems: 'start',
-                            width: '100%'
+                            display: { xs: 'none', lg: 'block' },
+                            width: { lg: '250px' },
+                            minWidth: { lg: '250px' },
+                            maxWidth: { lg: '250px' },
+                            gridColumn: { lg: '1' },
                         }}
                     >
-                        <Box
-                            component="nav"
+                        <Nav
+                            config={config}
+                            navItems={navItems as I_NestedNav["navItems"]}
+                            currentPath={slugPath || '/'}
+                            mode="desktop"
+                        />
+                    </Box>
+                    <Box
+                        component="main"
+                        sx={{
+                            gridColumn: { lg: '2' },
+                            width: '100%',
+                            minWidth: 0,
+                            pr: { xs: 2, lg: 3 },
+                            pl: { xs: 2, lg: 0 },
+                        }}
+                    >
+                        <Typography
                             sx={{
-                                display: { xs: 'none', lg: 'block' },
-                                width: { lg: '250px' },
-                                minWidth: { lg: '250px' },
-                                maxWidth: { lg: '250px' },
-                                gridColumn: { lg: '1' },
+                                display: 'flex',
                             }}
+                            color='secondary'
+                            variant="h5"
+                            component="h2"
                         >
-                            <Nav
-                                config={config}
-                                navItems={navItems as I_NestedNav["navItems"]}
-                                currentPath={slugPath || '/'}
-                                mode="desktop"
-                            />
-                        </Box>
-                        <Box
-                            component="main"
-                            sx={{
-                                gridColumn: { lg: '2' },
-                                width: '100%',
-                                minWidth: 0,
-                                pr: { xs: 2, lg: 3 },
-                                pl: { xs: 2, lg: 0 },
-                            }}
-                        >
-                            <Typography
-                                sx={{
-                                    display: 'flex',
-                                }}
-                                color='secondary'
-                                variant="h5"
-                                component="h2"
-                            >
-                                {data.icon && (
-                                    <Box sx={{ mr: 2 }}>
-                                        <Icon icon={data.icon} color="primary" />
-                                    </Box>
-                                )}
-                                {description}
-                            </Typography>
-                            {smartImage?.meta?.mode !== 'config' && (
-                                <Box sx={{ my: 2 }}>
-                                    <SmartImage smartImage={smartImage} />
+                            {data.icon && (
+                                <Box sx={{ mr: 2 }}>
+                                    <Icon icon={data.icon} color="primary" />
                                 </Box>
                             )}
-
-                            <RenderMarkdown config={config}>
-                                {content}
-                            </RenderMarkdown>
-                        </Box>
-                        <Box
-                            sx={{
-                                display: { xs: 'none', lg: 'block' },
-                                width: { lg: '400px' },
-                                minWidth: { lg: '400px' },
-                                maxWidth: { lg: '400px' },
-                                gridColumn: { lg: '3' },
-                                pr: 3,
-                            }}
-                        >
-                            <Box sx={{}}>
-                                <Commerce config={config} />
+                            {description}
+                        </Typography>
+                        {smartImage?.meta?.mode !== 'config' && (
+                            <Box sx={{ my: 2 }}>
+                                <SmartImage smartImage={smartImage} />
                             </Box>
+                        )}
+
+                        <RenderMarkdown config={config}>
+                            {content}
+                        </RenderMarkdown>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: { xs: 'none', lg: 'block' },
+                            width: { lg: '400px' },
+                            minWidth: { lg: '400px' },
+                            maxWidth: { lg: '400px' },
+                            gridColumn: { lg: '3' },
+                            pr: 3,
+                        }}
+                    >
+                        <Box sx={{}}>
+                            <Commerce config={config} />
                         </Box>
                     </Box>
-                </Container>
-            )}
+                </Box>
+            </Container>
             {/* End Main */}
             <footer>
 
             </footer>
-        </NX>
+        </NX >
     );
 }

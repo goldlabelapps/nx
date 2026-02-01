@@ -42,7 +42,7 @@ export type T_Ad =
 
 export type T_CommerceCartridge = {
     enabled: boolean;
-    ads: T_Ad[];
+    ads: boolean | T_Ad[];
 };
 
 export type T_CommerceShortcode = {
@@ -75,7 +75,7 @@ export type T_UbereduxCartridge = Record<string, unknown>;
 export type T_DesignSystemCartridge = {
     allowTheme: boolean;
     defaultTheme: string;
-    smartImages?: T_SmartImage[];
+    smartImages?: boolean | T_SmartImage[];
     themes: {
         [key: string]: {
             mode: 'light' | 'dark';
