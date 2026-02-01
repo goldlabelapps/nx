@@ -1,120 +1,21 @@
 {
     "url": "https://nx.goldlabel.pro",
     "project": "nx",
-    "title": "NX",
-    "description": "by Goldlabel",
-    "image": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg",
+    "title": "Goldlabel NX",
+    "description": "Modern web apps for clients who need real results fast",
+    "image": "https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg",
     "icon": "/nx/favicon.png",
     "favicon": "/nx/favicon.ico",
     "cartridges": {
         "commerce": {
             "enabled": true,
-            "ads": [
-                {
-                    "title": "GitHub",
-                    "type": "link",
-                    "description": "Open Source and Free forever",
-                    "url": "https://github.com/goldlabelapps",
-                    "icon": "github"
-                },
-                {
-                    "title": "LinkedIn",
-                    "type": "link",
-                    "description": "Social Media for grown ups",
-                    "url": "https://www.linkedin.com/in/chris-dorward/",
-                    "icon": "linkedin"
-                },
-                {
-                    "title": "Facebook",
-                    "type": "link",
-                    "description": "Social Media for kids",
-                    "url": "https://www.facebook.com/goldlabelapps",
-                    "icon": "facebook"
-                },
-                {
-                    "title": "X (Twitter)",
-                    "type": "link",
-                    "description": "Small acts of sedition",
-                    "url": "https://x.com/goldlabelapps",
-                    "icon": "twitter"
-                },
-                {
-                    "title": "YouTube",
-                    "type": "link",
-                    "description": "The internet is made of cats",
-                    "url": "https://www.youtube.com/@goldlabelApps",
-                    "icon": "youtube"
-                },
-                {
-                    "title": "Flickr",
-                    "type": "link",
-                    "url": "https://www.flickr.com/photos/listingslab/",
-                    "description": "Using Flickr as a CDN for 20 years",
-                    "icon": "flickr"
-                },
-                {
-                    "title": "Instagram",
-                    "type": "link",
-                    "url": "https://www.instagram.com/milkylackstoes",
-                    "description": "Insta. Really?",
-                    "icon": "photo"
-                }
-            ]
+            "ads": true
         },
         "designSystem": {
             "enabled": true,
             "allowTheme": false,
             "defaultTheme": "light",
-            "smartImages": [
-                {
-                    "title": "Default",
-                    "id": "55043282654",
-                    "slug": "default",
-                    "src": "https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg"
-                },
-                {
-                    "title": "Selfie",
-                    "id": "55043218958",
-                    "slug": "selfie",
-                    "src": "https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg"
-                },
-                {
-                    "title": "Team in the park",
-                    "id": "55043297044",
-                    "slug": "team-in-the-park",
-                    "src": "https://live.staticflickr.com/65535/55043297044_45e9c515ae_b.jpg"
-                },
-                {
-                    "title": "Mindful",
-                    "id": "55042136837",
-                    "slug": "mindful",
-                    "src": "https://live.staticflickr.com/65535/55042136837_2c9d12d414_b.jpg"
-                },
-                {
-                    "title": "Education",
-                    "id": "55042134422",
-                    "slug": "education",
-                    "src": "https://live.staticflickr.com/65535/55042134422_16df78eb7d_b.jpg"
-                },
-                {
-                    "title": "Ice Cream",
-                    "id": "55042131557",
-                    "slug": "ice-cream",
-                    "src": "https://live.staticflickr.com/65535/55042131557_edc53256a7_b.jpg"
-                },
-                {
-                    "title": "Work",
-                    "id": "55043207718",
-                    "slug": "work",
-                    "src": "https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg"
-                },
-                {
-                    "title": "Team",
-                    "id": "55043024886",
-                    "slug": "team",
-                    "src": "https://live.staticflickr.com/65535/55043024886_a6eac9181d_b.jpg"
-                }
-            ],
+            "smartImages": true,
             "themes": {
                 "light": {
                     "mode": "light",

@@ -1,8 +1,8 @@
 ---
 order: 1 
 slug: /
-title: NX
-description: by Goldlabel
+title: Goldlabel NX
+description: Modern web apps for clients who need real results fast
 tags: nx, goldlabel
 icon: goldlabel
 smartImage: random
