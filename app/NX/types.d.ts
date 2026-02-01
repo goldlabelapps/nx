@@ -137,7 +137,7 @@ export type T_Frontmatter = {
     icon?: string;
     order?: number;
     image?: string;
-    smartImage?: string;
+    smartImage?: string | false;
 };
 
 export type T_Markdown = {

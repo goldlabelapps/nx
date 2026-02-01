@@ -11,6 +11,18 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
             }
         };
     }
+
+    // If smartImage is explicitly false, return config image
+    if (frontmatter && typeof frontmatter.smartImage === 'boolean' && frontmatter.smartImage === false && config?.image) {
+        return {
+            src: config.image,
+            meta: {
+                alt: config.title || '',
+                mode: 'config',
+            },
+        };
+    }
+
     if (frontmatter?.smartImage && config?.cartridges?.designSystem?.smartImages) {
         const smartImagesArr = config.cartridges.designSystem.smartImages;
         // Special case: if smartImage is 'random', pick a random image from the array
