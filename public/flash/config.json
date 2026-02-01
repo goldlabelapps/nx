@@ -1,0 +1,48 @@
+{
+    "project": "flash",
+    "url": "https://flash.goldlabel.pro",
+    "title": "Flash",
+    "description": "You're welcome.",
+    "image": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg",
+    "icon": "/flash/favicon.png",
+    "favicon": "/flash/favicon.ico",
+    "cartridges": {
+        "paywall": {
+            "enabled": true,
+            "userMode": "single",
+            "email": "ed-tech@goldlabel.pro"
+        },
+        "designSystem": {
+            "enabled": true,
+            "allowTheme": true,
+            "smartImages": [
+                {
+                    "title": "Default",
+                    "slug": "default",
+                    "src": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg"
+                }
+            ],
+            "defaultTheme": "dark",
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#36a49d",
+                    "secondary": "#11645d",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#000",
+                    "border": "#11645d"
+                },
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#36a49d",
+                    "secondary": "#11645d",
+                    "background": "#000",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#11645d"
+                }
+            }
+        }
+    }
+}
