@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { T_Config } from '../types.d';
-import { Box, Grid, Button } from '@mui/material';
+import { Box, Grid, Button, Container } from '@mui/material';
 import { useDispatch } from '../Uberedux';
 import { Icon } from '../DesignSystem';
 import {
@@ -40,52 +40,54 @@ export default function EchoPay({ config }: I_EchoPay) {
   }, [dispatch, eConfig]);
 
   return (
-    <Grid container id="echopay" spacing={2}>
+    <Container sx={{ mt: 2 }}>
+      <Grid container id="echopay" spacing={2}>
 
-      <Grid size={{ xs: 12 }}>
+        <Grid size={{ xs: 12 }}>
 
-        <Button
-          sx={{ mr: 1 }}
-          variant='outlined'
-          startIcon={<Icon icon="reset" />}
-          color="primary"
-          onClick={handleRestart}
-        >
-          Reset
-        </Button>
+          <Button
+            sx={{ mr: 1 }}
+            variant='contained'
+            startIcon={<Icon icon="reset" />}
+            color="primary"
+            onClick={handleRestart}
+          >
+            Reset
+          </Button>
 
-        <Button
-          sx={{ mr: 1 }}
-          variant='outlined'
-          startIcon={<Icon icon="link" />}
-          color="primary"
-          onClick={handleOpenDashboard}
-        >
-          EchoPay Dashboard
-        </Button>
-        {data?.hideTerminal && (
           <Button
             sx={{ mr: 1 }}
             variant='outlined'
-            startIcon={<Icon icon="bug" />}
+            startIcon={<Icon icon="link" />}
             color="primary"
-            onClick={handleShowTerminal}
+            onClick={handleOpenDashboard}
           >
-            Debugger
+            EchoPay Dashboard
           </Button>
-        )}
-      </Grid>
-
-      {!data?.hideTerminal && (
-        <Grid size={{ xs: 12, md: 6 }}>
-          <Terminal />
+          {data?.hideTerminal && (
+            <Button
+              sx={{ mr: 1 }}
+              variant='outlined'
+              startIcon={<Icon icon="bug" />}
+              color="primary"
+              onClick={handleShowTerminal}
+            >
+              Debugger
+            </Button>
+          )}
         </Grid>
-      )}
 
-      <Grid size={{ xs: 12, md: 6 }}>
-        <Cart />
+        {!data?.hideTerminal && (
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Terminal />
+          </Grid>
+        )}
+
+        <Grid size={{ xs: 12, md: 6 }}>
+          <Cart />
+        </Grid>
+
       </Grid>
-
-    </Grid>
+    </Container>
   );
 }

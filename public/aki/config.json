@@ -4,9 +4,23 @@
     "title": "AKI",
     "description": "Abgeschottet Künstliche Intelligenz",
     "image": "https://live.staticflickr.com/65535/54662806019_1eaf5bf739_b.jpg",
-    "icon": "/aki/favicon.png",
-    "favicon": "/aki/favicon.ico",
+    "icon": "/aki/web-app-icon-masked-192x192.png",
+    "favicon": "/aki/web-app-icon-masked-192x192.png",
     "cartridges": {
+        "lingua": {
+            "enabled": true,
+            "defaultLanguage": "de",
+            "languages": {
+                "de": {
+                    "name": "Deutsch",
+                    "flag": "de"
+                },
+                "en": {
+                    "name": "English",
+                    "flag": "us"
+                }
+            }
+        },
         "commerce": {
             "enabled": true,
             "ads": [
