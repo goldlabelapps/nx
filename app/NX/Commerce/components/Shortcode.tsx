@@ -23,7 +23,8 @@ export const Shortcode: React.FC<I_Shortcode> = ({ slug, config }) => {
             setAd(null);
             return;
         }
-        const ads: T_Ad[] = config.cartridges?.commerce?.ads || [];
+        const adsRaw = config.cartridges?.commerce?.ads;
+        const ads: T_Ad[] = Array.isArray(adsRaw) ? adsRaw : [];
         const found = ads.find((item) => 'slug' in item && item.slug === slug);
         if (!found) {
             setError(`No product found for slug: "${slug}"`);

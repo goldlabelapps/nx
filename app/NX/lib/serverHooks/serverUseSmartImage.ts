@@ -25,29 +25,31 @@ export async function serverUseSmartImage(config: T_Config, frontmatter: T_Front
 
     if (frontmatter?.smartImage && config?.cartridges?.designSystem?.smartImages) {
         const smartImagesArr = config.cartridges.designSystem.smartImages;
-        // Special case: if smartImage is 'random', pick a random image from the array
-        if (frontmatter.smartImage === 'random' && smartImagesArr.length > 0) {
-            const randomIdx = Math.floor(Math.random() * smartImagesArr.length);
-            const randomImage = smartImagesArr[randomIdx];
-            if (randomImage && randomImage.src) {
+        if (Array.isArray(smartImagesArr)) {
+            // Special case: if smartImage is 'random', pick a random image from the array
+            if (frontmatter.smartImage === 'random' && smartImagesArr.length > 0) {
+                const randomIdx = Math.floor(Math.random() * smartImagesArr.length);
+                const randomImage = smartImagesArr[randomIdx];
+                if (randomImage && randomImage.src) {
+                    return {
+                        src: randomImage.src,
+                        meta: {
+                            alt: (randomImage.meta?.alt || ''),
+                            mode: 'smartImage'
+                        }
+                    };
+                }
+            }
+            const smartImageObj = smartImagesArr.find((item: any) => item.slug === frontmatter.smartImage);
+            if (smartImageObj && smartImageObj.src) {
                 return {
-                    src: randomImage.src,
+                    src: smartImageObj.src,
                     meta: {
-                        alt: (randomImage.meta?.alt || ''),
+                        alt: (smartImageObj.meta?.alt || ''),
                         mode: 'smartImage'
                     }
                 };
             }
-        }
-        const smartImageObj = smartImagesArr.find((item: any) => item.slug === frontmatter.smartImage);
-        if (smartImageObj && smartImageObj.src) {
-            return {
-                src: smartImageObj.src,
-                meta: {
-                    alt: (smartImageObj.meta?.alt || ''),
-                    mode: 'smartImage'
-                }
-            };
         }
     }
     if (config?.image) {
