@@ -11,14 +11,14 @@ h6 a {
     text-decoration: none;
 }
 
-/* Set all heading font-weights to lighter */
+/* Set all heading font-weights to normal */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-weight: lighter;
+    font-weight: normal;
 }
 
 blockquote {
