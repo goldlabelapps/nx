@@ -3,8 +3,7 @@ order: 70
 title: Delivery
 description: From prototype to operational system
 slug: /delivery
-icon: deploy
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
+icon: ai
 ---
 
 Delivery was defined as successful daily use, not technical completion.

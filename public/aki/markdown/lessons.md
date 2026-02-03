@@ -3,8 +3,7 @@ order: 90
 title: Lessons
 description: What this project taught about AI consultancy
 slug: /lessons
-icon: learn
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
+icon: ai
 ---
 
 Key lessons:

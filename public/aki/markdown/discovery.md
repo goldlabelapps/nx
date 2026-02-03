@@ -3,8 +3,7 @@ order: 30
 title: Discovery
 description: Understanding the real problem before proposing AI
 slug: /discovery
-icon: search
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
+icon: ai
 ---
 
 Discovery focused on how work actually happened inside the firm, not how it was described.

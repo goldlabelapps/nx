@@ -15,7 +15,6 @@ import {
 } from '@mui/material';
 import {
     Icon,
-    SmartImage,
 } from '../../DesignSystem';
 
 export type I_Share = {
@@ -35,7 +34,6 @@ export default function Share({
 
     return (
         <>
-
             <MenuItem
                 onClick={() => {
                     navigator.clipboard.writeText(url);

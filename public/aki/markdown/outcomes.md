@@ -3,8 +3,7 @@ order: 80
 title: Outcomes
 description: What changed inside the business
 slug: /outcomes
-icon: chart
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
+icon: ai
 ---
 
 The outcome was a working, trusted internal AI tool.

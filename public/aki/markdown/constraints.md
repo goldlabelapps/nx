@@ -3,8 +3,7 @@ order: 40
 title: Constraints
 description: Non-negotiables that shaped the solution
 slug: /constraints
-icon: lock
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
+icon: ai
 ---
 
 The project was defined more by constraints than features.

@@ -4,7 +4,6 @@ title: Architecture
 description: Designing a ring-fenced AI system
 slug: /architecture
 icon: ai
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
 ---
 
 The resulting architecture prioritised containment and clarity over novelty.

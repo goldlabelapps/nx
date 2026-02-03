@@ -3,8 +3,7 @@ order: 60
 title: Implementation
 description: Building incrementally under real constraints
 slug: /implementation
-icon: code
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
+icon: ai
 ---
 
 Implementation followed a deliberately incremental approach.

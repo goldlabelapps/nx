@@ -3,8 +3,7 @@ order: 10
 title: Overview
 description: A contained AI consultancy delivered end-to-end for a German law firm
 slug: /overview
-icon: case
-image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
+icon: ai
 ---
 
 AKI (Abgeschottete Künstliche Intelligenz) documents a full AI consultancy engagement delivered by Goldlabel Apps for a German law firm.
