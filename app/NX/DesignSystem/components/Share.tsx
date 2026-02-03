@@ -50,7 +50,7 @@ export default function Share({
                 </ListItemIcon>
                 <ListItemText
                     primary={copied ? 'Copied!' : 'Copy Link'}
-                    secondary={url}
+                // secondary={url}
                 />
             </MenuItem>
 

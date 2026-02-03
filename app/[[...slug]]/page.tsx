@@ -222,6 +222,14 @@ export default async function Page(props: any) {
                                     <Box sx={{
                                         display: "flex"
                                     }}>
+
+                                        <Typography
+                                            color='secondary'
+                                            variant="h4"
+                                            component="h1"
+                                        >
+                                            lingua
+                                        </Typography>
                                         <Settings
                                             config={config}
                                             frontmatter={data}
