@@ -10,9 +10,9 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/aki/web-app-icon-masked-192x192.png",
+      "src": "/aki/favicon.png",
       "type": "image/png",
-      "sizes": "192x192",
+      "sizes": "180x180",
       "purpose": "any maskable"
     }
   ]
