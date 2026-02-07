@@ -9,8 +9,8 @@
     "cartridges": {
         "lingua": {
             "enabled": true,
-            "defaultLanguage": "de",
-            "languages": {
+            "lang": "de",
+            "langs": {
                 "de": {
                     "name": "Deutsch",
                     "flag": "de"
@@ -18,6 +18,10 @@
                 "en": {
                     "name": "English",
                     "flag": "us"
+                },
+                "fr": {
+                    "name": "Français",
+                    "flag": "fr"
                 }
             }
         },

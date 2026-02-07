@@ -32,6 +32,7 @@ import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
 import { Flash } from '../NX/Flash';
 import { DesignSystem } from '../NX/DesignSystem';
+import { SelectLang } from '../NX/Lingua';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -195,7 +196,7 @@ export default async function Page(props: any) {
                         sx={{
                             top: 0,
                             boxShadow: 0,
-                            bgcolor: bg,
+                            // bgcolor: bg,
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
@@ -223,13 +224,8 @@ export default async function Page(props: any) {
                                         display: "flex"
                                     }}>
 
-                                        <Typography
-                                            color='secondary'
-                                            variant="h4"
-                                            component="h1"
-                                        >
-                                            lingua
-                                        </Typography>
+                                        <SelectLang />
+
                                         <Settings
                                             config={config}
                                             frontmatter={data}
