@@ -50,7 +50,7 @@ const Settings: React.FC<I_Settings> = ({
 				aria-label="Call To Action"
 				onClick={handleOpen}
 			>
-				<Icon icon="settings" />
+				<Icon icon="share" />
 			</IconButton>
 			<Dialog
 				open={open}
@@ -60,8 +60,8 @@ const Settings: React.FC<I_Settings> = ({
 				fullWidth
 			>
 				<CardHeader
-					avatar={<Icon icon="settings" />}
-					title={'Settings'}
+					avatar={<Icon icon="share" />}
+					title={'Share'}
 					// subheader={frontmatter?.description}
 					action={
 						<IconButton aria-label="close" onClick={handleClose}>

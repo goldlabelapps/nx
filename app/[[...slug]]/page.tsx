@@ -19,10 +19,9 @@ import {
     serverUseSmartImage,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Icon, Nav, Settings, SmartImage } from '../NX/DesignSystem';
+import { DesignSystem, Icon, Nav, Settings, SmartImage } from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
-
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
@@ -31,8 +30,6 @@ import akiConfig from '../../public/aki/config.json';
 import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
 import { Flash } from '../NX/Flash';
-import { DesignSystem } from '../NX/DesignSystem';
-import { SelectLang } from '../NX/Lingua';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -196,7 +193,7 @@ export default async function Page(props: any) {
                         sx={{
                             top: 0,
                             boxShadow: 0,
-                            // bgcolor: bg,
+                            bgcolor: bg,
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
@@ -223,8 +220,6 @@ export default async function Page(props: any) {
                                     <Box sx={{
                                         display: "flex"
                                     }}>
-
-                                        <SelectLang />
 
                                         <Settings
                                             config={config}
