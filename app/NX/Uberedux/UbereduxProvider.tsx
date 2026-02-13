@@ -6,6 +6,12 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import { setUbereduxKey } from './store';
 
+type LangData = {
+  default: string;
+  local: string;
+  switch: string;
+};
+
 export default function UbereduxProvider({
   config,
   children,
