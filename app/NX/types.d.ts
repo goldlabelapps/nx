@@ -62,6 +62,19 @@ export type T_Config = {
         designSystem?: T_DesignSystemCartridge;
         uberedux?: T_UbereduxCartridge;
         echopay?: T_EchoPayCartridge;
+        lingua?: T_LinguaCartridge;
+    };
+}
+
+// Lingua
+export type T_LinguaCartridge = {
+    enabled: boolean;
+    defaultLanguage: string;
+    languages: {
+        [code: string]: {
+            name: string;
+            flag: string;
+        };
     };
 };
 

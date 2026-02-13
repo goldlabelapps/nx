@@ -11,6 +11,17 @@
             "enabled": true,
             "ads": [
                 {
+                    "slug": "thc-mouth-spray",
+                    "title": "THC Mouth Spray",
+                    "type": "route",
+                    "path": "/how-to-use/edibles/thc-mouth-spray",
+                    "price": "Buy now for £59.99",
+                    "description": "Full-spectrum RSO spray • ~70 sprays • ~15mg per spray • zero faff dosing",
+                    "icon": "food",
+                    "image": "https://budbuddies.cc/wp-content/uploads/2026/01/nebula-mist-thc-mouth-spray-10ml-1000mg-trio-upright.webp",
+                    "affiliate": "https://budbuddies.cc/product/nebula-mist/bud/listingslab/?campaign=MCUK"
+                },
+                {
                     "slug": "chocolate",
                     "title": "THC Infused chocolate truffles",
                     "type": "route",

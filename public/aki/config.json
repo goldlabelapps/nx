@@ -7,20 +7,6 @@
     "icon": "/aki/favicon.png",
     "favicon": "/aki/favicon.png",
     "cartridges": {
-        "lingua": {
-            "enabled": true,
-            "defaultLanguage": "de",
-            "languages": {
-                "de": {
-                    "name": "Deutsch",
-                    "flag": "de"
-                },
-                "en": {
-                    "name": "English",
-                    "flag": "us"
-                }
-            }
-        },
         "commerce": {
             "enabled": true,
             "ads": [

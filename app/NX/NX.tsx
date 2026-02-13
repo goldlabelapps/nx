@@ -6,7 +6,7 @@ import { DesignSystem, Feedback } from './DesignSystem';
 // import { useAll } from './Uberedux';
 
 const NX: React.FC<I_NX> = ({ children, config }) => {
-    const themeMode = 'light';
+    const themeMode = config?.cartridges?.designSystem?.defaultTheme || 'light';
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (!theme) {
         return (
