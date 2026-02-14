@@ -2,7 +2,7 @@
 import React from 'react';
 import { useDispatch } from '../Uberedux';
 import { Flash, MovieClip, useFlash, setFlash } from '../Flash';
-import { useGsapFadeIn } from './actionscript/useGsapFadeIn';
+import { useGsapFadeIn } from './ActionScript/useGsapFadeIn';
 
 export const FlashDemo: React.FC = () => {
     const flash = useFlash();
