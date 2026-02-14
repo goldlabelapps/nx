@@ -8,13 +8,12 @@
     "favicon": "/echopay/favicon/favicon.webp",
     "cartridges": {
         "paywall": {
-            "enabled": true,
+            "enabled": false,
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
         "echopay": {
-            "enabled": true,
-            "hideTerminal": true
+            "enabled": true
         },
         "commerce": {
             "enabled": true,
@@ -47,7 +46,7 @@
         },
         "designSystem": {
             "allowTheme": true,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "smartImages": [
                 {
                     "title": "Blue Cartridge",
