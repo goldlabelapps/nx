@@ -1,12 +1,12 @@
 // /Users/goldlabel/GitHub/flash/app/src/Flash/types.d.ts
 import React from 'react';
-import { TUbereduxDispatch, TRootState } from './lib/store';
+// import { TUbereduxDispatch, TRootState } from './lib/store';
 
 export type TState = {
   [key: string]: any;
 }
 
-export { TUbereduxDispatch, TRootState };
+// export { TUbereduxDispatch, TRootState };
 
 export type TMovieClip = {
   id?: string;

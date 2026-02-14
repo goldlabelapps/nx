@@ -1,7 +1,8 @@
-// /Users/goldlabel/GitHub/flash/app/src/Flash/hooks/useFlash.tsx
+"use client";
 import { useSelector } from 'react-redux';
-import { TRootState } from '../types';
-
 export function useFlash() {
-  return useSelector((state: TRootState) => state.redux.flash);
+  const slice = useSelector((state: any) => state.redux.flash);
+  return {
+    ...slice,
+  };
 }
