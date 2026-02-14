@@ -1,4 +1,5 @@
 import React from 'react';
+import MovieClip from './components/MovieClip';
 
 export interface I_Flash {
     children?: React.ReactNode;
@@ -17,13 +18,31 @@ const stageStyle: React.CSSProperties = {
     overflow: 'hidden',
     zIndex: 0,
     border: '2px solid red',
+    // Prevent scrolling
+    overscrollBehavior: 'none',
 };
 
 export const Flash: React.FC<I_Flash> = ({ children, id }) => {
+    // Wrap each child in an absolutely positioned div so they stack over each other
+    const layeredChildren = React.Children.map(children, (child, i) => (
+        <MovieClip
+            style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                border: 'none', // Remove blue border for these layers
+                background: 'none',
+            }}
+        >
+            {child}
+        </MovieClip>
+    ));
     return (
-        <div id={id} style={stageStyle}>
-            {children}
-        </div>
+        <MovieClip id={id} style={stageStyle}>
+            {layeredChildren}
+        </MovieClip>
     );
 };
 

@@ -12,7 +12,6 @@ export interface I_MovieClip {
 
 const defaultSize = 150;
 const movieClipBaseStyle: React.CSSProperties = {
-    border: '2px solid blue',
     width: defaultSize,
     height: defaultSize,
     boxSizing: 'border-box',
