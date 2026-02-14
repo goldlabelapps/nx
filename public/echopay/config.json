@@ -13,8 +13,7 @@
             "email": "echopay@goldlabel.pro"
         },
         "echopay": {
-            "enabled": true,
-            "hideTerminal": true
+            "enabled": true
         },
         "commerce": {
             "enabled": true,
