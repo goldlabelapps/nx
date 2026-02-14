@@ -8,7 +8,7 @@
     "favicon": "/flash/favicon.ico",
     "cartridges": {
         "paywall": {
-            "enabled": true,
+            "enabled": false,
             "userMode": "single",
             "email": "ed-tech@goldlabel.pro"
         },
@@ -22,7 +22,7 @@
                     "src": "https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg"
                 }
             ],
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "themes": {
                 "light": {
                     "mode": "light",
