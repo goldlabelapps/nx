@@ -1,12 +1,15 @@
 import React from 'react';
 
+
 export interface I_MovieClip {
     children?: React.ReactNode;
+    id?: string;
 }
 
-export const MovieClip: React.FC<I_MovieClip> = ({ children }) => {
+
+export const MovieClip: React.FC<I_MovieClip> = ({ children, id }) => {
     return (
-        <div>
+        <div id={id}>
             {children}
         </div>
     );
