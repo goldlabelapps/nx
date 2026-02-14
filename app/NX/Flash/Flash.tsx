@@ -1,16 +1,13 @@
 import React from 'react';
-import type { T_Config } from '../types';
 
 export interface FlashProps {
-    config: T_Config;
+    children?: React.ReactNode;
 }
 
-export const Flash: React.FC<FlashProps> = ({ config }) => {
-    // Placeholder for Flash project main component
+export const Flash: React.FC<FlashProps> = ({ children }) => {
     return (
         <div>
-            <h2>{config.title || 'Flash Project'}</h2>
-            <p>{config.description || 'Welcome to the Flash project!'}</p>
+            {children}
         </div>
     );
 };

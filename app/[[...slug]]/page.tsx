@@ -179,7 +179,9 @@ export default async function Page(props: any) {
     }
     if (cartridge === 'flash') {
         return <DesignSystem theme={theme}>
-            <Flash config={config} />
+            <Flash>
+                <>Hello Flash World</>
+            </Flash>
         </DesignSystem>;
     };
 

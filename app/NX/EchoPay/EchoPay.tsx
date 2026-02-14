@@ -1,13 +1,14 @@
 'use client';
 import * as React from 'react';
 import { T_Config } from '../types.d';
-import { Button, Container } from '@mui/material';
+import { Button } from '@mui/material';
 import { useDispatch } from '../Uberedux';
 import { Icon } from '../DesignSystem';
 import {
   useEchopay,
   setEchoPay,
 } from '../EchoPay';
+import { Flash } from '../Flash';
 
 export interface I_EchoPay {
   config: T_Config;
@@ -32,7 +33,7 @@ export default function EchoPay({ config }: I_EchoPay) {
   }, [dispatch, initted]);
 
   return (
-    <>
+    <Flash>
       <Button
         startIcon={<Icon icon="reset" />}
         color="primary"
@@ -43,6 +44,6 @@ export default function EchoPay({ config }: I_EchoPay) {
       <pre>
         {JSON.stringify(echoPayState, null, 2)}
       </pre>
-    </>
+    </Flash>
   );
 }
