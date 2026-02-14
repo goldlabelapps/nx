@@ -1,39 +1,33 @@
 "use client";
 import React from 'react';
-import { useDispatch } from '../Uberedux';
-import { Flash, MovieClip, useFlash, setFlash } from '../Flash';
-import { useGsapFadeIn } from './ActionScript/useGsapFadeIn';
+import { Flash, MovieClip, Macromedia } from '../Flash';
+import AnimateFlashLogo from './ActionScript/AnimateFlashLogo';
 
 export const FlashDemo: React.FC = () => {
-    const flash = useFlash();
-    const { initted } = flash
-    const dispatch = useDispatch();
-
     React.useEffect(() => {
-        if (!initted) {
-            dispatch(setFlash('initted', true));
-        }
-    }, [dispatch, initted]);
+        // Initialize AnimateFlashLogo
+        const logoAnimator = new AnimateFlashLogo('macromedia_icon');
+        logoAnimator.init();
+    }, []);
 
-    const fadeRef = useGsapFadeIn(3, 'power2.out');
+    // const fadeRef = useGsapFadeIn(3, 'power2.out');
     return (
         <Flash id={'FlashDemo'}>
             {/* <pre>
                 {JSON.stringify(flash, null, 2)}
             </pre> */}
-            <MovieClip id='mc_demo' style={{}}>
+            <MovieClip id='macromedia_icon' style={{ opacity: 0 }}>
                 <div
-                    ref={fadeRef as React.RefObject<HTMLDivElement>}
+                    // ref={fadeRef as React.RefObject<HTMLDivElement>}
                     style={{
                         width: '100%',
                         height: '100%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        opacity: 0,
                     }}
                 >
-                    Flash Demo
+                    <Macromedia width="100%" height="100%" />
                 </div>
             </MovieClip>
         </Flash>

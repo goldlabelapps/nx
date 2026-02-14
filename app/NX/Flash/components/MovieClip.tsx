@@ -18,6 +18,7 @@ const movieClipBaseStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    // border: '2px solid red',
 };
 
 export const MovieClip: React.FC<I_MovieClip> = ({ children, id, style, width, height }) => {
