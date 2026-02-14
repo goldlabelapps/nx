@@ -1,3 +1,4 @@
 import Flash from './Flash';
-export { Flash };
-export default Flash;
+import MovieClip from './components/MovieClip';
+
+export { Flash, MovieClip };

@@ -1,10 +1,10 @@
 import React from 'react';
 
-export interface I_Flash {
+export interface I_MovieClip {
     children?: React.ReactNode;
 }
 
-export const Flash: React.FC<I_Flash> = ({ children }) => {
+export const MovieClip: React.FC<I_MovieClip> = ({ children }) => {
     return (
         <div>
             {children}
@@ -12,4 +12,4 @@ export const Flash: React.FC<I_Flash> = ({ children }) => {
     );
 };
 
-export default Flash;
+export default MovieClip;
