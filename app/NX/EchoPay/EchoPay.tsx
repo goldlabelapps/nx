@@ -32,11 +32,7 @@ export default function EchoPay({ config }: I_EchoPay) {
   return (
     <Flash id="movie_name">
       <MovieClip id="mc_1">
-        mc_1
-      </MovieClip>
-
-      <MovieClip id="mc_2">
-        mc_2
+        EchoPay
       </MovieClip>
     </Flash>
   );
