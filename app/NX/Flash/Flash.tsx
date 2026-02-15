@@ -1,6 +1,5 @@
 import React from 'react';
-// import {MovieClip} from '../Flash';
-import styles from './Flash.module.css';
+import styles from './lib/Flash.module.css';
 
 export interface I_Flash {
     children?: React.ReactNode;

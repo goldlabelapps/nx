@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
-import { Flash, MovieClip, Macromedia, LightningBolt, useFlash, setFlash, AnimateFlashLogo } from '../Flash';
-import { useDispatch } from '../Uberedux';
+import { Flash, MovieClip, Macromedia, LightningBolt, useFlash, setFlash, AnimateFlashLogo } from '../../../Flash';
+import { useDispatch } from '../../../Uberedux';
 
-export const FlashDemo: React.FC = () => {
+export const Goldlabel: React.FC = () => {
     const flash = useFlash();
     const { initted } = flash;
     const dispatch = useDispatch();
@@ -61,8 +61,9 @@ export const FlashDemo: React.FC = () => {
             <MovieClip id='mc_lightningbolt' style={{ opacity: 0 }}>
                 <LightningBolt width="100%" height="100%" />
             </MovieClip>
+
+
         </Flash>
     );
 };
 
-export default FlashDemo;
