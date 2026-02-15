@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Flash, MovieClip, Macromedia, LightningBolt, useFlash, setFlash, AnimateFlashLogo } from '../../../Flash';
+import { Flash, MovieClip, useFlash, setFlash, AnimateFlashLogo } from '../../../Flash';
 import { useDispatch } from '../../../Uberedux';
 
 export const Example: React.FC = () => {
@@ -48,20 +48,15 @@ export const Example: React.FC = () => {
                 height={350}
                 pos="top-left"
                 align="left"
-                style={{ opacity: 0 }}>
+                style={{ opacity: 1 }}>
                 <pre>
                     {JSON.stringify(flash, null, 2)}
                 </pre>
             </MovieClip>
 
             <MovieClip id='mc_macromedia' style={{ opacity: 0 }}>
-                <Macromedia width="100%" height="100%" />
+                Example
             </MovieClip>
-
-            <MovieClip id='mc_lightningbolt' style={{ opacity: 0 }}>
-                <LightningBolt width="100%" height="100%" />
-            </MovieClip>
-
 
         </Flash>
     );

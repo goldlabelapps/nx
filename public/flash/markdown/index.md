@@ -2,6 +2,7 @@
 order: 1 
 slug: /
 title: Flash
+flash: Example
 description: You're welcome
 tags: nx, goldlabel, flash
 icon: flash

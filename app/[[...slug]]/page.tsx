@@ -46,6 +46,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         config = edtechConfig as T_Config;
     } else if (project === 'aki') {
         config = akiConfig as T_Config;
+    } else if (project === 'flash') {
+        config = flashConfig as T_Config;
     } else {
         config = nxConfig as T_Config;
     }
@@ -197,7 +199,145 @@ export default async function Page(props: any) {
     // ...existing code...
     return (
         <NX config={config}>
-            {/* ...existing code... */}
-        </NX>
+            <header>
+                <Box sx={{ flexGrow: 1 }}>
+                    <AppBar
+                        position="fixed"
+                        sx={{
+                            top: 0,
+                            boxShadow: 0,
+                            bgcolor: bg,
+                        }}>
+                        <Container maxWidth="xl">
+                            <CardHeader
+                                avatar={<a href='/'>
+                                    <IconButton
+                                        edge="start"
+                                        color="inherit"
+                                        aria-label={title}
+                                        sx={{}}>
+                                        <Avatar
+                                            alt={config.title}
+                                            src={config.icon}
+                                        />
+                                    </IconButton>
+                                </a>}
+                                title={<Typography
+                                    color='secondary'
+                                    variant="h4"
+                                    component="h1"
+                                >
+                                    {title}
+                                </Typography>}
+                                action={
+                                    <Box sx={{
+                                        display: "flex"
+                                    }}>
+
+                                        <Settings
+                                            config={config}
+                                            frontmatter={data}
+                                            smartImage={smartImage}
+                                        />
+                                        <Nav
+                                            mode="mobile"
+                                            navItems={navItems as I_NestedNav["navItems"]}
+                                            currentPath={slugPath || '/'}
+                                            config={config}
+                                        />
+                                    </Box>
+                                }
+                            />
+                        </Container>
+                    </AppBar>
+                </Box>
+            </header>
+            {/* Start Main */}
+            <Container id="main" maxWidth="xl" sx={{ mt: '100px', mb: '60px' }}>
+                <Box
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: {
+                            xs: '1fr',
+                            lg: '250px 1fr 400px'
+                        },
+                        gap: 2,
+                        alignItems: 'start',
+                        width: '100%'
+                    }}
+                >
+                    <Box
+                        component="nav"
+                        sx={{
+                            display: { xs: 'none', lg: 'block' },
+                            width: { lg: '250px' },
+                            minWidth: { lg: '250px' },
+                            maxWidth: { lg: '250px' },
+                            gridColumn: { lg: '1' },
+                        }}
+                    >
+                        <Nav
+                            config={config}
+                            navItems={navItems as I_NestedNav["navItems"]}
+                            currentPath={slugPath || '/'}
+                            mode="desktop"
+                        />
+                    </Box>
+                    <Box
+                        component="main"
+                        sx={{
+                            gridColumn: { lg: '2' },
+                            width: '100%',
+                            minWidth: 0,
+                            pr: { xs: 2, lg: 3 },
+                            pl: { xs: 2, lg: 0 },
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                display: 'flex',
+                            }}
+                            color='secondary'
+                            variant="h5"
+                            component="h2"
+                        >
+                            {data.icon && (
+                                <Box sx={{ mr: 2 }}>
+                                    <Icon icon={data.icon} color="primary" />
+                                </Box>
+                            )}
+                            {description}
+                        </Typography>
+                        {smartImage?.meta?.mode !== 'config' && (
+                            <Box sx={{ my: 2 }}>
+                                <SmartImage smartImage={smartImage} />
+                            </Box>
+                        )}
+
+                        <RenderMarkdown config={config}>
+                            {content}
+                        </RenderMarkdown>
+                    </Box>
+                    <Box
+                        sx={{
+                            display: { xs: 'none', lg: 'block' },
+                            width: { lg: '400px' },
+                            minWidth: { lg: '400px' },
+                            maxWidth: { lg: '400px' },
+                            gridColumn: { lg: '3' },
+                            pr: 3,
+                        }}
+                    >
+                        <Box sx={{}}>
+                            <Commerce config={config} />
+                        </Box>
+                    </Box>
+                </Box>
+            </Container>
+            {/* End Main */}
+            <footer>
+
+            </footer>
+        </NX >
     );
 }
