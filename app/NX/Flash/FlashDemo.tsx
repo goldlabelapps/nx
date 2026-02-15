@@ -1,8 +1,7 @@
 "use client";
 import React from 'react';
-import { Flash, MovieClip, Macromedia, useFlash, setFlash } from '../Flash';
+import { Flash, MovieClip, Macromedia, LightningBolt, useFlash, setFlash, AnimateFlashLogo } from '../Flash';
 import { useDispatch } from '../Uberedux';
-import AnimateFlashLogo from './ActionScript/AnimateFlashLogo';
 
 export const FlashDemo: React.FC = () => {
     const flash = useFlash();
@@ -27,7 +26,7 @@ export const FlashDemo: React.FC = () => {
 
     React.useEffect(() => {
         // Initialize AnimateFlashLogo with onDone callback
-        const logoAnimator = new AnimateFlashLogo('macromedia_icon', () => {
+        const logoAnimator = new AnimateFlashLogo('mc_macromedia', () => {
             dispatch(setFlash('finished', true));
         });
         logoAnimator.init();
@@ -49,24 +48,18 @@ export const FlashDemo: React.FC = () => {
                 height={350}
                 pos="top-left"
                 align="left"
-                style={{ opacity: 1 }}>
+                style={{ opacity: 0 }}>
                 <pre>
                     {JSON.stringify(flash, null, 2)}
                 </pre>
             </MovieClip>
 
-            <MovieClip id='macromedia_icon' style={{ opacity: 1 }}>
-                <div
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    }}
-                >
-                    <Macromedia width="100%" height="100%" />
-                </div>
+            <MovieClip id='mc_macromedia' style={{ opacity: 0 }}>
+                <Macromedia width="100%" height="100%" />
+            </MovieClip>
+
+            <MovieClip id='mc_lightningbolt' style={{ opacity: 0 }}>
+                <LightningBolt width="100%" height="100%" />
             </MovieClip>
         </Flash>
     );

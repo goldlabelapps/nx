@@ -9,7 +9,6 @@
     position: relative;
     overflow: hidden;
     z-index: 0;
-    border: 2px solid blue;
     overscroll-behavior: none;
 }
 

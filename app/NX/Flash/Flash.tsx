@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieClip from './components/MovieClip';
+// import {MovieClip} from '../Flash';
 import styles from './Flash.module.css';
 
 export interface I_Flash {

@@ -81,17 +81,9 @@ export const MovieClip: React.FC<I_MovieClip> = ({ children, id, style, classNam
         ...getAlignStyle(align),
         ...style,
     };
-    // If the only child is a <pre>, don't wrap in centering div
-    const isPre = React.Children.count(children) === 1 &&
-        React.isValidElement(children) &&
-        (children as React.ReactElement).type === 'pre';
     return (
         <div id={id} style={mergedStyle} className={className}>
-            {isPre ? children : (
-                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {children}
-                </div>
-            )}
+            {children}
         </div>
     );
 };

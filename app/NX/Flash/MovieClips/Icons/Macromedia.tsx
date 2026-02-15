@@ -1,5 +1,5 @@
 import React from 'react';
-import { TMovieClip } from '../types';
+import { TMovieClip } from '../../types';
 import { useTheme, SvgIcon } from '@mui/material';
 
 export default function Macromedia(props: TMovieClip) {
