@@ -67,4 +67,3 @@ export const Example: React.FC = () => {
     );
 };
 
-export default Example;
