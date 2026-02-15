@@ -29,7 +29,7 @@ import { EchoPay } from '../NX/EchoPay';
 import akiConfig from '../../public/aki/config.json';
 import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
-import { FlashDemo } from '../NX/Flash';
+import { Example } from '../NX/Flash';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -179,7 +179,7 @@ export default async function Page(props: any) {
     }
     if (cartridge === 'flash') {
         return <DesignSystem theme={theme}>
-            <FlashDemo />
+            <Example />
         </DesignSystem>;
     };
 
