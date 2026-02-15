@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
-import { Flash, MovieClip, Macromedia, LightningBolt, useFlash, setFlash, AnimateFlashLogo } from '../../Flash';
-import { useDispatch } from '../../Uberedux';
+import { Flash, MovieClip, Macromedia, LightningBolt, useFlash, setFlash, AnimateFlashLogo } from '../../../Flash';
+import { useDispatch } from '../../../Uberedux';
 
-export const Example: React.FC = () => {
+export const Goldlabel: React.FC = () => {
     const flash = useFlash();
     const { initted } = flash;
     const dispatch = useDispatch();

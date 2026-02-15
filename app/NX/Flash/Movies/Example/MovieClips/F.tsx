@@ -1,5 +1,5 @@
 import React from 'react';
-import { TMovieClip } from '../../types';
+import { TMovieClip } from '../../../types';
 import { useTheme } from '@mui/material';
 
 export default function F({ ...props }: TMovieClip) {

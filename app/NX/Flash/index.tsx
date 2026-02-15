@@ -1,6 +1,6 @@
 import Flash from './Flash';
 import MovieClip from './MovieClips/MovieClip';
-import { Example } from './Example';
+import { Example } from './Movies/Example';
 import { setFlash } from './lib/actions/setFlash';
 import { useFlash } from './lib/hooks/useFlash';
 import Macromedia from './MovieClips/Icons/Macromedia';

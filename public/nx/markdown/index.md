@@ -1,6 +1,7 @@
 ---
 order: 1 
 slug: /
+flash: Goldlabel
 title: Goldlabel NX
 description: Modern web apps for clients who need real results fast
 tags: nx, goldlabel
