@@ -114,6 +114,9 @@ export async function generateStaticParams() {
         case 'aki':
             markdownDir = path.resolve(process.cwd(), "public", "aki", "markdown");
             break;
+        case 'flash':
+            markdownDir = path.resolve(process.cwd(), "public", "flash", "markdown");
+            break;
         case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
@@ -166,165 +169,35 @@ export default async function Page(props: any) {
     if (data.title) title = data.title;
     if (data.description) description = data.description;
 
-    // If a cartridge is present and is 'echopay' or 'flash', render only the cartridge, no other UI
-    const cartridge = data.cartridge && String(data.cartridge).toLowerCase();
 
+
+    // Remove cartridge flag logic. Prepare for flash prop logic below.
     const themeMode = 'light';
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
 
-    if (cartridge === 'echopay') {
-        return <DesignSystem theme={theme}>
-            <EchoPay config={config} />
-        </DesignSystem>;
-    }
-    if (cartridge === 'flash') {
-        return <DesignSystem theme={theme}>
-            <Example />
-        </DesignSystem>;
-    };
+    // If a flash prop is present in frontmatter, use its value to select the Scene
+    const flashScene = data.flash;
 
-    // Otherwise, render the full app UI
+    // If flashScene is present, dynamically import and render the correct Scene
+    if (flashScene) {
+        // Only import React components from known scenes
+        let SceneComponent: React.ComponentType | null = null;
+        if (flashScene.toLowerCase() === 'example') {
+            SceneComponent = (await import('../NX/Flash/Scenes/Example')).Example;
+        } else if (flashScene.toLowerCase() === 'goldlabel') {
+            SceneComponent = (await import('../NX/Flash/Scenes/Goldlabel')).Goldlabel;
+        }
+        if (SceneComponent) {
+            return <DesignSystem theme={theme}>
+                <SceneComponent />
+            </DesignSystem>;
+        }
+    }
+
+    // ...existing code...
     return (
         <NX config={config}>
-            <header>
-                <Box sx={{ flexGrow: 1 }}>
-                    <AppBar
-                        position="fixed"
-                        sx={{
-                            top: 0,
-                            boxShadow: 0,
-                            bgcolor: bg,
-                        }}>
-                        <Container maxWidth="xl">
-                            <CardHeader
-                                avatar={<a href='/'>
-                                    <IconButton
-                                        edge="start"
-                                        color="inherit"
-                                        aria-label={title}
-                                        sx={{}}>
-                                        <Avatar
-                                            alt={config.title}
-                                            src={config.icon}
-                                        />
-                                    </IconButton>
-                                </a>}
-                                title={<Typography
-                                    color='secondary'
-                                    variant="h4"
-                                    component="h1"
-                                >
-                                    {title}
-                                </Typography>}
-                                action={
-                                    <Box sx={{
-                                        display: "flex"
-                                    }}>
-
-                                        <Settings
-                                            config={config}
-                                            frontmatter={data}
-                                            smartImage={smartImage}
-                                        />
-                                        <Nav
-                                            mode="mobile"
-                                            navItems={navItems as I_NestedNav["navItems"]}
-                                            currentPath={slugPath || '/'}
-                                            config={config}
-                                        />
-                                    </Box>
-                                }
-                            />
-                        </Container>
-                    </AppBar>
-                </Box>
-            </header>
-            {/* Start Main */}
-            <Container id="main" maxWidth="xl" sx={{ mt: '100px', mb: '60px' }}>
-                <Box
-                    sx={{
-                        display: 'grid',
-                        gridTemplateColumns: {
-                            xs: '1fr',
-                            lg: '250px 1fr 400px'
-                        },
-                        gap: 2,
-                        alignItems: 'start',
-                        width: '100%'
-                    }}
-                >
-                    <Box
-                        component="nav"
-                        sx={{
-                            display: { xs: 'none', lg: 'block' },
-                            width: { lg: '250px' },
-                            minWidth: { lg: '250px' },
-                            maxWidth: { lg: '250px' },
-                            gridColumn: { lg: '1' },
-                        }}
-                    >
-                        <Nav
-                            config={config}
-                            navItems={navItems as I_NestedNav["navItems"]}
-                            currentPath={slugPath || '/'}
-                            mode="desktop"
-                        />
-                    </Box>
-                    <Box
-                        component="main"
-                        sx={{
-                            gridColumn: { lg: '2' },
-                            width: '100%',
-                            minWidth: 0,
-                            pr: { xs: 2, lg: 3 },
-                            pl: { xs: 2, lg: 0 },
-                        }}
-                    >
-                        <Typography
-                            sx={{
-                                display: 'flex',
-                            }}
-                            color='secondary'
-                            variant="h5"
-                            component="h2"
-                        >
-                            {data.icon && (
-                                <Box sx={{ mr: 2 }}>
-                                    <Icon icon={data.icon} color="primary" />
-                                </Box>
-                            )}
-                            {description}
-                        </Typography>
-                        {smartImage?.meta?.mode !== 'config' && (
-                            <Box sx={{ my: 2 }}>
-                                <SmartImage smartImage={smartImage} />
-                            </Box>
-                        )}
-
-                        <RenderMarkdown config={config}>
-                            {content}
-                        </RenderMarkdown>
-                    </Box>
-                    <Box
-                        sx={{
-                            display: { xs: 'none', lg: 'block' },
-                            width: { lg: '400px' },
-                            minWidth: { lg: '400px' },
-                            maxWidth: { lg: '400px' },
-                            gridColumn: { lg: '3' },
-                            pr: 3,
-                        }}
-                    >
-                        <Box sx={{}}>
-                            <Commerce config={config} />
-                        </Box>
-                    </Box>
-                </Box>
-            </Container>
-            {/* End Main */}
-            <footer>
-
-            </footer>
-        </NX >
+            {/* ...existing code... */}
+        </NX>
     );
 }

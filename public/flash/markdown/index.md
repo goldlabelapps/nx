@@ -1,6 +1,5 @@
 ---
 order: 1 
-cartridge: Flash
 slug: /
 title: Flash
 description: You're welcome

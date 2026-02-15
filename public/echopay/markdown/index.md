@@ -1,6 +1,5 @@
 ---
 order: 1
-cartridge: EchoPay
 slug: /
 title: EchoPay
 description: NX
