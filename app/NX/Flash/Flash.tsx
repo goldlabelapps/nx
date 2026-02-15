@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './lib/Flash.module.css';
 
 export interface I_Flash {
-    children?: React.ReactNode;
     id?: string;
+    children?: React.ReactNode;
 }
 
 export const Flash: React.FC<I_Flash> = ({ children, id }) => {

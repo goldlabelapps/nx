@@ -1,7 +1,18 @@
-
 // GoldlabelAS
 export default class GoldlabelAS {
-    constructor(id: string, onDone?: () => void) { }
-    init() { }
+    private onDone?: () => void;
+
+    constructor(onDone?: () => void) {
+        this.onDone = onDone;
+    }
+
+    init() {
+        setTimeout(() => {
+            if (this.onDone) {
+                this.onDone();
+            }
+        }, 1000);
+    }
+
     destroy() { }
 }

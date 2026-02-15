@@ -1,13 +1,33 @@
 "use client";
 import React from 'react';
-import { Flash, MovieClip, Macromedia, LightningBolt, useFlash, setFlash, AnimateFlashLogo } from '../../../Flash';
 import { useDispatch } from '../../../Uberedux';
+import {
+    Flash,
+    MovieClip,
+    useFlash,
+    setFlash,
+} from '../../../Flash';
+import { GoldlabelAS } from './index';
 
 export const Goldlabel: React.FC = () => {
     const flash = useFlash();
-    const { initted } = flash;
+    const { started } = flash;
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
+
+    React.useEffect(() => {
+        if (!started) {
+            dispatch(setFlash('scene', 'Goldlabel'));
+            dispatch(setFlash('started', true));
+        }
+    }, [dispatch, started]);
+
+    React.useEffect(() => {
+        const logoAnimator = new GoldlabelAS(() => {
+            dispatch(setFlash('finished', true));
+        });
+        logoAnimator.init();
+    }, [replay, dispatch]);
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -24,44 +44,26 @@ export const Goldlabel: React.FC = () => {
         }
     }, []);
 
-    React.useEffect(() => {
-        // Initialize AnimateFlashLogo with onDone callback
-        const logoAnimator = new AnimateFlashLogo('mc_macromedia', () => {
-            dispatch(setFlash('finished', true));
-        });
-        logoAnimator.init();
-    }, [replay, dispatch]);
-
-    React.useEffect(() => {
-        if (!initted) {
-            dispatch(setFlash('started', true));
-        }
-    }, [dispatch, initted]);
-
     return (
         <Flash id={'FlashDemo'}>
 
             <MovieClip
                 id='pre'
                 border={false}
-                width={400}
-                height={350}
+                width={'100%'}
+                height={'100%'}
                 pos="top-left"
                 align="left"
-                style={{ opacity: 0 }}>
+                style={{ opacity: 0 }}
+            >
                 <pre>
                     {JSON.stringify(flash, null, 2)}
                 </pre>
             </MovieClip>
 
-            <MovieClip id='mc_macromedia' style={{ opacity: 0 }}>
-                <Macromedia width="100%" height="100%" />
+            <MovieClip id='mc_goldlabel' style={{ opacity: 1 }}>
+                Goldlabel
             </MovieClip>
-
-            <MovieClip id='mc_lightningbolt' style={{ opacity: 0 }}>
-                <LightningBolt width="100%" height="100%" />
-            </MovieClip>
-
 
         </Flash>
     );
