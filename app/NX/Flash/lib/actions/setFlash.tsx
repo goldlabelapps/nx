@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '../../../Uberedux';
 
 export const setFlash =
     (key: string, value: any): any =>

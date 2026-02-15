@@ -1,10 +1,9 @@
-// /Users/goldlabel/GitHub/flash/app/src/Flash/hooks/usePrefersColorScheme.tsx
 import * as React from "react";
 
 export function usePrefersColorScheme() {
   const getPref = () =>
     window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
+      window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
 

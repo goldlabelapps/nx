@@ -61,6 +61,8 @@ export const FlashDemo: React.FC = () => {
             <MovieClip id='mc_lightningbolt' style={{ opacity: 0 }}>
                 <LightningBolt width="100%" height="100%" />
             </MovieClip>
+
+
         </Flash>
     );
 };
