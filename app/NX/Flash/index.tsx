@@ -3,6 +3,6 @@ import MovieClip from './components/MovieClip';
 import FlashDemo from './FlashDemo';
 import { setFlash } from './actions/setFlash'
 import { useFlash } from './hooks/useFlash';
-import Macromedia from './movieclips/Macromedia';
+import Macromedia from './XMovieClips/Macromedia';
 
 export { Flash, MovieClip, FlashDemo, useFlash, setFlash, Macromedia };
