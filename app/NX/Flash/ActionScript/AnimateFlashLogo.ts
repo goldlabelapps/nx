@@ -1,20 +1,21 @@
 import { gsap } from 'gsap';
 // Framework for Macromedia logo animation (AS file)
+
 export default class AnimateFlashLogo {
   id: string;
+  onDone?: () => void;
 
-  constructor(id: string) {
+  constructor(id: string, onDone?: () => void) {
     this.id = id;
+    this.onDone = onDone;
   }
 
   // Initialize animation: fade in the Macromedia icon
   init() {
-
     const el = document.getElementById(this.id);
     if (el) {
       // Start very small and stretched
       gsap.set(el, { scale: 0.1, scaleY: 1.25, rotate: 0, opacity: 0, transformOrigin: '50% 50%' });
-
       // Animate: spin counterclockwise 2 times, grow, then normalize vertical scale
       gsap.timeline()
         // Spin and grow with ease-in
@@ -23,7 +24,6 @@ export default class AnimateFlashLogo {
           rotate: -720, // 2 full turns counterclockwise
           duration: 2,
           ease: 'power4.inOut',
-          // scaleY: 1.25,
           opacity: 1,
           transformOrigin: '50% 50%',
         })
@@ -31,10 +31,12 @@ export default class AnimateFlashLogo {
         .to(el, {
           scale: 1,
           scaleY: 1,
-          // rotate: 0,
           duration: 2,
           ease: 'power4.out',
           transformOrigin: '50% 50%',
+          onComplete: () => {
+            if (this.onDone) this.onDone();
+          },
         }, '-=0.4'); // Overlap by 0.4s
     } else {
       console.warn('AnimateFlashLogo: element not found for id', this.id);

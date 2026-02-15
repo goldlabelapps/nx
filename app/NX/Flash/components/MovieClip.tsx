@@ -5,8 +5,20 @@ export interface I_MovieClip {
     children?: React.ReactNode;
     id?: string;
     style?: React.CSSProperties;
+    className?: string;
     width?: number | string;
     height?: number | string;
+    border?: boolean;
+    pos?:
+    | 'top-left'
+    | 'top-middle'
+    | 'top-right'
+    | 'middle-left'
+    | 'middle-right'
+    | 'bottom-left'
+    | 'bottom-middle'
+    | 'bottom-right';
+    align?: 'left' | 'right' | 'center';
 }
 
 
@@ -18,18 +30,59 @@ const movieClipBaseStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    // border: '2px solid red',
+    position: 'absolute',
+    left: '50%',
+    top: '50%',
+    transform: 'translate(-50%, -50%)',
 };
 
-export const MovieClip: React.FC<I_MovieClip> = ({ children, id, style, width, height }) => {
+function getAlignStyle(align?: I_MovieClip['align']): React.CSSProperties {
+    if (!align || align === 'center') return { justifyContent: 'center', alignItems: 'center' };
+    if (align === 'left') {
+        return { justifyContent: 'flex-start', alignItems: 'flex-start' };
+    }
+    if (align === 'right') {
+        return { justifyContent: 'flex-end', alignItems: 'flex-start' };
+    }
+    return { justifyContent: 'center', alignItems: 'center' };
+}
+
+function getPositionStyle(pos?: I_MovieClip['pos']): React.CSSProperties {
+    if (!pos) return {};
+    switch (pos) {
+        case 'top-left':
+            return { top: 0, left: 0, transform: 'none' };
+        case 'top-middle':
+            return { top: 0, left: '50%', transform: 'translateX(-50%)' };
+        case 'top-right':
+            return { top: 0, right: 0, left: 'auto', transform: 'none' };
+        case 'middle-left':
+            return { top: '50%', left: 0, transform: 'translateY(-50%)' };
+        case 'middle-right':
+            return { top: '50%', right: 0, left: 'auto', transform: 'translateY(-50%)' };
+        case 'bottom-left':
+            return { bottom: 0, left: 0, top: 'auto', transform: 'none' };
+        case 'bottom-middle':
+            return { bottom: 0, left: '50%', top: 'auto', transform: 'translateX(-50%)' };
+        case 'bottom-right':
+            return { bottom: 0, right: 0, left: 'auto', top: 'auto', transform: 'none' };
+        default:
+            return {};
+    }
+}
+
+export const MovieClip: React.FC<I_MovieClip> = ({ children, id, style, className, width, height, border, pos, align }) => {
     const mergedStyle: React.CSSProperties = {
         ...movieClipBaseStyle,
         ...(width ? { width } : {}),
         ...(height ? { height } : {}),
+        ...(border ? { border: '2px solid #888' } : {}),
+        ...getPositionStyle(pos),
+        ...getAlignStyle(align),
         ...style,
     };
     return (
-        <div id={id} style={mergedStyle}>
+        <div id={id} style={mergedStyle} className={className}>
             {children}
         </div>
     );

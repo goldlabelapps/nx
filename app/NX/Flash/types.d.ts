@@ -1,12 +1,8 @@
-// /Users/goldlabel/GitHub/flash/app/src/Flash/types.d.ts
 import React from 'react';
-// import { TUbereduxDispatch, TRootState } from './lib/store';
 
 export type TState = {
   [key: string]: any;
 }
-
-// export { TUbereduxDispatch, TRootState };
 
 export type TMovieClip = {
   id?: string;
@@ -15,6 +11,15 @@ export type TMovieClip = {
   border?: boolean;
   width?: number | string;
   height?: number | string;
+  position?:
+  | 'top-left'
+  | 'top-middle'
+  | 'top-right'
+  | 'middle-left'
+  | 'middle-right'
+  | 'bottom-left'
+  | 'bottom-middle'
+  | 'bottom-right';
 };
 
 export type TFlashConfig = {
