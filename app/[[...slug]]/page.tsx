@@ -46,6 +46,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         config = edtechConfig as T_Config;
     } else if (project === 'aki') {
         config = akiConfig as T_Config;
+    } else if (project === 'flash') {
+        config = flashConfig as T_Config;
     } else {
         config = nxConfig as T_Config;
     }
@@ -114,6 +116,9 @@ export async function generateStaticParams() {
         case 'aki':
             markdownDir = path.resolve(process.cwd(), "public", "aki", "markdown");
             break;
+        case 'flash':
+            markdownDir = path.resolve(process.cwd(), "public", "flash", "markdown");
+            break;
         case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
@@ -166,24 +171,32 @@ export default async function Page(props: any) {
     if (data.title) title = data.title;
     if (data.description) description = data.description;
 
-    // If a cartridge is present and is 'echopay' or 'flash', render only the cartridge, no other UI
-    const cartridge = data.cartridge && String(data.cartridge).toLowerCase();
 
+
+    // Remove cartridge flag logic. Prepare for flash prop logic below.
     const themeMode = 'light';
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
 
-    if (cartridge === 'echopay') {
-        return <DesignSystem theme={theme}>
-            <EchoPay config={config} />
-        </DesignSystem>;
-    }
-    if (cartridge === 'flash') {
-        return <DesignSystem theme={theme}>
-            <Example />
-        </DesignSystem>;
-    };
+    // If a flash prop is present in frontmatter, use its value to select the Scene
+    const flashScene = data.flash;
 
-    // Otherwise, render the full app UI
+    // If flashScene is present, dynamically import and render the correct Scene
+    if (flashScene) {
+        // Only import React components from known scenes
+        let SceneComponent: React.ComponentType | null = null;
+        if (flashScene.toLowerCase() === 'example') {
+            SceneComponent = (await import('../NX/Flash/Scenes/Example')).Example;
+        } else if (flashScene.toLowerCase() === 'goldlabel') {
+            SceneComponent = (await import('../NX/Flash/Scenes/Goldlabel')).Goldlabel;
+        }
+        if (SceneComponent) {
+            return <DesignSystem theme={theme}>
+                <SceneComponent />
+            </DesignSystem>;
+        }
+    }
+
+    // ...existing code...
     return (
         <NX config={config}>
             <header>

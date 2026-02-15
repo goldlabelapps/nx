@@ -1,8 +1,8 @@
 ---
 order: 1 
-cartridge: Flash
 slug: /
 title: Flash
+flash: Example
 description: You're welcome
 tags: nx, goldlabel, flash
 icon: flash
