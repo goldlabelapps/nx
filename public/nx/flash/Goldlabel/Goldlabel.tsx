@@ -1,13 +1,13 @@
 "use client";
 import React from 'react';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '../../../../app/NX/Uberedux';
 import {
     Flash,
     MovieClip,
     useFlash,
     setFlash,
-} from '../../../Flash';
-import { GoldlabelAS } from './index';
+} from '../../../../app/NX/Flash';
+import { GoldlabelAS, GoldlabelIcon } from './';
 
 export const Goldlabel: React.FC = () => {
     const flash = useFlash();
@@ -61,8 +61,8 @@ export const Goldlabel: React.FC = () => {
                 </pre>
             </MovieClip>
 
-            <MovieClip id='mc_goldlabel' style={{ opacity: 1 }}>
-                Goldlabel
+            <MovieClip width={256} id='mc_goldlabel' style={{ opacity: 1 }}>
+                <GoldlabelIcon />
             </MovieClip>
 
         </Flash>

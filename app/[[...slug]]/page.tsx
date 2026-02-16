@@ -187,7 +187,7 @@ export default async function Page(props: any) {
         if (flashScene.toLowerCase() === 'example') {
             SceneComponent = (await import('../NX/Flash/Scenes/Example')).Example;
         } else if (flashScene.toLowerCase() === 'goldlabel') {
-            SceneComponent = (await import('../NX/Flash/Scenes/Goldlabel')).Goldlabel;
+            SceneComponent = (await import('../../public/nx/flash/Goldlabel')).Goldlabel;
         }
         if (SceneComponent) {
             return <DesignSystem theme={theme}>

@@ -1,4 +1,5 @@
 // GoldlabelAS
+
 export default class GoldlabelAS {
     private onDone?: () => void;
 
