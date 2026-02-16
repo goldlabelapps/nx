@@ -10,6 +10,7 @@ import {
 } from '../../../../../app/NX/Flash';
 import { CalculatorAS } from './';
 import EchoPayLogo from '../../movieclips/EchoPayLogo';
+import Variables from '../../movieclips/Variables';
 
 export const Calculator: React.FC = () => {
     const flash = useFlash();
@@ -24,7 +25,7 @@ export const Calculator: React.FC = () => {
     React.useEffect(() => {
         if (!started) {
             // dispatch(setFlash('started', true));
-            dispatch(setFlash('text', 'EchoPay Calculator'));
+            dispatch(setFlash('text', 'If your business is taking payment by card, this will calculate how much more money your business will make by simply switching to EchoPay for card enquiry'));
         }
     }, [dispatch, started]);
 
@@ -54,25 +55,36 @@ export const Calculator: React.FC = () => {
     return (
         <Flash id={'calculator'}>
 
-            <MovieClip
-                id='mc_text'
-                offsetY={50}
-                style={{ opacity: 0 }}
-                width={'100%'}
-            >
-                <Text ref={textRef} variant="h2">
-                    {textValue}
-                </Text>
-            </MovieClip>
 
             <MovieClip
                 id='mc_logo'
-                offsetY={-60}
+                offsetY={-200}
                 style={{ opacity: 0 }}
             >
                 <EchoPayLogo ref={logoRef} />
             </MovieClip>
 
+
+            <MovieClip
+                id='mc_text'
+                offsetY={-50}
+                style={{ opacity: 0 }}
+                width={400}
+            >
+                <Text ref={textRef}>
+                    {textValue}
+                </Text>
+            </MovieClip>
+
+            <MovieClip
+                id='mc_card_turnover'
+                // border
+                offsetY={75}
+                width={400}
+                style={{ opacity: 1, zIndex: 2000 }}
+            >
+                <Variables />
+            </MovieClip>
 
             <MovieClip
                 id='pre'

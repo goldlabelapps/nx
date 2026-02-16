@@ -8,7 +8,7 @@ icon: terminal
 tags: EchoPay, Flash, API, NX, Calculator
 ---
 
-If your business is taking payment by card, this calculator will calculate how much more money your business will make by simply switching to EchoPay for card enquiry
+If your business is taking payment by card, this will calculate how much more money your business will make by simply switching to EchoPay for card enquiry
 
 ## Crunch the numbers
 
