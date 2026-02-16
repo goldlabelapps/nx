@@ -188,8 +188,8 @@ export default async function Page(props: any) {
             SceneComponent = (await import('../NX/Flash/Scenes/Example')).Example;
         } else if (flashScene.toLowerCase() === 'goldlabel') {
             SceneComponent = (await import('../../public/nx/flash/Goldlabel')).Goldlabel;
-        } else if (flashScene.toLowerCase() === 'echopayflash') {
-            SceneComponent = (await import('../../public/echopay/flash/EchoPayFlash')).EchoPayFlash;
+        } else if (flashScene.toLowerCase() === 'calculator') {
+            SceneComponent = (await import('../../public/echopay/flash/scenes/Calculator')).Calculator;
         }
         if (SceneComponent) {
             return <DesignSystem theme={theme}>

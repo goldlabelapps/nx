@@ -1,20 +1,21 @@
 "use client";
 import React from 'react';
-import { useDispatch } from '../../../app/NX/Uberedux';
+import { useDispatch } from '../../../../../app/NX/Uberedux';
 import {
     Flash,
     MovieClip,
     useFlash,
     setFlash,
-} from '../../../app/NX/Flash';
-import { EchoPayAS, EchoPayIcon } from './';
+} from '../../../../../app/NX/Flash';
+import { CalculatorAS } from './';
+import Logo from '../../movieclips/Logo';
 
-export const EchoPayFlash: React.FC = () => {
+export const Calculator: React.FC = () => {
     const flash = useFlash();
     const { started } = flash;
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
-    const iconRef = React.useRef<any>(null);
+    const logoRef = React.useRef<any>(null);
 
     React.useEffect(() => {
         if (!started) {
@@ -24,9 +25,10 @@ export const EchoPayFlash: React.FC = () => {
     }, [dispatch, started]);
 
     React.useEffect(() => {
-        const logoAnimator = new EchoPayAS(() => {
+        const logoAnimator = new CalculatorAS(() => {
+            console.log('CalculatorAS callback');
             dispatch(setFlash('finished', true));
-        }, iconRef);
+        }, logoRef);
         logoAnimator.init();
     }, [replay, dispatch]);
 
@@ -48,8 +50,12 @@ export const EchoPayFlash: React.FC = () => {
     return (
         <Flash id={'echopay-flash'}>
 
-            <MovieClip width={256} id='mc_echopay'>
-                <EchoPayIcon ref={iconRef} />
+            <MovieClip
+                border
+                id='mc_logo'
+                style={{ opacity: 0 }}
+            >
+                <Logo ref={logoRef} />
             </MovieClip>
 
             <MovieClip
@@ -59,7 +65,7 @@ export const EchoPayFlash: React.FC = () => {
                 height={'100%'}
                 pos="top-left"
                 align="left"
-                style={{ opacity: 1 }}
+                style={{ opacity: 0 }}
             >
                 <pre>
                     {JSON.stringify(flash, null, 2)}
