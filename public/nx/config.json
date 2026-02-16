@@ -9,7 +9,24 @@
     "cartridges": {
         "commerce": {
             "enabled": true,
-            "ads": true
+            "ads": [
+                {
+                    "slug": "why-perm",
+                    "title": "Flash",
+                    "type": "route",
+                    "path": "/work/nx/cartridges/flash",
+                    "description": "Created by Macromedia",
+                    "icon": "flash"
+                },
+                {
+                    "slug": "why-perm",
+                    "title": "Permanent Roles",
+                    "type": "route",
+                    "path": "/work/why-perm",
+                    "description": "Why are you now interested in a permanent role?",
+                    "icon": "work"
+                }
+            ]
         },
         "designSystem": {
             "enabled": true,
