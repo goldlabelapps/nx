@@ -9,11 +9,13 @@ import {
 } from '../../../../app/NX/Flash';
 import { GoldlabelAS, GoldlabelIcon } from './';
 
+
 export const Goldlabel: React.FC = () => {
     const flash = useFlash();
     const { started } = flash;
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
+    const iconRef = React.useRef<any>(null);
 
     React.useEffect(() => {
         if (!started) {
@@ -25,7 +27,7 @@ export const Goldlabel: React.FC = () => {
     React.useEffect(() => {
         const logoAnimator = new GoldlabelAS(() => {
             dispatch(setFlash('finished', true));
-        });
+        }, iconRef);
         logoAnimator.init();
     }, [replay, dispatch]);
 
@@ -47,6 +49,10 @@ export const Goldlabel: React.FC = () => {
     return (
         <Flash id={'FlashDemo'}>
 
+            <MovieClip width={256} id='mc_goldlabel'>
+                <GoldlabelIcon ref={iconRef} />
+            </MovieClip>
+
             <MovieClip
                 id='pre'
                 border={false}
@@ -59,10 +65,6 @@ export const Goldlabel: React.FC = () => {
                 <pre>
                     {JSON.stringify(flash, null, 2)}
                 </pre>
-            </MovieClip>
-
-            <MovieClip width={256} id='mc_goldlabel' style={{ opacity: 1 }}>
-                <GoldlabelIcon />
             </MovieClip>
 
         </Flash>
