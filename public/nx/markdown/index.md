@@ -1,12 +1,12 @@
 ---
 order: 1 
 slug: /
-flash: Goldlabel
+scene: Goldlabel
 title: Goldlabel NX
 description: Modern web apps for clients who need real results fast
 tags: nx, goldlabel
 icon: goldlabel
-smartImage: random
+image: https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg
 ---
 
 Create and deploy super fast, modern Next.js apps. Perfectly optimised for SEO. Anyone can launch scalable, production-ready web apps with lightning-fast frontends and top search engine rankings. 

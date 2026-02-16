@@ -1,5 +1,5 @@
 ---
-order: 5
+order: 100
 title: NX
 description: What is NX?
 slug: /work/nx
