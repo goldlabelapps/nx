@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useImperativeHandle, forwardRef } from 'react';
 import {
-  useTheme,
   Typography,
 } from '@mui/material';
 
@@ -27,14 +26,13 @@ interface TextProps {
 
 export interface FadeInTextHandle {
   fadeInText: (duration?: number, params?: { onComplete?: () => void;[key: string]: any }) => void;
+  fadeOutText: (duration?: number, params?: { onComplete?: () => void;[key: string]: any }) => void;
 }
 
 const Text = forwardRef<FadeInTextHandle, TextProps>(function Text(
   { children, variant = 'body1', ...props },
   ref
 ) {
-  const theme = useTheme();
-  const frontColor = theme.palette.primary.main;
   const innerRef = useRef<HTMLSpanElement | null>(null);
 
   // Expose fadeInText to parent
@@ -49,6 +47,25 @@ const Text = forwardRef<FadeInTextHandle, TextProps>(function Text(
             { opacity: 0 },
             {
               opacity: 1,
+              duration,
+              onComplete,
+              ...rest,
+            }
+          );
+        });
+      } else if (params.onComplete) {
+        params.onComplete();
+      }
+    },
+    fadeOutText: (duration = 1, params: { onComplete?: () => void;[key: string]: any } = {}) => {
+      if (innerRef.current) {
+        const { onComplete, ...rest } = params;
+        // Animate opacity from 1 to 0
+        import('gsap').then(({ gsap }) => {
+          gsap.to(
+            innerRef.current,
+            {
+              opacity: 0,
               duration,
               onComplete,
               ...rest,

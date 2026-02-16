@@ -16,13 +16,22 @@ export default class CalculatorAS {
         // make the mc_logo and mc_text clips visible immediately (since Icon starts hidden)
         const mcLogo = document.getElementById('mc_logo');
         const mcText = document.getElementById('mc_text');
-        let animationCount = 0;
-        let completedCount = 0;
-        const handleComplete = () => {
-            completedCount++;
-            if (completedCount === animationCount && this.onDone) {
-                this.onDone();
-            }
+        const handleTextFadeInComplete = () => {
+            setTimeout(() => {
+                if (this.textRef?.current?.fadeOutText) {
+                    this.textRef.current.fadeOutText(1, {
+                        onComplete: () => {
+                            if (this.onDone) {
+                                this.onDone();
+                            }
+                        }
+                    });
+                } else {
+                    if (this.onDone) {
+                        this.onDone();
+                    }
+                }
+            }, 2000);
         };
         if (mcLogo) {
             gsap.set(mcLogo, {
@@ -36,15 +45,14 @@ export default class CalculatorAS {
         }
         // Trigger fadeInLogo first, then fadeInText after logo animation completes
         if (this.iconRef?.current?.fadeInLogo) {
-            animationCount++;
             this.iconRef.current.fadeInLogo(1, {
                 onComplete: () => {
-                    handleComplete();
                     if (this.textRef?.current?.fadeInText) {
-                        animationCount++;
                         this.textRef.current.fadeInText(1, {
-                            onComplete: handleComplete
+                            onComplete: handleTextFadeInComplete
                         });
+                    } else {
+                        handleTextFadeInComplete();
                     }
                 }
             });
@@ -52,9 +60,8 @@ export default class CalculatorAS {
         }
         // If no logo animation, trigger text animation immediately if available
         if (this.textRef?.current?.fadeInText) {
-            animationCount++;
             this.textRef.current.fadeInText(1, {
-                onComplete: handleComplete
+                onComplete: handleTextFadeInComplete
             });
             return;
         }

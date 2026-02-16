@@ -1,7 +1,7 @@
 ---
 order: 1
 slug: /
-title: EchoPay NX
+title: EchoPay
 flash: Calculator
 description: Make more money calculator
 icon: terminal
