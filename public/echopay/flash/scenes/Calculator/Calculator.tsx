@@ -28,7 +28,7 @@ export const Calculator: React.FC = () => {
 
     React.useEffect(() => {
         const logoAnimator = new CalculatorAS(() => {
-            console.log('CalculatorAS callback');
+            // console.log('CalculatorAS callback');
             dispatch(setFlash('finished', true));
         }, logoRef, textRef);
         logoAnimator.init();
@@ -54,6 +54,7 @@ export const Calculator: React.FC = () => {
 
             <MovieClip
                 id='mc_text'
+                offsetY={50}
                 style={{ opacity: 0 }}
                 width={'100%'}
             >
@@ -64,6 +65,7 @@ export const Calculator: React.FC = () => {
 
             <MovieClip
                 id='mc_logo'
+                offsetY={-50}
                 style={{ opacity: 0 }}
             >
                 <EchoPayLogo ref={logoRef} />

@@ -2,6 +2,7 @@
 order: 1
 slug: /
 title: EchoPay NX
+flash: Calculator
 description: Make more money calculator
 icon: terminal
 tags: EchoPay, Flash, API, NX, Calculator

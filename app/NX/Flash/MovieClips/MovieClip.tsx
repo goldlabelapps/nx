@@ -19,6 +19,14 @@ export interface I_MovieClip {
     | 'bottom-middle'
     | 'bottom-right';
     align?: 'left' | 'right' | 'center';
+    /**
+     * Optional offset in the X direction (pixels)
+     */
+    offsetX?: number;
+    /**
+     * Optional offset in the Y direction (pixels)
+     */
+    offsetY?: number;
 }
 
 
@@ -71,14 +79,40 @@ function getPositionStyle(pos?: I_MovieClip['pos']): React.CSSProperties {
     }
 }
 
-export const MovieClip: React.FC<I_MovieClip> = ({ children, id, style, className, width, height, border, pos, align }) => {
+export const MovieClip: React.FC<I_MovieClip> = ({
+    children,
+    id,
+    style,
+    className,
+    width,
+    height,
+    border,
+    pos,
+    align,
+    offsetX = 0,
+    offsetY = 0,
+}) => {
+    // Compose transform: base + position + offset
+    const positionStyle = getPositionStyle(pos);
+    // Extract any transform from positionStyle or base
+    const baseTransform = movieClipBaseStyle.transform || '';
+    const positionTransform = positionStyle.transform || '';
+    // Remove transform from positionStyle to avoid duplicate key
+    const { transform: _removed, ...positionStyleNoTransform } = positionStyle;
+    // Compose all transforms
+    const transforms = [
+        baseTransform,
+        positionTransform,
+        (offsetX !== 0 || offsetY !== 0) ? `translate(${offsetX}px, ${offsetY}px)` : ''
+    ].filter(Boolean).join(' ');
     const mergedStyle: React.CSSProperties = {
         ...movieClipBaseStyle,
         ...(width ? { width } : {}),
         ...(height ? { height } : {}),
         ...(border ? { border: '2px solid #888' } : {}),
-        ...getPositionStyle(pos),
+        ...positionStyleNoTransform,
         ...getAlignStyle(align),
+        ...(transforms ? { transform: transforms } : {}),
         ...style,
     };
     return (
