@@ -1,14 +1,11 @@
 ---
 order: 1
 slug: /
-title: EchoPay
-description: NX
+title: EchoPay NX
+description: Securely process payments from any device with an internet connection
 icon: terminal
-tags: echopay, terminal, api, nx
-image: https://live.staticflickr.com/65535/55064167984_ec7501758f_b.jpg
+tags: echopay, Terminal, API, NX
 ---
-
-> Securely process payments from any device with an internet connection
 
 A virtual terminal allows businesses to securely process payments from any device with an internet connection—no physical card reader required. Take phone, mail, or remote orders, it's a simple web-based interface to enter customer payment details, process transactions in real time, and generate receipts. 
 

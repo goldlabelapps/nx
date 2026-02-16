@@ -1,6 +1,6 @@
 {
-  "short_name": "NX Terminal",
-  "name": "NX Terminal",
+  "short_name": "EchoPay NX",
+  "name": "EchoPay NX",
   "theme_color": "#FFF",
   "background_color": "#FFF",
   "display": "fullscreen",
@@ -10,10 +10,15 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/echopay/favicon/favicon.png",
+      "src": "/echopay/png/favicon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/echopay/favicon.webp",
+      "type": "image/webp",
+      "sizes": "16x16"
     }
   ]
 }

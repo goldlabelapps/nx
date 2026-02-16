@@ -1,18 +1,13 @@
+# Echopay NX
+
+```sh
 cY?2LkhiDlCWVIb1#4tM
+```
 
-Merchant EchoPay configuration does not exist or not activated.
+Documentation and resources for the Echopay project. Below is an overview of its structure and contents:
 
-# Echopay NX Documentation
+## Markdown 
 
-This directory contains documentation and resources for the Echopay project. Below is an overview of its structure and contents:
-
-## Structure
-
-- **cartridge.sketch**: Design file for UI/UX or branding assets.
-- **config.json**: Configuration settings for the project or documentation site.
-- **manifest.json**: Metadata describing the documentation or web application.
-- **favicon/**: Contains favicon assets for branding.
-  - `favicon.sketch`: Source design file for favicon.
 - **markdown/**: Main documentation folder, organized by topic and platform.
   - `example.md`, `free-ipad.md`, `index.md`: General documentation and examples.
   - **api/**: API documentation and guides.
@@ -33,8 +28,4 @@ This directory contains documentation and resources for the Echopay project. Bel
 
 - Browse the `markdown/` folder for guides and reference material.
 - Use the `api/` and `magento/` subfolders for platform-specific documentation.
-- Refer to design files in the root and `favicon/` for branding or UI assets.
-
----
-
-For questions or contributions, please contact the project maintainers.
+- Refer to design files for branding or UI assets.
