@@ -6,9 +6,10 @@ import {
     MovieClip,
     useFlash,
     setFlash,
+    Text,
 } from '../../../../../app/NX/Flash';
 import { CalculatorAS } from './';
-import Logo from '../../movieclips/Logo';
+import EchoPayLogo from '../../movieclips/EchoPayLogo';
 
 export const Calculator: React.FC = () => {
     const flash = useFlash();
@@ -16,6 +17,7 @@ export const Calculator: React.FC = () => {
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
     const logoRef = React.useRef<any>(null);
+    const textRef = React.useRef<any>(null);
 
     React.useEffect(() => {
         if (!started) {
@@ -28,7 +30,7 @@ export const Calculator: React.FC = () => {
         const logoAnimator = new CalculatorAS(() => {
             console.log('CalculatorAS callback');
             dispatch(setFlash('finished', true));
-        }, logoRef);
+        }, logoRef, textRef);
         logoAnimator.init();
     }, [replay, dispatch]);
 
@@ -48,15 +50,26 @@ export const Calculator: React.FC = () => {
     }, []);
 
     return (
-        <Flash id={'echopay-flash'}>
+        <Flash id={'calculator'}>
 
             <MovieClip
-                border
+                id='mc_text'
+                style={{ opacity: 0 }}
+                width={'100%'}
+            >
+                <Text ref={textRef} variant='h1'>
+                    Calculator
+                </Text>
+            </MovieClip>
+
+            <MovieClip
                 id='mc_logo'
                 style={{ opacity: 0 }}
             >
-                <Logo ref={logoRef} />
+                <EchoPayLogo ref={logoRef} />
             </MovieClip>
+
+
 
             <MovieClip
                 id='pre'

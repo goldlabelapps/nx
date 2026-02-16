@@ -1,5 +1,5 @@
+"use client";
 import React from 'react';
-
 
 export interface I_MovieClip {
     children?: React.ReactNode;
