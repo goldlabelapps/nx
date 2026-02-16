@@ -1,16 +1,15 @@
 "use client";
 import React from 'react';
-import { useDispatch } from '../../../../app/NX/Uberedux';
+import { useDispatch } from '../../../app/NX/Uberedux';
 import {
     Flash,
     MovieClip,
     useFlash,
     setFlash,
-} from '../../../../app/NX/Flash';
-import { GoldlabelAS, GoldlabelIcon } from './';
+} from '../../../app/NX/Flash';
+import { EchoPayAS, EchoPayIcon } from './';
 
-
-export const Goldlabel: React.FC = () => {
+export const EchoPayFlash: React.FC = () => {
     const flash = useFlash();
     const { started } = flash;
     const dispatch = useDispatch();
@@ -19,13 +18,13 @@ export const Goldlabel: React.FC = () => {
 
     React.useEffect(() => {
         if (!started) {
-            dispatch(setFlash('scene', 'Goldlabel'));
+            dispatch(setFlash('scene', 'EchoPayFlash'));
             dispatch(setFlash('started', true));
         }
     }, [dispatch, started]);
 
     React.useEffect(() => {
-        const logoAnimator = new GoldlabelAS(() => {
+        const logoAnimator = new EchoPayAS(() => {
             dispatch(setFlash('finished', true));
         }, iconRef);
         logoAnimator.init();
@@ -47,10 +46,10 @@ export const Goldlabel: React.FC = () => {
     }, []);
 
     return (
-        <Flash id={'FlashDemo'}>
+        <Flash id={'echopay-flash'}>
 
-            <MovieClip width={256} id='mc_goldlabel'>
-                <GoldlabelIcon ref={iconRef} />
+            <MovieClip width={256} id='mc_echopay'>
+                <EchoPayIcon ref={iconRef} />
             </MovieClip>
 
             <MovieClip
@@ -60,7 +59,7 @@ export const Goldlabel: React.FC = () => {
                 height={'100%'}
                 pos="top-left"
                 align="left"
-                style={{ opacity: 0 }}
+                style={{ opacity: 1 }}
             >
                 <pre>
                     {JSON.stringify(flash, null, 2)}

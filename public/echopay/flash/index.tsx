@@ -1,9 +1,9 @@
-import { Goldlabel } from './Goldlabel';
-import GoldlabelIcon from './svg/GoldlabelIcon';
-import GoldlabelAS from './GoldlabelAS';
+import { EchoPayFlash } from './EchoPayFlash';
+import EchoPayIcon from './EchoPayIcon';
+import EchoPayAS from './EchoPayAS';
 
 export {
-    Goldlabel,
-    GoldlabelAS,
-    GoldlabelIcon,
+    EchoPayFlash,
+    EchoPayAS,
+    EchoPayIcon,
 }

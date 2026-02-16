@@ -2,6 +2,7 @@
 order: 1
 slug: /
 title: EchoPay NX
+flash: EchoPayFlash
 description: Securely process payments from any device with an internet connection
 icon: terminal
 tags: echopay, Terminal, API, NX

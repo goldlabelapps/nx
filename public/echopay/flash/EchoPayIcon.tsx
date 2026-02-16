@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useEffect, useImperativeHandle, forwardRef } from 'react';
-import { TMovieClip } from '../../../../../app/NX/Flash/types';
+import { TMovieClip } from '../../../app/NX/Flash/types';
 import { useTheme } from '@mui/material';
 import { gsap } from 'gsap';
 
@@ -12,8 +12,6 @@ const GoldlabelIcon = forwardRef(function GoldlabelIcon({ ...props }: TMovieClip
     const innerCircleRef = useRef<SVGGElement>(null);
     const outerCircleRef = useRef<SVGPathElement>(null);
     const arrowRef = useRef<SVGPolygonElement>(null);
-
-    // Expose animation controls to parent
 
     useImperativeHandle(ref, () => ({
         spinInnerCircle,
