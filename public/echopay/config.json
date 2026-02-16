@@ -19,6 +19,12 @@
             "enabled": true,
             "ads": [
                 {
+                    "title": "Calculator",
+                    "type": "link",
+                    "url": "/flash",
+                    "icon": "flash"
+                },
+                {
                     "title": "EchoPay Dashboard",
                     "type": "link",
                     "url": "https://dev-dashboard.a2apay.co.uk/sign-in",
@@ -57,12 +63,12 @@
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#002a67",
-                    "secondary": "#134a9b",
+                    "primary": "#012867",
+                    "secondary": "#12418C",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#002a67"
+                    "border": "#012867"
                 },
                 "dark": {
                     "mode": "dark",
