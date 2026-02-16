@@ -13,6 +13,8 @@ import EchoPayLogo from '../../movieclips/EchoPayLogo';
 
 export const Calculator: React.FC = () => {
     const flash = useFlash();
+    // Safely select the text attribute, default to 'EchoPay NX'
+    const textValue = (flash && typeof flash.text === 'string' && flash.text.trim() !== '') ? flash.text : 'EchoPay NX';
     const { started } = flash;
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
@@ -21,15 +23,15 @@ export const Calculator: React.FC = () => {
 
     React.useEffect(() => {
         if (!started) {
-            dispatch(setFlash('scene', 'EchoPayFlash'));
-            dispatch(setFlash('started', true));
+            // dispatch(setFlash('started', true));
+            dispatch(setFlash('text', 'EchoPay Calculator'));
         }
     }, [dispatch, started]);
 
     React.useEffect(() => {
         const logoAnimator = new CalculatorAS(() => {
             // console.log('CalculatorAS callback');
-            dispatch(setFlash('finished', true));
+            // dispatch(setFlash('finished', true));
         }, logoRef, textRef);
         logoAnimator.init();
     }, [replay, dispatch]);
@@ -58,19 +60,18 @@ export const Calculator: React.FC = () => {
                 style={{ opacity: 0 }}
                 width={'100%'}
             >
-                <Text ref={textRef} variant='h1'>
-                    Calculator
+                <Text ref={textRef} variant="h2">
+                    {textValue}
                 </Text>
             </MovieClip>
 
             <MovieClip
                 id='mc_logo'
-                offsetY={-50}
+                offsetY={-60}
                 style={{ opacity: 0 }}
             >
                 <EchoPayLogo ref={logoRef} />
             </MovieClip>
-
 
 
             <MovieClip
