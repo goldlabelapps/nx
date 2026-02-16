@@ -25,7 +25,6 @@ import { RenderMarkdown } from '../NX/Shortcodes';
 import nxConfig from '../../public/nx/config.json';
 import mcukConfig from '../../public/mcuk/config.json';
 import echopayConfig from '../../public/echopay/config.json';
-import { EchoPay } from '../NX/EchoPay';
 import akiConfig from '../../public/aki/config.json';
 import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
@@ -188,6 +187,8 @@ export default async function Page(props: any) {
             SceneComponent = (await import('../NX/Flash/Scenes/Example')).Example;
         } else if (flashScene.toLowerCase() === 'goldlabel') {
             SceneComponent = (await import('../../public/nx/flash/Goldlabel')).Goldlabel;
+        } else if (flashScene.toLowerCase() === 'calculator') {
+            SceneComponent = (await import('../../public/echopay/flash/scenes/Calculator')).Calculator;
         }
         if (SceneComponent) {
             return <DesignSystem theme={theme}>

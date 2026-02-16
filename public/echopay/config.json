@@ -3,12 +3,12 @@
     "title": "EchoPay",
     "description": "NX Terminal",
     "url": "https://echopay.goldlabel.pro",
-    "image": "https://live.staticflickr.com/65535/55064167984_ec7501758f_b.jpg",
-    "icon": "/echopay/favicon/favicon.png",
-    "favicon": "/echopay/favicon/favicon.webp",
+    "image": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
+    "icon": "/echopay/png/favicon.png",
+    "favicon": "/echopay/favicon.webp",
     "cartridges": {
         "paywall": {
-            "enabled": true,
+            "enabled": false,
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
@@ -18,6 +18,12 @@
         "commerce": {
             "enabled": true,
             "ads": [
+                {
+                    "title": "Calculator",
+                    "type": "link",
+                    "url": "/calculator",
+                    "icon": "flash"
+                },
                 {
                     "title": "EchoPay Dashboard",
                     "type": "link",
@@ -57,12 +63,12 @@
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#002a67",
-                    "secondary": "#134a9b",
+                    "primary": "#012867",
+                    "secondary": "#12418C",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#002a67"
+                    "border": "#012867"
                 },
                 "dark": {
                     "mode": "dark",
