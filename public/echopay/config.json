@@ -8,7 +8,7 @@
     "favicon": "/echopay/favicon.webp",
     "cartridges": {
         "paywall": {
-            "enabled": true,
+            "enabled": false,
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
