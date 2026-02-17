@@ -38,7 +38,7 @@ const EchoPayLogo = forwardRef(function EchoPayIcon({ ...props }: TMovieClip, re
                 },
                 {
                     alpha: 1,
-                    rotation: 45,
+                    rotation: 135,
                     scaleX: 5,
                     scaleY: 0.01,
                     duration: 0.75,

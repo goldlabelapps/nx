@@ -182,18 +182,18 @@ export default async function Page(props: any) {
     // If flashScene is present, dynamically import and render the correct Scene
     if (flashScene) {
         // Only import React components from known scenes
-        let SceneComponent: React.ComponentType | null = null;
+        let SceneComponent: React.ComponentType<{ config: T_Config }> | null = null;
         if (flashScene.toLowerCase() === 'example') {
             SceneComponent = (await import('../NX/Flash/Scenes/Example')).Example;
         } else if (flashScene.toLowerCase() === 'goldlabel') {
             SceneComponent = (await import('../../public/nx/flash/Goldlabel')).Goldlabel;
         } else if (flashScene.toLowerCase() === 'calculator') {
-            SceneComponent = (await import('../../public/echopay/flash/scenes/Calculator')).Calculator;
+            SceneComponent = (await import('../../public/echopay/flash/scenes/EchoPayCalculator')).EchoPayCalculator;
         }
         if (SceneComponent) {
-            return <DesignSystem theme={theme}>
-                <SceneComponent />
-            </DesignSystem>;
+            // Pass config prop if available
+            return <SceneComponent config={config} />;
+
         }
     }
 

@@ -9,6 +9,18 @@ export interface I_MovieClip {
     width?: number | string;
     height?: number | string;
     border?: boolean;
+    /**
+     * Optional minimum width for the MovieClip
+     */
+    minWidth?: number | string;
+    /**
+     * Optional maximum width for the MovieClip
+     */
+    maxWidth?: number | string;
+    /**
+     * Optional z-index for stacking order
+     */
+    zIndex?: number;
     pos?:
     | 'top-left'
     | 'top-middle'
@@ -91,6 +103,9 @@ export const MovieClip: React.FC<I_MovieClip> = ({
     align,
     offsetX = 0,
     offsetY = 0,
+    minWidth,
+    maxWidth,
+    zIndex,
 }) => {
     // Compose transform: base + position + offset
     const positionStyle = getPositionStyle(pos);
@@ -110,6 +125,9 @@ export const MovieClip: React.FC<I_MovieClip> = ({
         ...(width ? { width } : {}),
         ...(height ? { height } : {}),
         ...(border ? { border: '2px solid #888' } : {}),
+        ...(minWidth ? { minWidth } : {}),
+        ...(maxWidth ? { maxWidth } : {}),
+        ...(zIndex !== undefined ? { zIndex } : {}),
         ...positionStyleNoTransform,
         ...getAlignStyle(align),
         ...(transforms ? { transform: transforms } : {}),
