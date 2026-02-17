@@ -158,7 +158,7 @@ export default async function Page(props: any) {
     }
     const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
     const filePath = serverUseMDBySlug(slugArr, project);
-    const navItems = await serverUseNav();
+
     if (!filePath || !fs.existsSync(filePath)) {
         notFound();
     };
@@ -170,7 +170,7 @@ export default async function Page(props: any) {
     if (data.title) title = data.title;
     if (data.description) description = data.description;
 
-
+    const navItems = await serverUseNav(data.slug || "/");
 
     // Remove cartridge flag logic. Prepare for flash prop logic below.
     const themeMode = 'light';
@@ -243,7 +243,7 @@ export default async function Page(props: any) {
                                         <Nav
                                             mode="mobile"
                                             navItems={navItems as I_NestedNav["navItems"]}
-                                            currentPath={slugPath || '/'}
+                                            currentPath={data.slug || '/'}
                                             config={config}
                                         />
                                     </Box>
@@ -280,7 +280,7 @@ export default async function Page(props: any) {
                         <Nav
                             config={config}
                             navItems={navItems as I_NestedNav["navItems"]}
-                            currentPath={slugPath || '/'}
+                            currentPath={data.slug || '/'}
                             mode="desktop"
                         />
                     </Box>

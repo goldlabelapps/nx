@@ -43,9 +43,8 @@ function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title
     return { title, order, slug, icon, type };
 }
 
-function buildNavTree(dir: string, baseUrl: string): NavItem[] {
+function buildNavTree(dir: string, baseUrl: string, targetSlug?: string): NavItem[] {
     if (!fs.existsSync(dir)) {
-        // Directory does not exist, return empty array
         return [];
     }
     const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -54,7 +53,6 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
         .map((entry) => {
             if (entry.isDirectory()) {
                 const children = buildNavTree(path.join(dir, entry.name), `${baseUrl}/${entry.name}`);
-                // Try to find an index.md for directory metadata
                 const indexPath = path.join(dir, entry.name, "index.md");
                 let meta: { title: string; slug: string; order?: number; icon?: string; type?: string } = { title: entry.name, slug: normalizeSlug(undefined, `/${entry.name}`), order: undefined, icon: undefined, type: undefined };
                 if (fs.existsSync(indexPath)) {
@@ -78,22 +76,55 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
                     type,
                 };
             }
-        })
-    // Filter out any item with the title 'Uberedux' (case-sensitive)
-    // .filter((item) => item.title !== 'Uberedux');
-    // Sort by order, then title
+        });
     navItems.sort((a, b) => {
         const orderA = typeof a.order === "number" ? a.order : 9999;
         const orderB = typeof b.order === "number" ? b.order : 9999;
         if (orderA !== orderB) return orderA - orderB;
         return a.title.localeCompare(b.title);
     });
-    return navItems;
+    // If no targetSlug, return the full tree
+    if (!targetSlug) return navItems;
+
+    // Helper to find the parent whose children contain the slug
+    function findSiblings(items: NavItem[], slug: string): NavItem[] | undefined {
+        for (const item of items) {
+            if (item.children) {
+                if (item.children.some(child => child.path === slug)) {
+                    return item.children;
+                }
+                const found = findSiblings(item.children, slug);
+                if (found) return found;
+            }
+        }
+        return undefined;
+    }
+    // Helper to strip children deeper than one level
+    function stripDeeperChildren(items: NavItem[]): NavItem[] {
+        return items.map(item => {
+            if (item.children && Array.isArray(item.children)) {
+                // Only keep one level of children, remove their children
+                return {
+                    ...item,
+                    children: item.children.map(child => ({ ...child, children: undefined }))
+                };
+            }
+            return item;
+        });
+    }
+    // Check if the slug is at the root level
+    if (navItems.some(item => item.path === targetSlug)) {
+        return stripDeeperChildren(navItems);
+    }
+    const siblings = findSiblings(navItems, targetSlug);
+    return siblings ? stripDeeperChildren(siblings) : [];
 }
 
-export async function serverUseNav(): Promise<NavItem[]> {
+
+export async function serverUseNav(slug?: string): Promise<NavItem[]> {
     const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
     const markdownRoot = await getMarkdownRoot();
     const baseUrl = `/${project}/markdown`;
-    return buildNavTree(markdownRoot, baseUrl);
+    // console.log("slug", slug);
+    return buildNavTree(markdownRoot, baseUrl, slug);
 }
