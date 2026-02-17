@@ -1,41 +1,47 @@
 "use client";
 import React from 'react';
 import { useDispatch } from '../../../../../app/NX/Uberedux';
+import { DesignSystem } from '../../../../../app/NX/DesignSystem';
 import {
     Flash,
     MovieClip,
     useFlash,
     setFlash,
-    Text,
 } from '../../../../../app/NX/Flash';
-import { CalculatorAS } from './';
+import { EchoPayCalculatorAS } from './';
 import EchoPayLogo from '../../movieclips/EchoPayLogo';
-import Variables from '../../movieclips/Variables';
+import Result from '../../movieclips/Result';
+import { exampleData } from './exampleData';
 
-export const Calculator: React.FC = () => {
+export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
     const flash = useFlash();
-    // Safely select the text attribute, default to 'EchoPay NX'
-    const textValue = (flash && typeof flash.text === 'string' && flash.text.trim() !== '') ? flash.text : 'EchoPay NX';
     const { started } = flash;
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
     const logoRef = React.useRef<any>(null);
-    const textRef = React.useRef<any>(null);
+    const resultRef = React.useRef<any>(null);
+    const randomExample = exampleData[Math.floor(Math.random() * exampleData.length)];
 
     React.useEffect(() => {
         if (!started) {
-            // dispatch(setFlash('started', true));
-            dispatch(setFlash('text', 'If your business is taking payment by card, this will calculate how much more money your business will make by simply switching to EchoPay for card enquiry'));
+            dispatch(setFlash('started', true));
+            dispatch(setFlash('echopayCalculator', randomExample));
         }
     }, [dispatch, started]);
 
     React.useEffect(() => {
-        const logoAnimator = new CalculatorAS(() => {
-            // console.log('CalculatorAS callback');
+        const logoAnimator = new EchoPayCalculatorAS(() => {
+            console.log('CalculatorAS callback');
             // dispatch(setFlash('finished', true));
-        }, logoRef, textRef);
+        }, logoRef, resultRef);
         logoAnimator.init();
     }, [replay, dispatch]);
+
+    React.useEffect(() => {
+        if (config) {
+            console.log('EchoPayCalculator config:', config);
+        }
+    }, [config]);
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -54,36 +60,22 @@ export const Calculator: React.FC = () => {
 
     return (
         <Flash id={'calculator'}>
-
-
             <MovieClip
                 id='mc_logo'
-                offsetY={-200}
+                zIndex={20}
                 style={{ opacity: 0 }}
             >
                 <EchoPayLogo ref={logoRef} />
             </MovieClip>
 
-
             <MovieClip
-                id='mc_text'
-                offsetY={-50}
+                id='mc_result'
+                width={'100%'}
+                maxWidth={500}
                 style={{ opacity: 0 }}
-                width={400}
+                zIndex={10}
             >
-                <Text ref={textRef}>
-                    {textValue}
-                </Text>
-            </MovieClip>
-
-            <MovieClip
-                id='mc_card_turnover'
-                // border
-                offsetY={75}
-                width={400}
-                style={{ opacity: 1, zIndex: 2000 }}
-            >
-                <Variables />
+                <Result />
             </MovieClip>
 
             <MovieClip
@@ -94,12 +86,12 @@ export const Calculator: React.FC = () => {
                 pos="top-left"
                 align="left"
                 style={{ opacity: 0 }}
+                zIndex={1}
             >
                 <pre>
                     {JSON.stringify(flash, null, 2)}
                 </pre>
             </MovieClip>
-
         </Flash>
     );
 };

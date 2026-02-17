@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-export default class CalculatorAS {
+export default class EchoPayCalculatorAS {
     private onDone?: () => void;
     private iconRef?: React.RefObject<any>;
     private textRef?: React.RefObject<any>;
@@ -13,9 +13,9 @@ export default class CalculatorAS {
 
     init() {
         // console.log('init...');
-        // make the mc_logo and mc_text clips visible immediately (since Icon starts hidden)
+        // make the mc_logo and mc_result clips visible immediately (since Icon starts hidden)
         const mcLogo = document.getElementById('mc_logo');
-        const mcText = document.getElementById('mc_text');
+        const mcResult = document.getElementById('mc_result');
         const handleTextFadeInComplete = () => {
             if (this.onDone) {
                 this.onDone();
@@ -26,8 +26,8 @@ export default class CalculatorAS {
                 opacity: 1,
             });
         }
-        if (mcText) {
-            gsap.set(mcText, {
+        if (mcResult) {
+            gsap.set(mcResult, {
                 opacity: 1,
             });
         }
