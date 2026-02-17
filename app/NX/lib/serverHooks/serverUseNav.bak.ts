@@ -78,9 +78,7 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
                     type,
                 };
             }
-        })
-    // Filter out any item with the title 'Uberedux' (case-sensitive)
-    // .filter((item) => item.title !== 'Uberedux');
+        });
     // Sort by order, then title
     navItems.sort((a, b) => {
         const orderA = typeof a.order === "number" ? a.order : 9999;
