@@ -15,7 +15,7 @@ export default class EchoPayCalculatorAS {
         // console.log('init...');
         // make the mc_logo and mc_result clips visible immediately (since Icon starts hidden)
         const mcLogo = document.getElementById('mc_logo');
-        const mcResult = document.getElementById('mc_result');
+        // const mcResult = document.getElementById('mc_result');
         const handleTextFadeInComplete = () => {
             if (this.onDone) {
                 this.onDone();
@@ -26,11 +26,7 @@ export default class EchoPayCalculatorAS {
                 opacity: 1,
             });
         }
-        if (mcResult) {
-            gsap.set(mcResult, {
-                opacity: 1,
-            });
-        }
+
         // Trigger fadeInLogo first, then fadeInText after logo animation completes
         if (this.iconRef?.current?.fadeInLogo) {
             this.iconRef.current.fadeInLogo(1, {
@@ -46,13 +42,7 @@ export default class EchoPayCalculatorAS {
             });
             return;
         }
-        // If no logo animation, trigger text animation immediately if available
-        if (this.resultRef?.current?.fadeInText) {
-            this.resultRef.current.fadeInText(1, {
-                onComplete: handleTextFadeInComplete
-            });
-            return;
-        }
+
         // fallback: if no animation, call onDone immediately
         if (this.onDone) {
             this.onDone();

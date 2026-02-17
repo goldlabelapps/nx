@@ -7,13 +7,15 @@ import {
   DialogActions,
   Button,
   Typography,
-  Avatar,
+  // Avatar,
   useMediaQuery,
   IconButton,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { Icon } from '../../../../app/NX/DesignSystem';
 import { useFlash } from '../../../../app/NX/Flash';
+
+import Graph from './Graph';
 
 
 export default function Result() {
@@ -24,6 +26,9 @@ export default function Result() {
   const {
     icon,
     name,
+    atv,
+    biz,
+    cto,
   } = data;
 
   const theme = useTheme();
@@ -38,25 +43,34 @@ export default function Result() {
       aria-labelledby="result-dialog-title"
     >
       <DialogTitle id="result-dialog-title" sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Avatar src={icon} />
+        {/* <Avatar src={icon} /> */}
         <Typography variant='h6' component="span">{name}</Typography>
         <span style={{ flex: 1 }} />
-        <IconButton color='primary'>
+        <IconButton color='secondary'>
           <Icon icon='menu' />
         </IconButton>
 
       </DialogTitle>
 
       <DialogContent>
-        <Typography variant='body1' gutterBottom>
-          This is the result of the calculation animation. It can be styled and animated as needed.
+        {/* <Typography variant='body2' gutterBottom>
+          ATV: {atv}
         </Typography>
+        <Typography variant='body2' gutterBottom>
+          BIZ: {biz}
+        </Typography>
+        <Typography variant='body2' gutterBottom>
+          CTO: {cto}
+        </Typography> */}
+
+        <Graph />
       </DialogContent>
 
       <DialogActions>
+        <span style={{ flex: 1 }} />
         <Button
-          fullWidth
-          variant='contained'
+          variant='outlined'
+          color="secondary"
           startIcon={<Icon icon='share' />}
         >
           Share
