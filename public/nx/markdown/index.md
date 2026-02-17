@@ -2,7 +2,7 @@
 order: 1 
 slug: /
 scene: Goldlabel
-title: Goldlabel NX
+title: NX
 description: Modern web apps for clients who need real results fast
 tags: nx, goldlabel
 icon: goldlabel
