@@ -3,12 +3,12 @@ import { gsap } from 'gsap';
 export default class EchoPayCalculatorAS {
     private onDone?: () => void;
     private iconRef?: React.RefObject<any>;
-    private textRef?: React.RefObject<any>;
+    private resultRef?: React.RefObject<any>;
 
-    constructor(onDone?: () => void, iconRef?: React.RefObject<any>, textRef?: React.RefObject<any>) {
+    constructor(onDone?: () => void, iconRef?: React.RefObject<any>, resultRef?: React.RefObject<any>) {
         this.onDone = onDone;
         this.iconRef = iconRef;
-        this.textRef = textRef;
+        this.resultRef = resultRef;
     }
 
     init() {
@@ -35,8 +35,8 @@ export default class EchoPayCalculatorAS {
         if (this.iconRef?.current?.fadeInLogo) {
             this.iconRef.current.fadeInLogo(1, {
                 onComplete: () => {
-                    if (this.textRef?.current?.fadeInText) {
-                        this.textRef.current.fadeInText(1, {
+                    if (this.resultRef?.current?.fadeInText) {
+                        this.resultRef.current.fadeInText(1, {
                             onComplete: handleTextFadeInComplete
                         });
                     } else {
@@ -47,8 +47,8 @@ export default class EchoPayCalculatorAS {
             return;
         }
         // If no logo animation, trigger text animation immediately if available
-        if (this.textRef?.current?.fadeInText) {
-            this.textRef.current.fadeInText(1, {
+        if (this.resultRef?.current?.fadeInText) {
+            this.resultRef.current.fadeInText(1, {
                 onComplete: handleTextFadeInComplete
             });
             return;

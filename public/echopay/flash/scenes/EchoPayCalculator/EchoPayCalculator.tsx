@@ -22,6 +22,9 @@ export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
     const resultRef = React.useRef<any>(null);
     const randomExample = exampleData[Math.floor(Math.random() * exampleData.length)];
 
+    // Extract dark theme from config
+    const darkTheme = config?.cartridges?.designSystem?.themes?.dark;
+
     React.useEffect(() => {
         if (!started) {
             dispatch(setFlash('started', true));
@@ -36,12 +39,6 @@ export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
         }, logoRef, resultRef);
         logoAnimator.init();
     }, [replay, dispatch]);
-
-    React.useEffect(() => {
-        if (config) {
-            console.log('EchoPayCalculator config:', config);
-        }
-    }, [config]);
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -59,40 +56,42 @@ export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
     }, []);
 
     return (
-        <Flash id={'calculator'}>
-            <MovieClip
-                id='mc_logo'
-                zIndex={20}
-                style={{ opacity: 0 }}
-            >
-                <EchoPayLogo ref={logoRef} />
-            </MovieClip>
+        <DesignSystem theme={darkTheme}>
+            <Flash id={'calculator'}>
+                <MovieClip
+                    id='mc_logo'
+                    zIndex={20}
+                    style={{ opacity: 0 }}
+                >
+                    <EchoPayLogo ref={logoRef} />
+                </MovieClip>
 
-            <MovieClip
-                id='mc_result'
-                width={'100%'}
-                maxWidth={500}
-                style={{ opacity: 0 }}
-                zIndex={10}
-            >
-                <Result />
-            </MovieClip>
+                <MovieClip
+                    id='mc_result'
+                    width={'100%'}
+                    maxWidth={500}
+                    style={{ opacity: 0 }}
+                    zIndex={10}
+                >
+                    <Result />
+                </MovieClip>
 
-            <MovieClip
-                id='pre'
-                border={false}
-                width={'100%'}
-                height={'100%'}
-                pos="top-left"
-                align="left"
-                style={{ opacity: 0 }}
-                zIndex={1}
-            >
-                <pre>
-                    {JSON.stringify(flash, null, 2)}
-                </pre>
-            </MovieClip>
-        </Flash>
+                <MovieClip
+                    id='pre'
+                    border={false}
+                    width={'100%'}
+                    height={'100%'}
+                    pos="top-left"
+                    align="left"
+                    style={{ opacity: 0 }}
+                    zIndex={1}
+                >
+                    <pre>
+                        {JSON.stringify(flash, null, 2)}
+                    </pre>
+                </MovieClip>
+            </Flash>
+        </DesignSystem>
     );
 };
 
