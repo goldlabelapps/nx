@@ -73,11 +73,11 @@
                 "dark": {
                     "mode": "dark",
                     "primary": "#17A1AC",
-                    "secondary": "#07c7d5ff",
-                    "background": "#000",
-                    "paper": "#1e1e1eff",
+                    "secondary": "#FFF",
+                    "background": "#012867",
+                    "paper": "#012867",
                     "text": "#fff",
-                    "border": "#17A1AC"
+                    "border": "#FFF"
                 }
             }
         }
