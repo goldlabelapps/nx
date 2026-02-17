@@ -1,6 +1,6 @@
 ---
 order: 50
-slug: /work/nx/cartridges/paywall
+slug: /work/nx/paywall
 title: Paywall
 description: User authentication, membership, payments and more
 tags: features, cartridges,

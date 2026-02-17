@@ -1,6 +1,6 @@
 ---
 order: 2
-slug: /about
+slug: /work/about
 title: About Us
 description: Goldlabel Apps Ltd
 icon: goldlabel

@@ -1,6 +1,6 @@
 ---
 order: 60
-slug: /work/nx/cartridges/flash
+slug: /work/nx/flash
 title: Flash
 description: A multimedia software platform created by Macromedia and later acquired by Adobe
 tags: NX, Cartridges, Flash

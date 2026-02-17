@@ -17,21 +17,9 @@ export default class CalculatorAS {
         const mcLogo = document.getElementById('mc_logo');
         const mcText = document.getElementById('mc_text');
         const handleTextFadeInComplete = () => {
-            setTimeout(() => {
-                if (this.textRef?.current?.fadeOutText) {
-                    this.textRef.current.fadeOutText(1, {
-                        onComplete: () => {
-                            if (this.onDone) {
-                                this.onDone();
-                            }
-                        }
-                    });
-                } else {
-                    if (this.onDone) {
-                        this.onDone();
-                    }
-                }
-            }, 2000);
+            if (this.onDone) {
+                this.onDone();
+            }
         };
         if (mcLogo) {
             gsap.set(mcLogo, {

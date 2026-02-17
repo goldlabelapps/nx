@@ -1,16 +1,14 @@
 "use client";
+import { I_NavNode } from '../../types';
 import React from 'react';
-import type { I_Icon } from '../../types';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import { useRouter } from 'next/navigation';
-import { I_NavNode } from '../../types';
 import {
     Box,
     List,
     ListItemButton,
     ListItemText,
-    ListItemIcon,
 } from '@mui/material';
 import { Icon } from '../../DesignSystem';
 import { Commerce } from '../../Commerce';
