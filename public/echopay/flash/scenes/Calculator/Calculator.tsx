@@ -8,19 +8,19 @@ import {
     useFlash,
     setFlash,
 } from '../../../../../app/NX/Flash';
-import { EchoPayCalculatorAS } from './';
-import EchoPayLogo from '../../movieclips/EchoPayLogo';
-// import Result from '../../movieclips/Result';
-import { exampleData } from './exampleData';
+import { CalculatorAS } from './';
+import EchoPayIcon from '../../movieclips/EchoPayIcon';
+import Logo from '../../movieclips/Logo';
+// import { exampleData } from './exampleData';
 
-export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
+export const Calculator: React.FC<{ config?: any }> = ({ config }) => {
     const flash = useFlash();
     const { started } = flash;
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
+    const iconRef = React.useRef<any>(null);
     const logoRef = React.useRef<any>(null);
-    const resultRef = React.useRef<any>(null);
-    const randomExample = exampleData[Math.floor(Math.random() * exampleData.length)];
+    // const randomExample = exampleData[Math.floor(Math.random() * exampleData.length)];
 
     // Extract dark theme from config
     const darkTheme = config?.cartridges?.designSystem?.themes?.dark;
@@ -28,15 +28,15 @@ export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
     React.useEffect(() => {
         if (!started) {
             dispatch(setFlash('started', true));
-            dispatch(setFlash('echopayCalculator', randomExample));
+            // dispatch(setFlash('calculator', randomExample));
         }
     }, [dispatch, started]);
 
     React.useEffect(() => {
-        const logoAnimator = new EchoPayCalculatorAS(() => {
+        const logoAnimator = new CalculatorAS(() => {
             console.log('CalculatorAS callback');
             // dispatch(setFlash('finished', true));
-        }, logoRef, resultRef);
+        }, iconRef, logoRef);
         logoAnimator.init();
     }, [replay, dispatch]);
 
@@ -58,38 +58,24 @@ export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
     return (
         <DesignSystem theme={darkTheme}>
             <Flash id={'calculator'}>
+
                 <MovieClip
-                    id='mc_logo'
+                    id='mc_icon'
                     zIndex={20}
                     style={{ opacity: 0 }}
                 >
-                    <EchoPayLogo ref={logoRef} />
+                    <EchoPayIcon ref={iconRef} />
                 </MovieClip>
 
-                {/* <MovieClip
-                    id='mc_result'
-                    width={'100%'}
-                    maxWidth={500}
+                <MovieClip
+                    id='mc_logo'
+                    width={375}
                     style={{ opacity: 0 }}
                     zIndex={10}
                 >
-                    <Result />
-                </MovieClip> */}
-
-                <MovieClip
-                    id='pre'
-                    border={false}
-                    width={'100%'}
-                    height={'100%'}
-                    pos="top-left"
-                    align="left"
-                    style={{ opacity: 0 }}
-                    zIndex={1}
-                >
-                    <pre>
-                        {JSON.stringify(flash, null, 2)}
-                    </pre>
+                    <Logo />
                 </MovieClip>
+
             </Flash>
         </DesignSystem>
     );
