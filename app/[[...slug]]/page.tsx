@@ -188,7 +188,7 @@ export default async function Page(props: any) {
         } else if (flashScene.toLowerCase() === 'goldlabel') {
             SceneComponent = (await import('../../public/nx/flash/Goldlabel')).Goldlabel;
         } else if (flashScene.toLowerCase() === 'calculator') {
-            SceneComponent = (await import('../../public/echopay/flash/scenes/Calculator')).Calculator;
+            SceneComponent = (await import('../../public/echopay/EchopayFlash')).EchoPayFlash;
         }
         if (SceneComponent) {
             // Pass config prop if available

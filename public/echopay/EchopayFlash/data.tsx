@@ -1,6 +1,6 @@
 import type { T_EchoPayCalculator } from "./types";
 
-export const exampleData: T_EchoPayCalculator[] = [
+export const calculatorData: T_EchoPayCalculator[] = [
     {
         "id": 1,
         "name": "Cougar Ltd",
