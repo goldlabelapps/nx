@@ -10,7 +10,7 @@ import {
 } from '../../../../../app/NX/Flash';
 import { EchoPayCalculatorAS } from './';
 import EchoPayLogo from '../../movieclips/EchoPayLogo';
-import Result from '../../movieclips/Result';
+// import Result from '../../movieclips/Result';
 import { exampleData } from './exampleData';
 
 export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
@@ -66,7 +66,7 @@ export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
                     <EchoPayLogo ref={logoRef} />
                 </MovieClip>
 
-                <MovieClip
+                {/* <MovieClip
                     id='mc_result'
                     width={'100%'}
                     maxWidth={500}
@@ -74,7 +74,7 @@ export const EchoPayCalculator: React.FC<{ config?: any }> = ({ config }) => {
                     zIndex={10}
                 >
                     <Result />
-                </MovieClip>
+                </MovieClip> */}
 
                 <MovieClip
                     id='pre'
