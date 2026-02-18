@@ -7,6 +7,7 @@ import {
     MovieClip,
     // useFlash,
 } from '../../../app/NX/Flash';
+import { LogoMC } from './LogoMC';
 
 export const EchoPayFlash: React.FC<{ config?: any }> = ({ config }) => {
     // const flash = useFlash();
@@ -19,9 +20,12 @@ export const EchoPayFlash: React.FC<{ config?: any }> = ({ config }) => {
             <Flash id={'echopay_flash'}>
                 <MovieClip
                     id='mc_logo'
+                    width={300}
+                    height={100}
+                    maxWidth={'90%'}
                     zIndex={100}
                     style={{ opacity: 1 }}>
-                    EchopayFlash Logo
+                    logo
                 </MovieClip>
             </Flash>
         </DesignSystem>

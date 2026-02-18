@@ -1,5 +1,5 @@
 
-import { EchoPayFlash } from './EchoPayFlash';
+import { EchoPayFlash } from './Flash';
 import { LogoMC } from './LogoMC';
 import { IconMC } from './IconMC';
 
