@@ -2,7 +2,7 @@
 order: 20
 title: Permanent Roles
 description: Why Are You Interested in a Permanent Role?
-slug: /work/why-perm
+slug: /why-perm
 icon: work
 image: https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg
 tags: Jobs, Permanant, Professional, JavaScript, Interviews

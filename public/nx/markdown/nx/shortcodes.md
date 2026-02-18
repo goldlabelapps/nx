@@ -1,6 +1,6 @@
 ---
 order: 60
-slug: /work/nx/shortcodes
+slug: /nx/shortcodes
 title: Shortcodes
 description: Extend your content with reusable, customizable, and maintainable features, all with a simple and intuitive syntax
 tags: features, cartridges, shortcodes

@@ -1,6 +1,6 @@
 ---
 order: 50
-slug: /work/nx
+slug: /nx
 title: Goldlabel NX
 description: NX is built on Cartridges
 tags: nx, features, n64
