@@ -1,4 +1,4 @@
-
+"use client";
 import React from 'react';
 // import { useTheme } from '@mui/material';
 
@@ -8,8 +8,9 @@ const Logo = () => {
     return (
         <>
             <img
-                src={'/echopay/svg/logo.svg'}
                 alt="Logo"
+                src={'/echopay/EchopayFlash/LogoMC/logo.svg'}
+
                 style={{
                     display: 'block',
                     maxWidth: '100%',
