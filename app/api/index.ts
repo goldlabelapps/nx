@@ -1,0 +1,1 @@
+import { makeRes } from './lib/makeRes';
