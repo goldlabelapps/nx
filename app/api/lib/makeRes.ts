@@ -1,9 +1,15 @@
 import { I_MakeRes } from "../types";
+import { makeTime } from './makeTime';
 
 export function makeRes({ severity, message, data }: I_MakeRes) {
-    return {
+    const epoch = Date.now();
+    const meta = {
         severity,
         message,
-        ...(data !== undefined ? { data } : {})
+        time: makeTime(epoch),
+        epoch
     };
-}
+    return data !== undefined
+        ? { meta, data }
+        : { meta };
+};
