@@ -5,7 +5,6 @@ title: Goldlabel NX
 description: NX is built on Cartridges
 tags: nx, features, n64
 icon: cartridge
-smartImage: ice-cream
 image: https://live.staticflickr.com/65535/55054089178_9e08108e45_b.jpg
 ---
 

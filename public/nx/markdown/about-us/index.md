@@ -4,13 +4,18 @@ slug: /about
 title: About Us
 description: Goldlabel Apps Ltd
 icon: goldlabel
-tags: goldlabel
-smartImage: random
+tags: goldlabel, contact, Twitter, Facebook, LinkedIn, GitHub, YoutTube
+image: https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg
 ---
 
-[goldlabel.apps@gmail.com](mailto:goldlabel.apps@gmail.com) | Tel/WhatsApp [+44 07745 763 122 ](https://wa.me/447745763122) | [GitHub](https://github.com/goldlabelapps) | [LinkedIn](https://www.linkedin.com/in/chris-dorward) | [Twitter, X](https://x.com/goldlabelapps) | [Insta](https://www.instagram.com/milkylackstoes) | [Facebook](https://www.facebook.com/goldlabelappss) | [Youtube](https://www.youtube.com/@milkylackstoes) | [Flickr](https://www.flickr.com/photos/listingslab) | UK Limited Company 5460545
+> UK Limited Company 5460545
+
+[goldlabel.apps@gmail.com](mailto:goldlabel.apps@gmail.com)  
+[+44 07745 763 122 ](https://wa.me/447745763122)  
+  
 > Goldlabel Apps Ltd  
 > 321-323 High Road  
 > Chadwell Heath  
 > Essex RM6 6AX
 
+[GitHub](https://github.com/goldlabelapps) | [LinkedIn](https://www.linkedin.com/in/chris-dorward) | [Twitter, X](https://x.com/goldlabelapps) | [Insta](https://www.instagram.com/milkylackstoes) | [Facebook](https://www.facebook.com/goldlabelappss) | [Youtube](https://www.youtube.com/@milkylackstoes) | [Flickr](https://www.flickr.com/photos/listingslab)

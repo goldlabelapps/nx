@@ -1,8 +1,8 @@
 ---
 order: 1 
 slug: /
+title: Goldlabel
 scene: Goldlabel
-title: NX
 description: Modern web apps for clients who need real results fast
 tags: NX, Goldlabel, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS
 icon: goldlabel
