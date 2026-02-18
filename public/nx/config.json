@@ -11,6 +11,13 @@
             "enabled": true,
             "ads": [
                 {
+                    "title": "How AI changes our role",
+                    "type": "route",
+                    "path": "/our-work/our-changing-role",
+                    "description": "Clue: It changes it a LOT",
+                    "icon": "ai"
+                },
+                {
                     "title": "Flash",
                     "type": "route",
                     "path": "/nx/flash",

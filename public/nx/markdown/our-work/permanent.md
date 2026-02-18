@@ -1,14 +1,14 @@
 ---
 order: 20
 title: Permanent Roles
-description: Why Are You Interested in a Permanent Role?
-slug: /why-perm
+description: Why are we interested in Permanent?
+slug: /jobs/permanent
 icon: work
 image: https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg
 tags: Jobs, Permanant, Professional, JavaScript, Interviews
 ---
 
-> Your CV shows a lot of chopping, changing and contracting. Why are you now interested in a permanent role?
+> Our CV shows a lot of chopping, changing and contracting. Why are we now interested in a permanent role?
 
 **Answer**  
 
