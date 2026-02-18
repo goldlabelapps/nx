@@ -1,5 +1,5 @@
 ---
-order: 60
+order: 20
 slug: /our-work
 title: Our Work
 description: Contract or perm?

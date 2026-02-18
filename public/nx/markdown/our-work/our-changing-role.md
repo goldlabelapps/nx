@@ -1,31 +1,33 @@
 ---
 order: 10
-title: The Changing Role
-description: Interviewing for senior/lead developer roles in the context of AI‑assisted software development?
-slug: /our-work/the-changing-dev-role
+title: Our changing role
+description: The step‑change due to AI
+slug: /our-work/our-changing-role
 image: https://live.staticflickr.com/65535/55043282654_a49615d1df_b.jpg
 icon: work
 tags: Senior Developer, AI, Experience
 newContent: true
 ---
 
+Interviewing for senior/lead developer roles in the context of AI‑assisted software development?
+
 > The core tension is this: Software development has undergone a step‑change due to AI, but many hiring conversations, job descriptions, and interview processes have not.
 
-### What AI Has Actually Changed
+## What AI Has Actually Changed
 
-AI has not primarily:
+AI has **not**:
 
 - replaced developers
 - removed the need for engineering discipline
 - eliminated senior roles
 
-Instead, it has:
+It **has**
 
 - collapsed the cost of _implementation_
 - accelerated prototyping and exploration
-- moved the bottleneck from **writing code** to **deciding what code should exist**
+- moved the bottleneck from _writing code_ to _deciding what code should exist_
 
-The scarce skill is now **judgement**, not syntax.
+The scarce skill is now _judgement_ not syntax.
 
 ## Experience Matters More Than Ever
 
@@ -34,22 +36,16 @@ The scarce skill is now **judgement**, not syntax.
 - It reveals where complexity hides (data, auth, scale, ownership)
 - It enables better questions to be asked of AI tools
 
-### The AI Question Gap
+## The AI Question Gap
 
-Less‑experienced developers can ask:
-
-```sh
-How do I build X?
-```
+Less‑experienced developers can ask: How do I build X?
 
 Experienced developers ask:
 
-```sh
 Should X exist?
 What breaks if it does?
 Where does this lock us in?
 What has to be correct from day one?
-```
 
 AI accelerates both groups — but only one group avoids scaling mistakes.
 
@@ -72,7 +68,7 @@ As a result, many roles being hired for today:
 
 ## Whyat might be the new role?
 
-**Technical Outcome Lead**
+_Technical Outcome Lead_
 
 - Frames problems before building
 - Uses AI to explore solution space rapidly
@@ -85,15 +81,9 @@ This role is about turning uncertainty into working, robust systems quickly.
 
 ## Development Philosophy
 
-### Order of Operations (Critical)
+Order of Operations (Critical). Screens are cheap. Data models are not. Correct sequence:
 
-Screens are cheap. Data models are not.
-
-Correct sequence:
-
-```text
 Outcome → Actors → Tasks → Data → APIs → UI
-```
 
 UI is deliberately delayed until:
 
@@ -103,11 +93,10 @@ UI is deliberately delayed until:
 
 ## Speed vs Robustness
 
-Speed is not the enemy of quality — _uncontrolled speed is_.
+Speed is not the enemy of quality, _uncontrolled speed is_.
 
 A practical approach:
 
-```text
 Phase 1: Fast PoC
 - validate direction
 - explore solution space
@@ -118,7 +107,6 @@ Phase 2: Hardening
 - define API contracts
 - secure auth boundaries
 - introduce observability
-```
 
 AI compresses Phase 1 dramatically.
 Judgement determines when Phase 2 begins.
