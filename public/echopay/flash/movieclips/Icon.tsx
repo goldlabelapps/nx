@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 
 // Forward ref to allow parent to trigger animation
 
-const EchoPayLogo = forwardRef(function EchoPayIcon({ ...props }: TMovieClip, ref) {
+const Icon = forwardRef(function EchoPayIcon({ ...props }: TMovieClip, ref) {
     const theme = useTheme();
     const fill = theme.palette.primary.main;
     const logoRef = useRef<SVGPathElement>(null);
@@ -73,4 +73,4 @@ const EchoPayLogo = forwardRef(function EchoPayIcon({ ...props }: TMovieClip, re
     );
 });
 
-export default EchoPayLogo;
+export default Icon;
