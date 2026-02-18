@@ -1,6 +1,6 @@
 ---
 order: 50
-slug: /work/nx/design-system
+slug: /nx/design-system
 title: Design System
 description: Based on Material UI
 tags: features, cartridges,
