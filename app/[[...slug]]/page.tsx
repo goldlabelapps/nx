@@ -254,13 +254,13 @@ export default async function Page(props: any) {
                 </Box>
             </header>
             {/* Start Main */}
-            <Container id="main" maxWidth="xl" sx={{ mt: '100px', mb: '60px' }}>
+            <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '80px' }}>
                 <Box
                     sx={{
                         display: 'grid',
                         gridTemplateColumns: {
                             xs: '1fr',
-                            lg: '250px 1fr 400px'
+                            lg: '200px 1fr 320px'
                         },
                         gap: 2,
                         alignItems: 'start',
@@ -271,9 +271,9 @@ export default async function Page(props: any) {
                         component="nav"
                         sx={{
                             display: { xs: 'none', lg: 'block' },
-                            width: { lg: '250px' },
-                            minWidth: { lg: '250px' },
-                            maxWidth: { lg: '250px' },
+                            width: { lg: '200px' },
+                            minWidth: { lg: '200px' },
+                            maxWidth: { lg: '200px' },
                             gridColumn: { lg: '1' },
                         }}
                     >
@@ -322,9 +322,9 @@ export default async function Page(props: any) {
                     <Box
                         sx={{
                             display: { xs: 'none', lg: 'block' },
-                            width: { lg: '400px' },
-                            minWidth: { lg: '400px' },
-                            maxWidth: { lg: '400px' },
+                            width: { lg: '320px' },
+                            minWidth: { lg: '320px' },
+                            maxWidth: { lg: '320px' },
                             gridColumn: { lg: '3' },
                             pr: 3,
                         }}
