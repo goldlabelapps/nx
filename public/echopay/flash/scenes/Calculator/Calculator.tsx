@@ -9,17 +9,17 @@ import {
     setFlash,
 } from '../../../../../app/NX/Flash';
 import { CalculatorAS } from './';
-import Icon from '../../movieclips/Icon';
+import EchoPayIcon from '../../movieclips/EchoPayIcon';
+import Logo from '../../movieclips/Logo';
 // import { exampleData } from './exampleData';
-// import Result from '../../movieclips/Result';
 
 export const Calculator: React.FC<{ config?: any }> = ({ config }) => {
     const flash = useFlash();
     const { started } = flash;
     const dispatch = useDispatch();
     const [replay, setReplay] = React.useState(0);
+    const iconRef = React.useRef<any>(null);
     const logoRef = React.useRef<any>(null);
-    const resultRef = React.useRef<any>(null);
     // const randomExample = exampleData[Math.floor(Math.random() * exampleData.length)];
 
     // Extract dark theme from config
@@ -36,7 +36,7 @@ export const Calculator: React.FC<{ config?: any }> = ({ config }) => {
         const logoAnimator = new CalculatorAS(() => {
             console.log('CalculatorAS callback');
             // dispatch(setFlash('finished', true));
-        }, logoRef, resultRef);
+        }, iconRef, logoRef);
         logoAnimator.init();
     }, [replay, dispatch]);
 
@@ -58,36 +58,24 @@ export const Calculator: React.FC<{ config?: any }> = ({ config }) => {
     return (
         <DesignSystem theme={darkTheme}>
             <Flash id={'calculator'}>
+
                 <MovieClip
-                    id='mc_logo'
+                    id='mc_icon'
                     zIndex={20}
                     style={{ opacity: 0 }}
                 >
-                    <Icon ref={logoRef} />
+                    <EchoPayIcon ref={iconRef} />
                 </MovieClip>
-                {/* <MovieClip
-                    id='mc_result'
-                    width={'100%'}
-                    maxWidth={500}
+
+                <MovieClip
+                    id='mc_logo'
+                    width={375}
                     style={{ opacity: 0 }}
                     zIndex={10}
                 >
-                    <Result />
-                </MovieClip> */}
-                <MovieClip
-                    id='pre'
-                    border={false}
-                    width={'100%'}
-                    height={'100%'}
-                    pos="top-left"
-                    align="left"
-                    style={{ opacity: 0 }}
-                    zIndex={1}
-                >
-                    <pre>
-                        {JSON.stringify(flash, null, 2)}
-                    </pre>
+                    <Logo />
                 </MovieClip>
+
             </Flash>
         </DesignSystem>
     );
