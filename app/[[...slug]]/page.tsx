@@ -183,8 +183,8 @@ export default async function Page(props: any) {
     if (flashScene) {
         // Only import React components from known scenes
         let SceneComponent: React.ComponentType<{ config: T_Config }> | null = null;
-        if (flashScene.toLowerCase() === 'nxmc') {
-            SceneComponent = (await import('../NX/Flash/Scenes/NXMC')).NXMC;
+        if (flashScene.toLowerCase() === 'goldlabel') {
+            SceneComponent = (await import('../NX/Flash/Scenes/Goldlabel')).Goldlabel;
         } else if (flashScene.toLowerCase() === 'calculator') {
             SceneComponent = (await import('../../public/echopay/flash')).EchoPay;
         }
