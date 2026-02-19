@@ -43,6 +43,15 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     useEffect(() => {
         const onLogoDone = () => {
             console.log('Start Chatbot');
+            // Initialize ChatbotAS with mc_chatbot (chatbotRef)
+            if (chatbotRef.current) {
+                const chatbotAS = new ChatbotAS(undefined, chatbotRef);
+                if (typeof window !== 'undefined') {
+                    (window as any).__chatbotASInstance = chatbotAS;
+                }
+
+                chatbotAS.init();
+            }
         };
         as.current = new LogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
@@ -73,8 +82,8 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     ref={chatbotRef}
                 >
                     <Chatbot
-                        title="Chatbot"
-                        icon="aki"
+                        title="EchoPay"
+                        icon="ai"
                     />
                 </MovieClip>
 
