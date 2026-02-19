@@ -39,6 +39,10 @@ export interface I_MovieClip {
      * Optional offset in the Y direction (pixels)
      */
     offsetY?: number;
+    /**
+     * Optional ref for the MovieClip div
+     */
+    ref?: React.Ref<HTMLDivElement>;
 }
 
 
@@ -91,7 +95,7 @@ function getPositionStyle(pos?: I_MovieClip['pos']): React.CSSProperties {
     }
 }
 
-export const MovieClip: React.FC<I_MovieClip> = ({
+export const MovieClip = React.forwardRef<HTMLDivElement, I_MovieClip>(({
     children,
     id,
     style,
@@ -106,7 +110,7 @@ export const MovieClip: React.FC<I_MovieClip> = ({
     minWidth,
     maxWidth,
     zIndex,
-}) => {
+}, ref) => {
     // Compose transform: base + position + offset
     const positionStyle = getPositionStyle(pos);
     // Extract any transform from positionStyle or base
@@ -134,10 +138,10 @@ export const MovieClip: React.FC<I_MovieClip> = ({
         ...style,
     };
     return (
-        <div id={id} style={mergedStyle} className={className}>
+        <div id={id} style={mergedStyle} className={className} ref={ref}>
             {children}
         </div>
     );
-};
+});
 
 export default MovieClip;

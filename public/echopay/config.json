@@ -52,7 +52,7 @@
         },
         "designSystem": {
             "allowTheme": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "smartImages": [
                 {
                     "title": "Blue Cartridge",

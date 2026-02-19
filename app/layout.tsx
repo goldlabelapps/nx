@@ -33,7 +33,14 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href={favicon} />
-        <meta name="theme-color" content={"#FFF"} />
+        <meta
+          name="theme-color"
+          content={
+            config.cartridges?.designSystem?.themes?.[
+              config.cartridges?.designSystem?.defaultTheme || "light"
+            ]?.background || "#971e1e"
+          }
+        />
         <link rel="manifest" href={`/${project}/manifest.json`} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />

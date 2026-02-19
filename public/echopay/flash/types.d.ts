@@ -10,3 +10,4 @@ export type T_EchoPayCalculator = {
     "atv": number,
     "biz": number,
 };
+
