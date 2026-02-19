@@ -1,13 +1,9 @@
 
-
-export type T_EchoPayCalculator = {
-    "id": number,
+export type T_Company = {
+    "id": string,
     "name": string,
-    "icon": string,
-    "color": string,
     "slug": string,
-    "cto": number,
-    "atv": number,
-    "biz": number,
+    "cto": number | null,
+    "atv": number | null,
+    "biz": number | null,
 };
-
