@@ -1,3 +1,11 @@
+// Augment ImportMeta to support import.meta.hot (for Vite/webpack HMR)
+declare global {
+  interface ImportMeta {
+    hot?: {
+      accept: (cb: () => void) => void;
+    };
+  }
+}
 import React from 'react';
 
 export type TState = {

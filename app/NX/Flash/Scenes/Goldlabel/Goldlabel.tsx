@@ -43,7 +43,7 @@ export const Goldlabel: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            console.log('Logo animation done, now starting CalculatorAS');
+            console.log('Logo animation done, now starting ChatbotAS');
         };
         as.current = new LogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
