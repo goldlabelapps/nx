@@ -1,6 +1,6 @@
 // import { gsap } from 'gsap';
 
-export default class IconAS {
+export default class NewAS {
     private onDone?: () => void;
     private mc?: React.RefObject<any>;
 
@@ -10,7 +10,7 @@ export default class IconAS {
     }
 
     init() {
-        console.log('IconAS init');
+        console.log('NewAS init');
         if (this.onDone) {
             this.onDone();
         }
@@ -18,6 +18,6 @@ export default class IconAS {
     }
 
     destroy() {
-        console.log('IconAS destroyed');
+        console.log('NewAS destroyed');
     }
 }

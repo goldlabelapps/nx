@@ -2,14 +2,14 @@
 import React from 'react';
 import { useTheme } from '@mui/material';
 
-const IconMC = () => {
+const NewMC = () => {
     const theme = useTheme();
     const fill = theme.palette.primary.main;
     return (
         <>
-            IconMC
+            NewMC
         </>
     );
 };
 
-export default IconMC;
+export default NewMC;
