@@ -14,16 +14,16 @@ import {
     Flash,
     MovieClip,
     Chatbot,
+    ChatbotAS,
 } from '../../../app/NX/Flash';
 import { LogoMC, LogoAS } from './LogoMC';
-import { Calculator, CalculatorAS } from './Calculator';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     const theme = config?.cartridges?.designSystem?.themes?.dark;
     const [replay, setReplay] = React.useState(0);
     const logoRef = useRef<HTMLImageElement>(null); // ref for LogoMC image
     const as = useRef<any>(null);
-    const calculatorRef = useRef<HTMLDivElement>(null); // ref for calculator MovieClip DOM
+    const chatbotRef = useRef<HTMLDivElement>(null); // ref for chatbot MovieClip DOM
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -42,12 +42,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            console.log('Logo animation done, now starting CalculatorAS');
-            // Pass the calculator MovieClip DOM node ref to CalculatorAS
-            const calcAS = new CalculatorAS(() => {
-                console.log('CalculatorAS animation done');
-            }, calculatorRef);
-            calcAS.init();
+            console.log('Start Chatbot');
         };
         as.current = new LogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
@@ -70,15 +65,17 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 </MovieClip>
 
                 <MovieClip
-                    id='mc_calculator'
+                    id='mc_chatbot'
                     style={{ visibility: 'hidden' }}
                     width={'90%'}
                     maxWidth={600}
                     zIndex={200}
-                    ref={calculatorRef}
+                    ref={chatbotRef}
                 >
-                    <Chatbot />
-
+                    <Chatbot
+                        title="Chatbot"
+                        icon="aki"
+                    />
                 </MovieClip>
 
             </Flash>
