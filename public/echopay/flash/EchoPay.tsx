@@ -13,6 +13,7 @@ import { DesignSystem } from '../../../app/NX/DesignSystem';
 import {
     Flash,
     MovieClip,
+    Chatbot,
 } from '../../../app/NX/Flash';
 import { LogoMC, LogoAS } from './LogoMC';
 import { Calculator, CalculatorAS } from './Calculator';
@@ -76,7 +77,8 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     zIndex={200}
                     ref={calculatorRef}
                 >
-                    <Calculator />
+                    <Chatbot />
+
                 </MovieClip>
 
             </Flash>
