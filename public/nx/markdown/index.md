@@ -2,7 +2,7 @@
 order: 1 
 slug: /
 title: Goldlabel
-scene: Goldlabel
+flash: Goldlabel
 description: When you need real results fast
 tags: NX, Goldlabel, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS
 icon: goldlabel

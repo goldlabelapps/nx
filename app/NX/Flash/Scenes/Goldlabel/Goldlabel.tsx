@@ -9,21 +9,22 @@ declare global {
 "use client";
 
 import React, { useRef, useEffect } from 'react';
-import { DesignSystem } from '../../../app/NX/DesignSystem';
+import { DesignSystem } from '../../../DesignSystem';
 import {
     Flash,
     MovieClip,
     Chatbot,
-    ChatbotAS,
-} from '../../../app/NX/Flash';
+} from '../../../Flash';
 import { LogoMC, LogoAS } from './LogoMC';
+import { GoldlabelAS } from './';
 
-export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
-    const theme = config?.cartridges?.designSystem?.themes?.dark;
+export const Goldlabel: React.FC<{ config?: any }> = ({ config }) => {
+    const defaultTheme = { mode: 'dark', primary: '#000', secondary: '#fff' }; // adjust as needed
+    const theme = config?.cartridges?.designSystem?.themes?.dark ?? defaultTheme;
     const [replay, setReplay] = React.useState(0);
     const logoRef = useRef<HTMLImageElement>(null); // ref for LogoMC image
     const as = useRef<any>(null);
-    const chatbotRef = useRef<HTMLDivElement>(null); // ref for chatbot MovieClip DOM
+    const calculatorRef = useRef<HTMLDivElement>(null); // ref for calculator MovieClip DOM
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -42,7 +43,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            console.log('Start Chatbot');
+            console.log('Logo animation done, now starting CalculatorAS');
         };
         as.current = new LogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
@@ -53,7 +54,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     return (
         <DesignSystem theme={theme}>
-            <Flash id={'echopay_flash'}>
+            <Flash id={'goldlabel'}>
                 <MovieClip
                     id='mc_logo'
                     style={{ visibility: 'hidden' }}
@@ -65,17 +66,14 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 </MovieClip>
 
                 <MovieClip
-                    id='mc_chatbot'
+                    id='mc_calculator'
                     style={{ visibility: 'hidden' }}
                     width={'90%'}
                     maxWidth={600}
                     zIndex={200}
-                    ref={chatbotRef}
+                    ref={calculatorRef}
                 >
-                    <Chatbot
-                        title="Chatbot"
-                        icon="aki"
-                    />
+                    <Chatbot />
                 </MovieClip>
 
             </Flash>

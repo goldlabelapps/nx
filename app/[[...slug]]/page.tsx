@@ -28,7 +28,7 @@ import echopayConfig from '../../public/echopay/config.json';
 import akiConfig from '../../public/aki/config.json';
 import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
-import { Example } from '../NX/Flash';
+import { NXMC } from '../NX/Flash';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -183,10 +183,8 @@ export default async function Page(props: any) {
     if (flashScene) {
         // Only import React components from known scenes
         let SceneComponent: React.ComponentType<{ config: T_Config }> | null = null;
-        if (flashScene.toLowerCase() === 'example') {
-            SceneComponent = (await import('../NX/Flash/Scenes/Example')).Example;
-        } else if (flashScene.toLowerCase() === 'goldlabel') {
-            SceneComponent = (await import('../../public/nx/flash/Goldlabel')).Goldlabel;
+        if (flashScene.toLowerCase() === 'goldlabel') {
+            SceneComponent = (await import('../NX/Flash/Scenes/Goldlabel')).Goldlabel;
         } else if (flashScene.toLowerCase() === 'calculator') {
             SceneComponent = (await import('../../public/echopay/flash')).EchoPay;
         }

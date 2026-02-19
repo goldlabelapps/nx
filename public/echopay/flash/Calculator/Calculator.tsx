@@ -14,8 +14,7 @@ import {
 import { Icon } from '../../../../app/NX/DesignSystem';
 import { useDispatch } from '../../../../app/NX/Uberedux';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
-import { FormMC } from '../';
-
+// import { FormMC } from '../';
 
 const Calculator = () => {
 
@@ -60,14 +59,14 @@ const Calculator = () => {
                     <Box id="instructions">
                         <Typography variant="body1">{instructions}</Typography>
                     </Box>
-                    <FormMC />
+
                 </CardContent>
-                {/* <CardActions>
+                <CardActions>
                     <Box sx={{ flexGrow: 1 }} />
                     <IconButton color="secondary">
                         <Icon icon={"share"} />
                     </IconButton>
-                </CardActions> */}
+                </CardActions>
                 {/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
                     {JSON.stringify(flash, null, 2)}
                 </pre> */}
