@@ -1,10 +1,12 @@
 
-import { EchoPayFlash } from './Flash';
+import { EchoPay } from './EchoPay';
+import EchoPayAS from './EchoPayAS';
 import { LogoMC } from './LogoMC';
 import { IconMC } from './IconMC';
 
 export {
-    EchoPayFlash,
+    EchoPay,
+    EchoPayAS,
     LogoMC,
     IconMC,
 };
