@@ -25,8 +25,8 @@ export default class LogoAS {
         if (el) {
             el.style.opacity = '0';
             el.style.visibility = 'visible';
-            el.style.transform = 'scaleY(1.25)';
-            el.style.transform = 'scaleX(1.25)';
+            el.style.transform = 'scaleY(0)';
+            el.style.transform = 'scaleX(0.5)';
             this.fadeIn();
         }
     }
@@ -34,14 +34,24 @@ export default class LogoAS {
     fadeIn() {
         const el = this.mc?.current;
         if (el) {
-            gsap.to(el, {
-                opacity: 1,
-                scaleX: 1,
-                scaleY: 1,
-                duration: 1,
-                ease: 'power2.out',
-                onComplete: this.fadeOut.bind(this)
-            });
+            gsap.fromTo(
+                el,
+                {
+                    opacity: 0,
+                    scaleX: 0.5,
+                    scaleY: 0,
+                    rotate: -30
+                },
+                {
+                    opacity: 1,
+                    scaleX: 1,
+                    scaleY: 1,
+                    rotate: 0,
+                    duration: 1.2,
+                    ease: 'bounce.out',
+                    onComplete: this.fadeOut.bind(this)
+                }
+            );
         }
     }
 
@@ -50,9 +60,9 @@ export default class LogoAS {
         if (el) {
             gsap.to(el, {
                 opacity: 0,
-                scaleY: 1.25,
-                scaleX: 1.25,
-                duration: 1,
+                scaleY: 0.9, // Subtle scale down
+                scaleX: 0.95, // Subtle scale down
+                duration: 0.5,
                 delay: 0.5,
                 ease: 'power2.out',
                 onComplete: this.onDone

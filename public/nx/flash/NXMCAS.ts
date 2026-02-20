@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-export default class GoldlabelAS {
+export default class EchoPayAS {
     private onDone?: () => void;
     private mc?: React.RefObject<any>;
 
@@ -11,7 +11,7 @@ export default class GoldlabelAS {
     }
 
     init() {
-        console.log('GoldlabelAS init');
+        console.log('EchoPayAS init');
         if (this.onDone) {
             this.onDone();
         }
@@ -38,6 +38,6 @@ export default class GoldlabelAS {
     }
 
     destroy() {
-        console.log('GoldlabelAS destroyed');
+        console.log('EchoPayAS destroyed');
     }
 }

@@ -1,11 +1,11 @@
 {
-    "url": "https://nx.goldlabel.pro",
+    "url": "https://goldlabel.pro",
     "project": "nx",
     "title": "Goldlabel NX",
-    "description": "When you need real results fast",
+    "description": "Real results, real fast",
     "image": "https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg",
-    "icon": "/nx/favicon.png",
-    "favicon": "/nx/favicon.ico",
+    "icon": "/nx/svg/favicon.svg",
+    "favicon": "/nx/svg/NXIcon.svg",
     "cartridges": {
         "commerce": {
             "enabled": true,
@@ -32,6 +32,15 @@
             "defaultTheme": "light",
             "smartImages": false,
             "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#36a49d",
+                    "secondary": "#11645d",
+                    "background": "#000",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#11645d"
+                },
                 "light": {
                     "mode": "light",
                     "primary": "#b67d02",
