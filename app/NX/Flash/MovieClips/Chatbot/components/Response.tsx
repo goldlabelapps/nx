@@ -3,7 +3,7 @@ import React from 'react';
 import { Box } from '@mui/material';
 import { RenderMarkdown } from '../../../../Shortcodes';
 
-const Resonse = () => {
+const Response = () => {
 
 
     return (
@@ -22,4 +22,4 @@ const Resonse = () => {
     );
 };
 
-export default Resonse;
+export default Response;

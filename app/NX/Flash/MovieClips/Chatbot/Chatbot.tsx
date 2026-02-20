@@ -2,28 +2,23 @@
 import type { I_Chatbot } from './types'
 import React, { useEffect, useRef } from 'react';
 import {
+    useTheme,
     Box,
-    Paper,
     AppBar,
     Toolbar,
-    TextField,
-    IconButton,
 } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import { useFlash, setFlash } from '../../../Flash';
 import { useDispatch } from '../../../Uberedux';
-import { Icon } from '../../../DesignSystem';
-
 import {
     ChatbotAS,
-    Message,
-    Resonse,
+    Prompt,
+    // Response,
 } from './';
 
 const Chatbot = (props: I_Chatbot) => {
-
+    const theme = useTheme();
     const flash = useFlash();
-    // const { chatbot } = flash;
+    const { chatbot } = flash;
     const dispatch = useDispatch();
     const as = useRef<any>(null);
 
@@ -43,37 +38,25 @@ const Chatbot = (props: I_Chatbot) => {
 
     useEffect(() => {
         dispatch(setFlash('chatbot', {
-            initted: true,
-            messages: [
-                {
-                    id: '1',
-                    text: 'Hello, how can I assist you today?',
-                    from: 'bot',
-                },
-                {
-                    id: '2',
-                    text: 'I have a question about your product.',
-                    from: 'user',
-                },
-            ],
+            waiting: true,
+            messages: [],
+            prompt: null,
         }));
     }, [dispatch]);
 
     return (
         <Box
             sx={{
+                background: theme.palette.background.default,
                 minHeight: '100vh',
                 height: '100vh',
                 width: '100vw',
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden',
-                m: 0,
-                p: 0,
-                borderRadius: 0,
             }}
         >
-            <AppBar position="static" elevation={1} sx={{ background: 0 }}>
+            <AppBar position="static" elevation={1} sx={{ background: 0, boxShadow: 0, mt: 2 }}>
                 <Toolbar>
                     <Box sx={{ height: 50, mt: 1 }}>
                         {logo}
@@ -89,41 +72,27 @@ const Chatbot = (props: I_Chatbot) => {
                 flexDirection: 'column',
                 gap: 2
             }}>
-
-                <Message
-                    text="Who the **fuck** is this?"
-                    from="user"
-                />
-                <Resonse />
-
+                <pre style={{ padding: '1em', borderRadius: '8px' }}>
+                    chatbot: {JSON.stringify(chatbot, null, 2)}
+                </pre>
             </Box>
 
-            {/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
-                {JSON.stringify(flash, null, 2)}
-            </pre> */}
-
-
             <Box
-                component="form"
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    p: 2,
+                    p: 2, py: 4
                 }}
                 onSubmit={e => { e.preventDefault(); /* handle send here */ }}
             >
-                <TextField
-                    fullWidth
-                    placeholder="Prompt..."
-                    variant="standard"
-                    sx={{ mr: 1 }}
-                />
-                <IconButton type="submit" color="primary" aria-label="send">
-                    <Icon icon="send" />
-                </IconButton>
+                <Prompt />
             </Box>
         </Box >
     );
 };
 
 export default Chatbot;
+
+/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
+    {JSON.stringify(flash, null, 2)}
+</pre> */

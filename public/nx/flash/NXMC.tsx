@@ -17,9 +17,9 @@ import {
     Chatbot,
     ChatbotAS,
 } from '../../../app/NX/Flash';
-import {
-    useSlice,
-} from '../../../app/NX/Uberedux';
+// import {
+//     useSlice,
+// } from '../../../app/NX/Uberedux';
 import { NXLogo, NXLogoAS } from './NXLogo';
 
 export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
@@ -29,8 +29,8 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
     const logoRef = useRef<HTMLImageElement>(null); // ref for LogoMC image
     const as = useRef<any>(null);
     const chatbotRef = useRef<HTMLDivElement>(null); // ref for chatbot MovieClip DOM
-    const slice = useSlice();
-    console.log('NXMC slice:', slice);
+    // const slice = useSlice();
+    // console.log('NXMC slice:', slice);
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
         // @ts-ignore: HMR types are not in standard TS
@@ -48,7 +48,7 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            console.log('Start Chatbot');
+            // console.log('Start Chatbot');
             // Initialize ChatbotAS with mc_chatbot (chatbotRef)
             if (chatbotRef.current) {
                 const chatbotAS = new ChatbotAS(undefined, chatbotRef);

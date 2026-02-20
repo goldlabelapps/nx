@@ -1,10 +1,13 @@
 import Chatbot from './Chatbot';
 import ChatbotAS from './ChatbotAS';
 import Message from './components/Message';
-import Resonse from './components/Resonse';
+import Response from './components/Response';
+import Prompt from './components/Prompt';
+
 export {
-    Chatbot,
     ChatbotAS,
+    Chatbot,
     Message,
-    Resonse,
+    Response,
+    Prompt,
 };
