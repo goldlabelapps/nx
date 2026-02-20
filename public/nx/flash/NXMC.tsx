@@ -17,7 +17,7 @@ import {
     Chatbot,
     ChatbotAS,
 } from '../../../app/NX/Flash';
-import { LogoMC, LogoAS } from './LogoMC';
+import { NXLogo, NXLogoAS } from './NXLogo';
 
 export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
     const theme = config?.cartridges?.designSystem?.themes?.dark;
@@ -54,7 +54,7 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
                 chatbotAS.init();
             }
         };
-        as.current = new LogoAS(onLogoDone, logoRef);
+        as.current = new NXLogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
             (window as any).__logoASInstance = as.current;
         }
@@ -71,7 +71,7 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
                     height={100}
                     maxWidth={'90%'}
                     zIndex={100}>
-                    <LogoMC ref={logoRef} />
+                    <NXLogo ref={logoRef} />
                 </MovieClip>
 
                 <MovieClip
@@ -84,7 +84,7 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
                 >
                     <Chatbot
                         title="NXMC"
-                        logo={<LogoMC />}
+                        logo={<NXLogo />}
                     />
                 </MovieClip>
 

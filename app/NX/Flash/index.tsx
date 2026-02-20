@@ -7,8 +7,6 @@ import { useFlash } from './lib/hooks/useFlash';
 import Macromedia from './MovieClips/Icons/Macromedia';
 import LightningBolt from './MovieClips/Lightning/LightningBolt';
 import AnimateFlashLogo from './ActionScript/AnimateFlashLogo';
-import { NXMC } from './Scenes/NXMC'
-
 
 export {
     Flash,
@@ -18,8 +16,7 @@ export {
     setFlash,
     Macromedia,
     LightningBolt,
-    AnimateFlashLogo,
-    NXMC,
     Chatbot,
+    AnimateFlashLogo,
     ChatbotAS,
 };
