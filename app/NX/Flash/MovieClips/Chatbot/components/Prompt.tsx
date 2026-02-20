@@ -22,9 +22,8 @@ const Prompt = () => {
         }));
     };
 
-    const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const focusPrompt = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        console.log('handleReset', inputRef.current);
         inputRef.current?.focus();
     };
 
@@ -32,19 +31,21 @@ const Prompt = () => {
         e.preventDefault();
         console.log('add message');
 
-        const newMessage = {
+        const newChunk = {
             time: Date.now(),
-            message: prompt,
+            prompt,
         };
 
         // Ensure messages is an array
-        const prevMessages = Array.isArray(chatbot.messages) ? chatbot.messages : [];
-        const updatedMessages = [...prevMessages, newMessage];
+        const prevChunks = Array.isArray(chatbot.chunks) ? chatbot.chunks : [];
+        const updatedChunks = [...prevChunks, newChunk];
 
-        dispatch(setFlash('chatbot', { ...chatbot, messages: updatedMessages }));
-
-        // Optionally clear the prompt after submit:
-        // dispatch(setFlash('chatbot', { ...chatbot, prompt: '' }));
+        dispatch(setFlash('chatbot', {
+            ...chatbot,
+            chunks: updatedChunks,
+            prompt: '',
+            waiting: true,
+        }));
 
         // Refocus input
         if (inputRef.current) {
@@ -73,20 +74,11 @@ const Prompt = () => {
                 inputRef={inputRef}
             />
 
-            {/* <IconButton
-                disabled={!waiting}
-                color='primary'
-                onClick={handleReset}
-                sx={{ mt: 1 }}>
-                <Icon icon="left" />
-            </IconButton> */}
-
             <IconButton
-                disabled={!waiting}
+                disabled={!waiting || !prompt}
                 color='primary'
                 type="submit"
                 aria-label="Prompt"
-
                 sx={{ mt: 1 }}>
                 <Icon icon="send" />
             </IconButton>

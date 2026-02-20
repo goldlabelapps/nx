@@ -1,4 +1,3 @@
-
 ## Chatbot
 
 Simulates a Chat GPT style chat bot except for one important difference... we're not using any kind of AI or LLM, we're just making it look like we are.
@@ -9,6 +8,8 @@ First the clip is called `Chatbot`
 
 I_Chatbot 
 
+
+#### Lorem
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque ac tristique mauris. Quisque elit risus, varius nec ipsum eu, faucibus maximus nisl. Pellentesque congue ac lorem vel vestibulum. Proin ut nunc id orci rhoncus congue a sed ex. Morbi non varius nulla. Sed laoreet, lorem commodo pulvinar vestibulum, eros tellus egestas nibh, vitae eleifend quam urna ornare dolor. Nam lobortis ultricies ex, ut ullamcorper odio hendrerit et. Sed quis nunc non lorem maximus ornare ut a magna. Donec mollis, sem dignissim eleifend auctor, eros risus tempus ante, eu tincidunt nibh est posuere dui. Ut egestas, lacus sit amet cursus sodales, urna nibh viverra lacus, sit amet finibus felis massa ullamcorper lorem. Suspendisse nec urna mauris.
 
