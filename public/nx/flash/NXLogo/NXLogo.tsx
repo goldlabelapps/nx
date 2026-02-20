@@ -1,11 +1,8 @@
-// /Users/milky/My Drive/GitHub/nx/app/NX/Flash/Scenes/Goldlabel/LogoMC/logo.svg
 "use client";
 import React from 'react';
-// import { useTheme } from '@mui/material';
 
-const Logo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => {
-    // const theme = useTheme();
-    // const fill = theme.palette.primary.main;
+const NXLogo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => {
+
     return (
         <img
             alt="Logo"
@@ -26,4 +23,4 @@ const Logo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImag
     );
 });
 
-export default Logo;
+export default NXLogo;
