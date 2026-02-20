@@ -17,16 +17,20 @@ import {
     Chatbot,
     ChatbotAS,
 } from '../../../app/NX/Flash';
+import {
+    useSlice,
+} from '../../../app/NX/Uberedux';
 import { NXLogo, NXLogoAS } from './NXLogo';
 
 export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
+
     const theme = config?.cartridges?.designSystem?.themes?.light;
-    console.log('theme:', theme);
     const [replay, setReplay] = React.useState(0);
     const logoRef = useRef<HTMLImageElement>(null); // ref for LogoMC image
     const as = useRef<any>(null);
     const chatbotRef = useRef<HTMLDivElement>(null); // ref for chatbot MovieClip DOM
-
+    const slice = useSlice();
+    console.log('NXMC slice:', slice);
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
         // @ts-ignore: HMR types are not in standard TS
@@ -78,8 +82,8 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
                 <MovieClip
                     id='mc_chatbot'
                     style={{ visibility: 'hidden' }}
-                    width={'90%'}
-                    maxWidth={600}
+                    width={'100%'}
+                    maxWidth={800}
                     zIndex={200}
                     ref={chatbotRef}
                 >

@@ -28,7 +28,7 @@ const Message = ({ text, from, avatar }: I_Message) => {
                     src={avatar ? undefined : defaultAvatar}
                     alt={from}
                     sx={{
-                        border: `3px solid ${alpha('#000', 0.30)}`,
+                        border: `2px solid ${alpha('#000', 0.30)}`,
                         backgroundColor: alpha('#FFF', 0.25),
                         width: 50, height: 50,
                         ml: 2, mt: 1

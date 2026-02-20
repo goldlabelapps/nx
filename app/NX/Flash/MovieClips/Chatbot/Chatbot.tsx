@@ -13,7 +13,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useFlash, setFlash } from '../../../Flash';
 import { useDispatch } from '../../../Uberedux';
 import { Icon } from '../../../DesignSystem';
-import { RenderMarkdown } from '../../../Shortcodes';
+
 import {
     ChatbotAS,
     Message,
@@ -95,11 +95,6 @@ const Chatbot = (props: I_Chatbot) => {
                     from="user"
                 />
                 <Resonse />
-
-
-                <RenderMarkdown>
-                    "Who the **fuck** is this?"
-                </RenderMarkdown>
 
             </Box>
 
