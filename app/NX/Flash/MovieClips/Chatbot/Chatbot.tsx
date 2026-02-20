@@ -6,15 +6,14 @@ import {
     Paper,
     AppBar,
     Toolbar,
-    Typography,
     TextField,
     IconButton,
-    Avatar,
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useFlash, setFlash } from '../../../Flash';
 import { useDispatch } from '../../../Uberedux';
 import { Icon } from '../../../DesignSystem';
+import { RenderMarkdown } from '../../../Shortcodes';
 import {
     ChatbotAS,
     Message,
@@ -24,9 +23,11 @@ import {
 const Chatbot = (props: I_Chatbot) => {
 
     const flash = useFlash();
-    const { chatbot } = flash;
+    // const { chatbot } = flash;
     const dispatch = useDispatch();
     const as = useRef<any>(null);
+
+    const logo = props.logo || <>no logo</>;
 
     useEffect(() => {
         as.current = new ChatbotAS();
@@ -43,12 +44,23 @@ const Chatbot = (props: I_Chatbot) => {
     useEffect(() => {
         dispatch(setFlash('chatbot', {
             initted: true,
+            messages: [
+                {
+                    id: '1',
+                    text: 'Hello, how can I assist you today?',
+                    from: 'bot',
+                },
+                {
+                    id: '2',
+                    text: 'I have a question about your product.',
+                    from: 'user',
+                },
+            ],
         }));
     }, [dispatch]);
 
     return (
-        <Paper
-            elevation={3}
+        <Box
             sx={{
                 minHeight: '100vh',
                 height: '100vh',
@@ -61,16 +73,14 @@ const Chatbot = (props: I_Chatbot) => {
                 borderRadius: 0,
             }}
         >
-            <AppBar position="static" elevation={1}>
+            <AppBar position="static" elevation={1} sx={{ background: 0 }}>
                 <Toolbar>
-                    {props.icon && (
-                        <Icon icon={props.icon} color="inherit" />
-                    )}
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        {props.title || 'Chatbot'}
-                    </Typography>
+                    <Box sx={{ height: 50, mt: 1 }}>
+                        {logo}
+                    </Box>
                 </Toolbar>
             </AppBar>
+
             <Box sx={{
                 flex: 1,
                 overflow: 'auto',
@@ -86,7 +96,18 @@ const Chatbot = (props: I_Chatbot) => {
                 />
                 <Resonse />
 
+
+                <RenderMarkdown>
+                    "Who the **fuck** is this?"
+                </RenderMarkdown>
+
             </Box>
+
+            {/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
+                {JSON.stringify(flash, null, 2)}
+            </pre> */}
+
+
             <Box
                 component="form"
                 sx={{
@@ -98,15 +119,15 @@ const Chatbot = (props: I_Chatbot) => {
             >
                 <TextField
                     fullWidth
-                    placeholder="Type your message..."
-                    variant="outlined"
+                    placeholder="Prompt..."
+                    variant="standard"
                     sx={{ mr: 1 }}
                 />
                 <IconButton type="submit" color="primary" aria-label="send">
-                    <SendIcon />
+                    <Icon icon="send" />
                 </IconButton>
             </Box>
-        </Paper >
+        </Box >
     );
 };
 

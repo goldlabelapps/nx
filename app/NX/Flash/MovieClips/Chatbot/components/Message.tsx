@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
-import { Box, Avatar, Typography } from '@mui/material';
+import { alpha, Box, Avatar } from '@mui/material';
+import { RenderMarkdown } from '../../../../Shortcodes';
 
 export interface I_Message {
     text: string;
@@ -10,7 +11,7 @@ export interface I_Message {
 
 const Message = ({ text, from, avatar }: I_Message) => {
     const isUser = from === 'user';
-    const defaultAvatar = '/shared/svg/characters/punk.svg';
+    const defaultAvatar = '/shared/svg/flags/uk.svg';
     return (
         <Box
             sx={{
@@ -26,18 +27,24 @@ const Message = ({ text, from, avatar }: I_Message) => {
                 <Avatar
                     src={avatar ? undefined : defaultAvatar}
                     alt={from}
-                    sx={{ width: 50, height: 50 }} />
+                    sx={{
+                        border: `3px solid ${alpha('#000', 0.30)}`,
+                        backgroundColor: alpha('#FFF', 0.25),
+                        width: 50, height: 50,
+                        ml: 2, mt: 1
+                    }} />
             </Box>
 
             <Box
                 sx={{
-                    // bgcolor: isUser ? '#f3e5f5' : '#e3f2fd',
                     p: 1,
                     borderRadius: 2,
                     maxWidth: '70%',
                 }}
             >
-                <Typography variant="body1">{text}</Typography>
+                <RenderMarkdown>
+                    {text}
+                </RenderMarkdown>
             </Box>
         </Box>
     );
