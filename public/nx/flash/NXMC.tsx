@@ -20,7 +20,8 @@ import {
 import { NXLogo, NXLogoAS } from './NXLogo';
 
 export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
-    const theme = config?.cartridges?.designSystem?.themes?.dark;
+    const theme = config?.cartridges?.designSystem?.themes?.light;
+    console.log('theme:', theme);
     const [replay, setReplay] = React.useState(0);
     const logoRef = useRef<HTMLImageElement>(null); // ref for LogoMC image
     const as = useRef<any>(null);

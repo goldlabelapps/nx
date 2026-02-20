@@ -6,7 +6,7 @@ const NXLogo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLIm
     return (
         <img
             alt="Logo"
-            src={'/echopay/flash/LogoMC/logo.svg'}
+            src={'/nx/svg/NXLogo.svg'}
             style={{
                 display: 'block',
                 maxWidth: '100%',

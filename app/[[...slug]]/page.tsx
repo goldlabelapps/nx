@@ -117,7 +117,6 @@ export async function generateStaticParams() {
         case 'flash':
             markdownDir = path.resolve(process.cwd(), "public", "flash", "markdown");
             break;
-        case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
     }
