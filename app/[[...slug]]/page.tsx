@@ -19,7 +19,7 @@ import {
     serverUseSmartImage,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { DesignSystem, Icon, Nav, Settings, SmartImage } from '../NX/DesignSystem';
+import { Icon, Nav, Settings, SmartImage } from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import nxConfig from '../../public/nx/config.json';
@@ -28,7 +28,6 @@ import echopayConfig from '../../public/echopay/config.json';
 import akiConfig from '../../public/aki/config.json';
 import flashConfig from '../../public/flash/config.json';
 import edtechConfig from '../../public/edtech/config.json';
-import { NXMC } from '../NX/Flash';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const fs = require("fs");
@@ -118,7 +117,6 @@ export async function generateStaticParams() {
         case 'flash':
             markdownDir = path.resolve(process.cwd(), "public", "flash", "markdown");
             break;
-        case 'nx':
         default:
             markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
     }
@@ -166,7 +164,6 @@ export default async function Page(props: any) {
     let description = "";
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
-    const smartImage = await serverUseSmartImage(config, data);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
 
@@ -183,9 +180,9 @@ export default async function Page(props: any) {
     if (flashScene) {
         // Only import React components from known scenes
         let SceneComponent: React.ComponentType<{ config: T_Config }> | null = null;
-        if (flashScene.toLowerCase() === 'goldlabel') {
-            SceneComponent = (await import('../NX/Flash/Scenes/Goldlabel')).Goldlabel;
-        } else if (flashScene.toLowerCase() === 'calculator') {
+        if (flashScene.toLowerCase() === 'nxmc') {
+            SceneComponent = (await import('../../public/nx/flash')).NXMC;
+        } else if (flashScene.toLowerCase() === 'echopay') {
             SceneComponent = (await import('../../public/echopay/flash')).EchoPay;
         }
         if (SceneComponent) {
@@ -217,7 +214,7 @@ export default async function Page(props: any) {
                                         sx={{}}>
                                         <Avatar
                                             alt={config.title}
-                                            src={config.icon}
+                                            src={config.favicon}
                                         />
                                     </IconButton>
                                 </a>}
@@ -236,7 +233,6 @@ export default async function Page(props: any) {
                                         <Settings
                                             config={config}
                                             frontmatter={data}
-                                            smartImage={smartImage}
                                         />
                                         <Nav
                                             mode="mobile"
@@ -307,11 +303,7 @@ export default async function Page(props: any) {
                             )}
                             {description}
                         </Typography>
-                        {smartImage?.meta?.mode !== 'config' && (
-                            <Box sx={{ my: 2 }}>
-                                <SmartImage smartImage={smartImage} />
-                            </Box>
-                        )}
+                        {/* smartImage functionality removed */}
 
                         <RenderMarkdown config={config}>
                             {content}

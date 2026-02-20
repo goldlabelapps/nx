@@ -18,7 +18,7 @@ import {
 
 export type I_RenderMarkdown = {
   children: React.ReactNode;
-  config: any;
+  config?: any;
 };
 
 export default function RenderMarkdown({

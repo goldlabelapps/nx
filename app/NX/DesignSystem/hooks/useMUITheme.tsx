@@ -2,9 +2,10 @@ import { createTheme } from '@mui/material';
 import { T_Theme } from '../../types';
 
 export function useMUITheme(t: T_Theme) {
+  if (!t) return;
   return createTheme({
     palette: {
-      mode: t.mode,
+      mode: t.mode ?? 'light',
       primary: { main: t.primary },
       secondary: { main: t.secondary },
       // success: { main: t.primary },

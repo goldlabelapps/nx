@@ -2,27 +2,27 @@
 import type { I_Chatbot } from './types'
 import React, { useEffect, useRef } from 'react';
 import {
+    useTheme,
     Box,
-    Paper,
     AppBar,
     Toolbar,
-    Typography,
-    TextField,
-    IconButton,
-    Avatar
 } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 import { useFlash, setFlash } from '../../../Flash';
 import { useDispatch } from '../../../Uberedux';
-import { Icon } from '../../../DesignSystem';
-import { ChatbotAS, Message } from './';
+import {
+    ChatbotAS,
+    Prompt,
+    // Response,
+} from './';
 
 const Chatbot = (props: I_Chatbot) => {
-
+    const theme = useTheme();
     const flash = useFlash();
     const { chatbot } = flash;
     const dispatch = useDispatch();
     const as = useRef<any>(null);
+
+    const logo = props.logo || <>no logo</>;
 
     useEffect(() => {
         as.current = new ChatbotAS();
@@ -38,72 +38,61 @@ const Chatbot = (props: I_Chatbot) => {
 
     useEffect(() => {
         dispatch(setFlash('chatbot', {
-            initted: true,
+            waiting: true,
+            messages: [],
+            prompt: null,
         }));
     }, [dispatch]);
 
     return (
-        <Paper
-            elevation={3}
+        <Box
             sx={{
+                background: theme.palette.background.default,
                 minHeight: '100vh',
                 height: '100vh',
                 width: '100vw',
                 display: 'flex',
                 flexDirection: 'column',
                 overflow: 'hidden',
-                m: 0,
-                p: 0,
-                borderRadius: 0,
             }}
         >
-            <AppBar position="static" elevation={1}>
+            <AppBar position="static" elevation={1} sx={{ background: 0, boxShadow: 0, mt: 2 }}>
                 <Toolbar>
-                    {props.icon && (
-                        <Icon icon={props.icon} color="inherit" />
-                    )}
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        {props.title || 'Chatbot'}
-                    </Typography>
+                    <Box sx={{ height: 50, mt: 1 }}>
+                        {logo}
+                    </Box>
                 </Toolbar>
             </AppBar>
-            <Box sx={{ flex: 1, overflow: 'auto', p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <Message
-                    text="Hello! I'm your friendly chatbot. How can I assist you today?"
-                    from="bot"
-                />
 
-                <Message
-                    text="Hkjsdfj fodnms fonfsufoen. fowef"
-                    from="user"
-                />
-
-                <Message
-                    text="Hello! I'm your friendly chatbot. How can I assist you today?"
-                    from="bot"
-                />
+            <Box sx={{
+                flex: 1,
+                overflow: 'auto',
+                p: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2
+            }}>
+                <pre style={{ padding: '1em', borderRadius: '8px' }}>
+                    chatbot: {JSON.stringify(chatbot, null, 2)}
+                </pre>
             </Box>
+
             <Box
-                component="form"
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    p: 2,
+                    p: 2, py: 4
                 }}
                 onSubmit={e => { e.preventDefault(); /* handle send here */ }}
             >
-                <TextField
-                    fullWidth
-                    placeholder="Type your message..."
-                    variant="outlined"
-                    sx={{ mr: 1 }}
-                />
-                <IconButton type="submit" color="primary" aria-label="send">
-                    <SendIcon />
-                </IconButton>
+                <Prompt />
             </Box>
-        </Paper >
+        </Box >
     );
 };
 
 export default Chatbot;
+
+/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
+    {JSON.stringify(flash, null, 2)}
+</pre> */

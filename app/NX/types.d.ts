@@ -264,6 +264,7 @@ export type I_Icon = {
     | 'design'
     | 'ai'
     | 'ask'
+    | 'send'
     | 'forget'
     | 'folder'
     | 'fingerprint'

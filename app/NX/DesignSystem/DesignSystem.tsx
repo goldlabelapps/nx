@@ -12,6 +12,11 @@ export default function DesignSystem({
 }: I_DesignSystem) {
   const newtheme = useMUITheme(theme as T_Theme);
 
+  if (!newtheme) {
+    // Provide a minimal fallback theme if theme is undefined
+    return <>{children}</>;
+  }
+
   return (
     <ThemeProvider theme={newtheme}>
       <CssBaseline />

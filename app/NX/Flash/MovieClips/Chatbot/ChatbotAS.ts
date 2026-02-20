@@ -38,7 +38,7 @@ export default class ChatbotAS {
                 opacity: 1,
                 scaleX: 1,
                 scaleY: 1,
-                duration: 1,
+                duration: 0.5,
                 ease: 'power2.out',
             });
         }
@@ -51,7 +51,7 @@ export default class ChatbotAS {
                 opacity: 0,
                 scaleY: 1.25,
                 scaleX: 1.25,
-                duration: 1,
+                duration: 0.5,
                 delay: 1.5,
                 ease: 'power2.out',
                 onComplete: this.onDone
