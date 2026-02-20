@@ -1,6 +1,7 @@
 "use client";
-import type { I_Chatbot } from './types'
+import type { I_Chatbot, I_Chunk } from './types'
 import React, { useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import {
     useTheme,
     Box,
@@ -12,16 +13,16 @@ import { useDispatch } from '../../../Uberedux';
 import {
     ChatbotAS,
     Prompt,
-    // Response,
+    Chunk,
 } from './';
 
 const Chatbot = (props: I_Chatbot) => {
+    const router = useRouter();
     const theme = useTheme();
     const flash = useFlash();
     const { chatbot } = flash;
     const dispatch = useDispatch();
     const as = useRef<any>(null);
-
     const logo = props.logo || <>no logo</>;
 
     useEffect(() => {
@@ -39,7 +40,8 @@ const Chatbot = (props: I_Chatbot) => {
     useEffect(() => {
         dispatch(setFlash('chatbot', {
             waiting: true,
-            messages: [],
+            userIcon: '/shared/svg/characters/biker.svg',
+            chunks: [],
             prompt: null,
         }));
     }, [dispatch]);
@@ -58,7 +60,8 @@ const Chatbot = (props: I_Chatbot) => {
         >
             <AppBar position="static" elevation={1} sx={{ background: 0, boxShadow: 0, mt: 2 }}>
                 <Toolbar>
-                    <Box sx={{ height: 50, mt: 1 }}>
+                    <Box sx={{ height: 50, mt: 1, cursor: 'pointer' }}
+                        onClick={() => router.push('/nx')}>
                         {logo}
                     </Box>
                 </Toolbar>
@@ -72,18 +75,19 @@ const Chatbot = (props: I_Chatbot) => {
                 flexDirection: 'column',
                 gap: 2
             }}>
-                <pre style={{ padding: '1em', borderRadius: '8px' }}>
-                    chatbot: {JSON.stringify(chatbot, null, 2)}
-                </pre>
+                {Array.isArray(flash.chatbot?.chunks) && flash.chatbot.chunks.length > 0 ? (
+                    flash.chatbot.chunks.map((chunk: I_Chunk, i: number) => (
+                        <Chunk key={`chunk_${i}`} chunk={chunk} />
+                    ))
+                ) : null}
             </Box>
-
             <Box
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
                     p: 2, py: 4
                 }}
-                onSubmit={e => { e.preventDefault(); /* handle send here */ }}
+                onSubmit={e => { e.preventDefault(); }}
             >
                 <Prompt />
             </Box>

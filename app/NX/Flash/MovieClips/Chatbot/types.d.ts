@@ -1,5 +1,11 @@
 import React from 'react';
 
+export interface I_Chunk {
+    [key: string]: any;
+};
+
+
+
 // Interface defining parameters and options for Chatbot
 export interface I_Chatbot {
     // Define required parameters here

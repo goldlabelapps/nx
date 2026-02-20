@@ -1,4 +1,3 @@
-// /shared/svg/characters/biker.svg
 // TypeScript: declare import.meta.hot for Vite/webpack HMR
 declare global {
     interface ImportMeta {
@@ -17,20 +16,16 @@ import {
     Chatbot,
     ChatbotAS,
 } from '../../../app/NX/Flash';
-// import {
-//     useSlice,
-// } from '../../../app/NX/Uberedux';
 import { NXLogo, NXLogoAS } from './NXLogo';
 
 export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const [replay, setReplay] = React.useState(0);
-    const logoRef = useRef<HTMLImageElement>(null); // ref for LogoMC image
+    const logoRef = useRef<HTMLImageElement>(null);
     const as = useRef<any>(null);
-    const chatbotRef = useRef<HTMLDivElement>(null); // ref for chatbot MovieClip DOM
-    // const slice = useSlice();
-    // console.log('NXMC slice:', slice);
+    const chatbotRef = useRef<HTMLDivElement>(null);
+
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
         // @ts-ignore: HMR types are not in standard TS
@@ -48,8 +43,6 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            // console.log('Start Chatbot');
-            // Initialize ChatbotAS with mc_chatbot (chatbotRef)
             if (chatbotRef.current) {
                 const chatbotAS = new ChatbotAS(undefined, chatbotRef);
                 if (typeof window !== 'undefined') {
