@@ -1,3 +1,4 @@
+// /shared/svg/characters/biker.svg
 // TypeScript: declare import.meta.hot for Vite/webpack HMR
 declare global {
     interface ImportMeta {
@@ -83,7 +84,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 >
                     <Chatbot
                         title="EchoPay"
-                        icon="ai"
+                        logo={<LogoMC />}
                     />
                 </MovieClip>
 

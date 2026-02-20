@@ -9,13 +9,17 @@ import {
     Typography,
     TextField,
     IconButton,
-    Avatar
+    Avatar,
 } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useFlash, setFlash } from '../../../Flash';
 import { useDispatch } from '../../../Uberedux';
 import { Icon } from '../../../DesignSystem';
-import { ChatbotAS, Message } from './';
+import {
+    ChatbotAS,
+    Message,
+    Resonse,
+} from './';
 
 const Chatbot = (props: I_Chatbot) => {
 
@@ -67,21 +71,21 @@ const Chatbot = (props: I_Chatbot) => {
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Box sx={{ flex: 1, overflow: 'auto', p: 2, display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <Message
-                    text="Hello! I'm your friendly chatbot. How can I assist you today?"
-                    from="bot"
-                />
+            <Box sx={{
+                flex: 1,
+                overflow: 'auto',
+                p: 2,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2
+            }}>
 
                 <Message
-                    text="Hkjsdfj fodnms fonfsufoen. fowef"
+                    text="Who the **fuck** is this?"
                     from="user"
                 />
+                <Resonse />
 
-                <Message
-                    text="Hello! I'm your friendly chatbot. How can I assist you today?"
-                    from="bot"
-                />
             </Box>
             <Box
                 component="form"
