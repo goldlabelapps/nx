@@ -211,7 +211,7 @@ export default async function Page(props: any) {
                                         sx={{}}>
                                         <Avatar
                                             alt={config.title}
-                                            src={config.favicon}
+                                            src={config.icon}
                                         />
                                     </IconButton>
                                 </a>}

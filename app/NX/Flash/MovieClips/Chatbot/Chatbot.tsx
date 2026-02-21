@@ -61,7 +61,7 @@ const Chatbot = (props: I_Chatbot) => {
             <AppBar position="static" elevation={1} sx={{ background: 0, boxShadow: 0, mt: 2 }}>
                 <Toolbar>
                     <Box sx={{ height: 50, mt: 1, cursor: 'pointer' }}
-                        onClick={() => router.push('/nx')}>
+                        onClick={() => router.push('/')}>
                         {logo}
                     </Box>
                 </Toolbar>
