@@ -4,11 +4,11 @@
     "description": "EchoPay NX",
     "url": "https://echopay.goldlabel.pro",
     "image": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
-    "icon": "/echopay/png/favicon.png",
+    "icon": "/echopay/svg/favicon.svg",
     "favicon": "/echopay/favicon.webp",
     "cartridges": {
         "paywall": {
-            "enabled": true,
+            "enabled": false,
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
@@ -52,7 +52,7 @@
         },
         "designSystem": {
             "allowTheme": true,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "smartImages": [
                 {
                     "title": "Blue Cartridge",

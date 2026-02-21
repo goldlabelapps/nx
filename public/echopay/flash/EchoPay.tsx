@@ -1,4 +1,3 @@
-// /shared/svg/characters/biker.svg
 // TypeScript: declare import.meta.hot for Vite/webpack HMR
 declare global {
     interface ImportMeta {
@@ -17,14 +16,15 @@ import {
     Chatbot,
     ChatbotAS,
 } from '../../../app/NX/Flash';
-import { LogoMC, LogoAS } from './LogoMC';
+import { EchoPayLogo, EchoPayLogoAS } from './EchoPayLogo';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
-    const theme = config?.cartridges?.designSystem?.themes?.dark;
+
+    const theme = config?.cartridges?.designSystem?.themes?.light;
     const [replay, setReplay] = React.useState(0);
-    const logoRef = useRef<HTMLImageElement>(null); // ref for LogoMC image
+    const logoRef = useRef<HTMLImageElement>(null);
     const as = useRef<any>(null);
-    const chatbotRef = useRef<HTMLDivElement>(null); // ref for chatbot MovieClip DOM
+    const chatbotRef = useRef<HTMLDivElement>(null);
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -43,8 +43,6 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            console.log('Start Chatbot');
-            // Initialize ChatbotAS with mc_chatbot (chatbotRef)
             if (chatbotRef.current) {
                 const chatbotAS = new ChatbotAS(undefined, chatbotRef);
                 if (typeof window !== 'undefined') {
@@ -54,7 +52,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 chatbotAS.init();
             }
         };
-        as.current = new LogoAS(onLogoDone, logoRef);
+        as.current = new NXLogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
             (window as any).__logoASInstance = as.current;
         }
@@ -63,7 +61,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     return (
         <DesignSystem theme={theme}>
-            <Flash id={'echopay_flash'}>
+            <Flash id={'NXMC_flash'}>
                 <MovieClip
                     id='mc_logo'
                     style={{ visibility: 'hidden' }}
@@ -71,20 +69,20 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     height={100}
                     maxWidth={'90%'}
                     zIndex={100}>
-                    <LogoMC ref={logoRef} />
+                    <EchoPayLogo ref={logoRef} />
                 </MovieClip>
 
                 <MovieClip
                     id='mc_chatbot'
                     style={{ visibility: 'hidden' }}
-                    width={'90%'}
-                    maxWidth={600}
+                    width={'100%'}
+                    maxWidth={800}
                     zIndex={200}
                     ref={chatbotRef}
                 >
                     <Chatbot
-                        title="EchoPay"
-                        logo={<LogoMC />}
+                        title="NXMC"
+                        logo={<EchoPayLogo />}
                     />
                 </MovieClip>
 

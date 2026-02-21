@@ -1,16 +1,10 @@
 
 import { EchoPay } from './EchoPay';
 import EchoPayAS from './EchoPayAS';
-import { LogoMC } from './LogoMC';
-import { IconMC } from './IconMC';
-import { VariableMC } from './VariableMC';
-import { FormMC } from './FormMC';
+import { EchoPayLogo } from './EchoPayLogo';
 
 export {
-    EchoPay,
     EchoPayAS,
-    LogoMC,
-    IconMC,
-    VariableMC,
-    FormMC,
+    EchoPay,
+    EchoPayLogo,
 };
