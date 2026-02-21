@@ -178,7 +178,6 @@ export default async function Page(props: any) {
 
     // If flashScene is present, dynamically import and render the correct Scene
     if (flashScene) {
-        // Only import React components from known scenes
         let SceneComponent: React.ComponentType<{ config: T_Config }> | null = null;
         if (flashScene.toLowerCase() === 'nxmc') {
             SceneComponent = (await import('../../public/nx/flash')).NXMC;
@@ -186,9 +185,7 @@ export default async function Page(props: any) {
             SceneComponent = (await import('../../public/echopay/flash')).EchoPay;
         }
         if (SceneComponent) {
-            // Pass config prop if available
             return <SceneComponent config={config} />;
-
         }
     }
 
@@ -229,7 +226,6 @@ export default async function Page(props: any) {
                                     <Box sx={{
                                         display: "flex"
                                     }}>
-
                                         <Settings
                                             config={config}
                                             frontmatter={data}
