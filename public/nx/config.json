@@ -45,7 +45,7 @@
                     "primary": "#C09F52",
                     "secondary": "#C09F52",
                     "background": "#fff",
-                    "paper": "#C09F52",
+                    "paper": "#fff",
                     "text": "#000",
                     "border": "#C09F52"
                 }
