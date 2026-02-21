@@ -1,14 +1,14 @@
+// 
 "use client";
 import React from 'react';
-// import { useTheme } from '@mui/material';
 
-const Logo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => {
-    // const theme = useTheme();
-    // const fill = theme.palette.primary.main;
+const EchoPayLogo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => {
+
+    const src = '/echopay/flash/EchoPayLogo/EchoPayLogo.svg';
     return (
         <img
             alt="Logo"
-            src={'/echopay/flash/LogoMC/logo.svg'}
+            src={src}
             style={{
                 display: 'block',
                 maxWidth: '100%',
@@ -25,4 +25,4 @@ const Logo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImag
     );
 });
 
-export default Logo;
+export default EchoPayLogo;

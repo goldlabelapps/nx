@@ -8,7 +8,7 @@ if (import.meta && import.meta.hot) {
 }
 import { gsap } from 'gsap';
 
-export default class LogoAS {
+export default class EchoPayLogoAS {
     private onDone?: () => void;
     private mc?: React.RefObject<any>;
 
