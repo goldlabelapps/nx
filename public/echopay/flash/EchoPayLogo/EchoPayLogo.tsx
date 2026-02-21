@@ -1,12 +1,14 @@
+// 
 "use client";
 import React from 'react';
 
-const NXLogo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => {
+const EchoPayLogo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLImageElement>>((props, ref) => {
 
+    const src = '/echopay/flash/EchoPayLogo/EchoPayLogo.svg';
     return (
         <img
             alt="Logo"
-            src={'/nx/svg/NXLogo.svg'}
+            src={src}
             style={{
                 display: 'block',
                 maxWidth: '100%',
@@ -23,4 +25,4 @@ const NXLogo = React.forwardRef<HTMLImageElement, React.ImgHTMLAttributes<HTMLIm
     );
 });
 
-export default NXLogo;
+export default EchoPayLogo;

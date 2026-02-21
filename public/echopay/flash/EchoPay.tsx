@@ -23,7 +23,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const [replay, setReplay] = React.useState(0);
     const logoRef = useRef<HTMLImageElement>(null);
-    const as = useRef<any>(null);
+    const logoASRef = useRef<any>(null);
     const chatbotRef = useRef<HTMLDivElement>(null);
 
     // HMR: force replay on module update (Next.js dev only)
@@ -52,11 +52,11 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 chatbotAS.init();
             }
         };
-        as.current = new NXLogoAS(onLogoDone, logoRef);
+        logoASRef.current = new EchoPayLogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
-            (window as any).__logoASInstance = as.current;
+            (window as any).__logoASInstance = logoASRef.current;
         }
-        as.current.init();
+        logoASRef.current.init();
     }, [replay]);
 
     return (
