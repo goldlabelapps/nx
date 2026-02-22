@@ -13,20 +13,16 @@ import { alpha, useTheme } from '@mui/material/styles';
 import { Icon } from '../../DesignSystem'
 
 
-export const Ad: React.FC<{ ad: T_Ad }> = ({ ad }) => {
+export const Ad: React.FC<{ ad: T_Ad; target?: string }> = ({ ad, target }) => {
     const { type, description, title, icon } = ad;
     const router = useRouter();
     const theme = useTheme();
 
     const handleClick = () => {
         if (type === 'link' && 'url' in ad && ad.url) {
-            if (ad.url.startsWith('/')) {
-                // Internal route, open in same tab
-                window.open(ad.url, '_self');
-            } else {
-                // External link, open in new tab
-                window.open(ad.url, '_blank', 'noopener,noreferrer');
-            }
+            const openTarget = target || ad.target || (ad.url.startsWith('/') ? '_self' : '_blank');
+            const openFeatures = openTarget === '_blank' ? 'noopener,noreferrer' : undefined;
+            window.open(ad.url, openTarget, openFeatures);
         } else if (type === 'route' && 'path' in ad && ad.path) {
             router.push(ad.path);
         } else {
