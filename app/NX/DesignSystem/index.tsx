@@ -2,6 +2,7 @@ import DesignSystem from "./DesignSystem";
 import { useMUITheme } from './hooks/useMUITheme';
 import Nav from './components/Nav';
 import Feedback from './components/Feedback';
+import Footer from './components/Footer';
 import Tags from './components/Tags';
 import Settings from './components/Settings';
 import Icon from './components/Icon';
@@ -21,4 +22,5 @@ export {
     Feedback,
     setFeedback,
     useFeedback,
+    Footer,
 };

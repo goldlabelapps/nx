@@ -5,6 +5,7 @@ title: Goldlabel
 description: When you need real results fast
 tags: NX, Goldlabel, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS
 icon: goldlabel
+hero: flash
 image: https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg
 ---
 

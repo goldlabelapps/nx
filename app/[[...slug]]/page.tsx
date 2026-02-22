@@ -19,7 +19,12 @@ import {
     serverUseSmartImage,
 } from '../NX/lib';
 import { NX } from '../NX';
-import { Icon, Nav, Settings, SmartImage } from '../NX/DesignSystem';
+import {
+    Icon,
+    Nav,
+    Settings,
+    Footer,
+} from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import nxConfig from '../../public/nx/config.json';
@@ -36,18 +41,25 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let config: T_Config;
-    if (project === 'mcuk') {
-        config = mcukConfig as T_Config;
-    } else if (project === 'echopay') {
-        config = echopayConfig as T_Config;
-    } else if (project === 'edtech') {
-        config = edtechConfig as T_Config;
-    } else if (project === 'aki') {
-        config = akiConfig as T_Config;
-    } else if (project === 'flash') {
-        config = flashConfig as T_Config;
-    } else {
-        config = nxConfig as T_Config;
+    switch (project) {
+        case 'mcuk':
+            config = mcukConfig as T_Config;
+            break;
+        case 'echopay':
+            config = echopayConfig as T_Config;
+            break;
+        case 'edtech':
+            config = edtechConfig as T_Config;
+            break;
+        case 'aki':
+            config = akiConfig as T_Config;
+            break;
+        case 'flash':
+            config = flashConfig as T_Config;
+            break;
+        default:
+            config = nxConfig as T_Config;
+            break;
     }
     const filePath = serverUseMDBySlug(slugArr, project);
     let frontmatter = {};
@@ -60,10 +72,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const smartImage = await serverUseSmartImage(config, frontmatter);
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
-
     const themeMode = 'light';
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
-
 
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
@@ -141,18 +151,25 @@ export default async function Page(props: any) {
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
     let config: T_Config;
-    if (project === 'mcuk') {
-        config = mcukConfig as T_Config;
-    } else if (project === 'echopay') {
-        config = echopayConfig as T_Config;
-    } else if (project === 'aki') {
-        config = akiConfig as T_Config;
-    } else if (project === 'edtech') {
-        config = edtechConfig as T_Config;
-    } else if (project === 'flash') {
-        config = flashConfig as T_Config;
-    } else {
-        config = nxConfig as T_Config;
+    switch (project) {
+        case 'mcuk':
+            config = mcukConfig as T_Config;
+            break;
+        case 'echopay':
+            config = echopayConfig as T_Config;
+            break;
+        case 'aki':
+            config = akiConfig as T_Config;
+            break;
+        case 'edtech':
+            config = edtechConfig as T_Config;
+            break;
+        case 'flash':
+            config = flashConfig as T_Config;
+            break;
+        default:
+            config = nxConfig as T_Config;
+            break;
     }
     const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
     const filePath = serverUseMDBySlug(slugArr, project);
@@ -170,8 +187,9 @@ export default async function Page(props: any) {
     const navItems = await serverUseNav(data.slug || "/");
 
     // Remove cartridge flag logic. Prepare for flash prop logic below.
-    const themeMode = 'light';
-    const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    const themeMode = config?.cartridges?.designSystem?.defaultTheme || 'light';
+    // const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    const bgCol = config?.cartridges?.designSystem?.themes?.[themeMode]?.background || '#000';
 
     // If a flash prop is present in frontmatter, use its value to select the Scene
     const flashScene = data.flash;
@@ -179,10 +197,17 @@ export default async function Page(props: any) {
     // If flashScene is present, dynamically import and render the correct Scene
     if (flashScene) {
         let SceneComponent: React.ComponentType<{ config: T_Config }> | null = null;
-        if (flashScene.toLowerCase() === 'nxmc') {
-            SceneComponent = (await import('../../public/nx/flash')).NXMC;
-        } else if (flashScene.toLowerCase() === 'echopay') {
-            SceneComponent = (await import('../../public/echopay/flash')).EchoPay;
+        switch (flashScene.toLowerCase()) {
+            case 'nxmc':
+                SceneComponent = (await import('../../public/nx/flash')).NXMC;
+                break;
+            case 'echopay':
+                SceneComponent = (await import('../../public/echopay/flash')).EchoPay;
+                break;
+            // Add more cases as needed
+            default:
+                SceneComponent = null;
+                break;
         }
         if (SceneComponent) {
             return <SceneComponent config={config} />;
@@ -195,11 +220,12 @@ export default async function Page(props: any) {
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar
+
                         position="fixed"
                         sx={{
                             top: 0,
                             boxShadow: 0,
-                            bgcolor: bg,
+                            background: bgCol,
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
@@ -222,29 +248,14 @@ export default async function Page(props: any) {
                                 >
                                     {title}
                                 </Typography>}
-                                action={
-                                    <Box sx={{
-                                        display: "flex"
-                                    }}>
-                                        <Settings
-                                            config={config}
-                                            frontmatter={data}
-                                        />
-                                        <Nav
-                                            mode="mobile"
-                                            navItems={navItems as I_NestedNav["navItems"]}
-                                            currentPath={data.slug || '/'}
-                                            config={config}
-                                        />
-                                    </Box>
-                                }
+
                             />
                         </Container>
                     </AppBar>
                 </Box>
             </header>
             {/* Start Main */}
-            <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '80px' }}>
+            <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
                 <Box
                     sx={{
                         display: 'grid',
@@ -323,7 +334,9 @@ export default async function Page(props: any) {
             </Container>
             {/* End Main */}
             <footer>
-
+                <Footer>
+                    &copy; {new Date().getFullYear()} {config.title}
+                </Footer>
             </footer>
         </NX >
     );

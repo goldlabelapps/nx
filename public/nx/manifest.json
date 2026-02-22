@@ -1,8 +1,8 @@
 {
   "short_name": "NX",
   "name": "NX",
-  "theme_color": "#FFF",
-  "background_color": "#FFF",
+  "theme_color": "#000",
+  "background_color": "#000",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",
@@ -10,9 +10,9 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/nx/favicon.png",
+      "src": "/nx/png/favicon.png",
       "type": "image/png",
-      "sizes": "180x180",
+      "sizes": "512x512",
       "purpose": "any maskable"
     }
   ]

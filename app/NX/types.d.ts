@@ -28,6 +28,7 @@ export type T_Ad =
         description?: string;
         icon?: string;
         image?: string;
+        target?: '_blank' | '_self';
     }
     | {
         type: 'route';
