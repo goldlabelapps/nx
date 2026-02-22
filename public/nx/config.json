@@ -4,12 +4,26 @@
     "title": "Goldlabel NX",
     "description": "Real results. Real fast",
     "image": "https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg",
-    "icon": "/nx/svg/favicon.svg",
-    "favicon": "/nx/svg/NXIcon.svg",
+    "favicon": "/nx/svg/favicon.svg",
+    "icon": "/nx/svg/NXIcon.svg",
     "cartridges": {
         "commerce": {
             "enabled": true,
             "ads": [
+                {
+                    "title": "Ebook",
+                    "type": "link",
+                    "description": "Read all about it",
+                    "url": "https://goldlabel.pro/shared/epub/NX.epub",
+                    "icon": "book"
+                },
+                {
+                    "title": "CV",
+                    "type": "link",
+                    "description": "TypeScript Developer",
+                    "url": "https://goldlabel.pro/shared/pdf/Chris Dorward, Fullstack TypeScript Developer.pdf",
+                    "icon": "doc"
+                },
                 {
                     "title": "How AI changes our role",
                     "type": "route",

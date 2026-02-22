@@ -266,6 +266,7 @@ export type I_Icon = {
     | 'ask'
     | 'send'
     | 'forget'
+    | 'book'
     | 'folder'
     | 'fingerprint'
     | 'fallmanager'
