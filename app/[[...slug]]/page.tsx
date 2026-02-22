@@ -22,7 +22,7 @@ import { NX } from '../NX';
 import {
     Icon,
     Nav,
-    Settings,
+    Hero,
     Footer,
 } from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
@@ -295,6 +295,13 @@ export default async function Page(props: any) {
                             pl: { xs: 2, lg: 0 },
                         }}
                     >
+
+                        <Hero
+                            config={config}
+                            frontmatter={data}
+                            navItems={navItems as I_NestedNav["navItems"]}
+                        />
+
                         <Typography
                             sx={{
                                 display: 'flex',
@@ -334,9 +341,11 @@ export default async function Page(props: any) {
             </Container>
             {/* End Main */}
             <footer>
-                <Footer>
-                    &copy; {new Date().getFullYear()} {config.title}
-                </Footer>
+                <Footer
+                    config={config}
+                    frontmatter={data}
+                    navItems={navItems as I_NestedNav["navItems"]}
+                />
             </footer>
         </NX >
     );

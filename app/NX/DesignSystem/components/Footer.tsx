@@ -1,13 +1,13 @@
 "use client";
+import type { T_Config, T_Frontmatter, T_NavItem, I_NestedNav } from '../../types';
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Fab from '@mui/material/Fab';
 import {
 	useTheme,
+	Toolbar,
 } from '@mui/material';
 
 import { Icon, Settings, Nav } from '../../DesignSystem'
@@ -23,20 +23,26 @@ const StyledFab = styled(Fab)({
 
 interface FooterProps {
 	children?: React.ReactNode;
+	config: T_Config;
+	frontmatter?: T_Frontmatter;
+	navItems?: T_NavItem[];
 }
 
-export default function BottomAppBar({ children }: FooterProps) {
+export default function Footer({ children, config, frontmatter, navItems }: FooterProps) {
 	const theme = useTheme();
+	// const handleShowFooter = () => {
+	// 	console.log("handleShowFooter");
+	// };
 	return (
 		<React.Fragment>
 			<AppBar
 				position="fixed"
-				color="default"
 				sx={{
-					backgroundColor: theme.palette.background.default,
+					background: theme.palette.background.default,
 					boxShadow: 0,
 					top: 'auto', bottom: 0
-				}}>
+				}}
+			>
 				<Toolbar>
 					<StyledFab
 						color="inherit" aria-label="cta"
@@ -48,23 +54,24 @@ export default function BottomAppBar({ children }: FooterProps) {
 						<Icon icon="rocket" color={"primary"} />
 					</StyledFab>
 					<Box sx={{ flexGrow: 1 }} />
-					<IconButton color="primary">
+
+					{/* <IconButton onClick={handleShowFooter} color="primary">
 						<Icon icon="down" />
-					</IconButton>
-					<IconButton color="primary">
-						<Icon icon="search" />
-					</IconButton>
+					</IconButton> */}
+
 
 					{/* <Settings
 						config={config}
-						frontmatter={data}
-					/>
+						frontmatter={frontmatter}
+					/> */}
+
+
 					<Nav
 						mode="mobile"
 						navItems={navItems as I_NestedNav["navItems"]}
-						currentPath={data.slug || '/'}
+						currentPath={frontmatter?.slug || '/'}
 						config={config}
-					/> */}
+					/>
 
 					{children && (
 						<Box sx={{ ml: 2 }}>
