@@ -323,7 +323,7 @@ export default async function Page(props: any) {
             </Container>
             {/* End Main */}
             <footer>
-
+                &copy; {new Date().getFullYear()} {config.title}
             </footer>
         </NX >
     );
