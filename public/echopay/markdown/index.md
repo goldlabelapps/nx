@@ -2,11 +2,12 @@
 order: 1
 slug: /
 title: EchoPay
-flash: EchoPay
 description: Calculator
 icon: terminal
 tags: EchoPay, Flash, API, NX, Calculator
 ---
+
+[CommerceShortcode slug="calculator"]
 
 If your business is taking payment by card, this will calculate how much more money your business will make by simply switching to EchoPay for card enquiry
 

@@ -26,7 +26,7 @@ const Chunk = (chunk: I_Chunk) => {
                     border: '1px solid ' + alpha(theme.palette.divider, 0.2),
                     borderRadius: 3,
                     flexDirection: 'row',
-                    width: '80%',
+                    width: '100%',
                 }}
             >
                 <Typography variant='h6' sx={{ mt: 0.25 }}>{prompt}</Typography>
