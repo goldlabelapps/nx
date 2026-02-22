@@ -1,5 +1,12 @@
 [
     {
+        "title": "Ebook",
+        "type": "link",
+        "description": "Read all about it",
+        "url": "https://goldlabel.pro/shared/epub/NX.epub",
+        "icon": "doc"
+    },
+    {
         "title": "GitHub",
         "type": "link",
         "description": "Open Source and Free forever",
