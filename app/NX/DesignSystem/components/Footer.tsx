@@ -21,7 +21,11 @@ const StyledFab = styled(Fab)({
 	margin: '0 auto',
 });
 
-export default function BottomAppBar() {
+interface FooterProps {
+	children?: React.ReactNode;
+}
+
+export default function BottomAppBar({ children }: FooterProps) {
 	const theme = useTheme();
 	return (
 		<React.Fragment>
@@ -62,7 +66,11 @@ export default function BottomAppBar() {
 						config={config}
 					/> */}
 
-
+					{children && (
+						<Box sx={{ ml: 2 }}>
+							{children}
+						</Box>
+					)}
 				</Toolbar>
 			</AppBar>
 		</React.Fragment>
