@@ -1,16 +1,15 @@
 "use client";
 import type { T_Config, T_Frontmatter, T_NavItem, I_NestedNav } from '../../types';
 import * as React from 'react';
-import { styled, darken, lighten } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
 import {
 	useTheme,
 	Toolbar,
+	Box,
+	styled,
+	AppBar,
+	Fab,
 } from '@mui/material';
-
-import { Icon, Settings, Nav } from '../../DesignSystem'
+import { Icon, Nav } from '../../DesignSystem'
 
 const StyledFab = styled(Fab)({
 	position: 'absolute',
@@ -45,30 +44,20 @@ export default function Footer({ children, config, frontmatter, navItems }: Foot
 				}}
 			>
 				<Toolbar>
+
+
 					<StyledFab
-						color="inherit" aria-label="cta"
+						color="primary" aria-label="cta"
 						sx={{
 							boxShadow: 0,
-							border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
-							backgroundColor: lighten(theme.palette.background.default, 0.1),
+							// border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
+							// backgroundColor: lighten(theme.palette.background.default, 0.1),
 						}}
 						onClick={handleFabClick}
 					>
-						<Icon icon="home" />
+						<Icon icon="flash" color="secondary" />
 					</StyledFab>
 					<Box sx={{ flexGrow: 1 }} />
-
-					{/* <IconButton onClick={handleShowFooter} color="primary">
-						<Icon icon="down" />
-					</IconButton> */}
-
-
-					{/* <Settings
-						config={config}
-						frontmatter={frontmatter}
-					/> */}
-
-
 					<Nav
 						mode="mobile"
 						navItems={navItems as I_NestedNav["navItems"]}

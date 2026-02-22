@@ -222,7 +222,6 @@ export default async function Page(props: any) {
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar
-
                         position="fixed"
                         sx={{
                             top: 0,
@@ -314,7 +313,7 @@ export default async function Page(props: any) {
                         >
                             {data.icon && (
                                 <Box sx={{ mr: 2 }}>
-                                    <Icon icon={data.icon} color="primary" />
+                                    <Icon icon={data.icon} color="inherit" />
                                 </Box>
                             )}
                             {description}

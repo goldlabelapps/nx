@@ -19,28 +19,17 @@
             "enabled": true,
             "ads": [
                 {
+                    "title": "API",
+                    "type": "link",
+                    "url": "/api",
+                    "target": "_blank",
+                    "icon": "link"
+                },
+                {
                     "title": "EchoPay Dashboard",
                     "type": "link",
                     "url": "https://dev-dashboard.a2apay.co.uk/sign-in",
                     "icon": "link"
-                },
-                {
-                    "title": "Adobe Commerce Marketplace",
-                    "type": "link",
-                    "url": "https://developer.adobe.com/commerce/php/best-practices/",
-                    "icon": "link"
-                },
-                {
-                    "title": "GitHub Project",
-                    "type": "link",
-                    "url": "https://github.com/users/goldlabelapps/projects/7",
-                    "icon": "github"
-                },
-                {
-                    "title": "Magento",
-                    "type": "link",
-                    "url": "https://srv1269941.hstgr.cloud/",
-                    "icon": "shop"
                 }
             ]
         },
@@ -66,7 +55,7 @@
                 },
                 "dark": {
                     "mode": "dark",
-                    "primary": "#FFF",
+                    "primary": "#042768",
                     "secondary": "#A5C7FF",
                     "background": "#042768",
                     "paper": "#042768",

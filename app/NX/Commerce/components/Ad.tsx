@@ -4,6 +4,7 @@ import React from "react";
 import type { T_Ad } from '../../types';
 import { useRouter } from 'next/navigation';
 import {
+    darken,
     Card,
     CardHeader,
     ButtonBase,
@@ -40,11 +41,11 @@ export const Ad: React.FC<{ ad: T_Ad; target?: string }> = ({ ad, target }) => {
                 sx={{
                     width: '100%',
                     borderRadius: 2,
-                    bgcolor: alpha(theme.palette.primary.main, 0.1),
+                    bgcolor: darken(theme.palette.primary.main, 0.25),
                 }}
             >
                 <CardHeader
-                    avatar={icon ? <Icon icon={icon as any} color="primary" /> : undefined}
+                    avatar={icon ? <Icon icon={icon as any} /> : undefined}
                     title={<Typography>{title}</Typography>}
                     subheader={description}
                     sx={{ alignItems: 'flex-start' }}
