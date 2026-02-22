@@ -21,8 +21,8 @@
                 {
                     "title": "API",
                     "type": "link",
-                    "url": "/api",
-                    "target": "_blank",
+                    "url": "/api/echopay",
+                    "target": "_self",
                     "icon": "link"
                 },
                 {
