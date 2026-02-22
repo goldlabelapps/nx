@@ -41,7 +41,7 @@ export default function Hero({
 	return (
 		<Box sx={{
 			borderRadius: 2,
-			border: `1px solid ${theme.palette.divider}`,
+			// border: `1px solid ${theme.palette.divider}`,
 			mb: 2,
 
 		}}

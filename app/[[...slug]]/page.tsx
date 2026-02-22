@@ -85,6 +85,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
 
+    // console.log("smartImage.src", smartImage.src);
+
     return {
         title: `${title}, ${description}`,
         description,
