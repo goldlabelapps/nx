@@ -1,7 +1,7 @@
 "use client";
 import type { T_Config, T_Frontmatter, T_NavItem, I_NestedNav } from '../../types';
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
+import { styled, darken, lighten } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
@@ -30,9 +30,10 @@ interface FooterProps {
 
 export default function Footer({ children, config, frontmatter, navItems }: FooterProps) {
 	const theme = useTheme();
-	// const handleShowFooter = () => {
-	// 	console.log("handleShowFooter");
-	// };
+	const router = require('next/navigation').useRouter();
+	const handleFabClick = () => {
+		router.push('/');
+	};
 	return (
 		<React.Fragment>
 			<AppBar
@@ -48,10 +49,12 @@ export default function Footer({ children, config, frontmatter, navItems }: Foot
 						color="inherit" aria-label="cta"
 						sx={{
 							boxShadow: 0,
-							border: `2px solid ${theme.palette.divider}`,
-							backgroundColor: theme.palette.background.default,
-						}}>
-						<Icon icon="rocket" color={"primary"} />
+							border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
+							backgroundColor: lighten(theme.palette.background.default, 0.1),
+						}}
+						onClick={handleFabClick}
+					>
+						<Icon icon="home" />
 					</StyledFab>
 					<Box sx={{ flexGrow: 1 }} />
 

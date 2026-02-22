@@ -40,9 +40,9 @@ export default function Hero({
 
 	return (
 		<Box sx={{
-			borderRadius: 2,
+			borderRadius: 1,
 			// border: `1px solid ${theme.palette.divider}`,
-			mb: 2,
+			mb: 3,
 
 		}}
 		>

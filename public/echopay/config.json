@@ -19,12 +19,6 @@
             "enabled": true,
             "ads": [
                 {
-                    "title": "Calculator",
-                    "type": "link",
-                    "url": "/calculator",
-                    "icon": "flash"
-                },
-                {
                     "title": "EchoPay Dashboard",
                     "type": "link",
                     "url": "https://dev-dashboard.a2apay.co.uk/sign-in",
@@ -52,7 +46,7 @@
         },
         "designSystem": {
             "allowTheme": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "smartImages": [
                 {
                     "title": "Blue Cartridge",
