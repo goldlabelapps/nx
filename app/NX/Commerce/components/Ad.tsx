@@ -41,8 +41,8 @@ export const Ad: React.FC<{ ad: T_Ad; target?: string }> = ({ ad, target }) => {
                 sx={{
                     width: '100%',
                     borderRadius: 2,
-                    bgcolor: darken(theme.palette.background.paper, 0.1),
-                    border: '1px solid ' + darken(theme.palette.background.paper, 0.5),
+                    bgcolor: darken(theme.palette.background.paper, 0.05),
+                    border: '1px solid ' + darken(theme.palette.background.paper, 0.1),
                 }}
             >
                 <CardHeader
