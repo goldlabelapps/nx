@@ -4,13 +4,13 @@ import React from "react";
 import type { T_Ad } from '../../types';
 import { useRouter } from 'next/navigation';
 import {
+    useTheme,
     darken,
     Card,
     CardHeader,
     ButtonBase,
     Typography,
 } from '@mui/material';
-import { alpha, useTheme } from '@mui/material/styles';
 import { Icon } from '../../DesignSystem'
 
 
@@ -41,7 +41,8 @@ export const Ad: React.FC<{ ad: T_Ad; target?: string }> = ({ ad, target }) => {
                 sx={{
                     width: '100%',
                     borderRadius: 2,
-                    bgcolor: darken(theme.palette.primary.main, 0.25),
+                    bgcolor: darken(theme.palette.background.paper, 0.1),
+                    border: '1px solid ' + darken(theme.palette.background.paper, 0.5),
                 }}
             >
                 <CardHeader
@@ -50,7 +51,6 @@ export const Ad: React.FC<{ ad: T_Ad; target?: string }> = ({ ad, target }) => {
                     subheader={description}
                     sx={{ alignItems: 'flex-start' }}
                 />
-                {/* <pre>ad: {JSON.stringify(ad, null, 2)}</pre> */}
             </Card>
         </ButtonBase>
     );

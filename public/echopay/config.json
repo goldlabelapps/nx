@@ -12,9 +12,6 @@
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
-        "echopay": {
-            "enabled": true
-        },
         "commerce": {
             "enabled": true,
             "ads": [
@@ -22,7 +19,6 @@
                     "title": "API",
                     "type": "link",
                     "url": "/api/echopay",
-                    "target": "_self",
                     "icon": "link"
                 },
                 {
@@ -36,14 +32,16 @@
         "designSystem": {
             "allowTheme": true,
             "defaultTheme": "dark",
-            "smartImages": [
-                {
-                    "title": "Blue Cartridge",
-                    "slug": "blue-cartridge",
-                    "src": "https://live.staticflickr.com/65535/55059808356_43dc571962_b.jpg"
-                }
-            ],
             "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#fff",
+                    "secondary": "#fff",
+                    "background": "#012867",
+                    "paper": "#012867",
+                    "text": "#fff",
+                    "border": "#FFF"
+                },
                 "light": {
                     "mode": "light",
                     "primary": "#012867",
@@ -52,15 +50,6 @@
                     "paper": "#fff",
                     "text": "#000",
                     "border": "#012867"
-                },
-                "dark": {
-                    "mode": "dark",
-                    "primary": "#042768",
-                    "secondary": "#A5C7FF",
-                    "background": "#042768",
-                    "paper": "#042768",
-                    "text": "#fff",
-                    "border": "#FFF"
                 }
             }
         }
