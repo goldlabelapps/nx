@@ -1,8 +1,8 @@
+// goldlabel-magento-store
 import { NextResponse } from 'next/server';
 import { makeRes } from '../lib/makeRes';
 import { getFirebaseApp } from '../lib/firebase';
 import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
-// import { verifyIdToken } from '../lib/firebase-admin';
 
 export type T_EchoPayExample = {
     name: string, // Company name
@@ -12,13 +12,39 @@ export type T_EchoPayExample = {
     biz: number, // Business Card Percentage
 }
 
-export async function GET() {
+export async function GET(req: Request) {
     try {
+        const url = new URL(req.url);
+        // Get the first query param key (if any)
+        const queryKeys = Array.from(url.searchParams.keys());
         const app = getFirebaseApp();
         const db = getFirestore(app);
         const companiesCol = collection(db, 'echopay/data/companies');
+
+        if (queryKeys.length > 0) {
+            const slug = queryKeys[0];
+            // Fetch all companies and find the one with the matching slug
+            const snapshot = await getDocs(companiesCol);
+            const companies = snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as T_EchoPayExample) }));
+            const match = companies.find(company => company.slug === slug);
+            if (match) {
+                return NextResponse.json(makeRes({
+                    severity: 'success',
+                    message: match.name,
+                    data: match,
+                }));
+            } else {
+                return NextResponse.json(makeRes({
+                    severity: 'error',
+                    message: `No company found for slug: ${slug}`,
+                    data: null,
+                }), { status: 404 });
+            }
+        }
+
+        // Default: return all companies
         const snapshot = await getDocs(companiesCol);
-        const companies = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const companies = snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as T_EchoPayExample) }));
         return NextResponse.json(makeRes({
             severity: 'success',
             message: 'Examples',
@@ -56,24 +82,23 @@ function getMissingOrInvalidFields(obj: any): string[] {
 
 export async function POST(req: Request) {
     try {
-
-
         const body = await req.json();
         const missingFields = getMissingOrInvalidFields(body);
         if (missingFields.length > 0) {
             return NextResponse.json(makeRes({
                 severity: 'error',
-                message: `These fields are missing or invalid: ${missingFields.join(', ')}`
+                message: `Invalid fields: ${missingFields.join(', ')}`
             }), { status: 400 });
         }
         const app = getFirebaseApp();
         const db = getFirestore(app);
         const companiesCol = collection(db, 'echopay/data/companies');
-        const docRef = await addDoc(companiesCol, body);
+        const companyWithTime = { ...body, time: Date.now() };
+        const docRef = await addDoc(companiesCol, companyWithTime);
         return NextResponse.json(makeRes({
             severity: 'success',
             message: 'Example added',
-            data: { id: docRef.id, ...body },
+            data: { id: docRef.id, ...companyWithTime },
         }), { status: 201 });
     } catch (error) {
         return NextResponse.json(makeRes({
