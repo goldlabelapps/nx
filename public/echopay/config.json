@@ -16,6 +16,12 @@
             "enabled": true,
             "ads": [
                 {
+                    "title": "echopay.co.uk",
+                    "type": "link",
+                    "url": "https://echopay.co.uk/",
+                    "icon": "link"
+                },
+                {
                     "title": "API",
                     "type": "link",
                     "url": "/api/echopay",
