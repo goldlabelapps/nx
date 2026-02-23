@@ -103,17 +103,18 @@ const Nav: React.FC<I_Nav> = ({
     if (mode === 'mobile') {
         return (
             <>
-                <IconButton color="inherit" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
-                    <Icon icon='menu' color="primary" />
+                <IconButton color="secondary" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
+                    <Icon icon='menu' />
                 </IconButton>
                 <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                     <Box sx={{ width: 300, mt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
-                        <List dense component={'nav'}>
-                            {renderNavItems(sortedNavItems)}
-                        </List>
                         <Box sx={{ m: 1 }}>
                             <Commerce config={config} />
                         </Box>
+                        <List dense component={'nav'}>
+                            {renderNavItems(sortedNavItems)}
+                        </List>
+
                     </Box>
                 </Drawer>
             </>

@@ -85,6 +85,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
 
+    // console.log("smartImage.src", smartImage.src);
+
     return {
         title: `${title}, ${description}`,
         description,
@@ -220,7 +222,6 @@ export default async function Page(props: any) {
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar
-
                         position="fixed"
                         sx={{
                             top: 0,
@@ -312,7 +313,7 @@ export default async function Page(props: any) {
                         >
                             {data.icon && (
                                 <Box sx={{ mr: 2 }}>
-                                    <Icon icon={data.icon} color="primary" />
+                                    <Icon icon={data.icon} color="inherit" />
                                 </Box>
                             )}
                             {description}

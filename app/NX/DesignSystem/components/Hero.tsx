@@ -33,16 +33,16 @@ export default function Hero({
 	if (frontmatter && frontmatter.image) {
 		src = frontmatter.image;
 	} else {
-		console.log('No image value in frontmatter');
+		console.log('No image for', frontmatter?.title);
 	}
 
 	if (!src) return null;
 
 	return (
 		<Box sx={{
-			borderRadius: 2,
-			border: `1px solid ${theme.palette.divider}`,
-			mb: 2,
+			borderRadius: 1,
+			// border: `1px solid ${theme.palette.divider}`,
+			mb: 3,
 
 		}}
 		>
