@@ -8,6 +8,8 @@ import {
 	styled,
 	AppBar,
 	Fab,
+	lighten,
+	darken,
 } from '@mui/material';
 import { Icon, Nav } from '../../DesignSystem'
 
@@ -50,12 +52,12 @@ export default function Footer({ children, config, frontmatter, navItems }: Foot
 						color="primary" aria-label="cta"
 						sx={{
 							boxShadow: 0,
-							// border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
-							// backgroundColor: lighten(theme.palette.background.default, 0.1),
+							border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
+							backgroundColor: lighten(theme.palette.background.default, 0.1),
 						}}
 						onClick={handleFabClick}
 					>
-						<Icon icon="flash" color="secondary" />
+						<Icon icon="flash" />
 					</StyledFab>
 					<Box sx={{ flexGrow: 1 }} />
 					<Nav
