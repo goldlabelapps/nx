@@ -3,10 +3,10 @@ order: 1
 slug: /
 title: EchoPay
 description: Working with EchoPay is a no brainer.
-icon: user
+icon: right
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
 image: https://live.staticflickr.com/65535/55111827934_a064f9cf37_c.jpg
-flash: EchoPay
+flashX: EchoPay
 ---
 
 > Rob Eastwood, Small Beer managing director
