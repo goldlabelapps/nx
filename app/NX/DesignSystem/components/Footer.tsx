@@ -11,8 +11,11 @@ import {
 	lighten,
 	darken,
 } from '@mui/material';
+import { useDispatch } from '../../Uberedux';
 import { Icon, Nav } from '../../DesignSystem';
-import { useFlash } from '../../Flash';
+import { useFlash, setFlash } from '../../Flash';
+
+import { EchoPayApp } from '../../../../public/echopay/flash'
 
 const StyledFab = styled(Fab)({
 	position: 'absolute',
@@ -39,11 +42,10 @@ export default function Footer({
 
 	const flash = useFlash();
 	const theme = useTheme();
-	// const router = require('next/navigation').useRouter();
+	const dispatch = useDispatch();
 
 	const handleFabClick = () => {
-		console.log('FAB clicked!');
-		// router.push('/');
+		dispatch(setFlash("sceneOpen", true));
 	};
 
 	return (
@@ -58,17 +60,20 @@ export default function Footer({
 			>
 				<Toolbar>
 					{flash?.scene && (
-						<StyledFab
-							color="primary" aria-label="cta"
-							sx={{
-								boxShadow: 0,
-								border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
-								backgroundColor: lighten(theme.palette.background.default, 0.1),
-							}}
-							onClick={handleFabClick}
-						>
-							<Icon icon="flash" />
-						</StyledFab>
+						<>
+							<StyledFab
+								color="primary" aria-label="cta"
+								sx={{
+									boxShadow: 0,
+									border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
+									backgroundColor: lighten(theme.palette.background.default, 0.1),
+								}}
+								onClick={handleFabClick}
+							>
+								<Icon icon="flash" />
+							</StyledFab>
+							<EchoPayApp slug={flash.scene} />
+						</>
 					)}
 					<Box sx={{ flexGrow: 1 }} />
 					<Nav
