@@ -11,7 +11,8 @@ import {
 	lighten,
 	darken,
 } from '@mui/material';
-import { Icon, Nav } from '../../DesignSystem'
+import { Icon, Nav } from '../../DesignSystem';
+import { useFlash } from '../../Flash';
 
 const StyledFab = styled(Fab)({
 	position: 'absolute',
@@ -22,19 +23,29 @@ const StyledFab = styled(Fab)({
 	margin: '0 auto',
 });
 
-interface FooterProps {
+export interface FooterProps {
 	children?: React.ReactNode;
 	config: T_Config;
 	frontmatter?: T_Frontmatter;
 	navItems?: T_NavItem[];
 }
 
-export default function Footer({ children, config, frontmatter, navItems }: FooterProps) {
+export default function Footer({
+	children,
+	config,
+	frontmatter,
+	navItems,
+}: FooterProps) {
+
+	const flash = useFlash();
 	const theme = useTheme();
-	const router = require('next/navigation').useRouter();
+	// const router = require('next/navigation').useRouter();
+
 	const handleFabClick = () => {
-		router.push('/');
+		console.log('FAB clicked!');
+		// router.push('/');
 	};
+
 	return (
 		<React.Fragment>
 			<AppBar
@@ -46,19 +57,19 @@ export default function Footer({ children, config, frontmatter, navItems }: Foot
 				}}
 			>
 				<Toolbar>
-
-
-					<StyledFab
-						color="primary" aria-label="cta"
-						sx={{
-							boxShadow: 0,
-							border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
-							backgroundColor: lighten(theme.palette.background.default, 0.1),
-						}}
-						onClick={handleFabClick}
-					>
-						<Icon icon="flash" />
-					</StyledFab>
+					{flash?.scene && (
+						<StyledFab
+							color="primary" aria-label="cta"
+							sx={{
+								boxShadow: 0,
+								border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
+								backgroundColor: lighten(theme.palette.background.default, 0.1),
+							}}
+							onClick={handleFabClick}
+						>
+							<Icon icon="flash" />
+						</StyledFab>
+					)}
 					<Box sx={{ flexGrow: 1 }} />
 					<Nav
 						mode="mobile"
@@ -66,7 +77,6 @@ export default function Footer({ children, config, frontmatter, navItems }: Foot
 						currentPath={frontmatter?.slug || '/'}
 						config={config}
 					/>
-
 					{children && (
 						<Box sx={{ ml: 2 }}>
 							{children}
