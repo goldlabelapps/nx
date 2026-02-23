@@ -5,6 +5,7 @@ title: curl
 description: Connecting to EchoPay API with curl
 icon: terminal
 tags: echopay, terminal, curl, api
+image: default
 ---
 
 > Connecting to EchoPay API with curl

@@ -33,7 +33,7 @@ export default function Hero({
 	if (frontmatter && frontmatter.image) {
 		src = frontmatter.image;
 	} else {
-		console.log('No image value in frontmatter');
+		console.log('No image for', frontmatter?.title);
 	}
 
 	if (!src) return null;
