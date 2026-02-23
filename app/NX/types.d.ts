@@ -1,4 +1,4 @@
-import type { T_UbereduxDispatch } from '../../Uberedux/store';
+import type { T_UbereduxDispatch } from '../NX/Uberedux/store';
 
 export {
     T_UbereduxDispatch,
