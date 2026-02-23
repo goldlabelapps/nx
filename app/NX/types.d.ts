@@ -7,6 +7,7 @@ export {
 export interface I_NX {
     children: React.ReactNode;
     config: T_Config;
+    frontmatter?: T_Frontmatter;
 }
 export interface I_SmartImage {
     smartImage?: T_SmartImage;
@@ -152,6 +153,7 @@ export type T_Frontmatter = {
     order?: number;
     image?: string;
     smartImage?: string | false;
+    flash?: string;
 };
 
 export type T_Markdown = {

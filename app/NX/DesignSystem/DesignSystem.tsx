@@ -10,6 +10,7 @@ export default function DesignSystem({
   theme,
   children = null,
 }: I_DesignSystem) {
+
   const newtheme = useMUITheme(theme as T_Theme);
 
   if (!newtheme) {

@@ -62,14 +62,18 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             break;
     }
     const filePath = serverUseMDBySlug(slugArr, project);
-    let frontmatter = {};
+    let frontmatter: Record<string, any> = {};
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
         frontmatter = data;
     }
     let url = config.url || "";
-    const smartImage = await serverUseSmartImage(config, frontmatter);
+    const featuredImage = await serverUseSmartImage(config, frontmatter);
+    if (!featuredImage) {
+        console.log("No featuredImage for", frontmatter?.title);
+    }
+
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
     const themeMode = 'light';
@@ -78,14 +82,12 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
-        if (data.title) title = data.title;
-        if (data.description) description = data.description;
-        if (data.url) url = data.url;
+        if (data?.title) title = data.title;
+        if (data?.description) description = data.description;
+        if (data?.url) url = data.url;
     }
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
-
-    // console.log("smartImage.src", smartImage.src);
 
     return {
         title: `${title}, ${description}`,
@@ -95,14 +97,14 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             description,
             url: pageUrl,
             siteName: config.title,
-            images: [smartImage.src],
+            images: [featuredImage.src],
             type: "website",
         },
         twitter: {
             card: "summary_large_image",
             title,
             description,
-            images: [smartImage.src],
+            images: [featuredImage.src],
             site: config.title,
         },
     };
@@ -193,32 +195,10 @@ export default async function Page(props: any) {
     // const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     const bgCol = config?.cartridges?.designSystem?.themes?.[themeMode]?.background || '#000';
 
-    // If a flash prop is present in frontmatter, use its value to select the Scene
-    const flashScene = data.flash;
-
-    // If flashScene is present, dynamically import and render the correct Scene
-    if (flashScene) {
-        let SceneComponent: React.ComponentType<{ config: T_Config }> | null = null;
-        switch (flashScene.toLowerCase()) {
-            case 'nxmc':
-                SceneComponent = (await import('../../public/nx/flash')).NXMC;
-                break;
-            case 'echopay':
-                SceneComponent = (await import('../../public/echopay/flash')).EchoPay;
-                break;
-            // Add more cases as needed
-            default:
-                SceneComponent = null;
-                break;
-        }
-        if (SceneComponent) {
-            return <SceneComponent config={config} />;
-        }
-    }
 
     // ...existing code...
     return (
-        <NX config={config}>
+        <NX config={config} frontmatter={data}>
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar
@@ -318,7 +298,7 @@ export default async function Page(props: any) {
                             )}
                             {description}
                         </Typography>
-                        {/* smartImage functionality removed */}
+                        {/* featuredImage functionality removed */}
 
                         <RenderMarkdown config={config}>
                             {content}
