@@ -12,9 +12,6 @@
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
-        "echopay": {
-            "enabled": true
-        },
         "commerce": {
             "enabled": true,
             "ads": [
@@ -22,7 +19,6 @@
                     "title": "API",
                     "type": "link",
                     "url": "/api/echopay",
-                    "target": "_self",
                     "icon": "link"
                 },
                 {
@@ -36,13 +32,6 @@
         "designSystem": {
             "allowTheme": true,
             "defaultTheme": "dark",
-            "smartImages": [
-                {
-                    "title": "Blue Cartridge",
-                    "slug": "blue-cartridge",
-                    "src": "https://live.staticflickr.com/65535/55059808356_43dc571962_b.jpg"
-                }
-            ],
             "themes": {
                 "dark": {
                     "mode": "dark",
