@@ -9,6 +9,8 @@ import { useFlash, setFlash } from '../../../app/NX/Flash';
 import { useDispatch } from '../../../app/NX/Uberedux';
 import { Icon } from '../../../app/NX/DesignSystem';
 
+import { EchoPay } from './';
+
 export interface I_Scene {
     slug?: string;
 }
@@ -24,25 +26,32 @@ export const EchoPayApp: React.FC<I_Scene> = ({ slug }) => {
     return (
         <Dialog
             fullWidth
+            fullScreen
             open={!!flash?.sceneOpen}
             onClose={handleClose}
             maxWidth="sm">
-            <Box>
-                <Box>
-                    <IconButton onClick={handleClose} color="primary">
-                        <Icon icon="close" />
-                    </IconButton>
-                </Box>
-                <Box
+            <Box sx={{ position: 'relative' }}>
+                <IconButton
+                    onClick={handleClose}
+                    color="primary"
                     sx={{
-                        border: '1px solid',
-                        borderColor: 'primary.main',
-                        borderRadius: 1,
-                        p: 2,
-                        minHeight: 500
+                        position: 'absolute',
+                        top: 8,
+                        right: 8,
+                        zIndex: 10
                     }}
                 >
-                    EchoPayApp
+                    <Icon icon="close" />
+                </IconButton>
+                <Box
+                    id="app"
+                    sx={{
+                        height: '85vh',
+                        minHeight: 500,
+                        boxSizing: 'border-box'
+                    }}
+                >
+                    <EchoPay />
                 </Box>
             </Box>
         </Dialog>
