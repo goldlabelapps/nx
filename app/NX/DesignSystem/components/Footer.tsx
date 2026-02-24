@@ -16,7 +16,7 @@ import { useFlash, setFlash } from '../../Flash';
 // These Are the only two scenes we support for now, 
 // if frontmatter.flash is set, it must be one of these
 import { EchoPayApp } from '../../../../public/echopay/flash';
-import { NXMC } from '../../../../public/nx/flash/';
+import { NXMCApp } from '../../../../public/nx/flash/';
 
 const StyledFab = styled(Fab)({
 	position: 'absolute',
@@ -51,8 +51,8 @@ export default function Footer({
 
 	// If scene is defined, it must be in validScenes, otherwise exit early
 
-	console.log('Footer scene:', scene);
-	console.log('validScenes.includes(scene)', validScenes.includes(scene as string));
+	// console.log('Footer scene:', scene);
+	// console.log('validScenes.includes(scene)', validScenes.includes(scene as string));
 
 	if (scene && !validScenes.includes(scene)) {
 		return null;
@@ -86,7 +86,7 @@ export default function Footer({
 								<Icon icon="flash" />
 							</StyledFab>
 							{scene === 'EchoPay' && <EchoPayApp slug={scene} />}
-							{scene === 'NXMC' && <NXMC />}
+							{scene === 'NXMC' && <NXMCApp />}
 						</>
 					)}
 					<Box sx={{ flexGrow: 1 }} />

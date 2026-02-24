@@ -40,12 +40,12 @@
         "designSystem": {
             "enabled": true,
             "allowTheme": false,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",
-                    "primary": "#0EFAFF",
-                    "secondary": "#FFF",
+                    "primary": "#dcfffb",
+                    "secondary": "#dcfffb",
                     "background": "#073334",
                     "paper": "#022626",
                     "text": "#fff",
