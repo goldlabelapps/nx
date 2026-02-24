@@ -16,10 +16,9 @@ const NX: React.FC<I_NX> = ({
     const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     const dispatch = useDispatch();
 
-
     React.useEffect(() => {
         if (frontmatter && frontmatter.flash) {
-            dispatch(setFlash("sceneOpen", true));
+            dispatch(setFlash("sceneOpen", false));
             dispatch(setFlash("scene", frontmatter.flash));
         } else {
             dispatch(setFlash("scene", null));

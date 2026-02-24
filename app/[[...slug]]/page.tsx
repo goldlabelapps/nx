@@ -195,6 +195,10 @@ export default async function Page(props: any) {
     // const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     const bgCol = config?.cartridges?.designSystem?.themes?.[themeMode]?.background || '#000';
 
+    let themedIcon = config?.icon || null;
+    if (themeMode === 'dark') {
+        themedIcon = config?.darkIcon || themedIcon;
+    }
 
     // ...existing code...
     return (
@@ -218,7 +222,7 @@ export default async function Page(props: any) {
                                         sx={{}}>
                                         <Avatar
                                             alt={config.title}
-                                            src={config.icon}
+                                            src={themedIcon || ''}
                                         />
                                     </IconButton>
                                 </a>}
