@@ -9,24 +9,27 @@ import {
 	AppBar,
 	Fab,
 	lighten,
-	darken,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
 import { Icon, Nav } from '../../DesignSystem';
 import { useFlash, setFlash } from '../../Flash';
-
-import { EchoPayApp } from '../../../../public/echopay/flash'
+// These Are the only two scenes we support for now, 
+// if frontmatter.flash is set, it must be one of these
+import { EchoPayApp } from '../../../../public/echopay/flash';
+import { NXMC } from '../../../../public/nx/flash/';
 
 const StyledFab = styled(Fab)({
 	position: 'absolute',
 	zIndex: 1,
-	top: -8,
+	top: 0,
 	left: 0,
 	right: 0,
 	margin: '0 auto',
 });
 
-export interface FooterProps {
+const validScenes = ['EchoPay', 'NXMC'];
+
+export interface I_Footer {
 	children?: React.ReactNode;
 	config: T_Config;
 	frontmatter?: T_Frontmatter;
@@ -38,11 +41,22 @@ export default function Footer({
 	config,
 	frontmatter,
 	navItems,
-}: FooterProps) {
+}: I_Footer) {
 
-	const flash = useFlash();
+	const flashState = useFlash();
 	const theme = useTheme();
 	const dispatch = useDispatch();
+	// Safely extract scene from frontmatter, avoid conflict with flashState
+	const scene = frontmatter?.flash;
+
+	// If scene is defined, it must be in validScenes, otherwise exit early
+
+	console.log('Footer scene:', scene);
+	console.log('validScenes.includes(scene)', validScenes.includes(scene as string));
+
+	if (scene && !validScenes.includes(scene)) {
+		return null;
+	}
 
 	const handleFabClick = () => {
 		dispatch(setFlash("sceneOpen", true));
@@ -59,20 +73,20 @@ export default function Footer({
 				}}
 			>
 				<Toolbar>
-					{flash?.scene && (
+					{flashState?.scene && (
 						<>
 							<StyledFab
 								color="primary" aria-label="cta"
 								sx={{
 									boxShadow: 0,
-									border: `1px solid ${darken(theme.palette.divider, 0.5)}`,
 									backgroundColor: lighten(theme.palette.background.default, 0.1),
 								}}
 								onClick={handleFabClick}
 							>
 								<Icon icon="flash" />
 							</StyledFab>
-							<EchoPayApp slug={flash.scene} />
+							{scene === 'EchoPay' && <EchoPayApp slug={scene} />}
+							{scene === 'NXMC' && <NXMC />}
 						</>
 					)}
 					<Box sx={{ flexGrow: 1 }} />

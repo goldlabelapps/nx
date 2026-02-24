@@ -4,7 +4,7 @@ title: Permanent Roles
 description: Why are we interested in Permanent?
 slug: /jobs/permanent
 icon: work
-image: https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg
+image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
 tags: Jobs, Permanant, Professional, JavaScript, Interviews
 ---
 

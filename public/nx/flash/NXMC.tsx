@@ -13,8 +13,6 @@ import { DesignSystem } from '../../../app/NX/DesignSystem';
 import {
     Flash,
     MovieClip,
-    Chatbot,
-    ChatbotAS,
 } from '../../../app/NX/Flash';
 import { NXLogo, NXLogoAS } from './NXLogo';
 
@@ -24,7 +22,6 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
     const [replay, setReplay] = React.useState(0);
     const logoRef = useRef<HTMLImageElement>(null);
     const as = useRef<any>(null);
-    const chatbotRef = useRef<HTMLDivElement>(null);
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -43,14 +40,7 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            if (chatbotRef.current) {
-                const chatbotAS = new ChatbotAS(undefined, chatbotRef);
-                if (typeof window !== 'undefined') {
-                    (window as any).__chatbotASInstance = chatbotAS;
-                }
-
-                chatbotAS.init();
-            }
+            console.log('Logo animation done');
         };
         as.current = new NXLogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
@@ -71,21 +61,6 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
                     zIndex={100}>
                     <NXLogo ref={logoRef} />
                 </MovieClip>
-
-                <MovieClip
-                    id='mc_chatbot'
-                    style={{ visibility: 'hidden' }}
-                    width={'100%'}
-                    maxWidth={800}
-                    zIndex={200}
-                    ref={chatbotRef}
-                >
-                    <Chatbot
-                        title="NXMC"
-                        logo={<NXLogo />}
-                    />
-                </MovieClip>
-
             </Flash>
         </DesignSystem>
     );

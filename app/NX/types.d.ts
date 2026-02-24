@@ -59,6 +59,7 @@ export type T_Config = {
     favicon: string;
     image: string;
     icon: string;
+    darkIcon?: string;
     cartridges: {
         commerce?: T_CommerceCartridge;
         designSystem?: T_DesignSystemCartridge;

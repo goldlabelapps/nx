@@ -40,17 +40,12 @@ export default function Hero({
 
 	return (
 		<Box sx={{
-			borderRadius: 1,
-			// border: `1px solid ${theme.palette.divider}`,
 			mb: 3,
-
-		}}
-		>
+		}}>
 			<Box
 				sx={{
 					width: '100%',
-					height: 0,
-					paddingBottom: `${100 / aspectRatio}%`,
+					height: '200px',
 					position: 'relative',
 				}}
 			>
@@ -59,16 +54,19 @@ export default function Hero({
 					alt={frontmatter?.title || 'Hero Image'}
 					fill
 					style={{
+						borderRadius: 8,
 						objectFit: 'cover',
-						borderRadius: '16px',
+						maxHeight: '200px',
 					}}
 					sizes="(max-width: 900px) 100vw, 800px"
 					priority
 				/>
 			</Box>
-			{/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
-				src: {JSON.stringify(src, null, 2)}
-			</pre> */}
+
 		</Box>
 	);
 }
+
+/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
+				src: {JSON.stringify(src, null, 2)}
+			</pre> */

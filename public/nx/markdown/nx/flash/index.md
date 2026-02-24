@@ -4,7 +4,7 @@ slug: /nx/flash
 title: Flash
 description: A multimedia software platform created by Macromedia and later acquired by Adobe
 tags: NX, Cartridges, Flash
-image: https://live.staticflickr.com/65535/54802570139_8f4f2ac814_b.jpg
+image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
 icon: flash
 ---
 

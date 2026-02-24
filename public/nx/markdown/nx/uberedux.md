@@ -6,7 +6,7 @@ description: All apps need state management
 tags: features, uberedux
 smartImage: mindful
 icon: cartridge
-image: https://live.staticflickr.com/65535/55054089178_9e08108e45_b.jpg
+image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
 ---
 
 > Otherwise you'd be back in jQuery callback hell. Nobody wants that.

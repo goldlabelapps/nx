@@ -5,7 +5,7 @@ title: Design System
 description: Based on Material UI
 tags: features, cartridges,
 icon: cartridge
-image: https://live.staticflickr.com/65535/55054089178_9e08108e45_b.jpg
+image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
 ---
 
 > Material UI is a React component library that provides a consistent design system, layout primitives, and ready-made UI components

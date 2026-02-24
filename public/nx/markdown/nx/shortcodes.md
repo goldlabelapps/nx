@@ -6,7 +6,7 @@ description: Extend your content with reusable, customizable, and maintainable f
 tags: features, cartridges, shortcodes
 smartImage: mindful
 icon: cartridge
-image: https://live.staticflickr.com/65535/55054089178_9e08108e45_b.jpg
+image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
 ---
 
 > Shortcodes are a powerful feature inspired by WordPress, allowing you to embed dynamic content or functionality directly within your text or markdown files. A shortcode is a simple, bracketed tag—such as 
