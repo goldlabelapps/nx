@@ -53,12 +53,11 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
-    const themeMode = 'light';
+    const themeMode: 'light' | 'dark' = 'light';
     const themes = config?.cartridges?.designSystem?.themes;
     let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
     if (theme) {
-        const mode: 'light' | 'dark' = themeMode === 'dark' ? 'dark' : 'light';
-        theme = { ...theme, mode };
+        theme = { ...theme, mode: themeMode };
     }
 
     if (filePath && fs.existsSync(filePath)) {
@@ -124,12 +123,11 @@ export default async function Page(props: any) {
     if (data.title) title = data.title;
     if (data.description) description = data.description;
     const navItems = await serverUseNav(data.slug || "/");
-    const themeMode = config?.cartridges?.designSystem?.defaultTheme || 'light';
+    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themes = config?.cartridges?.designSystem?.themes;
     let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
     if (theme) {
-        const mode: 'light' | 'dark' = themeMode === 'dark' ? 'dark' : 'light';
-        theme = { ...theme, mode };
+        theme = { ...theme, mode: themeMode };
     }
     const bgCol = theme?.background || '#000';
     let themedIcon = config?.icon || null;

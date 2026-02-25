@@ -15,7 +15,7 @@ const NX: React.FC<I_NX> = ({
     flash,
 }) => {
 
-    const themeMode = config?.cartridges?.designSystem?.defaultTheme || 'light';
+    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (theme) {
         const mode: 'light' | 'dark' = themeMode === 'dark' ? 'dark' : 'light';
