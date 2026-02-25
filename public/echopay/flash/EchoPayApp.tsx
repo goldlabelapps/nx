@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import {
+    useTheme,
     Dialog,
     Box,
     IconButton,
@@ -8,17 +9,18 @@ import {
 import { useFlash, setFlash } from '../../../app/NX/Flash';
 import { useDispatch } from '../../../app/NX/Uberedux';
 import { Icon } from '../../../app/NX/DesignSystem';
-
 import { EchoPay } from './';
 
-export interface I_Scene {
+export interface I_EchoPayApp {
     slug?: string;
-}
+};
 
-export const EchoPayApp: React.FC<I_Scene> = ({ slug }) => {
+export const EchoPayApp: React.FC<I_EchoPayApp> = () => {
 
+    const theme = useTheme();
     const flash = useFlash();
     const dispatch = useDispatch();
+
     const handleClose = () => {
         dispatch(setFlash('sceneOpen', false));
     };
@@ -30,7 +32,10 @@ export const EchoPayApp: React.FC<I_Scene> = ({ slug }) => {
             open={!!flash?.sceneOpen}
             onClose={handleClose}
             maxWidth="sm">
-            <Box sx={{ position: 'relative' }}>
+            <Box sx={{
+                position: 'relative',
+                background: theme.palette.background.default,
+            }}>
                 <IconButton
                     onClick={handleClose}
                     color="primary"
@@ -46,8 +51,8 @@ export const EchoPayApp: React.FC<I_Scene> = ({ slug }) => {
                 <Box
                     id="app"
                     sx={{
-                        height: '85vh',
-                        minHeight: 500,
+                        height: '100vh',
+                        // minHeight: 500,
                         boxSizing: 'border-box'
                     }}
                 >

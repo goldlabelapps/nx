@@ -49,7 +49,9 @@ export default class EchoPayLogoAS {
                     rotate: 0,
                     duration: 1.2,
                     ease: 'bounce.out',
-                    onComplete: this.fadeOut.bind(this)
+                    onComplete: () => {
+                        console.log('EchoPayLogoAS');
+                    }
                 }
             );
         }

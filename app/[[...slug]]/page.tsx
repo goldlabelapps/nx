@@ -1,9 +1,8 @@
-import type { I_NestedNav, T_Config } from '../NX/types';
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
-import { serverUseNav } from "../NX/lib/";
+import type { I_NestedNav, T_ProjectSlug } from '../NX/types';
 import fs from "fs";
 import matter from "gray-matter";
+import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import {
     Box,
     AppBar,
@@ -13,12 +12,15 @@ import {
     IconButton,
     Typography,
 } from '@mui/material';
+import { NX } from '../NX';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
     serverUseSmartImage,
+    serverUseNav,
+    resolveProject,
+
 } from '../NX/lib';
-import { NX } from '../NX';
 import {
     Icon,
     Nav,
@@ -27,40 +29,15 @@ import {
 } from '../NX/DesignSystem';
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
-import nxConfig from '../../public/nx/config.json';
-import mcukConfig from '../../public/mcuk/config.json';
-import echopayConfig from '../../public/echopay/config.json';
-import akiConfig from '../../public/aki/config.json';
-import flashConfig from '../../public/flash/config.json';
-import edtechConfig from '../../public/edtech/config.json';
+
+import { EchoPay } from '../../public/echopay/flash'
+
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
-    const fs = require("fs");
-    const matter = require("gray-matter");
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    let config: T_Config;
-    switch (project) {
-        case 'mcuk':
-            config = mcukConfig as T_Config;
-            break;
-        case 'echopay':
-            config = echopayConfig as T_Config;
-            break;
-        case 'edtech':
-            config = edtechConfig as T_Config;
-            break;
-        case 'aki':
-            config = akiConfig as T_Config;
-            break;
-        case 'flash':
-            config = flashConfig as T_Config;
-            break;
-        default:
-            config = nxConfig as T_Config;
-            break;
-    }
+    const { config, markdownDir } = resolveProject(project as T_ProjectSlug);
     const filePath = serverUseMDBySlug(slugArr, project);
     let frontmatter: Record<string, any> = {};
     if (filePath && fs.existsSync(filePath)) {
@@ -76,8 +53,12 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
     let title = config.title || project.toUpperCase();
     let description = config.description || "";
-    const themeMode = 'light';
-    const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    const themeMode: 'light' | 'dark' = 'light';
+    const themes = config?.cartridges?.designSystem?.themes;
+    let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
+    if (theme) {
+        theme = { ...theme, mode: themeMode };
+    }
 
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
@@ -112,31 +93,9 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
 
 export async function generateStaticParams() {
-    const path = require("path");
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    let markdownDir;
-    switch (project) {
-        case 'mcuk':
-            markdownDir = path.resolve(process.cwd(), "public", "mcuk", "markdown");
-            break;
-        case 'echopay':
-            markdownDir = path.resolve(process.cwd(), "public", "echopay", "markdown");
-            break;
-        case 'edtech':
-            markdownDir = path.resolve(process.cwd(), "public", "edtech", "markdown");
-            break;
-        case 'aki':
-            markdownDir = path.resolve(process.cwd(), "public", "aki", "markdown");
-            break;
-        case 'flash':
-            markdownDir = path.resolve(process.cwd(), "public", "flash", "markdown");
-            break;
-        default:
-            markdownDir = path.resolve(process.cwd(), "public", "nx", "markdown");
-    }
-
+    const { markdownDir } = resolveProject(project as T_ProjectSlug);
     let allSlugs = serverUseAllMd(markdownDir, project);
-
     return allSlugs.map((slugArr) => {
         const normalized = slugArr.filter(Boolean);
         return { slug: normalized.length ? normalized : undefined };
@@ -151,58 +110,42 @@ export default async function Page(props: any) {
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
         slugArr.pop();
     }
-    // Define slugPath for use as currentPath
-    const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
+    // const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
+    // const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    let config: T_Config;
-    switch (project) {
-        case 'mcuk':
-            config = mcukConfig as T_Config;
-            break;
-        case 'echopay':
-            config = echopayConfig as T_Config;
-            break;
-        case 'aki':
-            config = akiConfig as T_Config;
-            break;
-        case 'edtech':
-            config = edtechConfig as T_Config;
-            break;
-        case 'flash':
-            config = flashConfig as T_Config;
-            break;
-        default:
-            config = nxConfig as T_Config;
-            break;
-    }
-    const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
+    const { config } = resolveProject(project as T_ProjectSlug);
     const filePath = serverUseMDBySlug(slugArr, project);
-
-    if (!filePath || !fs.existsSync(filePath)) {
-        notFound();
-    };
+    if (!filePath || !fs.existsSync(filePath)) notFound();
     let title = project.toUpperCase();
     let description = "";
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-
     const navItems = await serverUseNav(data.slug || "/");
-
-    // Remove cartridge flag logic. Prepare for flash prop logic below.
-    const themeMode = config?.cartridges?.designSystem?.defaultTheme || 'light';
-    // const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
-    const bgCol = config?.cartridges?.designSystem?.themes?.[themeMode]?.background || '#000';
-
-    let themedIcon = config?.icon || null;
-    if (themeMode === 'dark') {
-        themedIcon = config?.darkIcon || themedIcon;
+    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
+    const themes = config?.cartridges?.designSystem?.themes;
+    let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
+    if (theme) {
+        theme = { ...theme, mode: themeMode };
     }
+    const bgCol = theme?.background || '#000';
+    let themedIcon = config?.icon || null;
+    if (themeMode === 'dark' && 'darkIcon' in config && typeof config.darkIcon === 'string') {
+        themedIcon = config.darkIcon || themedIcon;
+    }
+    const validScenes = ['EchoPay', 'NXMC'];
+    let sceneSlug: string | undefined = undefined;
+    if (data.flash && validScenes.includes(data.flash)) {
+        sceneSlug = data.flash;
+    }
+    // sceneSlug can now be used as needed
+    // if (sceneSlug === 'EchoPay') {
+    //     return <EchoPay />;
+    // }
 
-    // ...existing code...
     return (
-        <NX config={config} frontmatter={data}>
+        <NX config={config} frontmatter={data} flash={sceneSlug}>
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar
@@ -302,7 +245,6 @@ export default async function Page(props: any) {
                             )}
                             {description}
                         </Typography>
-                        {/* featuredImage functionality removed */}
 
                         <RenderMarkdown config={config}>
                             {content}

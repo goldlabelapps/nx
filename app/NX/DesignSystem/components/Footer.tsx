@@ -8,7 +8,7 @@ import {
 	styled,
 	AppBar,
 	Fab,
-	lighten,
+	darken,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
 import { Icon, Nav } from '../../DesignSystem';
@@ -18,14 +18,18 @@ import { useFlash, setFlash } from '../../Flash';
 import { EchoPayApp } from '../../../../public/echopay/flash';
 import { NXMCApp } from '../../../../public/nx/flash/';
 
-const StyledFab = styled(Fab)({
+const StyledFab = styled(Fab)(({ theme }) => ({
 	position: 'absolute',
 	zIndex: 1,
 	top: 0,
 	left: 0,
 	right: 0,
 	margin: '0 auto',
-});
+	'&:hover': {
+		backgroundColor: darken(theme.palette.background.paper, 0.2),
+		boxShadow: 0,
+	},
+}));
 
 const validScenes = ['EchoPay', 'NXMC'];
 
@@ -79,7 +83,7 @@ export default function Footer({
 								color="primary" aria-label="cta"
 								sx={{
 									boxShadow: 0,
-									backgroundColor: lighten(theme.palette.background.default, 0.1),
+									backgroundColor: theme.palette.background.default,
 								}}
 								onClick={handleFabClick}
 							>

@@ -1,19 +1,26 @@
 "use client";
 import React from 'react';
-import { I_NX } from './types';
+import { I_NX, T_Theme } from './types';
 import { Box } from '@mui/material';
 import { DesignSystem, Feedback } from './DesignSystem';
 import { useDispatch } from './Uberedux';
 import { setFlash } from './Flash';
+import { EchoPay } from '../../public/echopay/flash';
+import { NXMC } from '../../public/nx/flash';
 
 const NX: React.FC<I_NX> = ({
     children,
     config,
     frontmatter,
+    flash,
 }) => {
 
-    const themeMode = config?.cartridges?.designSystem?.defaultTheme || 'light';
-    const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
+    let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    if (theme) {
+        const mode: 'light' | 'dark' = themeMode === 'dark' ? 'dark' : 'light';
+        theme = { ...theme, mode };
+    }
     const dispatch = useDispatch();
 
     React.useEffect(() => {
@@ -38,10 +45,17 @@ const NX: React.FC<I_NX> = ({
             </Box>
         );
     }
+
+    let flashContent = children;
+    if (flash === 'NXMC') {
+        flashContent = <NXMC />;
+    } else if (flash === 'EchoPay') {
+        flashContent = <EchoPay />;
+    }
     return (
-        <DesignSystem theme={theme}>
+        <DesignSystem theme={theme as T_Theme}>
             <Feedback />
-            {children}
+            {flashContent}
         </DesignSystem>
     );
 };

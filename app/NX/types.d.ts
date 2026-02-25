@@ -1,14 +1,15 @@
 import type { T_UbereduxDispatch } from '../NX/Uberedux/store';
+export { T_UbereduxDispatch }
 
-export {
-    T_UbereduxDispatch,
-}
+export type T_ProjectSlug = 'nx' | 'mcuk' | 'echopay' | 'edtech' | 'aki' | 'flash';
 
 export interface I_NX {
     children: React.ReactNode;
     config: T_Config;
     frontmatter?: T_Frontmatter;
+    flash?: string;
 }
+
 export interface I_SmartImage {
     smartImage?: T_SmartImage;
 }
@@ -23,23 +24,16 @@ export type T_SmartImage = {
 
 export type T_Ad =
     | {
-        type: 'link';
+        type: string;
         title: string;
-        url: string;
-        description?: string;
-        icon?: string;
-        image?: string;
-        target?: '_blank' | '_self';
-    }
-    | {
-        type: 'route';
-        title: string;
-        path: string;
+        url?: string;
+        path?: string;
         price?: string;
         description?: string;
         icon?: string;
         image?: string;
         affiliate?: string;
+        target?: string;
     };
 
 export type T_CommerceCartridge = {
@@ -94,7 +88,7 @@ export type T_DesignSystemCartridge = {
     smartImages?: boolean | T_SmartImage[];
     themes: {
         [key: string]: {
-            mode: 'light' | 'dark';
+            mode: string;
             primary: string;
             secondary: string;
             background: string;

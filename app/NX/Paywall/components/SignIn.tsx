@@ -37,8 +37,11 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
         }
     };
 
-    const themeMode = 'light';
-    const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    const themeMode: 'light' | 'dark' = 'light';
+    let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    if (theme) {
+        theme = { ...theme, mode: themeMode };
+    }
     const { title, icon, description, image } = config;
 
     return (
