@@ -1,3 +1,4 @@
+
 // Replay animation on HMR update (dev only)
 if (import.meta && import.meta.hot) {
     import.meta.hot.accept(() => {
@@ -29,6 +30,36 @@ export default class EchoPayLogoAS {
             el.style.transform = 'scaleX(0.5)';
             this.fadeIn();
         }
+    }
+
+    /**
+     * Animates each letter of ECHOPAY one after the other with a slight delay between each over one second.
+     * Assumes each letter path in the SVG has id="letter-E", id="letter-C", etc.
+     */
+    echoText() {
+        const el = this.mc?.current;
+        if (!el) return;
+        const letters = [
+            'letter-E',
+            'letter-C',
+            'letter-H',
+            'letter-O',
+            'letter-P',
+            'letter-A',
+            'letter-Y'
+        ];
+        const letterEls = letters
+            .map(id => el.querySelector(`#${id}`))
+            .filter(Boolean);
+        gsap.set(letterEls, { opacity: 0, y: 20, scale: 0.8 });
+        gsap.to(letterEls, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.12,
+            ease: 'power3.out'
+        });
     }
 
     fadeIn() {
