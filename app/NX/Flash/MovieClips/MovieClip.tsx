@@ -43,6 +43,10 @@ export interface I_MovieClip {
      * Optional ref for the MovieClip div
      */
     ref?: React.Ref<HTMLDivElement>;
+    /**
+     * If true, children are wrapped in a scrollable container
+     */
+    scrollable?: boolean;
 }
 
 
@@ -110,6 +114,7 @@ export const MovieClip = React.forwardRef<HTMLDivElement, I_MovieClip>(({
     minWidth,
     maxWidth,
     zIndex,
+    scrollable = false,
 }, ref) => {
     // Compose transform: base + position + offset
     const positionStyle = getPositionStyle(pos);
@@ -137,9 +142,92 @@ export const MovieClip = React.forwardRef<HTMLDivElement, I_MovieClip>(({
         ...(transforms ? { transform: transforms } : {}),
         ...style,
     };
+    // Ref for scrollable container
+    const scrollRef = React.useRef<HTMLDivElement>(null);
+    const [isScrollable, setIsScrollable] = React.useState(false);
+
+    // Check if content is scrollable
+    React.useEffect(() => {
+        const el = scrollRef.current;
+        if (el) {
+            setIsScrollable(el.scrollHeight > el.clientHeight);
+        }
+    }, [children, height, width]);
+
+    // Scroll handler
+    const scrollBy = (amount: number) => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollBy({ top: amount, behavior: 'smooth' });
+        }
+    };
+
     return (
         <div id={id} style={mergedStyle} className={className} ref={ref}>
-            {children}
+            {scrollable ? (
+                <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+                    <div
+                        ref={scrollRef}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            overflowY: 'auto',
+                            WebkitOverflowScrolling: 'touch',
+                        }}
+                    >
+                        {children}
+                    </div>
+                    {isScrollable && (
+                        <>
+                            {/* Scroll Up Button */}
+                            <button
+                                style={{
+                                    position: 'absolute',
+                                    top: 8,
+                                    right: 8,
+                                    zIndex: 2,
+                                    background: 'rgba(255,255,255,0.8)',
+                                    border: '1px solid #888',
+                                    borderRadius: '50%',
+                                    width: 32,
+                                    height: 32,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => scrollBy(-100)}
+                                aria-label="Scroll Up"
+                            >
+                                ▲
+                            </button>
+                            {/* Scroll Down Button */}
+                            <button
+                                style={{
+                                    position: 'absolute',
+                                    bottom: 8,
+                                    right: 8,
+                                    zIndex: 2,
+                                    background: 'rgba(255,255,255,0.8)',
+                                    border: '1px solid #888',
+                                    borderRadius: '50%',
+                                    width: 32,
+                                    height: 32,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => scrollBy(100)}
+                                aria-label="Scroll Down"
+                            >
+                                ▼
+                            </button>
+                        </>
+                    )}
+                </div>
+            ) : (
+                children
+            )}
         </div>
     );
 });

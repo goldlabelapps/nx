@@ -7,9 +7,6 @@ export default class LogoAS {
     constructor(onDone?: () => void, mcRef?: React.RefObject<any>) {
         this.onDone = onDone;
         this.mc = mcRef;
-        if (typeof window !== 'undefined') {
-            (window as any).__logoASInstance = this;
-        }
     }
 
     init() {
@@ -22,6 +19,8 @@ export default class LogoAS {
             this.fadeIn();
         }
     }
+
+
 
     /**
      * Animates each letter of ECHOPAY one after the other with a slight delay between each over one second.
@@ -45,7 +44,7 @@ export default class LogoAS {
         gsap.set(letterEls, { opacity: 0, y: 20, scale: 0.8 });
         gsap.to(letterEls, {
             opacity: 1,
-            y: 0,
+            y: 35,
             scale: 1,
             duration: 0.7,
             stagger: 0.12,
@@ -67,10 +66,12 @@ export default class LogoAS {
                     opacity: 1,
                     scaleX: 1,
                     scaleY: 1,
-                    duration: 1.2,
-                    ease: 'bounce.out',
+                    duration: 1,
+                    ease: 'expo.out',
                     onComplete: () => {
-                        console.log('EchoPayLogoAS');
+                        if (this.onDone) {
+                            this.onDone();
+                        }
                     }
                 }
             );
@@ -84,9 +85,9 @@ export default class LogoAS {
                 opacity: 0,
                 scaleY: 0.9,
                 scaleX: 0.95,
-                duration: 0.5,
+                duration: 1,
                 delay: 0.5,
-                ease: 'power2.out',
+                ease: 'expo.out',
                 onComplete: this.onDone
             });
         } else if (this.onDone) {
