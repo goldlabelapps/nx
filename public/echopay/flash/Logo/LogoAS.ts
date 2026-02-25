@@ -1,15 +1,6 @@
-
-// Replay animation on HMR update (dev only)
-if (import.meta && import.meta.hot) {
-    import.meta.hot.accept(() => {
-        if (window && (window as any).__logoASInstance) {
-            (window as any).__logoASInstance.init();
-        }
-    });
-}
 import { gsap } from 'gsap';
 
-export default class EchoPayLogoAS {
+export default class LogoAS {
     private onDone?: () => void;
     private mc?: React.RefObject<any>;
 
@@ -71,13 +62,11 @@ export default class EchoPayLogoAS {
                     opacity: 0,
                     scaleX: 0.5,
                     scaleY: 0,
-                    rotate: -30
                 },
                 {
                     opacity: 1,
                     scaleX: 1,
                     scaleY: 1,
-                    rotate: 0,
                     duration: 1.2,
                     ease: 'bounce.out',
                     onComplete: () => {
@@ -93,8 +82,8 @@ export default class EchoPayLogoAS {
         if (el) {
             gsap.to(el, {
                 opacity: 0,
-                scaleY: 0.9, // Subtle scale down
-                scaleX: 0.95, // Subtle scale down
+                scaleY: 0.9,
+                scaleX: 0.95,
                 duration: 0.5,
                 delay: 0.5,
                 ease: 'power2.out',

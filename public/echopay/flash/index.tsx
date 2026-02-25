@@ -1,11 +1,11 @@
 import { EchoPay } from './EchoPay';
 import EchoPayAS from './EchoPayAS';
-import { EchoPayLogo } from './EchoPayLogo';
+import { Logo } from './Logo';
 import EchoPayApp from './EchoPayApp';
 
 export {
     EchoPayAS,
     EchoPay,
-    EchoPayLogo,
+    Logo,
     EchoPayApp,
 };

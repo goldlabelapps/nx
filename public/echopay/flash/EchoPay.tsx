@@ -14,7 +14,8 @@ import {
     Flash,
     MovieClip,
 } from '../../../app/NX/Flash';
-import { EchoPayLogo, EchoPayLogoAS } from './EchoPayLogo';
+import { Logo, LogoAS } from './Logo';
+import { CleverText, CleverTextAS } from './CleverText';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
@@ -42,7 +43,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
         const onLogoDone = () => {
             console.log('onLogoDone');
         };
-        logoASRef.current = new EchoPayLogoAS(onLogoDone, logoRef);
+        logoASRef.current = new LogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
             (window as any).__logoASInstance = logoASRef.current;
         }
@@ -64,8 +65,20 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     height={100}
                     maxWidth={'90%'}
                     zIndex={100}>
-                    <EchoPayLogo ref={logoRef} />
+                    <Logo ref={logoRef} />
                 </MovieClip>
+
+                <MovieClip
+                    border
+                    id='mc_clevertext'
+                    // style={{ visibility: 'hidden' }}
+                    width={300}
+                    height={100}
+                    maxWidth={'90%'}
+                    zIndex={100}>
+                    <CleverText />
+                </MovieClip>
+
             </Flash>
         </DesignSystem>
     );
