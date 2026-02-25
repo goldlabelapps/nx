@@ -1,4 +1,4 @@
-// TypeScript: declare import.meta.hot for Vite/webpack HMR
+// TypeScript: declare import.meta.hot for HMR
 declare global {
     interface ImportMeta {
         hot?: {
@@ -13,8 +13,6 @@ import { DesignSystem } from '../../../app/NX/DesignSystem';
 import {
     Flash,
     MovieClip,
-    Chatbot,
-    ChatbotAS,
 } from '../../../app/NX/Flash';
 import { EchoPayLogo, EchoPayLogoAS } from './EchoPayLogo';
 
@@ -24,7 +22,6 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     const [replay, setReplay] = React.useState(0);
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
-    const chatbotRef = useRef<HTMLDivElement>(null);
 
     // HMR: force replay on module update (Next.js dev only)
     React.useEffect(() => {
@@ -43,21 +40,19 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         const onLogoDone = () => {
-            if (chatbotRef.current) {
-                const chatbotAS = new ChatbotAS(undefined, chatbotRef);
-                if (typeof window !== 'undefined') {
-                    (window as any).__chatbotASInstance = chatbotAS;
-                }
-
-                chatbotAS.init();
-            }
+            console.log('onLogoDone');
         };
         logoASRef.current = new EchoPayLogoAS(onLogoDone, logoRef);
         if (typeof window !== 'undefined') {
             (window as any).__logoASInstance = logoASRef.current;
         }
-        logoASRef.current.init();
     }, [replay]);
+
+    useEffect(() => {
+        if (logoASRef.current) {
+            logoASRef.current.init();
+        }
+    }, []);
 
     return (
         <DesignSystem theme={theme}>
@@ -71,21 +66,6 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     zIndex={100}>
                     <EchoPayLogo ref={logoRef} />
                 </MovieClip>
-
-                <MovieClip
-                    id='mc_chatbot'
-                    style={{ visibility: 'hidden' }}
-                    width={'100%'}
-                    maxWidth={800}
-                    zIndex={200}
-                    ref={chatbotRef}
-                >
-                    <Chatbot
-                        title="NXMC"
-                        logo={<EchoPayLogo />}
-                    />
-                </MovieClip>
-
             </Flash>
         </DesignSystem>
     );

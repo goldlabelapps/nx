@@ -1,19 +1,25 @@
 "use client";
 import React from 'react';
-import { I_NX } from './types';
+import { I_NX, T_Theme } from './types';
 import { Box } from '@mui/material';
 import { DesignSystem, Feedback } from './DesignSystem';
 import { useDispatch } from './Uberedux';
 import { setFlash } from './Flash';
+import { EchoPay } from '../../public/echopay/flash';
 
 const NX: React.FC<I_NX> = ({
     children,
     config,
     frontmatter,
+    flash,
 }) => {
 
     const themeMode = config?.cartridges?.designSystem?.defaultTheme || 'light';
-    const theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
+    if (theme) {
+        const mode: 'light' | 'dark' = themeMode === 'dark' ? 'dark' : 'light';
+        theme = { ...theme, mode };
+    }
     const dispatch = useDispatch();
 
     React.useEffect(() => {
@@ -38,10 +44,11 @@ const NX: React.FC<I_NX> = ({
             </Box>
         );
     }
+
     return (
-        <DesignSystem theme={theme}>
+        <DesignSystem theme={theme as T_Theme}>
             <Feedback />
-            {children}
+            {flash ? <EchoPay /> : children}
         </DesignSystem>
     );
 };

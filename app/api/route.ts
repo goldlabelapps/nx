@@ -9,10 +9,16 @@ export async function GET() {
         data: {
             endpoints: [
                 {
+                    name: 'Notify',
+                    method: 'GET',
+                    path: `${getBaseurl()}/notify`
+                },
+                {
                     name: 'EchoPay',
                     method: 'GET',
                     path: `${getBaseurl()}/echopay`
                 },
+
             ]
         }
     });
