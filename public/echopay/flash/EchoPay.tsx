@@ -6,7 +6,7 @@ import {
     MovieClip,
 } from '../../../app/NX/Flash';
 import { Logo, LogoAS } from './Logo';
-import { CleverText, CleverTextAS } from './CleverText';
+import { CleverText } from './CleverText';
 import { MenuClip } from './MenuClip';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
@@ -48,10 +48,9 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 </MovieClip>
 
                 <MovieClip
-                    border
                     id='mc_logo'
                     pos="top-middle"
-                    offsetY={16}
+                    offsetY={32}
                     style={{ visibility: 'hidden' }}
                     width={300}
                     height={100}
@@ -61,14 +60,15 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 </MovieClip>
 
                 <MovieClip
-                    scrollable
-
                     id='mc_clevertext'
-                    // style={{ visibility: 'hidden' }}
-                    height={'50%'}
-                    width={'90%'}
+                    align='left'
+                    offsetY={50}
+                    style={{ visibility: 'hidden' }}
+                    height={'70%'}
+                    width={'80%'}
+                    maxWidth={500}
                     zIndex={150}>
-                    <CleverText ref={cleverTextRef} />
+                    <CleverText />
                 </MovieClip>
 
             </Flash>

@@ -10,7 +10,7 @@ export default class MenuClipAS {
 
     init(mcRef?: React.RefObject<any>) {
         if (mcRef) this.mc = mcRef;
-        console.log('MenuClipAS');
+        // console.log('MenuClipAS');
         const el = this.mc?.current;
         if (el) {
             el.style.opacity = '0';

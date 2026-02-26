@@ -7,7 +7,6 @@ export default class EchoPayAS {
     constructor(onDone?: () => void, mcRef?: React.RefObject<any>) {
         this.onDone = onDone;
         this.mc = mcRef;
-
     }
 
     init() {
@@ -22,7 +21,8 @@ export default class EchoPayAS {
             gsap.fromTo(this.mc.current, {
                 opacity: 0
             }, {
-                opacity: 1, duration: 0.8
+                opacity: 1,
+                duration: 0.8
             });
         }
     }
