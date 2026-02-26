@@ -37,7 +37,7 @@ const Text = forwardRef<FadeInTextHandle, TextProps>(function Text(
 
   // Expose fadeInText to parent
   useImperativeHandle(ref, () => ({
-    fadeInText: (duration = 1, params: { onComplete?: () => void;[key: string]: any } = {}) => {
+    fadeInText: (duration = 0.9, params: { onComplete?: () => void;[key: string]: any } = {}) => {
       if (innerRef.current) {
         const { onComplete, ...rest } = params;
         // Animate opacity from 0 to 1
@@ -57,7 +57,7 @@ const Text = forwardRef<FadeInTextHandle, TextProps>(function Text(
         params.onComplete();
       }
     },
-    fadeOutText: (duration = 1, params: { onComplete?: () => void;[key: string]: any } = {}) => {
+    fadeOutText: (duration = 0.9, params: { onComplete?: () => void;[key: string]: any } = {}) => {
       if (innerRef.current) {
         const { onComplete, ...rest } = params;
         // Animate opacity from 1 to 0

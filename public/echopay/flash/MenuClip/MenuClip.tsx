@@ -31,8 +31,11 @@ export default function MenuClip() {
     const open = Boolean(anchorEl);
 
     React.useEffect(() => {
+        // Initialize the ActionScript with the ref
         ActionScript.current = new MenuClipAS(clipRef);
         ActionScript.current.init();
+
+        // ...existing code...
     }, []);
 
     const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -70,13 +73,13 @@ export default function MenuClip() {
         url?: string;
         help?: string;
     }[] = [
-            {
-                type: 'link',
-                icon: 'user',
-                title: 'Customers say',
-                url: '/testimonial',
-                help: `Navigate to the Testimonial page to view detailed analytics and reports`,
-            },
+            // {
+            //     type: 'link',
+            //     icon: 'user',
+            //     title: 'Customers say',
+            //     url: '/testimonial',
+            //     help: `Navigate to the Testimonial page to view detailed analytics and reports`,
+            // },
             {
                 icon: 'reset',
                 type: 'replay',
