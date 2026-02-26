@@ -19,16 +19,25 @@ export default function CleverText() {
     }, []);
 
     const name = 'Example Company Ltd';
-    const cto = 1000000
+    const cto = 1000000;
     const atv = 500;
     const biz = 75;
 
-    const currentCostPerMonth = 2000;
-    const echoPayCostPerMonth = 1500;
+    // Calculate number of transactions per month
+    const transactions = cto / atv;
+    // Split by business and consumer cards
+    const bizTransactions = transactions * (biz / 100);
+    const consumerTransactions = transactions * (1 - biz / 100);
+    // Typical rates
+    const bizRate = 0.7; // £0.7 per business card transaction
+    const consumerRate = 0.6; // £0.6 per consumer card transaction
+    // Calculate costs
+    const currentCostPerMonth = Math.round((bizTransactions * bizRate) + (consumerTransactions * consumerRate));
+    const echoPayCostPerMonth = Math.round(transactions * 0.5);
     const yearlyProfit = (currentCostPerMonth - echoPayCostPerMonth) * 12;
 
     const markdownText = `**${name}** has a monthly card turnover of **£${cto}** and an average transaction value of **£${atv}**. The percentage of business cards compared to comsumer ones is **${biz}%**.
-    Their card aquisition cost per month is **£${currentCostPerMonth}** but with EchoPay is **£${echoPayCostPerMonth}**. Which over the course a of a year means **£${yearlyProfit}**
+    Their card acquisition cost per month is **£${currentCostPerMonth}** but with EchoPay is **£${echoPayCostPerMonth}**. Which over the course a of a year means **£${yearlyProfit}**
 `;
 
     // Typewriter effect for real-time text generation
