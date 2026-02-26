@@ -7,6 +7,7 @@ import {
 } from '../../../app/NX/Flash';
 import { Logo, LogoAS } from './Logo';
 import { CleverText, CleverTextAS } from './CleverText';
+import { MenuClip } from './MenuClip';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
@@ -41,6 +42,17 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     return (
         <DesignSystem theme={theme}>
             <Flash id={'NXMC_flash'}>
+
+                <MovieClip
+                    id='mc_menu'
+                    pos="bottom-left"
+                    // style={{ visibility: 'hidden' }}
+                    width={50}
+                    height={50}
+                    zIndex={200}>
+                    <MenuClip />
+                </MovieClip>
+
                 <MovieClip
                     border
                     id='mc_logo'
