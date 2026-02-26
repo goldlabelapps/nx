@@ -10,7 +10,7 @@ image: https://live.staticflickr.com/65535/55111827934_a064f9cf37_c.jpg
 
 > Rob Eastwood, Small Beer managing director
 
-We take hundreds of card payments and paying less than £1 per transaction is much better than 2%. 
+We take hundreds of card payments and paying less than £1 per transaction is much better than 2%. [questions?](/support)
 
 We’d heard some great feedback about EchoPay from our peers within Unitas, particularly from United Wholesale Scotland. It sounded too good to be true, but as we started to weigh it up, we realised there was no option not to do it.
 

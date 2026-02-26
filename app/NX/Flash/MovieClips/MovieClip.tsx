@@ -116,19 +116,25 @@ export const MovieClip = React.forwardRef<HTMLDivElement, I_MovieClip>(({
     zIndex,
     scrollable = false,
 }, ref) => {
-    // Compose transform: base + position + offset
+    // Compose transform: base + position + offset, but avoid double centering
     const positionStyle = getPositionStyle(pos);
-    // Extract any transform from positionStyle or base
     const baseTransform = movieClipBaseStyle.transform || '';
     const positionTransform = positionStyle.transform || '';
-    // Remove transform from positionStyle to avoid duplicate key
     const { transform: _removed, ...positionStyleNoTransform } = positionStyle;
-    // Compose all transforms
-    const transforms = [
-        baseTransform,
-        positionTransform,
-        (offsetX !== 0 || offsetY !== 0) ? `translate(${offsetX}px, ${offsetY}px)` : ''
-    ].filter(Boolean).join(' ');
+    let transforms = '';
+    if (pos) {
+        // Use only the position's transform plus offset
+        transforms = [
+            positionTransform,
+            (offsetX !== 0 || offsetY !== 0) ? `translate(${offsetX}px, ${offsetY}px)` : ''
+        ].filter(Boolean).join(' ');
+    } else {
+        // Use base transform plus offset
+        transforms = [
+            baseTransform,
+            (offsetX !== 0 || offsetY !== 0) ? `translate(${offsetX}px, ${offsetY}px)` : ''
+        ].filter(Boolean).join(' ');
+    }
     const mergedStyle: React.CSSProperties = {
         ...movieClipBaseStyle,
         ...(width ? { width } : {}),

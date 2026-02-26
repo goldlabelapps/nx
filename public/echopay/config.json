@@ -25,10 +25,10 @@
                     "title": "echopay.co.uk",
                     "type": "link",
                     "url": "https://echopay.co.uk",
-                    "icon": "shop"
+                    "icon": "link"
                 },
                 {
-                    "title": "Dashboard",
+                    "title": "Merchant Dashboard",
                     "type": "link",
                     "url": "https://dev-dashboard.a2apay.co.uk",
                     "icon": "dashboard"

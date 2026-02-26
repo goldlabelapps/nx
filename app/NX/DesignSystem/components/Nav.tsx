@@ -104,16 +104,31 @@ const Nav: React.FC<I_Nav> = ({
         return (
             <>
                 <IconButton color="secondary" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
-                    <Icon icon='menu' />
+                    <Icon icon='fingerprint' />
                 </IconButton>
-                <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-                    <Box sx={{ width: 300, mt: 2 }} role="presentation" onClick={() => setDrawerOpen(false)}>
-                        <Box sx={{ m: 1 }}>
-                            <Commerce config={config} />
-                        </Box>
+
+                <Drawer
+                    anchor="left"
+                    open={drawerOpen}
+                    onClose={() => setDrawerOpen(false)}
+
+                >
+                    <Box sx={{
+                        width: 300,
+
+                        mt: 2
+                    }}
+                        role="presentation"
+                        onClick={() => setDrawerOpen(false)}
+                    >
+
                         <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
+
+                        <Box sx={{ m: 1 }}>
+                            <Commerce config={config} />
+                        </Box>
 
                     </Box>
                 </Drawer>
