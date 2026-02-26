@@ -93,6 +93,7 @@ export default function Footer({
 							{scene === 'NXMC' && <NXMCApp />}
 						</>
 					)}
+
 					<Box sx={{ flexGrow: 1 }} />
 					<Nav
 						mode="mobile"
@@ -100,6 +101,8 @@ export default function Footer({
 						currentPath={frontmatter?.slug || '/'}
 						config={config}
 					/>
+					<Box sx={{ flexGrow: 1 }} />
+
 					{children && (
 						<Box sx={{ ml: 2 }}>
 							{children}

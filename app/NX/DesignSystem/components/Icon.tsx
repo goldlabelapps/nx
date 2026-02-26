@@ -129,7 +129,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PreviewIcon from '@mui/icons-material/Preview';
 import PhotoIcon from '@mui/icons-material/CameraAlt';
 import AlbumIcon from '@mui/icons-material/Collections';
-import LinkIcon from '@mui/icons-material/Link';
+import LinkIcon from '@mui/icons-material/OpenInNewOutlined';
 import AboutIcon from '@mui/icons-material/HelpOutlineOutlined';
 import ClientsIcon from '@mui/icons-material/PeopleAltOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';

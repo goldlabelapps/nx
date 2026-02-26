@@ -73,7 +73,7 @@ export default function MenuClip() {
             {
                 type: 'link',
                 icon: 'user',
-                title: 'Testimonial',
+                title: 'Customers say',
                 url: '/testimonial',
                 help: `Navigate to the Testimonial page to view detailed analytics and reports`,
             },
@@ -97,8 +97,8 @@ export default function MenuClip() {
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleMenuClose}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+                transformOrigin={{ vertical: 'top', horizontal: 'center' }}
                 PaperProps={{ style: { minWidth: 280 } }}
             >
                 <List dense>

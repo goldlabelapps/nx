@@ -15,21 +15,14 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
     const cleverTextRef = useRef<HTMLImageElement>(null);
-    const cleverTextASRef = useRef<any>(null);
 
-    const effectHook = (flag: string | null) => {
-        if (flag === 'LogoDone') {
-            // cleverTextASRef.current =
-            //     new CleverTextAS(() => effectHook('CleverTextDone'), cleverTextRef);
-            // cleverTextASRef.current.init();
-            // logoASRef.current.fadeOut();
-        }
+    const onDone = (flag: string | null) => {
     };
 
     useEffect(() => {
         logoASRef.current =
-            new LogoAS(() => effectHook('LogoDone'), logoRef);
-    }, [effectHook]);
+            new LogoAS(() => onDone('LogoDone'), logoRef);
+    }, [onDone]);
 
     useEffect(() => {
         if (logoASRef.current) {
@@ -45,8 +38,9 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
                 <MovieClip
                     id='mc_menu'
-                    pos="bottom-left"
+                    pos="bottom-middle"
                     style={{ visibility: 'hidden' }}
+                    offsetY={-8}
                     width={50}
                     height={50}
                     zIndex={200}>
@@ -56,6 +50,8 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 <MovieClip
                     border
                     id='mc_logo'
+                    pos="top-middle"
+                    offsetY={16}
                     style={{ visibility: 'hidden' }}
                     width={300}
                     height={100}
@@ -66,11 +62,11 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
                 <MovieClip
                     scrollable
+
                     id='mc_clevertext'
-                    style={{ visibility: 'hidden' }}
-                    height={'50vh'}
-                    width={400}
-                    maxWidth={'90%'}
+                    // style={{ visibility: 'hidden' }}
+                    height={'50%'}
+                    width={'90%'}
                     zIndex={150}>
                     <CleverText ref={cleverTextRef} />
                 </MovieClip>

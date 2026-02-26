@@ -16,7 +16,7 @@ import {
 } from '../../../app/NX/Flash';
 import { NXLogo, NXLogoAS } from './NXLogo';
 
-export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
+export const NXMC: React.FC<{ config?: any; is404?: boolean }> = ({ config, is404 }) => {
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const [replay, setReplay] = React.useState(0);
@@ -49,6 +49,23 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
         as.current.init();
     }, [replay]);
 
+    // Cleanup on unmount
+    useEffect(() => {
+        return () => {
+            if (as.current) {
+                as.current.destroy();
+            }
+        };
+    }, []);
+
+    let svgSrc = "/nx/svg/NXLogo.svg";
+
+    // if this is a 404 page log it out
+    if (is404) {
+        svgSrc = "/nx/svg/NXLogo404.svg";
+        console.log('404 page detected');
+    }
+
     return (
         <DesignSystem theme={theme}>
             <Flash id={'NXMC_flash'}>
@@ -59,7 +76,7 @@ export const NXMC: React.FC<{ config?: any }> = ({ config }) => {
                     height={100}
                     maxWidth={'90%'}
                     zIndex={100}>
-                    <NXLogo ref={logoRef} />
+                    <NXLogo ref={logoRef} svgSrc={svgSrc} />
                 </MovieClip>
             </Flash>
         </DesignSystem>
