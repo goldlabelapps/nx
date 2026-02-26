@@ -46,7 +46,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 <MovieClip
                     id='mc_menu'
                     pos="bottom-left"
-                    // style={{ visibility: 'hidden' }}
+                    style={{ visibility: 'hidden' }}
                     width={50}
                     height={50}
                     zIndex={200}>

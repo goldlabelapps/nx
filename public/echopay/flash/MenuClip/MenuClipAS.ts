@@ -27,4 +27,12 @@ export default class MenuClipAS {
             });
         }
     }
+    fadeOut() {
+        const el = this.mc?.current;
+        if (el) {
+            gsap.to(el, {
+                opacity: 0,
+            });
+        }
+    }
 }

@@ -15,7 +15,7 @@ export default class LogoAS {
             el.style.opacity = '0';
             el.style.visibility = 'visible';
             el.style.transform = 'scaleY(0)';
-            el.style.transform = 'scaleX(0.5)';
+            el.style.transform = 'scaleX(0)';
             this.fadeIn();
         }
     }
