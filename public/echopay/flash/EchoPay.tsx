@@ -44,9 +44,8 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
             <Flash id={'NXMC_flash'}>
 
                 <MovieClip
-                    border
-                    pos="bottom-right"
                     id='mc_menu'
+                    pos="bottom-left"
                     // style={{ visibility: 'hidden' }}
                     width={50}
                     height={50}
