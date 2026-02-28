@@ -1,4 +1,3 @@
-import type { T_Email } from '../../types'
 import { NextResponse } from 'next/server';
 import { makeRes } from '../../';
 
