@@ -1,5 +1,6 @@
 import { I_MakeRes } from "../types";
-import { makeTime, getBaseurl } from '../';
+import { makeTime } from './makeTime';
+import { getBaseurl } from './getBaseurl';
 
 export function makeRes({ severity, message, data }: I_MakeRes) {
     const epoch = Date.now();
