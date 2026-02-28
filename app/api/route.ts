@@ -1,26 +1,13 @@
 import { NextResponse } from 'next/server';
 import { makeRes } from './lib/makeRes';
-import { getBaseurl } from './lib/getBaseurl';
+import { getEndpoints } from './';
+
 
 export async function GET() {
     const res = makeRes({
         severity: 'success',
         message: 'Base API GET endpoint',
-        data: {
-            endpoints: [
-                {
-                    name: 'Notify',
-                    method: 'GET',
-                    path: `${getBaseurl()}/notify`
-                },
-                {
-                    name: 'EchoPay',
-                    method: 'GET',
-                    path: `${getBaseurl()}/echopay`
-                },
-
-            ]
-        }
+        data: getEndpoints()
     });
     return NextResponse.json(res);
 }
