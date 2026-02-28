@@ -1,4 +1,4 @@
-import { getBaseurl } from '../';
+import { getBaseurl } from './getBaseurl';
 
 export const getEndpoints = (name?: string) => {
     const baseURL = getBaseurl();

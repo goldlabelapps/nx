@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { makeRes, getBaseurl, getEndpoints } from '../';
+import { makeRes, getEndpoints } from '../';
 
 export async function GET() {
     const res = makeRes({
