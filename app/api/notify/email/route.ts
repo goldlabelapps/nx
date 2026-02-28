@@ -21,7 +21,6 @@ export async function GET() {
     const res = makeRes({
         severity: 'warning',
         message: 'You need to POST a valid T_Email object to this endpoint to send an email.',
-        data: getEndpoints('Notify'),
     });
     return NextResponse.json(res);
 }
