@@ -4,12 +4,14 @@ import ReactMarkdown from 'react-markdown';
 import { useState, useEffect } from 'react';
 import {
     Box,
+    darken,
+    useTheme,
 } from '@mui/material';
 
 import { CleverTextAS } from './';
 
 export default function CleverText() {
-
+    const theme = useTheme();
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
 
@@ -18,7 +20,7 @@ export default function CleverText() {
         ActionScript.current.init();
     }, []);
 
-    const name = 'Example Company Ltd';
+    const name = 'Baxters Ltd';
     const cto = 1000000;
     const atv = 500;
     const biz = 75;
@@ -36,7 +38,7 @@ export default function CleverText() {
     const echoPayCostPerMonth = Math.round(transactions * 0.5);
     const yearlyProfit = (currentCostPerMonth - echoPayCostPerMonth) * 12;
 
-    const markdownText = `**${name}** has a monthly card turnover of **£${cto}** and an average transaction value of **£${atv}**. The percentage of business cards compared to comsumer ones is **${biz}%**.
+    const markdownText = `Let's say that **${name}** has a monthly card turnover of **£${cto}** and an average transaction value of **£${atv}**. The percentage of business cards compared to comsumer ones is **${biz}%**.
     Their card acquisition cost per month is **£${currentCostPerMonth}** but with EchoPay is **£${echoPayCostPerMonth}**. Which over the course a of a year means **£${yearlyProfit}**
 `;
 
@@ -69,28 +71,18 @@ export default function CleverText() {
     return (
         <Box
             sx={{
-                // display: 'flex',
-                // flexDirection: 'column',
-                // alignItems: 'flex-start',
-                gap: 2,
-                p: 3,
-                bgcolor: '#f7f7f8',
-                minHeight: 320,
+                px: 2,
                 width: '100%',
-                maxWidth: 480,
             }}
         >
             <Box
                 ref={clipRef}
                 sx={{
-                    bgcolor: '#fff',
-                    borderRadius: 3,
-                    boxShadow: '0 2px 8px 0 rgba(0,0,0,0.04)',
-                    p: 2.5,
-                    color: '#222',
-                    border: '1px solid #e5e5e5',
+                    bgcolor: darken(theme.palette.background.paper, 0.25),
+                    borderRadius: 2,
+                    px: 2.5,
+                    border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
                     wordBreak: 'break-word',
-                    minHeight: 40,
                 }}
             >
                 <ReactMarkdown>{displayed}</ReactMarkdown>

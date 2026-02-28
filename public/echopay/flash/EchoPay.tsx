@@ -1,20 +1,26 @@
 "use client";
 import React, { useRef, useEffect } from 'react';
+import {
+    Box,
+} from '@mui/material';
 import { DesignSystem } from '../../../app/NX/DesignSystem';
 import {
     Flash,
     MovieClip,
 } from '../../../app/NX/Flash';
 import { Logo, LogoAS } from './Logo';
-import { CleverText } from './CleverText';
-import { MenuClip } from './MenuClip';
+import {
+    CleverText,
+    DumbText,
+    RequiredText,
+    MenuClip,
+} from './';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
-    const cleverTextRef = useRef<HTMLImageElement>(null);
 
     const onDone = (flag: string | null) => {
     };
@@ -60,15 +66,46 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 </MovieClip>
 
                 <MovieClip
-                    id='mc_clevertext'
-                    align='left'
-                    offsetY={50}
-                    style={{ visibility: 'hidden' }}
-                    height={'70%'}
+                    border
+                    id='mc_chatbot'
+                    offsetY={150}
+                    style={{
+                        visibility: 'hidden',
+                        display: 'block',
+                    }}
+                    height={'100%'}
                     width={'80%'}
-                    maxWidth={500}
                     zIndex={150}>
-                    <CleverText />
+
+                    <Box sx={{ border: '1px solid gold' }}>
+                        <Box>
+                            <DumbText options={{
+                                id: 'dumb1',
+                                markdown: "Hello. Please enter your company name to see how much you could save with EchoPay.",
+                            }} />
+                        </Box>
+                        <Box>
+                            <CleverText />
+                        </Box>
+
+
+
+
+                        {/* <Box>
+                            <DumbText options={{
+                                id: 'dumb1',
+                                markdown: "Hello. Please enter your company name to see how much you could save with EchoPay.",
+                            }} />
+                        </Box>
+                        <Box>
+                            <RequiredText options={{
+                                label: "Company Name",
+                                helper: "eg: Pies Online Ltd",
+                                type: 'string',
+                                error: false,
+                            }} />
+                        </Box> */}
+                    </Box>
                 </MovieClip>
 
             </Flash>
