@@ -5,28 +5,28 @@ export const getEndpoints = (name?: string) => {
     const endpoints = [
         {
             name: 'Notify',
+            description: 'Handles all channels of notification and logging',
             path: `${baseURL}/notify`,
             subroutines: [
                 {
                     name: 'Email',
                     path: `${baseURL}/notify/email`,
-                    private: true
-                },
-                {
-                    name: 'SMS',
-                    path: `${baseURL}/notify/sms`,
-                    private: true
+                    subroutines: [
+                        {
+                            name: 'Logs',
+                            path: `${baseURL}/notify/email/logs`,
+                        }
+                    ]
                 },
                 {
                     name: 'Push Notification',
                     path: `${baseURL}/notify/push`,
-                    private: true
                 }
             ]
         },
         {
-            name: 'EchoPay',
             private: true,
+            name: 'EchoPay',
             path: `${baseURL}/echopay`,
         },
     ];

@@ -8,6 +8,7 @@ function getAdminCredential() {
         try {
             const jsonStr = Buffer.from(base64, 'base64').toString('utf8');
             const serviceAccount = JSON.parse(jsonStr);
+            console.log('[FIREBASE_ADMIN] Decoded service account:', serviceAccount);
             return cert(serviceAccount);
         } catch (e) {
             throw new Error('Failed to parse FIREBASE_SERVICE_ACCOUNT_BASE64: ' + (e instanceof Error ? e.message : String(e)));
