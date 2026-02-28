@@ -1,26 +1,13 @@
+import type { T_Email } from '../../types'
 import { NextResponse } from 'next/server';
-import { makeRes, getEndpoints } from '../../';
+import { makeRes } from '../../';
 
-export type T_Email = {
-
-    from: {
-        label: string;
-        email: string;
-    },
-    to: {
-        label: string;
-        email: string;
-    }
-    subject: string;
-    body: string; // Markdown or HTML content?  
-    template?: string;
-
-};
-
+const githubURL = 'https://github.com/goldlabelapps/nx/blob/master/app/api/types.d.ts';
 export async function GET() {
     const res = makeRes({
         severity: 'warning',
-        message: 'You need to POST a valid T_Email object to this endpoint to send an email.',
+        message: 'You need to POST a valid [T_Email](/typescript) object to this endpoint to send an email.',
+        data: { githubURL }
     });
     return NextResponse.json(res);
 }
