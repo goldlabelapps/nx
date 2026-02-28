@@ -14,7 +14,7 @@
                 {
                     "title": "RESTful API",
                     "type": "link",
-                    "description": "Goldlabel Micro Services",
+                    "description": "Programmatic Micro Services",
                     "url": "/api",
                     "icon": "api",
                     "target": "_blank"

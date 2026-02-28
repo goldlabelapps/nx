@@ -1,13 +1,14 @@
 import { I_MakeRes } from "../types";
 import { makeTime } from './makeTime';
+import { getBaseurl } from './getBaseurl';
 
 export function makeRes({ severity, message, data }: I_MakeRes) {
     const epoch = Date.now();
     const meta = {
+        baseURL: getBaseurl(),
         severity,
         message,
         time: makeTime(epoch),
-        epoch
     };
     return data !== undefined
         ? { meta, data }

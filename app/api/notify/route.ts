@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server';
-import { makeRes } from '../lib/makeRes';
+import { makeRes, getEndpoints } from '../';
 
 export async function GET() {
     const res = makeRes({
         severity: 'success',
-        message: 'Nofify endpoint',
+        message: 'Notify endpoint says hello',
+        data: getEndpoints('Notify'),
     });
     return NextResponse.json(res);
 }
