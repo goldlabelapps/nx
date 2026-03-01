@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-export default class CleverTextAS {
+export default class NewCompanyAS {
     private mc?: React.RefObject<any>;
 
     constructor(mcRef?: React.RefObject<any>) {
@@ -8,7 +8,7 @@ export default class CleverTextAS {
     }
 
     init() {
-        // console.log('CleverText init');
+        // console.log('NewCompany init');
         const el = this.mc?.current;
         if (el) {
             el.style.opacity = '0';
@@ -18,7 +18,7 @@ export default class CleverTextAS {
     }
 
     fadeIn() {
-        // console.log('CleverText fadeIn');
+        // console.log('NewCompany fadeIn');
         const el = this.mc?.current;
         if (el) {
             gsap.to(el, {
@@ -29,8 +29,5 @@ export default class CleverTextAS {
         }
     }
 
-    destroy() {
-        console.log('CleverTextAS destroyed');
-    }
 
 }

@@ -1,7 +1,7 @@
 ---
 order: 2
 slug: /testimonial
-title: Customers say
+title: Testimonial
 description: Working with EchoPay is a no brainer
 icon: user
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,

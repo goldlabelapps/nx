@@ -73,17 +73,17 @@ export default function MenuClip() {
         url?: string;
         help?: string;
     }[] = [
-            // {
-            //     type: 'link',
-            //     icon: 'user',
-            //     title: 'Customers say',
-            //     url: '/testimonial',
-            //     help: `Navigate to the Testimonial page to view detailed analytics and reports`,
-            // },
+            {
+                type: 'link',
+                icon: 'book',
+                title: 'Find out more',
+                url: '/testimonial',
+                help: `Navigate to the Testimonial page to view detailed analytics and reports`,
+            },
             {
                 icon: 'reset',
                 type: 'replay',
-                title: 'Replay',
+                title: 'Restart',
                 help: `Replay the animation from the beginning. Useful for testing and debugging.`,
             },
 
@@ -99,10 +99,13 @@ export default function MenuClip() {
             <Menu
                 anchorEl={anchorEl}
                 open={open}
+                sx={{
+                    background: 0
+                }}
                 onClose={handleMenuClose}
                 anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}
-                PaperProps={{ style: { minWidth: 280 } }}
+                PaperProps={{ style: { minWidth: 300 } }}
             >
                 <List dense>
                     {menuItems.map((item, idx: number) => (

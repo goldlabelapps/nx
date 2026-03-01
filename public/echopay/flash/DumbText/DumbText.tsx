@@ -22,11 +22,11 @@ export default function DumbText({ options }: I_DumbTextProps) {
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
     const theme = useTheme();
+
     React.useEffect(() => {
         ActionScript.current = new DumbTextAS(clipRef);
         ActionScript.current.init();
-    }, []);
-
+    }, [ActionScript, clipRef]);
 
     const defaultOptions = {
         id: undefined,
@@ -35,19 +35,14 @@ export default function DumbText({ options }: I_DumbTextProps) {
     const mergedOptions = { ...defaultOptions, ...options };
 
     return (
-        <Box
-            id={mergedOptions.id}
-            sx={{
-                p: 2,
-            }}
-        >
+        <Box id={mergedOptions.id}>
             <Box
                 ref={clipRef}
                 sx={{
+                    border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
                     bgcolor: darken(theme.palette.background.paper, 0.25),
                     borderRadius: 2,
                     px: 2.5,
-                    border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
                 }}
             >
                 <ReactMarkdown>

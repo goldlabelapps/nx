@@ -6,6 +6,7 @@ import { MenuClip } from './MenuClip';
 import { CleverText } from './CleverText';
 import { DumbText } from './DumbText';
 import { RequiredText } from './RequiredText';
+import { NewCompany } from './NewCompany';
 
 export {
     EchoPayAS,
@@ -15,5 +16,6 @@ export {
     CleverText,
     DumbText,
     RequiredText,
+    NewCompany,
     MenuClip,
 };

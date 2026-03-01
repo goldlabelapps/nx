@@ -1,12 +1,14 @@
 ---
 order: 1 
 slug: /
-title: Goldlabel
-description: Real results, real fast
-tags: NX, Goldlabel, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS
+title: NX
+description: Multi-tenant NextJS
+tags: NX, Goldlabel, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS
 icon: goldlabel
 image: https://live.staticflickr.com/65535/54941470978_9dedcdd929_b.jpg
 ---
+
+## Goldlabel Apps. Real results, real fast
 
 - _Small_ team. _Big_ output
 - Real deployments from Day One
@@ -17,3 +19,4 @@ Create and deploy super fast, modern Next.js apps. Perfectly optimised for SEO. 
 > Accessibility, performance, and seamless user experience as standard. 
 
 NX empowers developers and businesses to build future-proof web solutions with minimal effort. As ideal for new products as scaling an enterprise solution, NX are the tools and architecture to ensure marketing is always at the cutting edge of web technology
+
