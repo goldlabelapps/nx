@@ -164,11 +164,15 @@ import TerminalIcon from '@mui/icons-material/Terminal';
 import VapeIcon from '@mui/icons-material/SmokeFree';
 import SendIcon from '@mui/icons-material/Send';
 import BookIcon from '@mui/icons-material/MenuBook';
+import MathsIcon from '@mui/icons-material/Calculate';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'maths':
+      iconFragment = <MathsIcon color={color} />;
+      break;
     case 'book':
       iconFragment = <BookIcon color={color} />;
       break;

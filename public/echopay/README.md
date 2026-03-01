@@ -1,6 +1,25 @@
+
+
 # Echopay NX
 
-> Documentation and resources for the Echopay project
+## Do the maths
+
+```typescript
+
+    return `If **${name}** has a monthly card turnover of **${ctoDisplay}** with an 
+        average transaction value of **${atvDisplay}**. 
+        The ratio of those transactions being business versus consumer cards is **${bizDisplay}**. They 
+        have a card acquisiion cost of ${currentCostPerMonthDisplay} per month. With **EchoPay** that drops 
+        to **${echoPayCostPerMonthDisplay}**. Simply plugging EchoPay in creates extra profit 
+        of **${yearlyProfitDisplay}** per year`;
+```
+
+Assuming a 
+    const bizRate = 0.7; // £0.7 per business card transaction                  
+    const consumerRate = 0.6; // £0.6 per consumer card transaction
+
+
+> More Docs and resources for the Echopay project
 
 ## Auth
 
