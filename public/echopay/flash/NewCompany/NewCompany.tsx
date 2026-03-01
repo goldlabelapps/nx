@@ -170,14 +170,13 @@ export default function NewCompany({ options }: I_NewCompany) {
                 <Collapse in={thisStep.num === 2}>
                     <Box id="newcompany_mc" sx={{ px: 2 }} onKeyDown={handleKeyDown}>
 
-                        <Box sx={{ display: 'flex', mb: 4, mt: 2 }}>
+                        <Box sx={{ display: 'flex', my: 2, }}>
                             <TextField
                                 fullWidth
                                 size='small'
                                 variant="filled"
                                 id="input_name"
                                 label="Company name"
-
                                 value={fields.name}
                                 inputRef={nameInputRef}
                                 onChange={e => {
@@ -187,7 +186,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                     setTimeout(validate, 0);
                                 }}
                             />
-                            {isNameValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" /></Box>}
+                            {isNameValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
                         </Box>
 
                         <Box sx={{ display: 'flex', mb: 2 }}>
@@ -209,7 +208,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                     startAdornment: <InputAdornment position="start">£</InputAdornment>
                                 }}
                             />
-                            {isCtoValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" /></Box>}
+                            {isCtoValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
                         </Box>
 
                         <Box sx={{ display: 'flex', mb: 1 }}>
@@ -231,10 +230,10 @@ export default function NewCompany({ options }: I_NewCompany) {
                                     startAdornment: <InputAdornment position="start">£</InputAdornment>
                                 }}
                             />
-                            {isAtvValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" /></Box>}
+                            {isAtvValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
                         </Box>
 
-                        <Box sx={{ display: 'flex', alignItems: 'center', m: 0 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
                             <Box sx={{}}>
                                 <Typography variant="body2" sx={{}} >
                                     Business card ratio ({Number(fields.biz)}%)
@@ -254,7 +253,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 />
 
                             </Box>
-                            {isBizValid && <Box sx={{ mt: 2, ml: 2 }}><Icon icon="tick" /></Box>}
+                            {isBizValid && <Box sx={{ mt: 2, ml: 2 }}><Icon icon="tick" color="disabled" /></Box>}
                         </Box>
 
 
