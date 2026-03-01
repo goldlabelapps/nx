@@ -59,8 +59,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     {/* markdown: `Why switch card acquisition to **EchoPay**?`, */}
                     <NewCompany options={{
                         id: 'newcompany_mc',
-                        markdown: `Add a new company to see how much more profit it would
-                        make by switching card acuisition to **EchoPay**`,
+                        markdown: `How much more profit is made by plugging in **EchoPay** card acquisition? Do the maths`,
                     }} />
                 </MovieClip>
                 <MovieClip

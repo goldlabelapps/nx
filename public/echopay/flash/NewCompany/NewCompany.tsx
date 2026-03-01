@@ -36,7 +36,7 @@ export default function NewCompany({ options }: I_NewCompany) {
     });
 
     // Individual field validation (must be after fields is declared)
-    const isNameValid = fields.name.trim() !== '';
+    const isNameValid = fields.name.trim().length >= 3;
     const ctoNum = parseFloat(fields.cto);
     const atvNum = parseFloat(fields.atv);
     const bizNum = parseFloat(fields.biz);
@@ -57,11 +57,10 @@ export default function NewCompany({ options }: I_NewCompany) {
     const dispatch = useDispatch();
     const thisStep = flash.thisStep;
 
-
     const validate = () => {
-        // All fields must be non-empty
+        // All fields must be non-empty and name at least 3 chars
         if (
-            fields.name.trim() === '' ||
+            fields.name.trim().length < 3 ||
             fields.cto.trim() === '' ||
             fields.atv.trim() === '' ||
             fields.biz.trim() === ''
@@ -86,18 +85,19 @@ export default function NewCompany({ options }: I_NewCompany) {
     }
 
     const nextStep = () => {
-        let step = null;
         if (thisStep.num === 1) {
-            dispatch(setFlash('thisStep', {
-                num: 2,
-                description: 'Reveal fields',
-            }));
-            // Focus company name input if not already focused
+            setTimeout(() => {
+                dispatch(setFlash('thisStep', {
+                    num: 2,
+                    description: 'Reveal fields',
+                }));
+            }, 3000);
             setTimeout(() => {
                 if (nameInputRef.current && document.activeElement !== nameInputRef.current) {
                     nameInputRef.current.focus();
                 }
-            }, 100);
+
+            }, 4000);
         }
         if (thisStep.num === 2) {
             dispatch(setFlash('thisStep', {
@@ -159,25 +159,9 @@ export default function NewCompany({ options }: I_NewCompany) {
                 {/* Step 2: Form fields */}
                 <Collapse in={thisStep.num === 2}>
                     <Box id="newcompany_mc" sx={{ px: 2 }} onKeyDown={handleKeyDown}>
-                        <Box sx={{ display: 'flex', mb: 3 }}>
-                            <TextField
-                                fullWidth
-                                id="input_name"
-                                label="Company name"
-                                variant="standard"
-                                value={fields.name}
-                                inputRef={nameInputRef}
-                                onChange={e => {
-                                    const value = e.target.value;
-                                    setFields(f => ({ ...f, name: value }));
-                                    dispatch(setFlash('name', value));
-                                    setTimeout(validate, 0);
-                                }}
-                            />
-                            {isNameValid && <Icon icon="tick" color="success" />}
-                        </Box>
 
-                        <Box sx={{ display: 'flex', my: 2 }}>
+
+                        <Box sx={{ display: 'flex', mb: 3 }}>
                             <TextField
                                 fullWidth
                                 id="input_cto"
@@ -196,7 +180,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             {isCtoValid && <Icon icon="tick" color="success" />}
                         </Box>
 
-                        <Box sx={{ display: 'flex', my: 2 }}>
+                        <Box sx={{ display: 'flex', mb: 3 }}>
                             <TextField
                                 fullWidth
                                 id="input_atv"
@@ -215,7 +199,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             {isAtvValid && <Icon icon="tick" color="success" />}
                         </Box>
 
-                        <Box sx={{ display: 'flex', my: 2 }}>
+                        <Box sx={{ display: 'flex', mb: 1 }}>
                             <TextField
                                 fullWidth
                                 id="input_biz"
@@ -235,10 +219,27 @@ export default function NewCompany({ options }: I_NewCompany) {
                         </Box>
 
                         <Box sx={{ display: 'flex', my: 2 }}>
+                            <TextField
+                                fullWidth
+                                id="input_name"
+                                label="Company name"
+                                variant="standard"
+                                value={fields.name}
+                                inputRef={nameInputRef}
+                                onChange={e => {
+                                    const value = e.target.value;
+                                    setFields(f => ({ ...f, name: value }));
+                                    dispatch(setFlash('name', value));
+                                    setTimeout(validate, 0);
+                                }}
+                            />
+                            {isNameValid && <Icon icon="tick" color="success" />}
+                        </Box>
+
+                        <Box sx={{ display: 'flex' }}>
                             <Button
                                 onClick={nextStep}
                                 fullWidth
-                                type="submit"
                                 variant="contained"
                                 sx={{ mt: 2 }}
                                 startIcon={<Icon icon="maths" />}
@@ -254,7 +255,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                 <Collapse in={thisStep.num === 3}>
                     <Box sx={{ px: 2 }}>
                         {thisStep.num === 3 ? <CleverText
-                            key={response}
                             options={{
                                 id: 'response_mc',
                                 markdown: response,
