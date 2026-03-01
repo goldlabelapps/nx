@@ -11,9 +11,11 @@ import {
     Collapse,
 } from '@mui/material';
 import { CleverText } from '../';
+import { makeMDResponse } from '../../';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
+
 
 export default function NewCompany({ options }: I_NewCompany) {
     // Handler for Enter key to submit form
@@ -24,7 +26,6 @@ export default function NewCompany({ options }: I_NewCompany) {
     };
     // Ref for company name input
     const nameInputRef = React.useRef<HTMLInputElement>(null);
-
     const [response, setResponse] = React.useState("thinking...");
     const [valid, setValid] = React.useState(false);
     const [fields, setFields] = React.useState({
@@ -103,13 +104,22 @@ export default function NewCompany({ options }: I_NewCompany) {
                 num: 3,
                 description: 'Close fields and reveal response',
             }));
+            // makeMDResponse
+            const mdResponse = makeMDResponse({
+                name: fields.name,
+                cto: parseFloat(fields.cto),
+                atv: parseFloat(fields.atv),
+                biz: parseFloat(fields.biz),
+
+            })
+            setResponse(mdResponse);
         };
         if (thisStep.num === 3) {
             dispatch(setFlash('thisStep', {
                 num: 4,
                 description: 'Play response animation',
             }));
-            setResponse('dasdkhd')
+
         };
     }
 
@@ -158,7 +168,9 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 value={fields.name}
                                 inputRef={nameInputRef}
                                 onChange={e => {
-                                    setFields(f => ({ ...f, name: e.target.value }));
+                                    const value = e.target.value;
+                                    setFields(f => ({ ...f, name: value }));
+                                    dispatch(setFlash('name', value));
                                     setTimeout(validate, 0);
                                 }}
                             />
@@ -175,7 +187,9 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 inputProps={{ min: 0, step: 'any' }}
                                 value={fields.cto}
                                 onChange={e => {
-                                    setFields(f => ({ ...f, cto: e.target.value }));
+                                    const value = e.target.value;
+                                    setFields(f => ({ ...f, cto: value }));
+                                    dispatch(setFlash('cto', value));
                                     setTimeout(validate, 0);
                                 }}
                             />
@@ -192,7 +206,9 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 inputProps={{ min: 0, step: 'any' }}
                                 value={fields.atv}
                                 onChange={e => {
-                                    setFields(f => ({ ...f, atv: e.target.value }));
+                                    const value = e.target.value;
+                                    setFields(f => ({ ...f, atv: value }));
+                                    dispatch(setFlash('atv', value));
                                     setTimeout(validate, 0);
                                 }}
                             />
@@ -209,7 +225,9 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 inputProps={{ min: 0, max: 100, step: 'any' }}
                                 value={fields.biz}
                                 onChange={e => {
-                                    setFields(f => ({ ...f, biz: e.target.value }));
+                                    const value = e.target.value;
+                                    setFields(f => ({ ...f, biz: value }));
+                                    dispatch(setFlash('biz', value));
                                     setTimeout(validate, 0);
                                 }}
                             />

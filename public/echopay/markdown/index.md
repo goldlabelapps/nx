@@ -1,4 +1,5 @@
 ---
+flash: EchoPay
 order: 1
 slug: /
 title: EchoPay
@@ -6,7 +7,6 @@ description: Do the maths
 icon: right
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
 image: https://live.staticflickr.com/65535/55111827934_a064f9cf37_c.jpg
-flash: EchoPay
 ---
 
 ## Rob Eastwood, Small Beer managing director
