@@ -7,6 +7,7 @@ import { CleverText } from './CleverText';
 import { DumbText } from './DumbText';
 import { RequiredText } from './RequiredText';
 import { NewCompany } from './NewCompany';
+import { GoViral } from './GoViral';
 
 export {
     EchoPayAS,
@@ -18,4 +19,5 @@ export {
     RequiredText,
     NewCompany,
     MenuClip,
+    GoViral,
 };

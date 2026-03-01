@@ -20,6 +20,9 @@ import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
 
 export default function NewCompany({ options }: I_NewCompany) {
+
+
+
     // Handler for Enter key to submit form
     const handleKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter' && valid) {
@@ -58,6 +61,10 @@ export default function NewCompany({ options }: I_NewCompany) {
     const flash = useFlash();
     const dispatch = useDispatch();
     const thisStep = flash.thisStep;
+
+    const handleShare = () => {
+        dispatch(setFlash("goViralOpen", true));
+    }
 
     const validate = () => {
         // All fields must be non-empty and name at least 3 chars
@@ -298,6 +305,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                         />
                         <Button
                             fullWidth
+                            onClick={handleShare}
                             variant="contained"
                             sx={{ mt: 2 }}
                             startIcon={<Icon icon="share" />}
