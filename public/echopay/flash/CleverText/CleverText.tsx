@@ -1,46 +1,47 @@
 "use client";
+
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useState, useEffect } from 'react';
-import {
-    Box,
-    darken,
-    useTheme,
-} from '@mui/material';
-
+import { Box } from '@mui/material';
 import { CleverTextAS } from './';
+import { setFlash, useFlash } from '../../../../app/NX/Flash';
+import { useDispatch } from '../../../../app/NX/Uberedux';
 
-export default function CleverText() {
-    const theme = useTheme();
+
+export interface I_CleverText {
+    options: {
+        markdown: string;
+        onDone?: () => void;
+    }
+}
+
+export default function CleverText({ options }: I_CleverText) {
+
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
+    const flash = useFlash();
+
+    const thisStep = flash.thisStep || {};
+
+
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
         ActionScript.current = new CleverTextAS(clipRef);
         ActionScript.current.init();
-    }, []);
+        dispatch(setFlash('thisStep', {
+            num: 1,
+            description: 'New company clevertext',
+        }));
+        return () => {
+            if (ActionScript.current) {
+                ActionScript.current.destroy();
+            }
+        }
+    }, [dispatch]);
 
-    const name = 'Baxters Ltd';
-    const cto = 1000000;
-    const atv = 500;
-    const biz = 75;
-
-    // Calculate number of transactions per month
-    const transactions = cto / atv;
-    // Split by business and consumer cards
-    const bizTransactions = transactions * (biz / 100);
-    const consumerTransactions = transactions * (1 - biz / 100);
-    // Typical rates
-    const bizRate = 0.7; // £0.7 per business card transaction
-    const consumerRate = 0.6; // £0.6 per consumer card transaction
-    // Calculate costs
-    const currentCostPerMonth = Math.round((bizTransactions * bizRate) + (consumerTransactions * consumerRate));
-    const echoPayCostPerMonth = Math.round(transactions * 0.5);
-    const yearlyProfit = (currentCostPerMonth - echoPayCostPerMonth) * 12;
-
-    const markdownText = `Let's say that **${name}** has a monthly card turnover of **£${cto}** and an average transaction value of **£${atv}**. The percentage of business cards compared to comsumer ones is **${biz}%**.
-    Their card acquisition cost per month is **£${currentCostPerMonth}** but with EchoPay is **£${echoPayCostPerMonth}**. Which over the course a of a year means **£${yearlyProfit}**
-`;
+    const markdownText = options.markdown;
 
     // Typewriter effect for real-time text generation
     const [displayed, setDisplayed] = useState('');
@@ -70,24 +71,15 @@ export default function CleverText() {
 
     return (
         <Box
+            ref={clipRef}
             sx={{
+                borderRadius: 2,
                 px: 2,
-                width: '100%',
+                wordBreak: 'break-word',
             }}
         >
-            <Box
-                ref={clipRef}
-                sx={{
-                    bgcolor: darken(theme.palette.background.paper, 0.25),
-                    borderRadius: 2,
-                    px: 2.5,
-                    border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
-                    wordBreak: 'break-word',
-                }}
-            >
-                <ReactMarkdown>{displayed}</ReactMarkdown>
-
-            </Box>
+            {/* <pre>thisStep: {JSON.stringify(thisStep, null, 2)}</pre> */}
+            <ReactMarkdown>{displayed}</ReactMarkdown>
         </Box>
     );
 }

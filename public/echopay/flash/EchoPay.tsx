@@ -44,22 +44,17 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                 <MovieClip
                     border
                     id='mc_chatbot'
-                    // offsetY={150}
-                    style={{
-                        // visibility: 'hidden',
-                        // display: 'block',
-                    }}
+                    style={{ visibility: 'hidden' }}
                     height={'100%'}
-                    width={'80%'}
+                    width={'90%'}
                     minWidth={320}
                     maxWidth={500}
-                    zIndex={150}>
-                    <Box sx={{ border: '1px solid gold' }}>
-                        <NewCompany options={{
-                            id: 'EchoPAPI_mc',
-                            markdown: `Hello, this is ${agentName}, your personal assistant to help you save money with EchoPay. Please enter your company name to see how much more money you'd make`,
-                        }} />
-                    </Box>
+                    zIndex={250}>
+                    <NewCompany options={{
+                        id: 'EchoPAPA_mc',
+                        markdown: `Add a new company to see how much more profit it would
+                        make by switching card acuisition to EchoPay`,
+                    }} />
                 </MovieClip>
                 <MovieClip
                     id='mc_menu'

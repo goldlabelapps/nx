@@ -25,7 +25,7 @@ const NX: React.FC<I_NX> = ({
 
     React.useEffect(() => {
         if (frontmatter && frontmatter.flash) {
-            dispatch(setFlash("sceneOpen", false));
+            // dispatch(setFlash("sceneOpen", false));
             dispatch(setFlash("scene", frontmatter.flash));
         } else {
             dispatch(setFlash("scene", null));

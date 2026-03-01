@@ -7,8 +7,9 @@ import {
     darken,
     lighten,
 } from '@mui/material';
-import { DumbText } from '../';
+import { CleverText } from '../';
 import { NewCompanyAS } from './';
+import { useFlash } from '../../../../app/NX/Flash'
 
 export default function NewCompany({ options }: I_NewCompany) {
 
@@ -21,41 +22,40 @@ export default function NewCompany({ options }: I_NewCompany) {
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
     const theme = useTheme();
+    const flash = useFlash();
+
+    const thisStep = flash.thisStep || {};
 
     React.useEffect(() => {
         ActionScript.current = new NewCompanyAS(clipRef);
         ActionScript.current.init();
-    }, []);
+        // console.log('NewCompany thisStep:', thisStep);
+        if (thisStep?.num === 1) {
+            // Multi-tenant
+
+        }
+    }, [thisStep]);
 
     return (
         <Box
             id={mergedOptions.id}
-            sx={{
-                p: 2,
-            }}
         >
-            <Box>
-                <DumbText options={{
-                    id: 'dumb1',
-                    markdown: mergedOptions.markdown,
-                }} />
-            </Box>
-
             <Box
                 ref={clipRef}
                 sx={{
                     bgcolor: darken(theme.palette.background.paper, 0.25),
                     borderRadius: 2,
-                    px: 2.5,
-                    border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
+                    p: 2,
                 }}
             >
-                This is the new company form.
-                it blocks anything else until it's
-                filled in validly and submitted.
+                <CleverText options={{
+                    markdown: mergedOptions.markdown,
+                    onDone: () => {
+                        console.log('CleverText done');
+                    },
+                }} />
+
             </Box>
-
-
         </Box>
     );
 }

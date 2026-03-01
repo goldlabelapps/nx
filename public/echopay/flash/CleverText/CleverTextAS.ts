@@ -29,5 +29,8 @@ export default class CleverTextAS {
         }
     }
 
+    destroy() {
+        console.log('CleverTextAS destroyed');
+    }
 
 }
