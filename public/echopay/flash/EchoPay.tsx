@@ -9,15 +9,18 @@ import { Logo, LogoAS } from './Logo';
 import {
     NewCompany,
     MenuClip,
+    GoViral,
 } from './';
 import { setFlash, useFlash } from '../../../app/NX/Flash';
 import { useDispatch } from '../../../app/NX/Uberedux';
+import { Feedback, setFeedback } from '../../../app/NX/DesignSystem';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
+    const flash = useFlash();
     const dispatch = useDispatch();
     const onDone = (flag: string | null) => {
     };
@@ -39,10 +42,18 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
             num: 1,
             description: 'Setup Chatbot',
         }));
+
+        // dispatch(setFeedback({
+        //     severity: 'success',
+        //     title: 'Hello!',
+        // }));
+
     }, [dispatch]);
 
     return (
         <DesignSystem theme={theme}>
+            <GoViral />
+            <Feedback />
             <Flash id={'NXMC_flash'}>
                 <MovieClip
                     border
