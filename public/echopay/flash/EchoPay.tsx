@@ -10,9 +10,7 @@ import {
 } from '../../../app/NX/Flash';
 import { Logo, LogoAS } from './Logo';
 import {
-    CleverText,
-    DumbText,
-    RequiredText,
+    NewCompany,
     MenuClip,
 } from './';
 
@@ -21,6 +19,8 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
+
+    const agentName = 'EchoPAPI';
 
     const onDone = (flag: string | null) => {
     };
@@ -41,7 +41,26 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
     return (
         <DesignSystem theme={theme}>
             <Flash id={'NXMC_flash'}>
-
+                <MovieClip
+                    border
+                    id='mc_chatbot'
+                    // offsetY={150}
+                    style={{
+                        // visibility: 'hidden',
+                        // display: 'block',
+                    }}
+                    height={'100%'}
+                    width={'80%'}
+                    minWidth={320}
+                    maxWidth={500}
+                    zIndex={150}>
+                    <Box sx={{ border: '1px solid gold' }}>
+                        <NewCompany options={{
+                            id: 'EchoPAPI_mc',
+                            markdown: `Hello, this is ${agentName}, your personal assistant to help you save money with EchoPay. Please enter your company name to see how much more money you'd make`,
+                        }} />
+                    </Box>
+                </MovieClip>
                 <MovieClip
                     id='mc_menu'
                     pos="bottom-middle"
@@ -52,7 +71,6 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     zIndex={200}>
                     <MenuClip />
                 </MovieClip>
-
                 <MovieClip
                     id='mc_logo'
                     pos="top-middle"
@@ -64,50 +82,6 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     zIndex={100}>
                     <Logo ref={logoRef} />
                 </MovieClip>
-
-                <MovieClip
-                    border
-                    id='mc_chatbot'
-                    offsetY={150}
-                    style={{
-                        visibility: 'hidden',
-                        display: 'block',
-                    }}
-                    height={'100%'}
-                    width={'80%'}
-                    zIndex={150}>
-
-                    <Box sx={{ border: '1px solid gold' }}>
-                        <Box>
-                            <DumbText options={{
-                                id: 'dumb1',
-                                markdown: "Hello. Please enter your company name to see how much you could save with EchoPay.",
-                            }} />
-                        </Box>
-                        <Box>
-                            <CleverText />
-                        </Box>
-
-
-
-
-                        {/* <Box>
-                            <DumbText options={{
-                                id: 'dumb1',
-                                markdown: "Hello. Please enter your company name to see how much you could save with EchoPay.",
-                            }} />
-                        </Box>
-                        <Box>
-                            <RequiredText options={{
-                                label: "Company Name",
-                                helper: "eg: Pies Online Ltd",
-                                type: 'string',
-                                error: false,
-                            }} />
-                        </Box> */}
-                    </Box>
-                </MovieClip>
-
             </Flash>
         </DesignSystem>
     );
