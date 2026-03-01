@@ -1,10 +1,17 @@
 # Echopay NX
 
-```sh
-cY?2LkhiDlCWVIb1#4tM
-```
+> Documentation and resources for the Echopay project
 
-Documentation and resources for the Echopay project. Below is an overview of its structure and contents:
+## Auth
+
+If a password is needed, try this `cY?2LkhiDlCWVIb1#4tM`
+
+
+## Colours 
+
+Primary `#012867`
+Secondary `#12418C`
+
 
 ## Markdown 
 

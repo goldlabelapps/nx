@@ -20,14 +20,6 @@
                     "target": "_blank"
                 },
                 {
-                    "title": "Ebook",
-                    "type": "link",
-                    "description": "Read all about it",
-                    "url": "/shared/epub/NX.epub",
-                    "icon": "book",
-                    "target": "_blank"
-                },
-                {
                     "title": "CV",
                     "type": "link",
                     "description": "TypeScript Developer",

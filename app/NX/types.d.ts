@@ -54,6 +54,10 @@ export type T_Config = {
     image: string;
     icon: string;
     darkIcon?: string;
+    email?: {
+        label?: string;
+        address: string;
+    };
     cartridges: {
         commerce?: T_CommerceCartridge;
         designSystem?: T_DesignSystemCartridge;

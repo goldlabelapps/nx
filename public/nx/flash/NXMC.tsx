@@ -7,16 +7,20 @@ declare global {
     }
 }
 "use client";
-
 import React, { useRef, useEffect } from 'react';
-import { DesignSystem } from '../../../app/NX/DesignSystem';
+import { Button } from '@mui/material';
+import { DesignSystem, Icon } from '../../../app/NX/DesignSystem';
 import {
     Flash,
     MovieClip,
 } from '../../../app/NX/Flash';
 import { NXLogo, NXLogoAS } from './NXLogo';
 
-export const NXMC: React.FC<{ config?: any; is404?: boolean }> = ({ config, is404 }) => {
+
+export const NXMC: React.FC<{
+    config?: any;
+    is404?: boolean;
+}> = ({ config, is404 }) => {
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const [replay, setReplay] = React.useState(0);
@@ -72,12 +76,31 @@ export const NXMC: React.FC<{ config?: any; is404?: boolean }> = ({ config, is40
                 <MovieClip
                     id='mc_logo'
                     style={{ visibility: 'hidden' }}
+                    offsetY={-50}
                     width={300}
                     height={100}
                     maxWidth={'90%'}
                     zIndex={100}>
                     <NXLogo ref={logoRef} svgSrc={svgSrc} />
                 </MovieClip>
+
+                <MovieClip
+                    id='mc_home'
+                    offsetY={50}
+                    width={300}
+                    height={100}
+                    maxWidth={'90%'}
+                    zIndex={800}>
+                    <Button
+                        fullWidth
+                        startIcon={<Icon icon="reset" />}
+                        variant="outlined"
+                        onClick={() => window.location.href = '/'}
+                    >
+                        Restart
+                    </Button>
+                </MovieClip>
+
             </Flash>
         </DesignSystem>
     );

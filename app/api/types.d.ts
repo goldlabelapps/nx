@@ -7,7 +7,6 @@ export interface I_MakeRes {
 }
 
 export type T_Email = {
-
     from: {
         label: string;
         email: string;
