@@ -209,6 +209,7 @@ export interface I_Ad {
 export type I_Icon = {
     icon:
     | 'more'
+    | 'maths'
     | 'free'
     | 'writing'
     | 'books'

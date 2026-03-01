@@ -1,17 +1,38 @@
 "use client";
 import type { I_NewCompany } from '../../types'
 import * as React from 'react';
+import { NewCompanyAS } from './';
 import {
     useTheme,
     Box,
     darken,
-    lighten,
+    TextField,
+    Button,
+    Collapse,
 } from '@mui/material';
 import { CleverText } from '../';
-import { NewCompanyAS } from './';
-import { useFlash } from '../../../../app/NX/Flash'
+import { useFlash, setFlash } from '../../../../app/NX/Flash';
+import { useDispatch } from '../../../../app/NX/Uberedux';
+import { Icon } from '../../../../app/NX/DesignSystem';
 
 export default function NewCompany({ options }: I_NewCompany) {
+    // ...existing code...
+    const [valid, setValid] = React.useState(false);
+    const [fields, setFields] = React.useState({
+        name: '',
+        cto: '', // Card Turnover per month
+        atv: '', // Average transaction value
+        biz: '', // Business card ratio (percentage)
+    });
+
+    // Individual field validation (must be after fields is declared)
+    const isNameValid = fields.name.trim() !== '';
+    const ctoNum = parseFloat(fields.cto);
+    const atvNum = parseFloat(fields.atv);
+    const bizNum = parseFloat(fields.biz);
+    const isCtoValid = fields.cto.trim() !== '' && !isNaN(ctoNum) && ctoNum > 0;
+    const isAtvValid = fields.atv.trim() !== '' && !isNaN(atvNum) && atvNum > 0 && atvNum <= ctoNum;
+    const isBizValid = fields.biz.trim() !== '' && !isNaN(bizNum) && bizNum > 0 && bizNum <= 100;
 
     const defaultOptions = {
         id: undefined,
@@ -23,18 +44,62 @@ export default function NewCompany({ options }: I_NewCompany) {
     const clipRef = React.useRef<HTMLDivElement>(null);
     const theme = useTheme();
     const flash = useFlash();
+    const dispatch = useDispatch();
+    const thisStep = flash.thisStep;
 
-    const thisStep = flash.thisStep || {};
+
+    const validate = () => {
+        // All fields must be non-empty
+        if (
+            fields.name.trim() === '' ||
+            fields.cto.trim() === '' ||
+            fields.atv.trim() === '' ||
+            fields.biz.trim() === ''
+        ) {
+            setValid(false);
+            return;
+        }
+        // Parse numbers
+        const cto = parseFloat(fields.cto);
+        const atv = parseFloat(fields.atv);
+        const biz = parseFloat(fields.biz);
+        // Validate numbers
+        if (
+            isNaN(cto) || isNaN(atv) || isNaN(biz) ||
+            cto <= 0 || atv <= 0 || biz <= 0 || biz > 100 ||
+            atv > cto
+        ) {
+            setValid(false);
+            return;
+        }
+        setValid(true);
+    }
+
+    const nextStep = () => {
+        let step = null;
+        if (thisStep.num === 1) {
+            dispatch(setFlash('thisStep', {
+                num: 2,
+                description: 'Reveal fields',
+            }));
+        };
+        if (thisStep.num === 2) {
+            dispatch(setFlash('thisStep', {
+                num: 3,
+                description: 'Close fields and reveal response',
+            }));
+        };
+    }
 
     React.useEffect(() => {
         ActionScript.current = new NewCompanyAS(clipRef);
         ActionScript.current.init();
-        // console.log('NewCompany thisStep:', thisStep);
         if (thisStep?.num === 1) {
-            // Multi-tenant
-
+            dispatch(setFlash("playing", true));
         }
     }, [thisStep]);
+
+    if (!thisStep) return null;
 
     return (
         <Box
@@ -48,13 +113,112 @@ export default function NewCompany({ options }: I_NewCompany) {
                     p: 2,
                 }}
             >
-                <CleverText options={{
-                    markdown: mergedOptions.markdown,
-                    onDone: () => {
-                        console.log('CleverText done');
-                    },
-                }} />
 
+                {/* <pre>flash: {JSON.stringify(flash, null, 2)}</pre> */}
+
+                {/* Step 1: Intro CleverText (show in step 1 and 2) */}
+                <Collapse in={thisStep.num === 1 || thisStep.num === 2}>
+                    <CleverText options={{
+                        id: '',
+                        markdown: mergedOptions.markdown,
+                        onFinish: nextStep,
+                    }} />
+                </Collapse>
+
+                {/* Step 2: Form fields */}
+                <Collapse in={thisStep.num === 2}>
+                    <Box id="newcompany_mc" sx={{ px: 2 }}>
+                        <Box sx={{ display: 'flex', my: 3 }}>
+                            <TextField
+                                fullWidth
+                                id="input_name"
+                                label="Name of the company"
+                                variant="standard"
+                                value={fields.name}
+                                onChange={e => {
+                                    setFields(f => ({ ...f, name: e.target.value }));
+                                    setTimeout(validate, 0);
+                                }}
+                            />
+                            {isNameValid && <Icon icon="tick" color="success" />}
+                        </Box>
+
+                        <Box sx={{ display: 'flex', my: 2 }}>
+                            <TextField
+                                fullWidth
+                                id="input_cto"
+                                label="Card Acquisition per month"
+                                variant="standard"
+                                type="number"
+                                inputProps={{ min: 0, step: 'any' }}
+                                value={fields.cto}
+                                onChange={e => {
+                                    setFields(f => ({ ...f, cto: e.target.value }));
+                                    setTimeout(validate, 0);
+                                }}
+                            />
+                            {isCtoValid && <Icon icon="tick" color="success" />}
+                        </Box>
+
+                        <Box sx={{ display: 'flex', my: 2 }}>
+                            <TextField
+                                fullWidth
+                                id="input_atv"
+                                label="Average transaction value"
+                                variant="standard"
+                                type="number"
+                                inputProps={{ min: 0, step: 'any' }}
+                                value={fields.atv}
+                                onChange={e => {
+                                    setFields(f => ({ ...f, atv: e.target.value }));
+                                    setTimeout(validate, 0);
+                                }}
+                            />
+                            {isAtvValid && <Icon icon="tick" color="success" />}
+                        </Box>
+
+                        <Box sx={{ display: 'flex', my: 2 }}>
+                            <TextField
+                                fullWidth
+                                id="input_biz"
+                                label="Business card ratio as a percentage"
+                                variant="standard"
+                                type="number"
+                                inputProps={{ min: 0, max: 100, step: 'any' }}
+                                value={fields.biz}
+                                onChange={e => {
+                                    setFields(f => ({ ...f, biz: e.target.value }));
+                                    setTimeout(validate, 0);
+                                }}
+                            />
+                            {isBizValid && <Icon icon="tick" color="success" />}
+                        </Box>
+
+                        <Box sx={{ display: 'flex', my: 2 }}>
+                            <Button
+                                onClick={nextStep}
+                                fullWidth
+                                type="submit"
+                                variant="contained"
+                                sx={{ mt: 2 }}
+                                startIcon={<Icon icon="maths" />}
+                                disabled={!valid}
+                            >
+                                Do the maths
+                            </Button>
+                        </Box>
+                    </Box>
+                </Collapse>
+
+                {/* Step 3: Response CleverText */}
+                <Collapse in={thisStep.num === 3}>
+                    <Box sx={{ px: 2 }}>
+                        <CleverText options={{
+                            id: 'response_mc',
+                            markdown: "Step 3 - Reveal the profit and loss statement based on the inputs, and explain how we can help increase the profit by improving each of the fields. This is where we can really sell our product and show the value prop.",
+                        }} />
+                    </Box>
+                </Collapse>
             </Box>
         </Box>
     );

@@ -1,8 +1,5 @@
 "use client";
 import React, { useRef, useEffect } from 'react';
-import {
-    Box,
-} from '@mui/material';
 import { DesignSystem } from '../../../app/NX/DesignSystem';
 import {
     Flash,
@@ -13,15 +10,15 @@ import {
     NewCompany,
     MenuClip,
 } from './';
+import { setFlash, useFlash } from '../../../app/NX/Flash';
+import { useDispatch } from '../../../app/NX/Uberedux';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
-
-    const agentName = 'EchoPAPI';
-
+    const dispatch = useDispatch();
     const onDone = (flag: string | null) => {
     };
 
@@ -35,8 +32,14 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
             logoASRef.current.init();
             logoASRef.current.echoText();
         }
+    }, [logoASRef]);
 
-    }, []);
+    useEffect(() => {
+        dispatch(setFlash('thisStep', {
+            num: 1,
+            description: 'Setup Chatbot',
+        }));
+    }, [dispatch]);
 
     return (
         <DesignSystem theme={theme}>
@@ -50,10 +53,14 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     minWidth={320}
                     maxWidth={500}
                     zIndex={250}>
+                    {/* markdown: `Add a new company to see how much more profit it would
+                        make by switching card acuisition to **EchoPay**`, */}
+
+                    {/* markdown: `Why switch card acquisition to **EchoPay**?`, */}
                     <NewCompany options={{
-                        id: 'EchoPAPA_mc',
+                        id: 'newcompany_mc',
                         markdown: `Add a new company to see how much more profit it would
-                        make by switching card acuisition to EchoPay`,
+                        make by switching card acuisition to **EchoPay**`,
                     }} />
                 </MovieClip>
                 <MovieClip

@@ -11,8 +11,9 @@ import { useDispatch } from '../../../../app/NX/Uberedux';
 
 export interface I_CleverText {
     options: {
+        id: string | undefined;
         markdown: string;
-        onDone?: () => void;
+        onFinish?: () => void;
     }
 }
 
@@ -23,17 +24,11 @@ export default function CleverText({ options }: I_CleverText) {
     const flash = useFlash();
 
     const thisStep = flash.thisStep || {};
-
-
     const dispatch = useDispatch();
 
     React.useEffect(() => {
         ActionScript.current = new CleverTextAS(clipRef);
         ActionScript.current.init();
-        dispatch(setFlash('thisStep', {
-            num: 1,
-            description: 'New company clevertext',
-        }));
         return () => {
             if (ActionScript.current) {
                 ActionScript.current.destroy();
@@ -63,6 +58,11 @@ export default function CleverText({ options }: I_CleverText) {
                     delay += 80 + Math.random() * 120;
                 }
                 timeout = setTimeout(typeNext, delay);
+            } else {
+                // Animation finished, call onFinish if provided
+                if (typeof options.onFinish === 'function') {
+                    options.onFinish();
+                }
             }
         }
         typeNext();
@@ -71,6 +71,7 @@ export default function CleverText({ options }: I_CleverText) {
 
     return (
         <Box
+            id={options.id}
             ref={clipRef}
             sx={{
                 borderRadius: 2,
