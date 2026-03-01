@@ -3,19 +3,21 @@ import type { I_NewCompany } from '../../types'
 import * as React from 'react';
 import { NewCompanyAS } from './';
 import {
+    darken,
     useTheme,
     Box,
-    darken,
     TextField,
     Button,
     Collapse,
+    Slider,
+    Typography,
+    InputAdornment,
 } from '@mui/material';
-import { CleverText } from '../';
+import { CleverText, DumbText } from '../';
 import { makeMDResponse } from '../../';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
-
 
 export default function NewCompany({ options }: I_NewCompany) {
     // Handler for Enter key to submit form
@@ -29,20 +31,20 @@ export default function NewCompany({ options }: I_NewCompany) {
     const [response, setResponse] = React.useState("thinking...");
     const [valid, setValid] = React.useState(false);
     const [fields, setFields] = React.useState({
-        name: '',
-        cto: '1000000', // Card Turnover per month
-        atv: '500',     // Average transaction value
-        biz: '75',      // Business card ratio (percentage)
+        name: 'Example Company Ltd',
+        biz: '64.6',
+        cto: '8905000',
+        atv: '476',
     });
 
     // Individual field validation (must be after fields is declared)
-    const isNameValid = fields.name.trim().length >= 3;
-    const ctoNum = parseFloat(fields.cto);
-    const atvNum = parseFloat(fields.atv);
-    const bizNum = parseFloat(fields.biz);
-    const isCtoValid = fields.cto.trim() !== '' && !isNaN(ctoNum) && ctoNum > 0;
-    const isAtvValid = fields.atv.trim() !== '' && !isNaN(atvNum) && atvNum > 0 && atvNum <= ctoNum;
-    const isBizValid = fields.biz.trim() !== '' && !isNaN(bizNum) && bizNum > 0 && bizNum <= 100;
+    const isNameValid = typeof fields.name === 'string' && fields.name.trim().length >= 3;
+    const ctoNum = parseFloat(String(fields.cto));
+    const atvNum = parseFloat(String(fields.atv));
+    const bizNum = parseFloat(String(fields.biz));
+    const isCtoValid = typeof fields.cto === 'string' && fields.cto.trim() !== '' && !isNaN(ctoNum) && ctoNum > 0;
+    const isAtvValid = typeof fields.atv === 'string' && fields.atv.trim() !== '' && !isNaN(atvNum) && atvNum > 0 && atvNum <= ctoNum;
+    const isBizValid = typeof fields.biz === 'string' && fields.biz.trim() !== '' && !isNaN(bizNum) && bizNum > 0 && bizNum <= 100;
 
     const defaultOptions = {
         id: undefined,
@@ -91,13 +93,13 @@ export default function NewCompany({ options }: I_NewCompany) {
                     num: 2,
                     description: 'Reveal fields',
                 }));
-            }, 3000);
+            }, 1000);
             setTimeout(() => {
                 if (nameInputRef.current && document.activeElement !== nameInputRef.current) {
                     nameInputRef.current.focus();
                 }
 
-            }, 4000);
+            }, 2000);
         }
         if (thisStep.num === 2) {
             dispatch(setFlash('thisStep', {
@@ -121,6 +123,15 @@ export default function NewCompany({ options }: I_NewCompany) {
             }));
 
         };
+
+        if (thisStep.num === 4) {
+            dispatch(setFlash('thisStep', {
+                num: 5,
+                description: 'Go viral',
+            }));
+
+        };
+
     }
 
     React.useEffect(() => {
@@ -137,14 +148,13 @@ export default function NewCompany({ options }: I_NewCompany) {
         <Box
             id={mergedOptions.id}
         >
-            <Box
-                ref={clipRef}
-                sx={{
-                    bgcolor: darken(theme.palette.background.paper, 0.15),
-                    borderRadius: 2,
-                    p: 2,
-                }}
-            >
+            <Box ref={clipRef} sx={{
+                // border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
+                // bgcolor: darken(theme.palette.background.paper, 0.25),
+                // borderRadius: 2,
+                px: 1,
+            }}>
+
                 {/* <pre>flash: {JSON.stringify(flash, null, 2)}</pre> */}
 
                 {/* Step 1: Intro CleverText (show in step 1 and 2) */}
@@ -160,70 +170,13 @@ export default function NewCompany({ options }: I_NewCompany) {
                 <Collapse in={thisStep.num === 2}>
                     <Box id="newcompany_mc" sx={{ px: 2 }} onKeyDown={handleKeyDown}>
 
-
-                        <Box sx={{ display: 'flex', mb: 3 }}>
+                        <Box sx={{ display: 'flex', my: 2, }}>
                             <TextField
                                 fullWidth
-                                id="input_cto"
-                                label="Card acquisition per month"
-                                variant="standard"
-                                type="number"
-                                inputProps={{ min: 0, step: 'any' }}
-                                value={fields.cto}
-                                onChange={e => {
-                                    const value = e.target.value;
-                                    setFields(f => ({ ...f, cto: value }));
-                                    dispatch(setFlash('cto', value));
-                                    setTimeout(validate, 0);
-                                }}
-                            />
-                            {isCtoValid && <Icon icon="tick" color="success" />}
-                        </Box>
-
-                        <Box sx={{ display: 'flex', mb: 3 }}>
-                            <TextField
-                                fullWidth
-                                id="input_atv"
-                                label="Average transaction value"
-                                variant="standard"
-                                type="number"
-                                inputProps={{ min: 0, step: 'any' }}
-                                value={fields.atv}
-                                onChange={e => {
-                                    const value = e.target.value;
-                                    setFields(f => ({ ...f, atv: value }));
-                                    dispatch(setFlash('atv', value));
-                                    setTimeout(validate, 0);
-                                }}
-                            />
-                            {isAtvValid && <Icon icon="tick" color="success" />}
-                        </Box>
-
-                        <Box sx={{ display: 'flex', mb: 1 }}>
-                            <TextField
-                                fullWidth
-                                id="input_biz"
-                                label="Business card ratio as a percentage"
-                                variant="standard"
-                                type="number"
-                                inputProps={{ min: 0, max: 100, step: 'any' }}
-                                value={fields.biz}
-                                onChange={e => {
-                                    const value = e.target.value;
-                                    setFields(f => ({ ...f, biz: value }));
-                                    dispatch(setFlash('biz', value));
-                                    setTimeout(validate, 0);
-                                }}
-                            />
-                            {isBizValid && <Icon icon="tick" color="success" />}
-                        </Box>
-
-                        <Box sx={{ display: 'flex', my: 2 }}>
-                            <TextField
-                                fullWidth
+                                size='small'
+                                variant="filled"
                                 id="input_name"
                                 label="Company name"
-                                variant="standard"
                                 value={fields.name}
                                 inputRef={nameInputRef}
                                 onChange={e => {
@@ -233,37 +186,128 @@ export default function NewCompany({ options }: I_NewCompany) {
                                     setTimeout(validate, 0);
                                 }}
                             />
-                            {isNameValid && <Icon icon="tick" color="success" />}
+                            {isNameValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
                         </Box>
 
-                        <Box sx={{ display: 'flex' }}>
+                        <Box sx={{ display: 'flex', mb: 2 }}>
+                            <TextField
+                                id="input_cto"
+                                label="Card acquisition per month"
+                                size='small'
+                                variant="filled"
+                                type="number"
+                                inputProps={{ min: 0, step: 'any' }}
+                                value={fields.cto}
+                                onChange={e => {
+                                    const value = e.target.value;
+                                    setFields(f => ({ ...f, cto: value }));
+                                    dispatch(setFlash('cto', value));
+                                    setTimeout(validate, 0);
+                                }}
+                                InputProps={{
+                                    startAdornment: <InputAdornment position="start">£</InputAdornment>
+                                }}
+                            />
+                            {isCtoValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
+                        </Box>
+
+                        <Box sx={{ display: 'flex', mb: 1 }}>
+                            <TextField
+                                id="input_atv"
+                                label="Average transaction value"
+                                size='small'
+                                variant="filled"
+                                type="number"
+                                inputProps={{ min: 0, step: 'any' }}
+                                value={fields.atv}
+                                onChange={e => {
+                                    const value = e.target.value;
+                                    setFields(f => ({ ...f, atv: value }));
+                                    dispatch(setFlash('atv', value));
+                                    setTimeout(validate, 0);
+                                }}
+                                InputProps={{
+                                    startAdornment: <InputAdornment position="start">£</InputAdornment>
+                                }}
+                            />
+                            {isAtvValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
+                        </Box>
+
+                        <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
+                            <Box sx={{}}>
+                                <Typography variant="body2" sx={{}} >
+                                    Business card ratio ({Number(fields.biz)}%)
+                                </Typography>
+                                <Slider
+                                    value={Number(fields.biz)}
+                                    min={0}
+                                    max={100}
+                                    step={1}
+                                    valueLabelDisplay="off"
+                                    onChange={(_, value) => {
+                                        const val = typeof value === 'number' ? value : (Array.isArray(value) ? value[0] : 0);
+                                        setFields(f => ({ ...f, biz: String(val) }));
+                                        dispatch(setFlash('biz', String(val)));
+                                        validate();
+                                    }}
+                                />
+
+                            </Box>
+                            {isBizValid && <Box sx={{ mt: 2, ml: 2 }}><Icon icon="tick" color="disabled" /></Box>}
+                        </Box>
+
+
+                        {valid ? <Box sx={{ display: 'flex' }}>
                             <Button
                                 onClick={nextStep}
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 2 }}
-                                startIcon={<Icon icon="maths" />}
+                                endIcon={<Icon icon="right" />}
                                 disabled={!valid}
                             >
                                 Do the maths
                             </Button>
-                        </Box>
+                        </Box> : null}
+
                     </Box>
                 </Collapse>
 
                 {/* Step 3: Response CleverText */}
                 <Collapse in={thisStep.num === 3}>
-                    <Box sx={{ px: 2 }}>
+                    <Box sx={{ px: 1 }}>
                         {thisStep.num === 3 ? <CleverText
                             options={{
                                 id: 'response_mc',
                                 markdown: response,
+                                onFinish: nextStep,
                             }}
                         /> : null}
-
                     </Box>
                 </Collapse>
+
+
+                {/* /* Step 4: Spread Virus */}
+                <Collapse in={thisStep.num === 4}>
+                    <Box sx={{ p: 1, }}>
+                        <DumbText
+                            options={{
+                                id: 'dumbresponse_mc',
+                                markdown: response,
+                            }}
+                        />
+                        <Button
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 2 }}
+                            startIcon={<Icon icon="share" />}
+                        >
+                            Share
+                        </Button>
+                    </Box>
+                </Collapse>
+
             </Box>
-        </Box>
+        </Box >
     );
 }

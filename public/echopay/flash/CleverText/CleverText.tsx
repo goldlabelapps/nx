@@ -50,12 +50,12 @@ export default function CleverText({ options }: I_CleverText) {
             i++;
             if (i < markdownText.length) {
                 // Add random delay and occasional longer pause
-                let delay = 10 + Math.random() * 30;
+                let delay = (10 + Math.random() * 30) * 0.85;
                 // Slightly longer pause after punctuation or every 20-40 chars
                 if (/[.,!?]/.test(markdownText[i - 1]) && Math.random() < 0.5) {
-                    delay += 120 + Math.random() * 100;
+                    delay += (120 + Math.random() * 100) * 0.85;
                 } else if (i % (20 + Math.floor(Math.random() * 20)) === 0) {
-                    delay += 80 + Math.random() * 120;
+                    delay += (80 + Math.random() * 120) * 0.85;
                 }
                 timeout = setTimeout(typeNext, delay);
             } else {
