@@ -299,7 +299,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                         <Button
                             fullWidth
                             variant="contained"
-                            sx={{ mb: 2 }}
+                            sx={{ mt: 2 }}
                             startIcon={<Icon icon="share" />}
                         >
                             Share
