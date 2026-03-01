@@ -2,8 +2,10 @@ import type { T_Email } from '../../types';
 import { NextResponse } from 'next/server';
 import { makeRes } from '../../';
 import { Resend } from 'resend';
-import { getFirebaseAdminApp } from '../../lib/firebase-admin';
-import { getFirestore } from 'firebase-admin/firestore';
+import { remark } from 'remark';
+import html from 'remark-html';
+// import { getFirebaseAdminApp } from '../../lib/firebase-admin';
+// import { getFirestore } from 'firebase-admin/firestore';
 
 export async function GET() {
 
@@ -39,12 +41,14 @@ export async function POST(req: Request) {
             }), { status: 400 });
         }
         const resend = new Resend(resendKey);
+        // Convert Markdown to HTML
+        const htmlBody = (await remark().use(html).process(emailBody)).toString();
         // Send email using Resend
         const sendResult = await resend.emails.send({
             from: `${from.label} <${from.email}>`,
             to: [`${to.label} <${to.email}>`],
             subject,
-            html: emailBody,
+            html: htmlBody,
             text: emailBody.replace(/<[^>]+>/g, ''), // fallback plain text
         });
         if (sendResult.error) {
@@ -54,27 +58,28 @@ export async function POST(req: Request) {
                 data: sendResult.error
             }), { status: 500 });
         }
-        // Prepare log object
-        const logDoc = {
-            logType: 'email',
-            timestamp: Date.now(),
-            request: body,
-            response: sendResult
-        };
-        // Save to Firestore logs collection
-        try {
-            console.log('Save to Firestore logs collection');
-            const app = getFirebaseAdminApp();
-            const db = getFirestore(app);
-            await db.collection('logs').add(logDoc);
-        } catch (logError) {
-            console.error('Failed to write log to Firestore:', logError);
-            if (logError instanceof Error) {
-                // Optionally, include more details for debugging
-                console.error('Error message:', logError.message);
-                if (logError.stack) console.error('Stack trace:', logError.stack);
-            }
-        }
+
+        /*
+                const logDoc = {
+                    logType: 'email',
+                    timestamp: Date.now(),
+                    request: body,
+                    response: sendResult
+                };
+                try {
+                    console.log('Save to Firestore logs collection');
+                    const app = getFirebaseAdminApp();
+                    const db = getFirestore(app);
+                    await db.collection('logs').add(logDoc);
+                } catch (logError) {
+                    console.error('Failed to write log to Firestore:', logError);
+                    if (logError instanceof Error) {
+                        // Optionally, include more details for debugging
+                        console.error('Error message:', logError.message);
+                        if (logError.stack) console.error('Stack trace:', logError.stack);
+                    }
+                }
+        */
         return NextResponse.json(makeRes({
             severity: 'success',
             message: 'Email sent successfully.',

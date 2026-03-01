@@ -6,6 +6,10 @@
     "image": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
     "icon": "/echopay/svg/favicon.svg",
     "favicon": "/echopay/favicon.webp",
+    "email": {
+        "label": "Contact Us",
+        "address": "echopay@goldlabel.pro"
+    },
     "cartridges": {
         "paywall": {
             "enabled": false,

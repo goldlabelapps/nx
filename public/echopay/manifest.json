@@ -1,8 +1,8 @@
 {
   "short_name": "EchoPay NX",
   "name": "EchoPay NX",
-  "theme_color": "#FFF",
-  "background_color": "#FFF",
+  "theme_color": "#012867",
+  "background_color": "#012867",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",
