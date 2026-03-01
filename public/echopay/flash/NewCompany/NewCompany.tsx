@@ -16,13 +16,22 @@ import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
 
 export default function NewCompany({ options }: I_NewCompany) {
-    // ...existing code...
+    // Handler for Enter key to submit form
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && valid) {
+            nextStep();
+        }
+    };
+    // Ref for company name input
+    const nameInputRef = React.useRef<HTMLInputElement>(null);
+
+    const [response, setResponse] = React.useState("thinking...");
     const [valid, setValid] = React.useState(false);
     const [fields, setFields] = React.useState({
         name: '',
-        cto: '', // Card Turnover per month
-        atv: '', // Average transaction value
-        biz: '', // Business card ratio (percentage)
+        cto: '1000000', // Card Turnover per month
+        atv: '500',     // Average transaction value
+        biz: '75',      // Business card ratio (percentage)
     });
 
     // Individual field validation (must be after fields is declared)
@@ -82,12 +91,25 @@ export default function NewCompany({ options }: I_NewCompany) {
                 num: 2,
                 description: 'Reveal fields',
             }));
-        };
+            // Focus company name input if not already focused
+            setTimeout(() => {
+                if (nameInputRef.current && document.activeElement !== nameInputRef.current) {
+                    nameInputRef.current.focus();
+                }
+            }, 100);
+        }
         if (thisStep.num === 2) {
             dispatch(setFlash('thisStep', {
                 num: 3,
                 description: 'Close fields and reveal response',
             }));
+        };
+        if (thisStep.num === 3) {
+            dispatch(setFlash('thisStep', {
+                num: 4,
+                description: 'Play response animation',
+            }));
+            setResponse('dasdkhd')
         };
     }
 
@@ -108,12 +130,11 @@ export default function NewCompany({ options }: I_NewCompany) {
             <Box
                 ref={clipRef}
                 sx={{
-                    bgcolor: darken(theme.palette.background.paper, 0.25),
+                    bgcolor: darken(theme.palette.background.paper, 0.15),
                     borderRadius: 2,
                     p: 2,
                 }}
             >
-
                 {/* <pre>flash: {JSON.stringify(flash, null, 2)}</pre> */}
 
                 {/* Step 1: Intro CleverText (show in step 1 and 2) */}
@@ -127,14 +148,15 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                 {/* Step 2: Form fields */}
                 <Collapse in={thisStep.num === 2}>
-                    <Box id="newcompany_mc" sx={{ px: 2 }}>
-                        <Box sx={{ display: 'flex', my: 3 }}>
+                    <Box id="newcompany_mc" sx={{ px: 2 }} onKeyDown={handleKeyDown}>
+                        <Box sx={{ display: 'flex', mb: 3 }}>
                             <TextField
                                 fullWidth
                                 id="input_name"
-                                label="Name of the company"
+                                label="Company name"
                                 variant="standard"
                                 value={fields.name}
+                                inputRef={nameInputRef}
                                 onChange={e => {
                                     setFields(f => ({ ...f, name: e.target.value }));
                                     setTimeout(validate, 0);
@@ -147,7 +169,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             <TextField
                                 fullWidth
                                 id="input_cto"
-                                label="Card Acquisition per month"
+                                label="Card acquisition per month"
                                 variant="standard"
                                 type="number"
                                 inputProps={{ min: 0, step: 'any' }}
@@ -213,10 +235,14 @@ export default function NewCompany({ options }: I_NewCompany) {
                 {/* Step 3: Response CleverText */}
                 <Collapse in={thisStep.num === 3}>
                     <Box sx={{ px: 2 }}>
-                        <CleverText options={{
-                            id: 'response_mc',
-                            markdown: "Step 3 - Reveal the profit and loss statement based on the inputs, and explain how we can help increase the profit by improving each of the fields. This is where we can really sell our product and show the value prop.",
-                        }} />
+                        {thisStep.num === 3 ? <CleverText
+                            key={response}
+                            options={{
+                                id: 'response_mc',
+                                markdown: response,
+                            }}
+                        /> : null}
+
                     </Box>
                 </Collapse>
             </Box>
