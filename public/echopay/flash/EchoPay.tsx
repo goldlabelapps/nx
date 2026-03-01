@@ -43,11 +43,10 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
             description: 'Setup Chatbot',
         }));
 
-        dispatch(setFeedback({
-            severity: 'success',
-            title: 'Hello!',
-        }));
-
+        // dispatch(setFeedback({
+        //     severity: 'success',
+        //     title: 'Hello!',
+        // }));
 
     }, [dispatch]);
 

@@ -23,21 +23,14 @@ export default function NewCompany({ options }: I_NewCompany) {
 
 
 
-    // Handler for Enter key to submit form
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' && valid) {
-            nextStep();
-        }
-    };
-    // Ref for company name input
     const nameInputRef = React.useRef<HTMLInputElement>(null);
     const [response, setResponse] = React.useState("thinking...");
     const [valid, setValid] = React.useState(false);
     const [fields, setFields] = React.useState({
-        name: 'Example Company Ltd',
+        name: 'Example Corp',
         biz: '64.6',
-        cto: '8905000',
-        atv: '476',
+        cto: '945000',
+        atv: '426',
     });
 
     // Individual field validation (must be after fields is declared)
@@ -64,7 +57,13 @@ export default function NewCompany({ options }: I_NewCompany) {
 
     const handleShare = () => {
         dispatch(setFlash("goViralOpen", true));
-    }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && valid) {
+            nextStep();
+        }
+    };
 
     const validate = () => {
         // All fields must be non-empty and name at least 3 chars
@@ -181,7 +180,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             <TextField
                                 fullWidth
                                 size='small'
-                                variant="filled"
+                                variant="standard"
                                 id="input_name"
                                 label="Company name"
                                 value={fields.name}
@@ -201,7 +200,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 id="input_cto"
                                 label="Card acquisition per month"
                                 size='small'
-                                variant="filled"
+                                variant="standard"
                                 type="number"
                                 inputProps={{ min: 0, step: 'any' }}
                                 value={fields.cto}
@@ -223,7 +222,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 id="input_atv"
                                 label="Average transaction value"
                                 size='small'
-                                variant="filled"
+                                variant="standard"
                                 type="number"
                                 inputProps={{ min: 0, step: 'any' }}
                                 value={fields.atv}
@@ -268,7 +267,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                             <Button
                                 onClick={nextStep}
                                 fullWidth
-                                variant="contained"
                                 sx={{ mt: 2 }}
                                 endIcon={<Icon icon="right" />}
                                 disabled={!valid}
@@ -306,7 +304,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                         <Button
                             fullWidth
                             onClick={handleShare}
-                            variant="contained"
                             sx={{ mt: 2 }}
                             startIcon={<Icon icon="share" />}
                         >
