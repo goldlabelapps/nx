@@ -27,7 +27,7 @@ export default function NewCompany({ options }: I_NewCompany) {
     const [response, setResponse] = React.useState("thinking...");
     const [valid, setValid] = React.useState(false);
     const [fields, setFields] = React.useState({
-        name: 'Example Corp',
+        name: 'Example Ltd',
         biz: '64.6',
         cto: '945000',
         atv: '426',

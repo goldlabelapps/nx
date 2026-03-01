@@ -69,17 +69,25 @@ export default function MenuClip() {
         icon: import('../../../../app/NX/types').I_Icon['icon'];
         title: string;
         description?: string;
-        type?: 'link' | 'replay';
+        type?: 'link' | 'replay' | 'action';
         url?: string;
         help?: string;
     }[] = [
             {
                 type: 'link',
-                icon: 'book',
-                title: 'Find out more',
+                icon: 'info',
+                title: 'Help',
                 url: '/testimonial',
                 help: `Navigate to the Testimonial page to view detailed analytics and reports`,
             },
+
+            {
+                type: 'action',
+                icon: 'share',
+                title: 'Share',
+                help: `Navigate to the Testimonial page to view detailed analytics and reports`,
+            },
+
             {
                 icon: 'reset',
                 type: 'replay',
