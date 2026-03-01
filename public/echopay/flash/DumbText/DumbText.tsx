@@ -39,10 +39,9 @@ export default function DumbText({ options }: I_DumbTextProps) {
             <Box
                 ref={clipRef}
                 sx={{
-                    border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
-                    bgcolor: darken(theme.palette.background.paper, 0.25),
-                    borderRadius: 2,
-                    px: 2.5,
+                    // border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
+                    // bgcolor: darken(theme.palette.background.paper, 0.25),
+                    // borderRadius: 2,
                 }}
             >
                 <ReactMarkdown>

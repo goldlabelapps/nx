@@ -49,17 +49,12 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     id='mc_chatbot'
                     style={{ visibility: 'hidden' }}
                     height={'100%'}
-                    width={'90%'}
-                    minWidth={320}
-                    maxWidth={500}
+                    width={'95%'}
+                    maxWidth={550}
                     zIndex={250}>
-                    {/* markdown: `Add a new company to see how much more profit it would
-                        make by switching card acuisition to **EchoPay**`, */}
-
-                    {/* markdown: `Why switch card acquisition to **EchoPay**?`, */}
                     <NewCompany options={{
                         id: 'newcompany_mc',
-                        markdown: `How much more profit is made by plugging in **EchoPay** card acquisition? Do the maths`,
+                        markdown: `Why switch your card acquisition to **EchoPay**? Let's do the maths`,
                     }} />
                 </MovieClip>
                 <MovieClip
