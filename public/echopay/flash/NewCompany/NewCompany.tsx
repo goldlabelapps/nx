@@ -23,6 +23,7 @@ export const defaultCompany = {
     biz: '75',
     cto: '1000000',
     atv: '500',
+    markdown: `## Example Markdown`
 };
 
 export default function NewCompany({ options }: I_NewCompany) {
@@ -41,6 +42,22 @@ export default function NewCompany({ options }: I_NewCompany) {
     const clipRef = React.useRef<HTMLDivElement>(null);
     const flash = useFlash();
     const thisStep = flash.thisStep;
+
+    // Set default values in flash redux if they don't exist
+    React.useEffect(() => {
+        if (!flash.name) {
+            dispatch(setFlash('name', defaultCompany.name));
+        }
+        if (!flash.biz) {
+            dispatch(setFlash('biz', defaultCompany.biz));
+        }
+        if (!flash.cto) {
+            dispatch(setFlash('cto', defaultCompany.cto));
+        }
+        if (!flash.atv) {
+            dispatch(setFlash('atv', defaultCompany.atv));
+        }
+    }, [flash, dispatch]);
 
     /*
         Current cost/month: £X

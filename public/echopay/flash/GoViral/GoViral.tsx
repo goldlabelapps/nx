@@ -10,19 +10,28 @@ import {
 import {
     Box,
     Dialog,
-    CardHeader,
     DialogTitle,
     DialogContent,
     DialogActions,
     Button,
-    Typography,
-    MenuItem,
-    ListItemIcon,
-    ListItemText,
+    IconButton,
 } from '@mui/material';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { Icon } from '../../../../app/NX/DesignSystem';
 import { useDispatch } from '../../../../app/NX/Uberedux';
+import { makeMDResponse } from '../../';
+import { defaultCompany } from '../NewCompany/NewCompany';
+
+const slugify = (text: string) => {
+    return text
+        .toString()
+        .normalize('NFKD')
+        .replace(/[\u0300-\u036F]/g, '') // Remove diacritics
+        .toLowerCase()
+        .trim()
+        .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with hyphens
+        .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+}
 
 export default function GoViral() {
 
@@ -37,6 +46,21 @@ export default function GoViral() {
     const title = "EchoPay";
     const description = "Do the maths";
     const isMobile = require('@mui/material/useMediaQuery').default('(max-width:899.95px)');
+    const slug = slugify(flash?.name ?? defaultCompany.name);
+    const company = {
+        biz: flash?.biz ?? defaultCompany.biz,
+        atv: flash?.atv ?? defaultCompany.atv,
+        cto: flash?.cto ?? defaultCompany.cto,
+        name: flash?.name ?? defaultCompany.name,
+        slug,
+        markdown: makeMDResponse({
+            name: flash?.name ?? defaultCompany.name,
+            biz: flash?.biz ?? defaultCompany.biz,
+            cto: flash?.cto ?? defaultCompany.cto,
+            atv: flash?.atv ?? defaultCompany.atv,
+        }),
+        url: `/share/${slug}`
+    };
 
     React.useEffect(() => {
         ActionScript.current = new GoViralAS(clipRef);
@@ -58,87 +82,59 @@ export default function GoViral() {
                 aria-labelledby="go-viral-dialog-title"
             >
                 <DialogTitle id="go-viral-dialog-title">
-                    Send it to: Enter name
-                    email address or phone number
+
                 </DialogTitle>
+
                 <DialogContent>
-                    {/* <pre>url: {JSON.stringify(url, null, 2)}</pre> */}
+                    <Box sx={{ display: 'flex' }}>
 
-                    <MenuItem
-                        onClick={() => {
-                            navigator.clipboard.writeText(url);
-                            setCopied(true);
-                            setTimeout(() => {
-                                setCopied(false);
-                            }, 1500);
-                        }}
-                    >
-                        <ListItemIcon sx={{ mr: 1 }}>
+                        <IconButton
+                            onClick={() => {
+                                navigator.clipboard.writeText(url);
+                                setCopied(true);
+                                setTimeout(() => {
+                                    setCopied(false);
+                                }, 1500);
+                            }}
+                        >
                             <Icon icon="copy" color="primary" />
-                        </ListItemIcon>
-                        <ListItemText
-                            primary={copied ? 'Copied!' : 'Copy Link'}
-                        />
-                    </MenuItem>
+                        </IconButton>
+
+                        <Box sx={{ ml: 0, mt: 1 }}>
+                            <TwitterShareButton title={title} url={url}>
+                                <Icon icon="twitter" color="primary" />
+                            </TwitterShareButton>
+                        </Box>
+                        <Box sx={{ ml: 1, mt: 1 }}>
+                            <FacebookShareButton url={url} style={fullWidth}>
+                                <Icon icon="facebook" color="primary" />
+                            </FacebookShareButton>
+                        </Box>
+                        <Box sx={{ ml: 1, mt: 1 }}>
+                            <LinkedinShareButton
+                                url={url}
+                                title={title}
+                                summary={description}
+                                source="Goldlabel"
+                                style={fullWidth}
+                            >
+                                <Icon icon="linkedin" color="primary" />
+                            </LinkedinShareButton>
+                        </Box>
+                        <Box sx={{ ml: 1, mt: 1 }}>
+                            <WhatsappShareButton
+                                url={url}
+                                title={title}
+                                separator=" - "
+                                style={fullWidth}
+                            >
+                                <Icon icon="whatsapp" color="primary" />
+                            </WhatsappShareButton>
+                        </Box>
 
 
-                    <MenuItem sx={{ p: 0 }}>
-                        <TwitterShareButton title={title} url={url}>
-                            <Box display="flex" alignItems="center" px={2} py={1}>
-                                <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="twitter" color="primary" />
-                                </ListItemIcon>
-                                <ListItemText primary="Twitter (X)" />
-                            </Box>
-                        </TwitterShareButton>
-                    </MenuItem>
-
-
-                    <MenuItem sx={{ p: 0 }}>
-                        <FacebookShareButton url={url} style={fullWidth}>
-                            <Box display="flex" alignItems="center" px={2} py={1}>
-                                <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="facebook" color="primary" />
-                                </ListItemIcon>
-                                <ListItemText primary="Facebook" />
-                            </Box>
-                        </FacebookShareButton>
-                    </MenuItem>
-
-
-                    <MenuItem sx={{ p: 0 }}>
-                        <LinkedinShareButton
-                            url={url}
-                            title={title}
-                            summary={description}
-                            source="Goldlabel"
-                            style={fullWidth}
-                        >
-                            <Box display="flex" alignItems="center" px={2} py={1}>
-                                <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="linkedin" color="primary" />
-                                </ListItemIcon>
-                                <ListItemText primary="LinkedIn" />
-                            </Box>
-                        </LinkedinShareButton>
-                    </MenuItem>
-
-                    <MenuItem sx={{ p: 0 }}>
-                        <WhatsappShareButton
-                            url={url}
-                            title={title}
-                            separator=" - "
-                            style={fullWidth}
-                        >
-                            <Box display="flex" alignItems="center" px={2} py={1}>
-                                <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="whatsapp" color="primary" />
-                                </ListItemIcon>
-                                <ListItemText primary="WhatsApp" />
-                            </Box>
-                        </WhatsappShareButton>
-                    </MenuItem>
-
+                    </Box>
+                    <pre>company: {JSON.stringify(company, null, 2)}</pre>
                 </DialogContent>
                 <DialogActions>
                     <Button
