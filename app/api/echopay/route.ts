@@ -45,7 +45,7 @@ export async function GET(req: Request) {
 
         // Default: return all companies
         const snapshot = await getDocs(companiesCol);
-        const companies = snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as T_EchoPayExample) }));
+        const companies = snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as T_EchoPayRoute) }));
         return NextResponse.json(makeRes({
             severity: 'success',
             message: 'Lists Companies',
