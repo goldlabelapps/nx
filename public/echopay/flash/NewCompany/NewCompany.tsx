@@ -3,8 +3,6 @@ import type { I_NewCompany } from '../../types'
 import * as React from 'react';
 import { NewCompanyAS } from './';
 import {
-    darken,
-    useTheme,
     Box,
     TextField,
     Button,
@@ -13,7 +11,7 @@ import {
     Typography,
     InputAdornment,
 } from '@mui/material';
-import { CleverText, DumbText } from '../';
+import { CleverText, DumbText, OldCompany } from '../';
 import { makeMDResponse } from '../../';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { useDispatch } from '../../../../app/NX/Uberedux';
@@ -21,7 +19,16 @@ import { Icon } from '../../../../app/NX/DesignSystem';
 
 export default function NewCompany({ options }: I_NewCompany) {
 
-
+    // Store slug and hasSlug in state to avoid SSR hydration mismatch
+    const [hasSlug, setHasSlug] = React.useState(false);
+    const [slug, setSlug] = React.useState<string | null>(null);
+    React.useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const params = new URLSearchParams(window.location.search);
+            setHasSlug(params.has('s'));
+            setSlug(params.get('s'));
+        }
+    }, []);
 
     const nameInputRef = React.useRef<HTMLInputElement>(null);
     const [response, setResponse] = React.useState("thinking...");
@@ -50,7 +57,6 @@ export default function NewCompany({ options }: I_NewCompany) {
 
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
-    const theme = useTheme();
     const flash = useFlash();
     const dispatch = useDispatch();
     const thisStep = flash.thisStep;
@@ -93,7 +99,7 @@ export default function NewCompany({ options }: I_NewCompany) {
     }
 
     const nextStep = () => {
-        if (thisStep.num === 1) {
+        if (thisStep?.num === 1) {
             setTimeout(() => {
                 dispatch(setFlash('thisStep', {
                     num: 2,
@@ -107,7 +113,7 @@ export default function NewCompany({ options }: I_NewCompany) {
 
             }, 2000);
         }
-        if (thisStep.num === 2) {
+        if (thisStep?.num === 2) {
             dispatch(setFlash('thisStep', {
                 num: 3,
                 description: 'Close fields and reveal response',
@@ -122,7 +128,7 @@ export default function NewCompany({ options }: I_NewCompany) {
             })
             setResponse(mdResponse);
         };
-        if (thisStep.num === 3) {
+        if (thisStep?.num === 3) {
             dispatch(setFlash('thisStep', {
                 num: 4,
                 description: 'Play response animation',
@@ -130,7 +136,7 @@ export default function NewCompany({ options }: I_NewCompany) {
 
         };
 
-        if (thisStep.num === 4) {
+        if (thisStep?.num === 4) {
             dispatch(setFlash('thisStep', {
                 num: 5,
                 description: 'Go viral',
@@ -148,23 +154,21 @@ export default function NewCompany({ options }: I_NewCompany) {
         }
     }, [thisStep]);
 
+    if (hasSlug) {
+        return <>dsalndl</>
+    }
+
     if (!thisStep) return null;
 
     return (
-        <Box
-            id={mergedOptions.id}
-        >
-            <Box ref={clipRef} sx={{
-                // border: `1px solid ${darken(theme.palette.divider, 0.9)}`,
-                // bgcolor: darken(theme.palette.background.paper, 0.25),
-                // borderRadius: 2,
-                px: 1,
-            }}>
+        <Box id={mergedOptions.id}>
+
+            <Box ref={clipRef}>
 
                 {/* <pre>flash: {JSON.stringify(flash, null, 2)}</pre> */}
 
                 {/* Step 1: Intro CleverText (show in step 1 and 2) */}
-                <Collapse in={thisStep.num === 1 || thisStep.num === 2}>
+                <Collapse in={thisStep?.num === 1 || thisStep?.num === 2}>
                     <CleverText options={{
                         id: '',
                         markdown: mergedOptions.markdown,
@@ -173,7 +177,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                 </Collapse>
 
                 {/* Step 2: Form fields */}
-                <Collapse in={thisStep.num === 2}>
+                <Collapse in={thisStep?.num === 2}>
                     <Box id="newcompany_mc" sx={{ px: 2 }} onKeyDown={handleKeyDown}>
 
                         <Box sx={{ display: 'flex', my: 2, }}>
@@ -241,10 +245,11 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                         <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
                             <Box sx={{}}>
-                                <Typography variant="body2" sx={{}} >
+                                <Typography variant="caption"  >
                                     Business card ratio ({Number(fields.biz)}%)
                                 </Typography>
                                 <Slider
+                                    sx={{ mt: 1 }}
                                     value={Number(fields.biz)}
                                     min={0}
                                     max={100}
@@ -279,9 +284,9 @@ export default function NewCompany({ options }: I_NewCompany) {
                 </Collapse>
 
                 {/* Step 3: Response CleverText */}
-                <Collapse in={thisStep.num === 3}>
+                <Collapse in={thisStep?.num === 3}>
                     <Box sx={{ px: 1 }}>
-                        {thisStep.num === 3 ? <CleverText
+                        {thisStep?.num === 3 ? <CleverText
                             options={{
                                 id: 'response_mc',
                                 markdown: response,
@@ -293,7 +298,7 @@ export default function NewCompany({ options }: I_NewCompany) {
 
 
                 {/* /* Step 4: Spread Virus */}
-                <Collapse in={thisStep.num === 4}>
+                <Collapse in={thisStep?.num === 4}>
                     <Box sx={{ p: 1, }}>
                         <DumbText
                             options={{
