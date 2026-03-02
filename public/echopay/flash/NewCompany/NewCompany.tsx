@@ -59,12 +59,12 @@ export default function NewCompany({ options }: I_NewCompany) {
         }
     }, [flash, dispatch]);
 
-    /*
-        Current cost/month: £X
-        Costs using EchoPay £Y
-    */
-    const costCurrent = 1500;
-    const costEchoPay = 1000;
+    // Calculate costs using calculateEchoPayProfit
+    const { currentCostPerMonth, echoPayCostPerMonth } = require('../../lib/calculateEchoPayProfit').default({
+        cto: parseFloat(fields.cto),
+        atv: parseFloat(fields.atv),
+        biz: parseFloat(fields.biz),
+    });
 
 
     const handleShare = () => {
@@ -172,7 +172,7 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                         <Grid container spacing={2} sx={{ px: 2, mt: 1 }}>
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <TextField
                                         fullWidth
                                         label="Company"
@@ -191,7 +191,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 </Box>
                             </Grid>
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <Typography variant="caption"  >
                                         Card ratio ({Number(fields.biz)}%)
                                     </Typography>
@@ -213,7 +213,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             </Grid>
 
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <TextField
                                         id="input_cto"
                                         label="Card Turnover"
@@ -236,7 +236,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             </Grid>
 
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <TextField
                                         id="input_atv"
                                         label="Average Transaction"
@@ -261,7 +261,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             <Grid size={{ xs: 12 }}>
                                 <Box sx={{ my: 2 }}>
                                     <Typography variant="body1"  >
-                                        Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{costCurrent}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{costEchoPay}</span>.
+                                        Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{currentCostPerMonth}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{echoPayCostPerMonth}</span>.
                                     </Typography>
                                 </Box>
                             </Grid>

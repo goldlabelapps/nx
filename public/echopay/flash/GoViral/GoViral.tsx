@@ -15,11 +15,12 @@ import {
     DialogActions,
     Button,
     IconButton,
+    Typography,
 } from '@mui/material';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { Icon } from '../../../../app/NX/DesignSystem';
 import { useDispatch } from '../../../../app/NX/Uberedux';
-import { makeMDResponse } from '../../';
+import { makeMDResponse, calculateEchoPayProfit } from '../../';
 import { defaultCompany } from '../NewCompany/NewCompany';
 
 const slugify = (text: string) => {
@@ -47,6 +48,11 @@ export default function GoViral() {
     const description = "Do the maths";
     const isMobile = require('@mui/material/useMediaQuery').default('(max-width:899.95px)');
     const slug = slugify(flash?.name ?? defaultCompany.name);
+    const profit = calculateEchoPayProfit({
+        biz: flash?.biz ?? defaultCompany.biz,
+        cto: flash?.cto ?? defaultCompany.cto,
+        atv: flash?.atv ?? defaultCompany.atv,
+    });
     const company = {
         biz: flash?.biz ?? defaultCompany.biz,
         atv: flash?.atv ?? defaultCompany.atv,
@@ -76,6 +82,7 @@ export default function GoViral() {
             <Dialog
                 open={goViralOpen}
                 fullScreen={isMobile}
+
                 fullWidth={true}
                 maxWidth="xs"
                 onClose={handleClose}
@@ -134,7 +141,12 @@ export default function GoViral() {
 
 
                     </Box>
-                    <pre>company: {JSON.stringify(company, null, 2)}</pre>
+                    {/* <Box sx={{ my: 2 }}>
+                        <Typography variant="body1">
+                            Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{profit.currentCostPerMonth}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{profit.echoPayCostPerMonth}</span>.
+                        </Typography>
+                    </Box> */}
+                    <pre>url: {JSON.stringify(url, null, 2)}</pre>
                 </DialogContent>
                 <DialogActions>
                     <Button
