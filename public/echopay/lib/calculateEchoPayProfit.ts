@@ -33,6 +33,10 @@ const calculateEchoPayProfit = (props: I_EchoPayProfit) => {
         biz = testValues.biz,
     } = props || {};
 
+    /*
+    The costs would be for consumer debit .35 and consumer credit .45
+    For business debit 1.5 and business credit 1.85
+    */
 
     // Calculate number of transactions per month
     const transactions = cto / atv;

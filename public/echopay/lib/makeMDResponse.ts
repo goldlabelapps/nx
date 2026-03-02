@@ -32,7 +32,7 @@ const makeMDResponse = (props: I_MDResponse) => {
     const echoPayCostPerMonthDisplay = formatGBP(result?.echoPayCostPerMonth || 0);
     const yearlyProfitDisplay = formatGBP(result?.yearlyProfit || 0);
 
-    return `Imagine **${name}** has a monthly card turnover of **${ctoDisplay}** with an 
+    return `**${name}** has a monthly card turnover of **${ctoDisplay}** with an 
         average transaction value of **${atvDisplay}**. 
         The ratio of business vs consumer cards is **${bizDisplay}**. 
         They have a card acquisiion cost of **${currentCostPerMonthDisplay}** per month. 

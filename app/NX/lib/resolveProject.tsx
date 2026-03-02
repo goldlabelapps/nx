@@ -3,7 +3,6 @@ import type { T_ProjectSlug } from '../types';
 import nxConfig from '../../../public/nx/config.json';
 import mcukConfig from '../../../public/mcuk/config.json';
 import echopayConfig from '../../../public/echopay/config.json';
-import akiConfig from '../../../public/aki/config.json';
 import flashConfig from '../../../public/flash/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 
@@ -23,10 +22,6 @@ export const resolveProject = (projectSlug: T_ProjectSlug) => {
         case 'edtech':
             config = edtechConfig;
             markdownDir = process.cwd() + '/public/edtech/markdown';
-            break;
-        case 'aki':
-            config = akiConfig;
-            markdownDir = process.cwd() + '/public/aki/markdown';
             break;
         case 'flash':
             config = flashConfig;

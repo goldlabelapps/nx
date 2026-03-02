@@ -1,9 +1,8 @@
 "use client";
 import * as React from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import type { I_Icon } from '../../../../app/NX/types';
+// import type { I_Icon } from '../../../../app/NX/types';
 import {
-    // useTheme,
     Box,
     IconButton,
     Menu,
@@ -14,19 +13,18 @@ import {
     Typography,
 } from '@mui/material';
 import { Icon } from '../../../../app/NX/DesignSystem';
+import { useDispatch } from '../../../../app/NX/Uberedux';
+import { setFlash } from '../../../../app/NX/Flash';
 import { MenuClipAS } from './';
 
 
 export default function MenuClip() {
+
+    const dispatch = useDispatch();
     const router = useRouter();
     const pathname = usePathname();
-
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
-
-    // const theme = useTheme();
-    // let color1 = theme.palette.primary.main;
-
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
@@ -34,8 +32,6 @@ export default function MenuClip() {
         // Initialize the ActionScript with the ref
         ActionScript.current = new MenuClipAS(clipRef);
         ActionScript.current.init();
-
-        // ...existing code...
     }, []);
 
     const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -46,6 +42,12 @@ export default function MenuClip() {
         setAnchorEl(null);
     };
 
+    const handleAction = (item: typeof menuItems[number]) => {
+        if (item.action === 'OpenGoViral') {
+            console.log('Go Viral action triggered');
+            dispatch(setFlash('goViralOpen', true));
+        }
+    };
 
     const handleMenuItemClick = (item: typeof menuItems[number]) => {
         if (item.type === 'replay') {
@@ -61,6 +63,9 @@ export default function MenuClip() {
                 window.location.href = item.url;
             }
             handleMenuClose();
+        } else if (item.type === 'action') {
+            handleAction(item);
+            handleMenuClose();
         }
     };
 
@@ -70,19 +75,21 @@ export default function MenuClip() {
         title: string;
         description?: string;
         type?: 'link' | 'replay' | 'action';
+        action?: string;
         url?: string;
         help?: string;
     }[] = [
-            {
-                type: 'link',
-                icon: 'info',
-                title: 'Help',
-                url: '/testimonial',
-                help: `Navigate to the Testimonial page to view detailed analytics and reports`,
-            },
+            // {
+            //     type: 'link',
+            //     icon: 'info',
+            //     title: 'Help',
+            //     url: '/testimonial',
+            //     help: `Navigate to the Testimonial page to view detailed analytics and reports`,
+            // },
 
             {
                 type: 'action',
+                action: "OpenGoViral",
                 icon: 'share',
                 title: 'Share',
                 help: `Navigate to the Testimonial page to view detailed analytics and reports`,
@@ -99,7 +106,9 @@ export default function MenuClip() {
 
     return (
         <Box ref={clipRef}>
+
             <IconButton
+                color='primary'
                 onClick={handleMenuOpen}
             >
                 <Icon icon="fingerprint" />
@@ -115,6 +124,7 @@ export default function MenuClip() {
                 transformOrigin={{ vertical: 'top', horizontal: 'center' }}
                 PaperProps={{ style: { minWidth: 300 } }}
             >
+
                 <List dense>
                     {menuItems.map((item, idx: number) => (
                         <ListItemButton
@@ -122,7 +132,7 @@ export default function MenuClip() {
                             onClick={() => handleMenuItemClick(item)}
                         >
                             <ListItemIcon sx={{ ml: 1 }}>
-                                <Icon icon={item.icon} />
+                                <Icon icon={item.icon} color='primary' />
                             </ListItemIcon>
                             <ListItemText
                                 primary={<Typography>{item?.title}</Typography>}
