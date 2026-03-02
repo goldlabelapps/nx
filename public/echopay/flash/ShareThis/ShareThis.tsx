@@ -10,6 +10,7 @@ import {
 import {
     Box,
     IconButton,
+    Tooltip,
 } from '@mui/material';
 import { Icon } from '../../../../app/NX/DesignSystem';
 
@@ -31,18 +32,25 @@ export default function ShareThis() {
     return (
         <Box ref={clipRef}>
             <Box sx={{ display: 'flex', }}>
-
-                <IconButton
-                    onClick={() => {
-                        navigator.clipboard.writeText(url);
-                        setCopied(true);
-                        setTimeout(() => {
-                            setCopied(false);
-                        }, 1500);
-                    }}
+                <Tooltip
+                    title={copied ? `Copied! ${url}` : "Copy to clipboard"}
+                    open={copied}
+                    disableFocusListener
+                    disableTouchListener
+                    placement="top"
                 >
-                    <Icon icon="copy" color="primary" />
-                </IconButton>
+                    <IconButton
+                        onClick={() => {
+                            navigator.clipboard.writeText(url);
+                            setCopied(true);
+                            setTimeout(() => {
+                                setCopied(false);
+                            }, 1500);
+                        }}
+                    >
+                        <Icon icon="copy" color="primary" />
+                    </IconButton>
+                </Tooltip>
 
                 <Box sx={{ ml: 1, mt: 0.75 }}>
                     <TwitterShareButton title={title} url={url}>

@@ -281,7 +281,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                     <Button
                                         onClick={nextStep}
                                         variant='contained'
-                                        color="primary"
+                                        color="secondary"
                                         fullWidth
                                         endIcon={<Icon icon="right" />}
                                         disabled={!valid}
