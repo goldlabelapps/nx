@@ -4,6 +4,17 @@ export const getEndpoints = (name?: string) => {
     const baseURL = getBaseurl();
     const endpoints = [
         {
+            name: 'Share',
+            description: 'Shares and logs it',
+            path: `${baseURL}/share`,
+            subroutines: [
+                {
+                    name: 'List',
+                    path: `${baseURL}/share/list`,
+                },
+            ]
+        },
+        {
             name: 'Notify',
             description: 'Handles all channels of notification and logging',
             path: `${baseURL}/notify`,

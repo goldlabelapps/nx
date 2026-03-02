@@ -145,7 +145,12 @@ export default async function Page(props: any) {
     // }
 
     return (
-        <NX config={config} frontmatter={data} flash={sceneSlug}>
+        <NX
+            config={config}
+            frontmatter={data}
+            flash={sceneSlug}
+
+        >
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar
