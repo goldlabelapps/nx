@@ -4,14 +4,32 @@ export const getEndpoints = (name?: string) => {
     const baseURL = getBaseurl();
     const endpoints = [
         {
+            name: 'Share',
+            description: 'CRUD for the firestore share collection',
+            endpoints: [
+                {
+                    name: 'Read',
+                    description: 'Reads docs from Firebase share collection',
+                    method: 'GET',
+                    path: `${baseURL}/share/`,
+                },
+                {
+                    name: 'Create',
+                    description: 'Create a new share doc in firebase',
+                    method: 'POST',
+                    path: `${baseURL}/share/`,
+                },
+            ]
+        },
+        {
             name: 'Notify',
             description: 'Handles all channels of notification and logging',
             path: `${baseURL}/notify`,
-            subroutines: [
+            endpoints: [
                 {
                     name: 'Email',
                     path: `${baseURL}/notify/email`,
-                    subroutines: [
+                    endpoints: [
                         {
                             name: 'Logs',
                             path: `${baseURL}/notify/email/logs`,
@@ -28,6 +46,7 @@ export const getEndpoints = (name?: string) => {
             private: true,
             name: 'EchoPay',
             path: `${baseURL}/echopay`,
+            testslug: 'goldlabel-magento-store'
         },
     ];
     if (name) {

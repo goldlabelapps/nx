@@ -19,7 +19,7 @@ export async function GET(req: Request) {
         const queryKeys = Array.from(url.searchParams.keys());
         const app = getFirebaseApp();
         const db = getFirestore(app);
-        const companiesCol = collection(db, 'echopay/data/companies');
+        const companiesCol = collection(db, 'echopay');
 
         if (queryKeys.length > 0) {
             const slug = queryKeys[0];
@@ -92,7 +92,7 @@ export async function POST(req: Request) {
         }
         const app = getFirebaseApp();
         const db = getFirestore(app);
-        const companiesCol = collection(db, 'echopay/data/companies');
+        const companiesCol = collection(db, 'echopay');
         const companyWithTime = { ...body, time: Date.now() };
         const docRef = await addDoc(companiesCol, companyWithTime);
         return NextResponse.json(makeRes({
