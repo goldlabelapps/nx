@@ -16,6 +16,7 @@ export default class LogoAS {
             el.style.visibility = 'visible';
             el.style.transform = 'scaleY(0)';
             el.style.transform = 'scaleX(0)';
+
             this.fadeIn();
         }
     }
@@ -48,7 +49,8 @@ export default class LogoAS {
             scale: 1,
             duration: 0.7,
             stagger: 0.12,
-            ease: 'power3.out'
+            ease: 'power3.out',
+
         });
     }
 
@@ -64,8 +66,8 @@ export default class LogoAS {
                 },
                 {
                     opacity: 1,
-                    scaleX: 1,
-                    scaleY: 1,
+                    scaleX: 0.75,
+                    scaleY: 0.75,
                     duration: 1,
                     ease: 'expo.out',
                     onComplete: () => {

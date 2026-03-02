@@ -23,6 +23,7 @@ export const defaultCompany = {
     biz: '75',
     cto: '1000000',
     atv: '500',
+    markdown: `## Example Markdown`
 };
 
 export default function NewCompany({ options }: I_NewCompany) {
@@ -42,12 +43,28 @@ export default function NewCompany({ options }: I_NewCompany) {
     const flash = useFlash();
     const thisStep = flash.thisStep;
 
-    /*
-        Current cost/month: £X
-        Costs using EchoPay £Y
-    */
-    const costCurrent = 1500;
-    const costEchoPay = 1000;
+    // Set default values in flash redux if they don't exist
+    React.useEffect(() => {
+        if (!flash.name) {
+            dispatch(setFlash('name', defaultCompany.name));
+        }
+        if (!flash.biz) {
+            dispatch(setFlash('biz', defaultCompany.biz));
+        }
+        if (!flash.cto) {
+            dispatch(setFlash('cto', defaultCompany.cto));
+        }
+        if (!flash.atv) {
+            dispatch(setFlash('atv', defaultCompany.atv));
+        }
+    }, [flash, dispatch]);
+
+    // Calculate costs using calculateEchoPayProfit
+    const { currentCostPerMonth, echoPayCostPerMonth } = require('../../lib/calculateEchoPayProfit').default({
+        cto: parseFloat(fields.cto),
+        atv: parseFloat(fields.atv),
+        biz: parseFloat(fields.biz),
+    });
 
 
     const handleShare = () => {
@@ -115,19 +132,7 @@ export default function NewCompany({ options }: I_NewCompany) {
             })
             setResponse(mdResponse);
         };
-        if (thisStep?.num === 3) {
-            dispatch(setFlash('thisStep', {
-                num: 4,
-                description: 'Play response animation',
-            }));
-        };
 
-        if (thisStep?.num === 4) {
-            dispatch(setFlash('thisStep', {
-                num: 5,
-                description: 'Go viral',
-            }));
-        };
     }
 
     React.useEffect(() => {
@@ -167,7 +172,7 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                         <Grid container spacing={2} sx={{ px: 2, mt: 1 }}>
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <TextField
                                         fullWidth
                                         label="Company"
@@ -186,7 +191,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 </Box>
                             </Grid>
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <Typography variant="caption"  >
                                         Card ratio ({Number(fields.biz)}%)
                                     </Typography>
@@ -208,7 +213,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             </Grid>
 
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <TextField
                                         id="input_cto"
                                         label="Card Turnover"
@@ -231,7 +236,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             </Grid>
 
                             <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mx: 0 }}>
                                     <TextField
                                         id="input_atv"
                                         label="Average Transaction"
@@ -256,7 +261,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                             <Grid size={{ xs: 12 }}>
                                 <Box sx={{ my: 2 }}>
                                     <Typography variant="body1"  >
-                                        Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{costCurrent}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{costEchoPay}</span>.
+                                        Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{currentCostPerMonth}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{echoPayCostPerMonth}</span>.
                                     </Typography>
                                 </Box>
                             </Grid>
@@ -294,7 +299,30 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                 {/* Step 3: Response CleverText */}
                 <Collapse in={thisStep?.num === 3}>
-                    <Box sx={{ px: 1 }}>
+
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                        <Button
+                            startIcon={<Icon icon="left" />}
+                            variant='contained'
+                            color="secondary"
+                            onClick={handleBack}
+                            sx={{ px: 3 }}
+                        >
+                            Back
+                        </Button>
+
+                        <Button
+                            fullWidth
+                            variant='contained'
+                            color="secondary"
+                            onClick={handleShare}
+                            startIcon={<Icon icon="share" />}
+                        >
+                            Share
+                        </Button>
+                    </Box>
+
+                    <Box sx={{}}>
                         {thisStep?.num === 3 ? <CleverText
                             options={{
                                 id: 'response_mc',
@@ -302,40 +330,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 onFinish: nextStep,
                             }}
                         /> : null}
-                    </Box>
-                </Collapse>
-
-
-                {/* Step 4: Spread Virus */}
-                <Collapse in={thisStep?.num === 4}>
-                    <Box sx={{ p: 1 }}>
-                        <DumbText
-                            options={{
-                                id: 'dumbresponse_mc',
-                                markdown: response,
-                            }}
-                        />
-                        <Box sx={{ display: 'flex', gap: 2 }}>
-                            <Button
-                                startIcon={<Icon icon="left" />}
-                                variant='contained'
-                                color="secondary"
-                                onClick={handleBack}
-                                sx={{ px: 3 }}
-                            >
-                                Back
-                            </Button>
-
-                            <Button
-                                fullWidth
-                                variant='contained'
-                                color="secondary"
-                                onClick={handleShare}
-                                startIcon={<Icon icon="share" />}
-                            >
-                                Share
-                            </Button>
-                        </Box>
                     </Box>
                 </Collapse>
 
