@@ -7,6 +7,7 @@ import { CleverText } from './CleverText';
 import { DumbText } from './DumbText';
 import { RequiredText } from './RequiredText';
 import { NewCompany } from './NewCompany';
+import { OldCompany } from './OldCompany';
 import { GoViral } from './GoViral';
 
 export {
@@ -18,6 +19,7 @@ export {
     DumbText,
     RequiredText,
     NewCompany,
+    OldCompany,
     MenuClip,
     GoViral,
 };

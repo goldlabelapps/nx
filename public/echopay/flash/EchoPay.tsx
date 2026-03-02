@@ -11,24 +11,21 @@ import {
     MenuClip,
     GoViral,
 } from './';
-import { setFlash, useFlash } from '../../../app/NX/Flash';
+import { setFlash } from '../../../app/NX/Flash';
 import { useDispatch } from '../../../app/NX/Uberedux';
-import { Feedback, setFeedback } from '../../../app/NX/DesignSystem';
+import { Feedback } from '../../../app/NX/DesignSystem';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
-    const flash = useFlash();
     const dispatch = useDispatch();
-    const onDone = (flag: string | null) => {
-    };
 
     useEffect(() => {
         logoASRef.current =
-            new LogoAS(() => onDone('LogoDone'), logoRef);
-    }, [onDone]);
+            new LogoAS(() => { }, logoRef);
+    }, []);
 
     useEffect(() => {
         if (logoASRef.current) {
@@ -42,11 +39,6 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
             num: 1,
             description: 'Setup Chatbot',
         }));
-
-        // dispatch(setFeedback({
-        //     severity: 'success',
-        //     title: 'Hello!',
-        // }));
 
     }, [dispatch]);
 
@@ -63,10 +55,12 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     width={'95%'}
                     maxWidth={550}
                     zIndex={250}>
+
                     <NewCompany options={{
                         id: 'newcompany_mc',
                         markdown: `Why switch your card acquisition to **EchoPay**? Let's do the maths`,
                     }} />
+
                 </MovieClip>
                 <MovieClip
                     id='mc_menu'
