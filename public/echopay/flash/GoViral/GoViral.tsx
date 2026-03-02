@@ -36,6 +36,7 @@ export default function GoViral() {
     const [copied, setCopied] = React.useState(false);
     const title = "EchoPay";
     const description = "Do the maths";
+    const isMobile = require('@mui/material/useMediaQuery').default('(max-width:899.95px)');
 
     React.useEffect(() => {
         ActionScript.current = new GoViralAS(clipRef);
@@ -50,19 +51,15 @@ export default function GoViral() {
         <Box ref={clipRef}>
             <Dialog
                 open={goViralOpen}
-                fullScreen={false}
+                fullScreen={isMobile}
                 fullWidth={true}
                 maxWidth="xs"
                 onClose={handleClose}
                 aria-labelledby="go-viral-dialog-title"
             >
                 <DialogTitle id="go-viral-dialog-title">
-                    <CardHeader
-                        avatar={<Icon icon="share" />}
-                        title={<Typography variant="h6">
-                            Share
-                        </Typography>}
-                    />
+                    Send it to: Enter name
+                    email address or phone number
                 </DialogTitle>
                 <DialogContent>
                     {/* <pre>url: {JSON.stringify(url, null, 2)}</pre> */}
@@ -77,7 +74,7 @@ export default function GoViral() {
                         }}
                     >
                         <ListItemIcon sx={{ mr: 1 }}>
-                            <Icon icon="copy" color="secondary" />
+                            <Icon icon="copy" color="primary" />
                         </ListItemIcon>
                         <ListItemText
                             primary={copied ? 'Copied!' : 'Copy Link'}
@@ -89,7 +86,7 @@ export default function GoViral() {
                         <TwitterShareButton title={title} url={url}>
                             <Box display="flex" alignItems="center" px={2} py={1}>
                                 <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="twitter" color="secondary" />
+                                    <Icon icon="twitter" color="primary" />
                                 </ListItemIcon>
                                 <ListItemText primary="Twitter (X)" />
                             </Box>
@@ -101,7 +98,7 @@ export default function GoViral() {
                         <FacebookShareButton url={url} style={fullWidth}>
                             <Box display="flex" alignItems="center" px={2} py={1}>
                                 <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="facebook" color="secondary" />
+                                    <Icon icon="facebook" color="primary" />
                                 </ListItemIcon>
                                 <ListItemText primary="Facebook" />
                             </Box>
@@ -119,7 +116,7 @@ export default function GoViral() {
                         >
                             <Box display="flex" alignItems="center" px={2} py={1}>
                                 <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="linkedin" color="secondary" />
+                                    <Icon icon="linkedin" color="primary" />
                                 </ListItemIcon>
                                 <ListItemText primary="LinkedIn" />
                             </Box>
@@ -135,7 +132,7 @@ export default function GoViral() {
                         >
                             <Box display="flex" alignItems="center" px={2} py={1}>
                                 <ListItemIcon sx={{ mr: 1 }}>
-                                    <Icon icon="whatsapp" color="secondary" />
+                                    <Icon icon="whatsapp" color="primary" />
                                 </ListItemIcon>
                                 <ListItemText primary="WhatsApp" />
                             </Box>
@@ -145,8 +142,9 @@ export default function GoViral() {
                 </DialogContent>
                 <DialogActions>
                     <Button
+                        fullWidth
                         onClick={handleClose}
-                        variant="text"
+                        variant="contained"
                         endIcon={<Icon icon="close" />}>
                         Close
                     </Button>

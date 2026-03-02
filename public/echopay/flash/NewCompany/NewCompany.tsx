@@ -4,6 +4,7 @@ import * as React from 'react';
 import { NewCompanyAS } from './';
 import {
     Box,
+    Grid,
     TextField,
     Button,
     Collapse,
@@ -11,55 +12,43 @@ import {
     Typography,
     InputAdornment,
 } from '@mui/material';
-import { CleverText, DumbText, OldCompany } from '../';
+import { CleverText, DumbText } from '../';
 import { makeMDResponse } from '../../';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
 
+export const defaultCompany = {
+    name: 'Example Ltd',
+    biz: '75',
+    cto: '1000000',
+    atv: '500',
+};
+
 export default function NewCompany({ options }: I_NewCompany) {
 
-    // Store slug and hasSlug in state to avoid SSR hydration mismatch
-    const [hasSlug, setHasSlug] = React.useState(false);
-    const [slug, setSlug] = React.useState<string | null>(null);
-    React.useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const params = new URLSearchParams(window.location.search);
-            setHasSlug(params.has('s'));
-            setSlug(params.get('s'));
-        }
-    }, []);
-
+    const dispatch = useDispatch();
     const nameInputRef = React.useRef<HTMLInputElement>(null);
     const [response, setResponse] = React.useState("thinking...");
     const [valid, setValid] = React.useState(false);
-    const [fields, setFields] = React.useState({
-        name: 'Example Ltd',
-        biz: '64.6',
-        cto: '945000',
-        atv: '426',
-    });
-
-    // Individual field validation (must be after fields is declared)
-    const isNameValid = typeof fields.name === 'string' && fields.name.trim().length >= 3;
-    const ctoNum = parseFloat(String(fields.cto));
-    const atvNum = parseFloat(String(fields.atv));
-    const bizNum = parseFloat(String(fields.biz));
-    const isCtoValid = typeof fields.cto === 'string' && fields.cto.trim() !== '' && !isNaN(ctoNum) && ctoNum > 0;
-    const isAtvValid = typeof fields.atv === 'string' && fields.atv.trim() !== '' && !isNaN(atvNum) && atvNum > 0 && atvNum <= ctoNum;
-    const isBizValid = typeof fields.biz === 'string' && fields.biz.trim() !== '' && !isNaN(bizNum) && bizNum > 0 && bizNum <= 100;
-
+    const [fields, setFields] = React.useState(defaultCompany);
     const defaultOptions = {
         id: undefined,
         markdown: "New company default text",
     };
     const mergedOptions = { ...defaultOptions, ...options };
-
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
     const flash = useFlash();
-    const dispatch = useDispatch();
     const thisStep = flash.thisStep;
+
+    /*
+        Current cost/month: £X
+        Costs using EchoPay £Y
+    */
+    const costCurrent = 1500;
+    const costEchoPay = 1000;
+
 
     const handleShare = () => {
         dispatch(setFlash("goViralOpen", true));
@@ -71,13 +60,17 @@ export default function NewCompany({ options }: I_NewCompany) {
         }
     };
 
+    const handleBack = () => {
+        window.location.reload();
+    }
+
     const validate = () => {
         // All fields must be non-empty and name at least 3 chars
         if (
-            fields.name.trim().length < 3 ||
-            fields.cto.trim() === '' ||
-            fields.atv.trim() === '' ||
-            fields.biz.trim() === ''
+            String(fields.name).trim().length < 3 ||
+            String(fields.cto).trim() === '' ||
+            String(fields.atv).trim() === '' ||
+            String(fields.biz).trim() === ''
         ) {
             setValid(false);
             return;
@@ -105,20 +98,14 @@ export default function NewCompany({ options }: I_NewCompany) {
                     num: 2,
                     description: 'Reveal fields',
                 }));
-            }, 1000);
-            setTimeout(() => {
-                if (nameInputRef.current && document.activeElement !== nameInputRef.current) {
-                    nameInputRef.current.focus();
-                }
-
-            }, 2000);
+            }, 500);
         }
         if (thisStep?.num === 2) {
+            console.log('NOT NOW')
             dispatch(setFlash('thisStep', {
                 num: 3,
                 description: 'Close fields and reveal response',
             }));
-            // makeMDResponse
             const mdResponse = makeMDResponse({
                 name: fields.name,
                 cto: parseFloat(fields.cto),
@@ -133,7 +120,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                 num: 4,
                 description: 'Play response animation',
             }));
-
         };
 
         if (thisStep?.num === 4) {
@@ -141,9 +127,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                 num: 5,
                 description: 'Go viral',
             }));
-
         };
-
     }
 
     React.useEffect(() => {
@@ -154,9 +138,10 @@ export default function NewCompany({ options }: I_NewCompany) {
         }
     }, [thisStep]);
 
-    if (hasSlug) {
-        return <>dsalndl</>
-    }
+    // Run validate on mount
+    React.useEffect(() => {
+        validate();
+    }, []);
 
     if (!thisStep) return null;
 
@@ -178,107 +163,131 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                 {/* Step 2: Form fields */}
                 <Collapse in={thisStep?.num === 2}>
-                    <Box id="newcompany_mc" sx={{ px: 2 }} onKeyDown={handleKeyDown}>
+                    <Box id="newcompany_mc" onKeyDown={handleKeyDown}>
 
-                        <Box sx={{ display: 'flex', my: 2, }}>
-                            <TextField
-                                fullWidth
-                                size='small'
-                                variant="standard"
-                                id="input_name"
-                                label="Company name"
-                                value={fields.name}
-                                inputRef={nameInputRef}
-                                onChange={e => {
-                                    const value = e.target.value;
-                                    setFields(f => ({ ...f, name: value }));
-                                    dispatch(setFlash('name', value));
-                                    setTimeout(validate, 0);
-                                }}
-                            />
-                            {isNameValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
-                        </Box>
+                        <Grid container spacing={2} sx={{ px: 2, mt: 1 }}>
+                            <Grid size={{ xs: 6 }}>
+                                <Box sx={{ mx: 1 }}>
+                                    <TextField
+                                        fullWidth
+                                        label="Company"
+                                        color="primary"
+                                        variant="standard"
+                                        id="input_name"
+                                        value={fields.name}
+                                        inputRef={nameInputRef}
+                                        onChange={e => {
+                                            const value = e.target.value;
+                                            setFields(f => ({ ...f, name: value }));
+                                            dispatch(setFlash('name', value));
+                                            setTimeout(validate, 0);
+                                        }}
+                                    />
+                                </Box>
+                            </Grid>
+                            <Grid size={{ xs: 6 }}>
+                                <Box sx={{ mx: 1 }}>
+                                    <Typography variant="caption"  >
+                                        Card ratio ({Number(fields.biz)}%)
+                                    </Typography>
+                                    <Slider
+                                        color="primary"
+                                        value={Number(fields.biz)}
+                                        min={0}
+                                        max={100}
+                                        step={1}
+                                        valueLabelDisplay="off"
+                                        onChange={(_, value) => {
+                                            const val = typeof value === 'number' ? value : (Array.isArray(value) ? value[0] : 0);
+                                            setFields(f => ({ ...f, biz: String(val) }));
+                                            dispatch(setFlash('biz', String(val)));
+                                            validate();
+                                        }}
+                                    />
+                                </Box>
+                            </Grid>
 
-                        <Box sx={{ display: 'flex', mb: 2 }}>
-                            <TextField
-                                id="input_cto"
-                                label="Card acquisition per month"
-                                size='small'
-                                variant="standard"
-                                type="number"
-                                inputProps={{ min: 0, step: 'any' }}
-                                value={fields.cto}
-                                onChange={e => {
-                                    const value = e.target.value;
-                                    setFields(f => ({ ...f, cto: value }));
-                                    dispatch(setFlash('cto', value));
-                                    setTimeout(validate, 0);
-                                }}
-                                InputProps={{
-                                    startAdornment: <InputAdornment position="start">£</InputAdornment>
-                                }}
-                            />
-                            {isCtoValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
-                        </Box>
+                            <Grid size={{ xs: 6 }}>
+                                <Box sx={{ mx: 1 }}>
+                                    <TextField
+                                        id="input_cto"
+                                        label="Card Turnover"
+                                        color="primary"
+                                        variant="standard"
+                                        type="number"
+                                        inputProps={{ min: 0, step: 'any' }}
+                                        value={fields.cto}
+                                        onChange={e => {
+                                            const value = e.target.value;
+                                            setFields(f => ({ ...f, cto: value }));
+                                            dispatch(setFlash('cto', value));
+                                            setTimeout(validate, 0);
+                                        }}
+                                        InputProps={{
+                                            startAdornment: <InputAdornment position="start">£</InputAdornment>
+                                        }}
+                                    />
+                                </Box>
+                            </Grid>
 
-                        <Box sx={{ display: 'flex', mb: 1 }}>
-                            <TextField
-                                id="input_atv"
-                                label="Average transaction value"
-                                size='small'
-                                variant="standard"
-                                type="number"
-                                inputProps={{ min: 0, step: 'any' }}
-                                value={fields.atv}
-                                onChange={e => {
-                                    const value = e.target.value;
-                                    setFields(f => ({ ...f, atv: value }));
-                                    dispatch(setFlash('atv', value));
-                                    setTimeout(validate, 0);
-                                }}
-                                InputProps={{
-                                    startAdornment: <InputAdornment position="start">£</InputAdornment>
-                                }}
-                            />
-                            {isAtvValid && <Box sx={{ mt: 1, ml: 1 }}><Icon icon="tick" color="disabled" /></Box>}
-                        </Box>
+                            <Grid size={{ xs: 6 }}>
+                                <Box sx={{ mx: 1 }}>
+                                    <TextField
+                                        id="input_atv"
+                                        label="Average Transaction"
+                                        color="primary"
+                                        size='small'
+                                        variant="standard"
+                                        type="number"
+                                        inputProps={{ min: 0, step: 'any' }}
+                                        value={fields.atv}
+                                        onChange={e => {
+                                            const value = e.target.value;
+                                            setFields(f => ({ ...f, atv: value }));
+                                            dispatch(setFlash('atv', value));
+                                            setTimeout(validate, 0);
+                                        }}
+                                        InputProps={{
+                                            startAdornment: <InputAdornment position="start">£</InputAdornment>
+                                        }}
+                                    />
+                                </Box>
+                            </Grid>
+                            <Grid size={{ xs: 12 }}>
+                                <Box sx={{ my: 2 }}>
+                                    <Typography variant="body1"  >
+                                        Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{costCurrent}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{costEchoPay}</span>.
+                                    </Typography>
+                                </Box>
+                            </Grid>
 
-                        <Box sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
-                            <Box sx={{}}>
-                                <Typography variant="caption"  >
-                                    Business card ratio ({Number(fields.biz)}%)
-                                </Typography>
-                                <Slider
-                                    sx={{ mt: 1 }}
-                                    value={Number(fields.biz)}
-                                    min={0}
-                                    max={100}
-                                    step={1}
-                                    valueLabelDisplay="off"
-                                    onChange={(_, value) => {
-                                        const val = typeof value === 'number' ? value : (Array.isArray(value) ? value[0] : 0);
-                                        setFields(f => ({ ...f, biz: String(val) }));
-                                        dispatch(setFlash('biz', String(val)));
-                                        validate();
-                                    }}
-                                />
+                            <Grid size={{ xs: 12 }}>
 
-                            </Box>
-                            {isBizValid && <Box sx={{ mt: 2, ml: 2 }}><Icon icon="tick" color="disabled" /></Box>}
-                        </Box>
+                                <Box sx={{ display: 'flex', gap: 2 }}>
+                                    <Button
+                                        startIcon={<Icon icon="left" />}
+                                        variant='contained'
+                                        color="secondary"
+                                        onClick={handleBack}
+                                        sx={{ px: 3 }}
+                                    >
+                                        Back
+                                    </Button>
+                                    <Button
+                                        onClick={nextStep}
+                                        variant='contained'
+                                        color="primary"
+                                        fullWidth
+                                        endIcon={<Icon icon="right" />}
+                                        disabled={!valid}
+                                    >
+                                        Show the maths
+                                    </Button>
+                                </Box>
+                            </Grid>
 
-
-                        {valid ? <Box sx={{ display: 'flex' }}>
-                            <Button
-                                onClick={nextStep}
-                                fullWidth
-                                sx={{ mt: 2 }}
-                                endIcon={<Icon icon="right" />}
-                                disabled={!valid}
-                            >
-                                Do the maths
-                            </Button>
-                        </Box> : null}
+                        </Grid>
+                        {/* End of Grid container */}
 
                     </Box>
                 </Collapse>
@@ -297,27 +306,40 @@ export default function NewCompany({ options }: I_NewCompany) {
                 </Collapse>
 
 
-                {/* /* Step 4: Spread Virus */}
+                {/* Step 4: Spread Virus */}
                 <Collapse in={thisStep?.num === 4}>
-                    <Box sx={{ p: 1, }}>
+                    <Box sx={{ p: 1 }}>
                         <DumbText
                             options={{
                                 id: 'dumbresponse_mc',
                                 markdown: response,
                             }}
                         />
-                        <Button
-                            fullWidth
-                            onClick={handleShare}
-                            sx={{ mt: 2 }}
-                            startIcon={<Icon icon="share" />}
-                        >
-                            Share
-                        </Button>
+                        <Box sx={{ display: 'flex', gap: 2 }}>
+                            <Button
+                                startIcon={<Icon icon="left" />}
+                                variant='contained'
+                                color="secondary"
+                                onClick={handleBack}
+                                sx={{ px: 3 }}
+                            >
+                                Back
+                            </Button>
+
+                            <Button
+                                fullWidth
+                                variant='contained'
+                                color="secondary"
+                                onClick={handleShare}
+                                startIcon={<Icon icon="share" />}
+                            >
+                                Share
+                            </Button>
+                        </Box>
                     </Box>
                 </Collapse>
 
             </Box>
-        </Box >
+        </Box>
     );
 }

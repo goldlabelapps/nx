@@ -19,7 +19,7 @@ export default function OldCompany({ options }: I_OldCompany) {
 
     return (
         <Box ref={clipRef}>
-            Load old Old Company by slug {options?.slug}
+            Load old Old Company by this slug: {options?.slug}
         </Box >
     );
 }

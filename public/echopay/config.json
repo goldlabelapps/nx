@@ -45,8 +45,8 @@
             "themes": {
                 "dark": {
                     "mode": "dark",
-                    "primary": "#fff",
-                    "secondary": "#fff",
+                    "primary": "#A5C7FF",
+                    "secondary": "#184691",
                     "background": "#012867",
                     "paper": "#012867",
                     "text": "#fff",

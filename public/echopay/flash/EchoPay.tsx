@@ -55,12 +55,12 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     width={'95%'}
                     maxWidth={550}
                     zIndex={250}>
-
-                    <NewCompany options={{
-                        id: 'newcompany_mc',
-                        markdown: `Why switch your card acquisition to **EchoPay**? Let's do the maths`,
-                    }} />
-
+                    <>
+                        <NewCompany options={{
+                            id: 'newcompany_mc',
+                            markdown: `Why switch card acquisition to **EchoPay**? Let's do the maths`,
+                        }} />
+                    </>
                 </MovieClip>
                 <MovieClip
                     id='mc_menu'

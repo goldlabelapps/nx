@@ -10,7 +10,6 @@ export const createCompany =
     ) => {
         try {
             // const state = getState()?.redux ?? {};
-
             return {
                 severity: 'warning',
                 message: 'createCompany is not implemented yet',
