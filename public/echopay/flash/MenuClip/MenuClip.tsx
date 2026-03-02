@@ -113,6 +113,7 @@ export default function MenuClip() {
             >
                 <Icon icon="fingerprint" />
             </IconButton>
+
             <Menu
                 anchorEl={anchorEl}
                 open={open}

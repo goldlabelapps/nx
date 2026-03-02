@@ -8,8 +8,8 @@ import {
 import { Logo, LogoAS } from './Logo';
 import {
     NewCompany,
-    MenuClip,
     GoViral,
+    ShareThis,
 } from './';
 import { setFlash } from '../../../app/NX/Flash';
 import { useDispatch } from '../../../app/NX/Uberedux';
@@ -67,10 +67,10 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     pos="bottom-middle"
                     style={{ visibility: 'hidden' }}
                     offsetY={-8}
-                    width={50}
+                    width={'100%'}
                     height={50}
                     zIndex={200}>
-                    <MenuClip />
+                    <ShareThis />
                 </MovieClip>
                 <MovieClip
                     id='mc_logo'

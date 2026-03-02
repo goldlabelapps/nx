@@ -9,6 +9,7 @@ import { RequiredText } from './RequiredText';
 import { NewCompany } from './NewCompany';
 import { OldCompany } from './OldCompany';
 import { GoViral } from './GoViral';
+import { ShareThis } from './ShareThis';
 
 export {
     EchoPayAS,
@@ -22,4 +23,5 @@ export {
     OldCompany,
     MenuClip,
     GoViral,
+    ShareThis,
 };
