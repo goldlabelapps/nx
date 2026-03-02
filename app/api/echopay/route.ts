@@ -1,19 +1,20 @@
-// goldlabel-magento-store
 import { NextResponse } from 'next/server';
 import { makeRes } from '../lib/makeRes';
 import { getFirebaseApp } from '../lib/firebase';
 import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
 
-export type T_EchoPayExample = {
+export type T_EchoPayRoute = {
     name: string, // Company name
     slug: string, // Unique identifier, e.g. "company-xyz"
     cto: number, // Card Turnover
     atv: number, // Average Transaction Value
     biz: number, // Business Card Percentage
+    markdown: string, // Optional markdown description
 }
 
 export async function GET(req: Request) {
     try {
+        // goldlabel-magento-store
         const url = new URL(req.url);
         // Get the first query param key (if any)
         const queryKeys = Array.from(url.searchParams.keys());
@@ -25,7 +26,7 @@ export async function GET(req: Request) {
             const slug = queryKeys[0];
             // Fetch all companies and find the one with the matching slug
             const snapshot = await getDocs(companiesCol);
-            const companies = snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as T_EchoPayExample) }));
+            const companies = snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as T_EchoPayRoute) }));
             const match = companies.find(company => company.slug === slug);
             if (match) {
                 return NextResponse.json(makeRes({
@@ -47,7 +48,7 @@ export async function GET(req: Request) {
         const companies = snapshot.docs.map(doc => ({ id: doc.id, ...(doc.data() as T_EchoPayExample) }));
         return NextResponse.json(makeRes({
             severity: 'success',
-            message: 'Examples',
+            message: 'Lists Companies',
             data: companies,
         }));
     } catch (error) {
@@ -58,13 +59,13 @@ export async function GET(req: Request) {
     }
 }
 
-
 const fieldDescriptions: Record<string, string> = {
     name: 'Company name (string)',
     slug: 'Unique identifier, e.g. "company-xyz" (string)',
     cto: 'Card Turnover (number)',
     atv: 'Average Transaction Value (number)',
     biz: 'Business Card Percentage (number)',
+    markdown: 'Markdown (string)',
 };
 
 function getMissingOrInvalidFields(obj: any): string[] {
@@ -97,13 +98,13 @@ export async function POST(req: Request) {
         const docRef = await addDoc(companiesCol, companyWithTime);
         return NextResponse.json(makeRes({
             severity: 'success',
-            message: 'Example added',
+            message: 'Company added',
             data: { id: docRef.id, ...companyWithTime },
         }), { status: 201 });
     } catch (error) {
         return NextResponse.json(makeRes({
             severity: 'error',
-            message: 'Failed to add Example: ' + (error instanceof Error ? error.message : String(error)),
+            message: 'Failed to add Company: ' + (error instanceof Error ? error.message : String(error)),
         }), { status: 500 });
     }
 }

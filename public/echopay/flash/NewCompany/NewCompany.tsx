@@ -115,19 +115,7 @@ export default function NewCompany({ options }: I_NewCompany) {
             })
             setResponse(mdResponse);
         };
-        if (thisStep?.num === 3) {
-            dispatch(setFlash('thisStep', {
-                num: 4,
-                description: 'Play response animation',
-            }));
-        };
 
-        if (thisStep?.num === 4) {
-            dispatch(setFlash('thisStep', {
-                num: 5,
-                description: 'Go viral',
-            }));
-        };
     }
 
     React.useEffect(() => {
@@ -294,7 +282,30 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                 {/* Step 3: Response CleverText */}
                 <Collapse in={thisStep?.num === 3}>
-                    <Box sx={{ px: 1 }}>
+
+                    <Box sx={{ display: 'flex', gap: 2 }}>
+                        <Button
+                            startIcon={<Icon icon="left" />}
+                            variant='contained'
+                            color="secondary"
+                            onClick={handleBack}
+                            sx={{ px: 3 }}
+                        >
+                            Back
+                        </Button>
+
+                        <Button
+                            fullWidth
+                            variant='contained'
+                            color="secondary"
+                            onClick={handleShare}
+                            startIcon={<Icon icon="share" />}
+                        >
+                            Share
+                        </Button>
+                    </Box>
+
+                    <Box sx={{}}>
                         {thisStep?.num === 3 ? <CleverText
                             options={{
                                 id: 'response_mc',
@@ -302,40 +313,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 onFinish: nextStep,
                             }}
                         /> : null}
-                    </Box>
-                </Collapse>
-
-
-                {/* Step 4: Spread Virus */}
-                <Collapse in={thisStep?.num === 4}>
-                    <Box sx={{ p: 1 }}>
-                        <DumbText
-                            options={{
-                                id: 'dumbresponse_mc',
-                                markdown: response,
-                            }}
-                        />
-                        <Box sx={{ display: 'flex', gap: 2 }}>
-                            <Button
-                                startIcon={<Icon icon="left" />}
-                                variant='contained'
-                                color="secondary"
-                                onClick={handleBack}
-                                sx={{ px: 3 }}
-                            >
-                                Back
-                            </Button>
-
-                            <Button
-                                fullWidth
-                                variant='contained'
-                                color="secondary"
-                                onClick={handleShare}
-                                startIcon={<Icon icon="share" />}
-                            >
-                                Share
-                            </Button>
-                        </Box>
                     </Box>
                 </Collapse>
 
