@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, IconButton, Avatar, Card, CardMedia, CardHeader, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
+import { Box, IconButton, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { DesignSystem, Icon } from '../../DesignSystem';
 
 export default function SignIn({ onSignIn, config }: { onSignIn: (email: string, password: string) => void; config: any }) {
@@ -37,7 +37,7 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
         }
     };
 
-    const themeMode: 'light' | 'dark' = 'light';
+    const themeMode: 'light' | 'dark' = 'dark';
     let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (theme) {
         theme = { ...theme, mode: themeMode };
@@ -48,25 +48,14 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
         <DesignSystem theme={theme}>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ maxWidth: 400, margin: 'auto', mt: 3 }}>
-
-                    <CardHeader
-                        // avatar={<IconButton disabled>
-                        //     <Avatar alt={`${title} ${description}`} src={icon} />
-                        // </IconButton>}
-                        title={title}
-                        subheader={description}
-                    />
                     <Box
                         sx={{
                             width: '100%',
-                            aspectRatio: '1.91 / 1', // Open Graph ratio
+                            aspectRatio: '1.91 / 1',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             overflow: 'hidden',
-                            borderRadius: 2,
-                            mb: 2,
-                            background: theme?.palette?.background?.default || '#f5f5f5',
                         }}
                     >
                         <img
@@ -82,9 +71,6 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
                         />
                     </Box>
                     <CardContent>
-
-
-
 
                         {userMode !== 'single' && (
                             <TextField
