@@ -6,7 +6,6 @@ description: and support
 icon: info
 tags: Support, FAQ, help
 ---
-
 Reach out to [support@echopay.co.uk](mailto:support@echopay.co.uk) if you can't find an answer to your question. 
 
 1. Mobile banking app is not opening to make payment? 

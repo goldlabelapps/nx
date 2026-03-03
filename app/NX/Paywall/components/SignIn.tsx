@@ -42,7 +42,7 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
     if (theme) {
         theme = { ...theme, mode: themeMode };
     }
-    const { title, icon, description, image } = config;
+    const { title, description, image } = config;
 
     return (
         <DesignSystem theme={theme}>
