@@ -47,12 +47,12 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
     return (
         <DesignSystem theme={theme}>
             <form onSubmit={handleSubmit}>
-                <Card variant='outlined' sx={{ maxWidth: 400, margin: 'auto', mt: 3 }}>
+                <Box sx={{ maxWidth: 400, margin: 'auto', mt: 3 }}>
 
                     <CardHeader
-                        avatar={<IconButton disabled>
-                            <Avatar alt={`${title} ${description}`} src={icon} />
-                        </IconButton>}
+                        // avatar={<IconButton disabled>
+                        //     <Avatar alt={`${title} ${description}`} src={icon} />
+                        // </IconButton>}
                         title={title}
                         subheader={description}
                     />
@@ -136,7 +136,7 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
                         </Button>
                     </CardActions>
 
-                </Card>
+                </Box>
             </form>
         </DesignSystem>
     );

@@ -44,7 +44,7 @@ const calculateEchoPayProfit = (props: I_EchoPayProfit) => {
     const bizTransactions = transactions * (biz / 100);
     const consumerTransactions = transactions * (1 - biz / 100);
     // Typical rates
-    const bizRate = 0.7; // £0.7 per business card transaction                  
+    const bizRate = 1.5; // £0.7 per business card transaction                  
     const consumerRate = 0.6; // £0.6 per consumer card transaction
     // Calculate costs
     const currentCostPerMonth = Math.round((bizTransactions * bizRate) + (consumerTransactions * consumerRate));
