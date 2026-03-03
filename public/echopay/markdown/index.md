@@ -6,7 +6,7 @@ title: EchoPay
 description: Do the maths
 icon: right
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
-image: https://echopay.goldlabel.pro/echopay/gif/winner-winner.gif
+image: https://echopay.goldlabel.pro/echopay/gif/echopay.gif
 ---
 
 ## Rob Eastwood, Small Beer managing director
