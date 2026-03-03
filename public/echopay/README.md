@@ -1,6 +1,10 @@
-
-
 # Echopay NX
+
+## Dev password
+
+```sh
+cY?2LkhiDlCWVIb1#4tM
+```
 
 ## Do the maths
 

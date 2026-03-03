@@ -3,7 +3,7 @@ flash: EchoPay
 order: 1
 slug: /
 title: EchoPay
-description: Do the maths
+description: Reduce card costs from pounds to pence
 icon: right
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
 image: https://echopay.goldlabel.pro/echopay/gif/echopay.gif
