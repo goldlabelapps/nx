@@ -5,7 +5,6 @@ import {
     Flash,
     MovieClip,
 } from '../../../app/NX/Flash';
-// import { EchoPayLogo, EchoPayLogoAS } from './EchoPayLogo';
 import EchoPayLogo from './EchoPayLogo/EchoPayLogo'
 import EchoPayLogoAS from './EchoPayLogo/EchoPayLogoAS';
 import {
@@ -19,10 +18,14 @@ import { Feedback } from '../../../app/NX/DesignSystem';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
-    const instructions = `Why switch card acquisition to **EchoPay**?
+    let instructions = `Why switch card acquisition to **EchoPay**?
         Let's do the maths. We need to know 3 things. 
         Monthly card turnover (**CTO**), average transaction value (**ATV**), 
         and the ratio of Business to consumer cards (**BIZ**)`;
+
+    // instructions = `为什么要将信用卡收单方式切换到 **EchoPay**？让我们来算算账。
+    //  我们需要知道以下三点 月度信用卡周转率 (**CTO**)、平均交易额 (**ATV**)、
+    //  以及企业卡与个人卡的比例 (**BIZ**)。`;
 
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const logoRef = useRef<HTMLImageElement>(null);
@@ -55,6 +58,17 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
             <Feedback />
             <Flash id={'NXMC_flash'}>
                 <MovieClip
+                    id='mc_logo'
+                    pos="top-middle"
+                    offsetY={32}
+                    style={{ visibility: 'hidden' }}
+                    width={300}
+                    height={100}
+                    maxWidth={'90%'}
+                    zIndex={100}>
+                    <EchoPayLogo ref={logoRef} />
+                </MovieClip>
+                <MovieClip
                     border
                     id='mc_chatbot'
                     style={{ visibility: 'hidden' }}
@@ -78,17 +92,6 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     height={50}
                     zIndex={200}>
                     <ShareThis />
-                </MovieClip>
-                <MovieClip
-                    id='mc_logo'
-                    pos="top-middle"
-                    offsetY={32}
-                    style={{ visibility: 'hidden' }}
-                    width={300}
-                    height={100}
-                    maxWidth={'90%'}
-                    zIndex={100}>
-                    <EchoPayLogo ref={logoRef} />
                 </MovieClip>
             </Flash >
         </DesignSystem >
