@@ -28,7 +28,6 @@ export default function NewCompany({ options }: I_NewCompany) {
     const dispatch = useDispatch();
     const nameInputRef = React.useRef<HTMLInputElement>(null);
     const [response, setResponse] = React.useState("thinking...");
-    const [valid, setValid] = React.useState(false);
     const [fields, setFields] = React.useState(defaultCompany);
     const defaultOptions = {
         id: undefined,
@@ -126,7 +125,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                                             const value = e.target.value;
                                             setFields(f => ({ ...f, name: value }));
                                             dispatch(setFlash('name', value));
-                                            setTimeout(validate, 0);
                                         }}
                                     />
                                 </Box>
@@ -157,7 +155,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                                             const value = e.target.value;
                                             setFields(f => ({ ...f, cto: value }));
                                             dispatch(setFlash('cto', value));
-                                            setTimeout(validate, 0);
                                         }}
                                     />
                                 </Box>
@@ -182,7 +179,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                                             const value = e.target.value;
                                             setFields(f => ({ ...f, atv: value }));
                                             dispatch(setFlash('atv', value));
-                                            setTimeout(validate, 0);
                                         }}
                                     />
                                 </Box>
@@ -207,7 +203,6 @@ export default function NewCompany({ options }: I_NewCompany) {
                                             const value = e.target.value;
                                             setFields(f => ({ ...f, biz: value }));
                                             dispatch(setFlash('biz', value));
-                                            setTimeout(validate, 0);
                                         }}
                                     />
                                 </Box>
