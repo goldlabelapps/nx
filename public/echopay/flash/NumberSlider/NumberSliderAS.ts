@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-export default class CashSliderAS {
+export default class NumberSliderAS {
 
     private mc?: React.RefObject<any>;
 
@@ -10,7 +10,7 @@ export default class CashSliderAS {
 
     init(mcRef?: React.RefObject<any>) {
         if (mcRef) this.mc = mcRef;
-        // console.log('CashSliderAS');
+        console.log('NumberSliderAS');
         const el = this.mc?.current;
         if (el) {
             el.style.opacity = '0';
@@ -34,5 +34,9 @@ export default class CashSliderAS {
                 opacity: 0,
             });
         }
+    }
+
+    destroy() {
+        console.log('NumberSliderAS destroyed');
     }
 }

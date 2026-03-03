@@ -1,6 +1,6 @@
 import { EchoPay } from './EchoPay';
 import EchoPayAS from './EchoPayAS';
-import { Logo } from './Logo';
+import { EchoPayLogo } from './EchoPayLogo';
 import EchoPayApp from './EchoPayApp';
 import { MenuClip } from './MenuClip';
 import { CleverText } from './CleverText';
@@ -10,12 +10,12 @@ import { NewCompany } from './NewCompany';
 import { OldCompany } from './OldCompany';
 import { GoViral } from './GoViral';
 import { ShareThis } from './ShareThis';
-import { CashSlider } from './CashSlider';
+import { NumberSlider } from './NumberSlider';
 
 export {
     EchoPayAS,
     EchoPay,
-    Logo,
+    EchoPayLogo,
     EchoPayApp,
     CleverText,
     DumbText,
@@ -25,5 +25,5 @@ export {
     MenuClip,
     GoViral,
     ShareThis,
-    CashSlider,
+    NumberSlider,
 };

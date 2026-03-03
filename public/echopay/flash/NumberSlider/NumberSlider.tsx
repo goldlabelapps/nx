@@ -1,15 +1,17 @@
 "use client";
 import * as React from 'react';
-import { CashSliderAS } from './';
-import { Box, Typography, Slider } from '@mui/material';
-import { useDispatch } from '../../../../app/NX/Uberedux';
-import { useFlash, setFlash } from '../../../../app/NX/Flash';
+import ReactMarkdown from 'react-markdown';
+import { NumberSliderAS } from './';
+import { Box, Slider } from '@mui/material';
+import { useFlash } from '../../../../app/NX/Flash';
 
-export type CashSliderOptions = {
+export type NumberSliderOptions = {
     id?: string;
     flashKey?: string;
+    type?: 'percentage' | 'currency';
     label?: string;
     helperText?: string;
+    prefix?: string;
     range?: {
         min?: number;
         max?: number;
@@ -17,19 +19,17 @@ export type CashSliderOptions = {
     };
 };
 
-
-
-interface CashSliderProps {
-    options?: CashSliderOptions;
+export interface I_NumberSlider {
+    options?: NumberSliderOptions;
     onChange?: (e: any) => void;
 }
 
-export default function CashSlider({ options, onChange }: CashSliderProps) {
-    const dispatch = useDispatch();
+export default function NumberSlider({ options, onChange }: I_NumberSlider) {
+
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
     const flash = useFlash();
-    const defaultOptions: CashSliderOptions = {
+    const defaultOptions: NumberSliderOptions = {
         id: `cash-slider-${Math.random().toString(36).substr(2, 9)}`,
         label: "Cash Slider",
         helperText: "Helper text for Cash Slider",
@@ -45,22 +45,14 @@ export default function CashSlider({ options, onChange }: CashSliderProps) {
     const flashValue = opts.flashKey ? flash[opts.flashKey] : undefined;
 
     React.useEffect(() => {
-        ActionScript.current = new CashSliderAS(clipRef);
+        ActionScript.current = new NumberSliderAS(clipRef);
         ActionScript.current.init();
-    }, [options]);
+    }, []);
 
     return (
         <Box id={opts.id} ref={clipRef}>
-
-            {/* <pre>flash: {JSON.stringify(flash, null, 2)}</pre> */}
-
-            <Typography variant="body1" color='text.secondary'  >
-                {opts.label}
-            </Typography>
-
             <Slider
                 color="primary"
-                sx={{ mt: 1 }}
                 value={flashValue}
                 min={opts.range?.min}
                 max={opts.range?.max}
@@ -72,16 +64,24 @@ export default function CashSlider({ options, onChange }: CashSliderProps) {
                     }
                 }}
             />
-
-            <Typography variant="h6"  >
-                {(() => {
+            <ReactMarkdown>
+                {`**${opts.prefix ?? ''}** ${(() => {
                     const num = typeof flashValue === 'string' ? Number(flashValue) : flashValue;
-                    return !isNaN(num) && num !== undefined && num !== null
-                        ? num.toLocaleString('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 })
-                        : '£0';
-                })()}
-            </Typography>
+                    if (num === undefined || num === null || isNaN(num)) return opts.type === 'currency' ? '£0' : opts.type === 'percentage' ? '0%' : '0';
+                    if (opts.type === 'currency') {
+                        return num.toLocaleString('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 });
+                    } else if (opts.type === 'percentage') {
+                        return `${num}%`;
+                    } else {
+                        return num;
+                    }
+                })()}`}
+            </ReactMarkdown>
         </Box>
     );
 }
-{/* <pre>options: {JSON.stringify(options || defaultOptions, null, 2)}</pre> */ }
+
+
+/* <Typography variant="body1" color='text.secondary'  >
+                {opts.label}
+            </Typography> */
