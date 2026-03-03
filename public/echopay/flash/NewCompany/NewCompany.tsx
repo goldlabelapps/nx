@@ -21,8 +21,8 @@ import { Icon } from '../../../../app/NX/DesignSystem';
 export const defaultCompany = {
     name: 'Example Ltd',
     biz: '75',
-    cto: '1000000',
-    atv: '500',
+    cto: '903450',
+    atv: '572',
     markdown: `## Example Markdown`
 };
 
@@ -117,21 +117,21 @@ export default function NewCompany({ options }: I_NewCompany) {
                 }));
             }, 500);
         }
-        if (thisStep?.num === 2) {
-            console.log('NOT NOW')
-            dispatch(setFlash('thisStep', {
-                num: 3,
-                description: 'Close fields and reveal response',
-            }));
-            const mdResponse = makeMDResponse({
-                name: fields.name,
-                cto: parseFloat(fields.cto),
-                atv: parseFloat(fields.atv),
-                biz: parseFloat(fields.biz),
+        // if (thisStep?.num === 2) {
+        //     console.log('NOT NOW')
+        //     dispatch(setFlash('thisStep', {
+        //         num: 3,
+        //         description: 'Close fields and reveal response',
+        //     }));
+        //     const mdResponse = makeMDResponse({
+        //         name: fields.name,
+        //         cto: parseFloat(fields.cto),
+        //         atv: parseFloat(fields.atv),
+        //         biz: parseFloat(fields.biz),
 
-            })
-            setResponse(mdResponse);
-        };
+        //     })
+        //     setResponse(mdResponse);
+        // };
 
     }
 
@@ -191,31 +191,8 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 </Box>
                             </Grid> */}
 
-                            {/* <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 0 }}>
-                                    <Typography variant="caption"  >
-                                        Card ratio ({Number(fields.biz)}%)
-                                    </Typography>
-                                    <Slider
-                                        color="primary"
-                                        value={Number(fields.biz)}
-                                        min={0}
-                                        max={100}
-                                        step={1}
-                                        valueLabelDisplay="off"
-                                        onChange={(_, value) => {
-                                            const val = typeof value === 'number' ? value : (Array.isArray(value) ? value[0] : 0);
-                                            setFields(f => ({ ...f, biz: String(val) }));
-                                            dispatch(setFlash('biz', String(val)));
-                                            validate();
-                                        }}
-                                    />
-                                </Box>
-                            </Grid> */}
-
                             <Grid size={{ xs: 6 }}>
                                 <Box sx={{ mx: 0 }}>
-
                                     <CashSlider
                                         options={{
                                             id: "input_cto",
@@ -234,25 +211,29 @@ export default function NewCompany({ options }: I_NewCompany) {
                                             setTimeout(validate, 0);
                                         }}
                                     />
+                                </Box>
+                            </Grid>
 
-                                    {/* <TextField
-                                        id="input_cto"
-                                        
-                                        color="primary"
-                                        variant="standard"
-                                        type="number"
-                                        inputProps={{ min: 0, step: 'any' }}
-                                        value={fields.cto}
+                            <Grid size={{ xs: 6 }}>
+                                <Box sx={{ mx: 0 }}>
+                                    <CashSlider
+                                        options={{
+                                            id: "input_atv",
+                                            label: "Average Transaction Value",
+                                            flashKey: "atv",
+                                            range: {
+                                                min: 0,
+                                                max: 5000,
+                                                step: 'any'
+                                            },
+                                        }}
                                         onChange={e => {
                                             const value = e.target.value;
-                                            setFields(f => ({ ...f, cto: value }));
-                                            dispatch(setFlash('cto', value));
+                                            setFields(f => ({ ...f, atv: value }));
+                                            dispatch(setFlash('atv', value));
                                             setTimeout(validate, 0);
                                         }}
-                                        InputProps={{
-                                            startAdornment: <InputAdornment position="start">£</InputAdornment>
-                                        }}
-                                    /> */}
+                                    />
                                 </Box>
                             </Grid>
 
@@ -288,18 +269,10 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 </Box>
                             </Grid> */}
 
-                            <Grid size={{ xs: 12 }}>
+                            {/* <Grid size={{ xs: 12 }}>
 
                                 <Box sx={{ display: 'flex', gap: 2 }}>
-                                    <Button
-                                        startIcon={<Icon icon="left" />}
-                                        variant='contained'
-                                        color="secondary"
-                                        onClick={handleBack}
-                                        sx={{ px: 3 }}
-                                    >
-                                        Back
-                                    </Button>
+
                                     <Button
                                         onClick={nextStep}
                                         variant='contained'
@@ -311,7 +284,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                         Show the maths
                                     </Button>
                                 </Box>
-                            </Grid>
+                            </Grid> */}
 
                         </Grid>
                         {/* End of Grid container */}

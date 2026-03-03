@@ -5,7 +5,9 @@ import {
     Flash,
     MovieClip,
 } from '../../../app/NX/Flash';
-import { Logo, LogoAS } from './Logo';
+// import { EchoPayLogo, EchoPayLogoAS } from './EchoPayLogo';
+import EchoPayLogo from './EchoPayLogo/EchoPayLogo'
+import EchoPayLogoAS from './EchoPayLogo/EchoPayLogoAS';
 import {
     NewCompany,
     GoViral,
@@ -24,7 +26,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
     useEffect(() => {
         logoASRef.current =
-            new LogoAS(() => { }, logoRef);
+            new EchoPayLogoAS(() => { }, logoRef);
     }, []);
 
     useEffect(() => {
@@ -81,7 +83,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     height={100}
                     maxWidth={'90%'}
                     zIndex={100}>
-                    <Logo ref={logoRef} />
+                    <EchoPayLogo ref={logoRef} />
                 </MovieClip>
             </Flash>
         </DesignSystem>

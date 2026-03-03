@@ -2,8 +2,7 @@
 import * as React from 'react';
 import { CashSliderAS } from './';
 import { Box, Typography, Slider } from '@mui/material';
-import { useDispatch } from '../../../../app/NX/Uberedux';
-import { useFlash, setFlash } from '../../../../app/NX/Flash';
+import { useFlash } from '../../../../app/NX/Flash';
 
 export type CashSliderOptions = {
     id?: string;
@@ -17,15 +16,13 @@ export type CashSliderOptions = {
     };
 };
 
-
-
-interface CashSliderProps {
+export interface I_CashSlider {
     options?: CashSliderOptions;
     onChange?: (e: any) => void;
 }
 
-export default function CashSlider({ options, onChange }: CashSliderProps) {
-    const dispatch = useDispatch();
+export default function CashSlider({ options, onChange }: I_CashSlider) {
+
     const ActionScript = React.useRef<any>(null);
     const clipRef = React.useRef<HTMLDivElement>(null);
     const flash = useFlash();
@@ -47,17 +44,18 @@ export default function CashSlider({ options, onChange }: CashSliderProps) {
     React.useEffect(() => {
         ActionScript.current = new CashSliderAS(clipRef);
         ActionScript.current.init();
-    }, [options]);
+    }, []);
 
     return (
         <Box id={opts.id} ref={clipRef}>
-
-            {/* <pre>flash: {JSON.stringify(flash, null, 2)}</pre> */}
-
-            <Typography variant="body1" color='text.secondary'  >
-                {opts.label}
+            <Typography variant="h6"  >
+                {(() => {
+                    const num = typeof flashValue === 'string' ? Number(flashValue) : flashValue;
+                    return !isNaN(num) && num !== undefined && num !== null
+                        ? num.toLocaleString('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 })
+                        : '£0';
+                })()}
             </Typography>
-
             <Slider
                 color="primary"
                 sx={{ mt: 1 }}
@@ -72,16 +70,9 @@ export default function CashSlider({ options, onChange }: CashSliderProps) {
                     }
                 }}
             />
-
-            <Typography variant="h6"  >
-                {(() => {
-                    const num = typeof flashValue === 'string' ? Number(flashValue) : flashValue;
-                    return !isNaN(num) && num !== undefined && num !== null
-                        ? num.toLocaleString('en-GB', { style: 'currency', currency: 'GBP', minimumFractionDigits: 0, maximumFractionDigits: 0 })
-                        : '£0';
-                })()}
+            <Typography variant="body1" color='text.secondary'  >
+                {opts.label}
             </Typography>
         </Box>
     );
 }
-{/* <pre>options: {JSON.stringify(options || defaultOptions, null, 2)}</pre> */ }

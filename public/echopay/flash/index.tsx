@@ -1,6 +1,6 @@
 import { EchoPay } from './EchoPay';
 import EchoPayAS from './EchoPayAS';
-import { Logo } from './Logo';
+import { EchoPayLogo } from './EchoPayLogo';
 import EchoPayApp from './EchoPayApp';
 import { MenuClip } from './MenuClip';
 import { CleverText } from './CleverText';
@@ -15,7 +15,7 @@ import { CashSlider } from './CashSlider';
 export {
     EchoPayAS,
     EchoPay,
-    Logo,
+    EchoPayLogo,
     EchoPayApp,
     CleverText,
     DumbText,
