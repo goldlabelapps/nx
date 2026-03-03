@@ -12,7 +12,7 @@ import {
     Typography,
     InputAdornment,
 } from '@mui/material';
-import { CleverText, DumbText } from '../';
+import { CleverText, CashSlider } from '../';
 import { makeMDResponse } from '../../';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { useDispatch } from '../../../../app/NX/Uberedux';
@@ -171,7 +171,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                     <Box id="newcompany_mc" onKeyDown={handleKeyDown}>
 
                         <Grid container spacing={2} sx={{ px: 2, mt: 1 }}>
-                            <Grid size={{ xs: 6 }}>
+                            {/* <Grid size={{ xs: 6 }}>
                                 <Box sx={{ mx: 0 }}>
                                     <TextField
                                         fullWidth
@@ -189,8 +189,9 @@ export default function NewCompany({ options }: I_NewCompany) {
                                         }}
                                     />
                                 </Box>
-                            </Grid>
-                            <Grid size={{ xs: 6 }}>
+                            </Grid> */}
+
+                            {/* <Grid size={{ xs: 6 }}>
                                 <Box sx={{ mx: 0 }}>
                                     <Typography variant="caption"  >
                                         Card ratio ({Number(fields.biz)}%)
@@ -210,13 +211,33 @@ export default function NewCompany({ options }: I_NewCompany) {
                                         }}
                                     />
                                 </Box>
-                            </Grid>
+                            </Grid> */}
 
                             <Grid size={{ xs: 6 }}>
                                 <Box sx={{ mx: 0 }}>
-                                    <TextField
+
+                                    <CashSlider
+                                        options={{
+                                            id: "input_cto",
+                                            label: "Card turnover per month",
+                                            flashKey: "cto",
+                                            range: {
+                                                min: 0,
+                                                max: 2000000,
+                                                step: 'any'
+                                            },
+                                        }}
+                                        onChange={e => {
+                                            const value = e.target.value;
+                                            setFields(f => ({ ...f, cto: value }));
+                                            dispatch(setFlash('cto', value));
+                                            setTimeout(validate, 0);
+                                        }}
+                                    />
+
+                                    {/* <TextField
                                         id="input_cto"
-                                        label="Card Turnover"
+                                        
                                         color="primary"
                                         variant="standard"
                                         type="number"
@@ -231,13 +252,13 @@ export default function NewCompany({ options }: I_NewCompany) {
                                         InputProps={{
                                             startAdornment: <InputAdornment position="start">£</InputAdornment>
                                         }}
-                                    />
+                                    /> */}
                                 </Box>
                             </Grid>
 
                             <Grid size={{ xs: 6 }}>
                                 <Box sx={{ mx: 0 }}>
-                                    <TextField
+                                    {/* <TextField
                                         id="input_atv"
                                         label="Average Transaction"
                                         color="primary"
@@ -255,16 +276,17 @@ export default function NewCompany({ options }: I_NewCompany) {
                                         InputProps={{
                                             startAdornment: <InputAdornment position="start">£</InputAdornment>
                                         }}
-                                    />
+                                    /> */}
                                 </Box>
                             </Grid>
-                            <Grid size={{ xs: 12 }}>
+
+                            {/* <Grid size={{ xs: 12 }}>
                                 <Box sx={{ my: 2 }}>
                                     <Typography variant="body1"  >
                                         Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{currentCostPerMonth}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{echoPayCostPerMonth}</span>.
                                     </Typography>
                                 </Box>
-                            </Grid>
+                            </Grid> */}
 
                             <Grid size={{ xs: 12 }}>
 
@@ -281,7 +303,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                                     <Button
                                         onClick={nextStep}
                                         variant='contained'
-                                        color="primary"
+                                        color="secondary"
                                         fullWidth
                                         endIcon={<Icon icon="right" />}
                                         disabled={!valid}
