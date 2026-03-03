@@ -8,19 +8,16 @@ import {
     TextField,
     Button,
     Collapse,
-    Slider,
-    Typography,
-    InputAdornment,
 } from '@mui/material';
-import { CleverText, CashSlider } from '../';
-import { makeMDResponse } from '../../';
+import { CleverText, NumberSlider } from '../';
+// import { makeMDResponse } from '../../';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
 
 export const defaultCompany = {
     name: 'Example Ltd',
-    biz: '75',
+    biz: '64.5',
     cto: '903450',
     atv: '572',
     markdown: `## Example Markdown`
@@ -59,54 +56,20 @@ export default function NewCompany({ options }: I_NewCompany) {
         }
     }, [flash, dispatch]);
 
-    // Calculate costs using calculateEchoPayProfit
-    const { currentCostPerMonth, echoPayCostPerMonth } = require('../../lib/calculateEchoPayProfit').default({
-        cto: parseFloat(fields.cto),
-        atv: parseFloat(fields.atv),
-        biz: parseFloat(fields.biz),
-    });
-
-
-    const handleShare = () => {
-        dispatch(setFlash("goViralOpen", true));
-    };
 
     const handleKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' && valid) {
+        if (e.key === 'Enter') {
             nextStep();
         }
     };
 
     const handleBack = () => {
         window.location.reload();
-    }
+    };
 
-    const validate = () => {
-        // All fields must be non-empty and name at least 3 chars
-        if (
-            String(fields.name).trim().length < 3 ||
-            String(fields.cto).trim() === '' ||
-            String(fields.atv).trim() === '' ||
-            String(fields.biz).trim() === ''
-        ) {
-            setValid(false);
-            return;
-        }
-        // Parse numbers
-        const cto = parseFloat(fields.cto);
-        const atv = parseFloat(fields.atv);
-        const biz = parseFloat(fields.biz);
-        // Validate numbers
-        if (
-            isNaN(cto) || isNaN(atv) || isNaN(biz) ||
-            cto <= 0 || atv <= 0 || biz <= 0 || biz > 100 ||
-            atv > cto
-        ) {
-            setValid(false);
-            return;
-        }
-        setValid(true);
-    }
+    const handleShare = () => {
+        dispatch(setFlash("goViralOpen", true));
+    };
 
     const nextStep = () => {
         if (thisStep?.num === 1) {
@@ -115,24 +78,8 @@ export default function NewCompany({ options }: I_NewCompany) {
                     num: 2,
                     description: 'Reveal fields',
                 }));
-            }, 500);
+            }, 750);
         }
-        // if (thisStep?.num === 2) {
-        //     console.log('NOT NOW')
-        //     dispatch(setFlash('thisStep', {
-        //         num: 3,
-        //         description: 'Close fields and reveal response',
-        //     }));
-        //     const mdResponse = makeMDResponse({
-        //         name: fields.name,
-        //         cto: parseFloat(fields.cto),
-        //         atv: parseFloat(fields.atv),
-        //         biz: parseFloat(fields.biz),
-
-        //     })
-        //     setResponse(mdResponse);
-        // };
-
     }
 
     React.useEffect(() => {
@@ -142,11 +89,6 @@ export default function NewCompany({ options }: I_NewCompany) {
             dispatch(setFlash("playing", true));
         }
     }, [thisStep]);
-
-    // Run validate on mount
-    React.useEffect(() => {
-        validate();
-    }, []);
 
     if (!thisStep) return null;
 
@@ -160,7 +102,7 @@ export default function NewCompany({ options }: I_NewCompany) {
                 {/* Step 1: Intro CleverText (show in step 1 and 2) */}
                 <Collapse in={thisStep?.num === 1 || thisStep?.num === 2}>
                     <CleverText options={{
-                        id: '',
+                        id: 'intro_text',
                         markdown: mergedOptions.markdown,
                         onFinish: nextStep,
                     }} />
@@ -168,15 +110,14 @@ export default function NewCompany({ options }: I_NewCompany) {
 
                 {/* Step 2: Form fields */}
                 <Collapse in={thisStep?.num === 2}>
-                    <Box id="newcompany_mc" onKeyDown={handleKeyDown}>
+                    <Box id="input_fields" onKeyDown={handleKeyDown}>
 
                         <Grid container spacing={2} sx={{ px: 2, mt: 1 }}>
-                            {/* <Grid size={{ xs: 6 }}>
-                                <Box sx={{ mx: 0 }}>
+                            <Grid size={{ xs: 6 }}>
+                                <Box sx={{ mb: 2 }}>
                                     <TextField
                                         fullWidth
-                                        label="Company"
-                                        color="primary"
+                                        label="Company name"
                                         variant="standard"
                                         id="input_name"
                                         value={fields.name}
@@ -189,13 +130,21 @@ export default function NewCompany({ options }: I_NewCompany) {
                                         }}
                                     />
                                 </Box>
-                            </Grid> */}
+                            </Grid>
 
                             <Grid size={{ xs: 6 }}>
+                                <Box sx={{ my: 2 }}>
+                                    the figures
+                                </Box>
+                            </Grid>
+
+                            <Grid size={{ xs: 4 }}>
                                 <Box sx={{ mx: 0 }}>
-                                    <CashSlider
+                                    <NumberSlider
                                         options={{
                                             id: "input_cto",
+                                            prefix: "CTO",
+                                            type: "currency",
                                             label: "Card turnover per month",
                                             flashKey: "cto",
                                             range: {
@@ -214,12 +163,14 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 </Box>
                             </Grid>
 
-                            <Grid size={{ xs: 6 }}>
+                            <Grid size={{ xs: 4 }}>
                                 <Box sx={{ mx: 0 }}>
-                                    <CashSlider
+                                    <NumberSlider
                                         options={{
                                             id: "input_atv",
+                                            prefix: "ATV",
                                             label: "Average Transaction Value",
+                                            type: "currency",
                                             flashKey: "atv",
                                             range: {
                                                 min: 0,
@@ -237,51 +188,48 @@ export default function NewCompany({ options }: I_NewCompany) {
                                 </Box>
                             </Grid>
 
-                            <Grid size={{ xs: 6 }}>
+                            <Grid size={{ xs: 4 }}>
                                 <Box sx={{ mx: 0 }}>
-                                    {/* <TextField
-                                        id="input_atv"
-                                        label="Average Transaction"
-                                        color="primary"
-                                        size='small'
-                                        variant="standard"
-                                        type="number"
-                                        inputProps={{ min: 0, step: 'any' }}
-                                        value={fields.atv}
+                                    <NumberSlider
+                                        options={{
+                                            id: "input_biz",
+                                            prefix: "BIZ",
+                                            label: "Card ratio",
+                                            flashKey: "biz",
+                                            type: "percentage",
+                                            range: {
+                                                min: 0,
+                                                max: 100,
+                                                step: 1
+                                            },
+                                        }}
                                         onChange={e => {
                                             const value = e.target.value;
-                                            setFields(f => ({ ...f, atv: value }));
-                                            dispatch(setFlash('atv', value));
+                                            setFields(f => ({ ...f, biz: value }));
+                                            dispatch(setFlash('biz', value));
                                             setTimeout(validate, 0);
                                         }}
-                                        InputProps={{
-                                            startAdornment: <InputAdornment position="start">£</InputAdornment>
-                                        }}
-                                    /> */}
+                                    />
                                 </Box>
                             </Grid>
 
-                            {/* <Grid size={{ xs: 12 }}>
-                                <Box sx={{ my: 2 }}>
-                                    <Typography variant="body1"  >
-                                        Card acquisition cost/month <span style={{ fontWeight: 'bold' }}>£{currentCostPerMonth}</span>. With EchoPay? <span style={{ fontWeight: 'bold' }}>£{echoPayCostPerMonth}</span>.
-                                    </Typography>
-                                </Box>
-                            </Grid> */}
 
-                            {/* <Grid size={{ xs: 12 }}>
 
-                                <Box sx={{ display: 'flex', gap: 2 }}>
 
+                            {/* 
+
+                            <Grid size={{ xs: 12 }}>
+                                <Box sx={{ display: 'flex', flexDirection: 'row-reverse' }}>
                                     <Button
+                                        sx={{ mt: 2 }}
                                         onClick={nextStep}
                                         variant='contained'
                                         color="secondary"
-                                        fullWidth
+                                        // fullWidth
                                         endIcon={<Icon icon="right" />}
                                         disabled={!valid}
                                     >
-                                        Show the maths
+                                        Next
                                     </Button>
                                 </Box>
                             </Grid> */}

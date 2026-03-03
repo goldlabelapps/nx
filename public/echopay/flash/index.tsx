@@ -10,7 +10,7 @@ import { NewCompany } from './NewCompany';
 import { OldCompany } from './OldCompany';
 import { GoViral } from './GoViral';
 import { ShareThis } from './ShareThis';
-import { CashSlider } from './CashSlider';
+import { NumberSlider } from './NumberSlider';
 
 export {
     EchoPayAS,
@@ -25,5 +25,5 @@ export {
     MenuClip,
     GoViral,
     ShareThis,
-    CashSlider,
+    NumberSlider,
 };

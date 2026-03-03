@@ -19,6 +19,11 @@ import { Feedback } from '../../../app/NX/DesignSystem';
 
 export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
 
+    const instructions = `Why switch card acquisition to **EchoPay**?
+        Let's do the maths. We need to know 3 things. 
+        Monthly card turnover (**CTO**), average transaction value (**ATV**), 
+        and the ratio of Business to consumer cards (**BIZ**)`;
+
     const theme = config?.cartridges?.designSystem?.themes?.light;
     const logoRef = useRef<HTMLImageElement>(null);
     const logoASRef = useRef<any>(null);
@@ -60,10 +65,10 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     <>
                         <NewCompany options={{
                             id: 'newcompany_mc',
-                            markdown: `Why switch card acquisition to **EchoPay**? Let's do the maths`,
+                            markdown: instructions,
                         }} />
                     </>
-                </MovieClip>
+                </MovieClip >
                 <MovieClip
                     id='mc_menu'
                     pos="bottom-middle"
@@ -85,7 +90,7 @@ export const EchoPay: React.FC<{ config?: any }> = ({ config }) => {
                     zIndex={100}>
                     <EchoPayLogo ref={logoRef} />
                 </MovieClip>
-            </Flash>
-        </DesignSystem>
+            </Flash >
+        </DesignSystem >
     );
 };
