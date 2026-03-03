@@ -2,7 +2,7 @@
 order: 10
 title: Our changing role
 description: The step‑change due to AI
-slug: /our-work/our-changing-role
+slug: /work/our-changing-role
 image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
 icon: work
 tags: Senior Developer, AI, Experience
@@ -110,3 +110,14 @@ Phase 2: Hardening
 
 AI compresses Phase 1 dramatically.
 Judgement determines when Phase 2 begins.
+
+
+> Our CV shows a lot of chopping, changing and contracting. Why are we now interested in a permanent role?
+
+**Answer**  
+
+I’ve worked across many companies and technologies because I never needed the safety net of a traditional path. That gave me broad experience, not just technically but in understanding how different businesses operate.  
+
+What's changed is that, as I've gained experience, I’ve come to really enjoy working within a team and contributing to something over the long term. I want to bring that experience into a permanent role where I can invest in a product and a team.  
+
+Another factor is how development itself has changed. With AI dramatically speeding up coding, the role of a developer is less about typing out code and more about deciding what to build, in what order, and how it fits into the bigger picture. The actual build happens almost instantly. That’s why experience and judgment matter more than ever — and why I’m motivated to contribute strategically over time, not just deliver features.
