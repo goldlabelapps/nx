@@ -6,7 +6,7 @@ title: EchoPay
 description: Reduce card costs from pounds to pence
 icon: right
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
-image: https://echopay.goldlabel.pro/echopay/gif/echopay.gif
+image: https://echopay.goldlabel.pro/echopay/gif/echopay_blue.gif
 ---
 
 ## Rob Eastwood, Small Beer managing director
