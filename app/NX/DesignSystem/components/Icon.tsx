@@ -165,11 +165,15 @@ import VapeIcon from '@mui/icons-material/SmokeFree';
 import SendIcon from '@mui/icons-material/Send';
 import BookIcon from '@mui/icons-material/MenuBook';
 import MathsIcon from '@mui/icons-material/Calculate';
+import VirusIcon from '@mui/icons-material/Coronavirus';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'virus':
+      iconFragment = <VirusIcon color={color} />;
+      break;
     case 'maths':
       iconFragment = <MathsIcon color={color} />;
       break;

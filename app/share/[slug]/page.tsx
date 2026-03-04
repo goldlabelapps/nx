@@ -11,7 +11,7 @@ import {
     CardActions,
 } from '@mui/material';
 import {
-    resolveProject,
+    getTenant,
 } from '../../NX/lib';
 import {
     getMeta,
@@ -27,12 +27,8 @@ import {
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
     const { slug } = await params;
-    // const tenant = await getTenant();
     const res = await fetch(`${getBaseurl()}/share/${slug}`);
     const data = await res.json();
-    const { severity } = data?.meta || {};
-
-
     const meta = getMeta({});
     let mergedMeta = Object.fromEntries(
         Object.entries(meta).map(([key, value]) => [
@@ -40,7 +36,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             data.data && key in data.data ? data.data[key] : value
         ])
     );
-
     if (data.data && data.data.title) {
         if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
             mergedMeta.openGraph = {
@@ -91,23 +86,18 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             };
         }
     }
-
     return mergedMeta;
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
 
     const { slug } = await params;
-    // const tenant = await getTenant();
     const res = await fetch(`${getBaseurl()}/share/${slug}`);
     const data = await res.json();
     const { severity } = data?.meta || {};
-
     if (severity !== 'success') {
         notFound();
     }
-
-    // Generate mergedMeta before rendering
     const meta = getMeta({});
     let mergedMeta = Object.fromEntries(
         Object.entries(meta).map(([key, value]) => [key, key in data.data ? data.data[key] : value])
@@ -169,15 +159,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         tenant,
     } = data.data || {};
 
-    const { config } = resolveProject(tenant as T_Tenant);
+    const { config } = getTenant(tenant as T_Tenant);
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themes = config?.cartridges?.designSystem?.themes;
     let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
     if (theme) {
         theme = { ...theme, mode: themeMode };
     };
-
-
 
     return (
         <DesignSystem theme={theme as T_Theme}>
