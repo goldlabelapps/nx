@@ -13,7 +13,7 @@ export interface NavItem {
 }
 
 async function getMarkdownRoot() {
-    const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+    const project = process.env.NEXT_PUBLIC_TENANT || "goldlabel";
     return path.join(process.cwd(), `public/${project}/markdown`);
 }
 
@@ -122,7 +122,7 @@ function buildNavTree(dir: string, baseUrl: string, targetSlug?: string): NavIte
 
 
 export async function serverUseNav(slug?: string): Promise<NavItem[]> {
-    const project = process.env.NEXT_PUBLIC_PROJECT || "goldlabel";
+    const project = process.env.NEXT_PUBLIC_TENANT || "goldlabel";
     const markdownRoot = await getMarkdownRoot();
     const baseUrl = `/${project}/markdown`;
     // console.log("slug", slug);

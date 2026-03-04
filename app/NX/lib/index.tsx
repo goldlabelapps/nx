@@ -1,11 +1,12 @@
+import { getTenant } from './getTenant';
+import { resolveProject } from './resolveProject';
 import { serverUseNav } from './serverHooks/serverUseNav';
 import { serverUseConfig } from './serverHooks/serverUseConfig';
 import { serverUseMDBySlug } from './serverHooks/serverUseMDBySlug';
 import { serverUseAllMd } from './serverHooks/serverUseAllMd';
 import { serverUseSmartImage } from './serverHooks/serverUseSmartImage';
-import { resolveProject } from './resolveProject';
 import { createSlug } from './vanilla-js/createSlug';
-
+import { getMeta } from './getMeta';
 export {
     serverUseNav,
     serverUseConfig,
@@ -14,4 +15,6 @@ export {
     serverUseSmartImage,
     resolveProject,
     createSlug,
+    getTenant,
+    getMeta,
 };

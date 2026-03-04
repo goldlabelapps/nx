@@ -1,17 +1,27 @@
+import {
+    getTenant,
+    getMeta,
+} from '../../NX/lib'
+import { } from '../../NX/lib/getMeta';
 
-
-// This is a server component by default
-export default async function SharePage(props: any) {
-    const params = props.params;
-    const { slug } = params;
-
-    // Fetch data from the API route
+// 
+export default async function SharePage(
+    { params }: { params: Promise<{ slug: string }> }
+) {
+    const { slug } = await params;
+    const tenant = await getTenant();
+    // const { config } = tenant;
     const res = await fetch(`http://localhost:1999/api/share/${slug}`);
     const data = await res.json();
 
+    const meta = getMeta({
+    });
+
     return (
         <div>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <h1>SharePage</h1>
+            <pre>meta: {JSON.stringify(meta, null, 2)}</pre>
+            <pre>data: {JSON.stringify(data, null, 2)}</pre>
         </div>
     );
 }

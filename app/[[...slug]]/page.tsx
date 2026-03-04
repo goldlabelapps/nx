@@ -29,15 +29,12 @@ import {
 import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
-import { EchoPay } from '../../public/echopay/flash'
-
-
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
-    const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const { config, markdownDir } = resolveProject(project as T_ProjectSlug);
-    const filePath = serverUseMDBySlug(slugArr, project);
+    const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
+    const { config } = resolveProject(tenant as T_ProjectSlug);
+    const filePath = serverUseMDBySlug(slugArr, tenant);
     let frontmatter: Record<string, any> = {};
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
@@ -47,10 +44,10 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     let url = config.url || "";
     const featuredImage = await serverUseSmartImage(config, frontmatter);
     if (!featuredImage) {
-        console.log("No featuredImage for", frontmatter?.title);
+        console.log("No image for", frontmatter?.title);
     }
 
-    let title = config.title || project.toUpperCase();
+    let title = config.title || "";
     let description = config.description || "";
     const themeMode: 'light' | 'dark' = 'light';
     const themes = config?.cartridges?.designSystem?.themes;
@@ -92,7 +89,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
 
 export async function generateStaticParams() {
-    const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
+    const project = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { markdownDir } = resolveProject(project as T_ProjectSlug);
     let allSlugs = serverUseAllMd(markdownDir, project);
     return allSlugs.map((slugArr) => {
@@ -109,13 +106,11 @@ export default async function Page(props: any) {
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
         slugArr.pop();
     }
-    // const bg = config.cartridges?.designSystem?.themes['light'].background || '#ffffff';
-    // const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
-    const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-    const { config } = resolveProject(project as T_ProjectSlug);
-    const filePath = serverUseMDBySlug(slugArr, project);
+    const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
+    const { config } = resolveProject(tenant as T_ProjectSlug);
+    const filePath = serverUseMDBySlug(slugArr, tenant);
     if (!filePath || !fs.existsSync(filePath)) notFound();
-    let title = project.toUpperCase();
+    let title = tenant.toUpperCase();
     let description = "";
     const md = fs.readFileSync(filePath, "utf-8");
     const { content, data } = matter(md);
@@ -138,18 +133,11 @@ export default async function Page(props: any) {
     if (data.flash && validScenes.includes(data.flash)) {
         sceneSlug = data.flash;
     }
-    // sceneSlug can now be used as needed
-    // if (sceneSlug === 'EchoPay') {
-    //     return <EchoPay />;
-    // }
 
     return (
-        <NX
-            config={config}
+        <NX config={config}
             frontmatter={data}
-            flash={sceneSlug}
-
-        >
+            flash={sceneSlug}>
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar
@@ -180,7 +168,6 @@ export default async function Page(props: any) {
                                 >
                                     {title}
                                 </Typography>}
-
                             />
                         </Container>
                     </AppBar>
@@ -225,23 +212,19 @@ export default async function Page(props: any) {
                             minWidth: 0,
                             pr: { xs: 2, lg: 3 },
                             pl: { xs: 2, lg: 0 },
-                        }}
-                    >
-
+                        }}>
                         <Hero
                             config={config}
                             frontmatter={data}
                             navItems={navItems as I_NestedNav["navItems"]}
                         />
-
                         <Typography
                             sx={{
                                 display: 'flex',
                             }}
                             color='secondary'
                             variant="h5"
-                            component="h2"
-                        >
+                            component="h2">
                             {data.icon && (
                                 <Box sx={{ mr: 2 }}>
                                     <Icon icon={data.icon} color="inherit" />
@@ -254,23 +237,20 @@ export default async function Page(props: any) {
                             {content}
                         </RenderMarkdown>
                     </Box>
-                    <Box
-                        sx={{
-                            display: { xs: 'none', lg: 'block' },
-                            width: { lg: '320px' },
-                            minWidth: { lg: '320px' },
-                            maxWidth: { lg: '320px' },
-                            gridColumn: { lg: '3' },
-                            pr: 3,
-                        }}
-                    >
+                    <Box sx={{
+                        display: { xs: 'none', lg: 'block' },
+                        width: { lg: '320px' },
+                        minWidth: { lg: '320px' },
+                        maxWidth: { lg: '320px' },
+                        gridColumn: { lg: '3' },
+                        pr: 3,
+                    }}>
                         <Box sx={{}}>
                             <Commerce config={config} />
                         </Box>
                     </Box>
                 </Box>
             </Container>
-            {/* End Main */}
             <footer>
                 <Footer
                     config={config}
