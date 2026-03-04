@@ -19,6 +19,7 @@ import {
     serverUseSmartImage,
     serverUseNav,
     resolveProject,
+    getTenant,
 } from '../NX/lib';
 import {
     Icon,
@@ -89,9 +90,9 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
 
 export async function generateStaticParams() {
-    const project = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { markdownDir } = resolveProject(project as T_ProjectSlug);
-    let allSlugs = serverUseAllMd(markdownDir, project);
+    const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
+    const { markdownDir } = resolveProject(tenant as T_Tenant);
+    let allSlugs = serverUseAllMd(markdownDir, tenant);
     return allSlugs.map((slugArr) => {
         const normalized = slugArr.filter(Boolean);
         return { slug: normalized.length ? normalized : undefined };
@@ -107,7 +108,7 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { config } = resolveProject(tenant as T_ProjectSlug);
+    const { config } = resolveProject(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
     if (!filePath || !fs.existsSync(filePath)) notFound();
     let title = tenant.toUpperCase();
@@ -173,7 +174,7 @@ export default async function Page(props: any) {
                     </AppBar>
                 </Box>
             </header>
-            {/* Start Main */}
+
             <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
                 <Box
                     sx={{

@@ -3,7 +3,7 @@ import { useMUITheme } from './hooks/useMUITheme';
 import Nav from './components/Nav';
 import Feedback from './components/Feedback';
 import Hero from './components/Hero';
-
+import { CleverText } from './components/CleverText';
 import Footer from './components/Footer';
 import Tags from './components/Tags';
 import Settings from './components/Settings';
@@ -26,4 +26,5 @@ export {
     useFeedback,
     Footer,
     Hero,
+    CleverText,
 };

@@ -5,9 +5,8 @@ import ReactMarkdown from 'react-markdown';
 import { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { CleverTextAS } from './';
-import { setFlash, useFlash } from '../../../../app/NX/Flash';
-import { useDispatch } from '../../../../app/NX/Uberedux';
-
+import { setFlash, useFlash } from '../../../../NX/Flash';
+import { useDispatch } from '../../../../NX/Uberedux';
 
 export interface I_CleverText {
     options: {
