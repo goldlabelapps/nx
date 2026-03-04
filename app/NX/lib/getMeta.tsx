@@ -11,8 +11,6 @@ export interface I_Meta {
 
 export const getMeta = (props: I_Meta) => {
 
-
-
     const tenant = getTenant();
     const { config } = tenant;
 
@@ -28,7 +26,7 @@ export const getMeta = (props: I_Meta) => {
         title: meta.title,
         description: meta.description,
         openGraph: {
-            title: `${meta.title}, ${meta.description}`,
+            title: meta.title,
             description: meta.description,
             url: meta.url,
             siteName: meta.siteName,
@@ -37,7 +35,7 @@ export const getMeta = (props: I_Meta) => {
         },
         twitter: {
             card: "summary_large_image",
-            title: `${meta.title}, ${meta.description}`,
+            title: meta.title,
             description: meta.description,
             images: [meta.image],
             site: meta.siteName,
