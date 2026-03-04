@@ -10,7 +10,7 @@ import { getFirebaseAdminApp } from '../../lib/firebase-admin';
 
 export async function GET(req: Request) {
     try {
-        const url = new URL(req.url);
+        const url = new URL(req.url, process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000');
         let slug = url.searchParams.get('slug');
         // Fallback: extract slug from path if not present in search params
         if (!slug) {

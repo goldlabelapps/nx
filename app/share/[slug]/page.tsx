@@ -1,25 +1,33 @@
+import { notFound } from 'next/navigation';
 import {
     getTenant,
     getMeta,
-} from '../../NX/lib'
-import { } from '../../NX/lib/getMeta';
 
-// 
-export default async function SharePage(
+} from '../../NX/lib';
+import { getBaseurl } from '../../api';
+
+export default async function Page(
     { params }: { params: Promise<{ slug: string }> }
 ) {
     const { slug } = await params;
     const tenant = await getTenant();
     // const { config } = tenant;
-    const res = await fetch(`http://localhost:1999/api/share/${slug}`);
+
+    const res = await fetch(`${getBaseurl()}/share/${slug}`);
     const data = await res.json();
+
+    const { severity, message } = data?.meta || {};
+    console.log('severity, message', severity, message);
+
+    if (severity !== 'success') {
+        notFound();
+    }
 
     const meta = getMeta({
     });
 
     return (
         <div>
-            <h1>SharePage</h1>
             <pre>meta: {JSON.stringify(meta, null, 2)}</pre>
             <pre>data: {JSON.stringify(data, null, 2)}</pre>
         </div>
