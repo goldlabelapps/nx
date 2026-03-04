@@ -16,7 +16,6 @@ import { useFlash, setFlash } from '../../Flash';
 // These Are the only two scenes we support for now, 
 // if frontmatter.flash is set, it must be one of these
 import { EchoPayApp } from '../../../../public/echopay/flash';
-import { NXMCApp } from '../../../../public/nx/flash/';
 
 const StyledFab = styled(Fab)(({ theme }) => ({
 	position: 'absolute',
@@ -90,7 +89,6 @@ export default function Footer({
 								<Icon icon="flash" />
 							</StyledFab>
 							{scene === 'EchoPay' && <EchoPayApp slug={scene} />}
-							{scene === 'NXMC' && <NXMCApp />}
 						</>
 					)}
 

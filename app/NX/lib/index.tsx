@@ -3,7 +3,8 @@ import { serverUseConfig } from './serverHooks/serverUseConfig';
 import { serverUseMDBySlug } from './serverHooks/serverUseMDBySlug';
 import { serverUseAllMd } from './serverHooks/serverUseAllMd';
 import { serverUseSmartImage } from './serverHooks/serverUseSmartImage';
-import { resolveProject } from './resolveProject'
+import { resolveProject } from './resolveProject';
+import { createSlug } from './vanilla-js/createSlug';
 
 export {
     serverUseNav,
@@ -12,4 +13,5 @@ export {
     serverUseAllMd,
     serverUseSmartImage,
     resolveProject,
+    createSlug,
 };

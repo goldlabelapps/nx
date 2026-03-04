@@ -6,7 +6,6 @@ import { DesignSystem, Feedback } from './DesignSystem';
 import { useDispatch } from './Uberedux';
 import { setFlash } from './Flash';
 import { EchoPay } from '../../public/echopay/flash';
-import { NXMC } from '../../public/nx/flash';
 
 const NX: React.FC<I_NX> = ({
     children,
@@ -46,9 +45,7 @@ const NX: React.FC<I_NX> = ({
     }
 
     let flashContent = children;
-    if (flash === 'NXMC') {
-        flashContent = <NXMC />;
-    } else if (flash === 'EchoPay') {
+    if (flash === 'EchoPay') {
         flashContent = <EchoPay />;
     }
     return (

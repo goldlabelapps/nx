@@ -9,12 +9,12 @@ declare global {
 "use client";
 import React, { useRef, useEffect } from 'react';
 import { Button } from '@mui/material';
-import { DesignSystem, Icon } from '../../../app/NX/DesignSystem';
+import { DesignSystem, Icon } from '../../../../app/NX/DesignSystem';
 import {
     Flash,
     MovieClip,
-} from '../../../app/NX/Flash';
-import { NXLogo, NXLogoAS } from './NXLogo';
+} from '../../../../app/NX/Flash';
+import { NXLogo, NXLogoAS } from '../clips/NXLogo';
 
 
 export const NXMC: React.FC<{

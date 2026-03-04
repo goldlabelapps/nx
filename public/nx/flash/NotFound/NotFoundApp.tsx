@@ -1,21 +1,17 @@
 "use client";
 import React from 'react';
+import type { I_Scene } from '../../types';
 import {
     Dialog,
     Box,
     IconButton,
 } from '@mui/material';
-import { useFlash, setFlash } from '../../../app/NX/Flash';
-import { useDispatch } from '../../../app/NX/Uberedux';
-import { Icon } from '../../../app/NX/DesignSystem';
+import { useFlash, setFlash } from '../../../../app/NX/Flash';
+import { useDispatch } from '../../../../app/NX/Uberedux';
+import { Icon } from '../../../../app/NX/DesignSystem';
+import { NotFound } from './';
 
-import { NXMC } from './';
-
-export interface I_Scene {
-    options?: any;
-}
-
-export const NXMCApp: React.FC<I_Scene> = ({ options }) => {
+export const NotFoundApp: React.FC<I_Scene> = ({ options }) => {
 
     const flash = useFlash();
     const dispatch = useDispatch();
@@ -52,11 +48,11 @@ export const NXMCApp: React.FC<I_Scene> = ({ options }) => {
                         boxSizing: 'border-box'
                     }}
                 >
-                    <NXMC />
+                    <NotFound />
                 </Box>
             </Box>
         </Dialog>
     );
 };
 
-export default NXMCApp;
+export default NotFoundApp;
