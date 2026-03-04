@@ -15,7 +15,7 @@ export type T_EchoPayRoute = {
 export async function GET(req: Request) {
     try {
         // goldlabel-magento-store
-        const url = new URL(req.url);
+        const url = new URL(req.url, process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000');
         // Get the first query param key (if any)
         const queryKeys = Array.from(url.searchParams.keys());
         const app = getFirebaseApp();

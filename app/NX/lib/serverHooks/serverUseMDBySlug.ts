@@ -10,7 +10,7 @@ import matter from "gray-matter";
  */
 export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nx"): string | null {
     if (!project) {
-        project = process.env.NEXT_PUBLIC_PROJECT || "nx";
+        project = process.env.NEXT_PUBLIC_TENANT || "nx";
     }
     // Remove trailing empty strings from slugArr
     let normalizedSlugArr = Array.isArray(slugArr) ? [...slugArr] : [];

@@ -5,8 +5,8 @@ import path from 'path';
 import { UbereduxProvider } from './NX/Uberedux';
 import RequireAuthWrapper from './NX/Paywall/components/RequireAuthWrapper';
 
-const project = process.env.NEXT_PUBLIC_PROJECT || "nx";
-const configPath = path.join(process.cwd(), 'public', project, 'config.json');
+const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
+const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
 const { title, icon, favicon, description } = config;
@@ -41,7 +41,7 @@ export default async function RootLayout({
             ]?.background || "#971e1e"
           }
         />
-        <link rel="manifest" href={`/${project}/manifest.json`} />
+        <link rel="manifest" href={`/${tenant}/manifest.json`} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />

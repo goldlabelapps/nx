@@ -1,6 +1,14 @@
 import type { T_UbereduxDispatch } from '../NX/Uberedux/store';
 export { T_UbereduxDispatch }
 
+export type T_Tenant = 'nx' |
+    'mcuk' |
+    'echopay' |
+    'edtech' |
+    'aki' |
+    'flash';
+
+
 export type T_ProjectSlug = 'nx' | 'mcuk' | 'echopay' | 'edtech' | 'aki' | 'flash';
 
 export interface I_NX {
