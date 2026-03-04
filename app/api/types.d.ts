@@ -4,6 +4,7 @@ export interface I_MakeRes {
     severity: T_Severity;
     message: string;
     data?: any;
+    other?: any;
 }
 
 export type T_Email = {

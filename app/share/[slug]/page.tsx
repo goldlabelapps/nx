@@ -1,15 +1,17 @@
 
 
 // This is a server component by default
-export default async function SharePage(props: PageProps<'/share/[slug]'>) {
-    const params = await props.params;
+export default async function SharePage(props: any) {
+    const params = props.params;
     const { slug } = params;
-    // You can fetch data here if needed (e.g., await fetch(...))
+
+    // Fetch data from the API route
+    const res = await fetch(`http://localhost:1999/api/share/${slug}`);
+    const data = await res.json();
+
     return (
         <div>
-            <h1>Share</h1>
-            <p>slug: {slug}</p>
-            <pre>{JSON.stringify(params, null, 2)}</pre>
+            <pre>{JSON.stringify(data, null, 2)}</pre>
         </div>
     );
 }
