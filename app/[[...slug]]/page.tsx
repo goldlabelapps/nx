@@ -19,7 +19,6 @@ import {
     serverUseSmartImage,
     serverUseNav,
     resolveProject,
-
 } from '../NX/lib';
 import {
     Icon,
