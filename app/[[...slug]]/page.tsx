@@ -1,4 +1,4 @@
-import type { I_NestedNav, T_ProjectSlug } from '../NX/types';
+import type { I_NestedNav, T_Tenant } from '../NX/types';
 import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { config } = resolveProject(tenant as T_ProjectSlug);
+    const { config } = resolveProject(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
     let frontmatter: Record<string, any> = {};
     if (filePath && fs.existsSync(filePath)) {

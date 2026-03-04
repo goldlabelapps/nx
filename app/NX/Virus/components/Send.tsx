@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { Icon } from '../../DesignSystem'
 
-export const Ad: React.FC<{ ad: T_Ad; target?: string }> = ({ ad, target }) => {
+export const Send: React.FC<{ ad: T_Ad; target?: string }> = ({ ad, target }) => {
     const { type, description, title, icon } = ad;
     const router = useRouter();
     const theme = useTheme();
