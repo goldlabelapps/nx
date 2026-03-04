@@ -1,6 +1,35 @@
 import type { T_UbereduxDispatch } from '../NX/Uberedux/store';
 export { T_UbereduxDispatch }
 
+export type T_Meta = {
+    title?: string;
+    description?: string;
+    siteName?: string;
+    openGraph?: {
+        title?: string;
+        description?: string;
+        url?: string;
+        siteName?: string;
+        images?: string[];
+        type?: string;
+    };
+    twitter?: {
+        card?: string;
+        title?: string;
+        description?: string;
+        images?: string[];
+        site?: string;
+    };
+};
+
+export interface I_Meta {
+    siteName?: string;
+    title?: string;
+    description?: string;
+    image?: string;
+    url?: string;
+}
+
 export type T_Tenant = 'nx' |
     'mcuk' |
     'echopay' |

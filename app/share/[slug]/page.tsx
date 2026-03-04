@@ -1,15 +1,33 @@
+import type { T_Theme, T_Tenant } from '../../NX/types';
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
 import {
-    // getTenant,
+    Box,
+    Button,
+    Container,
+    Card,
+    CardHeader,
+    CardContent,
+    CardActions,
+} from '@mui/material';
+import {
+    resolveProject,
+} from '../../NX/lib';
+import {
     getMeta,
 } from '../../NX/lib';
 import { getBaseurl } from '../../api';
+import {
+    Virus,
+} from '../../NX/Virus';
+import {
+    DesignSystem,
+} from '../../NX/DesignSystem';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
     const { slug } = await params;
-    //const tenant = await getTenant();
+    // const tenant = await getTenant();
     const res = await fetch(`${getBaseurl()}/share/${slug}`);
     const data = await res.json();
     const { severity } = data?.meta || {};
@@ -17,10 +35,13 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
     const meta = getMeta({});
     let mergedMeta = Object.fromEntries(
-        Object.entries(meta).map(([key, value]) => [key, key in data.data ? data.data[key] : value])
+        Object.entries(meta).map(([key, value]) => [
+            key,
+            data.data && key in data.data ? data.data[key] : value
+        ])
     );
 
-    if (data.data.title) {
+    if (data.data && data.data.title) {
         if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
             mergedMeta.openGraph = {
                 ...mergedMeta.openGraph,
@@ -34,7 +55,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             };
         }
     }
-    if (data.data.description) {
+    if (data.data && data.data.description) {
         if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
             mergedMeta.openGraph = {
                 ...mergedMeta.openGraph,
@@ -48,7 +69,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             };
         }
     }
-    if (data.data.siteName) {
+    if (data.data && data.data.siteName) {
         if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
             mergedMeta.openGraph = {
                 ...mergedMeta.openGraph,
@@ -62,7 +83,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
             };
         }
     }
-    if (data.data.url) {
+    if (data.data && data.data.url) {
         if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
             mergedMeta.openGraph = {
                 ...mergedMeta.openGraph,
@@ -77,7 +98,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
 
     const { slug } = await params;
-    //const tenant = await getTenant();
+    // const tenant = await getTenant();
     const res = await fetch(`${getBaseurl()}/share/${slug}`);
     const data = await res.json();
     const { severity } = data?.meta || {};
@@ -142,28 +163,48 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         }
     }
 
+    const {
+        title,
+        description,
+        tenant,
+    } = data.data || {};
+
+    const { config } = resolveProject(tenant as T_Tenant);
+    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
+    const themes = config?.cartridges?.designSystem?.themes;
+    let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
+    if (theme) {
+        theme = { ...theme, mode: themeMode };
+    };
+
+
+
     return (
-        <div>
-            {/* <pre>mergedMeta: {JSON.stringify(mergedMeta, null, 2)}</pre> */}
-            <div>
-                {/* <pre>meta: {JSON.stringify(mergedMeta, null, 2)}</pre> */}
-                <h1>{data.data.title}</h1>
-                <p>{data.data.description}</p>
-                <div>{data.data.text}</div>
-                <div>
-                    <strong>Slug:</strong> {data.data.slug}
-                </div>
-                <div>
-                    <strong>Tenant:</strong> {data.data.tenant}
-                </div>
-                <div>
-                    <strong>ID:</strong> {data.data.id}
-                </div>
-                <div>
-                    <strong>Markdown:</strong>
-                    <pre>{data.data.markdown}</pre>
-                </div>
-            </div>
-        </div>
+        <DesignSystem theme={theme as T_Theme}>
+            {/* <pre>theme: {JSON.stringify(theme, null, 2)}</pre> */}
+            <Container>
+                <Card>
+                    <CardHeader
+                        title={title}
+                        subheader={description}
+                    />
+                    <CardContent>
+
+                    </CardContent>
+                    <CardActions>
+                        <Virus meta={mergedMeta} />
+                        <Box sx={{ flexGrow: 1 }} />
+                        <Button
+                            variant="contained"
+                            color="primary"
+
+                        >
+                            New Share
+                        </Button>
+                    </CardActions>
+                </Card>
+
+            </Container>
+        </DesignSystem >
     );
 }

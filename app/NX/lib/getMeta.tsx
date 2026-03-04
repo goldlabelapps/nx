@@ -1,13 +1,5 @@
-// import type { T_Tenant } from '../types';
+import type { I_Meta } from '../types';
 import { getTenant } from './';
-
-export interface I_Meta {
-    siteName?: string;
-    title?: string;
-    description?: string;
-    image?: string;
-    url?: string;
-}
 
 export const getMeta = (props: I_Meta) => {
 
