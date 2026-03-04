@@ -12,7 +12,7 @@
     },
     "cartridges": {
         "paywall": {
-            "enabled": false,
+            "enabled": true,
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
