@@ -1,12 +1,7 @@
-
-import { NXMC } from './NXMC';
-import { NXMCApp } from './NXMCApp';
-import NXMCAS from './NXMCAS';
-import { NXLogo } from './NXLogo';
+import { NXLogo } from './clips/NXLogo';
+import { NotFound } from './NotFound';
 
 export {
-    NXMCAS,
-    NXMC,
-    NXMCApp,
     NXLogo,
+    NotFound,
 };
