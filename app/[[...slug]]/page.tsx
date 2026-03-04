@@ -18,7 +18,6 @@ import {
     serverUseAllMd,
     serverUseSmartImage,
     serverUseNav,
-    resolveProject,
     getTenant,
 } from '../NX/lib';
 import {
@@ -34,7 +33,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { config } = resolveProject(tenant as T_Tenant);
+    const { config } = getTenant(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
     let frontmatter: Record<string, any> = {};
     if (filePath && fs.existsSync(filePath)) {
@@ -91,7 +90,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
 export async function generateStaticParams() {
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { markdownDir } = resolveProject(tenant as T_Tenant);
+    const { markdownDir } = getTenant(tenant as T_Tenant);
     let allSlugs = serverUseAllMd(markdownDir, tenant);
     return allSlugs.map((slugArr) => {
         const normalized = slugArr.filter(Boolean);
@@ -108,7 +107,7 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { config } = resolveProject(tenant as T_Tenant);
+    const { config } = getTenant(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
     if (!filePath || !fs.existsSync(filePath)) notFound();
     let title = tenant.toUpperCase();

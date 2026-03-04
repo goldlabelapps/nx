@@ -1,17 +1,17 @@
-// import type { T_Tenant } from '../types';
+import type { T_Tenant } from '../types';
 import nxConfig from '../../../public/nx/config.json';
 import mcukConfig from '../../../public/mcuk/config.json';
 import echopayConfig from '../../../public/echopay/config.json';
 import flashConfig from '../../../public/flash/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 
-export const getTenant = () => {
+export const getTenant = (tenant?: T_Tenant) => {
 
-    let tenant = process.env.FIREBASE_PRIVATE_KEY;
+    const t = tenant || process.env.NEXT_PUBLIC_TENANT;
     let config;
     let markdownDir;
 
-    switch (tenant) {
+    switch (t) {
         case 'mcuk':
             config = mcukConfig;
             markdownDir = process.cwd() + '/public/mcuk/markdown';
@@ -34,7 +34,7 @@ export const getTenant = () => {
             break;
     }
     return {
-        tenant,
+        tenant: t,
         config,
         markdownDir
     };
