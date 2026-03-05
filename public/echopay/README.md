@@ -6,6 +6,32 @@
 cY?2LkhiDlCWVIb1#4tM
 ```
 
+```typescript
+"commerce": {
+    "enabled": true,
+    "ads": [
+        {
+            "title": "Start Again",
+            "type": "link",
+            "url": "/",
+            "icon": "reset"
+        },
+        {
+            "title": "echopay.co.uk",
+            "type": "link",
+            "url": "https://echopay.co.uk",
+            "icon": "link"
+        },
+        {
+            "title": "Merchant Dashboard",
+            "type": "link",
+            "url": "https://dev-dashboard.a2apay.co.uk",
+            "icon": "dashboard"
+        }
+    ]
+},
+```
+
 ## Do the maths
 
 ```typescript

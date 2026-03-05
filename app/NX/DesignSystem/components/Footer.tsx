@@ -47,7 +47,7 @@ export default function Footer({
 							<Nav
 								mode="mobile"
 								navItems={navItems as I_NestedNav["navItems"]}
-								currentPath={frontmatter?.slug || '/'}
+								frontmatter={frontmatter}
 							/>
 						</Box>
 

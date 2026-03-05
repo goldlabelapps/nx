@@ -2,7 +2,6 @@ import type { T_Tenant } from '../types';
 import nxConfig from '../../../public/nx/config.json';
 import mcukConfig from '../../../public/mcuk/config.json';
 import echopayConfig from '../../../public/echopay/config.json';
-import flashConfig from '../../../public/flash/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 
 export const getTenant = (tenant?: T_Tenant) => {
@@ -23,10 +22,6 @@ export const getTenant = (tenant?: T_Tenant) => {
         case 'edtech':
             config = edtechConfig;
             markdownDir = process.cwd() + '/public/edtech/markdown';
-            break;
-        case 'flash':
-            config = flashConfig;
-            markdownDir = process.cwd() + '/public/flash/markdown';
             break;
         default:
             config = nxConfig;

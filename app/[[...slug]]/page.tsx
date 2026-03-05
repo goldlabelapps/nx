@@ -1,4 +1,4 @@
-import type { T_Meta, I_NestedNav, T_Tenant } from '../NX/types';
+import type { T_Meta, I_NestedNav, T_Tenant, T_Frontmatter } from '../NX/types';
 import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
@@ -31,6 +31,8 @@ import {
     NXAdminBtn,
 } from '../NX/NXAdmin';
 import { RenderMarkdown } from '../NX/Shortcodes';
+import { Virus } from '../NX/Virus';
+
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -38,7 +40,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
-    let frontmatter: Record<string, any> = {};
+    let frontmatter: T_Frontmatter = {};
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
@@ -212,7 +214,7 @@ export default async function Page(props: any) {
                     >
                         <Nav
                             navItems={navItems as I_NestedNav["navItems"]}
-                            currentPath={data.slug || '/'}
+                            frontmatter={data}
                             mode="desktop"
                         />
                     </Box>
@@ -257,7 +259,8 @@ export default async function Page(props: any) {
                         gridColumn: { lg: '3' },
                         pr: 3,
                     }}>
-                        Right Rail - Ads, CTAs, etc.
+
+                        <Virus frontmatter={data} />
                     </Box>
                 </Box>
             </Container>
