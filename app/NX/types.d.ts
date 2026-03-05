@@ -268,6 +268,7 @@ export type I_Icon = {
     | 'pdf'
     | 'tick'
     | 'case'
+    | 'forward'
     | 'caseclosed'
     | 'cases'
     | 'caseclock'
