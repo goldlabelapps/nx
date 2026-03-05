@@ -7,6 +7,7 @@ import {
 	Box,
 	AppBar,
 } from '@mui/material';
+import { NXAdmin } from '../../NXAdmin';
 import { Nav } from '../../DesignSystem';
 import { Virus } from '../../../NX/Virus'
 
@@ -38,6 +39,7 @@ export default function Footer({
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: 'flex', }}>
+
 						<Box sx={{ pb: 1 }}>
 							<Virus meta={meta as T_Meta} />
 						</Box>
@@ -48,6 +50,7 @@ export default function Footer({
 								currentPath={frontmatter?.slug || '/'}
 							/>
 						</Box>
+
 					</Box>
 					<Box sx={{ flexGrow: 1 }} />
 					{children && (

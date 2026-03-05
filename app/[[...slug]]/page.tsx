@@ -27,6 +27,9 @@ import {
     Hero,
     Footer,
 } from '../NX/DesignSystem';
+import {
+    NXAdmin,
+} from '../NX/NXAdmin';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
@@ -169,6 +172,7 @@ export default async function Page(props: any) {
                                         />
                                     </IconButton>
                                 </a>}
+                                action={<NXAdmin />}
                                 title={<Typography
                                     color='secondary'
                                     variant="h4"
