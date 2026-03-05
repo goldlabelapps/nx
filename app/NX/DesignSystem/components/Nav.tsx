@@ -1,5 +1,5 @@
 "use client";
-import { I_NavNode } from '../../types';
+import { I_NavNode, T_Frontmatter } from '../../types';
 import React from 'react';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -11,6 +11,7 @@ import {
     ListItemText,
 } from '@mui/material';
 import { Icon } from '../../../NX/DesignSystem';
+import { Virus } from '../../../NX/Virus';
 
 
 function sortNavItems(items: any[]) {
@@ -24,13 +25,14 @@ function sortNavItems(items: any[]) {
 
 interface I_Nav {
     navItems: I_NavNode[];
-    currentPath?: string;
     mode?: 'mobile' | 'desktop';
+    frontmatter?: T_Frontmatter;
 }
 
 const Nav: React.FC<I_Nav> = ({
     navItems,
     mode = 'desktop',
+    frontmatter,
 }) => {
     const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
@@ -114,8 +116,7 @@ const Nav: React.FC<I_Nav> = ({
                     open={drawerOpen}
                     onClose={() => setDrawerOpen(false)}>
                     <Box sx={{
-                        width: 300,
-                        mt: 2
+                        p: 1
                     }}
                         role="presentation"
                         onClick={() => setDrawerOpen(false)}
@@ -123,6 +124,7 @@ const Nav: React.FC<I_Nav> = ({
                         <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
+                        <Virus frontmatter={frontmatter} />
                     </Box>
                 </Drawer>
             </>

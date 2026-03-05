@@ -84,7 +84,7 @@ export default function ShareThis() {
                     </WhatsappShareButton>
                 </Box>
             </Box>
-            {/* <pre>url: {JSON.stringify(url, null, 2)}</pre> */}
+
         </Box>
     );
 }
