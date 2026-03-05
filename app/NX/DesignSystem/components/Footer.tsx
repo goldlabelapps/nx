@@ -1,5 +1,5 @@
 "use client";
-import type { T_Config, T_Frontmatter, T_NavItem, I_NestedNav } from '../../types';
+import type { T_Config, T_Frontmatter, T_NavItem, I_NestedNav, T_Meta } from '../../types';
 import * as React from 'react';
 import {
 	useTheme,
@@ -13,9 +13,8 @@ import {
 import { useDispatch } from '../../Uberedux';
 import { Icon, Nav } from '../../DesignSystem';
 import { useFlash, setFlash } from '../../Flash';
-// These Are the only two scenes we support for now, 
-// if frontmatter.flash is set, it must be one of these
 import { EchoPayApp } from '../../../../public/echopay/flash';
+import { Virus } from '../../../NX/Virus'
 
 const StyledFab = styled(Fab)(({ theme }) => ({
 	position: 'absolute',
@@ -37,6 +36,7 @@ export interface I_Footer {
 	config: T_Config;
 	frontmatter?: T_Frontmatter;
 	navItems?: T_NavItem[];
+	meta?: T_Meta;
 }
 
 export default function Footer({
@@ -44,26 +44,10 @@ export default function Footer({
 	config,
 	frontmatter,
 	navItems,
+	meta,
 }: I_Footer) {
 
-	const flashState = useFlash();
 	const theme = useTheme();
-	const dispatch = useDispatch();
-	// Safely extract scene from frontmatter, avoid conflict with flashState
-	const scene = frontmatter?.flash;
-
-	// If scene is defined, it must be in validScenes, otherwise exit early
-
-	// console.log('Footer scene:', scene);
-	// console.log('validScenes.includes(scene)', validScenes.includes(scene as string));
-
-	if (scene && !validScenes.includes(scene)) {
-		return null;
-	}
-
-	const handleFabClick = () => {
-		dispatch(setFlash("sceneOpen", true));
-	};
 
 	return (
 		<React.Fragment>
@@ -76,23 +60,8 @@ export default function Footer({
 				}}
 			>
 				<Toolbar>
-					{flashState?.scene && (
-						<>
-							<StyledFab
-								color="primary" aria-label="cta"
-								sx={{
-									boxShadow: 0,
-									backgroundColor: theme.palette.background.default,
-								}}
-								onClick={handleFabClick}
-							>
-								<Icon icon="flash" />
-							</StyledFab>
-							{scene === 'EchoPay' && <EchoPayApp slug={scene} />}
-						</>
-					)}
-
 					<Box sx={{ flexGrow: 1 }} />
+					<Virus meta={meta as T_Meta} />
 					<Nav
 						mode="mobile"
 						navItems={navItems as I_NestedNav["navItems"]}
@@ -100,7 +69,6 @@ export default function Footer({
 						config={config}
 					/>
 					<Box sx={{ flexGrow: 1 }} />
-
 					{children && (
 						<Box sx={{ ml: 2 }}>
 							{children}

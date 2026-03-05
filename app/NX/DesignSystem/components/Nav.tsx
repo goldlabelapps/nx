@@ -10,8 +10,9 @@ import {
     ListItemButton,
     ListItemText,
 } from '@mui/material';
-import { Icon } from '../../DesignSystem';
-import { Commerce } from '../../Commerce';
+import { Icon } from '../../../NX/DesignSystem';
+import { Commerce } from '../../../Nx/Commerce';
+
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
@@ -104,7 +105,7 @@ const Nav: React.FC<I_Nav> = ({
         return (
             <>
                 <IconButton color="secondary" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
-                    <Icon icon='fingerprint' />
+                    <Icon icon='menu' />
                 </IconButton>
 
                 <Drawer
@@ -115,7 +116,6 @@ const Nav: React.FC<I_Nav> = ({
                 >
                     <Box sx={{
                         width: 300,
-
                         mt: 2
                     }}
                         role="presentation"
