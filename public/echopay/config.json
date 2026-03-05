@@ -18,14 +18,14 @@
         },
         "designSystem": {
             "allowTheme": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",
                     "primary": "#A5C7FF",
                     "secondary": "#A5C7FF",
-                    "background": "#012867",
-                    "paper": "#012867",
+                    "background": "#184791",
+                    "paper": "#184791",
                     "text": "#fff",
                     "border": "#A5C7FF"
                 },
