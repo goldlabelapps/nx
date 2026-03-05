@@ -1,6 +1,7 @@
 import Virus from './Virus';
-// import { Ad } from './components/Ad';
+import { Forward } from './components/Forward';
 
 export {
     Virus,
+    Forward,
 };

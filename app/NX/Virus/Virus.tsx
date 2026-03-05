@@ -9,6 +9,7 @@ import {
 } from 'react-share';
 import { Box, Typography, ButtonBase, Popover } from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
+import { Forward } from '../Virus'
 
 export default function Virus({ meta }: { meta: T_Meta }) {
   if (!meta) return <>
@@ -34,6 +35,9 @@ export default function Virus({ meta }: { meta: T_Meta }) {
       gap: 2,
       mt: 4
     }}>
+      <Box>
+        <Forward />
+      </Box>
       <Box>
         <ButtonBase
           onClick={e => {

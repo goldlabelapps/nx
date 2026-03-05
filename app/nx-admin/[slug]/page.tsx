@@ -7,9 +7,6 @@ import {
     getTenant,
 } from '../../NX/lib';
 import { getBaseurl } from '../../api';
-// import {
-//     Virus,
-// } from '../../NX/Virus';
 import {
     DesignSystem,
 } from '../../NX/DesignSystem';

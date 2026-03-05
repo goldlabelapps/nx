@@ -166,11 +166,15 @@ import SendIcon from '@mui/icons-material/Send';
 import BookIcon from '@mui/icons-material/MenuBook';
 import MathsIcon from '@mui/icons-material/Calculate';
 import VirusIcon from '@mui/icons-material/Coronavirus';
+import ForwardIcon from '@mui/icons-material/Send';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'forward':
+      iconFragment = <ForwardIcon color={color} />;
+      break;
     case 'virus':
       iconFragment = <VirusIcon color={color} />;
       break;

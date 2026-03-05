@@ -1,0 +1,24 @@
+'use client';
+import * as React from 'react';
+import { useRouter } from 'next/navigation';
+import {
+  IconButton,
+} from '@mui/material';
+import { Icon } from '../../NX/DesignSystem';
+
+export default function NXAdmin() {
+  const router = useRouter();
+
+  // React.useEffect(() => {
+  // }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    router.push('/nx-admin');
+  }
+
+  return (
+    <IconButton onClick={handleClick}>
+      <Icon icon="admin" />
+    </IconButton>
+  );
+}

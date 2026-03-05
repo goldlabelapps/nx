@@ -56,7 +56,7 @@ export const NotFound: React.FC<{
     // Cleanup on unmount
     useEffect(() => {
         return () => {
-            if (as.current) {
+            if (as.current && typeof as.current.destroy === 'function') {
                 as.current.destroy();
             }
         };
