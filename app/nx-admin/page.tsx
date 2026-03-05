@@ -1,8 +1,9 @@
 import type { T_Theme, T_Tenant } from '../NX/types';
 import { Metadata } from "next";
-import {
-    Container,
-} from '@mui/material';
+// import {
+//     Container,
+//     CardHeader,
+// } from '@mui/material';
 import {
     getTenant,
 } from '../NX/lib';
@@ -11,20 +12,23 @@ import {
     DesignSystem,
 } from '../NX/DesignSystem';
 import {
+    SignIn,
+} from '../NX/Paywall';
+import {
     NXAdmin,
 } from '../NX/NXAdmin';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
-    const title = `NX Admin - ${params.slug}`;
-    const description = `Admin page for ${params.slug}`;
-    const image = 'https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg';
     const siteName = 'NX';
-    const url = `${getBaseurl()}/nx-admin/${params.slug}`;
+    const title = `NX Admin`;
+    const description = `Data, Storage, Users`;
+    const image = '/nx/gif/dark.gif';
+    const url = `${getBaseurl()}/nx-admin`;
 
     return {
-        title: 'NX Admin',
-        description: 'description',
+        title,
+        description,
         openGraph: {
             title,
             description,
@@ -47,23 +51,21 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
-    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
+    const themeMode: 'light' | 'dark' = 'light';
     const themes = config?.cartridges?.designSystem?.themes;
     let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
     if (theme) {
         theme = { ...theme, mode: themeMode };
     };
-
     return (
         <DesignSystem theme={theme as T_Theme}>
-            <Container>
-                {/* <pre>config: {JSON.stringify(config, null, 2)}</pre> */}
-                <NXAdmin>
-                    <>
-                        NXAdmin (login required)
-                    </>
-                </NXAdmin>
-            </Container>
+            <NXAdmin />
         </DesignSystem >
     );
 }
+
+/*
+<pre>icon: {JSON.stringify(icon, null, 2)}</pre>
+
+const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
+*/
