@@ -24,8 +24,8 @@
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#9A8D70",
-                    "secondary": "#554B34",
+                    "primary": "#073334",
+                    "secondary": "#C09F52",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
