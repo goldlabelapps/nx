@@ -3,10 +3,9 @@ order: 10
 title: Our changing role
 description: The step‑change due to AI
 slug: /work/our-changing-role
-image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
+image: https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg
 icon: work
 tags: Senior Developer, AI, Experience
-newContent: true
 ---
 
 Interviewing for senior/lead developer roles in the context of AI‑assisted software development?

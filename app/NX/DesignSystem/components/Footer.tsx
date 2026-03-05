@@ -40,9 +40,9 @@ export default function Footer({
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: 'flex', }}>
 
-						<Box sx={{ pb: 1 }}>
+						{/* <Box sx={{ pb: 1 }}>
 							<Virus meta={meta as T_Meta} />
-						</Box>
+						</Box> */}
 						<Box sx={{ mt: 3, ml: 2 }}>
 							<Nav
 								mode="mobile"
