@@ -7,7 +7,6 @@ import {
     Card,
     CardHeader,
     CardContent,
-    CardActions,
 } from '@mui/material';
 import {
     getTenant,
@@ -18,83 +17,24 @@ import {
 } from '../../NX/lib';
 import { getBaseurl } from '../../api';
 import {
-    Virus,
-} from '../../NX/Virus';
-import {
     DesignSystem,
     Footer,
 } from '../../NX/DesignSystem';
+import {
+    NXAdminBtn,
+} from '../../NX/NXAdmin';
+
+import { mergeData } from './mergeData';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
-
     const { slug } = await params;
     const res = await fetch(`${getBaseurl()}/share/${slug}`);
-
-    const navItems = await serverUseNav(slug || "/");
-
     const data = await res.json();
     const meta = getMeta({});
-    let mergedMeta = Object.fromEntries(
-        Object.entries(meta).map(([key, value]) => [
-            key,
-            data.data && key in data.data ? data.data[key] : value
-        ])
-    );
-    if (data.data && data.data.title) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                title: data.data.title
-            };
-        }
-        if (mergedMeta.twitter && typeof mergedMeta.twitter === 'object') {
-            mergedMeta.twitter = {
-                ...mergedMeta.twitter,
-                title: data.data.title
-            };
-        }
-    }
-    if (data.data && data.data.description) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                description: data.data.description
-            };
-        }
-        if (mergedMeta.twitter && typeof mergedMeta.twitter === 'object') {
-            mergedMeta.twitter = {
-                ...mergedMeta.twitter,
-                description: data.data.description
-            };
-        }
-    }
-    if (data.data && data.data.siteName) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                siteName: data.data.siteName
-            };
-        }
-        if (mergedMeta.twitter && typeof mergedMeta.twitter === 'object') {
-            mergedMeta.twitter = {
-                ...mergedMeta.twitter,
-                site: data.data.siteName
-            };
-        }
-    }
-    if (data.data && data.data.url) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                url: data.data.url
-            };
-        }
-    }
-    return mergedMeta;
+    return mergeData(meta, data.data);
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-
     const { slug } = await params;
     const res = await fetch(`${getBaseurl()}/share/${slug}`);
     const data = await res.json();
@@ -103,67 +43,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         notFound();
     }
     const meta = getMeta({});
-    let mergedMeta = Object.fromEntries(
-        Object.entries(meta).map(([key, value]) => [key, key in data.data ? data.data[key] : value])
-    );
-    if (data.data.title) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                title: data.data.title
-            };
-        }
-        if (mergedMeta.twitter && typeof mergedMeta.twitter === 'object') {
-            mergedMeta.twitter = {
-                ...mergedMeta.twitter,
-                title: data.data.title
-            };
-        }
-    }
-    if (data.data.description) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                description: data.data.description
-            };
-        }
-        if (mergedMeta.twitter && typeof mergedMeta.twitter === 'object') {
-            mergedMeta.twitter = {
-                ...mergedMeta.twitter,
-                description: data.data.description
-            };
-        }
-    }
-    if (data.data.siteName) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                siteName: data.data.siteName
-            };
-        }
-        if (mergedMeta.twitter && typeof mergedMeta.twitter === 'object') {
-            mergedMeta.twitter = {
-                ...mergedMeta.twitter,
-                site: data.data.siteName
-            };
-        }
-    }
-    if (data.data.url) {
-        if (mergedMeta.openGraph && typeof mergedMeta.openGraph === 'object') {
-            mergedMeta.openGraph = {
-                ...mergedMeta.openGraph,
-                url: data.data.url
-            };
-        }
-    }
-
+    const mergedMeta = mergeData(meta, data.data);
     const {
         title,
         description,
         tenant,
         body,
     } = data.data || {};
-
     const {
         markdown,
         // text,
@@ -182,10 +68,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         <DesignSystem theme={theme as T_Theme}>
             {/* <pre>theme: {JSON.stringify(theme, null, 2)}</pre> */}
             <Container>
-                <Card>
+                <Card sx={{ mt: 2 }}>
                     <CardHeader
                         title={title}
                         subheader={description}
+                        action={<Box sx={{ m: 1 }}><NXAdminBtn /></Box>}
                     />
                     <CardContent>
                         {markdown}

@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import { getFirebaseAuth } from '../../NX/lib/firebase';
 import { useRouter } from 'next/navigation';
 import {
   Avatar,
@@ -30,6 +31,19 @@ export default function NXAdmin({
     router.push('/');
   }
 
+  const handleSignout = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    try {
+      const auth = getFirebaseAuth();
+      const { signOut } = await import('firebase/auth');
+      await signOut(auth);
+      router.push('/nx-admin');
+    } catch (err) {
+      // Optionally handle error (e.g., show notification)
+      console.error('Signout failed', err);
+    }
+  }
+
   return (
     <Container>
       <CardHeader
@@ -37,9 +51,14 @@ export default function NXAdmin({
         avatar={<IconButton onClick={handleAvatarClick}>
           <Icon icon="admin" />
         </IconButton>}
-        action={<IconButton sx={{ m: 1 }} onClick={handleActionClick}>
-          <Avatar src="/nx/svg/favicon_light.svg" />
-        </IconButton>}
+        action={<>
+          <IconButton onClick={handleSignout}>
+            <Icon icon="signout" />
+          </IconButton>
+          <IconButton sx={{ mr: 1, mt: 1 }} onClick={handleActionClick}>
+            <Avatar src="/nx/svg/favicon_light.svg" />
+          </IconButton>
+        </>}
 
       />
       {children && children}
