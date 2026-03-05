@@ -249,7 +249,6 @@ export default async function Page(props: any) {
             </Container>
             <footer>
                 <Footer
-                    config={config}
                     frontmatter={data}
                     navItems={navItems as I_NestedNav["navItems"]}
                 />
