@@ -93,11 +93,23 @@ export const NotFound: React.FC<{
                     zIndex={800}>
                     <Button
                         fullWidth
+                        sx={{ m: 1 }}
                         startIcon={<Icon icon="reset" />}
                         variant="outlined"
                         onClick={() => window.location.href = '/'}
                     >
                         Restart
+
+                    </Button>
+
+                    <Button
+                        fullWidth
+                        sx={{ m: 1 }}
+                        startIcon={<Icon icon="admin" />}
+                        variant="outlined"
+                        onClick={() => window.location.href = '/nx-admin'}
+                    >
+                        NX Admin
                     </Button>
                 </MovieClip>
 

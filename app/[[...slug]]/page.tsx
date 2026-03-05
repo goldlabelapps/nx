@@ -28,7 +28,7 @@ import {
     Footer,
 } from '../NX/DesignSystem';
 import {
-    NXAdmin,
+    NXAdminBtn,
 } from '../NX/NXAdmin';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
@@ -172,7 +172,7 @@ export default async function Page(props: any) {
                                         />
                                     </IconButton>
                                 </a>}
-                                action={<NXAdmin />}
+                                action={<NXAdminBtn />}
                                 title={<Typography
                                     color='secondary'
                                     variant="h4"

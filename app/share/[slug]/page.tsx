@@ -1,4 +1,4 @@
-import type { T_Theme, T_Tenant } from '../../NX/types';
+import type { T_Theme, T_Tenant, T_Meta, I_NestedNav } from '../../NX/types';
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
 import {
@@ -14,6 +14,7 @@ import {
 } from '../../NX/lib';
 import {
     getMeta,
+    serverUseNav,
 } from '../../NX/lib';
 import { getBaseurl } from '../../api';
 import {
@@ -21,12 +22,16 @@ import {
 } from '../../NX/Virus';
 import {
     DesignSystem,
+    Footer,
 } from '../../NX/DesignSystem';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
     const { slug } = await params;
     const res = await fetch(`${getBaseurl()}/share/${slug}`);
+
+    const navItems = await serverUseNav(slug || "/");
+
     const data = await res.json();
     const meta = getMeta({});
     let mergedMeta = Object.fromEntries(
@@ -156,7 +161,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         title,
         description,
         tenant,
+        body,
     } = data.data || {};
+
+    const {
+        markdown,
+        // text,
+    } = body || {};
 
     const { config } = getTenant(tenant as T_Tenant);
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
@@ -165,6 +176,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     if (theme) {
         theme = { ...theme, mode: themeMode };
     };
+    const navItems = await serverUseNav(data.slug || "/");
 
     return (
         <DesignSystem theme={theme as T_Theme}>
@@ -176,16 +188,18 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                         subheader={description}
                     />
                     <CardContent>
-
+                        {markdown}
                     </CardContent>
-                    <CardActions>
-                        <Virus meta={mergedMeta} />
-                        <Box sx={{ flexGrow: 1 }} />
-
-                    </CardActions>
                 </Card>
 
             </Container>
+            <footer>
+                <Footer
+                    meta={mergedMeta as T_Meta}
+                    frontmatter={data}
+                    navItems={navItems as I_NestedNav["navItems"]}
+                />
+            </footer>
         </DesignSystem >
     );
 }

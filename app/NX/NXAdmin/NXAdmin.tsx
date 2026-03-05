@@ -6,19 +6,26 @@ import {
 } from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
 
-export default function NXAdmin() {
+type I_NXAdmin = {
+  children?: React.ReactNode;
+};
+
+export default function NXAdmin({ children }: I_NXAdmin) {
   const router = useRouter();
 
   // React.useEffect(() => {
   // }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    router.push('/nx-admin');
+    router.push('/');
   }
 
   return (
-    <IconButton onClick={handleClick}>
-      <Icon icon="admin" />
-    </IconButton>
+    <>
+      <IconButton onClick={handleClick}>
+        <Icon icon="home" />
+      </IconButton>
+      {children && children}
+    </>
   );
 }
