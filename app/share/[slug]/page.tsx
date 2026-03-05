@@ -66,8 +66,9 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
     return (
         <DesignSystem theme={theme as T_Theme}>
-            {/* <pre>theme: {JSON.stringify(theme, null, 2)}</pre> */}
+
             <Container>
+                <pre>data.data: {JSON.stringify(data.data, null, 2)}</pre>
                 <Card sx={{ mt: 2 }}>
                     <CardHeader
                         title={title}

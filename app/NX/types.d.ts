@@ -83,7 +83,7 @@ export type T_CommerceShortcode = {
 };
 
 export type T_Config = {
-    project: string;
+    tenant: string;
     title: string;
     description: string;
     url: string;
