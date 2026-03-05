@@ -12,9 +12,6 @@ import {
   BuyNow,
   FeedbackBtn,
 } from '../../Shortcodes';
-import {
-  CommerceShortcode,
-} from '../../Commerce';
 
 export type I_RenderMarkdown = {
   children: React.ReactNode;
@@ -61,10 +58,6 @@ export default function RenderMarkdown({
     // BuyNow
     const buyNow = parseShortcode(/\[BuyNow\s+(.*?)\]/, BuyNow);
     if (buyNow) return buyNow;
-
-    // Commerce
-    const commerce = parseShortcode(/\[CommerceShortcode\s+(.*?)\]/, CommerceShortcode);
-    if (commerce) return commerce;
 
     // FeedbackBtn
     const feedbackBtn = parseShortcode(/\[FeedbackBtn\s+(.*?)\]/, FeedbackBtn);

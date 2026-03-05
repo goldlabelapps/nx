@@ -26,7 +26,6 @@ import {
     Hero,
     Footer,
 } from '../NX/DesignSystem';
-import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
@@ -198,7 +197,6 @@ export default async function Page(props: any) {
                         }}
                     >
                         <Nav
-                            config={config}
                             navItems={navItems as I_NestedNav["navItems"]}
                             currentPath={data.slug || '/'}
                             mode="desktop"
@@ -245,9 +243,7 @@ export default async function Page(props: any) {
                         gridColumn: { lg: '3' },
                         pr: 3,
                     }}>
-                        <Box sx={{}}>
-                            <Commerce config={config} />
-                        </Box>
+                        Right Rail - Ads, CTAs, etc.
                     </Box>
                 </Box>
             </Container>
