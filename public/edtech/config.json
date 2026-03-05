@@ -7,11 +7,6 @@
     "icon": "/edtech/favicon.png",
     "favicon": "/edtech/favicon.ico",
     "cartridges": {
-        "paywall": {
-            "enabled": false,
-            "userMode": "single",
-            "email": "ed-tech@goldlabel.pro"
-        },
         "designSystem": {
             "enabled": true,
             "allowTheme": false,
