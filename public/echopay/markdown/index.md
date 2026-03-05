@@ -1,5 +1,5 @@
 ---
-flash: EchoPay
+flashXXX: EchoPay
 order: 1
 slug: /
 title: EchoPay

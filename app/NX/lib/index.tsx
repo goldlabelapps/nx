@@ -1,5 +1,4 @@
 import { getTenant } from './getTenant';
-import { resolveProject } from './resolveProject';
 import { serverUseNav } from './serverHooks/serverUseNav';
 import { serverUseConfig } from './serverHooks/serverUseConfig';
 import { serverUseMDBySlug } from './serverHooks/serverUseMDBySlug';
@@ -13,7 +12,6 @@ export {
     serverUseMDBySlug,
     serverUseAllMd,
     serverUseSmartImage,
-    resolveProject,
     createSlug,
     getTenant,
     getMeta,

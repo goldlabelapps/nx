@@ -312,6 +312,7 @@ export type I_Icon = {
     | 'fallmanager'
     | 'youtube'
     | 'boot'
+    | 'virus'
     | 'hide'
     | 'show'
     | 'save'

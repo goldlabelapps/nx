@@ -1,4 +1,4 @@
-import type { I_NestedNav, T_Tenant } from '../NX/types';
+import type { T_Meta, I_NestedNav, T_Tenant } from '../NX/types';
 import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
@@ -18,8 +18,8 @@ import {
     serverUseAllMd,
     serverUseSmartImage,
     serverUseNav,
-    resolveProject,
     getTenant,
+    getMeta,
 } from '../NX/lib';
 import {
     Icon,
@@ -27,14 +27,13 @@ import {
     Hero,
     Footer,
 } from '../NX/DesignSystem';
-import { Commerce } from '../NX/Commerce';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { config } = resolveProject(tenant as T_Tenant);
+    const { config } = getTenant(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
     let frontmatter: Record<string, any> = {};
     if (filePath && fs.existsSync(filePath)) {
@@ -91,7 +90,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
 export async function generateStaticParams() {
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { markdownDir } = resolveProject(tenant as T_Tenant);
+    const { markdownDir } = getTenant(tenant as T_Tenant);
     let allSlugs = serverUseAllMd(markdownDir, tenant);
     return allSlugs.map((slugArr) => {
         const normalized = slugArr.filter(Boolean);
@@ -108,7 +107,7 @@ export default async function Page(props: any) {
         slugArr.pop();
     }
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { config } = resolveProject(tenant as T_Tenant);
+    const { config } = getTenant(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
     if (!filePath || !fs.existsSync(filePath)) notFound();
     let title = tenant.toUpperCase();
@@ -134,6 +133,14 @@ export default async function Page(props: any) {
     if (data.flash && validScenes.includes(data.flash)) {
         sceneSlug = data.flash;
     }
+
+    const meta = getMeta({
+        title,
+        description,
+        url: config.url || "",
+        siteName: config.title,
+        image: config.image || data.image,
+    });
 
     return (
         <NX config={config}
@@ -199,7 +206,6 @@ export default async function Page(props: any) {
                         }}
                     >
                         <Nav
-                            config={config}
                             navItems={navItems as I_NestedNav["navItems"]}
                             currentPath={data.slug || '/'}
                             mode="desktop"
@@ -246,15 +252,13 @@ export default async function Page(props: any) {
                         gridColumn: { lg: '3' },
                         pr: 3,
                     }}>
-                        <Box sx={{}}>
-                            <Commerce config={config} />
-                        </Box>
+                        Right Rail - Ads, CTAs, etc.
                     </Box>
                 </Box>
             </Container>
             <footer>
                 <Footer
-                    config={config}
+                    meta={meta as T_Meta}
                     frontmatter={data}
                     navItems={navItems as I_NestedNav["navItems"]}
                 />

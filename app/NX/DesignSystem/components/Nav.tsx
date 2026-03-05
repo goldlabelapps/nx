@@ -10,8 +10,8 @@ import {
     ListItemButton,
     ListItemText,
 } from '@mui/material';
-import { Icon } from '../../DesignSystem';
-import { Commerce } from '../../Commerce';
+import { Icon } from '../../../NX/DesignSystem';
+
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
@@ -26,14 +26,11 @@ interface I_Nav {
     navItems: I_NavNode[];
     currentPath?: string;
     mode?: 'mobile' | 'desktop';
-    config: any;
 }
 
 const Nav: React.FC<I_Nav> = ({
     navItems,
-    currentPath,
     mode = 'desktop',
-    config,
 }) => {
     const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
@@ -48,10 +45,13 @@ const Nav: React.FC<I_Nav> = ({
         }
     }
 
-    function renderNavItems(items: I_NavNode[], parentKey = '', parentNavTarget?: string): React.ReactNode {
+    function renderNavItems(
+        items: I_NavNode[],
+        parentKey = '',
+        // parentNavTarget?: string,
+    ): React.ReactNode {
         return items
             .filter(item => {
-                // Never show Home page (slug === '/') at any level
                 const navTarget = (typeof item.slug === 'string' && item.slug.trim().length > 0)
                     ? item.slug
                     : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
@@ -91,7 +91,7 @@ const Nav: React.FC<I_Nav> = ({
                         </ListItemButton>
                         {hasChildren && filteredChildren && filteredChildren.length > 0 && (
                             <List dense sx={{ ml: 2 }}>
-                                {renderNavItems(sortNavItems(filteredChildren), key + '_', navTarget)}
+                                {renderNavItems(sortNavItems(filteredChildren), key + '_')}
                             </List>
                         )}
                     </Box>
@@ -103,33 +103,26 @@ const Nav: React.FC<I_Nav> = ({
     if (mode === 'mobile') {
         return (
             <>
-                <IconButton color="secondary" onClick={() => setDrawerOpen(true)} aria-label="Open Nav">
-                    <Icon icon='fingerprint' />
+                <IconButton
+                    color="secondary"
+                    onClick={() => setDrawerOpen(true)} aria-label="Open Menu">
+                    <Icon icon='menu' />
                 </IconButton>
 
                 <Drawer
-                    anchor="left"
+                    anchor="right"
                     open={drawerOpen}
-                    onClose={() => setDrawerOpen(false)}
-
-                >
+                    onClose={() => setDrawerOpen(false)}>
                     <Box sx={{
                         width: 300,
-
                         mt: 2
                     }}
                         role="presentation"
                         onClick={() => setDrawerOpen(false)}
                     >
-
                         <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
-
-                        <Box sx={{ m: 1 }}>
-                            <Commerce config={config} />
-                        </Box>
-
                     </Box>
                 </Drawer>
             </>

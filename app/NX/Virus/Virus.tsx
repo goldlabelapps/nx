@@ -11,12 +11,21 @@ import { Box, Typography, ButtonBase, Popover } from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
 
 export default function Virus({ meta }: { meta: T_Meta }) {
+  if (!meta) return <>
 
-  const { title, openGraph } = meta || {};
-  const url = openGraph?.url || window.location.href;
+  </>;
+  const { title, openGraph } = meta;
+  const [url, setUrl] = React.useState(openGraph?.url || '');
   const description = openGraph?.description || meta.description || '';
   const [copied, setCopied] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+
+  React.useEffect(() => {
+    if (!openGraph?.url && typeof window !== 'undefined') {
+      setUrl(window.location.href);
+    }
+  }, [openGraph?.url]);
+
   return (
     <Box id="virus" sx={{
       display: 'flex',
