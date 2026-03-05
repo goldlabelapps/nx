@@ -2,22 +2,24 @@ import React, { useState } from 'react';
 import { Box, IconButton, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { DesignSystem, Icon } from '../../DesignSystem';
 
-export default function SignIn({ onSignIn, config }: { onSignIn: (email: string, password: string) => void; config: any }) {
+interface SignInProps {
+    onSignIn: (email: string, password: string) => void;
+    config: any;
+    error?: string;
+}
+
+export default function SignIn({ onSignIn, config, error: externalError }: SignInProps) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-
     const paywallEmail = config.cartridges?.paywall?.email;
     const userMode = config.cartridges?.paywall?.userMode;
-
-    // If userMode is 'single', always use paywallEmail
     React.useEffect(() => {
         if (userMode === 'single' && paywallEmail) {
             setEmail(paywallEmail);
         }
     }, [userMode, paywallEmail]);
-
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (userMode === 'single') {
@@ -36,14 +38,12 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
             onSignIn(email, password);
         }
     };
-
     const themeMode: 'light' | 'dark' = 'dark';
     let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (theme) {
         theme = { ...theme, mode: themeMode };
     }
     const { title, description, image } = config;
-
     return (
         <DesignSystem theme={theme}>
             <form onSubmit={handleSubmit}>
@@ -108,7 +108,7 @@ export default function SignIn({ onSignIn, config }: { onSignIn: (email: string,
                                 ),
                             }}
                         />
-                        {error && <Typography color="error">{error}</Typography>}
+                        {(error || externalError) && <Typography color="error">{externalError || error}</Typography>}
                     </CardContent>
                     <CardActions>
                         <Button

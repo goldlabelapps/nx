@@ -1,19 +1,10 @@
 import type { T_Theme, T_Tenant } from '../NX/types';
 import { Metadata } from "next";
-// import {
-//     Container,
-//     CardHeader,
-// } from '@mui/material';
-import {
-    getTenant,
-} from '../NX/lib';
+import { getTenant } from '../NX/lib';
 import { getBaseurl } from '../api';
 import {
     DesignSystem,
 } from '../NX/DesignSystem';
-import {
-    SignIn,
-} from '../NX/Paywall';
 import {
     NXAdmin,
 } from '../NX/NXAdmin';
@@ -53,19 +44,16 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     const { config } = getTenant(tenant as T_Tenant);
     const themeMode: 'light' | 'dark' = 'light';
     const themes = config?.cartridges?.designSystem?.themes;
-    let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
+    let theme = themes && themeMode in themes ?
+        themes[themeMode as keyof typeof themes] : undefined;
     if (theme) {
         theme = { ...theme, mode: themeMode };
     };
+    const NXAdminAuthWrapper = (await import('./NXAdminAuthWrapper')).default;
+
     return (
         <DesignSystem theme={theme as T_Theme}>
-            <NXAdmin />
-        </DesignSystem >
+            <NXAdminAuthWrapper config={config} />
+        </DesignSystem>
     );
 }
-
-/*
-<pre>icon: {JSON.stringify(icon, null, 2)}</pre>
-
-const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
-*/
