@@ -1,0 +1,28 @@
+{
+    "enabled": true,
+    "ads": [
+        {
+            "title": "RESTful API",
+            "type": "link",
+            "description": "Programmatic Micro Services",
+            "url": "/api",
+            "icon": "api",
+            "target": "_blank"
+        },
+        {
+            "title": "CV",
+            "type": "link",
+            "description": "TypeScript Developer",
+            "url": "/shared/pdf/Chris Dorward, Fullstack TypeScript Developer.pdf",
+            "icon": "doc",
+            "target": "_blank"
+        },
+        {
+            "title": "Virus",
+            "type": "link",
+            "description": "test",
+            "url": "/share/test",
+            "icon": "virus"
+        }
+    ]
+}

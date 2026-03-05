@@ -28,7 +28,7 @@ import {
     Footer,
 } from '../NX/DesignSystem';
 import {
-    NXAdmin,
+    NXAdminBtn,
 } from '../NX/NXAdmin';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
@@ -160,6 +160,7 @@ export default async function Page(props: any) {
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
+
                                 avatar={<a href='/'>
                                     <IconButton
                                         edge="start"
@@ -172,7 +173,7 @@ export default async function Page(props: any) {
                                         />
                                     </IconButton>
                                 </a>}
-                                action={<NXAdmin />}
+                                action={<Box sx={{ m: 1 }}><NXAdminBtn /></Box>}
                                 title={<Typography
                                     color='secondary'
                                     variant="h4"

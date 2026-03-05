@@ -26,7 +26,7 @@ import WhatIcon from '@mui/icons-material/HardwareOutlined';
 import FilterIcon from '@mui/icons-material/SortOutlined';
 import AccountIcon from '@mui/icons-material/SupervisedUserCircle';
 import ExperienceIcon from '@mui/icons-material/AllInclusive';
-import AdminIcon from '@mui/icons-material/SupervisedUserCircle';
+import AdminIcon from '@mui/icons-material/AdminPanelSettings';
 import FilmIcon from '@mui/icons-material/Theaters';
 import SkiIcon from '@mui/icons-material/DownhillSkiing';
 import AndroidIcon from '@mui/icons-material/Android';

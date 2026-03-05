@@ -2,8 +2,8 @@
     "project": "nx",
     "url": "https://goldlabel.pro",
     "title": "NX",
-    "description": "Real results. Real fast",
-    "image": "https://live.staticflickr.com/65535/55111661741_6844b1cc48_b.jpg",
+    "description": "Multi-tenant NextJS",
+    "image": "/nx/gif/dark.gif",
     "favicon": "/nx/svg/favicon.svg",
     "icon": "/nx/svg/NXIcon.svg",
     "darkIcon": "/nx/svg/NXIcon_w.svg",
@@ -32,34 +32,6 @@
                     "border": "#C09F52"
                 }
             }
-        },
-        "commerce": {
-            "enabled": true,
-            "ads": [
-                {
-                    "title": "RESTful API",
-                    "type": "link",
-                    "description": "Programmatic Micro Services",
-                    "url": "/api",
-                    "icon": "api",
-                    "target": "_blank"
-                },
-                {
-                    "title": "CV",
-                    "type": "link",
-                    "description": "TypeScript Developer",
-                    "url": "/shared/pdf/Chris Dorward, Fullstack TypeScript Developer.pdf",
-                    "icon": "doc",
-                    "target": "_blank"
-                },
-                {
-                    "title": "Virus",
-                    "type": "link",
-                    "description": "test",
-                    "url": "/share/test",
-                    "icon": "virus"
-                }
-            ]
         }
     }
 }

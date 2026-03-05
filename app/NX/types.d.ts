@@ -90,7 +90,6 @@ export type T_Config = {
     favicon: string;
     image: string;
     icon: string;
-    darkIcon?: string;
     email?: {
         label?: string;
         address: string;
