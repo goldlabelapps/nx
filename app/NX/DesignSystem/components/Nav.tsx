@@ -110,7 +110,7 @@ const Nav: React.FC<I_Nav> = ({
                 </IconButton>
 
                 <Drawer
-                    anchor="left"
+                    anchor="right"
                     open={drawerOpen}
                     onClose={() => setDrawerOpen(false)}>
                     <Box sx={{

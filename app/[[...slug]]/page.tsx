@@ -1,4 +1,4 @@
-import type { I_NestedNav, T_Tenant } from '../NX/types';
+import type { T_Meta, I_NestedNav, T_Tenant } from '../NX/types';
 import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
@@ -19,6 +19,7 @@ import {
     serverUseSmartImage,
     serverUseNav,
     getTenant,
+    getMeta,
 } from '../NX/lib';
 import {
     Icon,
@@ -132,6 +133,14 @@ export default async function Page(props: any) {
     if (data.flash && validScenes.includes(data.flash)) {
         sceneSlug = data.flash;
     }
+
+    const meta = getMeta({
+        title,
+        description,
+        url: config.url || "",
+        siteName: config.title,
+        image: config.image || data.image,
+    });
 
     return (
         <NX config={config}
@@ -249,6 +258,7 @@ export default async function Page(props: any) {
             </Container>
             <footer>
                 <Footer
+                    meta={meta as T_Meta}
                     frontmatter={data}
                     navItems={navItems as I_NestedNav["navItems"]}
                 />

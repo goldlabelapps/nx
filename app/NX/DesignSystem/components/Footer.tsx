@@ -37,14 +37,21 @@ export default function Footer({
 			>
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
-					<Virus meta={meta as T_Meta} />
-					hullo
-					<Nav
-						mode="mobile"
-						navItems={navItems as I_NestedNav["navItems"]}
-						currentPath={frontmatter?.slug || '/'}
-					/>
-					<Box sx={{ flexGrow: 1 }} />
+
+					<Box sx={{ display: 'flex', }}>
+						<Box sx={{ pb: 1 }}>
+							<Virus meta={meta as T_Meta} />
+						</Box>
+						<Box sx={{ mt: 3, ml: 2 }}>
+							<Nav
+								mode="mobile"
+								navItems={navItems as I_NestedNav["navItems"]}
+								currentPath={frontmatter?.slug || '/'}
+							/>
+						</Box>
+					</Box>
+
+					{/* <Box sx={{ flexGrow: 1 }} /> */}
 					{children && (
 						<Box sx={{ ml: 2 }}>
 							{children}

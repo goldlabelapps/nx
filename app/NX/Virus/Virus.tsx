@@ -11,7 +11,9 @@ import { Box, Typography, ButtonBase, Popover } from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
 
 export default function Virus({ meta }: { meta: T_Meta }) {
-  if (!meta) return null;
+  if (!meta) return <>
+
+  </>;
   const { title, openGraph } = meta;
   const [url, setUrl] = React.useState(openGraph?.url || '');
   const description = openGraph?.description || meta.description || '';
