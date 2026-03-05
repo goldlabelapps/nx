@@ -108,7 +108,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                                 ),
                             }}
                         />
-                        {(error || externalError) && <Typography color="error">{externalError || error}</Typography>}
+                        {(error || externalError) && <Typography color="error">{error || externalError}</Typography>}
                     </CardContent>
                     <CardActions>
                         <Button
