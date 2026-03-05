@@ -5,6 +5,7 @@ import { getBaseurl } from '../api';
 import {
     DesignSystem,
 } from '../NX/DesignSystem';
+import NXAdminAuthWrapper from './NXAdminAuthWrapper';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
@@ -46,8 +47,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     if (theme) {
         theme = { ...theme, mode: themeMode };
     };
-    const NXAdminAuthWrapper = (await import('./NXAdminAuthWrapper')).default;
-
     return (
         <DesignSystem theme={theme as T_Theme}>
             <NXAdminAuthWrapper config={config} />
