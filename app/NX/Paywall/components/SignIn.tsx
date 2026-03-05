@@ -38,7 +38,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
             onSignIn(email, password);
         }
     };
-    const themeMode: 'light' | 'dark' = 'dark';
+    const themeMode: 'light' | 'dark' = 'light';
     let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (theme) {
         theme = { ...theme, mode: themeMode };

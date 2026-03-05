@@ -17,7 +17,7 @@ export default function NXAdminBtn() {
   }
 
   return (
-    <IconButton onClick={handleClick}>
+    <IconButton color="primary" onClick={handleClick}>
       <Icon icon="admin" />
     </IconButton>
   );

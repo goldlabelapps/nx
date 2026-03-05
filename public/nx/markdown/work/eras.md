@@ -4,7 +4,7 @@ title: Internet Eras
 description: Two decades of experience over every era of web development
 slug: /work/eras
 icon: case
-image: /nx/gif/dark.gif
+image: https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg
 tags: eras
 ---
 

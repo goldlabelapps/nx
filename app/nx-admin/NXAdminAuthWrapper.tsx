@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { getFirebaseAuth } from '../NX/lib/firebase';
-import SignIn from '../NX/Paywall/components/SignIn';
+import { SignIn } from '../NX/Paywall';
 import { NXAdmin } from '../NX/NXAdmin';
 
 export default function NXAdminAuthWrapper({

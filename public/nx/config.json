@@ -3,7 +3,7 @@
     "url": "https://goldlabel.pro",
     "title": "NX",
     "description": "Multi-tenant NextJS",
-    "image": "/nx/gif/dark.gif",
+    "image": "https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg",
     "favicon": "/nx/svg/favicon.svg",
     "icon": "/nx/svg/NXIcon.svg",
     "darkIcon": "/nx/svg/NXIcon_w.svg",
@@ -11,7 +11,7 @@
         "designSystem": {
             "enabled": true,
             "allowTheme": false,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "themes": {
                 "dark": {
                     "mode": "dark",
@@ -25,11 +25,11 @@
                 "light": {
                     "mode": "light",
                     "primary": "#073334",
-                    "secondary": "#C09F52",
+                    "secondary": "#073334",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#C09F52"
+                    "border": "#073334"
                 }
             }
         }

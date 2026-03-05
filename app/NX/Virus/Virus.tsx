@@ -12,6 +12,7 @@ import { Icon } from '../../NX/DesignSystem';
 // import { Forward } from '../Virus'
 
 export default function Virus({ meta }: { meta: T_Meta }) {
+
   if (!meta) return <>
 
   </>;
@@ -40,6 +41,7 @@ export default function Virus({ meta }: { meta: T_Meta }) {
       </Box> */}
       <Box>
         <ButtonBase
+          color={'primary'}
           onClick={e => {
             navigator.clipboard.writeText(url);
             setCopied(true);
@@ -72,12 +74,12 @@ export default function Virus({ meta }: { meta: T_Meta }) {
       </Box>
       <Box>
         <TwitterShareButton title={title} url={url}>
-          <Icon icon="twitter" />
+          <Icon icon="twitter" color={'primary'} />
         </TwitterShareButton>
       </Box>
       <Box>
         <FacebookShareButton url={url} >
-          <Icon icon="facebook" />
+          <Icon icon="facebook" color={'primary'} />
         </FacebookShareButton>
       </Box>
       <Box>
@@ -87,7 +89,7 @@ export default function Virus({ meta }: { meta: T_Meta }) {
           summary={description}
           source="NX"
         >
-          <Icon icon="linkedin" />
+          <Icon icon="linkedin" color={'primary'} />
         </LinkedinShareButton>
       </Box>
       <Box>
@@ -96,7 +98,7 @@ export default function Virus({ meta }: { meta: T_Meta }) {
           title={title}
           separator=" - "
         >
-          <Icon icon="whatsapp" />
+          <Icon icon="whatsapp" color={'primary'} />
         </WhatsappShareButton>
       </Box>
 
