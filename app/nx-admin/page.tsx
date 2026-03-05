@@ -5,9 +5,6 @@ import { getBaseurl } from '../api';
 import {
     DesignSystem,
 } from '../NX/DesignSystem';
-import {
-    NXAdmin,
-} from '../NX/NXAdmin';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
