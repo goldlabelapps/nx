@@ -51,7 +51,7 @@ export default function Virus({
         alignItems: 'center',
         justifyContent: 'center',
         gap: 2,
-        mt: 1
+        my: 1
       }}>
 
         <Box sx={{ mt: 0.25 }}>

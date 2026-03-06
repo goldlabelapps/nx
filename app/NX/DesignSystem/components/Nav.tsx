@@ -52,16 +52,22 @@ const Nav: React.FC<I_Nav> = ({
         parentKey = '',
         // parentNavTarget?: string,
     ): React.ReactNode {
-        return items
-            .filter(item => {
-                const navTarget = (typeof item.slug === 'string' && item.slug.trim().length > 0)
-                    ? item.slug
-                    : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
-                if (navTarget === '/') {
-                    return false;
-                }
-                return true;
-            })
+        // Always render Home button at the top
+        const homeButton = (
+            <Box key={parentKey + 'home'}>
+                <ListItemButton
+                    onClick={e => {
+                        e.preventDefault();
+                        handleNavClick('/');
+                    }}
+                    disabled={false}
+                >
+                    <ListItemText primary={'Home'} />
+                </ListItemButton>
+            </Box>
+        );
+
+        const navItems = items
             .map((item, i) => {
                 const key = `${parentKey}item_${i}`;
                 const hasChildren = Array.isArray(item.children) && item.children.length > 0;
@@ -79,6 +85,8 @@ const Nav: React.FC<I_Nav> = ({
                         return childNavTarget !== navTarget;
                     });
                 }
+                // Don't render another Home button if this item is the home link
+                if (navTarget === '/') return null;
                 return (
                     <Box key={key}>
                         <ListItemButton
@@ -99,6 +107,7 @@ const Nav: React.FC<I_Nav> = ({
                     </Box>
                 );
             });
+        return [homeButton, ...navItems.filter(Boolean)];
     }
 
 
@@ -115,18 +124,19 @@ const Nav: React.FC<I_Nav> = ({
                     anchor="right"
                     open={drawerOpen}
                     onClose={() => setDrawerOpen(false)}>
-                    <Box sx={{
-                        p: 1
-                    }}
+                    <Box
+                        sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 1 }}
                         role="presentation"
                         onClick={() => setDrawerOpen(false)}
                     >
-                        <Virus frontmatter={frontmatter} />
-                        <Settings />
                         <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
+                        <Box sx={{ mt: 'auto' }}>
+                            <Settings />
+                            <Virus frontmatter={frontmatter} />
 
+                        </Box>
                     </Box>
                 </Drawer>
             </>

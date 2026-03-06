@@ -43,7 +43,7 @@ const Settings: React.FC<I_Settings> = () => {
 	if (loading) return null;
 
 	return (
-		<List dense sx={{ my: 2 }}>
+		<List dense sx={{ my: 1 }}>
 			<ListItemButton
 				id="nx-admin-button"
 				onClick={handleNXAdmin}
