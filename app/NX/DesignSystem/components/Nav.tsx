@@ -109,8 +109,7 @@ const Nav: React.FC<I_Nav> = ({
             });
         return [homeButton, ...navItems.filter(Boolean)];
     }
-
-
+    // Removed stray slash and 'return true' lines that caused syntax error
     if (mode === 'mobile') {
         return (
             <>
