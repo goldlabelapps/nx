@@ -28,6 +28,7 @@
             "defaultTheme": "dark",
             "themes": {
                 "dark": {
+                    "mode": "dark",
                     "primary": "#A5C7FF",
                     "secondary": "#A5C7FF",
                     "background": "#184791",
@@ -36,12 +37,13 @@
                     "border": "#A5C7FF"
                 },
                 "light": {
+                    "mode": "light",
                     "primary": "#012867",
                     "secondary": "#12418C",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#012867"
+                    "border": "#A5C7FF"
                 }
             }
         }

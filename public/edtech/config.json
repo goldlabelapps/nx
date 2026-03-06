@@ -23,6 +23,7 @@
             "defaultTheme": "light",
             "themes": {
                 "light": {
+                    "mode": "light",
                     "primary": "#3877cf",
                     "secondary": "#3877cf",
                     "background": "#fff",
@@ -31,6 +32,7 @@
                     "border": "#3877cf"
                 },
                 "dark": {
+                    "mode": "dark",
                     "primary": "#17A1AC",
                     "secondary": "#07c7d5ff",
                     "background": "#000",

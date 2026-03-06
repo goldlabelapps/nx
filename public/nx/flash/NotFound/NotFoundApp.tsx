@@ -1,6 +1,5 @@
 "use client";
 import React from 'react';
-import type { I_Scene } from '../../types';
 import {
     Dialog,
     Box,
@@ -11,7 +10,7 @@ import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
 import { NotFound } from './';
 
-export const NotFoundApp: React.FC<I_Scene> = ({ options }) => {
+export const NotFoundApp: React.FC<any> = ({ options }) => {
 
     const flash = useFlash();
     const dispatch = useDispatch();

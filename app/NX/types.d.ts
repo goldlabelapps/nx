@@ -2,9 +2,12 @@ import type { T_UbereduxDispatch } from '../NX/Uberedux/store';
 export { T_UbereduxDispatch }
 
 export type T_Meta = {
+    siteName?: string;
     title?: string;
     description?: string;
-    siteName?: string;
+    image?: string;
+    url?: string;
+    openGraphImages?: { url: string; width?: number; height?: number; alt?: string }[];
     openGraph?: {
         title?: string;
         description?: string;
@@ -13,22 +16,7 @@ export type T_Meta = {
         images?: string[];
         type?: string;
     };
-    twitter?: {
-        card?: string;
-        title?: string;
-        description?: string;
-        images?: string[];
-        site?: string;
-    };
 };
-
-siteName ?: string;
-title ?: string;
-description ?: string;
-image ?: string;
-url ?: string;
-openGraphImages ?: { url: string; width?: number; height?: number; alt?: string }[];
-}
 
 export type T_Tenant = 'nx' |
     'mcuk' |
@@ -112,6 +100,7 @@ export type T_Config = {
             defaultTheme: string;
             themes: {
                 [key: string]: {
+                    mode: string;
                     primary: string;
                     secondary: string;
                     background: string;
@@ -121,6 +110,7 @@ export type T_Config = {
                 };
             };
         };
+        lingua?: T_LinguaCartridge;
         // Add other cartridge types as needed
     };
 }
