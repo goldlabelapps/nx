@@ -40,5 +40,5 @@ export default function NXAdminAuthWrapper({
     if (!user) {
         return <SignIn onSignIn={handleSignIn} config={config} error={signInError} />;
     }
-    return <NXAdmin />;
+    return <NXAdmin config={config} />;
 }

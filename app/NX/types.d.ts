@@ -2,9 +2,12 @@ import type { T_UbereduxDispatch } from '../NX/Uberedux/store';
 export { T_UbereduxDispatch }
 
 export type T_Meta = {
+    siteName?: string;
     title?: string;
     description?: string;
-    siteName?: string;
+    image?: string;
+    url?: string;
+    openGraphImages?: { url: string; width?: number; height?: number; alt?: string }[];
     openGraph?: {
         title?: string;
         description?: string;
@@ -13,22 +16,7 @@ export type T_Meta = {
         images?: string[];
         type?: string;
     };
-    twitter?: {
-        card?: string;
-        title?: string;
-        description?: string;
-        images?: string[];
-        site?: string;
-    };
 };
-
-export interface I_Meta {
-    siteName?: string;
-    title?: string;
-    description?: string;
-    image?: string;
-    url?: string;
-}
 
 export type T_Tenant = 'nx' |
     'mcuk' |
@@ -84,22 +72,46 @@ export type T_CommerceShortcode = {
 
 export type T_Config = {
     tenant: string;
-    title: string;
+    siteName: string;
     description: string;
     url: string;
-    favicon: string;
-    image: string;
-    icon: string;
-    email?: {
-        label?: string;
-        address: string;
+    icons: {
+        light: {
+            icon: string;
+            favicon: string;
+        };
+        dark: {
+            icon: string;
+            favicon: string;
+        };
+    };
+    images: {
+        light: string;
+        dark: string;
     };
     cartridges: {
-        commerce?: T_CommerceCartridge;
-        designSystem?: T_DesignSystemCartridge;
-        uberedux?: T_UbereduxCartridge;
-        echopay?: T_EchoPayCartridge;
+        paywall?: {
+            enabled: boolean;
+            userMode: string;
+            email: string;
+        };
+        designSystem?: {
+            themeSwitching: boolean;
+            defaultTheme: string;
+            themes: {
+                [key: string]: {
+                    mode: string;
+                    primary: string;
+                    secondary: string;
+                    background: string;
+                    paper: string;
+                    text: string;
+                    border: string;
+                };
+            };
+        };
         lingua?: T_LinguaCartridge;
+        // Add other cartridge types as needed
     };
 }
 

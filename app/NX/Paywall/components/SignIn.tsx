@@ -43,7 +43,8 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
     if (theme) {
         theme = { ...theme, mode: themeMode };
     }
-    const { title, description, image } = config;
+    const { title, description, images } = config;
+    const image = images?.[themeMode] || '';
     return (
         <DesignSystem theme={theme}>
             <form onSubmit={handleSubmit}>

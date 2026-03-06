@@ -1,23 +1,30 @@
 {
     "tenant": "echopay",
-    "title": "EchoPay",
-    "description": "Do the maths",
+    "siteName": "EchoPay",
+    "description": "Adobe Commerce Plugin",
     "url": "https://echopay.goldlabel.pro",
-    "image": "/echopay/gif/echopay.gif",
-    "icon": "/echopay/svg/favicon.svg",
-    "favicon": "/echopay/favicon.webp",
-    "email": {
-        "label": "Contact Us",
-        "address": "echopay@goldlabel.pro"
+    "icons": {
+        "light": {
+            "icon": "/echopay/svg/favicon.svg",
+            "favicon": "/echopay/favicon.webp"
+        },
+        "dark": {
+            "icon": "/echopay/svg/favicon.svg",
+            "favicon": "/echopay/favicon_w.webp"
+        }
+    },
+    "images": {
+        "light": "/echopay/gif/echopay_light.gif",
+        "dark": "/echopay/gif/echopay.gif"
     },
     "cartridges": {
         "paywall": {
-            "enabled": true,
+            "enabled": false,
             "userMode": "single",
             "email": "echopay@goldlabel.pro"
         },
         "designSystem": {
-            "allowTheme": true,
+            "themeSwitching": true,
             "defaultTheme": "dark",
             "themes": {
                 "dark": {
@@ -36,7 +43,7 @@
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#012867"
+                    "border": "#A5C7FF"
                 }
             }
         }

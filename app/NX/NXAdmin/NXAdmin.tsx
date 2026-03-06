@@ -1,4 +1,5 @@
 'use client';
+import type { T_Config } from '../types'
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
@@ -8,18 +9,19 @@ import {
   CardHeader,
   IconButton,
 } from '@mui/material';
-import { SignOutBtn } from '../../NX/Paywall';
+import { CloseAdmin } from '../NXAdmin';
 
 export interface I_NXAdmin {
   children?: React.ReactNode;
+  config: T_Config;
 };
 
 export default function NXAdmin({
-  children
+  children,
+  config,
 }: I_NXAdmin) {
 
   const router = useRouter();
-
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
   }
@@ -27,12 +29,14 @@ export default function NXAdmin({
   return (
     <Container>
       <CardHeader
+        title="NX Admin"
         avatar={<IconButton onClick={handleAvatarClick}>
           <Avatar src="/nx/svg/favicon_light.svg" />
         </IconButton>}
-        action={<Box sx={{ mt: 0.5 }}><SignOutBtn /></Box>}
+        action={<Box sx={{ mt: 0.5 }}><CloseAdmin /></Box>}
       />
       {children && children}
+      <pre>{JSON.stringify(config, null, 2)}</pre>
     </Container>
   );
 }

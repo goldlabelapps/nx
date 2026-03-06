@@ -10,7 +10,7 @@ import {
     ListItemButton,
     ListItemText,
 } from '@mui/material';
-import { Icon } from '../../../NX/DesignSystem';
+import { Icon, Settings } from '../../../NX/DesignSystem';
 import { Virus } from '../../../NX/Virus';
 
 
@@ -121,10 +121,12 @@ const Nav: React.FC<I_Nav> = ({
                         role="presentation"
                         onClick={() => setDrawerOpen(false)}
                     >
+                        <Virus frontmatter={frontmatter} />
+                        <Settings />
                         <List dense component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
-                        <Virus frontmatter={frontmatter} />
+
                     </Box>
                 </Drawer>
             </>
