@@ -1,16 +1,16 @@
-import type { I_Meta } from '../types';
+// import type { I_Meta } from '../types';
 import { getTenant } from './';
 
-export const getMeta = (props: I_Meta) => {
+export const getMeta = (props: any) => {
 
     const tenant = getTenant();
     const { config } = tenant;
 
-    const meta: I_Meta = {
-        siteName: props?.siteName ?? config.title ?? '',
-        title: props?.title ?? config.title ?? '',
+    const meta: any = {
+        siteName: props?.siteName ?? config.siteName ?? '',
+        title: props?.title ?? config.siteName ?? '',
         description: props?.description ?? config.description ?? '',
-        image: props?.image ?? config.image ?? '',
+        image: props?.image ?? config.images?.light ?? '',
         url: props?.url ?? config.url ?? '',
     }
 
@@ -22,14 +22,14 @@ export const getMeta = (props: I_Meta) => {
             description: meta.description,
             url: meta.url,
             siteName: meta.siteName,
-            images: [meta.image],
+            images: meta.image ? [{ url: meta.image }] : [],
             type: "website",
         },
         twitter: {
             card: "summary_large_image",
             title: meta.title,
             description: meta.description,
-            images: [meta.image],
+            images: meta.image ? [meta.image] : [],
             site: meta.siteName,
         },
     }

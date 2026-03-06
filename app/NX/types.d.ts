@@ -22,12 +22,12 @@ export type T_Meta = {
     };
 };
 
-export interface I_Meta {
-    siteName?: string;
-    title?: string;
-    description?: string;
-    image?: string;
-    url?: string;
+siteName ?: string;
+title ?: string;
+description ?: string;
+image ?: string;
+url ?: string;
+openGraphImages ?: { url: string; width?: number; height?: number; alt?: string }[];
 }
 
 export type T_Tenant = 'nx' |
@@ -84,22 +84,44 @@ export type T_CommerceShortcode = {
 
 export type T_Config = {
     tenant: string;
-    title: string;
+    siteName: string;
     description: string;
     url: string;
-    favicon: string;
-    image: string;
-    icon: string;
-    email?: {
-        label?: string;
-        address: string;
+    icons: {
+        light: {
+            icon: string;
+            favicon: string;
+        };
+        dark: {
+            icon: string;
+            favicon: string;
+        };
+    };
+    images: {
+        light: string;
+        dark: string;
     };
     cartridges: {
-        commerce?: T_CommerceCartridge;
-        designSystem?: T_DesignSystemCartridge;
-        uberedux?: T_UbereduxCartridge;
-        echopay?: T_EchoPayCartridge;
-        lingua?: T_LinguaCartridge;
+        paywall?: {
+            enabled: boolean;
+            userMode: string;
+            email: string;
+        };
+        designSystem?: {
+            themeSwitching: boolean;
+            defaultTheme: string;
+            themes: {
+                [key: string]: {
+                    primary: string;
+                    secondary: string;
+                    background: string;
+                    paper: string;
+                    text: string;
+                    border: string;
+                };
+            };
+        };
+        // Add other cartridge types as needed
     };
 }
 

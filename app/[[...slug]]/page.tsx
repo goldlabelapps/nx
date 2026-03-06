@@ -16,7 +16,6 @@ import { NX } from '../NX';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
-    serverUseSmartImage,
     serverUseNav,
     getTenant,
     getMeta,
@@ -44,49 +43,28 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
         frontmatter = data;
     }
     let url = config.url || "";
-    const featuredImage = await serverUseSmartImage(config, frontmatter);
-    if (!featuredImage) {
-        console.log("No image for", frontmatter?.title);
-    }
-
-    let title = config.title || "";
-    let description = config.description || "";
     const themeMode: 'light' | 'dark' = 'light';
-    const themes = config?.cartridges?.designSystem?.themes;
-    let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
-    if (theme) {
-        theme = { ...theme, mode: themeMode };
-    }
-
+    let title = config.siteName || "";
+    let description = config.description || "";
+    let image = config.images?.[themeMode] || "";
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
         if (data?.title) title = data.title;
         if (data?.description) description = data.description;
         if (data?.url) url = data.url;
+        if (data?.image) image = data.image;
     }
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
 
-    return {
-        title: `${title}, ${description}`,
+    return getMeta({
+        siteName: title,
+        title,
         description,
-        openGraph: {
-            title: `${title}, ${description}`,
-            description,
-            url: pageUrl,
-            siteName: config.title,
-            images: [featuredImage.src],
-            type: "website",
-        },
-        twitter: {
-            card: "summary_large_image",
-            title,
-            description,
-            images: [featuredImage.src],
-            site: config.title,
-        },
-    };
+        image,
+        url: pageUrl,
+    });
 }
 
 
@@ -122,14 +100,10 @@ export default async function Page(props: any) {
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themes = config?.cartridges?.designSystem?.themes;
     let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
-    if (theme) {
-        theme = { ...theme, mode: themeMode };
-    }
     const bgCol = theme?.background || '#000';
-    let themedIcon = config?.icon || null;
-    if (themeMode === 'dark' && 'darkIcon' in config && typeof config.darkIcon === 'string') {
-        themedIcon = config.darkIcon || themedIcon;
-    }
+    // Set icon and image based on themeMode
+    const themedIcon = config?.icons?.[themeMode] || null;
+    const themedImage = config?.images?.[themeMode] || null;
     const validScenes = ['EchoPay', 'NXMC'];
     let sceneSlug: string | undefined = undefined;
     if (data.flash && validScenes.includes(data.flash)) {
@@ -140,8 +114,8 @@ export default async function Page(props: any) {
         title,
         description,
         url: config.url || "",
-        siteName: config.title,
-        image: config.image || data.image,
+        siteName: config.siteName,
+        image: themedImage || data.image,
     });
 
     return (
@@ -159,7 +133,6 @@ export default async function Page(props: any) {
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
-
                                 avatar={<a href='/'>
                                     <IconButton
                                         edge="start"
@@ -167,8 +140,9 @@ export default async function Page(props: any) {
                                         aria-label={title}
                                         sx={{}}>
                                         <Avatar
-                                            alt={config.title}
-                                            src={themedIcon || ''}
+                                            alt={`${config.siteName}. 
+                                            ${config.description}`}
+                                            src={themedIcon?.icon || ''}
                                         />
                                     </IconButton>
                                 </a>}
@@ -263,7 +237,7 @@ export default async function Page(props: any) {
             </Container>
             <footer>
                 <Footer
-                    meta={meta as T_Meta}
+                    meta={meta as any}
                     frontmatter={data}
                     navItems={navItems as I_NestedNav["navItems"]}
                 />
