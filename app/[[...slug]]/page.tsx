@@ -1,4 +1,4 @@
-import type { T_Meta, I_NestedNav, T_Tenant, T_Frontmatter } from '../NX/types';
+import type { I_NestedNav, T_Tenant, T_Frontmatter } from '../NX/types';
 import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
@@ -84,9 +84,7 @@ export default async function Page(props: any) {
     const { params } = props;
     const resolvedParams = typeof params?.then === 'function' ? await params : params;
     let slugArr = resolvedParams?.slug || [];
-    while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") {
-        slugArr.pop();
-    }
+    while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") slugArr.pop();
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);

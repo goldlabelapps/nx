@@ -5,7 +5,6 @@ title: NX
 description: Multi-tenant NextJS
 tags: NX, Goldlabel, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS
 icon: goldlabel
-image: https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg
 ---
 
 ## Goldlabel Apps. Real results, real fast

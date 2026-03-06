@@ -37,6 +37,10 @@ export default function Hero({
 	}
 
 	if (!src) return null;
+	// Open Graph aspect ratio: 1200x630
+	const OG_WIDTH = 1200;
+	const OG_HEIGHT = 630;
+	const OG_ASPECT_RATIO = OG_WIDTH / OG_HEIGHT;
 
 	return (
 		<Box sx={{
@@ -45,8 +49,10 @@ export default function Hero({
 			<Box
 				sx={{
 					width: '100%',
-					height: '200px',
+					maxWidth: `${OG_WIDTH}px`,
+					aspectRatio: `${OG_WIDTH} / ${OG_HEIGHT}`,
 					position: 'relative',
+					margin: '0 auto',
 				}}
 			>
 				<Image
@@ -56,9 +62,13 @@ export default function Hero({
 					style={{
 						borderRadius: 8,
 						objectFit: 'cover',
-						maxHeight: '200px',
+						width: '100%',
+						height: '100%',
+						aspectRatio: `${OG_WIDTH} / ${OG_HEIGHT}`,
+						maxWidth: `${OG_WIDTH}px`,
+						maxHeight: `${OG_HEIGHT}px`,
 					}}
-					sizes="(max-width: 900px) 100vw, 800px"
+					sizes={`(max-width: 1200px) 100vw, ${OG_WIDTH}px`}
 					priority
 				/>
 			</Box>
