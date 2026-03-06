@@ -20,7 +20,7 @@
     "cartridges": {
         "designSystem": {
             "themeSwitching": false,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",

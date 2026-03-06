@@ -4,31 +4,26 @@ import { I_NX, T_Theme } from './types';
 import { Box } from '@mui/material';
 import { DesignSystem, Feedback } from './DesignSystem';
 import { useDispatch } from './Uberedux';
-import { setFlash } from './Flash';
+import { setDesignSystem } from './DesignSystem';
 import { EchoPay } from '../../public/echopay/flash';
 
 const NX: React.FC<I_NX> = ({
     children,
     config,
-    frontmatter,
+    // frontmatter,
     flash,
 }) => {
-
+    const dispatch = useDispatch();
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (theme) {
         const mode: 'light' | 'dark' = themeMode === 'dark' ? 'dark' : 'light';
         theme = { ...theme, mode };
     }
-    const dispatch = useDispatch();
 
     React.useEffect(() => {
-        if (frontmatter && frontmatter.flash) {
-            dispatch(setFlash("scene", frontmatter.flash));
-        } else {
-            dispatch(setFlash("scene", null));
-        }
-    }, [dispatch, frontmatter]);
+        dispatch(setDesignSystem("themeMode", themeMode));
+    }, [dispatch, themeMode]);
 
     if (!theme) {
         return (

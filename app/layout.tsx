@@ -9,7 +9,10 @@ const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
 const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
-const { title, icon, favicon, description } = config;
+const { title, description, icons } = config;
+const icon = icons?.light?.icon;
+const favicon = icons?.light?.favicon;
+
 
 export const metadata: Metadata = {
   title: `${title}, ${description}`,
@@ -28,7 +31,7 @@ export default async function RootLayout({
 }>) {
 
   const paywall = config.cartridges?.paywall?.enabled === true;
-
+  console.log('favicon', favicon)
   return (
     <html lang="en">
       <head>

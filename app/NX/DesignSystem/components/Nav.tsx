@@ -134,7 +134,6 @@ const Nav: React.FC<I_Nav> = ({
                         <Box sx={{ mt: 'auto' }}>
                             <Settings />
                             <Virus frontmatter={frontmatter} />
-
                         </Box>
                     </Box>
                 </Drawer>

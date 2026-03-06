@@ -1,5 +1,4 @@
 import DesignSystem from "./DesignSystem";
-import { useMUITheme } from './hooks/useMUITheme';
 import Nav from './components/Nav';
 import Feedback from './components/Feedback';
 import Hero from './components/Hero';
@@ -10,19 +9,22 @@ import Settings from './components/Settings';
 import Icon from './components/Icon';
 import Share from './components/Share';
 import SmartImage from './components/SmartImage';
-import { setFeedback } from './actions/setFeedback';
 import { useFeedback } from './hooks/useFeedback';
+import { useMUITheme } from './hooks/useMUITheme';
+import { setFeedback } from './actions/setFeedback';
+import { setDesignSystem } from './actions/setDesignSystem';
 export {
-    DesignSystem,
-    useMUITheme,
-    Icon,
-    Share,
     Nav,
     Settings,
     Tags,
     SmartImage,
+    DesignSystem,
+    useMUITheme,
+    Icon,
+    Share,
     Feedback,
     setFeedback,
+    setDesignSystem,
     useFeedback,
     Footer,
     Hero,
