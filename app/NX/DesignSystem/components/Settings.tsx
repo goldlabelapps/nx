@@ -72,7 +72,6 @@ const Settings: React.FC<I_Settings> = () => {
 				</ListItemIcon>
 				<ListItemText
 					primary={<Typography>
-						Change theme mode
 					</Typography>}
 				/>
 			</ListItemButton>
@@ -98,7 +97,7 @@ const Settings: React.FC<I_Settings> = () => {
 				)
 			}
 
-			<pre>{JSON.stringify(slice, null, 2)}</pre>
+			{/* <pre>{JSON.stringify(slice, null, 2)}</pre> */}
 
 		</List>
 	);
