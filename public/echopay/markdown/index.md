@@ -5,7 +5,7 @@ title: Adobe Commerce Plugin
 description: Costs go from pounds to pence with EchoPay
 icon: right
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
-image: https://live.staticflickr.com/65535/55049334358_e3c77a31c6_b.jpg
+image: /echopay/gif/echopay.gif
 flashXXX: EchoPay
 ---
 
