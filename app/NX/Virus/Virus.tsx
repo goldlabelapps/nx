@@ -67,7 +67,7 @@ export default function Virus({
               }, 1500);
             }}
           >
-            <Icon icon="copy" />
+            <Icon icon="copy" color="primary" />
           </ButtonBase>
           <Popover
             open={copied}

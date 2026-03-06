@@ -49,7 +49,7 @@ const NX: React.FC<I_NX> = ({
         flashContent = <EchoPay />;
     }
     return (
-        <DesignSystem theme={theme as T_Theme}>
+        <DesignSystem theme={theme as T_Theme} config={config}>
             <Feedback />
             {flashContent}
         </DesignSystem>

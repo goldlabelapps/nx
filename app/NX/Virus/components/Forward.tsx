@@ -25,7 +25,7 @@ export const Forward: React.FC<{
             <ButtonBase
                 onClick={handleClick}
             >
-                <Icon icon="forward" />
+                <Icon icon="forward" color="primary" />
             </ButtonBase>
         </>
     );

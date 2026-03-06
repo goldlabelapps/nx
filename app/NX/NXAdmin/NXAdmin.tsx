@@ -3,13 +3,15 @@ import type { T_Config } from '../types'
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
-  Box,
-  Avatar,
+  AppBar,
   Container,
   CardHeader,
+  Avatar,
   IconButton,
+  Typography,
 } from '@mui/material';
-import { CloseAdmin } from '../NXAdmin';
+// import { CloseAdmin } from '../NXAdmin';
+import { useSlice } from '../Uberedux';
 
 export interface I_NXAdmin {
   children?: React.ReactNode;
@@ -22,21 +24,52 @@ export default function NXAdmin({
 }: I_NXAdmin) {
 
   const router = useRouter();
+  const slice = useSlice();
+
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
   }
 
+  const { icons } = config;
+
   return (
-    <Container>
-      <CardHeader
-        title="NX Admin"
-        avatar={<IconButton onClick={handleAvatarClick}>
-          <Avatar src="/nx/svg/favicon_light.svg" />
-        </IconButton>}
-        action={<Box sx={{ mt: 0.5 }}><CloseAdmin /></Box>}
-      />
-      {children && children}
-      <pre>{JSON.stringify(config, null, 2)}</pre>
-    </Container>
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          top: 0,
+          boxShadow: 0,
+        }}>
+        <Container maxWidth="xl">
+
+          <CardHeader
+            avatar={<a href='/'>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label={config.siteName}
+                sx={{}}>
+                <Avatar
+                  alt={`${config.siteName}. ${config.description}`}
+                // src={themedIcon?.icon || ''}
+                />
+              </IconButton>
+            </a>}
+            action={null}
+            title={<Typography
+              color='secondary'
+              variant="h4"
+              component="h1"
+            >
+              NXAdmin - {config.siteName}
+            </Typography>}
+          />
+        </Container>
+      </AppBar>
+      <Container maxWidth="xl" sx={{ mt: '100px' }}>
+        slice: <pre>{JSON.stringify(slice, null, 2)}</pre>
+        {children && children}
+      </Container>
+    </>
   );
 }

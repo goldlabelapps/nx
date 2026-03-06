@@ -232,6 +232,7 @@ export interface I_NestedNav {
 
 export interface I_DesignSystem {
     theme?: T_Theme;
+    config?: T_Config;
     children: React.ReactNode;
 }
 
