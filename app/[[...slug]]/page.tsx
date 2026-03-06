@@ -102,7 +102,7 @@ export default async function Page(props: any) {
     const themes = config?.cartridges?.designSystem?.themes;
     let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
     const bgCol = theme?.background || '#000';
-    const themedIcon = config?.icons?.[themeMode] || null;
+    const themedIcon = config?.icons?.['light'] || null;
     const themedImage = config?.images?.[themeMode] || null;
     const validScenes = ['EchoPay', 'NXMC'];
     let sceneSlug: string | undefined = undefined;

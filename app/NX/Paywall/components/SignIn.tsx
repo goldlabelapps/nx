@@ -1,4 +1,6 @@
+"use client";
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Box, IconButton, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { DesignSystem, Icon } from '../../DesignSystem';
 
@@ -9,6 +11,7 @@ interface SignInProps {
 }
 
 export default function SignIn({ onSignIn, config, error: externalError }: SignInProps) {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -113,11 +116,19 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                     </CardContent>
                     <CardActions>
                         <Button
-                            endIcon={<Icon icon="signin" />}
+                            startIcon={<Icon icon="left" />}
+                            sx={{ mx: 1 }}
+                            onClick={() => router.back()}
+                        >
+                            Back
+                        </Button>
+                        <Button
+
                             fullWidth
                             type="submit"
-                            variant="contained"
-                            sx={{ mx: 1, mb: 2 }}
+                            endIcon={<Icon icon="signin" />}
+                            variant="outlined"
+                            sx={{ mx: 1 }}
                         >
                             Sign In
                         </Button>
