@@ -1,42 +1,42 @@
 {
     "tenant": "edtech",
     "url": "https://ed-tech.co",
-    "title": "EdTech",
-    "description": "Educational Technology",
-    "image": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
-    "icon": "/edtech/favicon.png",
-    "favicon": "/edtech/favicon.ico",
+    "siteName": "EdTech",
+    "description": "Educational Technology News",
+    "icons": {
+        "light": {
+            "icon": "/edtech/favicon.png",
+            "favicon": "/edtech/favicon.ico"
+        },
+        "dark": {
+            "icon": "/edtech/favicon.png",
+            "favicon": "/edtech/favicon.ico"
+        }
+    },
+    "images": {
+        "light": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
+        "dark": "https://live.staticflickr.com/65535/55111661741_6844b1cc48_b.jpg"
+    },
     "cartridges": {
         "designSystem": {
-            "enabled": true,
-            "allowTheme": false,
+            "themeSwitching": false,
             "defaultTheme": "light",
-            "smartImages": [
-                {
-                    "title": "Global Teams",
-                    "slug": "teams",
-                    "src": "https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg"
-                },
-                {
-                    "title": "Learn Docker fundamentals for developers.",
-                    "slug": "docker",
-                    "src": "https://live.staticflickr.com/65535/55066171380_fffff7370e_b.jpg"
-                },
-                {
-                    "title": "Wei Zang teaching Next.js",
-                    "slug": "nextjs",
-                    "src": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg"
-                }
-            ],
             "themes": {
                 "light": {
-                    "mode": "light",
                     "primary": "#3877cf",
                     "secondary": "#3877cf",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
                     "border": "#3877cf"
+                },
+                "dark": {
+                    "primary": "#17A1AC",
+                    "secondary": "#07c7d5ff",
+                    "background": "#000",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#17A1AC"
                 }
             }
         }

@@ -36,7 +36,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     }
 }
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+export default async function Page(
+    { params }: { params: Promise<{ slug: string }> }) {
 
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
@@ -53,3 +54,4 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         </DesignSystem>
     );
 }
+

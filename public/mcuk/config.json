@@ -1,122 +1,28 @@
 {
     "tenant": "mcuk",
-    "title": "Medical Cannabis UK",
+    "siteName": "Diary of a pothead",
     "description": "Medical cannabis dispensed by licensed pharmacies. Delivered to your door",
     "url": "https://listingslab.com",
-    "image": "https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg",
-    "icon": "/mcuk/favicon.png",
-    "favicon": "/mcuk/favicon.ico",
-    "cartridges": {
-        "commerce": {
-            "enabled": true,
-            "ads": [
-                {
-                    "slug": "thc-mouth-spray",
-                    "title": "THC Mouth Spray",
-                    "type": "route",
-                    "path": "/how-to-use/edibles/thc-mouth-spray",
-                    "price": "Buy now for £59.99",
-                    "description": "Full-spectrum RSO spray • ~70 sprays • ~15mg per spray • zero faff dosing",
-                    "icon": "food",
-                    "image": "https://budbuddies.cc/wp-content/uploads/2026/01/nebula-mist-thc-mouth-spray-10ml-1000mg-trio-upright.webp",
-                    "affiliate": "https://budbuddies.cc/product/nebula-mist/bud/listingslab/?campaign=MCUK"
-                },
-                {
-                    "slug": "chocolate",
-                    "title": "THC Infused chocolate truffles",
-                    "type": "route",
-                    "path": "/how-to-use/edibles/ferrero-roche",
-                    "price": "Buy now for £14.99",
-                    "description": "Two luscious truffles packed with 50mg each",
-                    "icon": "food",
-                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
-                    "affiliate": "https://budbuddies.cc/product/ferrero-roche/bud/listingslab/?campaign=MCUK"
-                },
-                {
-                    "slug": "vape",
-                    "title": "THC Vapes",
-                    "type": "route",
-                    "path": "/how-to-use/vape",
-                    "price": "Buy now for £45.49",
-                    "description": "No scratch in the throat, no surprise cough, no harsh burn",
-                    "icon": "vape",
-                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D620004.webp",
-                    "affiliate": "https://budbuddies.cc/product/fullspectrum-clouds/bud/listingslab/"
-                },
-                {
-                    "slug": "nkdw",
-                    "title": "Nazi Killer Death Weed",
-                    "type": "route",
-                    "path": "/how-to-use/flower/insane-og",
-                    "price": "Buy now from £46.99/3.5g",
-                    "description": "Potent hybrid strain known for its relaxing effects and earthy aroma",
-                    "icon": "leaf",
-                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
-                    "affiliate": "https://budbuddies.cc/product/insane-og/bud/listingslab"
-                },
-                {
-                    "slug": "rs11",
-                    "title": "Rainbow Sherbet #11",
-                    "type": "route",
-                    "path": "/how-to-use/flower/rs11",
-                    "price": "Buy now from £37.59/3.5g",
-                    "description": "Uplifting head high and mellow body relaxation",
-                    "icon": "leaf",
-                    "image": "https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp",
-                    "affiliate": "https://budbuddies.cc/product/insane-og/bud/listingslab"
-                }
-            ]
+    "icons": {
+        "light": {
+            "icon": "/mcuk/favicon.png",
+            "favicon": "/mcuk/favicon.ico"
         },
+        "dark": {
+            "icon": "/mcuk/favicon.png",
+            "favicon": "/mcuk/favicon.ico"
+        }
+    },
+    "images": {
+        "light": "https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg",
+        "dark": "https://live.staticflickr.com/65535/55111661741_6844b1cc48_b.jpg"
+    },
+    "cartridges": {
         "designSystem": {
-            "allowTheme": false,
+            "themeSwitching": false,
             "defaultTheme": "light",
-            "smartImages": [
-                {
-                    "title": "Adventure monkeys",
-                    "slug": "adventure-monkeys",
-                    "flickrId": "55016604557",
-                    "src": "https://live.staticflickr.com/65535/55016604557_0c679df5b8_b.jpg"
-                },
-                {
-                    "title": "Monkeys at play",
-                    "slug": "monkeys-at-play",
-                    "flickrId": "55017757554",
-                    "src": "https://live.staticflickr.com/65535/55017757554_8d463c2b1a_b.jpg"
-                },
-                {
-                    "title": "Monkeys at work",
-                    "slug": "monkeys-at-work",
-                    "flickrId": "55017672828",
-                    "src": "https://live.staticflickr.com/65535/55017672828_1753510293_b.jpg"
-                },
-                {
-                    "title": "Research",
-                    "slug": "research",
-                    "flickrId": "55019057384",
-                    "src": "https://live.staticflickr.com/65535/55019057384_01c119be7a_b.jpg"
-                },
-                {
-                    "title": "Monkey Doctor",
-                    "slug": "monkey-doctor",
-                    "flickrId": "55021434005",
-                    "src": "https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg"
-                },
-                {
-                    "title": "Edibles",
-                    "slug": "edibles",
-                    "flickrId": "55021434005",
-                    "src": "https://live.staticflickr.com/65535/55021434005_3cb12dc491_b.jpg"
-                },
-                {
-                    "title": "Monkeys flinging poo",
-                    "slug": "monkeys-flinging-poo",
-                    "flickrId": "55016269007",
-                    "src": "https://live.staticflickr.com/65535/55016269007_092c55e1ba_b.jpg"
-                }
-            ],
             "themes": {
                 "light": {
-                    "mode": "light",
                     "primary": "#17A1AC",
                     "secondary": "#1b595dff",
                     "background": "#fff",
@@ -125,7 +31,6 @@
                     "text": "#000"
                 },
                 "dark": {
-                    "mode": "dark",
                     "primary": "#17A1AC",
                     "secondary": "#07c7d5ff",
                     "background": "#000",

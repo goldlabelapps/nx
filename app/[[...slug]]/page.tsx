@@ -27,9 +27,6 @@ import {
     Hero,
     Footer,
 } from '../NX/DesignSystem';
-import {
-    NXAdminBtn,
-} from '../NX/NXAdmin';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import { Virus } from '../NX/Virus';
 
@@ -175,7 +172,7 @@ export default async function Page(props: any) {
                                         />
                                     </IconButton>
                                 </a>}
-                                action={<Box sx={{ m: 1 }}><NXAdminBtn /></Box>}
+                                action={null}
                                 title={<Typography
                                     color='secondary'
                                     variant="h4"
