@@ -41,15 +41,17 @@ export default async function Page(
 
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
-    const themeMode: 'light' | 'dark' = 'light';
-    const themes = config?.cartridges?.designSystem?.themes;
-    let theme = themes && themeMode in themes ?
-        themes[themeMode as keyof typeof themes] : undefined;
+    const designSystem = config?.cartridges?.designSystem;
+    const defaultThemeModeRaw = designSystem?.defaultTheme;
+    const defaultThemeMode: 'light' | 'dark' = defaultThemeModeRaw === 'light' || defaultThemeModeRaw === 'dark' ? defaultThemeModeRaw : 'light';
+    const themes = designSystem?.themes;
+    let theme = themes && defaultThemeMode in themes ?
+        themes[defaultThemeMode] : undefined;
     if (theme) {
-        theme = { ...theme, mode: themeMode };
-    };
+        theme = { ...theme, mode: defaultThemeMode };
+    }
     return (
-        <DesignSystem theme={theme as T_Theme}>
+        <DesignSystem config={config} theme={theme as T_Theme}>
             <NXAdminAuthWrapper config={config} />
         </DesignSystem>
     );

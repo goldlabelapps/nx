@@ -1,11 +1,10 @@
 ---
 order: 100
 slug: /insights
-title: Insights
+title: Insights & Blog
 description: Open Banking News, and Case Studies
 icon: right
 tags: Insights
-image: https://live.staticflickr.com/65535/55111827934_a064f9cf37_c.jpg
 ---
 
 ### Does open banking affect my credit score?

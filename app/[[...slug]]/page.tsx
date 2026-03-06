@@ -25,6 +25,7 @@ import {
     Nav,
     Hero,
     Footer,
+    Settings,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import { Virus } from '../NX/Virus';
@@ -232,6 +233,7 @@ export default async function Page(props: any) {
                     }}>
 
                         <Virus frontmatter={data} />
+                        <Settings />
                     </Box>
                 </Box>
             </Container>
