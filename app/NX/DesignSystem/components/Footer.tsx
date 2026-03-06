@@ -43,7 +43,7 @@ export default function Footer({
 						{/* <Box sx={{ pb: 1 }}>
 							<Virus meta={meta as T_Meta} />
 						</Box> */}
-						<Box sx={{ mt: 3, ml: 2 }}>
+						<Box sx={{ m: 2 }}>
 							<Nav
 								mode="mobile"
 								navItems={navItems as I_NestedNav["navItems"]}
@@ -52,7 +52,6 @@ export default function Footer({
 						</Box>
 
 					</Box>
-					<Box sx={{ flexGrow: 1 }} />
 					{children && (
 						<Box sx={{ ml: 2 }}>
 							{children}

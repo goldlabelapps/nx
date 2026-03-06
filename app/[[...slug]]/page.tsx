@@ -61,7 +61,7 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
 
     return getMeta({
         siteName: title,
-        title,
+        title: `${title}, ${description}`,
         description,
         image,
         url: pageUrl,
@@ -102,7 +102,6 @@ export default async function Page(props: any) {
     const themes = config?.cartridges?.designSystem?.themes;
     let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
     const bgCol = theme?.background || '#000';
-    // Set icon and image based on themeMode
     const themedIcon = config?.icons?.[themeMode] || null;
     const themedImage = config?.images?.[themeMode] || null;
     const validScenes = ['EchoPay', 'NXMC'];
@@ -112,10 +111,10 @@ export default async function Page(props: any) {
     }
 
     const meta = getMeta({
+        siteName: config.siteName,
         title,
         description,
         url: config.url || "",
-        siteName: config.siteName,
         image: themedImage || data.image,
     });
 
