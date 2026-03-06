@@ -8,6 +8,20 @@
     "icon": "/nx/svg/NXIcon.svg",
     "darkIcon": "/nx/svg/NXIcon_w.svg",
     "image": "https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg",
+    "icons": {
+        "light": {
+            "icon": "/nx/svg/NXIcon_w.svg",
+            "favicon": "/nx/svg/favicon_w.svg"
+        },
+        "dark": {
+            "icon": "/nx/svg/NXIcon_w.svg",
+            "favicon": "/nx/svg/favicon_w.svg"
+        }
+    },
+    "images": {
+        "light": "https://live.staticflickr.com/65535/55043218958_d4d954d513_b.jpg",
+        "dark": "https://live.staticflickr.com/65535/55111661741_6844b1cc48_b.jpg"
+    },
     "cartridges": {
         "designSystem": {
             "enabled": true,
