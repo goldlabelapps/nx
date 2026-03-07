@@ -26,6 +26,7 @@ import {
     Hero,
     Footer,
     Settings,
+    ThemedIcon,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import { Virus } from '../NX/Virus';
@@ -116,6 +117,10 @@ export default async function Page(props: any) {
         image: themedImage || data.image,
     });
 
+    const { icons, cartridges } = config;
+    const avatarSrc = icons && (icons as Record<'light' | 'dark', { icon: string; favicon: string }>)[themeMode]?.icon || '/nx/svg/favicon.svg';
+
+
     return (
         <NX config={config}
             frontmatter={data}
@@ -127,23 +132,11 @@ export default async function Page(props: any) {
                         sx={{
                             top: 0,
                             boxShadow: 0,
-                            background: bgCol,
+                            background: 'transparent',
                         }}>
                         <Container maxWidth="xl">
                             <CardHeader
-                                avatar={<a href='/'>
-                                    <IconButton
-                                        edge="start"
-                                        color="inherit"
-                                        aria-label={title}
-                                        sx={{}}>
-                                        <Avatar
-                                            alt={`${config.siteName}. 
-                                            ${config.description}`}
-                                            src={themedIcon?.icon || ''}
-                                        />
-                                    </IconButton>
-                                </a>}
+                                avatar={<ThemedIcon config={config} />}
                                 action={null}
                                 title={<Typography
                                     color='secondary'

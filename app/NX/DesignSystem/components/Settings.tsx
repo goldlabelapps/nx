@@ -10,8 +10,8 @@ import {
 	ListItemText,
 	Typography,
 } from '@mui/material';
-import { Icon } from '../../DesignSystem';
-import { useSlice } from '../../Uberedux';
+import { Icon, setDesignSystem, useDesignSystem } from '../../DesignSystem';
+import { useDispatch } from '../../Uberedux';
 import { firebaseLogout } from '../../Paywall';
 
 export interface I_Settings {
@@ -19,10 +19,13 @@ export interface I_Settings {
 }
 
 const Settings: React.FC<I_Settings> = () => {
+
+	const dispatch = useDispatch();
 	const [user, setUser] = useState<User | null>(null);
 	const [loading, setLoading] = useState(true);
 	const router = useRouter();
-	const slice = useSlice();
+	const designSystem = useDesignSystem();
+	const currentThemeMode = designSystem?.themeMode ?? 'light';
 
 	useEffect(() => {
 		const auth = getFirebaseAuth();
@@ -38,7 +41,8 @@ const Settings: React.FC<I_Settings> = () => {
 	};
 
 	const handleThemeModeToggle = () => {
-		console.log('toggle theme mode');
+		const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
+		dispatch(setDesignSystem('themeMode', nextMode));
 	}
 
 	const handleNXAdmin = () => {
@@ -49,6 +53,21 @@ const Settings: React.FC<I_Settings> = () => {
 
 	return (
 		<List dense sx={{ my: 1 }}>
+			{user && (<ListItemButton
+				id="signout-btn"
+				onClick={handleLogout}
+			>
+				<ListItemIcon>
+					<Icon icon="signout" color="primary" />
+				</ListItemIcon>
+				<ListItemText
+					primary={<Typography>
+						Sign Out
+					</Typography>}
+				/>
+			</ListItemButton>
+			)}
+
 			<ListItemButton
 				id="nx-admin-btn"
 				onClick={handleNXAdmin}
@@ -62,43 +81,20 @@ const Settings: React.FC<I_Settings> = () => {
 					</Typography>}
 				/>
 			</ListItemButton>
-
+			{/* <pre>currentThemeMode {JSON.stringify(currentThemeMode, null, 2)}</pre> */}
 			<ListItemButton
 				id="theme-toggle-btn"
 				onClick={handleThemeModeToggle}
 			>
 				<ListItemIcon>
-					<Icon icon="lightmode" color="primary" />
+					<Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
 				</ListItemIcon>
 				<ListItemText
 					primary={<Typography>
+						Go {currentThemeMode === 'light' ? 'Dark' : 'Light'}
 					</Typography>}
 				/>
 			</ListItemButton>
-
-
-			{
-				user && (
-					<>
-						<ListItemButton
-							id="signout-btn"
-							onClick={handleLogout}
-						>
-							<ListItemIcon>
-								<Icon icon="signout" color="primary" />
-							</ListItemIcon>
-							<ListItemText
-								primary={<Typography>
-									Sign Out
-								</Typography>}
-							/>
-						</ListItemButton>
-					</>
-				)
-			}
-
-			{/* <pre>{JSON.stringify(slice, null, 2)}</pre> */}
-
 		</List>
 	);
 };

@@ -4,26 +4,30 @@ import { I_NX, T_Theme } from './types';
 import { Box } from '@mui/material';
 import { DesignSystem, Feedback } from './DesignSystem';
 import { useDispatch } from './Uberedux';
-import { setDesignSystem } from './DesignSystem';
+import { setDesignSystem, useDesignSystem } from './DesignSystem';
 import { EchoPay } from '../../public/echopay/flash';
 
 const NX: React.FC<I_NX> = ({
     children,
     config,
-    // frontmatter,
     flash,
 }) => {
     const dispatch = useDispatch();
-    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
+    const designSystem = useDesignSystem();
+    const defaultTheme = config?.cartridges?.designSystem?.defaultTheme;
+    const themeMode = designSystem?.themeMode || defaultTheme;
+
+    React.useEffect(() => {
+        if (!designSystem?.themeMode && defaultTheme) {
+            dispatch(setDesignSystem("themeMode", defaultTheme));
+        }
+    }, [dispatch, designSystem?.themeMode, defaultTheme]);
+
     let theme = config?.cartridges?.designSystem?.themes?.[themeMode];
     if (theme) {
         const mode: 'light' | 'dark' = themeMode === 'dark' ? 'dark' : 'light';
         theme = { ...theme, mode };
     }
-
-    React.useEffect(() => {
-        dispatch(setDesignSystem("themeMode", themeMode));
-    }, [dispatch, themeMode]);
 
     if (!theme) {
         return (
@@ -43,10 +47,11 @@ const NX: React.FC<I_NX> = ({
     if (flash === 'EchoPay') {
         flashContent = <EchoPay />;
     }
+
     return (
         <DesignSystem theme={theme as T_Theme} config={config}>
             <Feedback />
-            {flashContent}
+            {children}
         </DesignSystem>
     );
 };
