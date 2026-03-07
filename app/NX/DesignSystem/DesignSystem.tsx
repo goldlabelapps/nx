@@ -8,12 +8,9 @@ import {
 
 export default function DesignSystem({
   theme,
-  children = null,
-  config,
+  children,
+  // config,
 }: I_DesignSystem) {
-
-  const { siteName, description } = config || {};
-  console.log(`${siteName}. ${description}`);
 
   const newtheme = useMUITheme(theme as T_Theme);
 

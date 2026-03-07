@@ -12,21 +12,25 @@ import SmartImage from './components/SmartImage';
 import { useFeedback } from './hooks/useFeedback';
 import { useMUITheme } from './hooks/useMUITheme';
 import { setFeedback } from './actions/setFeedback';
+import { useDesignSystem } from './hooks/useDesignSystem';
 import { setDesignSystem } from './actions/setDesignSystem';
+import ThemedIcon from "./components/ThemedIcon";
 export {
     Nav,
     Settings,
     Tags,
     SmartImage,
+    ThemedIcon,
     DesignSystem,
     useMUITheme,
     Icon,
     Share,
-    Feedback,
-    setFeedback,
-    setDesignSystem,
-    useFeedback,
     Footer,
     Hero,
     CleverText,
+    useDesignSystem,
+    setDesignSystem,
+    Feedback,
+    setFeedback,
+    useFeedback,
 };

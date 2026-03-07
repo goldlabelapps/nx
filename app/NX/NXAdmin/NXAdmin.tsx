@@ -30,7 +30,9 @@ export default function NXAdmin({
     router.push('/');
   }
 
-  const { icons } = config;
+  const { icons, cartridges } = config;
+  const theme = cartridges?.designSystem?.defaultTheme === 'dark' ? 'dark' : 'light';
+  const avatarSrc = icons && (icons as Record<'light' | 'dark', { icon: string; favicon: string }>)[theme]?.icon || '/nx/svg/favicon.svg';
 
   return (
     <>
@@ -39,19 +41,20 @@ export default function NXAdmin({
         sx={{
           top: 0,
           boxShadow: 0,
+          backgroundColor: 'transparent',
         }}>
         <Container maxWidth="xl">
 
           <CardHeader
             avatar={<a href='/'>
               <IconButton
+                onClick={handleAvatarClick}
                 edge="start"
                 color="inherit"
-                aria-label={config.siteName}
-                sx={{}}>
+                aria-label={config.siteName}>
                 <Avatar
                   alt={`${config.siteName}. ${config.description}`}
-                // src={themedIcon?.icon || ''}
+                  src={avatarSrc}
                 />
               </IconButton>
             </a>}
@@ -68,7 +71,7 @@ export default function NXAdmin({
       </AppBar>
       <Container maxWidth="xl" sx={{ mt: '100px' }}>
         slice: <pre>{JSON.stringify(slice, null, 2)}</pre>
-        {children && children}
+        {/* {children && children} */}
       </Container>
     </>
   );

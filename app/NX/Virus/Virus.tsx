@@ -7,7 +7,7 @@ import {
   WhatsappShareButton,
   TwitterShareButton,
 } from 'react-share';
-import { Box, Typography, ButtonBase, Popover } from '@mui/material';
+import { Tooltip, Box, Typography, ButtonBase, Popover } from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
 import { Forward } from '../../NX/Virus';
 
@@ -19,12 +19,13 @@ export default function Virus({
   frontmatter?: T_Frontmatter
 }) {
 
-  // Prefer frontmatter if provided, else fallback to meta
   let title = meta?.title || '';
   let description = meta?.description || '';
   let image = '';
-  // url state
+  const [copied, setCopied] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const [url, setUrl] = React.useState('');
+
   if (frontmatter) {
     title = frontmatter.title || title;
     description = frontmatter.description || description;
@@ -32,8 +33,7 @@ export default function Virus({
   } else if (meta) {
     image = meta.openGraph?.images?.[0] || '';
   }
-  const [copied, setCopied] = React.useState(false);
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
+
   React.useEffect(() => {
     if (frontmatter && typeof window !== 'undefined') {
       setUrl(window.location.hostname + (frontmatter.slug || '/'));
@@ -46,78 +46,95 @@ export default function Virus({
 
   return (
     <>
-      <Box id="virus" sx={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 2,
-        my: 1
-      }}>
-
-        <Box sx={{ mt: 0.25 }}>
-          <ButtonBase
-            color={'primary'}
-            onClick={e => {
-              navigator.clipboard.writeText(url);
-              setCopied(true);
-              setAnchorEl(e.currentTarget);
-              setTimeout(() => {
+      <Box id="virus">
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 2,
+          ml: 2,
+        }}>
+          <Box sx={{ mt: 0.25 }}>
+            <Tooltip title={`Copy ${url}`} placement="top">
+              <ButtonBase
+                color={'primary'}
+                onClick={e => {
+                  navigator.clipboard.writeText(url);
+                  setCopied(true);
+                  setAnchorEl(e.currentTarget);
+                  setTimeout(() => {
+                    setCopied(false);
+                    setAnchorEl(null);
+                  }, 1500);
+                }}
+              >
+                <Icon icon="copy" color="primary" />
+              </ButtonBase>
+            </Tooltip>
+            <Popover
+              open={copied}
+              anchorEl={anchorEl}
+              onClose={() => {
                 setCopied(false);
                 setAnchorEl(null);
-              }, 1500);
-            }}
-          >
-            <Icon icon="copy" color="primary" />
-          </ButtonBase>
-          <Popover
-            open={copied}
-            anchorEl={anchorEl}
-            onClose={() => {
-              setCopied(false);
-              setAnchorEl(null);
-            }}
-            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            transformOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            disableRestoreFocus
-          >
-            <Box sx={{ px: 2, py: 1 }}>
-              <Typography variant="body2">
-                Copied {url} to clipboard
-              </Typography>
-            </Box>
-          </Popover>
+              }}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+              transformOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+              disableRestoreFocus
+            >
+              <Box sx={{ px: 2, py: 1 }}>
+                <Typography variant="body2">
+                  Copied {url} to clipboard
+                </Typography>
+              </Box>
+            </Popover>
+          </Box>
+          <Box sx={{ mt: 1 }}>
+            <Tooltip title="X/Twitter" placement="top">
+              <TwitterShareButton url={url}>
+                <Icon icon="twitter" color={'primary'} />
+              </TwitterShareButton>
+            </Tooltip>
+          </Box>
+          <Box sx={{ mt: 1 }}>
+            <Tooltip title="Facebook" placement="top">
+              <FacebookShareButton url={url} >
+                <Icon icon="facebook" color={'primary'} />
+              </FacebookShareButton>
+            </Tooltip>
+          </Box>
+
         </Box>
-        <Box sx={{ mt: 1 }}>
-          <TwitterShareButton title={title} url={url}>
-            <Icon icon="twitter" color={'primary'} />
-          </TwitterShareButton>
-        </Box>
-        <Box sx={{ mt: 1 }}>
-          <FacebookShareButton url={url} >
-            <Icon icon="facebook" color={'primary'} />
-          </FacebookShareButton>
-        </Box>
-        <Box sx={{ mt: 1 }}>
-          <LinkedinShareButton
-            url={url}
-            title={title}
-            summary={description}
-            source="NX"
-          >
-            <Icon icon="linkedin" color={'primary'} />
-          </LinkedinShareButton>
-        </Box>
-        <Box sx={{ mt: 1 }}>
-          <WhatsappShareButton
-            url={url}
-            title={title}
-            separator=" - "
-          >
-            <Icon icon="whatsapp" color={'primary'} />
-          </WhatsappShareButton>
-        </Box>
-        <Box>
+
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 2,
+          ml: 2,
+        }}>
+
+          <Box sx={{ mt: 1 }}>
+            <Tooltip title="Share on LinkedIn" placement="top">
+              <LinkedinShareButton
+                url={url}
+                summary={description}
+              >
+                <Icon icon="linkedin" color={'primary'} />
+              </LinkedinShareButton>
+            </Tooltip>
+          </Box>
+          <Box sx={{ mt: 1 }}>
+            <Tooltip title="Share on WhatsApp" placement="top">
+              <WhatsappShareButton
+                url={url}
+                separator=" - "
+              >
+                <Icon icon="whatsapp" color={'primary'} />
+              </WhatsappShareButton>
+            </Tooltip>
+          </Box>
+
           <Forward />
+
         </Box>
       </Box>
     </>

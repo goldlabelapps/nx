@@ -31,7 +31,7 @@ export default async function RootLayout({
 }>) {
 
   const paywall = config.cartridges?.paywall?.enabled === true;
-  console.log('favicon', favicon)
+
   return (
     <html lang="en">
       <head>
