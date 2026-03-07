@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import {
   IconButton,
 } from '@mui/material';
-import { Icon } from '../../../NX/DesignSystem';
+import { Icon } from '../../../../NX/DesignSystem';
 
 export default function CloseAdmin() {
   const router = useRouter();

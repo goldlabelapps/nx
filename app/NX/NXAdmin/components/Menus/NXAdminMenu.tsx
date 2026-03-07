@@ -10,9 +10,9 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { useDispatch } from '../../Uberedux';
-import { Icon, setDesignSystem, useDesignSystem } from '../../DesignSystem';
-import { firebaseLogout } from '../../Paywall';
+import { useDispatch } from '../../../Uberedux';
+import { Icon, setDesignSystem, useDesignSystem } from '../../../DesignSystem';
+import { firebaseLogout } from '../../../Paywall';
 
 export default function NXAdminMenu() {
   const router = useRouter();
