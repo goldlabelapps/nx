@@ -3,13 +3,14 @@ import * as React from 'react';
 import {
   Card,
   CardHeader,
-  IconButton,
+  ButtonBase,
 } from '@mui/material';
-import { Icon, setFeedback } from '../../../DesignSystem';
+import { Icon } from '../../../DesignSystem';
 import {
   initCollection,
-  useCRUD,
-  // TypeScript,
+  useCollection,
+  useActive,
+  setNXAdmin,
 } from '../../../NXAdmin'
 import { useDispatch } from '../../../Uberedux'
 
@@ -27,43 +28,58 @@ export default function Collection({
   icon,
 }: I_Collection) {
 
-  const crud = useCRUD();
-
+  const collectionState = useCollection(collection);
   const dispatch = useDispatch();
-  // const { typescript, docs } = nxAdmin?.[collection] || {};
+  const active = useActive();
+  const isActive = active === collection;
+
+  const handleActivate = (collection: string) => {
+    dispatch(setNXAdmin('active', collection));
+  }
 
   React.useEffect(() => {
     // Only init collection if not already initted
-    if (!crud?.[collection]?.initted) {
+    if (!collectionState?.[collection]?.initted) {
       dispatch(initCollection(collection));
     }
-  }, [dispatch, collection, crud]);
+  }, [dispatch, collection, collectionState]);
+
+
+
+  if (!isActive) {
+    return (
+      <ButtonBase
+        onClick={() => handleActivate(collection)}
+        sx={{
+          display: 'block',
+          textAlign: 'left',
+          width: '100%',
+          mb: 2
+        }}
+      >
+        <Card variant="outlined">
+          <CardHeader
+            title={title}
+            subheader={description}
+            avatar={<Icon icon={icon as any} color="primary" />}
+          />
+          {/* <pre>collectionState: {JSON.stringify(collectionState, null, 2)}</pre> */}
+        </Card>
+      </ButtonBase>
+    );
+  }
 
   return (
-    <>
-      <Card variant="outlined" sx={{ mb: 2 }}>
-        <CardHeader
-          title={title}
-          subheader={description}
-          avatar={<Icon icon={icon as any} color="primary" />}
-        // action={<>
-        //   {/* <TypeScript /> */}
-        //   <IconButton
-        //     onClick={() => {
-        //       dispatch(setFeedback({
-        //         severity: 'success',
-        //         title: `${collection}`,
-        //         description: 'Create Doc',
-        //       }));
-        //     }}
-        //   >
-        //     <Icon icon="create" />
-        //   </IconButton>
-        // </>}
-        />
-      </Card>
-    </>
+    <Card variant="outlined" sx={{ mb: 2 }}>
+      <CardHeader
+        title={title}
+        subheader={description}
+        avatar={<Icon icon={icon as any} color="primary" />}
+      />
+      {/* <pre>collectionState: {JSON.stringify(collectionState, null, 2)}</pre> */}
+    </Card>
   );
+
 }
 
 /* 
@@ -75,5 +91,21 @@ export default function Collection({
   DeleteDoc,
 
 <pre>label: {JSON.stringify(label, null, 2)}</pre> 
+
+    {/* action={
+      <>
+        {/* <TypeScript /> 
+        <IconButton
+          onClick={() => {
+            dispatch(setFeedback({
+              severity: 'success',
+              title: `${collection}`,
+              description: 'Create Doc',
+            }));
+          }}
+        >
+          <Icon icon="create" />
+        </IconButton>
+        
 
 */

@@ -1,5 +1,5 @@
 'use client';
-import type { T_Config, T_Theme } from '../types';
+import type { T_Config } from '../types';
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
@@ -14,19 +14,23 @@ import {
 } from '@mui/material';
 import {
   NXAdminMenu,
-  setNXAdmin,
-  Share,
   Collection,
+  useNXAdmin,
+  useActive,
+  setNXAdmin,
 } from '../NXAdmin';
-import { DesignSystem, Feedback, setFeedback, useDesignSystem, setDesignSystem } from '../DesignSystem';
+import {
+  DesignSystem,
+  Feedback,
+  useDesignSystem,
+  setDesignSystem,
+} from '../DesignSystem';
 import { useDispatch } from '../Uberedux';
-import { getFirebaseFirestore } from '../lib/firebase';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { query, where, doc, getDoc } from 'firebase/firestore';
+
 
 export interface I_NXAdmin {
-  children?: React.ReactNode;
   config: T_Config;
+  children?: React.ReactNode;
 };
 
 export default function NXAdmin({
@@ -36,6 +40,8 @@ export default function NXAdmin({
   const tenant = process.env.NEXT_PUBLIC_TENANT || 'nx';
   const dispatch = useDispatch();
   const router = useRouter();
+  const nxAdmin = useNXAdmin();
+  const active = useActive();
   const designSystem = useDesignSystem();
   const configThemes = config?.cartridges?.designSystem?.themes || {};
   const configDefaultTheme = config?.cartridges?.designSystem?.defaultTheme || 'light';
@@ -56,49 +62,6 @@ export default function NXAdmin({
       dispatch(setDesignSystem("themeMode", configDefaultTheme));
     }
   }, [dispatch, designSystem?.themeMode, configDefaultTheme]);
-
-  React.useEffect(() => {
-    dispatch(setFeedback({
-      severity: 'success',
-      title: 'Welcome to NX Admin'
-    }))
-    dispatch(setNXAdmin('CRUDMode', 'read'));
-    // List collections 
-    // (Firestore does not support listing collections client-side directly)
-    // You must know the collection names or fetch them from config or backend
-    const collectionsToSubscribe = [
-      'share',
-    ];
-
-    // Subscribe to all collections in Firestore
-    const db = getFirebaseFirestore();
-    let unsubscribers: (() => void)[] = [];
-
-    // Helper to fetch all collection names
-    async function subscribeToCollections() {
-      collectionsToSubscribe.forEach((colName) => {
-        const colRef = collection(db, colName);
-        const q = query(colRef, where('tenant', '==', tenant));
-        const unsubscribe = onSnapshot(q, async (snapshot: import('firebase/firestore').QuerySnapshot) => {
-          const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-          const typescriptDocSnap = await getDoc(doc(colRef, 'typescript'));
-          let typescript = undefined;
-          if (typescriptDocSnap.exists()) {
-            typescript = typescriptDocSnap.data();
-          }
-          dispatch(setNXAdmin(colName, { typescript, docs }));
-        });
-        unsubscribers.push(unsubscribe);
-      });
-    }
-
-    subscribeToCollections();
-
-    return () => {
-      unsubscribers.forEach(unsub => unsub());
-    };
-  }, [dispatch]);
-
 
   return (
     <>
@@ -138,6 +101,8 @@ export default function NXAdmin({
         </AppBar>
 
         <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
+
+          {/* <pre>active: {JSON.stringify(active, null, 2)}</pre> */}
 
           <Collection
             collection="share"
