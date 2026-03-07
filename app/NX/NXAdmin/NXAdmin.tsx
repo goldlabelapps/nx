@@ -3,7 +3,6 @@ import type { T_Config, T_Theme } from '../types';
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
-  useTheme,
   AppBar,
   Toolbar,
   Container,
@@ -15,10 +14,9 @@ import {
 } from '@mui/material';
 import {
   NXAdminMenu,
-  CRUD,
-  useNXAdmin,
   setNXAdmin,
   Share,
+  Collection,
 } from '../NXAdmin';
 import { DesignSystem, Feedback, setFeedback, useDesignSystem, setDesignSystem } from '../DesignSystem';
 import { useDispatch } from '../Uberedux';
@@ -32,15 +30,12 @@ export interface I_NXAdmin {
 };
 
 export default function NXAdmin({
-  // children,
   config,
 }: I_NXAdmin) {
 
   const tenant = process.env.NEXT_PUBLIC_TENANT || 'nx';
   const dispatch = useDispatch();
   const router = useRouter();
-  const t = useTheme();
-  const data = useNXAdmin();
   const designSystem = useDesignSystem();
   const configThemes = config?.cartridges?.designSystem?.themes || {};
   const configDefaultTheme = config?.cartridges?.designSystem?.defaultTheme || 'light';
@@ -52,20 +47,15 @@ export default function NXAdmin({
   const theme = cartridges?.designSystem?.defaultTheme === 'dark' ? 'dark' : 'light';
   const avatarSrc = icons && (icons as Record<'light' | 'dark', { icon: string; favicon: string }>)[theme]?.icon || '/nx/svg/favicon.svg';
 
-
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
   }
-
 
   React.useEffect(() => {
     if (!designSystem?.themeMode && configDefaultTheme) {
       dispatch(setDesignSystem("themeMode", configDefaultTheme));
     }
   }, [dispatch, designSystem?.themeMode, configDefaultTheme]);
-
-  console.log("background", themeObj.background)
-
 
   React.useEffect(() => {
     dispatch(setFeedback({
@@ -148,11 +138,11 @@ export default function NXAdmin({
         </AppBar>
 
         <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
-
-          {/* {children && children} */}
-          <CRUD />
-          <Share />
-          {/* <pre>data: {JSON.stringify(data, null, 2)}</pre> */}
+          <Collection 
+            collection="notify"
+            label="Notifications"
+            icon="notify"
+          />
         </Container>
 
         <AppBar

@@ -328,6 +328,7 @@ export type I_Icon = {
     | 'virus'
     | 'hide'
     | 'show'
+    | 'notify'
     | 'save'
     | 'filters'
     | 'new'
