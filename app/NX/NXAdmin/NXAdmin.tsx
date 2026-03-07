@@ -3,14 +3,17 @@ import type { T_Config } from '../types'
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
+  useTheme,
   AppBar,
+  Toolbar,
   Container,
   CardHeader,
   Avatar,
   IconButton,
   Typography,
+  Box,
 } from '@mui/material';
-// import { CloseAdmin } from '../NXAdmin';
+import { NXAdminMenu } from '../NXAdmin'
 import { useSlice } from '../Uberedux';
 
 export interface I_NXAdmin {
@@ -19,12 +22,12 @@ export interface I_NXAdmin {
 };
 
 export default function NXAdmin({
-  children,
+  // children,
   config,
 }: I_NXAdmin) {
 
   const router = useRouter();
-  const slice = useSlice();
+  const t = useTheme();
 
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
@@ -41,10 +44,9 @@ export default function NXAdmin({
         sx={{
           top: 0,
           boxShadow: 0,
-          backgroundColor: 'transparent',
+          background: t.palette.background.default,
         }}>
         <Container maxWidth="xl">
-
           <CardHeader
             avatar={<a href='/'>
               <IconButton
@@ -61,18 +63,32 @@ export default function NXAdmin({
             action={null}
             title={<Typography
               color='secondary'
-              variant="h4"
+              variant="h6"
               component="h1"
             >
-              NXAdmin - {config.siteName}
+              {config.siteName}
             </Typography>}
           />
         </Container>
       </AppBar>
+
       <Container maxWidth="xl" sx={{ mt: '100px' }}>
-        slice: <pre>{JSON.stringify(slice, null, 2)}</pre>
+        {/* slice: <pre>{JSON.stringify(slice, null, 2)}</pre> */}
         {/* {children && children} */}
       </Container>
+
+      <AppBar
+        position="fixed"
+        sx={{
+          background: t.palette.background.default,
+          boxShadow: 0, top: 'auto', bottom: 0
+        }}
+      >
+        <Toolbar>
+          <Box sx={{ flexGrow: 1 }} />
+          <NXAdminMenu />
+        </Toolbar>
+      </AppBar>
     </>
   );
 }

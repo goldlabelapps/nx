@@ -5,11 +5,11 @@
     "url": "https://echopay.goldlabel.pro",
     "icons": {
         "light": {
-            "icon": "/echopay/svg/favicon.svg",
+            "icon": "/echopay/svg/favicon_184791.svg",
             "favicon": "/echopay/favicon.webp"
         },
         "dark": {
-            "icon": "/echopay/svg/favicon.svg",
+            "icon": "/echopay/svg/favicon_FFFFFF.svg",
             "favicon": "/echopay/favicon_w.webp"
         }
     },
