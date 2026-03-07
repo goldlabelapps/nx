@@ -54,9 +54,9 @@ export default async function Page(
         theme = { ...theme, mode: defaultThemeMode };
     }
     return (
-        <DesignSystem config={config} theme={theme as T_Theme}>
-            <NXAdminAuthWrapper config={config} />
-        </DesignSystem>
+        // <DesignSystem config={config} theme={theme as T_Theme}>
+        <NXAdminAuthWrapper config={config} />
+        // </DesignSystem>
     );
 }
 

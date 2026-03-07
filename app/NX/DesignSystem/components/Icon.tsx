@@ -289,6 +289,14 @@ export default function Icon({ icon, color }: I_Icon) {
       iconFragment = <AddIcon color={color} />;
       break;
 
+    case 'new':
+      iconFragment = <AddIcon color={color} />;
+      break;
+
+    case 'create':
+      iconFragment = <AddIcon color={color} />;
+      break;
+
     case 'user':
       iconFragment = <UserIcon color={color} />;
       break;

@@ -1,5 +1,7 @@
 import NXAdmin from './NXAdmin';
 import { CRUD } from './components/CRUD';
+import { Share } from './components/Share';
+import { TypeScript } from './components/TypeScript';
 import NXAdminBtn from './components/NXAdminBtn';
 import CloseAdmin from './components/CloseAdmin';
 import NXAdminMenu from './components/NXAdminMenu';
@@ -12,6 +14,8 @@ export {
     CloseAdmin,
     NXAdminMenu,
     CRUD,
+    Share,
+    TypeScript,
     setNXAdmin,
     useNXAdmin,
 };

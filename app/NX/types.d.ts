@@ -330,6 +330,8 @@ export type I_Icon = {
     | 'show'
     | 'save'
     | 'filters'
+    | 'new'
+    | 'create'
     | 'firebase'
     | 'filter'
     | 'fullscreen'

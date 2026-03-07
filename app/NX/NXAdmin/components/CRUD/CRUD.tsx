@@ -21,9 +21,10 @@ export default function CRUD({
   // config,
 }: I_CRUD) {
 
+
   const nxAdmin = useNXAdmin();
   const dispatch = useDispatch();
-
+  const { CRUDMode } = nxAdmin;
   const help = 'Create, Read, Update, Delete - a common set of operations for managing data in applications.';
   const router = useRouter();
   const t = useTheme();
@@ -31,6 +32,8 @@ export default function CRUD({
   const updateCRUDKey = (key: string, value: any) => {
     dispatch(setNXAdmin(key, value));
   }
+
+  if (CRUDMode === 'read') return null;
 
   return (
     <>
@@ -40,7 +43,7 @@ export default function CRUD({
           subheader={help}
           avatar={<Icon icon="firebase" />}
         />
-        {/* <pre>nxAdmin: {JSON.stringify(nxAdmin, null, 2)}</pre> */}
+        <pre>CRUDMode: {JSON.stringify(CRUDMode, null, 2)}</pre>
       </Card>
     </>
   );

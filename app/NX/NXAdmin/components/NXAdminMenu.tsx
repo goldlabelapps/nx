@@ -2,23 +2,33 @@
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
-  IconButton,
+  Box,
   Drawer,
+  IconButton,
   List,
   ListItemButton,
+  ListItemIcon,
   ListItemText,
-  Box,
 } from '@mui/material';
-import { Icon } from '../../../NX/DesignSystem';
+import { useDispatch } from '../../Uberedux';
+import { Icon, setDesignSystem, useDesignSystem } from '../../DesignSystem';
+import { firebaseLogout } from '../../Paywall';
 
 export default function NXAdminMenu() {
   const router = useRouter();
+  const dispatch = useDispatch();
+  const designSystem = useDesignSystem();
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const currentThemeMode = designSystem?.themeMode ?? 'light';
 
-  const menuItems = [
-    { label: 'Dashboard', slug: '/nx-admin/?command=DASHBOARD' },
-    { label: 'Users', slug: '/nx-admin/?command=USERS' },
-  ];
+  const handleThemeModeToggle = () => {
+    const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
+    dispatch(setDesignSystem('themeMode', nextMode));
+  }
+
+  const handleLogout = async () => {
+    await firebaseLogout();
+  };
 
   const handleMenuClick = (slug: string) => {
     router.push(slug);
@@ -35,14 +45,53 @@ export default function NXAdminMenu() {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-        <Box sx={{ width: 250 }}>
-          <List>
-            {menuItems.map(item => (
-              <ListItemButton key={item.slug} onClick={() => handleMenuClick(item.slug)}>
-                <ListItemText primary={item.label} />
-              </ListItemButton>
-            ))}
-          </List>
+        <Box
+          sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 1 }}
+          role="presentation"
+        >
+
+          <Box sx={{ mt: 'auto' }}>
+            <Box sx={{ mb: 2 }}>
+              <List dense>
+                <ListItemButton
+                  id="signout-btn"
+                  onClick={handleLogout}
+                >
+                  <ListItemIcon>
+                    <Icon icon="signout" color="primary" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary="Sign Out"
+                  />
+                </ListItemButton>
+
+                <ListItemButton
+                  id="theme-toggle-btn"
+                  onClick={handleThemeModeToggle}
+                >
+                  <ListItemIcon>
+                    <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={currentThemeMode === 'light' ? 'Dark' : 'Light'}
+                  />
+                </ListItemButton>
+
+                <ListItemButton
+                  id="home-btn"
+                  onClick={() => { handleMenuClick('/') }}
+                >
+                  <ListItemText
+                    primary="View site"
+                  />
+                  <ListItemIcon>
+                    <Icon icon="right" color="primary" />
+                  </ListItemIcon>
+                </ListItemButton>
+
+              </List>
+            </Box>
+          </Box>
         </Box>
       </Drawer>
     </>

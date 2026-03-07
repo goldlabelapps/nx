@@ -53,20 +53,7 @@ const Settings: React.FC<I_Settings> = () => {
 
 	return (
 		<List dense sx={{ my: 1 }}>
-			{user && (<ListItemButton
-				id="signout-btn"
-				onClick={handleLogout}
-			>
-				<ListItemIcon>
-					<Icon icon="signout" color="primary" />
-				</ListItemIcon>
-				<ListItemText
-					primary={<Typography>
-						Sign Out
-					</Typography>}
-				/>
-			</ListItemButton>
-			)}
+
 
 			<ListItemButton
 				id="nx-admin-btn"
@@ -91,7 +78,7 @@ const Settings: React.FC<I_Settings> = () => {
 				</ListItemIcon>
 				<ListItemText
 					primary={<Typography>
-						Go {currentThemeMode === 'light' ? 'Dark' : 'Light'}
+						{currentThemeMode === 'light' ? 'Dark' : 'Light'}
 					</Typography>}
 				/>
 			</ListItemButton>
