@@ -40,7 +40,7 @@ export default function CRUD({
           subheader={help}
           avatar={<Icon icon="firebase" />}
         />
-        <pre>nxAdmin: {JSON.stringify(nxAdmin, null, 2)}</pre>
+        {/* <pre>nxAdmin: {JSON.stringify(nxAdmin, null, 2)}</pre> */}
       </Card>
     </>
   );
