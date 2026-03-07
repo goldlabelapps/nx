@@ -39,8 +39,6 @@ export default function NXAdmin({
   const tenant = process.env.NEXT_PUBLIC_TENANT || 'nx';
   const dispatch = useDispatch();
   const router = useRouter();
-  const t = useTheme();
-  const data = useNXAdmin();
   const designSystem = useDesignSystem();
   const configThemes = config?.cartridges?.designSystem?.themes || {};
   const configDefaultTheme = config?.cartridges?.designSystem?.defaultTheme || 'light';
@@ -52,20 +50,15 @@ export default function NXAdmin({
   const theme = cartridges?.designSystem?.defaultTheme === 'dark' ? 'dark' : 'light';
   const avatarSrc = icons && (icons as Record<'light' | 'dark', { icon: string; favicon: string }>)[theme]?.icon || '/nx/svg/favicon.svg';
 
-
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
   }
-
 
   React.useEffect(() => {
     if (!designSystem?.themeMode && configDefaultTheme) {
       dispatch(setDesignSystem("themeMode", configDefaultTheme));
     }
   }, [dispatch, designSystem?.themeMode, configDefaultTheme]);
-
-  console.log("background", themeObj.background)
-
 
   React.useEffect(() => {
     dispatch(setFeedback({

@@ -11,7 +11,7 @@ import {
   ListItemText,
 } from '@mui/material';
 import { Icon, setFeedback } from '../../../DesignSystem';
-import { useNXAdmin, TypeScript } from '../../../NXAdmin'
+import { useNXAdmin, TypeScript, UpdateDoc } from '../../../NXAdmin'
 import { useDispatch } from '../../../Uberedux'
 
 export interface I_Share {
@@ -31,11 +31,11 @@ export default function Share({
   const help = 'Go viral';
 
   const handleDocClick = (doc: any) => {
-    const { title, description } = doc;
-    dispatch(setFeedback({
-      severity: 'success',
-      title,
-    }));
+    // const { title, description } = doc;
+    // dispatch(setFeedback({
+    //   severity: 'success',
+    //   title,
+    // }));
   }
 
   return (
@@ -74,6 +74,8 @@ export default function Share({
             ))
           )}
 
+          <UpdateDoc doc={{}} typescript={typescript} />
+          <pre>nxAdmin: {JSON.stringify(nxAdmin, null, 2)}</pre>
         </List>
 
       </Card>
