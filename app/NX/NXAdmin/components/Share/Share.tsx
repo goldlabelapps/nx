@@ -36,7 +36,7 @@ export default function Share({
   React.useEffect(() => {
     // Only init collection if not already initted
     if (!nxAdmin?.crud?.[collection]?.initted) {
-      dispatch(initCollection(collection, typescript));
+        dispatch(initCollection(collection));
     }
   }, [dispatch, collection, nxAdmin, typescript]);
 
