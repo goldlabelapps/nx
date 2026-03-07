@@ -1,26 +1,24 @@
 'use client';
-// import type { T_Config } from '../../../types';
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
 import {
-  Card,
+  Box,
+  Typography
 } from '@mui/material';
 
 export interface I_ReadDoc {
-  // children?: React.ReactNode;
-  // config: T_Config;
-};
+  doc: Record<string, any>;
+  typescript: Record<string, any>;
+}
 
-export default function ReadDoc({
-  // children,
-  // config,
-}: I_ReadDoc) {
+export default function ReadDoc({ doc, typescript }: I_ReadDoc) {
+
+  const { title } = doc || {};
 
   return (
-    <>
-      <Card>
-        ReadDoc
-      </Card>
-    </>
+    <Box sx={{}}>
+      <Typography>
+        {doc.title || doc.siteName}
+      </Typography>
+    </Box>
   );
 }

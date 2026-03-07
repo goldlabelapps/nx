@@ -3,7 +3,6 @@ import type { T_Config, T_Theme } from '../types';
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
-  useTheme,
   AppBar,
   Toolbar,
   Container,
@@ -15,10 +14,9 @@ import {
 } from '@mui/material';
 import {
   NXAdminMenu,
-  CRUD,
-  useNXAdmin,
   setNXAdmin,
   Share,
+  Collection,
 } from '../NXAdmin';
 import { DesignSystem, Feedback, setFeedback, useDesignSystem, setDesignSystem } from '../DesignSystem';
 import { useDispatch } from '../Uberedux';
@@ -32,7 +30,6 @@ export interface I_NXAdmin {
 };
 
 export default function NXAdmin({
-  // children,
   config,
 }: I_NXAdmin) {
 
@@ -141,11 +138,11 @@ export default function NXAdmin({
         </AppBar>
 
         <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
-
-          {/* {children && children} */}
-          <CRUD />
-          <Share />
-          {/* <pre>data: {JSON.stringify(data, null, 2)}</pre> */}
+          <Collection 
+            collection="notify"
+            label="Notifications"
+            icon="notify"
+          />
         </Container>
 
         <AppBar

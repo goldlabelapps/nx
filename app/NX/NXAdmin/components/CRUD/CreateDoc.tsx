@@ -6,15 +6,11 @@ import {
   Card,
 } from '@mui/material';
 
-export interface I_UpdateDoc {
-  // children?: React.ReactNode;
-  // config: T_Config;
-};
+export interface I_CreateDoc {
+  collection: string;
+}
 
-export default function UpdateDoc({
-  // children,
-  // config,
-}: I_UpdateDoc) {
+export default function CreateDoc({ collection }: I_CreateDoc) {
 
   return (
     <>

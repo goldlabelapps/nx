@@ -176,6 +176,9 @@ export default function Icon({ icon, color }: I_Icon) {
     case 'forward':
       iconFragment = <ForwardIcon color={color} />;
       break;
+    case 'notify':
+      iconFragment = <ForwardIcon color={color} />;
+      break;
     case 'firebase':
       iconFragment = <FirebaseIcon color={color} />;
       break;
