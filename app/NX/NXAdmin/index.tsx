@@ -1,6 +1,5 @@
 import NXAdmin from './NXAdmin';
 import { CreateDoc, ReadDoc, UpdateDoc, DeleteDoc } from './components/CRUD';
-import { Share } from './components/Share';
 import { Collection } from './components/Collection';
 import { TypeScript } from './components/TypeScript';
 import NXAdminBtn from './components/NXAdminBtn';
@@ -21,7 +20,6 @@ export {
     ReadDoc,
     UpdateDoc,
     DeleteDoc,
-    Share,
     Collection,
     TypeScript,
     setNXAdmin,

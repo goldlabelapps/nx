@@ -138,11 +138,28 @@ export default function NXAdmin({
         </AppBar>
 
         <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
-          <Collection 
+
+          <Collection
+            collection="share"
+            title="Share"
+            description='Viral marketing tool'
+            icon="share"
+          />
+
+          <Collection
+            collection="users"
+            title="Users"
+            description='Manage user accounts and permissions'
+            icon="users"
+          />
+
+          <Collection
             collection="notify"
-            label="Notifications"
+            title="Notifications"
+            description='Send notifications by email, SMS and push'
             icon="notify"
           />
+
         </Container>
 
         <AppBar

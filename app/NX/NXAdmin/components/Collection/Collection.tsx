@@ -15,13 +15,15 @@ import { useDispatch } from '../../../Uberedux'
 
 export interface I_Collection {
   collection: string;
-  label: string;
+  title: string;
+  description?: string;
   icon: string;
 };
 
 export default function Collection({
   collection,
-  label,
+  title,
+  description,
   icon,
 }: I_Collection) {
 
@@ -39,24 +41,25 @@ export default function Collection({
 
   return (
     <>
-      <Card variant="outlined">
+      <Card variant="outlined" sx={{ mb: 2 }}>
         <CardHeader
-          title={label}
+          title={title}
+          subheader={description}
           avatar={<Icon icon={icon as any} color="primary" />}
-          action={<>
-            {/* <TypeScript /> */}
-            <IconButton
-              onClick={() => {
-                dispatch(setFeedback({
-                  severity: 'success',
-                  title: `${collection}`,
-                  description: 'Create Doc',
-                }));
-              }}
-            >
-              <Icon icon="create" />
-            </IconButton>
-          </>}
+        // action={<>
+        //   {/* <TypeScript /> */}
+        //   <IconButton
+        //     onClick={() => {
+        //       dispatch(setFeedback({
+        //         severity: 'success',
+        //         title: `${collection}`,
+        //         description: 'Create Doc',
+        //       }));
+        //     }}
+        //   >
+        //     <Icon icon="create" />
+        //   </IconButton>
+        // </>}
         />
       </Card>
     </>
