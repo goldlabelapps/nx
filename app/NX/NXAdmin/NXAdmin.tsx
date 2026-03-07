@@ -13,9 +13,10 @@ import {
   Typography,
   Box,
 } from '@mui/material';
-import { NXAdminMenu } from '../NXAdmin'
-import { useSlice } from '../Uberedux';
-import { CRUD } from '../NXAdmin'
+import { NXAdminMenu, CRUD, useNXAdmin, setNXAdmin } from '../NXAdmin'
+import { useDispatch } from '../Uberedux'
+import { getFirebaseFirestore } from '../lib/firebase';
+import { collection, getDocs, onSnapshot } from 'firebase/firestore';
 
 export interface I_NXAdmin {
   children?: React.ReactNode;
@@ -29,6 +30,44 @@ export default function NXAdmin({
 
   const router = useRouter();
   const t = useTheme();
+  const data = useNXAdmin();
+  const dispatch = useDispatch();
+
+
+
+  // React.useEffect(() => {
+  //   dispatch(setNXAdmin('initted', true));
+
+  //   // Subscribe to all collections in Firestore
+  //   const db = getFirebaseFirestore();
+  //   let unsubscribers: (() => void)[] = [];
+
+  //   // Helper to fetch all collection names
+  //   async function subscribeToCollections() {
+  //     // List collections (Firestore does not support listing collections client-side directly)
+  //     // You must know the collection names or fetch them from config or backend
+  //     const collectionsToSubscribe = [
+  //       'users', // Example collection
+  //       'posts', // Example collection
+  //       // Add more collection names as needed
+  //     ];
+
+  //     collectionsToSubscribe.forEach((colName) => {
+  //       const colRef = collection(db, colName);
+  //       const unsubscribe = onSnapshot(colRef, (snapshot) => {
+  //         const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  //         dispatch(setNXAdmin(colName, docs));
+  //       });
+  //       unsubscribers.push(unsubscribe);
+  //     });
+  //   }
+
+  //   subscribeToCollections();
+
+  //   return () => {
+  //     unsubscribers.forEach(unsub => unsub());
+  //   };
+  // }, [dispatch]);
 
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
@@ -74,9 +113,10 @@ export default function NXAdmin({
       </AppBar>
 
       <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
-        {/* slice: <pre>{JSON.stringify(slice, null, 2)}</pre> */}
+
         {/* {children && children} */}
         <CRUD />
+        <pre>data: {JSON.stringify(data, null, 2)}</pre>
       </Container>
 
       <AppBar
