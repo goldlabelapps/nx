@@ -33,14 +33,14 @@ export default function Hero({
 	if (frontmatter && frontmatter.image) {
 		src = frontmatter.image;
 	} else {
-		console.log('No image for', frontmatter?.title);
+		// console.log('No image for', frontmatter?.title);
 	}
 
 	if (!src) return null;
 	// Open Graph aspect ratio: 1200x630
 	const OG_WIDTH = 1200;
 	const OG_HEIGHT = 630;
-	const OG_ASPECT_RATIO = OG_WIDTH / OG_HEIGHT;
+	// const OG_ASPECT_RATIO = OG_WIDTH / OG_HEIGHT;
 
 	return (
 		<Box sx={{

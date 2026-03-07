@@ -98,16 +98,8 @@ export default async function Page(props: any) {
     if (data.description) description = data.description;
     const navItems = await serverUseNav(data.slug || "/");
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
-    const themes = config?.cartridges?.designSystem?.themes;
-    let theme = themes && themeMode in themes ? themes[themeMode as keyof typeof themes] : undefined;
-    const bgCol = theme?.background || '#000';
-    const themedIcon = config?.icons?.['light'] || null;
     const themedImage = config?.images?.[themeMode] || null;
-    const validScenes = ['EchoPay', 'NXMC'];
-    let sceneSlug: string | undefined = undefined;
-    if (data.flash && validScenes.includes(data.flash)) {
-        sceneSlug = data.flash;
-    }
+
 
     const meta = getMeta({
         siteName: config.siteName,
@@ -117,14 +109,8 @@ export default async function Page(props: any) {
         image: themedImage || data.image,
     });
 
-    const { icons, cartridges } = config;
-    const avatarSrc = icons && (icons as Record<'light' | 'dark', { icon: string; favicon: string }>)[themeMode]?.icon || '/nx/svg/favicon.svg';
-
-
     return (
-        <NX config={config}
-            frontmatter={data}
-            flash={sceneSlug}>
+        <NX config={config} frontmatter={data}>
             <header>
                 <Box sx={{ flexGrow: 1 }}>
                     <AppBar

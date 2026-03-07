@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import { NXAdminMenu } from '../NXAdmin'
 import { useSlice } from '../Uberedux';
+import { CRUD } from '../NXAdmin'
 
 export interface I_NXAdmin {
   children?: React.ReactNode;
@@ -72,9 +73,10 @@ export default function NXAdmin({
         </Container>
       </AppBar>
 
-      <Container maxWidth="xl" sx={{ mt: '100px' }}>
+      <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
         {/* slice: <pre>{JSON.stringify(slice, null, 2)}</pre> */}
         {/* {children && children} */}
+        <CRUD />
       </Container>
 
       <AppBar
