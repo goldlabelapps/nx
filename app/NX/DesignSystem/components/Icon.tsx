@@ -167,6 +167,7 @@ import BookIcon from '@mui/icons-material/MenuBook';
 import MathsIcon from '@mui/icons-material/Calculate';
 import VirusIcon from '@mui/icons-material/Coronavirus';
 import ForwardIcon from '@mui/icons-material/Send';
+import FirebaseIcon from '@mui/icons-material/Whatshot';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
@@ -174,6 +175,9 @@ export default function Icon({ icon, color }: I_Icon) {
   switch (icon) {
     case 'forward':
       iconFragment = <ForwardIcon color={color} />;
+      break;
+    case 'firebase':
+      iconFragment = <FirebaseIcon color={color} />;
       break;
     case 'virus':
       iconFragment = <VirusIcon color={color} />;
@@ -282,6 +286,14 @@ export default function Icon({ icon, color }: I_Icon) {
       break;
 
     case 'plus':
+      iconFragment = <AddIcon color={color} />;
+      break;
+
+    case 'new':
+      iconFragment = <AddIcon color={color} />;
+      break;
+
+    case 'create':
       iconFragment = <AddIcon color={color} />;
       break;
 

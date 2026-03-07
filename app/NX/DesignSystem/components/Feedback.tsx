@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { Snackbar, Alert, IconButton } from '@mui/material';
+import { Snackbar, Alert, IconButton, Typography } from '@mui/material';
 import { useDispatch } from '../../Uberedux'
 import { Icon, useFeedback, setFeedback } from '../../DesignSystem';
 
@@ -30,7 +30,7 @@ export default function Feedback() {
       open
       anchorOrigin={{
         vertical: 'top',
-        horizontal: 'center',
+        horizontal: 'right',
       }}
       onClose={handleClose}
     >
@@ -49,9 +49,13 @@ export default function Feedback() {
           </IconButton>
         }
       >
-        <strong>{title}</strong>
-        <br />
-        {description}
+        <Typography variant='body1'>
+          {title}
+        </Typography>
+        <Typography variant='body2'>
+          {description}
+        </Typography>
+
       </Alert>
     </Snackbar>
   );

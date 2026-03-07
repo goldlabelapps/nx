@@ -7,9 +7,7 @@ import {
 	Box,
 	AppBar,
 } from '@mui/material';
-import { NXAdmin } from '../../NXAdmin';
 import { Nav } from '../../DesignSystem';
-import { Virus } from '../../../NX/Virus'
 
 export interface I_Footer {
 	children?: React.ReactNode;
