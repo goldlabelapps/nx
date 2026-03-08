@@ -9,7 +9,7 @@
     },
     "icons": {
         "light": {
-            "icon": "/nx/svg/favicon_073334.svg",
+            "icon": "/nx/svg/favicon_29867C.svg",
             "favicon": "/nx/svg/favicon.svg"
         },
         "dark": {
@@ -20,7 +20,7 @@
     "cartridges": {
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "themes": {
                 "dark": {
                     "mode": "dark",
@@ -33,8 +33,8 @@
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#012867",
-                    "secondary": "#12418C",
+                    "primary": "#29867C",
+                    "secondary": "#29867C",
                     "background": "#fff",
                     "paper": "#E7EBF2",
                     "text": "#000",

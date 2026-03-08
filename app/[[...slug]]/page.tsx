@@ -118,7 +118,7 @@ export default async function Page(props: any) {
                             boxShadow: 0,
                             background: 'transparent',
                         }}>
-                        <Container maxWidth="xl">
+                        <Container maxWidth="lg">
                             <CardHeader
                                 avatar={<ThemedIcon config={config} />}
                                 action={null}
@@ -135,46 +135,26 @@ export default async function Page(props: any) {
                 </Box>
             </header>
 
-            <Container id="main" maxWidth="xl" sx={{ mt: '100px', pb: '90px' }}>
+            <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                 <Box
                     sx={{
                         display: 'grid',
-                        gridTemplateColumns: {
-                            xs: '1fr',
-                            lg: '200px 1fr 320px'
-                        },
-                        gap: 2,
+                        gap: 1,
                         alignItems: 'start',
                         width: '100%'
                     }}
                 >
-                    <Box
-                        component="nav"
-                        sx={{
-                            display: { xs: 'none', lg: 'block' },
-                            width: { lg: '200px' },
-                            minWidth: { lg: '200px' },
-                            maxWidth: { lg: '200px' },
-                            gridColumn: { lg: '1' },
-                        }}
-                    >
-                        <Nav
-                            navItems={navItems as I_NestedNav["navItems"]}
-                            frontmatter={data}
-                            mode="desktop"
-                        />
-                    </Box>
+
                     <Box
                         component="main"
                         sx={{
-                            gridColumn: { lg: '2' },
+                            gridColumn: { lg: '1' },
                             width: '100%',
                             minWidth: 0,
                             pr: { xs: 2, lg: 3 },
                             pl: { xs: 2, lg: 0 },
+                            flexGrow: 1,
                         }}>
-
-
                         <Typography
                             sx={{
                                 display: 'flex',
@@ -184,13 +164,14 @@ export default async function Page(props: any) {
                             component="h2">
 
                             <Box sx={{ display: 'flex', width: '100%' }}>
-                                <Box sx={{ flexGrow: 1 }}>
-                                    {description}
-                                </Box>
-                                <Box>
+
+                                <Box sx={{ mx: 1 }}>
                                     {data.icon && (
                                         <Icon icon={data.icon} color="inherit" />
                                     )}
+                                </Box>
+                                <Box sx={{ flexGrow: 1 }}>
+                                    {description}
                                 </Box>
                             </Box>
 
@@ -202,22 +183,41 @@ export default async function Page(props: any) {
                             navItems={navItems as I_NestedNav["navItems"]}
                         />
 
-
                         <RenderMarkdown config={config}>
                             {content}
                         </RenderMarkdown>
                     </Box>
-                    <Box sx={{
-                        display: { xs: 'none', lg: 'block' },
-                        width: { lg: '320px' },
-                        minWidth: { lg: '320px' },
-                        maxWidth: { lg: '320px' },
-                        gridColumn: { lg: '3' },
-                        pr: 3,
-                    }}>
 
-                        <Virus frontmatter={data} />
-                        <Settings />
+                    <Box
+                        sx={{
+                            display: { xs: 'none', lg: 'flex' },
+                            flexDirection: 'column',
+                            width: { lg: '320px' },
+                            minWidth: { lg: '320px' },
+                            maxWidth: { lg: '320px' },
+                            gridColumn: { lg: '3' },
+                            height: 'calc(100vh - 175px)',
+                        }}
+                    >
+                        {/* Virus at top */}
+                        <Box>
+                            <Virus frontmatter={data} />
+                        </Box>
+                        {/* Spacer fills remaining space */}
+                        <Box sx={{
+                            flexGrow: 1,
+                            minHeight: 0, overflow: 'auto'
+                        }}>
+                            <Nav
+                                navItems={navItems as I_NestedNav["navItems"]}
+                                frontmatter={data}
+                                mode="desktop"
+                            />
+                        </Box>
+                        {/* Settings at bottom */}
+                        <Box>
+                            <Settings />
+                        </Box>
                     </Box>
                 </Box>
             </Container>

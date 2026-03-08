@@ -64,7 +64,7 @@ export default function Virus({
                   setTimeout(() => {
                     setCopied(false);
                     setAnchorEl(null);
-                  }, 1500);
+                  }, 3500);
                 }}
               >
                 <Icon icon="copy" color="primary" />
@@ -82,8 +82,8 @@ export default function Virus({
               disableRestoreFocus
             >
               <Box sx={{ px: 2, py: 1 }}>
-                <Typography variant="body2">
-                  Copied {url} to clipboard
+                <Typography variant="body1">
+                  {url} copied to clipboard
                 </Typography>
               </Box>
             </Popover>
@@ -102,8 +102,6 @@ export default function Virus({
               </FacebookShareButton>
             </Tooltip>
           </Box>
-
-
           <Box sx={{ mt: 1 }}>
             <Tooltip title="Share on LinkedIn" placement="top">
               <LinkedinShareButton
@@ -124,9 +122,7 @@ export default function Virus({
               </WhatsappShareButton>
             </Tooltip>
           </Box>
-
           <Forward />
-
         </Box>
       </Box>
     </>
