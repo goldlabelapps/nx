@@ -15,7 +15,7 @@ export default function CreateDoc({ collection }: I_CreateDoc) {
   return (
     <>
       <Card>
-        UpdateDoc
+        Create New Doc in {collection}
       </Card>
     </>
   );
