@@ -15,12 +15,14 @@ import { setFeedback } from './actions/setFeedback';
 import { useDesignSystem } from './hooks/useDesignSystem';
 import { setDesignSystem } from './actions/setDesignSystem';
 import ThemedIcon from "./components/ThemedIcon";
+import SettingsMenu from "./components/SettingsMenu";
 export {
     Nav,
     Settings,
     Tags,
     SmartImage,
     ThemedIcon,
+    SettingsMenu,
     DesignSystem,
     useMUITheme,
     Icon,

@@ -1,14 +1,10 @@
 ---
 order: 1
 slug: /
-title: EchoPay
-description: Costs go from pounds to pence with EchoPay
-icon: right
+title: Costs go from pounds to pence with EchoPay
+description: Optimise profit by using EchoPay to reduce card acquisition costs
+icon: cash
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
-image: /echopay/gif/echopay.gif
+image: /echopay/gif/echopay_blue.gif
 flashXXX: EchoPay
 ---
-
-> Optimise profit; use EchoPay to reduce your card acquisition costs
-
-# Do the maths

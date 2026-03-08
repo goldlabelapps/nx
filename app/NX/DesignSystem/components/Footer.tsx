@@ -7,7 +7,11 @@ import {
 	Box,
 	AppBar,
 } from '@mui/material';
-import { Nav } from '../../DesignSystem';
+import {
+	// Icon,
+	Nav,
+	SettingsMenu,
+} from '../../DesignSystem';
 
 export interface I_Footer {
 	children?: React.ReactNode;
@@ -25,6 +29,14 @@ export default function Footer({
 
 	const theme = useTheme();
 
+	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+	const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
+		setAnchorEl(event.currentTarget);
+	};
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
 	return (
 		<React.Fragment>
 			<AppBar
@@ -37,18 +49,14 @@ export default function Footer({
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: 'flex', }}>
-
-						{/* <Box sx={{ pb: 1 }}>
-							<Virus meta={meta as T_Meta} />
-						</Box> */}
 						<Box sx={{ m: 2 }}>
+							<SettingsMenu />
 							<Nav
 								mode="mobile"
 								navItems={navItems as I_NestedNav["navItems"]}
 								frontmatter={frontmatter}
 							/>
 						</Box>
-
 					</Box>
 					{children && (
 						<Box sx={{ ml: 2 }}>

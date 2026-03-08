@@ -52,8 +52,7 @@ const Settings: React.FC<I_Settings> = () => {
 	if (loading) return null;
 
 	return (
-		<List dense sx={{ my: 1 }}>
-			{/* <pre>currentThemeMode {JSON.stringify(currentThemeMode, null, 2)}</pre> */}
+		<List dense sx={{}}>
 			<ListItemButton
 				id="theme-toggle-btn"
 				onClick={handleThemeModeToggle}
@@ -71,7 +70,6 @@ const Settings: React.FC<I_Settings> = () => {
 				id="nx-admin-btn"
 				onClick={handleNXAdmin}
 			>
-
 				<ListItemText
 					primary={<Typography>
 						NX Admin

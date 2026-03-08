@@ -14,7 +14,7 @@
         }
     },
     "images": {
-        "light": "/echopay/gif/echopay_light.gif",
+        "light": "/echopay/gif/echopay_white.gif",
         "dark": "/echopay/gif/echopay.gif"
     },
     "cartridges": {
@@ -25,7 +25,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "themes": {
                 "dark": {
                     "mode": "dark",

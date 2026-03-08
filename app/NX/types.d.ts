@@ -331,6 +331,7 @@ export type I_Icon = {
     | 'notify'
     | 'media'
     | 'save'
+    | 'cash'
     | 'filters'
     | 'new'
     | 'create'
