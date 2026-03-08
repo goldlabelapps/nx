@@ -59,12 +59,12 @@ const Settings: React.FC<I_Settings> = () => {
 				id="nx-admin-btn"
 				onClick={handleNXAdmin}
 			>
-				<ListItemIcon>
+				{/* <ListItemIcon>
 					<Icon icon="admin" color="primary" />
-				</ListItemIcon>
+				</ListItemIcon> */}
 				<ListItemText
 					primary={<Typography>
-						NX Admin
+						Admin
 					</Typography>}
 				/>
 			</ListItemButton>

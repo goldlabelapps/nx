@@ -4,6 +4,8 @@ import {
   Card,
   CardHeader,
   ButtonBase,
+  CardContent,
+  Typography,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import {
@@ -45,42 +47,48 @@ export default function Collection({
   }, [dispatch, collection, collectionState]);
 
 
-
-  if (!isActive) {
-    return (
-      <ButtonBase
-        onClick={() => handleActivate(collection)}
-        sx={{
-          display: 'block',
-          textAlign: 'left',
-          width: '100%',
-          mb: 2
-        }}
-      >
-        <Card variant="outlined">
-          <CardHeader
-            title={title}
-            subheader={description}
-            avatar={<Icon icon={icon as any} color="primary" />}
-          />
-          {/* <pre>collectionState: {JSON.stringify(collectionState, null, 2)}</pre> */}
-        </Card>
-      </ButtonBase>
-    );
-  }
-
   return (
-    <Card variant="outlined" sx={{ mb: 2 }}>
-      <CardHeader
-        title={title}
-        subheader={description}
-        avatar={<Icon icon={icon as any} color="primary" />}
-      />
-      {/* <pre>collectionState: {JSON.stringify(collectionState, null, 2)}</pre> */}
-    </Card>
-  );
+    <ButtonBase
+      onClick={() => handleActivate(collection)}
+      sx={{
+        display: 'block',
+        textAlign: 'left',
+        width: '100%',
+        border: isActive ? '1px solid' : '1px solid',
+        borderColor: isActive ? 'primary.main' : 'divider',
+        borderRadius: 1,
+        '&:hover': {
+          borderColor: 'primary.main',
+        },
+      }}
+    >
+      <Card variant="outlined">
+        <CardHeader
+          title={title}
+          avatar={<Icon icon={icon as any} color="primary" />}
+          sx={{
+            '& .MuiCardHeader-subheader': {
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              display: 'block',
+            },
+          }}
+        />
+        {isActive && <>
+          <CardContent>
+            <Typography variant="body1" color="text.secondary">
+              {description}
+            </Typography>
+            <pre>collectionState: {JSON.stringify(collectionState, null, 2)}</pre>
+          </CardContent>
+        </>}
 
+      </Card>
+    </ButtonBase>
+  );
 }
+
 
 /* 
 

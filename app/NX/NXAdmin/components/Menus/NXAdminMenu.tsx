@@ -40,19 +40,26 @@ export default function NXAdminMenu() {
       <IconButton color="primary" onClick={() => setDrawerOpen(true)}>
         <Icon icon="menu" />
       </IconButton>
+
       <Drawer
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
         <Box
-          sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 1 }}
+          sx={{
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            p: 1,
+            minWidth: 330,
+          }}
           role="presentation"
         >
 
           <Box sx={{ mt: 'auto' }}>
             <Box sx={{ mb: 2 }}>
-              <List dense>
+              <List>
                 <ListItemButton
                   id="signout-btn"
                   onClick={handleLogout}
@@ -80,9 +87,10 @@ export default function NXAdminMenu() {
                 <ListItemButton
                   id="home-btn"
                   onClick={() => { handleMenuClick('/') }}
+                  sx={{ mt: 3 }}
                 >
                   <ListItemText
-                    primary="View site"
+                    primary="Back to site"
                   />
                   <ListItemIcon>
                     <Icon icon="right" color="primary" />

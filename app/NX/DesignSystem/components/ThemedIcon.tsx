@@ -12,14 +12,26 @@ interface ThemedIconProps {
 
 const ThemedIcon: React.FC<ThemedIconProps> = ({ config }) => {
 
-    // const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
+    // Avoid hydration mismatch: render avatar only on client
+    const [mounted, setMounted] = React.useState(false);
+    const [avatarSrc, setAvatarSrc] = React.useState('');
     const designSystem = useDesignSystem();
-    const themeMode = config?.cartridges?.designSystem?.themeMode || designSystem?.themeMode || 'light';
-    const avatarSrc = config?.icons?.[themeMode].icon || '';
+    React.useEffect(() => {
+        setMounted(true);
+        // Use themeMode from designSystem if available, else config
+        const themeMode = (designSystem?.themeMode !== undefined && designSystem?.themeMode !== null)
+            ? designSystem.themeMode
+            : config?.cartridges?.designSystem?.themeMode || 'light';
+        const src = config?.icons?.[themeMode]?.icon || '';
+        setAvatarSrc(src);
+    }, [designSystem?.themeMode, config]);
+
     const router = require('next/navigation').useRouter();
     const handleClick = () => {
         router.push('/');
     };
+
+    if (!mounted) return null;
 
     return (
         <IconButton

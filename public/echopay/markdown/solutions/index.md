@@ -1,7 +1,7 @@
 ---
 order: 50
-slug: /more-features
-title: More Features
+slug: /solutions
+title: Solutions
 description: Virtual Dashboard - No more reading out card numbers on the phone
 icon: right
 tags: Solutions, EchoPay, virtual terminal, dashboard,

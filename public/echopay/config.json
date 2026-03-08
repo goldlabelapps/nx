@@ -30,20 +30,20 @@
                 "dark": {
                     "mode": "dark",
                     "primary": "#A5C7FF",
-                    "secondary": "#A5C7FF",
+                    "secondary": "#FFF",
                     "background": "#184791",
-                    "paper": "#184791",
+                    "paper": "#1D3B6B",
                     "text": "#fff",
-                    "border": "#A5C7FF"
+                    "border": "#275296"
                 },
                 "light": {
                     "mode": "light",
                     "primary": "#012867",
                     "secondary": "#12418C",
                     "background": "#fff",
-                    "paper": "#fff",
+                    "paper": "#E7EBF2",
                     "text": "#000",
-                    "border": "#A5C7FF"
+                    "border": "#C6CAD1"
                 }
             }
         }

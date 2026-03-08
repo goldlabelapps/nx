@@ -1,5 +1,7 @@
 # Echopay NX
 
+Gamify getting paid
+
 ## Dev password
 
 ```sh

@@ -1,12 +1,11 @@
 "use client";
-import type { T_Config, T_Frontmatter, T_NavItem, I_NestedNav } from '../../types';
+import type { T_Config, T_Frontmatter, T_NavItem } from '../../types';
 import * as React from 'react';
 import Image from 'next/image';
 import {
 	useTheme,
 	Box,
 } from '@mui/material';
-// import { Icon, Settings, Nav } from '../../DesignSystem';
 
 export type T_Hero = {
 	children?: React.ReactNode;
@@ -16,26 +15,16 @@ export type T_Hero = {
 }
 
 export default function Hero({
-	children,
-	config,
 	frontmatter,
-	navItems,
 }: T_Hero) {
 
-	const theme = useTheme();
-	const aspectRatio = 1200 / 630;
+	// const aspectRatio = 1200 / 630;
 
-	// const handleShowHero = () => {
-	// 	console.log("handleShowHero");
-	// };
 
 	let src = null;
 	if (frontmatter && frontmatter.image) {
 		src = frontmatter.image;
-	} else {
-		// console.log('No image for', frontmatter?.title);
 	}
-
 	if (!src) return null;
 	// Open Graph aspect ratio: 1200x630
 	const OG_WIDTH = 1200;
@@ -44,7 +33,7 @@ export default function Hero({
 
 	return (
 		<Box sx={{
-			mb: 3,
+			my: 2,
 		}}>
 			<Box
 				sx={{
@@ -76,7 +65,3 @@ export default function Hero({
 		</Box>
 	);
 }
-
-/* <pre style={{ padding: '1em', borderRadius: '8px' }}>
-				src: {JSON.stringify(src, null, 2)}
-			</pre> */

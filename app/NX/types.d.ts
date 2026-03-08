@@ -329,6 +329,7 @@ export type I_Icon = {
     | 'hide'
     | 'show'
     | 'notify'
+    | 'media'
     | 'save'
     | 'filters'
     | 'new'

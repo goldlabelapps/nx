@@ -13,7 +13,7 @@
             "favicon": "/nx/svg/favicon.svg"
         },
         "dark": {
-            "icon": "/nx/svg/favicon_FFFFFF.svg",
+            "icon": "/nx/svg/favicon_DCFFFB.svg",
             "favicon": "/nx/svg/favicon.svg"
         }
     },
@@ -33,12 +33,12 @@
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#073334",
-                    "secondary": "#073334",
+                    "primary": "#012867",
+                    "secondary": "#12418C",
                     "background": "#fff",
-                    "paper": "#fff",
+                    "paper": "#E7EBF2",
                     "text": "#000",
-                    "border": "#073334"
+                    "border": "#C6CAD1"
                 }
             }
         }
