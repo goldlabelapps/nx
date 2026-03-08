@@ -6,10 +6,8 @@ import { Metadata } from "next";
 import {
     Box,
     AppBar,
-    Avatar,
     CardHeader,
     Container,
-    IconButton,
     Typography,
 } from '@mui/material';
 import { NX } from '../NX';
@@ -175,11 +173,8 @@ export default async function Page(props: any) {
                             pr: { xs: 2, lg: 3 },
                             pl: { xs: 2, lg: 0 },
                         }}>
-                        <Hero
-                            config={config}
-                            frontmatter={data}
-                            navItems={navItems as I_NestedNav["navItems"]}
-                        />
+
+
                         <Typography
                             sx={{
                                 display: 'flex',
@@ -187,13 +182,26 @@ export default async function Page(props: any) {
                             color='secondary'
                             variant="h5"
                             component="h2">
-                            {data.icon && (
-                                <Box sx={{ mr: 2 }}>
-                                    <Icon icon={data.icon} color="inherit" />
+
+                            <Box sx={{ display: 'flex', width: '100%' }}>
+                                <Box sx={{ flexGrow: 1 }}>
+                                    {description}
                                 </Box>
-                            )}
-                            {description}
+                                <Box>
+                                    {data.icon && (
+                                        <Icon icon={data.icon} color="inherit" />
+                                    )}
+                                </Box>
+                            </Box>
+
                         </Typography>
+
+                        <Hero
+                            config={config}
+                            frontmatter={data}
+                            navItems={navItems as I_NestedNav["navItems"]}
+                        />
+
 
                         <RenderMarkdown config={config}>
                             {content}
