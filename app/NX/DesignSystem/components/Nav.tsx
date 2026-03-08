@@ -142,7 +142,6 @@ const Nav: React.FC<I_Nav> = ({
                             <Box sx={{ mb: 1 }}>
                                 <Virus frontmatter={frontmatter} />
                             </Box>
-                            <Settings />
                         </Box>
                     </Box>
                 </Drawer>

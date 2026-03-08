@@ -23,7 +23,7 @@ import {
     Nav,
     Hero,
     Footer,
-    Settings,
+    // Settings,
     ThemedIcon,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
@@ -121,7 +121,6 @@ export default async function Page(props: any) {
                         <Container maxWidth="lg">
                             <CardHeader
                                 avatar={<ThemedIcon config={config} />}
-                                action={null}
                                 title={<Typography
                                     color='secondary'
                                     variant="h4"
@@ -129,6 +128,8 @@ export default async function Page(props: any) {
                                 >
                                     {title}
                                 </Typography>}
+                                action={<>
+                                </>}
                             />
                         </Container>
                     </AppBar>
@@ -138,12 +139,38 @@ export default async function Page(props: any) {
             <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                 <Box
                     sx={{
-                        display: 'grid',
-                        gap: 1,
-                        alignItems: 'start',
-                        width: '100%'
+                        width: '100%',
+                        display: 'flex',
+                        gap: 2,
                     }}
                 >
+
+                    <Box
+                        sx={{
+                            display: { xs: 'none', lg: 'flex' },
+                            flexDirection: 'column',
+                        }}
+                    >
+                        {/* Virus at top */}
+                        <Box>
+                            <Virus frontmatter={data} />
+                        </Box>
+                        {/* Spacer fills remaining space */}
+                        <Box sx={{
+                            flexGrow: 1,
+                            minHeight: 0, overflow: 'auto'
+                        }}>
+                            <Nav
+                                navItems={navItems as I_NestedNav["navItems"]}
+                                frontmatter={data}
+                                mode="desktop"
+                            />
+                        </Box>
+                        {/* Settings at bottom */}
+                        {/* <Box>
+                            <Settings />
+                        </Box> */}
+                    </Box>
 
                     <Box
                         component="main"
@@ -158,6 +185,7 @@ export default async function Page(props: any) {
                         <Typography
                             sx={{
                                 display: 'flex',
+                                mt: 1
                             }}
                             color='secondary'
                             variant="h5"
@@ -188,37 +216,7 @@ export default async function Page(props: any) {
                         </RenderMarkdown>
                     </Box>
 
-                    <Box
-                        sx={{
-                            display: { xs: 'none', lg: 'flex' },
-                            flexDirection: 'column',
-                            width: { lg: '320px' },
-                            minWidth: { lg: '320px' },
-                            maxWidth: { lg: '320px' },
-                            gridColumn: { lg: '3' },
-                            height: 'calc(100vh - 175px)',
-                        }}
-                    >
-                        {/* Virus at top */}
-                        <Box>
-                            <Virus frontmatter={data} />
-                        </Box>
-                        {/* Spacer fills remaining space */}
-                        <Box sx={{
-                            flexGrow: 1,
-                            minHeight: 0, overflow: 'auto'
-                        }}>
-                            <Nav
-                                navItems={navItems as I_NestedNav["navItems"]}
-                                frontmatter={data}
-                                mode="desktop"
-                            />
-                        </Box>
-                        {/* Settings at bottom */}
-                        <Box>
-                            <Settings />
-                        </Box>
-                    </Box>
+
                 </Box>
             </Container>
             <footer>

@@ -169,11 +169,15 @@ import VirusIcon from '@mui/icons-material/Coronavirus';
 import ForwardIcon from '@mui/icons-material/Send';
 import FirebaseIcon from '@mui/icons-material/Whatshot';
 import MediaIcon from '@mui/icons-material/CloudUpload';
+import CashIcon from '@mui/icons-material/Savings';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'cash':
+      iconFragment = <CashIcon color={color} />;
+      break;
     case 'media':
       iconFragment = <MediaIcon color={color} />;
       break;
