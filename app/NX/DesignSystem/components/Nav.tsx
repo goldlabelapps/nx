@@ -127,18 +127,22 @@ const Nav: React.FC<I_Nav> = ({
                     open={drawerOpen}
                     onClose={() => setDrawerOpen(false)}>
                     <Box
-                        sx={{ height: '100vh', display: 'flex', flexDirection: 'column', p: 1 }}
-                        role="presentation"
-                    // onClick={() => setDrawerOpen(false)}
-                    >
-                        <List dense component={'nav'}>
+                        sx={{
+                            height: '100vh',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            p: 1,
+                            minWidth: 310,
+                        }}
+                        role="presentation">
+                        <List component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
                         <Box sx={{ mt: 'auto' }}>
-                            <Settings />
-                            <Box sx={{ mb: 2 }}>
+                            <Box sx={{ mb: 1 }}>
                                 <Virus frontmatter={frontmatter} />
                             </Box>
+                            <Settings />
                         </Box>
                     </Box>
                 </Drawer>

@@ -52,7 +52,7 @@ export default function NXAdminMenu() {
             display: 'flex',
             flexDirection: 'column',
             p: 1,
-            minWidth: 330,
+            minWidth: 310,
           }}
           role="presentation"
         >

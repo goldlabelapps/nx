@@ -1,11 +1,11 @@
 ---
 order: 50
 slug: /nx
-title: Goldlabel NX
-description: NX is built on Cartridges
-tags: nx, features, n64
+title: NX
+description: Built on Cartridges
+tags: NX, Features, n64, Cartridges
 icon: cartridge
-image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
+image: https://live.staticflickr.com/65535/55066171380_fffff7370e_b.jpg
 ---
 
 > They're called Cartridges Because we're old enough to have played Goldeneye on the N64
@@ -14,10 +14,10 @@ A cartridge is a self-contained piece of application logic: React components, st
 
 Because each cartridge is standalone, it can be added, removed, or swapped out without affecting the rest of the system. This makes development faster, maintenance simpler, and code reuse effortless.
 
+- Design System
+    - Material UI
+- Uberedux
 - Commerce
 - Shortcodes
-- Paywall
-- Uberedux
-- Design System
-- Progressive Web App
-- Service Workers
+- Paywall 
+    - Firebase Auth

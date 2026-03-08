@@ -4,7 +4,7 @@ slug: /work
 title: Work
 description: Through the ages
 tags: Goldlabel, Work, Jobs, Permanent, Contract
-image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
+image: https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg
 icon: work
 ---
 
