@@ -98,6 +98,12 @@ export default function NXAdmin({
       description: 'Images, sounds, videos and PDFs etc',
       icon: 'media',
     },
+    {
+      collection: 'tenants',
+      title: 'Tenants',
+      description: 'Only level 2 users should see this',
+      icon: 'admin',
+    },
   ];
 
   // Move active collection to the front

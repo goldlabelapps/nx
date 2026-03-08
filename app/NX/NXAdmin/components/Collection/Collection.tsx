@@ -4,9 +4,8 @@ import {
   Card,
   Tooltip,
   CardHeader,
-  ButtonBase,
+  Button,
   CardContent,
-  Typography,
   IconButton,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
@@ -16,6 +15,8 @@ import {
   useActive,
   setNXAdmin,
   ReadDoc,
+  CreateDoc,
+  setCRUD,
 } from '../../../NXAdmin'
 import { useDispatch } from '../../../Uberedux'
 
@@ -52,6 +53,12 @@ export default function Collection({
     dispatch(setNXAdmin('active', collection));
   };
 
+  const handleNew = (collection: string) => {
+    console.log('New Doc in', collection);
+    // Set CRUD status for this collection to 'create'
+    dispatch(setCRUD(collection, 'mode', 'create'));
+  };
+
   if (!isActive) return <>
     <Tooltip title={title} placement="right">
       <IconButton onClick={() => activate(collection)}>
@@ -64,6 +71,13 @@ export default function Collection({
     <>
       <Card variant="outlined">
         <CardHeader
+          action={<Button
+            endIcon={<Icon icon="new" />}
+            variant="contained"
+            onClick={() => handleNew(collection)}
+          >
+            New
+          </Button>}
           title={title}
           subheader={description}
           avatar={<Icon icon={icon as any} color="primary" />}
@@ -76,20 +90,18 @@ export default function Collection({
             },
           }}
         />
-        {isActive && <>
 
 
-          {mode === 'read' && <ReadDoc collection={collection} />}
-
-          <CardContent>
+        <CardContent>
+          {/* <pre>mode: {JSON.stringify(mode, null, 2)}</pre> */}
+          {isActive && <>
+            {mode === 'read' && <ReadDoc collection={collection} />}
+            {mode === 'create' && <CreateDoc collection={collection} />}
             {/* <Typography variant="body1" color="text.secondary">
               {description}
             </Typography> */}
-          </CardContent>
-        </>}
-
-
-
+          </>}
+        </CardContent>
       </Card>
     </>
   );
@@ -103,7 +115,7 @@ export default function Collection({
   UpdateDoc,
   DeleteDoc,
 
-<pre>label: {JSON.stringify(label, null, 2)}</pre> 
+
 <pre>mode: {JSON.stringify(mode, null, 2)}</pre>
     {/* action={
       <>
