@@ -53,21 +53,6 @@ const Settings: React.FC<I_Settings> = () => {
 
 	return (
 		<List dense sx={{ my: 1 }}>
-
-
-			<ListItemButton
-				id="nx-admin-btn"
-				onClick={handleNXAdmin}
-			>
-				{/* <ListItemIcon>
-					<Icon icon="admin" color="primary" />
-				</ListItemIcon> */}
-				<ListItemText
-					primary={<Typography>
-						Admin
-					</Typography>}
-				/>
-			</ListItemButton>
 			{/* <pre>currentThemeMode {JSON.stringify(currentThemeMode, null, 2)}</pre> */}
 			<ListItemButton
 				id="theme-toggle-btn"
@@ -81,6 +66,20 @@ const Settings: React.FC<I_Settings> = () => {
 						{currentThemeMode === 'light' ? 'Dark' : 'Light'}
 					</Typography>}
 				/>
+			</ListItemButton>
+			<ListItemButton
+				id="nx-admin-btn"
+				onClick={handleNXAdmin}
+			>
+
+				<ListItemText
+					primary={<Typography>
+						NX Admin
+					</Typography>}
+				/>
+				<ListItemIcon>
+					<Icon icon="right" color="primary" />
+				</ListItemIcon>
 			</ListItemButton>
 		</List>
 	);

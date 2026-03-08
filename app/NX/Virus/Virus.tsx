@@ -103,14 +103,6 @@ export default function Virus({
             </Tooltip>
           </Box>
 
-        </Box>
-
-        <Box sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 2,
-          ml: 2,
-        }}>
 
           <Box sx={{ mt: 1 }}>
             <Tooltip title="Share on LinkedIn" placement="top">
