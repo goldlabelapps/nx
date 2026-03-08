@@ -2,10 +2,12 @@
 import * as React from 'react';
 import {
   Card,
+  Tooltip,
   CardHeader,
   ButtonBase,
   CardContent,
   Typography,
+  IconButton,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import {
@@ -13,6 +15,7 @@ import {
   useCollection,
   useActive,
   setNXAdmin,
+  ReadDoc,
 } from '../../../NXAdmin'
 import { useDispatch } from '../../../Uberedux'
 
@@ -31,40 +34,38 @@ export default function Collection({
 }: I_Collection) {
 
   const collectionState = useCollection(collection);
+  const state = collectionState[collection];
+
+  const { mode } = state || {};
+
   const dispatch = useDispatch();
   const active = useActive();
   const isActive = active === collection;
 
-  const handleActivate = (collection: string) => {
-    dispatch(setNXAdmin('active', collection));
-  }
-
   React.useEffect(() => {
-    // Only init collection if not already initted
     if (!collectionState?.[collection]?.initted) {
       dispatch(initCollection(collection));
     }
   }, [dispatch, collection, collectionState]);
 
+  const activate = (collection: string) => {
+    dispatch(setNXAdmin('active', collection));
+  };
+
+  if (!isActive) return <>
+    <Tooltip title={title} placement="right">
+      <IconButton onClick={() => activate(collection)}>
+        <Icon icon={icon as any} color="primary" />
+      </IconButton>
+    </Tooltip>
+  </>;
 
   return (
-    <ButtonBase
-      onClick={() => handleActivate(collection)}
-      sx={{
-        display: 'block',
-        textAlign: 'left',
-        width: '100%',
-        border: isActive ? '1px solid' : '1px solid',
-        borderColor: isActive ? 'primary.main' : 'divider',
-        borderRadius: 1,
-        '&:hover': {
-          borderColor: 'primary.main',
-        },
-      }}
-    >
+    <>
       <Card variant="outlined">
         <CardHeader
           title={title}
+          subheader={description}
           avatar={<Icon icon={icon as any} color="primary" />}
           sx={{
             '& .MuiCardHeader-subheader': {
@@ -76,16 +77,21 @@ export default function Collection({
           }}
         />
         {isActive && <>
+
+
+          {mode === 'read' && <ReadDoc collection={collection} />}
+
           <CardContent>
-            <Typography variant="body1" color="text.secondary">
+            {/* <Typography variant="body1" color="text.secondary">
               {description}
-            </Typography>
-            <pre>collectionState: {JSON.stringify(collectionState, null, 2)}</pre>
+            </Typography> */}
           </CardContent>
         </>}
 
+
+
       </Card>
-    </ButtonBase>
+    </>
   );
 }
 
@@ -94,12 +100,11 @@ export default function Collection({
 
   setCRUD,
   CreateDoc,
-  ReadDoc,
   UpdateDoc,
   DeleteDoc,
 
 <pre>label: {JSON.stringify(label, null, 2)}</pre> 
-
+<pre>mode: {JSON.stringify(mode, null, 2)}</pre>
     {/* action={
       <>
         {/* <TypeScript /> 
@@ -114,6 +119,5 @@ export default function Collection({
         >
           <Icon icon="create" />
         </IconButton>
-        
 
 */

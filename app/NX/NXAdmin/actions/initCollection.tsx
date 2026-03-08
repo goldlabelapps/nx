@@ -7,8 +7,10 @@ export const initCollection = (
     async (dispatch: Dispatch, getState: () => any) => {
         try {
             const newCRUD = {
+                collection,
                 initted: true,
                 subscribed: false,
+                mode: 'read',
             };
             const state = getState();
             const currentNxAdmin = (state?.redux?.nxAdmin) || {};

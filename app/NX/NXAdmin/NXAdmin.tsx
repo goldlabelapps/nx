@@ -13,11 +13,12 @@ import {
   IconButton,
   Typography,
   Box,
-  Grid,
 } from '@mui/material';
 import {
   NXAdminMenu,
   Collection,
+  setNXAdmin,
+  useNXAdmin,
 } from '../NXAdmin';
 import {
   DesignSystem,
@@ -34,11 +35,13 @@ export interface I_NXAdmin {
 
 export default function NXAdmin({
   config,
+  children,
 }: I_NXAdmin) {
 
   const dispatch = useDispatch();
   const router = useRouter();
   const designSystem = useDesignSystem();
+  const nxAdmin = useNXAdmin();
   const configThemes = config?.cartridges?.designSystem?.themes || {};
   const configDefaultTheme = config?.cartridges?.designSystem?.defaultTheme || 'light';
   const themeMode = (designSystem?.themeMode !== undefined && designSystem?.themeMode !== null)
@@ -54,6 +57,12 @@ export default function NXAdmin({
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
   }
+
+  React.useEffect(() => {
+    if (!nxAdmin?.active) {
+      dispatch(setNXAdmin('active', 'share'));
+    }
+  }, [dispatch, nxAdmin]);
 
   React.useEffect(() => {
     if (designSystem?.themeMode === undefined || designSystem?.themeMode === null) {
@@ -142,18 +151,39 @@ export default function NXAdmin({
         </AppBar>
 
         <Container id="main" maxWidth="md" sx={{ mt: '100px', pb: '90px' }}>
-          <Grid container spacing={1} sx={{ mb: 4 }}>
-            {orderedCollections.map((col) => (
-              <Grid key={col.collection} size={{ xs: 12, md: 6 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, width: '100%' }}>
+            {/* Sidebar nav: Collection clips as icon buttons when inactive */}
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 0,
+              m: 0.5,
+            }}>
+              {collections.filter(col => col.collection !== active).map((col) => (
                 <Collection
+                  key={col.collection}
                   collection={col.collection}
                   title={col.title}
                   description={col.description}
                   icon={col.icon}
                 />
-              </Grid>
-            ))}
-          </Grid>
+              ))}
+            </Box>
+            {/* Main content area (placeholder, can be replaced with children or active collection details) */}
+            <Box sx={{ flex: 1, minHeight: 400 }}>
+              {collections.filter(col => col.collection === active).map((col) => (
+                <Collection
+                  key={col.collection}
+                  collection={col.collection}
+                  title={col.title}
+                  description={col.description}
+                  icon={col.icon}
+                />
+              ))}
+              {children}
+            </Box>
+          </Box>
         </Container>
 
         <AppBar
