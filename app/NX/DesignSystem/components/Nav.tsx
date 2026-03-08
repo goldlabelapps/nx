@@ -52,20 +52,23 @@ const Nav: React.FC<I_Nav> = ({
         parentKey = '',
         // parentNavTarget?: string,
     ): React.ReactNode {
-        // Always render Home button at the top
-        const homeButton = (
-            <Box key={parentKey + 'home'}>
-                <ListItemButton
-                    onClick={e => {
-                        e.preventDefault();
-                        handleNavClick('/');
-                    }}
-                    disabled={false}
-                >
-                    <ListItemText primary={'Home'} />
-                </ListItemButton>
-            </Box>
-        );
+        // Only render Home button at the top level
+        let homeButton = null;
+        if (parentKey === '') {
+            homeButton = (
+                <Box key={'home'}>
+                    <ListItemButton
+                        onClick={e => {
+                            e.preventDefault();
+                            handleNavClick('/');
+                        }}
+                        disabled={false}
+                    >
+                        <ListItemText primary={'Home'} />
+                    </ListItemButton>
+                </Box>
+            );
+        }
 
         const navItems = items
             .map((item, i) => {
@@ -107,7 +110,7 @@ const Nav: React.FC<I_Nav> = ({
                     </Box>
                 );
             });
-        return [homeButton, ...navItems.filter(Boolean)];
+        return homeButton ? [homeButton, ...navItems.filter(Boolean)] : navItems.filter(Boolean);
     }
     // Removed stray slash and 'return true' lines that caused syntax error
     if (mode === 'mobile') {
