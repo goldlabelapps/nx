@@ -1,12 +1,6 @@
 import type { Dispatch } from 'redux';
 import { setUbereduxKey } from '../../Uberedux';
 
-/**
- * Updates nxAdmin.crud[collection][key] with the provided value.
- * @param collection The name of the collection to update
- * @param key The key within the collection's CRUD object
- * @param value The value to set for the key
- */
 export const setCRUD = (
     collection: string,
     key: string,

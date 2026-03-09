@@ -9,7 +9,6 @@ import {
   Toolbar,
   Container,
   CardHeader,
-  Avatar,
   IconButton,
   Typography,
   Box,
@@ -21,6 +20,7 @@ import {
   useNXAdmin,
 } from '../NXAdmin';
 import {
+  Icon,
   DesignSystem,
   Feedback,
   useDesignSystem,
@@ -33,10 +33,44 @@ export interface I_NXAdmin {
   children?: React.ReactNode;
 };
 
+const collections = [
+  {
+    collection: 'share',
+    title: 'Share',
+    description: 'Viral marketing landing pages',
+    icon: 'share',
+  },
+  {
+    collection: 'users',
+    title: 'Users',
+    description: 'Manage user accounts and permissions',
+    icon: 'users',
+  },
+  {
+    collection: 'notify',
+    title: 'Notifications',
+    description: 'Notifications sent by email, SMS or push',
+    icon: 'notify',
+  },
+  {
+    collection: 'media',
+    title: 'Media',
+    description: 'Images, sounds, videos and PDFs etc',
+    icon: 'media',
+  },
+  {
+    collection: 'tenants',
+    title: 'Tenants',
+    description: 'Only level 2 users should see this',
+    icon: 'admin',
+  },
+];
+
 export default function NXAdmin({
   config,
   children,
 }: I_NXAdmin) {
+
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -50,9 +84,6 @@ export default function NXAdmin({
   const themeObj = (designSystem?.themes && designSystem?.themes[themeMode])
     || configThemes[themeMode]
     || configThemes[configDefaultTheme];
-  const { icons } = config;
-  const avatarTheme = themeMode === 'dark' ? 'dark' : 'light';
-  const avatarSrc = icons && (icons as Record<'light' | 'dark', { icon: string; favicon: string }>)[avatarTheme]?.icon || '/nx/svg/favicon.svg';
 
   const handleAvatarClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     router.push('/');
@@ -60,7 +91,7 @@ export default function NXAdmin({
 
   React.useEffect(() => {
     if (!nxAdmin?.active) {
-      dispatch(setNXAdmin('active', 'share'));
+      dispatch(setNXAdmin('active', 'users'));
     }
   }, [dispatch, nxAdmin]);
 
@@ -73,38 +104,6 @@ export default function NXAdmin({
   }, [dispatch, designSystem?.themeMode, configDefaultTheme]);
 
   const active = useActive();
-  const collections = [
-    {
-      collection: 'share',
-      title: 'Share',
-      description: 'Viral marketing landing pages',
-      icon: 'share',
-    },
-    {
-      collection: 'users',
-      title: 'Users',
-      description: 'Manage user accounts and permissions',
-      icon: 'users',
-    },
-    {
-      collection: 'notify',
-      title: 'Notifications',
-      description: 'Notifications sent by email, SMS or push',
-      icon: 'notify',
-    },
-    {
-      collection: 'media',
-      title: 'Media',
-      description: 'Images, sounds, videos and PDFs etc',
-      icon: 'media',
-    },
-    {
-      collection: 'tenants',
-      title: 'Tenants',
-      description: 'Only level 2 users should see this',
-      icon: 'admin',
-    },
-  ];
 
   // Move active collection to the front
   const orderedCollections = collections.sort((a, b) => {
@@ -138,10 +137,7 @@ export default function NXAdmin({
                   edge="start"
                   color="inherit"
                   aria-label={config.siteName}>
-                  <Avatar
-                    alt={`${config.siteName}. ${config.description}`}
-                    src={avatarSrc}
-                  />
+                  <Icon icon="admin" color={'primary'} />
                 </IconButton>
               </a>}
               action={null}
@@ -150,7 +146,7 @@ export default function NXAdmin({
                 variant="h6"
                 component="h1"
               >
-                {config.siteName} Admin
+                {config.siteName} NX
               </Typography>}
             />
           </Container>
@@ -176,8 +172,14 @@ export default function NXAdmin({
                 />
               ))}
             </Box>
-            {/* Main content area (placeholder, can be replaced with children or active collection details) */}
+            {/* Main content area (placeholder, can be replaced 
+            with children or active collection details) */}
             <Box sx={{ flex: 1, minHeight: 400 }}>
+
+              {/* {nxAdmin?.crud && <>
+                <pre>crud[{active}]: {JSON.stringify(nxAdmin?.crud[active] || null, null, 2)}</pre>
+              </>} */}
+
               {collections.filter(col => col.collection === active).map((col) => (
                 <Collection
                   key={col.collection}

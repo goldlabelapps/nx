@@ -14,18 +14,9 @@ export interface I_ReadDoc {
 
 export default function ReadDoc({
   collection,
-  doc,
 }: I_ReadDoc) {
 
-  if (!doc) return <CardContent>
+  return <CardContent>
     LIST <strong>{collection}</strong> docs
-  </CardContent>;
-
-  return (
-    <Box sx={{}}>
-      <Typography>
-        {doc?.title || doc?.siteName}
-      </Typography>
-    </Box>
-  );
+  </CardContent>
 }

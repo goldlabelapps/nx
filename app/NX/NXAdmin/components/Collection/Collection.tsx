@@ -14,8 +14,10 @@ import {
   useCollection,
   useActive,
   setNXAdmin,
-  ReadDoc,
   CreateDoc,
+  ReadDoc,
+  UpdateDoc,
+  DeleteDoc,
   setCRUD,
 } from '../../../NXAdmin'
 import { useDispatch } from '../../../Uberedux'
@@ -37,7 +39,7 @@ export default function Collection({
   const collectionState = useCollection(collection);
   const state = collectionState[collection];
 
-  const { mode } = state || {};
+  const { mode, docs } = state || {};
 
   const dispatch = useDispatch();
   const active = useActive();
@@ -90,16 +92,15 @@ export default function Collection({
             },
           }}
         />
-
-
         <CardContent>
-          {/* <pre>mode: {JSON.stringify(mode, null, 2)}</pre> */}
+
+          {/* <pre>docs: {JSON.stringify(docs, null, 2)}</pre> */}
+
           {isActive && <>
             {mode === 'read' && <ReadDoc collection={collection} />}
             {mode === 'create' && <CreateDoc collection={collection} />}
-            {/* <Typography variant="body1" color="text.secondary">
-              {description}
-            </Typography> */}
+            {mode === 'update' && <UpdateDoc collection={collection} />}
+            {mode === 'delete' && <DeleteDoc collection={collection} />}
           </>}
         </CardContent>
       </Card>
@@ -109,11 +110,6 @@ export default function Collection({
 
 
 /* 
-
-  setCRUD,
-  CreateDoc,
-  UpdateDoc,
-  DeleteDoc,
 
 
 <pre>mode: {JSON.stringify(mode, null, 2)}</pre>

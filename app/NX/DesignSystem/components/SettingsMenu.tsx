@@ -49,7 +49,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ config }) => {
                 aria-label={'Settings'}
                 onClick={handleOpen}
             >
-                <Icon icon="settings" />
+                <Icon icon="right" />
             </IconButton>
             <Menu
                 anchorEl={anchorEl}
