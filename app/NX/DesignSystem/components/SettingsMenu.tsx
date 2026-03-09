@@ -58,7 +58,6 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ config }) => {
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             >
-                <Box sx={{ width: 300 }} />
                 <ListItemButton
                     id="theme-toggle-btn"
                     onClick={handleThemeModeToggle}

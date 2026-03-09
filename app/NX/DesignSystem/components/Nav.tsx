@@ -117,7 +117,7 @@ const Nav: React.FC<I_Nav> = ({
         return (
             <>
                 <IconButton
-                    color="secondary"
+                    color="primary"
                     onClick={() => setDrawerOpen(true)} aria-label="Open Menu">
                     <Icon icon='menu' />
                 </IconButton>

@@ -1,31 +1,72 @@
 'use client';
 import * as React from 'react';
+import type { I_ReadDoc } from '../../types';
 import {
-  Box,
-  Typography,
-  CardContent,
+  ListItemButton,
+  ListItemText,
+  ListItemAvatar,
+  List,
+  Avatar,
 } from '@mui/material';
+import {
+  useCRUD,
+  setCRUD,
+} from '../../../NXAdmin';
+import {
+  useDispatch,
+} from '../../../Uberedux';
 
-export interface I_ReadDoc {
+function SingleDoc({
+  collection,
+  doc
+}: {
   collection: string;
-  doc?: Record<string, any>;
-  typescript?: Record<string, any>;
+  doc?: Record<string, any>
+}) {
+  const dispatch = useDispatch();
+  const {
+    avatar,
+    name,
+    email,
+    // id, authId, level, tenant,
+  } = doc || {};
+
+  const handleSelect = () => {
+    // console.log('Selected doc:', doc);
+    dispatch(setCRUD(collection, 'selected', doc));
+    dispatch(setCRUD(collection, 'mode', 'update'));
+  }
+
+  return <ListItemButton onClick={handleSelect} disableGutters>
+    {/* <pre>SingleDoc {JSON.stringify(doc, null, 2)}</pre> */}
+
+    <ListItemAvatar>
+      <Avatar
+        src={avatar}
+        alt={name || 'No Name'}
+      />
+    </ListItemAvatar>
+    <ListItemText
+      primary={name || 'No Name'}
+      secondary={email || 'No Email'}
+    />
+  </ListItemButton>
 }
 
 export default function ReadDoc({
   collection,
-  doc,
 }: I_ReadDoc) {
 
-  if (!doc) return <CardContent>
-    LIST <strong>{collection}</strong> docs
-  </CardContent>;
+  const crud = useCRUD();
+  const { docs, typescript } = crud[collection];
+  const firstDoc = {
+    avatar: '/shared/svg/goldlabel_favicon.svg',
+    name: 'Display Name',
+    email: 'test@test.com',
 
-  return (
-    <Box sx={{}}>
-      <Typography>
-        {doc?.title || doc?.siteName}
-      </Typography>
-    </Box>
-  );
+  };
+
+  return <List dense>
+    <SingleDoc doc={firstDoc} collection={collection} />
+  </List>
 }

@@ -9,11 +9,23 @@ import NXAdminAuthWrapper from './NXAdminAuthWrapper';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
-    const siteName = 'NX';
-    const title = `NX Admin`;
-    const description = `Data, Storage, Users`;
-    const image = '/nx/gif/dark.gif';
+    const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
+    const { config } = getTenant(tenant as T_Tenant);
+
+    const siteName = config.siteName || 'NX';
+
+    const title = `${siteName} Admin`;
+    const description = `Admin dashboard for ${siteName}`;
+    // Safely determine theme mode
+    const designSystem = config?.cartridges?.designSystem;
+    const defaultThemeModeRaw = designSystem?.defaultTheme;
+    const defaultThemeMode: 'light' | 'dark' = defaultThemeModeRaw === 'light' || defaultThemeModeRaw === 'dark' ? defaultThemeModeRaw : 'light';
+    // Safely access images
+    const imagesObj: { light?: string; dark?: string } | undefined = config.images;
+    const imageRaw = imagesObj && defaultThemeMode in imagesObj ? imagesObj[defaultThemeMode] : undefined;
+    const image: string = imageRaw || config.siteName;
     const url = `${getBaseurl()}/nx-admin`;
+
 
     return {
         title,

@@ -14,8 +14,10 @@ import {
   useCollection,
   useActive,
   setNXAdmin,
-  ReadDoc,
   CreateDoc,
+  ReadDoc,
+  UpdateDoc,
+  DeleteDoc,
   setCRUD,
 } from '../../../NXAdmin'
 import { useDispatch } from '../../../Uberedux'
@@ -37,17 +39,26 @@ export default function Collection({
   const collectionState = useCollection(collection);
   const state = collectionState[collection];
 
-  const { mode } = state || {};
+  let cardTitle: string = `TITLE ${title}`;
+  let cardSubheader: string = `DES ${description}`;
+
+  // Ensure cardTitle and cardSubheader are always strings at runtime
+  if (typeof cardTitle !== 'string') {
+    cardTitle = JSON.stringify(cardTitle);
+  }
+  if (typeof cardSubheader !== 'string') {
+    cardSubheader = JSON.stringify(cardSubheader);
+  }
+
+  const {
+    mode,
+    selected,
+    // typescript,
+  } = state || {};
 
   const dispatch = useDispatch();
   const active = useActive();
   const isActive = active === collection;
-
-  React.useEffect(() => {
-    if (!collectionState?.[collection]?.initted) {
-      dispatch(initCollection(collection));
-    }
-  }, [dispatch, collection, collectionState]);
 
   const activate = (collection: string) => {
     dispatch(setNXAdmin('active', collection));
@@ -55,9 +66,19 @@ export default function Collection({
 
   const handleNew = (collection: string) => {
     console.log('New Doc in', collection);
-    // Set CRUD status for this collection to 'create'
     dispatch(setCRUD(collection, 'mode', 'create'));
   };
+
+  const handleCancel = () => {
+    dispatch(setCRUD(collection, 'mode', 'read'));
+    dispatch(setCRUD(collection, 'selected', null));
+  };
+
+  React.useEffect(() => {
+    if (!collectionState?.[collection]?.initted) {
+      dispatch(initCollection(collection));
+    }
+  }, [dispatch, collection, collectionState]);
 
   if (!isActive) return <>
     <Tooltip title={title} placement="right">
@@ -71,15 +92,28 @@ export default function Collection({
     <>
       <Card variant="outlined">
         <CardHeader
-          action={<Button
-            endIcon={<Icon icon="new" />}
-            variant="contained"
+          title={cardTitle}
+          subheader={cardSubheader}
+          action={<IconButton
+            color="primary"
             onClick={() => handleNew(collection)}
           >
-            New
-          </Button>}
-          title={title}
-          subheader={description}
+            <Icon icon="new" />
+          </IconButton>}
+          // action={
+          //   <>
+          //     {mode !== 'create' && <>
+
+          //     </>}
+          //     {selected || mode === "create" && <>
+          //       <IconButton
+          //         color="primary"
+          //         onClick={handleCancel}
+          //       >
+          //         <Icon icon="close" />
+          //       </IconButton>
+          //     </>}
+          //   </>}
           avatar={<Icon icon={icon as any} color="primary" />}
           sx={{
             '& .MuiCardHeader-subheader': {
@@ -90,46 +124,14 @@ export default function Collection({
             },
           }}
         />
-
-
-        <CardContent>
-          {/* <pre>mode: {JSON.stringify(mode, null, 2)}</pre> */}
-          {isActive && <>
-            {mode === 'read' && <ReadDoc collection={collection} />}
-            {mode === 'create' && <CreateDoc collection={collection} />}
-            {/* <Typography variant="body1" color="text.secondary">
-              {description}
-            </Typography> */}
-          </>}
-        </CardContent>
+        {isActive && <>
+          {mode === 'read' && <ReadDoc collection={collection} />}
+          {mode === 'create' && <CreateDoc collection={collection} />}
+          {mode === 'update' && <UpdateDoc collection={collection} />}
+          {mode === 'delete' && <DeleteDoc collection={collection} />}
+        </>}
+        <pre>selected: {JSON.stringify(selected, null, 2)}</pre>
       </Card>
     </>
   );
 }
-
-
-/* 
-
-  setCRUD,
-  CreateDoc,
-  UpdateDoc,
-  DeleteDoc,
-
-
-<pre>mode: {JSON.stringify(mode, null, 2)}</pre>
-    {/* action={
-      <>
-        {/* <TypeScript /> 
-        <IconButton
-          onClick={() => {
-            dispatch(setFeedback({
-              severity: 'success',
-              title: `${collection}`,
-              description: 'Create Doc',
-            }));
-          }}
-        >
-          <Icon icon="create" />
-        </IconButton>
-
-*/

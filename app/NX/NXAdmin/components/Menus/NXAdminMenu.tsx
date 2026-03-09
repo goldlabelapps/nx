@@ -38,11 +38,11 @@ export default function NXAdminMenu() {
   return (
     <>
       <IconButton color="primary" onClick={() => setDrawerOpen(true)}>
-        <Icon icon="menu" />
+        <Icon icon="settings" />
       </IconButton>
 
       <Drawer
-        anchor="right"
+        anchor="left"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
@@ -52,13 +52,12 @@ export default function NXAdminMenu() {
             display: 'flex',
             flexDirection: 'column',
             p: 1,
-            minWidth: 310,
+            // minWidth: 310,
           }}
           role="presentation"
         >
 
           <Box sx={{ mt: 'auto' }}>
-            <Box sx={{ mb: 2 }}>
               <List>
                 <ListItemButton
                   id="signout-btn"
@@ -80,7 +79,7 @@ export default function NXAdminMenu() {
                     <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
                   </ListItemIcon>
                   <ListItemText
-                    primary={currentThemeMode === 'light' ? 'Dark' : 'Light'}
+                    primary={currentThemeMode === 'light' ? 'Dark mode' : 'Light mode'}
                   />
                 </ListItemButton>
 
@@ -89,16 +88,16 @@ export default function NXAdminMenu() {
                   onClick={() => { handleMenuClick('/') }}
                   sx={{ mt: 3 }}
                 >
-                  <ListItemText
-                    primary="Back to site"
-                  />
+                 
                   <ListItemIcon>
-                    <Icon icon="right" color="primary" />
+                    <Icon icon="left" color="primary" />
                   </ListItemIcon>
+                <ListItemText
+                  primary="Back to site"
+                />
                 </ListItemButton>
 
               </List>
-            </Box>
           </Box>
         </Box>
       </Drawer>
