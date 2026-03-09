@@ -67,7 +67,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ config }) => {
                     </ListItemIcon>
                     <ListItemText
                         primary={<Typography>
-                            {currentThemeMode === 'light' ? 'Dark' : 'Light'}
+                            {currentThemeMode === 'light' ? 'Dark' : 'Light'} mode
                         </Typography>}
                     />
                 </ListItemButton>

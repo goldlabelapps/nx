@@ -1,7 +1,6 @@
 'use client';
 import React from "react";
 import {
-    IconButton,
     Avatar,
 } from '@mui/material';
 import { useDesignSystem } from '../../DesignSystem';
@@ -26,23 +25,12 @@ const ThemedIcon: React.FC<ThemedIconProps> = ({ config }) => {
         setAvatarSrc(src);
     }, [designSystem?.themeMode, config]);
 
-    const router = require('next/navigation').useRouter();
-    const handleClick = () => {
-        router.push('/');
-    };
-
     if (!mounted) return null;
 
     return (
-        <IconButton
-            edge="start"
-            color="inherit"
-            aria-label={'Home'}
-            onClick={handleClick}>
             <Avatar
                 src={avatarSrc}
             />
-        </IconButton>
     );
 };
 

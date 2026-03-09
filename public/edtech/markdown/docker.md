@@ -5,6 +5,7 @@ title: Docker
 description: Learn Docker fundamentals for developers.
 tags: ed-tech, docker, devops, free
 smartImage: docker
+image: https://live.staticflickr.com/65535/55066164370_2470ff2c5c_b.jpg
 ---
 
 # Docker for Reluctant Developers: A Gentle Introduction

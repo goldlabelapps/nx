@@ -5,11 +5,11 @@
     "description": "Educational Technology News",
     "icons": {
         "light": {
-            "icon": "/edtech/favicon.png",
+            "icon": "/shared/svg/characters/biker.svg",
             "favicon": "/edtech/favicon.ico"
         },
         "dark": {
-            "icon": "/edtech/favicon.png",
+            "icon": "/shared/svg/characters/biker.svg",
             "favicon": "/edtech/favicon.ico"
         }
     },
@@ -20,25 +20,25 @@
     "cartridges": {
         "designSystem": {
             "themeSwitching": false,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#3877cf",
-                    "secondary": "#3877cf",
+                    "primary": "#2eaf4a",
+                    "secondary": "#2eaf4a",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#3877cf"
+                    "border": "#2eaf4a"
                 },
                 "dark": {
                     "mode": "dark",
-                    "primary": "#17A1AC",
-                    "secondary": "#07c7d5ff",
+                    "primary": "#1db954",
+                    "secondary": "#21e065",
                     "background": "#000",
                     "paper": "#000",
                     "text": "#fff",
-                    "border": "#17A1AC"
+                    "border": "#222"
                 }
             }
         }

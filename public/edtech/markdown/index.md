@@ -5,7 +5,6 @@ title: Ed Tech.
 description: Educational Technology
 tags: nx, goldlabel, coding
 icon: flash
-smartImage: nextjs
 ---
 
 > Ace your software developer interviews. Master technical interview communication, behavioral questions, system design explanations, and English interview skills.

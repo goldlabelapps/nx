@@ -49,9 +49,7 @@ export default function Footer({
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: 'flex', }}>
-						<Box sx={{ my: 2 }}>
-							<SettingsMenu />
-						</Box>
+						
 						<Box sx={{ my: 2 }}>
 							<Nav
 								mode="mobile"
@@ -59,7 +57,9 @@ export default function Footer({
 								frontmatter={frontmatter}
 							/>
 						</Box>
-						
+						<Box sx={{ my: 2 }}>
+							<SettingsMenu />
+						</Box>
 					</Box>
 					{children && (
 						<Box sx={{ ml: 2 }}>
