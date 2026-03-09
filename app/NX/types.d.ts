@@ -288,6 +288,7 @@ export type I_Icon = {
     | 'plus'
     | 'dog'
     | 'about'
+    | 'tenant'
     | 'experience'
     | 'clients'
     | 'link'

@@ -6,6 +6,7 @@ import { Metadata } from "next";
 import {
     Box,
     AppBar,
+    IconButton,
     CardHeader,
     Container,
     Typography,
@@ -119,7 +120,9 @@ export default async function Page(props: any) {
                         }}>
                         <Container maxWidth="lg">
                             <CardHeader
-                                avatar={<ThemedIcon config={config} />}
+                                avatar={<IconButton href='/'>
+                                    <ThemedIcon config={config} />
+                                </IconButton>}
                                 title={<Typography
                                     color='secondary'
                                     variant="h4"

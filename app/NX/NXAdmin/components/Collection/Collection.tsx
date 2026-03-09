@@ -4,8 +4,6 @@ import {
   Card,
   Tooltip,
   CardHeader,
-  Button,
-  CardContent,
   IconButton,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
@@ -19,8 +17,9 @@ import {
   UpdateDoc,
   DeleteDoc,
   setCRUD,
+  CancelActive,
 } from '../../../NXAdmin'
-import { useDispatch } from '../../../Uberedux'
+import { useDispatch } from '../../../Uberedux';
 
 export interface I_Collection {
   collection: string;
@@ -39,8 +38,8 @@ export default function Collection({
   const collectionState = useCollection(collection);
   const state = collectionState[collection];
 
-  let cardTitle: string = `TITLE ${title}`;
-  let cardSubheader: string = `DES ${description}`;
+  let cardTitle: string = `${title}`;
+  let cardSubheader: string = `${description}`;
 
   // Ensure cardTitle and cardSubheader are always strings at runtime
   if (typeof cardTitle !== 'string') {
@@ -53,6 +52,7 @@ export default function Collection({
   const {
     mode,
     selected,
+    docs,
     // typescript,
   } = state || {};
 
@@ -94,26 +94,17 @@ export default function Collection({
         <CardHeader
           title={cardTitle}
           subheader={cardSubheader}
-          action={<IconButton
-            color="primary"
-            onClick={() => handleNew(collection)}
-          >
-            <Icon icon="new" />
-          </IconButton>}
-          // action={
-          //   <>
-          //     {mode !== 'create' && <>
+          action={<>
+         
+            <IconButton
+              color="primary"
+              onClick={() => handleNew(collection)}
+            >
+              <Icon icon="new" />
+            </IconButton>
+            <CancelActive collection={collection} />
 
-          //     </>}
-          //     {selected || mode === "create" && <>
-          //       <IconButton
-          //         color="primary"
-          //         onClick={handleCancel}
-          //       >
-          //         <Icon icon="close" />
-          //       </IconButton>
-          //     </>}
-          //   </>}
+          </>}
           avatar={<Icon icon={icon as any} color="primary" />}
           sx={{
             '& .MuiCardHeader-subheader': {
@@ -130,7 +121,7 @@ export default function Collection({
           {mode === 'update' && <UpdateDoc collection={collection} />}
           {mode === 'delete' && <DeleteDoc collection={collection} />}
         </>}
-        <pre>selected: {JSON.stringify(selected, null, 2)}</pre>
+        {/* <pre>docs: {JSON.stringify(docs, null, 2)}</pre> */}
       </Card>
     </>
   );

@@ -23,11 +23,13 @@ import {
     setNXAdmin,
     Dashboard,
     NXAdminMenu,
+    Collection,
+    MiniListItem,
 } from '../NXAdmin';
 import nav from './nav.json';
 import { useDispatch } from '../Uberedux';
 
-const drawerWidth = 320;
+const drawerWidth = 220;
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -101,16 +103,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function Layout({ config }: { config: any }) {
     const dispatch = useDispatch();
+
     const nxAdmin = useNXAdmin();
+    const { active } = nxAdmin;
     const theme = useTheme();
+    
+
+    // Find the active nav item
+    const activeNavItem = nav.find(item => item.collection === active);
+
     const [open, setOpen] = React.useState(false);
-
-    // React.useEffect(() => {
-    //     if (!nxAdmin?.active) {
-    //         dispatch(setNXAdmin('active', 'users'));
-    //     }
-    // }, [dispatch, nxAdmin]);
-
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -127,36 +129,47 @@ export default function Layout({ config }: { config: any }) {
                 sx={{
                     backgroundColor: theme.palette.background.paper,
                     border: 0,
+                    boxShadow: 0,
                 }}
             >
                 <Toolbar>
                     <IconButton
-                        color="inherit"
+                        color="primary"
                         aria-label="open drawer"
                         onClick={handleDrawerOpen}
                         edge="start"
                         sx={[
                             {
-                                marginRight: 5,
+                                marginRight: 3,
                             },
                             open && { display: 'none' },
                         ]}
                     >
-                        <ThemedIcon config={config}/>
+                        <Icon icon='right' />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        {config.siteName} NX
+                    <ThemedIcon config={config} />
+                    <Typography sx={{ml:2}} variant="h6" color="primary" noWrap component="div">
+                        {config.siteName} Admin
                     </Typography>
                 </Toolbar>
             </AppBar>
-            <Drawer variant="permanent" open={open}>
-                <DrawerHeader>
+            <Drawer variant="permanent" open={open} sx={{ border: 0, }}>
+                <DrawerHeader sx={{ border: 0, }}>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <Icon icon="right" /> : <Icon icon="left" />}
+                        {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
                     </IconButton>
                 </DrawerHeader>
-                <Divider />
                 <List>
+                    <MiniListItem 
+                        open={open}
+                        options={{
+                            label: 'Home',
+                            icon: 'home',
+                            route: '/nx-admin',
+                        }}
+                    />
+                    <Divider sx={{my:2}}/>
+                   
                     {nav.map((item, i: number) => (
                         <ListItem
                             key={`item_${i}`}
@@ -193,7 +206,16 @@ export default function Layout({ config }: { config: any }) {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                <Dashboard nav={nav} />
+                {/* <pre>active: {JSON.stringify(active, null, 2)}</pre> */}
+                {!active && <Dashboard nav={nav} />}
+                {active && activeNavItem && (
+                    <Collection
+                        collection={activeNavItem.collection}
+                        title={activeNavItem.title}
+                        description={activeNavItem.description}
+                        icon={activeNavItem.icon}
+                    />
+                )}
             </Box>
         </Box>
     );

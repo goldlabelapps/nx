@@ -7,18 +7,12 @@
         "icon": "users"
     },
     {
-        "collection": "share",
-        "single": "share",
-        "title": "Share",
-        "description": "Viral marketing landing pages",
-        "icon": "share"
-    },
-    {
-        "collection": "notify",
-        "single": "notification",
-        "title": "Notifications",
-        "description": "Notifications sent by email, SMS or push",
-        "icon": "notify"
+        "collection": "tenants",
+        "level": 2,
+        "single": "tenant",
+        "title": "Tenants",
+        "description": "Only level 2 users should see this",
+        "icon": "tenant"
     },
     {
         "collection": "media",
@@ -28,10 +22,10 @@
         "icon": "media"
     },
     {
-        "collection": "tenants",
-        "single": "tenant",
-        "title": "Tenants",
-        "description": "Only level 2 users should see this",
-        "icon": "admin"
+        "collection": "share",
+        "single": "share",
+        "title": "Share",
+        "description": "Viral marketing landing pages",
+        "icon": "share"
     }
 ]
