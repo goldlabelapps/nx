@@ -5,11 +5,11 @@
     "url": "https://listingslab.com",
     "icons": {
         "light": {
-            "icon": "/mcuk/favicon.png",
+            "icon": "/shared/svg/characters/punk.svg",
             "favicon": "/mcuk/favicon.ico"
         },
         "dark": {
-            "icon": "/mcuk/favicon.png",
+            "icon": "/shared/svg/characters/punk.svg",
             "favicon": "/mcuk/favicon.ico"
         }
     },
@@ -20,7 +20,7 @@
     "cartridges": {
         "designSystem": {
             "themeSwitching": false,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "light": {
                     "mode": "light",
@@ -38,7 +38,7 @@
                     "background": "#000",
                     "paper": "#000",
                     "text": "#fff",
-                    "border": "#17A1AC"
+                    "border": "#19646a"
                 }
             }
         }

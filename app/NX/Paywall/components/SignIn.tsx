@@ -112,7 +112,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                                 ),
                             }}
                         />
-                        {(error || externalError) && <Typography color="error">{error || externalError}</Typography>}
+                        
                     </CardContent>
                     <CardActions>
                         <Button
@@ -133,7 +133,9 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                             Sign In
                         </Button>
                     </CardActions>
-
+                    <CardContent>
+                        {(error || externalError) && <Typography sx={{ mt: 2 }} color="primary">{error || externalError}</Typography>}
+                    </CardContent>
                 </Box>
             </form>
         </DesignSystem>

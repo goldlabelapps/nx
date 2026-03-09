@@ -2,7 +2,7 @@
 order: 1
 slug: /
 icon: home
-title: MCUK
+title: Diary of a pothead
 description: Medical Cannabis UK
 smartImage: monkey-doctor
 tags: medical cannabis, uk, prescription, licensed pharmacies, CBPM, legal,  

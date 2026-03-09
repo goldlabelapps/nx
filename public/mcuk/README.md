@@ -1,3 +1,13 @@
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#17A1AC",
+                    "secondary": "rgb(92, 244, 255)",
+                    "background": "#1a5054",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#17A1AC"
+                }
+
         "commerce": {
             "enabled": true,
             "ads": [
