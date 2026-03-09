@@ -14,7 +14,10 @@ import {
     Typography,
     Divider,
 } from '@mui/material';
-import { Icon } from '../DesignSystem';
+import { 
+    Icon,
+    ThemedIcon,
+} from '../DesignSystem';
 import {
     useNXAdmin,
     setNXAdmin,
@@ -118,7 +121,14 @@ export default function Layout({ config }: { config: any }) {
 
     return (
         <Box sx={{ display: 'flex' }}>
-            <AppBar position="fixed" open={open}>
+            <AppBar 
+                position="fixed" 
+                open={open}
+                sx={{
+                    backgroundColor: theme.palette.background.paper,
+                    border: 0,
+                }}
+            >
                 <Toolbar>
                     <IconButton
                         color="inherit"
@@ -132,7 +142,7 @@ export default function Layout({ config }: { config: any }) {
                             open && { display: 'none' },
                         ]}
                     >
-                        <Icon icon="dashboard" />
+                        <ThemedIcon config={config}/>
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         {config.siteName} NX
@@ -180,13 +190,10 @@ export default function Layout({ config }: { config: any }) {
                 <Divider />
                 <Box sx={{flexGrow: 1}} />
                 <NXAdminMenu />
-
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
                 <Dashboard nav={nav} />
-                { }
-                {/* <pre>nxAdmin: {JSON.stringify(nxAdmin, null, 2)}</pre> */}
             </Box>
         </Box>
     );
