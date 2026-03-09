@@ -5,7 +5,6 @@ import {
   ListItemButton,
   ListItemText,
   ListItemAvatar,
-  List,
   Avatar,
 } from '@mui/material';
 import {
@@ -61,18 +60,9 @@ export default function ReadDoc({
 
   const crud = useCRUD();
   const { docs, typescript } = crud[collection];
-  const firstDoc = {
-    avatar: '/shared/svg/goldlabel_favicon.svg',
-    name: 'Display Name',
-    email: 'test@test.com',
-
-  };
   return <>
-    {docs.map((doc: any, i: number) => (
-      <SingleDoc key={`doc_${i}`} collection={collection} doc={doc} />
-    ))  }
+    {docs.map((doc: any) => (
+      <SingleDoc key={doc.id} collection={collection} doc={doc} />
+    ))}
   </>;
-  return <List>
-    <SingleDoc doc={firstDoc} collection={collection} />
-  </List>
 }
