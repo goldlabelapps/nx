@@ -25,6 +25,8 @@ function SingleDoc({
 }) {
   const dispatch = useDispatch();
   const {
+    label,
+    description,
     avatar,
     name,
     email,
@@ -37,18 +39,18 @@ function SingleDoc({
     dispatch(setCRUD(collection, 'mode', 'update'));
   }
 
-  return <ListItemButton onClick={handleSelect} disableGutters>
+  return <ListItemButton onClick={handleSelect}>
     {/* <pre>SingleDoc {JSON.stringify(doc, null, 2)}</pre> */}
 
-    <ListItemAvatar>
+    {/* <ListItemAvatar>
       <Avatar
         src={avatar}
         alt={name || 'No Name'}
       />
-    </ListItemAvatar>
+    </ListItemAvatar> */}
     <ListItemText
-      primary={name || 'No Name'}
-      secondary={email || 'No Email'}
+      primary={label}
+      secondary={description}
     />
   </ListItemButton>
 }
@@ -65,8 +67,12 @@ export default function ReadDoc({
     email: 'test@test.com',
 
   };
-
-  return <List dense>
+  return <>
+    {docs.map((doc: any, i: number) => (
+      <SingleDoc key={`doc_${i}`} collection={collection} doc={doc} />
+    ))  }
+  </>;
+  return <List>
     <SingleDoc doc={firstDoc} collection={collection} />
   </List>
 }

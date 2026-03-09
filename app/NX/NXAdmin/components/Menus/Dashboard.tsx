@@ -8,18 +8,27 @@ import {
     Typography,
 } from '@mui/material';
 import { Icon } from '../../../../NX/DesignSystem';
+import { useDispatch } from '../../../../NX/Uberedux';
+import {setNXAdmin} from '../../../NXAdmin'
 
 export default function Dashboard({ nav }: { nav: any }) {
 
-    const router = useRouter();
+    const dispatch = useDispatch();
+
+    const handleClick = (item: any) => {
+        if (item.collection) {
+            dispatch(setNXAdmin('active', item.collection));
+        }
+    };
 
     return (
         <>
             {Array.isArray(nav) && nav.map((item: any, i: number) => (
                 <ButtonBase
+                    onClick={() => handleClick(item)}
                     key={`navItem_${i}`}
                     sx={{
-                        m:1,
+                        my:1,
                         textAlign: 'left',
                         width: '100%',
                     }}
@@ -33,7 +42,7 @@ export default function Dashboard({ nav }: { nav: any }) {
                         }}
                     >
                         <Box sx={{mr:2}}>
-                            <Icon icon={item.icon} />
+                            <Icon icon={item.icon} color="primary"/>
                         </Box>
 
                         <Box>
