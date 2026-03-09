@@ -7,6 +7,7 @@ import CloseAdmin from './components/Menus/CloseAdmin';
 import NXAdminMenu from './components/Menus/NXAdminMenu';
 import { setNXAdmin } from './actions/setNXAdmin';
 import { setCRUD } from './actions/setCRUD';
+import { readTypescript } from './actions/readTypescript';
 import { initCollection } from './actions/initCollection';
 import { useNXAdmin } from './hooks/useNXAdmin';
 import { useCRUD } from './hooks/useCRUD';
@@ -26,6 +27,7 @@ export {
     TypeScript,
     setNXAdmin,
     setCRUD,
+    readTypescript,
     initCollection,
     useCRUD,
     useNXAdmin,

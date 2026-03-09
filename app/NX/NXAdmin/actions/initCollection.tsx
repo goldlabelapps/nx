@@ -15,6 +15,7 @@ export const initCollection = (
                 subscribed: true,
                 mode: 'read',
                 docs: [],
+                typescript: {},
             };
             const state = getState();
             const currentNxAdmin = (state?.redux?.nxAdmin) || {};
@@ -24,7 +25,7 @@ export const initCollection = (
             dispatch(setUbereduxKey({ key: 'nxAdmin', value: updatedNxAdmin }));
 
             // Subscribe to Firestore collection docs
-            subscribeToCollectionDocs(collection, (docs) => {
+            subscribeToCollectionDocs(collection, (docs, typescript) => {
                 dispatch(setUbereduxKey({
                     key: 'nxAdmin',
                     value: {
@@ -34,6 +35,7 @@ export const initCollection = (
                             [collection]: {
                                 ...getState().redux.nxAdmin.crud[collection],
                                 docs,
+                                typescript,
                             },
                         },
                     },

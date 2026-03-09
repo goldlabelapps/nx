@@ -39,7 +39,7 @@ export default function Collection({
   const collectionState = useCollection(collection);
   const state = collectionState[collection];
 
-  const { mode, docs } = state || {};
+  const { mode, selected } = state || {};
 
   const dispatch = useDispatch();
   const active = useActive();
@@ -73,13 +73,12 @@ export default function Collection({
     <>
       <Card variant="outlined">
         <CardHeader
-          action={<Button
-            endIcon={<Icon icon="new" />}
-            variant="contained"
+          action={<IconButton
+            color="primary"
             onClick={() => handleNew(collection)}
           >
-            New
-          </Button>}
+            <Icon icon="new" />
+          </IconButton>}
           title={title}
           subheader={description}
           avatar={<Icon icon={icon as any} color="primary" />}
@@ -93,9 +92,6 @@ export default function Collection({
           }}
         />
         <CardContent>
-
-          {/* <pre>docs: {JSON.stringify(docs, null, 2)}</pre> */}
-
           {isActive && <>
             {mode === 'read' && <ReadDoc collection={collection} />}
             {mode === 'create' && <CreateDoc collection={collection} />}
@@ -103,6 +99,7 @@ export default function Collection({
             {mode === 'delete' && <DeleteDoc collection={collection} />}
           </>}
         </CardContent>
+        {/* <pre>state: {JSON.stringify(state, null, 2)}</pre> */}
       </Card>
     </>
   );
