@@ -127,48 +127,45 @@ export default function Layout({ config }: { config: any }) {
                 position="fixed" 
                 open={open}
                 sx={{
-                    backgroundColor: theme.palette.background.paper,
-                    border: 0,
+                    background: 0,
                     boxShadow: 0,
                 }}
             >
-                <Toolbar>
-                    <IconButton
-                        color="primary"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={[
-                            {
-                                marginRight: 3,
-                            },
-                            open && { display: 'none' },
-                        ]}
-                    >
-                        <Icon icon='right' />
-                    </IconButton>
-                    <ThemedIcon config={config} />
-                    <Typography sx={{ml:2}} variant="h6" color="primary" noWrap component="div">
+                <Toolbar sx={{background: 0}}>
+                    {!open && (
+                        <IconButton
+                            color="primary"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            sx={{ marginRight: 3 }}
+                        >
+                            {theme.direction === 'rtl' ? <Icon icon="left" /> : <Icon icon="right" />}
+                        </IconButton>
+                    )}
+                    <Typography sx={{ml:2}} color='primary' variant="h6" component="h1">
                         {config.siteName} Admin
                     </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open} sx={{ border: 0, }}>
                 <DrawerHeader sx={{ border: 0, }}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
-                    </IconButton>
+                    {open && (
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
+                        </IconButton>
+                    )}
                 </DrawerHeader>
-                <List>
+                <List sx={{ mt: 1 }}>
                     <MiniListItem 
                         open={open}
                         options={{
-                            label: 'Home',
-                            icon: 'home',
+                            label: 'Reset',
+                            icon: 'reset',
                             route: '/nx-admin',
                         }}
                     />
-                    <Divider sx={{my:2}}/>
+                    <Divider sx={{my:1}}/>
                    
                     {nav.map((item, i: number) => (
                         <ListItem
