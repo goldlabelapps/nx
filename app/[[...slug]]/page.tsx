@@ -29,7 +29,6 @@ import {
 import { RenderMarkdown } from '../NX/Shortcodes';
 import { Virus } from '../NX/Virus';
 
-
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
     const slugArr = resolvedParams?.slug || [];
@@ -166,10 +165,6 @@ export default async function Page(props: any) {
                                 mode="desktop"
                             />
                         </Box>
-                        {/* Settings at bottom */}
-                        {/* <Box>
-                            <Settings />
-                        </Box> */}
                     </Box>
 
                     <Box
@@ -195,7 +190,7 @@ export default async function Page(props: any) {
 
                                 <Box sx={{ mx: 1 }}>
                                     {data.icon && (
-                                        <Icon icon={data.icon} color="inherit" />
+                                        <Icon icon={data.icon} color="primary" />
                                     )}
                                 </Box>
                                 <Box sx={{ flexGrow: 1 }}>

@@ -1,4 +1,6 @@
 import NXAdmin from './NXAdmin';
+import Layout from './Layout';
+import Dashboard from './components/Menus/Dashboard';
 import { CreateDoc, ReadDoc, UpdateDoc, DeleteDoc } from './components/CRUD';
 import { Collection } from './components/Collection';
 import { TypeScript } from './components/TypeScript';
@@ -16,6 +18,8 @@ import { useActive } from './hooks/useActive';
 
 export {
     NXAdmin,
+    Layout,
+    Dashboard,
     NXAdminBtn,
     CloseAdmin,
     NXAdminMenu,

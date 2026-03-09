@@ -2,12 +2,9 @@
 import * as React from 'react';
 import type { I_ReadDoc } from '../../types';
 import {
-  Box,
   ListItemButton,
   ListItemText,
   ListItemAvatar,
-  CardContent,
-  Typography,
   List,
   Avatar,
 } from '@mui/material';
@@ -35,16 +32,19 @@ function SingleDoc({
   } = doc || {};
 
   const handleSelect = () => {
-    console.log('Selected doc:', doc);
+    // console.log('Selected doc:', doc);
     dispatch(setCRUD(collection, 'selected', doc));
     dispatch(setCRUD(collection, 'mode', 'update'));
   }
 
-  return <ListItemButton onClick={handleSelect}>
+  return <ListItemButton onClick={handleSelect} disableGutters>
     {/* <pre>SingleDoc {JSON.stringify(doc, null, 2)}</pre> */}
 
     <ListItemAvatar>
-      <Avatar src={avatar} alt={name || 'No Name'} sx={{ width: 64, height: 64, mb: 2 }} />
+      <Avatar
+        src={avatar}
+        alt={name || 'No Name'}
+      />
     </ListItemAvatar>
     <ListItemText
       primary={name || 'No Name'}
@@ -59,7 +59,12 @@ export default function ReadDoc({
 
   const crud = useCRUD();
   const { docs, typescript } = crud[collection];
-  const firstDoc = docs?.[0];
+  const firstDoc = {
+    avatar: '/shared/svg/goldlabel_favicon.svg',
+    name: 'Display Name',
+    email: 'test@test.com',
+
+  };
 
   return <List dense>
     <SingleDoc doc={firstDoc} collection={collection} />

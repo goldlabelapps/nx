@@ -16,6 +16,7 @@ export const initCollection = (
                 mode: 'read',
                 docs: [],
                 typescript: {},
+                selected: null
             };
             const state = getState();
             const currentNxAdmin = (state?.redux?.nxAdmin) || {};

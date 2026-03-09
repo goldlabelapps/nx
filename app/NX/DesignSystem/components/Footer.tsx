@@ -49,16 +49,17 @@ export default function Footer({
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: 'flex', }}>
-						<Box sx={{ m: 2 }}>
+						<Box sx={{ my: 2 }}>
+							<SettingsMenu />
+						</Box>
+						<Box sx={{ my: 2 }}>
 							<Nav
 								mode="mobile"
 								navItems={navItems as I_NestedNav["navItems"]}
 								frontmatter={frontmatter}
 							/>
 						</Box>
-						<Box sx={{ m: 2 }}>
-							<SettingsMenu />
-						</Box>
+						
 					</Box>
 					{children && (
 						<Box sx={{ ml: 2 }}>

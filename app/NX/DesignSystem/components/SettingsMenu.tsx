@@ -49,7 +49,7 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ config }) => {
                 aria-label={'Settings'}
                 onClick={handleOpen}
             >
-                <Icon icon="right" />
+                <Icon icon="settings" />
             </IconButton>
             <Menu
                 anchorEl={anchorEl}
@@ -58,7 +58,6 @@ const SettingsMenu: React.FC<SettingsMenuProps> = ({ config }) => {
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 transformOrigin={{ vertical: 'bottom', horizontal: 'center' }}
             >
-                <Box sx={{ width: 300 }} />
                 <ListItemButton
                     id="theme-toggle-btn"
                     onClick={handleThemeModeToggle}
