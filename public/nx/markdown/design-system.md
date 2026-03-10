@@ -1,11 +1,11 @@
 ---
 order: 50
-slug: /nx/design-system
+slug: /design-system
 title: Design System
 description: Based on Material UI
 tags: features, cartridges,
 icon: cartridge
-image: https://live.staticflickr.com/65535/55066171380_fffff7370e_b.jpg
+image: https://live.staticflickr.com/65535/55139727398_05d97ed1d6_b.jpg
 ---
 
 > Material UI is a React component library that provides a consistent design system, layout primitives, and ready-made UI components

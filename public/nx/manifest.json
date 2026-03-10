@@ -1,8 +1,8 @@
 {
   "short_name": "NX",
   "name": "NX",
-  "theme_color": "#fff",
-  "background_color": "#fff",
+  "theme_color": "#073334",
+  "background_color": "#073334",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",

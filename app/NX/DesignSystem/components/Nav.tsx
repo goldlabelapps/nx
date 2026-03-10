@@ -135,6 +135,7 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
+                            asd
                         <List component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
