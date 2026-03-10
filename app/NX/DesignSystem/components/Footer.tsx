@@ -57,9 +57,6 @@ export default function Footer({
 								frontmatter={frontmatter}
 							/>
 						</Box>
-						<Box sx={{ my: 2 }}>
-							<SettingsMenu />
-						</Box>
 					</Box>
 					{children && (
 						<Box sx={{ ml: 2 }}>

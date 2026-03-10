@@ -1,10 +1,10 @@
 ---
 order: 50
-slug: /nx/flash/animation
+slug: /flash/animation
 title: Animation
 description: With GreenSock Animation Platform
 tags: Flash
-image: https://live.staticflickr.com/65535/55066171380_fffff7370e_b.jpg
+image: https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg
 icon: flash
 ---
 

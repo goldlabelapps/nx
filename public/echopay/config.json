@@ -32,9 +32,9 @@
                     "primary": "#A5C7FF",
                     "secondary": "#FFF",
                     "background": "#184791",
-                    "paper": "#1D3B6B",
+                    "paper": "#2C60B3",
                     "text": "#fff",
-                    "border": "#275296"
+                    "border": "#2457A9"
                 },
                 "light": {
                     "mode": "light",

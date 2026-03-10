@@ -1,12 +1,12 @@
 ---
 order: 70
-slug: /nx/uberedux
+slug: /uberedux
 title: Uberedux
 description: All apps need state management
 tags: features, uberedux
 smartImage: mindful
 icon: cartridge
-image: https://live.staticflickr.com/65535/55066171380_fffff7370e_b.jpg
+image: https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg
 ---
 
 > Otherwise you'd be back in jQuery callback hell. Nobody wants that.

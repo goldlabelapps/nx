@@ -1,62 +1,3 @@
-```markdown
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id arcu ac nisi tempus ultrices id non ex. Donec eleifend pulvinar nunc vitae tristique. Etiam quis tortor ex. Mauris feugiat at ligula a tincidunt. Fusce eu arcu maximus, auctor felis sit amet, imperdiet nunc. Sed ultrices pulvinar dui sed sodales. Nam eget maximus sem. Proin sed maximus sem. Quisque a ultrices massa. Donec cursus aliquet egestas. Maecenas nec turpis vitae massa rutrum eleifend sit amet ac enim. Phasellus pellentesque non augue ac porta.
-
-Aliquam malesuada sed risus quis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sit amet sagittis arcu. Suspendisse fringilla neque eget quam lacinia, nec mollis lectus imperdiet. Aenean venenatis ligula eros, et congue dolor vestibulum id. Praesent pellentesque fringilla tortor, vel eleifend urna convallis egestas. Suspendisse et condimentum nulla. Sed malesuada lorem aliquet risus finibus laoreet. Donec sollicitudin augue semper pulvinar pulvinar. Suspendisse eleifend dui vitae augue suscipit pulvinar.
-
-Donec volutpat id velit quis cursus. Suspendisse blandit posuere velit et ultricies. Proin egestas eu sapien vulputate tempor. Quisque molestie dignissim pellentesque. Morbi sodales mi sed pulvinar tempus. Integer hendrerit tellus ut consequat euismod. Vivamus placerat a eros vel mollis.
-```
-
-
-
-
-```js
-import { getFirebaseFirestore } from '../lib/firebase';
-import { collection, onSnapshot } from 'firebase/firestore';
-import { query, where, doc, getDoc } from 'firebase/firestore'; React.useEffect(() => {
-  dispatch(setFeedback({
-    severity: 'success',
-    title: 'Welcome to NX Admin'
-  }))
-  dispatch(setNXAdmin('CRUDMode', 'read'));
-  // List collections 
-  // (Firestore does not support listing collections client-side directly)
-  // You must know the collection names or fetch them from config or backend
-  const collectionsToSubscribe = [
-    'share',
-  ];
-
-  // Subscribe to all collections in Firestore
-  const db = getFirebaseFirestore();
-  let unsubscribers: (() => void)[] = [];
-
-  // Helper to fetch all collection names
-  async function subscribeToCollections() {
-    collectionsToSubscribe.forEach((colName) => {
-      const colRef = collection(db, colName);
-      const q = query(colRef, where('tenant', '==', tenant));
-      const unsubscribe = onSnapshot(q, async (snapshot: import('firebase/firestore').QuerySnapshot) => {
-        const docs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        const typescriptDocSnap = await getDoc(doc(colRef, 'typescript'));
-        let typescript = undefined;
-        if (typescriptDocSnap.exists()) {
-          typescript = typescriptDocSnap.data();
-        }
-        dispatch(setNXAdmin(colName, { typescript, docs }));
-      });
-      unsubscribers.push(unsubscribe);
-    });
-  }
-
-  subscribeToCollections();
-
-  return () => {
-    unsubscribers.forEach(unsub => unsub());
-  };
-}, [dispatch]);
-```
-
-
-
 # NX Admin
 
 NX Admin covers the management of data, storage users etc. 
@@ -70,3 +11,13 @@ Interestingly, all data on the screen is a live representation of what's in the 
 ### Links
 
 [Cartridges](https://github.com/goldlabelapps/nx/tree/master/app/NX)
+
+## Lorem Ipsum
+
+```markdown
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas id arcu ac nisi tempus ultrices id non ex. Donec eleifend pulvinar nunc vitae tristique. Etiam quis tortor ex. Mauris feugiat at ligula a tincidunt. Fusce eu arcu maximus, auctor felis sit amet, imperdiet nunc. Sed ultrices pulvinar dui sed sodales. Nam eget maximus sem. Proin sed maximus sem. Quisque a ultrices massa. Donec cursus aliquet egestas. Maecenas nec turpis vitae massa rutrum eleifend sit amet ac enim. Phasellus pellentesque non augue ac porta.
+
+Aliquam malesuada sed risus quis mollis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sit amet sagittis arcu. Suspendisse fringilla neque eget quam lacinia, nec mollis lectus imperdiet. Aenean venenatis ligula eros, et congue dolor vestibulum id. Praesent pellentesque fringilla tortor, vel eleifend urna convallis egestas. Suspendisse et condimentum nulla. Sed malesuada lorem aliquet risus finibus laoreet. Donec sollicitudin augue semper pulvinar pulvinar. Suspendisse eleifend dui vitae augue suscipit pulvinar.
+
+Donec volutpat id velit quis cursus. Suspendisse blandit posuere velit et ultricies. Proin egestas eu sapien vulputate tempor. Quisque molestie dignissim pellentesque. Morbi sodales mi sed pulvinar tempus. Integer hendrerit tellus ut consequat euismod. Vivamus placerat a eros vel mollis.
+```

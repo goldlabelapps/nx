@@ -1,4 +1,6 @@
+"use client";
 import * as React from 'react';
+
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -16,13 +18,13 @@ import {
 } from '@mui/material';
 import { 
     Icon,
-    ThemedIcon,
+    useDesignSystem,
+    setDesignSystem,
 } from '../DesignSystem';
 import {
     useNXAdmin,
     setNXAdmin,
     Dashboard,
-    NXAdminMenu,
     Collection,
     MiniListItem,
 } from '../NXAdmin';
@@ -57,7 +59,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
 }));
 
@@ -107,12 +108,17 @@ export default function Layout({ config }: { config: any }) {
     const nxAdmin = useNXAdmin();
     const { active } = nxAdmin;
     const theme = useTheme();
-    
-
-    // Find the active nav item
     const activeNavItem = nav.find(item => item.collection === active);
+    const [open, setOpen] = React.useState(true);
+    const designSystem = useDesignSystem();
+    const currentThemeMode = designSystem?.themeMode ?? 'light';
 
-    const [open, setOpen] = React.useState(false);
+    const handleThemeModeToggle = () => {
+        const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
+        dispatch(setDesignSystem('themeMode', nextMode));
+    }
+
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -127,49 +133,36 @@ export default function Layout({ config }: { config: any }) {
                 position="fixed" 
                 open={open}
                 sx={{
-                    backgroundColor: theme.palette.background.paper,
-                    border: 0,
+                    background: 0,
                     boxShadow: 0,
                 }}
             >
-                <Toolbar>
-                    <IconButton
-                        color="primary"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        sx={[
-                            {
-                                marginRight: 3,
-                            },
-                            open && { display: 'none' },
-                        ]}
-                    >
-                        <Icon icon='right' />
-                    </IconButton>
-                    <ThemedIcon config={config} />
-                    <Typography sx={{ml:2}} variant="h6" color="primary" noWrap component="div">
+                <Toolbar sx={{background: 0}}>
+                    {!open && (
+                        <IconButton
+                            color="primary"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            edge="start"
+                            sx={{ marginRight: 3 }}
+                        >
+                            {theme.direction === 'rtl' ? <Icon icon="left" /> : <Icon icon="right" />}
+                        </IconButton>
+                    )}
+                    <Typography sx={{m:1}} color='primary' variant="h6" component="h1">
                         {config.siteName} Admin
                     </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open} sx={{ border: 0, }}>
                 <DrawerHeader sx={{ border: 0, }}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
-                    </IconButton>
+                    {open && (
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
+                        </IconButton>
+                    )}
                 </DrawerHeader>
                 <List>
-                    <MiniListItem 
-                        open={open}
-                        options={{
-                            label: 'Home',
-                            icon: 'home',
-                            route: '/nx-admin',
-                        }}
-                    />
-                    <Divider sx={{my:2}}/>
-                   
                     {nav.map((item, i: number) => (
                         <ListItem
                             key={`item_${i}`}
@@ -202,7 +195,37 @@ export default function Layout({ config }: { config: any }) {
                 </List>
                 <Divider />
                 <Box sx={{flexGrow: 1}} />
-                <NXAdminMenu />
+                <MiniListItem
+                    open={open}
+                    onClick={() => {
+                        window.location.href = '/nx-admin';
+                    }}
+                    options={{
+                        label: 'Reset',
+                        icon: 'reset',
+                    }}
+                />
+
+                <MiniListItem
+                    open={open}
+                    onClick={handleThemeModeToggle}
+                    options={{
+                        label: currentThemeMode === 'light' ? 'Dark mode' : 'Light mode',
+                        icon: currentThemeMode === 'light' ? 'darkmode' : 'lightmode',
+                    }}
+                />
+
+                <MiniListItem
+                    open={open}
+                    onClick={() => {
+                        window.location.href = '/';
+                    }}
+                    options={{
+                        label: 'Back to site',
+                        icon: 'left',
+                    }}
+                />
+
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />

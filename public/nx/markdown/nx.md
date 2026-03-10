@@ -5,7 +5,7 @@ title: NX
 description: Built on Cartridges
 tags: NX, Features, n64, Cartridges
 icon: cartridge
-image: https://live.staticflickr.com/65535/55066171380_fffff7370e_b.jpg
+image: https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg
 ---
 
 > They're called Cartridges Because we're old enough to have played Goldeneye on the N64

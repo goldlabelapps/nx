@@ -4,7 +4,7 @@
     "description": "Multi-tenant NextJS",
     "url": "https://goldlabel.pro",
     "images": {
-        "light": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
+        "light": "https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg",
         "dark": "/nx/gif/dark.gif"
     },
     "icons": {
@@ -20,7 +20,7 @@
     "cartridges": {
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",

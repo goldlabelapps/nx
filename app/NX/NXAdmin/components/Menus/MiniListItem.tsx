@@ -15,9 +15,11 @@ import { Icon } from '../../../../NX/DesignSystem';
 
 export default function MiniListItem({ 
     open,
-options 
+    options,
+    onClick, 
 }: { 
   open: boolean;
+  onClick: () => void;
   options: {
     label: string;
     icon: string;
@@ -25,8 +27,8 @@ options
   }
 }) {
 
-    const dispatch = useDispatch();
-    const router = useRouter();
+    // const dispatch = useDispatch();
+    // const router = useRouter();
     const {
         icon,
         label = 'Dashboard',
@@ -38,9 +40,7 @@ options
           disablePadding
           sx={{ display: 'block' }}>
           <ListItemButton
-              onClick={() => {
-                window.location.href = route;
-              }}
+              onClick={onClick}
               sx={[
                   { minHeight: 48, px: 2.5 },
                   open ? { justifyContent: 'initial' } : { justifyContent: 'center' },

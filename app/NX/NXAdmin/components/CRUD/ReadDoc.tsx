@@ -5,6 +5,7 @@ import {
   ListItemButton,
   ListItemText,
   ListItemAvatar,
+  ListItemIcon,
   List,
   Avatar,
 } from '@mui/material';
@@ -15,6 +16,9 @@ import {
 import {
   useDispatch,
 } from '../../../Uberedux';
+import {
+  Icon,
+} from '../../../DesignSystem';
 
 function SingleDoc({
   collection,
@@ -28,6 +32,7 @@ function SingleDoc({
     label,
     description,
     avatar,
+    icon,
     name,
     email,
     // id, authId, level, tenant,
@@ -41,13 +46,21 @@ function SingleDoc({
 
   return <ListItemButton onClick={handleSelect}>
     {/* <pre>SingleDoc {JSON.stringify(doc, null, 2)}</pre> */}
+    { avatar && <>
+      <ListItemAvatar>
+        <Avatar
+          src={avatar}
+          alt={label}
+        />
+      </ListItemAvatar>
+      </>}
 
-    {/* <ListItemAvatar>
-      <Avatar
-        src={avatar}
-        alt={name || 'No Name'}
-      />
-    </ListItemAvatar> */}
+    { icon && <>
+      <ListItemIcon>
+        <Icon icon={icon as any} color="primary" />
+      </ListItemIcon>
+    </>}
+
     <ListItemText
       primary={label}
       secondary={description}
@@ -72,7 +85,4 @@ export default function ReadDoc({
       <SingleDoc key={`doc_${i}`} collection={collection} doc={doc} />
     ))  }
   </>;
-  return <List>
-    <SingleDoc doc={firstDoc} collection={collection} />
-  </List>
 }

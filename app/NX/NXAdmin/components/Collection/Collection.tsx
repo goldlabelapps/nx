@@ -93,7 +93,7 @@ export default function Collection({
       <Card variant="outlined">
         <CardHeader
           title={cardTitle}
-          subheader={cardSubheader}
+          // subheader={cardSubheader}
           action={<>
          
             <IconButton
@@ -102,7 +102,7 @@ export default function Collection({
             >
               <Icon icon="new" />
             </IconButton>
-            <CancelActive collection={collection} />
+            {/* <CancelActive collection={collection} /> */}
 
           </>}
           avatar={<Icon icon={icon as any} color="primary" />}

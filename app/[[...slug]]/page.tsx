@@ -98,6 +98,8 @@ export default async function Page(props: any) {
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themedImage = config?.images?.[themeMode] || null;
 
+    const backgroundColor = config?.cartridges?.designSystem?.themes?.[themeMode]?.background;
+
 
     const meta = getMeta({
         siteName: config.siteName,
@@ -116,7 +118,8 @@ export default async function Page(props: any) {
                         sx={{
                             top: 0,
                             boxShadow: 0,
-                            background: 'transparent',
+                            // background: backgroundColor,
+                            background: 0,
                         }}>
                         <Container maxWidth="lg">
                             <CardHeader
@@ -130,8 +133,7 @@ export default async function Page(props: any) {
                                 >
                                     {title}
                                 </Typography>}
-                                action={<>
-                                </>}
+                                action={null}
                             />
                         </Container>
                     </AppBar>

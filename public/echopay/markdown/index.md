@@ -2,7 +2,7 @@
 order: 1
 slug: /
 title: EchoPay
-description: Adobe Commerce Plugin
+description: Payment Plugin
 icon: cash
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
 image: /echopay/gif/echopay_blue.gif
