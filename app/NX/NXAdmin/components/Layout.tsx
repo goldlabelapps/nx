@@ -20,16 +20,16 @@ import {
     Icon,
     useDesignSystem,
     setDesignSystem,
-} from '../DesignSystem';
+} from '../../DesignSystem';
 import {
     useNXAdmin,
     setNXAdmin,
     Dashboard,
     Collection,
     MiniListItem,
-} from '../NXAdmin';
-import nav from './nav.json';
-import { useDispatch } from '../Uberedux';
+} from '../../NXAdmin';
+import nav from '../nav.json';
+import { useDispatch } from '../../Uberedux';
 
 const drawerWidth = 220;
 
@@ -237,6 +237,7 @@ export default function Layout({ config }: { config: any }) {
                         title={activeNavItem.title}
                         description={activeNavItem.description}
                         icon={activeNavItem.icon}
+                        single={activeNavItem.single}
                     />
                 )}
             </Box>

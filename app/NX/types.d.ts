@@ -270,6 +270,7 @@ export type I_Icon = {
     | 'fullstack'
     | 'web3d'
     | 'rocket'
+    | 'required'
     | 'logs'
     | 'dashboard'
     | 'bike'

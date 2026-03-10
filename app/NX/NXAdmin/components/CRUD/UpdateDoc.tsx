@@ -3,12 +3,13 @@ import * as React from 'react';
 import {
   Box,
   Button,
+  CardActions,
   IconButton,
   Typography,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
-import { setCRUD, useCRUD } from '../../../NXAdmin';
+import { setCRUD, useCRUD, TypeScript } from '../../../NXAdmin';
 
 export interface I_UpdateDoc {
   collection: string;
@@ -28,26 +29,18 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
   };
 
   return (
-    <Box>
-      <Box>
-        <Typography variant="h6">
-          Update
-        </Typography>
-        <pre>typeName: {JSON.stringify(typeName, null, 2)}</pre>
-      </Box>
-
-
+    <CardActions>
+      {/* Render TypeScript panel for the current collection */}
+      <Box sx={{ flexGrow: 1 }} />
+      {/* <Box>
+        <pre>typescript: {JSON.stringify(typescript, null, 2)}</pre>
+      </Box> */}
       <Box sx={{
         display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: 1,
       }}>
-        <Box sx={{ flexGrow: 1 }} />
-
-        <Box>
+        <Box sx={{ display: 'flex', gap: 1}}>
+          <TypeScript typescript={typescript} />
           <Button
-            disabled
             startIcon={<Icon icon="save" />}
             variant="contained"
             color="primary">
@@ -55,7 +48,6 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
           </Button>
         </Box>
       </Box>
-
-    </Box>
+    </CardActions>
   );
 }

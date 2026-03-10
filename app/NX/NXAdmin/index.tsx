@@ -1,5 +1,5 @@
 import NXAdmin from './NXAdmin';
-import Layout from './Layout';
+import Layout from './components/Layout';
 import Dashboard from './components/Menus/Dashboard';
 import { CreateDoc, ReadDoc, UpdateDoc, DeleteDoc } from './components/CRUD';
 import { Collection } from './components/Collection';

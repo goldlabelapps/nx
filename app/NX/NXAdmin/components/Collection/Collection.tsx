@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import {
+  Button,
   Card,
   Tooltip,
   CardHeader,
@@ -26,6 +27,7 @@ export interface I_Collection {
   title: string;
   description?: string;
   icon: string;
+  single?: string;
 };
 
 export default function Collection({
@@ -33,6 +35,7 @@ export default function Collection({
   title,
   description,
   icon,
+  single,
 }: I_Collection) {
 
   const collectionState = useCollection(collection);
@@ -93,17 +96,15 @@ export default function Collection({
       <Card variant="outlined">
         <CardHeader
           title={cardTitle}
-          // subheader={cardSubheader}
           action={<>
-         
-            <IconButton
+            <Button
+              variant="contained"
               color="primary"
               onClick={() => handleNew(collection)}
             >
+              New {single}
               <Icon icon="new" />
-            </IconButton>
-            {/* <CancelActive collection={collection} /> */}
-
+            </Button>
           </>}
           avatar={<Icon icon={icon as any} color="primary" />}
           sx={{
