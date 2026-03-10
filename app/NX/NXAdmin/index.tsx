@@ -1,5 +1,5 @@
 import NXAdmin from './NXAdmin';
-import Layout from './Layout';
+import Layout from './components/Layout';
 import Dashboard from './components/Menus/Dashboard';
 import { CreateDoc, ReadDoc, UpdateDoc, DeleteDoc } from './components/CRUD';
 import { Collection } from './components/Collection';
@@ -17,9 +17,13 @@ import { useCRUD } from './hooks/useCRUD';
 import { useCollection } from './hooks/useCollection';
 import { useActive } from './hooks/useActive';
 import MiniListItem from './components/Menus/MiniListItem';
+import OptionSelect from './components/UI/OptionSelect';
+import Strings from './components/UI/Strings';
 
 export {
     NXAdmin,
+    Strings,
+    OptionSelect,
     Layout,
     Dashboard,
     NXAdminBtn,

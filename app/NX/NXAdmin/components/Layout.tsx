@@ -1,6 +1,5 @@
 "use client";
 import * as React from 'react';
-
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -20,16 +19,16 @@ import {
     Icon,
     useDesignSystem,
     setDesignSystem,
-} from '../DesignSystem';
+} from '../../DesignSystem';
 import {
     useNXAdmin,
     setNXAdmin,
     Dashboard,
     Collection,
     MiniListItem,
-} from '../NXAdmin';
-import nav from './nav.json';
-import { useDispatch } from '../Uberedux';
+} from '../../NXAdmin';
+import nav from '../nav.json';
+import { useDispatch } from '../../Uberedux';
 
 const drawerWidth = 220;
 
@@ -103,13 +102,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function Layout({ config }: { config: any }) {
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
+    const [open, setOpen] = React.useState(false);
     const nxAdmin = useNXAdmin();
     const { active } = nxAdmin;
     const theme = useTheme();
     const activeNavItem = nav.find(item => item.collection === active);
-    const [open, setOpen] = React.useState(true);
+    
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
 
@@ -205,7 +205,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: 'reset',
                     }}
                 />
-
                 <MiniListItem
                     open={open}
                     onClick={handleThemeModeToggle}
@@ -214,7 +213,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: currentThemeMode === 'light' ? 'darkmode' : 'lightmode',
                     }}
                 />
-
                 <MiniListItem
                     open={open}
                     onClick={() => {
@@ -225,7 +223,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: 'left',
                     }}
                 />
-
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
@@ -237,6 +234,7 @@ export default function Layout({ config }: { config: any }) {
                         title={activeNavItem.title}
                         description={activeNavItem.description}
                         icon={activeNavItem.icon}
+                        single={activeNavItem.single}
                     />
                 )}
             </Box>

@@ -1,8 +1,8 @@
 {
   "short_name": "EchoPay",
   "name": "EchoPay. Do the maths",
-  "theme_color": "#A5C7FF",
-  "background_color": "#A5C7FF",
+  "theme_color": "#184791",
+  "background_color": "#184791",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",
