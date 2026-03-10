@@ -17,9 +17,13 @@ import { useCRUD } from './hooks/useCRUD';
 import { useCollection } from './hooks/useCollection';
 import { useActive } from './hooks/useActive';
 import MiniListItem from './components/Menus/MiniListItem';
+import OptionSelect from './components/UI/OptionSelect';
+import Strings from './components/UI/Strings';
 
 export {
     NXAdmin,
+    Strings,
+    OptionSelect,
     Layout,
     Dashboard,
     NXAdminBtn,

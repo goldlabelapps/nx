@@ -6,7 +6,6 @@ import {
   ListItemText,
   ListItemAvatar,
   ListItemIcon,
-  List,
   Avatar,
 } from '@mui/material';
 import {
@@ -33,19 +32,14 @@ function SingleDoc({
     description,
     avatar,
     icon,
-    name,
-    email,
-    // id, authId, level, tenant,
   } = doc || {};
 
   const handleSelect = () => {
-    // console.log('Selected doc:', doc);
     dispatch(setCRUD(collection, 'selected', doc));
     dispatch(setCRUD(collection, 'mode', 'update'));
   }
 
   return <ListItemButton onClick={handleSelect}>
-    {/* <pre>SingleDoc {JSON.stringify(doc, null, 2)}</pre> */}
     { avatar && <>
       <ListItemAvatar>
         <Avatar
@@ -54,13 +48,11 @@ function SingleDoc({
         />
       </ListItemAvatar>
       </>}
-
     { icon && <>
       <ListItemIcon>
         <Icon icon={icon as any} color="primary" />
       </ListItemIcon>
     </>}
-
     <ListItemText
       primary={label}
       secondary={description}
@@ -73,16 +65,15 @@ export default function ReadDoc({
 }: I_ReadDoc) {
 
   const crud = useCRUD();
-  const { docs, typescript } = crud[collection];
-  const firstDoc = {
-    avatar: '/shared/svg/goldlabel_favicon.svg',
-    name: 'Display Name',
-    email: 'test@test.com',
-
-  };
+  const { docs } = crud[collection];
+  
   return <>
     {docs.map((doc: any, i: number) => (
-      <SingleDoc key={`doc_${i}`} collection={collection} doc={doc} />
+      <SingleDoc 
+        key={`doc_${i}`} 
+        collection={collection} 
+        doc={doc} 
+      />
     ))  }
   </>;
 }

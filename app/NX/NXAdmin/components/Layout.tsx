@@ -1,6 +1,5 @@
 "use client";
 import * as React from 'react';
-
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -103,13 +102,14 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 export default function Layout({ config }: { config: any }) {
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
+    const [open, setOpen] = React.useState(false);
     const nxAdmin = useNXAdmin();
     const { active } = nxAdmin;
     const theme = useTheme();
     const activeNavItem = nav.find(item => item.collection === active);
-    const [open, setOpen] = React.useState(true);
+    
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
 
@@ -205,7 +205,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: 'reset',
                     }}
                 />
-
                 <MiniListItem
                     open={open}
                     onClick={handleThemeModeToggle}
@@ -214,7 +213,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: currentThemeMode === 'light' ? 'darkmode' : 'lightmode',
                     }}
                 />
-
                 <MiniListItem
                     open={open}
                     onClick={() => {
@@ -225,7 +223,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: 'left',
                     }}
                 />
-
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />

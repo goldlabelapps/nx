@@ -1,11 +1,13 @@
 'use client';
 import * as React from 'react';
 import {
+  Box,
   Button,
   Card,
   Tooltip,
   CardHeader,
   IconButton,
+  Typography,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import {
@@ -18,7 +20,7 @@ import {
   UpdateDoc,
   DeleteDoc,
   setCRUD,
-  CancelActive,
+  TypeScript,
 } from '../../../NXAdmin'
 import { useDispatch } from '../../../Uberedux';
 
@@ -28,6 +30,7 @@ export interface I_Collection {
   description?: string;
   icon: string;
   single?: string;
+  btnMode?: 'icon' | 'button';
 };
 
 export default function Collection({
@@ -36,10 +39,12 @@ export default function Collection({
   description,
   icon,
   single,
+  btnMode = 'icon',
 }: I_Collection) {
 
   const collectionState = useCollection(collection);
   const state = collectionState[collection];
+  // btnMode is now a prop
 
   let cardTitle: string = `${title}`;
   let cardSubheader: string = `${description}`;
@@ -54,9 +59,7 @@ export default function Collection({
 
   const {
     mode,
-    selected,
-    docs,
-    // typescript,
+    typescript,
   } = state || {};
 
   const dispatch = useDispatch();
@@ -72,7 +75,7 @@ export default function Collection({
     dispatch(setCRUD(collection, 'mode', 'create'));
   };
 
-  const handleCancel = () => {
+  const handleCollectionReset = () => {
     dispatch(setCRUD(collection, 'mode', 'read'));
     dispatch(setCRUD(collection, 'selected', null));
   };
@@ -95,18 +98,35 @@ export default function Collection({
     <>
       <Card variant="outlined">
         <CardHeader
-          title={cardTitle}
-          action={<>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleNew(collection)}
-            >
-              New {single}
-              <Icon icon="new" />
-            </Button>
-          </>}
-          avatar={<Icon icon={icon as any} color="primary" />}
+          title={<Typography variant="h5">{cardTitle}</Typography>}
+          subheader={mode}
+          avatar={<IconButton color="primary" onClick={handleCollectionReset}>
+            <Icon icon={icon as any} />
+          </IconButton>}
+          action={<Box sx={{ display: 'flex', gap: 0 }}>
+            <TypeScript 
+              btnMode={btnMode}
+              typescript={typescript}
+              collection={collection}
+              cardSubheader={cardSubheader}
+            />
+            { btnMode === 'button' && mode !== 'create' ? <>
+              <Button
+                variant="contained"
+                startIcon={<Icon icon="new" />}
+                color="primary"
+                onClick={() => handleNew(collection)}
+              >
+                New {single}
+              </Button></> : null}
+
+            {btnMode === 'icon' && mode !== 'create' ? <>
+              <IconButton
+                onClick={() => handleNew(collection)}>
+                <Icon icon="new" />
+              </IconButton></> : null}
+          </Box>}
+          
           sx={{
             '& .MuiCardHeader-subheader': {
               whiteSpace: 'nowrap',

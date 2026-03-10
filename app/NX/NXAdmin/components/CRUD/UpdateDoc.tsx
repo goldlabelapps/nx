@@ -4,8 +4,7 @@ import {
   Box,
   Button,
   CardActions,
-  IconButton,
-  Typography,
+  CardContent,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
@@ -23,31 +22,36 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
   const { typescript } = state;
   const { typeName } = typescript || {};
 
+  const [valid, setValid] = React.useState(false);
+
   const handleCancel = () => {
     dispatch(setCRUD(collection, 'mode', 'read'));
     dispatch(setCRUD(collection, 'selected', null));
   };
 
   return (
-    <CardActions>
-      {/* Render TypeScript panel for the current collection */}
+    <>
+      <CardContent>
+        <Box>
+          <pre>typeName: {JSON.stringify(typeName, null, 2)}</pre>
+        </Box>
+      </CardContent>
+      <CardActions>
       <Box sx={{ flexGrow: 1 }} />
-      {/* <Box>
-        <pre>typescript: {JSON.stringify(typescript, null, 2)}</pre>
-      </Box> */}
       <Box sx={{
         display: 'flex',
       }}>
         <Box sx={{ display: 'flex', gap: 1}}>
-          <TypeScript typescript={typescript} />
           <Button
+            disabled={!valid}
             startIcon={<Icon icon="save" />}
             variant="contained"
             color="primary">
-            Save
+            Update
           </Button>
         </Box>
       </Box>
     </CardActions>
+    </>
   );
 }

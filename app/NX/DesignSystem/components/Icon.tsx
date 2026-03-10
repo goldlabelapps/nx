@@ -171,9 +171,7 @@ import FirebaseIcon from '@mui/icons-material/Whatshot';
 import MediaIcon from '@mui/icons-material/AttachFile';
 import CashIcon from '@mui/icons-material/Savings';
 import TenantIcon from '@mui/icons-material/BrowserUpdated';
-import RequiredIcon from '@mui/icons-material/NearbyError';
-
-
+import RequiredIcon from '@mui/icons-material/PriorityHigh';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
@@ -181,6 +179,9 @@ export default function Icon({ icon, color }: I_Icon) {
   switch (icon) {
     case 'required':
       iconFragment = <RequiredIcon color={color} />;
+      break;
+    case 'png':
+      iconFragment = <PhotoIcon color={color} />;
       break;
     case 'tenant':
       iconFragment = <TenantIcon color={color} />;

@@ -274,6 +274,7 @@ export type I_Icon = {
     | 'logs'
     | 'dashboard'
     | 'bike'
+    | 'png'
     | 'user'
     | 'visitors'
     | 'visitor'
