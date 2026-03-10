@@ -1,8 +1,8 @@
 import React from 'react';
 import {
     Box,
+    Paper,
 } from '@mui/material';
-
 
 export interface I_Async {
     id?: string;
@@ -10,9 +10,13 @@ export interface I_Async {
 
 export const Async: React.FC<I_Async> = ({ id }) => {
     return (
-        <Box id={id}>
-            Async
-        </Box>
+        <Paper 
+            sx={{
+                p: 2,
+            }}
+            variant="outlined" id={id}>
+            
+        </Paper>
     );
 };
 

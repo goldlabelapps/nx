@@ -133,8 +133,7 @@ export default async function Page(props: any) {
                                 >
                                     {title}
                                 </Typography>}
-                                action={<>
-                                </>}
+                                action={null}
                             />
                         </Container>
                     </AppBar>

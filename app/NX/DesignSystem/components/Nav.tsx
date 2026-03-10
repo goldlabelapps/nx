@@ -9,9 +9,13 @@ import {
     List,
     ListItemButton,
     ListItemText,
+    ListItemIcon,
+    Typography,
 } from '@mui/material';
-import { Icon, Settings } from '../../../NX/DesignSystem';
+import { Icon, setDesignSystem, useDesignSystem } from '../../../NX/DesignSystem';
+import { useDispatch } from '../../../NX/Uberedux';
 import { Virus } from '../../../NX/Virus';
+import { Async } from '../../../NX/Async';
 
 
 function sortNavItems(items: any[]) {
@@ -37,6 +41,20 @@ const Nav: React.FC<I_Nav> = ({
     const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
     const [drawerOpen, setDrawerOpen] = React.useState(false);
+    const dispatch = useDispatch();
+    const designSystem = useDesignSystem();
+    const currentThemeMode = designSystem?.themeMode ?? 'light';
+
+    const handleThemeModeToggle = () => {
+        const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
+        dispatch(setDesignSystem('themeMode', nextMode));
+        setDrawerOpen(false);
+    }
+
+    const handleNXAdmin = () => {
+        setDrawerOpen(false);
+        router.push('/nx-admin');
+    };
 
     function handleNavClick(slug?: string) {
         if (typeof slug === 'string' && slug.trim().length > 0) {
@@ -135,11 +153,28 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
-                            asd
+                        <Async />
                         <List component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
                         <Box sx={{ mt: 'auto' }}>
+                            <ListItemButton onClick={handleThemeModeToggle}>
+                                <ListItemIcon>
+                                    <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
+                                </ListItemIcon>
+                                <ListItemText
+                                    primary={<Typography>
+                                        {currentThemeMode === 'light' ? 'Dark' : 'Light'} mode
+                                    </Typography>}
+                                />
+                            </ListItemButton>
+
+                            <ListItemButton onClick={handleNXAdmin}>
+                                                <ListItemIcon>
+                                                    <Icon icon="admin" color="primary" />
+                                                </ListItemIcon>
+                                                <ListItemText primary={'NX Admin'} />
+                                            </ListItemButton>
                             <Box sx={{ mb: 1 }}>
                                 <Virus frontmatter={frontmatter} />
                             </Box>
