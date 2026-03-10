@@ -43,6 +43,13 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
       }}>
         <Box sx={{ display: 'flex', gap: 1}}>
           <Button
+            onClick={handleCancel}
+            startIcon={<Icon icon="cancel" />}
+            variant="outlined"
+            color="primary">
+            Cancel
+          </Button>
+          <Button
             disabled={!valid}
             startIcon={<Icon icon="save" />}
             variant="contained"

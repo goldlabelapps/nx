@@ -62,6 +62,11 @@ export default function Collection({
     typescript,
   } = state || {};
 
+  if (mode === 'create') {
+    cardTitle = `New ${single}`;
+  };
+
+
   const dispatch = useDispatch();
   const active = useActive();
   const isActive = active === collection;
@@ -99,7 +104,7 @@ export default function Collection({
       <Card variant="outlined">
         <CardHeader
           title={<Typography variant="h5">{cardTitle}</Typography>}
-          subheader={mode}
+          // subheader={mode}
           avatar={<IconButton color="primary" onClick={handleCollectionReset}>
             <Icon icon={icon as any} />
           </IconButton>}
@@ -110,21 +115,16 @@ export default function Collection({
               collection={collection}
               cardSubheader={cardSubheader}
             />
-            { btnMode === 'button' && mode !== 'create' ? <>
+            { mode !== 'create' ? <>
               <Button
-                variant="contained"
-                startIcon={<Icon icon="new" />}
+                variant="outlined"
+                endIcon={<Icon icon="new" />}
                 color="primary"
                 onClick={() => handleNew(collection)}
               >
                 New {single}
               </Button></> : null}
 
-            {btnMode === 'icon' && mode !== 'create' ? <>
-              <IconButton
-                onClick={() => handleNew(collection)}>
-                <Icon icon="new" />
-              </IconButton></> : null}
           </Box>}
           
           sx={{

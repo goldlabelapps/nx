@@ -13,33 +13,59 @@ import { Icon } from '../../../../NX/DesignSystem';
 export default function Strings({
     collection,
     label,
+    description,
     field,
     type = 'text',
     onChange,
+    required = true,
+    autoFocus,
+    value,
 }: {
     collection?: string;
     label: string;
-    field?: string;
+    description?: string;
+    field?: any;
     type?: string;
     onChange?: (newValue: string) => void;
+    required?: boolean;
+    autoFocus?: boolean;
+    value?: string;
 }) {
 
     const dispatch = useDispatch();
     const crud = useCRUD();
 
-    const handleClick = () => {
-        console.log('collection', collection);
-        dispatch(setNXAdmin('active', null));
+    const [inputValue, setInputValue] = React.useState(value || '');
+    const [touched, setTouched] = React.useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+        setInputValue(val);
+        setTouched(true);
+        if (onChange) onChange(val);
     };
-    
+
+    let helper = description || (field && field.description ? field.description : undefined);
+    if (touched) {
+        if (inputValue.length < 5) {
+            helper = 'Must be more than 5 chars.';
+        } else {
+            helper = 'Looks good!';
+        }
+    }
+
     return (
         <>
         <TextField
             label={label}
             variant="outlined"
             type={type}
-            onChange={e => onChange && onChange(e.target.value)}
+            value={inputValue}
+            onChange={handleChange}
             margin="normal"
+            required={required}
+            helperText={helper}
+            autoFocus={autoFocus}
         />
         {/* <pre>field: {JSON.stringify(field, null, 2)}</pre> */}
         </>
