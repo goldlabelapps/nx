@@ -35,12 +35,14 @@ export default function Virus({
   }
 
   React.useEffect(() => {
-    if (frontmatter && typeof window !== 'undefined') {
-      setUrl(window.location.hostname + (frontmatter.slug || '/'));
-    } else if (meta?.openGraph?.url) {
-      setUrl(meta.openGraph.url);
-    } else if (typeof window !== 'undefined') {
-      setUrl(window.location.href);
+    if (typeof window !== 'undefined') {
+      if (frontmatter) {
+        setUrl(window.location.protocol + '//' + window.location.hostname + (frontmatter.slug || '/'));
+      } else if (meta?.openGraph?.url) {
+        setUrl(meta.openGraph.url);
+      } else {
+        setUrl(window.location.href);
+      }
     }
   }, [frontmatter, meta]);
 
