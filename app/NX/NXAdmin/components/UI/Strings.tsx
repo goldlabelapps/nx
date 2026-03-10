@@ -1,39 +1,30 @@
 'use client';
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
 import {
-    IconButton,
-    Button,
     TextField,
 } from '@mui/material';
-import { useDispatch } from '../../../../NX/Uberedux';
-import { setNXAdmin, setCRUD, useCRUD } from '../../../NXAdmin'
-import { Icon } from '../../../../NX/DesignSystem';
 
 export default function Strings({
-    collection,
     label,
     description,
     field,
-    type = 'text',
+    type = 'string',
     onChange,
     required = true,
     autoFocus,
     value,
+    disabled = false,
 }: {
-    collection?: string;
     label: string;
     description?: string;
     field?: any;
-    type?: string;
+    type?: 'string' | 'email';
     onChange?: (newValue: string) => void;
     required?: boolean;
     autoFocus?: boolean;
     value?: string;
+    disabled?: boolean;
 }) {
-
-    const dispatch = useDispatch();
-    const crud = useCRUD();
 
     const [inputValue, setInputValue] = React.useState(value || '');
     const [touched, setTouched] = React.useState(false);
@@ -47,25 +38,35 @@ export default function Strings({
 
     let helper = description || (field && field.description ? field.description : undefined);
     if (touched) {
-        if (inputValue.length < 5) {
-            helper = 'Must be more than 5 chars.';
-        } else {
-            helper = 'Looks good!';
-        }
+            if (type === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(inputValue)) {
+                    helper = 'Valid email required';
+                } else {
+                    helper = 'Valid email!';
+                }
+            } else {
+                if (inputValue.length < 5) {
+                    helper = 'More than 5 chars required';
+                } else {
+                    helper = 'Looks good!';
+                }
+            }
     }
 
     return (
         <>
         <TextField
+            fullWidth
             label={label}
             variant="outlined"
-            type={type}
             value={inputValue}
             onChange={handleChange}
             margin="normal"
             required={required}
             helperText={helper}
             autoFocus={autoFocus}
+            disabled={disabled}
         />
         {/* <pre>field: {JSON.stringify(field, null, 2)}</pre> */}
         </>

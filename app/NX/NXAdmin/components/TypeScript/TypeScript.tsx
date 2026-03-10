@@ -49,7 +49,7 @@ export default function TypeScript({
     {btnMode === 'button' && <>
         <Button
           variant="contained"
-          startIcon={<Icon icon="js" />}
+          endIcon={<Icon icon="js" />}
           onClick={handleClick}>
           {typeName}
         </Button>

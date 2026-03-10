@@ -9,7 +9,9 @@ import CloseAdmin from './components/Menus/CloseAdmin';
 import CancelActive from './components/Menus/CancelActive';
 import NXAdminMenu from './components/Menus/NXAdminMenu';
 import { setNXAdmin } from './actions/setNXAdmin';
+import { collectionDelete } from './actions/collectionDelete';
 import { setCRUD } from './actions/setCRUD';
+import { saveNewDoc} from './actions/saveNewDoc';
 import { readTypescript } from './actions/readTypescript';
 import { initCollection } from './actions/initCollection';
 import { useNXAdmin } from './hooks/useNXAdmin';
@@ -39,10 +41,12 @@ export {
     TypeScript,
     setNXAdmin,
     setCRUD,
+    saveNewDoc,
     readTypescript,
     initCollection,
     useCRUD,
     useNXAdmin,
     useCollection,
     useActive,
+    collectionDelete,
 };

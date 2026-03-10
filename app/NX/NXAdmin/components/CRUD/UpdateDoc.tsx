@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
-import { setCRUD, useCRUD, TypeScript } from '../../../NXAdmin';
+import { setCRUD, useCRUD } from '../../../NXAdmin';
 
 export interface I_UpdateDoc {
   collection: string;
@@ -19,9 +19,8 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
   const dispatch = useDispatch();
   const crud = useCRUD();
   const state = crud[collection];
-  const { typescript } = state;
-  const { typeName } = typescript || {};
-
+  const { selected } = state;
+  const { label } = selected || {};
   const [valid, setValid] = React.useState(false);
 
   const handleCancel = () => {
@@ -29,11 +28,15 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
     dispatch(setCRUD(collection, 'selected', null));
   };
 
+  const handleDelete = () => {
+    dispatch(setCRUD(collection, 'mode', 'delete'));
+  };
+
   return (
     <>
       <CardContent>
         <Box>
-          <pre>typeName: {JSON.stringify(typeName, null, 2)}</pre>
+          <pre>label: {JSON.stringify(label, null, 2)}</pre>
         </Box>
       </CardContent>
       <CardActions>
@@ -42,20 +45,28 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
         display: 'flex',
       }}>
         <Box sx={{ display: 'flex', gap: 1}}>
+            <Button
+              onClick={handleCancel}
+              endIcon={<Icon icon="cancel" />}
+              variant="text"
+              color="primary">
+              Cancel
+            </Button>
           <Button
-            onClick={handleCancel}
-            startIcon={<Icon icon="cancel" />}
-            variant="outlined"
-            color="primary">
-            Cancel
-          </Button>
+              onClick={handleDelete}
+              endIcon={<Icon icon="delete" />}
+              variant="text"
+              color="primary">
+              Delete
+            </Button>
           <Button
             disabled={!valid}
-            startIcon={<Icon icon="save" />}
+            endIcon={<Icon icon="save" />}
             variant="contained"
             color="primary">
             Update
           </Button>
+          
         </Box>
       </Box>
     </CardActions>

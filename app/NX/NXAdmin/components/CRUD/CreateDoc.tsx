@@ -9,19 +9,24 @@ import {
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
-import { setCRUD, useCRUD, OptionSelect, Strings } from '../../../NXAdmin';
+import { saveNewDoc, setCRUD, useCRUD, OptionSelect, Strings } from '../../../NXAdmin';
 
 export interface I_CreateDoc {
   collection: string;
+  icon?: string;
 }
 
-export default function CreateDoc({ collection }: I_CreateDoc) {
+  export default function CreateDoc({ collection, icon }: I_CreateDoc) {
   const dispatch = useDispatch();
   const [valid, setValid] = React.useState(false);
-  const [fieldValues, setFieldValues] = React.useState<Record<string, string>>({});
+  const [fieldValues, setFieldValues] = React.useState<Record<string, string | number>>({});
   const crud = useCRUD();
   const state = crud?.[collection] || {};
-  const typescript = state?.typescript;
+  const {
+    typescript,
+    saving,
+    
+  } = state;
 
   const requiredFields = React.useMemo(() => {
     if (!typescript) return [];
@@ -44,64 +49,84 @@ export default function CreateDoc({ collection }: I_CreateDoc) {
       setValid(false);
       return;
     }
-    // Check all required string fields are at least 5 chars
+    // Check all required fields for their type
     const allValid = requiredFields.every(field => {
       const fieldConfig = typescript[field];
+      const value = fieldValues[field];
       if (fieldConfig.type === 'string') {
-        return typeof fieldValues[field] === 'string' && fieldValues[field].length >= 5;
+        return typeof value === 'string' && value.length >= 5;
+      }
+      if (fieldConfig.type === 'email') {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return typeof value === 'string' && emailRegex.test(value);
       }
       // For other types, skip validation for now
       return true;
     });
     setValid(allValid);
   }, [fieldValues, requiredFields, typescript]);
+
   const handleCancel = () => {
     dispatch(setCRUD(collection, 'mode', 'read'));
     dispatch(setCRUD(collection, 'selected', null));
   };
 
+  const handleSave = () => {
+    dispatch(setCRUD(collection, 'saving', true));
+    const extended = { ...fieldValues };
+    if (requiredFields.length > 0) {
+      extended.label = fieldValues[requiredFields[0]] || '';
+    }
+    if (requiredFields.length > 1) {
+      extended.description = fieldValues[requiredFields[1]] || '';
+    }
+    const now = Date.now();
+    extended.created = now;
+    extended.updated = now;
+    extended.icon = icon ?? '';
+    dispatch(saveNewDoc(collection, extended));
+  }
+
   return (
     <>
       <CardContent>
-        <Typography variant="body1">
-          Start with the required fields
-        </Typography>
+        {/* <Typography variant="h2">
+          mode {mode}
+        </Typography> */}
         <Box sx={{display: 'flex', gap: 1}}>
           {requiredFields.map((field, idx) => {
             const fieldConfig = typescript[field];
             const label = fieldConfig.label || field;
-            const description = fieldConfig.description || field;
+            const description = fieldConfig.description || '';
             const type = fieldConfig.type;
             const autoFocus = idx === 0;
-            if (type === 'string') {
+            if (type === 'string' || type === 'email') {
               return (
                 <Strings
+                  type={type}
                   key={field}
                   description={description}
                   label={label}
                   field={field}
                   autoFocus={autoFocus}
                   onChange={value => {
+                    setValid(false);
                     setFieldValues(prev => ({ ...prev, [field]: value }));
                   }}
+                  disabled={!!saving}
                 />
               );
             }
             if (fieldConfig.options) {
-              return <OptionSelect key={field} label={label} field={field} options={fieldConfig.options} />;
+              return <OptionSelect 
+                key={field} 
+                label={label} 
+                field={field} 
+                options={fieldConfig.options} 
+                disabled={!!saving}
+              />;
             }
-            return (
-              <Strings
-                key={field}
-                description={description}
-                label={label}
-                field={field}
-                autoFocus={autoFocus}
-                onChange={value => {
-                  setFieldValues(prev => ({ ...prev, [field]: value }));
-                }}
-              />
-            );
+            return null;
           })}
         </Box>
       </CardContent>
@@ -110,18 +135,21 @@ export default function CreateDoc({ collection }: I_CreateDoc) {
         <Box sx={{ display: 'flex', gap: 1 }}>
           <Button
             onClick={handleCancel}
-            startIcon={<Icon icon="cancel" />}
-            variant="outlined"
+            disabled={!!saving}
+            endIcon={<Icon icon="cancel" />}
+            variant="text"
             color="primary">
             Cancel
           </Button>
           <Button
-            disabled={!valid}
-            startIcon={<Icon icon="save" />}
+            onClick={handleSave}
+            disabled={!valid || !!saving}
+            endIcon={<Icon icon="save" />}
             variant="contained"
             color="primary">
             Save
           </Button>
+          
         </Box>
       </CardActions>
     </>
