@@ -221,6 +221,7 @@ export interface I_Header {
 export interface I_NavNode {
     title?: string;
     slug?: string;
+    path?: string;
     children?: I_NavNode[];
     icon?: string;
 }

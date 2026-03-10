@@ -1,4 +1,12 @@
-To hinstall the EchoPay Magento 2 module on a development site running Hyvä, using Composer and Magento CLI:
+---
+order: 50
+slug: /support/install
+title: Install
+description: Install the EchoPay Magento 2 module
+icon: right
+tags: Solutions, magento, EchoPay, virtual terminal, dashboard,
+---
+To install the EchoPay Magento 2 module on a development site running Hyvä, using Composer and Magento CLI:
 
 1. **Require the module via Composer**
 

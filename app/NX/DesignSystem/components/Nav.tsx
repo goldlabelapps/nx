@@ -45,6 +45,7 @@ const Nav: React.FC<I_Nav> = ({
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
 
+
     const handleThemeModeToggle = () => {
         const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
         dispatch(setDesignSystem('themeMode', nextMode));
@@ -70,25 +71,9 @@ const Nav: React.FC<I_Nav> = ({
         parentKey = '',
         // parentNavTarget?: string,
     ): React.ReactNode {
-        // Only render Home button at the top level
-        let homeButton = null;
-        if (parentKey === '') {
-            homeButton = (
-                <Box key={'home'}>
-                    <ListItemButton
-                        onClick={e => {
-                            e.preventDefault();
-                            handleNavClick('/');
-                        }}
-                        disabled={false}
-                    >
-                        <ListItemText primary={'Home'} />
-                    </ListItemButton>
-                </Box>
-            );
-        }
 
-        const navItems = items
+        // Suppress subpages whose slug or path ends with '/index' or is 'index.md'
+        return items
             .map((item, i) => {
                 const key = `${parentKey}item_${i}`;
                 const hasChildren = Array.isArray(item.children) && item.children.length > 0;
@@ -97,17 +82,11 @@ const Nav: React.FC<I_Nav> = ({
                     : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
                 const isRoutable = typeof navTarget === 'string' && navTarget.trim().length > 0;
                 const label = navTarget === '/' ? 'Home' : item.title;
+                // Filter children whose path matches this item's path
                 let filteredChildren = item.children;
-                if (hasChildren && navTarget) {
-                    filteredChildren = item.children!.filter(child => {
-                        const childNavTarget = (typeof child.slug === 'string' && child.slug.trim().length > 0)
-                            ? child.slug
-                            : (typeof (child as any).path === 'string' && (child as any).path.trim().length > 0 ? (child as any).path : undefined);
-                        return childNavTarget !== navTarget;
-                    });
+                if (hasChildren && item.path) {
+                    filteredChildren = item.children!.filter(child => child.path !== item.path);
                 }
-                // Don't render another Home button if this item is the home link
-                if (navTarget === '/') return null;
                 return (
                     <Box key={key}>
                         <ListItemButton
@@ -121,14 +100,14 @@ const Nav: React.FC<I_Nav> = ({
                             <ListItemText primary={label} />
                         </ListItemButton>
                         {hasChildren && filteredChildren && filteredChildren.length > 0 && (
-                            <List dense sx={{ ml: 2 }}>
+                            <List sx={{ ml: 2 }}>
                                 {renderNavItems(sortNavItems(filteredChildren), key + '_')}
                             </List>
                         )}
                     </Box>
                 );
-            });
-        return homeButton ? [homeButton, ...navItems.filter(Boolean)] : navItems.filter(Boolean);
+            })
+            .filter(Boolean);
     }
     // Removed stray slash and 'return true' lines that caused syntax error
     if (mode === 'mobile') {
@@ -170,12 +149,12 @@ const Nav: React.FC<I_Nav> = ({
                             </ListItemButton>
 
                             <ListItemButton onClick={handleNXAdmin}>
-                                                <ListItemIcon>
-                                                    <Icon icon="admin" color="primary" />
-                                                </ListItemIcon>
-                                                <ListItemText primary={'NX Admin'} />
-                                            </ListItemButton>
-                            <Box sx={{ mb: 1 }}>
+                                <ListItemIcon>
+                                    <Icon icon="admin" color="primary" />
+                                </ListItemIcon>
+                                <ListItemText primary={'NX Admin'} />
+                            </ListItemButton>
+                            <Box sx={{ my: 2 }}>
                                 <Virus frontmatter={frontmatter} />
                             </Box>
                         </Box>
@@ -188,7 +167,7 @@ const Nav: React.FC<I_Nav> = ({
     // Desktop mode
     return (
         <Box>
-            <List dense component={'nav'}>
+            <List component={'nav'}>
                 {renderNavItems(sortedNavItems)}
             </List>
         </Box>
