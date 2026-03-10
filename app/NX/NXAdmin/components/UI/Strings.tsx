@@ -1,45 +1,72 @@
 'use client';
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
 import {
-    IconButton,
-    Button,
     TextField,
 } from '@mui/material';
-import { useDispatch } from '../../../../NX/Uberedux';
-import { setNXAdmin, setCRUD, useCRUD } from '../../../NXAdmin'
-import { Icon } from '../../../../NX/DesignSystem';
 
 export default function Strings({
-    collection,
     label,
+    description,
     field,
-    type = 'text',
+    type = 'string',
     onChange,
+    required = true,
+    autoFocus,
+    value,
+    disabled = false,
 }: {
-    collection?: string;
     label: string;
-    field?: string;
-    type?: string;
+    description?: string;
+    field?: any;
+    type?: 'string' | 'email';
     onChange?: (newValue: string) => void;
+    required?: boolean;
+    autoFocus?: boolean;
+    value?: string;
+    disabled?: boolean;
 }) {
 
-    const dispatch = useDispatch();
-    const crud = useCRUD();
+    const [inputValue, setInputValue] = React.useState(value || '');
+    const [touched, setTouched] = React.useState(false);
 
-    const handleClick = () => {
-        console.log('collection', collection);
-        dispatch(setNXAdmin('active', null));
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+        setInputValue(val);
+        setTouched(true);
+        if (onChange) onChange(val);
     };
-    
+
+    let helper = description || (field && field.description ? field.description : undefined);
+    if (touched) {
+            if (type === 'email') {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(inputValue)) {
+                    helper = 'Valid email required';
+                } else {
+                    helper = 'Valid email!';
+                }
+            } else {
+                if (inputValue.length < 5) {
+                    helper = 'More than 5 chars required';
+                } else {
+                    helper = 'Looks good!';
+                }
+            }
+    }
+
     return (
         <>
         <TextField
+            fullWidth
             label={label}
             variant="outlined"
-            type={type}
-            onChange={e => onChange && onChange(e.target.value)}
+            value={inputValue}
+            onChange={handleChange}
             margin="normal"
+            required={required}
+            helperText={helper}
+            autoFocus={autoFocus}
+            disabled={disabled}
         />
         {/* <pre>field: {JSON.stringify(field, null, 2)}</pre> */}
         </>

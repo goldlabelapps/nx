@@ -19,12 +19,14 @@ export default function OptionSelect({
     field,
     collection,
     onChange,
+    disabled = false,
 }: {
     label: string;
     options: any[];
     field?: string;
     collection?: string;
     onChange?: (newValue: string) => void;
+    disabled?: boolean;
 }) {
 
     const dispatch = useDispatch();
@@ -43,6 +45,7 @@ export default function OptionSelect({
                 label={label}
                 onChange={e => onChange && onChange(e.target.value)}
                 defaultValue=""
+                disabled={disabled}
             >
                 {options.map((opt, idx) => {
                     if (typeof opt === 'object' && opt !== null) {

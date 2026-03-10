@@ -2,11 +2,10 @@
 import * as React from 'react';
 import {
   Box,
-  Button,
+  IconButton,
   Card,
   Tooltip,
   CardHeader,
-  IconButton,
   Typography,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
@@ -49,18 +48,16 @@ export default function Collection({
   let cardTitle: string = `${title}`;
   let cardSubheader: string = `${description}`;
 
-  // Ensure cardTitle and cardSubheader are always strings at runtime
-  if (typeof cardTitle !== 'string') {
-    cardTitle = JSON.stringify(cardTitle);
-  }
-  if (typeof cardSubheader !== 'string') {
-    cardSubheader = JSON.stringify(cardSubheader);
-  }
-
   const {
     mode,
     typescript,
+    selected,
   } = state || {};
+
+  if (mode === 'read') cardTitle = `All ${title}`;
+  if (mode === 'create') cardTitle = `New ${single}`;
+  if (mode === 'update') cardTitle = `Update ${selected?.label || single}`;
+  if (mode === 'delete') cardTitle = `Delete ${selected?.label || single}?`;
 
   const dispatch = useDispatch();
   const active = useActive();
@@ -71,7 +68,6 @@ export default function Collection({
   };
 
   const handleNew = (collection: string) => {
-    console.log('New Doc in', collection);
     dispatch(setCRUD(collection, 'mode', 'create'));
   };
 
@@ -99,7 +95,6 @@ export default function Collection({
       <Card variant="outlined">
         <CardHeader
           title={<Typography variant="h5">{cardTitle}</Typography>}
-          subheader={mode}
           avatar={<IconButton color="primary" onClick={handleCollectionReset}>
             <Icon icon={icon as any} />
           </IconButton>}
@@ -110,21 +105,14 @@ export default function Collection({
               collection={collection}
               cardSubheader={cardSubheader}
             />
-            { btnMode === 'button' && mode !== 'create' ? <>
-              <Button
-                variant="contained"
-                startIcon={<Icon icon="new" />}
+            { mode !== 'create' ? <>
+              <IconButton
                 color="primary"
                 onClick={() => handleNew(collection)}
               >
-                New {single}
-              </Button></> : null}
-
-            {btnMode === 'icon' && mode !== 'create' ? <>
-              <IconButton
-                onClick={() => handleNew(collection)}>
                 <Icon icon="new" />
               </IconButton></> : null}
+
           </Box>}
           
           sx={{
@@ -138,11 +126,10 @@ export default function Collection({
         />
         {isActive && <>
           {mode === 'read' && <ReadDoc collection={collection} />}
-          {mode === 'create' && <CreateDoc collection={collection} />}
+          {mode === 'create' && <CreateDoc collection={collection} icon={icon} />}
           {mode === 'update' && <UpdateDoc collection={collection} />}
           {mode === 'delete' && <DeleteDoc collection={collection} />}
         </>}
-        {/* <pre>docs: {JSON.stringify(docs, null, 2)}</pre> */}
       </Card>
     </>
   );
