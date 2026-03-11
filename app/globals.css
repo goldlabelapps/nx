@@ -5,6 +5,10 @@
             padding: 0;
         }
 
+        pre {
+            font-size: 0.8em;
+        }
+
         /* Make all links the same color as surrounding text */
         a,
         a:visited,

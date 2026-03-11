@@ -5,11 +5,10 @@ import {
   Button,
   CardActions,
   CardContent,
-  Typography,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
-import { saveNewDoc, setCRUD, useCRUD, OptionSelect, Strings } from '../../../NXAdmin';
+import { saveNewDoc, setCRUD, useCRUD, OptionSelect, InputString } from '../../../NXAdmin';
 
 export interface I_CreateDoc {
   collection: string;
@@ -93,7 +92,9 @@ export interface I_CreateDoc {
         {/* <Typography variant="h2">
           mode {mode}
         </Typography> */}
-        <Box sx={{display: 'flex', gap: 1}}>
+        <Box sx={{
+          // display: 'flex', gap: 1,
+        }}>
           {requiredFields.map((field, idx) => {
             const fieldConfig = typescript[field];
             const label = fieldConfig.label || field;
@@ -102,7 +103,7 @@ export interface I_CreateDoc {
             const autoFocus = idx === 0;
             if (type === 'string' || type === 'email') {
               return (
-                <Strings
+                <InputString
                   type={type}
                   key={field}
                   description={description}
@@ -116,15 +117,6 @@ export interface I_CreateDoc {
                   disabled={!!saving}
                 />
               );
-            }
-            if (fieldConfig.options) {
-              return <OptionSelect 
-                key={field} 
-                label={label} 
-                field={field} 
-                options={fieldConfig.options} 
-                disabled={!!saving}
-              />;
             }
             return null;
           })}

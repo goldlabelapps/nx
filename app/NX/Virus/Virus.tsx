@@ -9,7 +9,7 @@ import {
 } from 'react-share';
 import { Tooltip, Box, Typography, ButtonBase, Popover } from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
-import { Forward } from '../../NX/Virus';
+// import { Forward } from '../../NX/Virus';
 
 export default function Virus({
   meta,
@@ -124,7 +124,7 @@ export default function Virus({
               </WhatsappShareButton>
             </Tooltip>
           </Box>
-          <Forward />
+          {/* <Forward /> */}
         </Box>
       </Box>
     </>

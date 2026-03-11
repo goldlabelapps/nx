@@ -172,11 +172,15 @@ import MediaIcon from '@mui/icons-material/AttachFile';
 import CashIcon from '@mui/icons-material/Savings';
 import TenantIcon from '@mui/icons-material/BrowserUpdated';
 import RequiredIcon from '@mui/icons-material/PriorityHigh';
+import HeartIcon from '@mui/icons-material/Favorite';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'heart':
+      iconFragment = <HeartIcon color={color} />;
+      break;
     case 'required':
       iconFragment = <RequiredIcon color={color} />;
       break;
