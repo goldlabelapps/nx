@@ -135,7 +135,7 @@ export default async function Page(props: any) {
                 </Box>
             </header>
 
-            <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
+            <Container id="main" maxWidth="lg" sx={{ mx:2,mt: '100px', pb: '90px' }}>
                 <Box
                     sx={{
                         width: '100%',

@@ -149,9 +149,9 @@ export default function Layout({ config }: { config: any }) {
                             {theme.direction === 'rtl' ? <Icon icon="left" /> : <Icon icon="right" />}
                         </IconButton>
                     )}
-                    <Typography sx={{m:1}} color='primary' variant="h6" component="h1">
+                    {/* <Typography sx={{m:1}} color='primary' variant="h6" component="h1">
                         {config.siteName} Admin
-                    </Typography>
+                    </Typography> */}
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open} sx={{ border: 0, }}>

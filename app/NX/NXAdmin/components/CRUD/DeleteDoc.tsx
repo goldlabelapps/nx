@@ -7,6 +7,7 @@ import {
   CardActions,
   Button,
   Typography,
+  IconButton,
 } from '@mui/material';
 import { collectionDelete, setCRUD, useCRUD } from '../../../NXAdmin';
 import { useDispatch } from '../../../Uberedux';
@@ -44,17 +45,15 @@ export default function DeleteDoc({ collection }: I_DeleteDoc) {
       <CardActions>
         <Box sx={{ flexGrow: 1 }} />
                 <Box sx={{ display: 'flex', gap: 1 }}>
-        <Button
-          endIcon={<Icon icon="cancel" />}
-          variant="text"
+        <IconButton
           color="primary"
           onClick={handleCancel}
         >
-          Cancel
-        </Button>
+          <Icon icon="cancel" />
+          </IconButton>
         <Button
           endIcon={<Icon icon="delete" />}
-          variant="outlined"
+          variant="contained"
           color="primary"
           onClick={handleDelete}
         >

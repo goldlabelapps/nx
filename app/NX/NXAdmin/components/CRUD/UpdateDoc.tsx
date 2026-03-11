@@ -5,10 +5,11 @@ import {
   Button,
   CardActions,
   CardContent,
+  IconButton,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
-import { setCRUD, useCRUD } from '../../../NXAdmin';
+import { setCRUD, useCRUD, InputString } from '../../../NXAdmin';
 
 export interface I_UpdateDoc {
   collection: string;
@@ -19,9 +20,44 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
   const dispatch = useDispatch();
   const crud = useCRUD();
   const state = crud[collection];
-  const { selected } = state;
-  const { label } = selected || {};
+  const { selected, typescript, saving } = state;
+  const [fieldValues, setFieldValues] = React.useState<Record<string, string | number>>(() => {
+    const initial: Record<string, string | number> = {};
+    if (selected && typescript) {
+      Object.keys(typescript).forEach(key => {
+        if (!['typeName', 'id', 'typescript'].includes(key)) {
+          initial[key] = selected[key] ?? '';
+        }
+      });
+    }
+    return initial;
+  });
   const [valid, setValid] = React.useState(false);
+
+  // Validate fields whenever fieldValues or typescript change
+  React.useEffect(() => {
+    if (!typescript) {
+      setValid(false);
+      return;
+    }
+    // Check all required fields for their type
+    const allValid = Object.entries(typescript)
+      .filter(([key, value]) => typeof value === 'object' && value !== null && (value as any).required === true)
+      .every(([key, value]) => {
+        const fieldConfig = value as any;
+        const val = fieldValues[key];
+        if (fieldConfig.type === 'string') {
+          return typeof val === 'string' && val.length >= 1;
+        }
+        if (fieldConfig.type === 'email') {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return typeof val === 'string' && emailRegex.test(val);
+        }
+        // For other types, skip validation for now
+        return true;
+      });
+    setValid(allValid);
+  }, [fieldValues, typescript]);
 
   const handleCancel = () => {
     dispatch(setCRUD(collection, 'mode', 'read'));
@@ -32,44 +68,100 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
     dispatch(setCRUD(collection, 'mode', 'delete'));
   };
 
+  const handleUpdate = () => {
+    dispatch(setCRUD(collection, 'saving', true));
+    const updated = { ...selected, ...fieldValues };
+    updated.updated = Date.now();
+    dispatch(setCRUD(collection, 'selected', updated));
+    dispatch(setCRUD(collection, 'mode', 'read'));
+  };
+
   return (
     <>
       <CardContent>
         <Box>
-          <pre>label: {JSON.stringify(label, null, 2)}</pre>
+          {/* Separate fields into required and optional, order by 'order' */}
+          {typescript && (() => {
+            const entries = Object.entries(typescript)
+              .filter(([key]) => !['typeName', 'id', 'typescript'].includes(key));
+            // Group and sort
+            const requiredFields = entries
+              .filter(([_, config]) => (config as any).required)
+              .sort(([, a], [, b]) => {
+                const orderA = typeof (a as any).order === 'number' ? (a as any).order : Infinity;
+                const orderB = typeof (b as any).order === 'number' ? (b as any).order : Infinity;
+                return orderA - orderB;
+              });
+            const optionalFields = entries
+              .filter(([_, config]) => !(config as any).required)
+              .sort(([, a], [, b]) => {
+                const orderA = typeof (a as any).order === 'number' ? (a as any).order : Infinity;
+                const orderB = typeof (b as any).order === 'number' ? (b as any).order : Infinity;
+                return orderA - orderB;
+              });
+            const allFields = [...requiredFields, ...optionalFields];
+            return allFields.map(([field, fieldConfig], idx) => {
+              const config = fieldConfig as any;
+              const label = config.label || field;
+              const description = config.description || '';
+              const type = config.type;
+              const required = config.required;
+              const autoFocus = idx === 0;
+              // Render string/email fields
+              if (type === 'string' || type === 'email') {
+                return (
+                  <InputString
+                    type={type}
+                    key={field}
+                    required={required}
+                    description={description}
+                    label={label}
+                    field={field}
+                    autoFocus={autoFocus}
+                    value={fieldValues[field] as string}
+                    onChange={value => {
+                      setValid(false);
+                      setFieldValues(prev => ({ ...prev, [field]: value }));
+                    }}
+                    disabled={!!saving}
+                  />
+                );
+              }
+              // Add more field types as needed
+              return <Box key={field} sx={{my:2}}>Create field type <strong>
+                {type}</strong></Box>;
+            });
+          })()}
         </Box>
       </CardContent>
       <CardActions>
-      <Box sx={{ flexGrow: 1 }} />
-      <Box sx={{
-        display: 'flex',
-      }}>
-        <Box sx={{ display: 'flex', gap: 1}}>
-            <Button
-              onClick={handleCancel}
-              endIcon={<Icon icon="cancel" />}
-              variant="text"
-              color="primary">
-              Cancel
-            </Button>
+        <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <IconButton
+            onClick={handleCancel}
+            color="primary"
+            disabled={!!saving}
+          >
+            <Icon icon="cancel" />
+          </IconButton>
+          <IconButton
+            onClick={handleDelete}
+            color="primary"
+            disabled={!!saving}
+          >
+            <Icon icon="delete" />
+          </IconButton>
           <Button
-              onClick={handleDelete}
-              endIcon={<Icon icon="delete" />}
-              variant="text"
-              color="primary">
-              Delete
-            </Button>
-          <Button
-            disabled={!valid}
+            onClick={handleUpdate}
+            disabled={!valid || !!saving}
             endIcon={<Icon icon="save" />}
             variant="contained"
-            color="primary">
+            color="primary"
+          >
             Update
           </Button>
-          
         </Box>
-      </Box>
-    </CardActions>
+      </CardActions>
     </>
   );
 }

@@ -4,7 +4,7 @@ slug: /
 title: Goldlabel Apps
 description: Software Development through the ages
 tags: Goldlabel, Work, Jobs, Permanent, Contract
-image: /company/png/goldlabel.png
+image: /company/png/cartridge.png
 icon: goldlabel
 ---
 

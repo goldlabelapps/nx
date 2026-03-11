@@ -3,7 +3,7 @@ order: 10
 title: Our changing role
 description: The step‑change due to AI
 slug: /our-changing-role
-image: /company/png/goldlabel.png
+image: /company/png/cartridge.png
 icon: goldlabel
 tags: Senior Developer, AI, Experience
 ---

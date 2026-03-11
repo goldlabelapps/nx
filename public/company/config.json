@@ -4,17 +4,17 @@
     "description": "UK Ltd Company ",
     "url": "https://company.goldlabel.pro",
     "images": {
-        "light": "/company/png/goldlabel.png",
-        "dark": "/company/png/goldlabel.png"
+        "light": "/company/png/cartridge.png",
+        "dark": "/company/png/cartridge.png"
     },
     "icons": {
         "light": {
-            "icon": "/company/svg/favicon_gold.svg",
-            "favicon": "/company/svg/favicon_gold.svg"
+            "icon": "/company/svg/favicon_goldlabel.svg",
+            "favicon": "/company/svg/favicon_goldlabel.svg"
         },
         "dark": {
-            "icon": "/company/svg/favicon_white.svg",
-            "favicon": "/company/svg/favicon_white.svg"
+            "icon": "/company/svg/favicon_goldlabel.svg",
+            "favicon": "/company/svg/favicon_goldlabel.svg"
         }
     },
     "cartridges": {
@@ -24,10 +24,10 @@
             "themes": {
                 "dark": {
                     "mode": "dark",
-                    "primary": "#fff",
-                    "secondary": "#fff",
+                    "primary": "#000",
+                    "secondary": "#000",
                     "background": "#C09F52",
-                    "paper": "#C09F52",
+                    "paper": "#fff",
                     "text": "#000",
                     "border": "#fff"
                 },
@@ -36,7 +36,7 @@
                     "primary": "#C09F52",
                     "secondary": "#C09F52",
                     "background": "#fff",
-                    "paper": "#E7EBF2",
+                    "paper": "#eee",
                     "text": "#000",
                     "border": "#C09F52"
                 }

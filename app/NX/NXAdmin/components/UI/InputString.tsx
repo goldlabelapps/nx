@@ -10,7 +10,7 @@ export default function InputString({
     description,
     field,
     type = 'string',
-    required = true,
+    required = false,
     autoFocus,
     value,
     disabled = false,
