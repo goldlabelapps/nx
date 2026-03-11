@@ -1,15 +1,13 @@
 ---
 order: 1 
 slug: /
-title: Ed Tech.
-description: Educational Technology
+title: Educational Technology
+description: Technical Interviews
 tags: nx, goldlabel, coding
-icon: flash
+icon: right
+image: https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg
 ---
-
 > Ace your software developer interviews. Master technical interview communication, behavioral questions, system design explanations, and English interview skills.
-
-## Different types of Technical Interviews
 
 > Coding Interviews  
 

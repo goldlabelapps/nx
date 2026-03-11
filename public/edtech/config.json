@@ -1,35 +1,35 @@
 {
     "tenant": "edtech",
     "url": "https://ed-tech.co",
-    "siteName": "EdTech",
-    "description": "Educational Technology News",
+    "siteName": "Educational Technology",
+    "description": "News",
     "icons": {
         "light": {
-            "icon": "/shared/svg/characters/biker.svg",
-            "favicon": "/edtech/favicon.ico"
+            "icon": "/edtech/svg/favicon.svg",
+            "favicon": "/edtech/svg/favicon.svg"
         },
         "dark": {
-            "icon": "/shared/svg/characters/biker.svg",
-            "favicon": "/edtech/favicon.ico"
+            "icon": "/edtech/svg/favicon.svg",
+            "favicon": "/edtech/svg/favicon.svg"
         }
     },
     "images": {
-        "light": "https://live.staticflickr.com/65535/55065806556_6f6d91c14b_b.jpg",
-        "dark": "https://live.staticflickr.com/65535/55111661741_6844b1cc48_b.jpg"
+        "light": "https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg",
+        "dark": "https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg"
     },
     "cartridges": {
         "designSystem": {
-            "themeSwitching": false,
-            "defaultTheme": "dark",
+            "themeSwitching": true,
+            "defaultTheme": "light",
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#2eaf4a",
-                    "secondary": "#2eaf4a",
+                    "primary": "#1E622D",
+                    "secondary": "#3E5C55",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#000",
-                    "border": "#2eaf4a"
+                    "border": "#2EAF4A"
                 },
                 "dark": {
                     "mode": "dark",

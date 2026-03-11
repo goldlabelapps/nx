@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="544px" height="516px" viewBox="0 0 544 516" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>star</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="og" transform="translate(-36, 214)">
+            <g id="star" transform="translate(45, -186)">
+                <polygon id="whiteStar" fill="#FFFFFF" transform="translate(262.799, 238.866) rotate(4) translate(-262.799, -238.866)" points="262.799042 354.366002 112.326017 425.748927 141.063808 274.557464 19.3285734 167.483076 187.562529 145.424539 262.799042 7.86600162 338.035554 145.424539 506.26951 167.483076 384.534276 274.557464 413.272066 425.748927"></polygon>
+                <polygon id="darkStar" fill="#1E622D" points="256.969925 340.981191 113.568001 408.961055 140.955331 264.977393 24.940738 163.007597 185.268963 142.000664 256.969925 11 328.670887 142.000664 488.999112 163.007597 372.984518 264.977393 400.371849 408.961055"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
