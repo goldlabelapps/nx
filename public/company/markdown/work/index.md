@@ -1,11 +1,11 @@
 ---
-order: 20
-slug: /work
-title: Work
-description: Through the ages
+order: 1
+slug: /
+title: Goldlabel Apps
+description: Software Development through the ages
 tags: Goldlabel, Work, Jobs, Permanent, Contract
-image: https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg
-icon: work
+image: /company/png/cartridge.png
+icon: goldlabel
 ---
 
 > Evolution from the Flash era with basic dial-up experiences to today's AI-enhanced, cloud-native web apps built on React and Next.js

@@ -5,6 +5,7 @@ import {
   Button,
   CardActions,
   CardContent,
+  IconButton,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
@@ -53,7 +54,7 @@ export interface I_CreateDoc {
       const fieldConfig = typescript[field];
       const value = fieldValues[field];
       if (fieldConfig.type === 'string') {
-        return typeof value === 'string' && value.length >= 5;
+        return typeof value === 'string' && value.length >= 1;
       }
       if (fieldConfig.type === 'email') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -125,14 +126,12 @@ export interface I_CreateDoc {
       <CardActions>
         <Box sx={{ flexGrow: 1 }} />
         <Box sx={{ display: 'flex', gap: 1 }}>
-          <Button
+          <IconButton
             onClick={handleCancel}
             disabled={!!saving}
-            endIcon={<Icon icon="cancel" />}
-            variant="text"
             color="primary">
-            Cancel
-          </Button>
+            <Icon icon="cancel" />
+          </IconButton>
           <Button
             onClick={handleSave}
             disabled={!valid || !!saving}

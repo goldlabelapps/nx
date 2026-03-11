@@ -170,7 +170,7 @@ import ForwardIcon from '@mui/icons-material/Send';
 import FirebaseIcon from '@mui/icons-material/Whatshot';
 import MediaIcon from '@mui/icons-material/AttachFile';
 import CashIcon from '@mui/icons-material/Savings';
-import TenantIcon from '@mui/icons-material/BrowserUpdated';
+import TenantIcon from '@mui/icons-material/Anchor';
 import RequiredIcon from '@mui/icons-material/PriorityHigh';
 import HeartIcon from '@mui/icons-material/Favorite';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Box,
     IconButton,
-    Button,
+    Divider,
     Paper,
 } from '@mui/material';
 import {
@@ -28,10 +28,12 @@ export const Async: React.FC<I_Async> = ({ id }) => {
     }, [dispatch, sessionStart]);
 
     return (
-        <Paper 
+        <>
+        <Box 
             id={id}
-            sx={{ p: 2, display: 'flex' }}
-            variant="outlined">
+            sx={{ p: 1, display: 'flex' }}
+        >
+            <Divider />
             <Box sx={{ flexGrow: 1 }}>
                 <Heart />
             </Box>
@@ -43,7 +45,8 @@ export const Async: React.FC<I_Async> = ({ id }) => {
                     <Icon icon="reset" />
                 </IconButton>
             </Box>
-        </Paper>
+        </Box>
+        </>
     );
 };
 

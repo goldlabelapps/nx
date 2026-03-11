@@ -3,9 +3,9 @@ order: 2
 slug: /about
 title: About
 description: Goldlabel Apps Ltd
-icon: goldlabel
 tags: goldlabel, contact, Twitter, Facebook, LinkedIn, GitHub, YoutTube
-image: https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg
+image: /company/png/cartridge.png
+icon: goldlabel
 ---
 
 > UK Limited Company 5460545

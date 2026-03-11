@@ -54,10 +54,10 @@ export default function Collection({
     selected,
   } = state || {};
 
-  if (mode === 'read') cardTitle = `All ${title}`;
+  if (mode === 'read') cardTitle = `${title}`;
   if (mode === 'create') cardTitle = `New ${single}`;
-  if (mode === 'update') cardTitle = `Update ${selected?.label || single}`;
-  if (mode === 'delete') cardTitle = `Delete ${selected?.label || single}?`;
+  if (mode === 'update') cardTitle = `Update ${single}`;
+  if (mode === 'delete') cardTitle = `Delete ${single}?`;
 
   const dispatch = useDispatch();
   const active = useActive();
@@ -94,7 +94,7 @@ export default function Collection({
     <>
       <Card variant="outlined">
         <CardHeader
-          title={<Typography variant="h5">{cardTitle}</Typography>}
+          title={<Typography variant="body1">{cardTitle}</Typography>}
           avatar={<IconButton color="primary" onClick={handleCollectionReset}>
             <Icon icon={icon as any} />
           </IconButton>}

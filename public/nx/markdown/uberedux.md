@@ -4,8 +4,7 @@ slug: /uberedux
 title: Uberedux
 description: All apps need state management
 tags: features, uberedux
-smartImage: mindful
-icon: cartridge
+icon: api
 image: https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg
 ---
 

@@ -3,6 +3,7 @@ import nxConfig from '../../../public/nx/config.json';
 import mcukConfig from '../../../public/mcuk/config.json';
 import echopayConfig from '../../../public/echopay/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
+import companyConfig from '../../../public/company/config.json';
 
 export const getTenant = (tenant?: T_Tenant) => {
 
@@ -11,6 +12,10 @@ export const getTenant = (tenant?: T_Tenant) => {
     let markdownDir;
 
     switch (t) {
+        case 'company':
+            config = companyConfig;
+            markdownDir = process.cwd() + '/public/company/markdown';
+            break;
         case 'mcuk':
             config = mcukConfig;
             markdownDir = process.cwd() + '/public/mcuk/markdown';

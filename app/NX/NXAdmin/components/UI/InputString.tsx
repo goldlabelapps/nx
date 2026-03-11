@@ -10,7 +10,7 @@ export default function InputString({
     description,
     field,
     type = 'string',
-    required = true,
+    required = false,
     autoFocus,
     value,
     disabled = false,
@@ -46,8 +46,8 @@ export default function InputString({
                     helper = 'Valid email!';
                 }
             } else {
-                if (inputValue.length < 5) {
-                    helper = 'More than 5 chars required';
+                if (inputValue.length < 1) {
+                    helper = 'More than 1 char required';
                 } else {
                     helper = 'Looks good!';
                 }

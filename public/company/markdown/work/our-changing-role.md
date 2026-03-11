@@ -2,9 +2,9 @@
 order: 10
 title: Our changing role
 description: The step‑change due to AI
-slug: /work/our-changing-role
-image: https://live.staticflickr.com/65535/55064901972_b9a00dc36f_b.jpg
-icon: work
+slug: /our-changing-role
+image: /company/png/cartridge.png
+icon: goldlabel
 tags: Senior Developer, AI, Experience
 ---
 

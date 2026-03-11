@@ -2,9 +2,9 @@
 order: 1000
 title: Internet Eras
 description: Two decades of experience over every era of web development
-slug: /work/eras
-icon: case
-image: https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg
+slug: /eras
+image: /company/png/cartridge.png
+icon: goldlabel
 tags: eras
 ---
 
