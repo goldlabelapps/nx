@@ -53,7 +53,7 @@ export interface I_CreateDoc {
       const fieldConfig = typescript[field];
       const value = fieldValues[field];
       if (fieldConfig.type === 'string') {
-        return typeof value === 'string' && value.length >= 5;
+        return typeof value === 'string' && value.length >= 1;
       }
       if (fieldConfig.type === 'email') {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

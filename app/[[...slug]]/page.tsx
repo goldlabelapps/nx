@@ -114,7 +114,7 @@ export default async function Page(props: any) {
                         sx={{
                             top: 0,
                             boxShadow: 0,
-                            background: backgroundColor,
+                            background: 0,
                         }}>
                         <Container maxWidth="lg">
                             <CardHeader

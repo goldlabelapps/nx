@@ -4,7 +4,7 @@ slug: /design-system
 title: Design System
 description: Based on Material UI
 tags: features, cartridges,
-icon: cartridge
+icon: design
 image: https://live.staticflickr.com/65535/55139727398_05d97ed1d6_b.jpg
 ---
 

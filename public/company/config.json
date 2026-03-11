@@ -1,0 +1,46 @@
+{
+    "tenant": "company",
+    "siteName": "Goldlabel Apps",
+    "description": "UK Ltd Company ",
+    "url": "https://company.goldlabel.pro",
+    "images": {
+        "light": "/company/png/goldlabel.png",
+        "dark": "/company/png/goldlabel.png"
+    },
+    "icons": {
+        "light": {
+            "icon": "/company/svg/favicon_gold.svg",
+            "favicon": "/company/svg/favicon_gold.svg"
+        },
+        "dark": {
+            "icon": "/company/svg/favicon_white.svg",
+            "favicon": "/company/svg/favicon_white.svg"
+        }
+    },
+    "cartridges": {
+        "designSystem": {
+            "themeSwitching": true,
+            "defaultTheme": "light",
+            "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#fff",
+                    "secondary": "#fff",
+                    "background": "#C09F52",
+                    "paper": "#C09F52",
+                    "text": "#000",
+                    "border": "#fff"
+                },
+                "light": {
+                    "mode": "light",
+                    "primary": "#C09F52",
+                    "secondary": "#C09F52",
+                    "background": "#fff",
+                    "paper": "#E7EBF2",
+                    "text": "#000",
+                    "border": "#C09F52"
+                }
+            }
+        }
+    }
+}

@@ -129,10 +129,11 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
-                        <Async />
+                        
                         <List component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
+                        <Async />
                         <Box sx={{ mt: 'auto' }}>
 
                             {themeSwitching && <>

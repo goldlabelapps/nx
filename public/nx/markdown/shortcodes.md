@@ -5,7 +5,7 @@ title: Shortcodes
 description: Extend your content with reusable, customizable, and maintainable features, all with a simple and intuitive syntax
 tags: features, cartridges, shortcodes
 smartImage: mindful
-icon: cartridge
+icon: wordpress
 image: https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg
 ---
 

@@ -7,7 +7,7 @@ export const initAsync = (): any =>
             try {
                 dispatch(setAsync('sessionStart', Date.now()));
                 dispatch(setAsync('ticks', 0));
-                dispatch(tick());
+                // dispatch(tick());
             } catch (e: unknown) {
                 const msg = e instanceof Error ? e.message : String(e);
                 dispatch(setUbereduxKey({ key: 'error', value: msg }));

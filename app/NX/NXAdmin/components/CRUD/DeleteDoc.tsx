@@ -8,7 +8,7 @@ import {
   Button,
   Typography,
 } from '@mui/material';
-import { collectionDelete, useCRUD } from '../../../NXAdmin';
+import { collectionDelete, setCRUD, useCRUD } from '../../../NXAdmin';
 import { useDispatch } from '../../../Uberedux';
 import { Icon } from '../../../DesignSystem';
 
@@ -29,7 +29,8 @@ export default function DeleteDoc({ collection }: I_DeleteDoc) {
   }
 
   const handleCancel = () => {
-    dispatch(collectionDelete(collection, selected));
+    // dispatch(collectionDelete(collection, selected));
+    dispatch(setCRUD(collection, 'mode', 'read'));
   }
   
   return (

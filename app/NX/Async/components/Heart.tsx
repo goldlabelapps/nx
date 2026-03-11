@@ -32,15 +32,14 @@ export const Heart: React.FC<I_Heart> = ({ id }) => {
         <Box id={id} sx={{
             display: 'flex',
         }}>
-            <Box sx={{m:2}}>
+            <Box sx={{m:1}}>
                 <Icon icon="heart" color="primary" />
             </Box>
-            <Box sx={{mt:2}}>
+            <Box sx={{mt:1, ml:2}}>
                 <Typography variant="caption">
                     {ticks} secs
                 </Typography>
             </Box>
-            
         </Box>
     );
 };
