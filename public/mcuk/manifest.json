@@ -1,8 +1,8 @@
 {
-  "short_name": "MCUK",
-  "name": "Medical Cannabis UK",
-  "theme_color": "#17A1AC",
-  "background_color": "#17A1AC",
+  "short_name": "Pothead",
+  "name": "Diary of a pothead",
+  "theme_color": "#FFF",
+  "background_color": "#FFF",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",
