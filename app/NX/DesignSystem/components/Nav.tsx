@@ -63,10 +63,8 @@ const Nav: React.FC<I_Nav> = ({
     function renderNavItems(
         items: I_NavNode[],
         parentKey = '',
-        // parentNavTarget?: string,
     ): React.ReactNode {
 
-        // Suppress subpages whose slug or path ends with '/index' or is 'index.md'
         return items
             .map((item, i) => {
                 const key = `${parentKey}item_${i}`;
@@ -76,7 +74,6 @@ const Nav: React.FC<I_Nav> = ({
                     : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
                 const isRoutable = typeof navTarget === 'string' && navTarget.trim().length > 0;
                 const label = navTarget === '/' ? 'Home' : item.title;
-                // Filter children whose path matches this item's path
                 let filteredChildren = item.children;
                 if (hasChildren && item.path) {
                     filteredChildren = item.children!.filter(child => child.path !== item.path);
@@ -103,7 +100,6 @@ const Nav: React.FC<I_Nav> = ({
             })
             .filter(Boolean);
     }
-    console.log('themeSwitching', themeSwitching);
     
     if (mode === 'mobile') {
         return (
