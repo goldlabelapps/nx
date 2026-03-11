@@ -5,11 +5,11 @@
     "url": "https://listingslab.com",
     "icons": {
         "light": {
-            "icon": "/shared/svg/characters/punk.svg",
+            "icon": "/mcuk/favicon.png",
             "favicon": "/mcuk/favicon.ico"
         },
         "dark": {
-            "icon": "/shared/svg/characters/punk.svg",
+            "icon": "/mcuk/favicon.png",
             "favicon": "/mcuk/favicon.ico"
         }
     },

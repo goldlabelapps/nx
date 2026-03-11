@@ -1,5 +1,5 @@
 "use client";
-import { I_NavNode, T_Frontmatter } from '../../types';
+import { I_Nav, I_NavNode } from '../../types';
 import React from 'react';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -27,12 +27,6 @@ function sortNavItems(items: any[]) {
     });
 }
 
-interface I_Nav {
-    navItems: I_NavNode[];
-    mode?: 'mobile' | 'desktop';
-    frontmatter?: T_Frontmatter;
-}
-
 const Nav: React.FC<I_Nav> = ({
     navItems,
     mode = 'desktop',
@@ -44,7 +38,7 @@ const Nav: React.FC<I_Nav> = ({
     const dispatch = useDispatch();
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
-
+    const { themeSwitching } = designSystem || {};
 
     const handleThemeModeToggle = () => {
         const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
@@ -109,7 +103,8 @@ const Nav: React.FC<I_Nav> = ({
             })
             .filter(Boolean);
     }
-    // Removed stray slash and 'return true' lines that caused syntax error
+    console.log('themeSwitching', themeSwitching);
+    
     if (mode === 'mobile') {
         return (
             <>
@@ -137,16 +132,19 @@ const Nav: React.FC<I_Nav> = ({
                             {renderNavItems(sortedNavItems)}
                         </List>
                         <Box sx={{ mt: 'auto' }}>
-                            <ListItemButton onClick={handleThemeModeToggle}>
-                                <ListItemIcon>
-                                    <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={<Typography>
-                                        {currentThemeMode === 'light' ? 'Dark' : 'Light'} mode
-                                    </Typography>}
-                                />
-                            </ListItemButton>
+
+                            {themeSwitching && <>
+                                <ListItemButton onClick={handleThemeModeToggle}>
+                                    <ListItemIcon>
+                                        <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={<Typography>
+                                            {currentThemeMode === 'light' ? 'Dark' : 'Light'} mode
+                                        </Typography>}
+                                    />
+                                </ListItemButton>
+                            </>}
 
                             <ListItemButton onClick={handleNXAdmin}>
                                 <ListItemIcon>
@@ -164,7 +162,6 @@ const Nav: React.FC<I_Nav> = ({
         );
     }
 
-    // Desktop mode
     return (
         <Box>
             <List component={'nav'}>

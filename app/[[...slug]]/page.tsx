@@ -24,7 +24,6 @@ import {
     Nav,
     Hero,
     Footer,
-    // Settings,
     ThemedIcon,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
@@ -67,7 +66,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     });
 }
 
-
 export async function generateStaticParams() {
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { markdownDir } = getTenant(tenant as T_Tenant);
@@ -78,14 +76,14 @@ export async function generateStaticParams() {
     });
 }
 
-
 export default async function Page(props: any) {
     const { params } = props;
     const resolvedParams = typeof params?.then === 'function' ? await params : params;
     let slugArr = resolvedParams?.slug || [];
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") slugArr.pop();
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
-    const { config } = getTenant(tenant as T_Tenant);
+    const { config: rawConfig } = getTenant(tenant as T_Tenant);
+    const config = { ...rawConfig, tenant: tenant as T_Tenant };
     const filePath = serverUseMDBySlug(slugArr, tenant);
     if (!filePath || !fs.existsSync(filePath)) notFound();
     let title = tenant.toUpperCase();
@@ -97,9 +95,7 @@ export default async function Page(props: any) {
     const navItems = await serverUseNav(data.slug || "/");
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themedImage = config?.images?.[themeMode] || null;
-
     const backgroundColor = config?.cartridges?.designSystem?.themes?.[themeMode]?.background;
-
 
     const meta = getMeta({
         siteName: config.siteName,
@@ -118,8 +114,7 @@ export default async function Page(props: any) {
                         sx={{
                             top: 0,
                             boxShadow: 0,
-                            // background: backgroundColor,
-                            background: 0,
+                            background: backgroundColor,
                         }}>
                         <Container maxWidth="lg">
                             <CardHeader
@@ -128,12 +123,12 @@ export default async function Page(props: any) {
                                 </IconButton>}
                                 title={<Typography
                                     color='secondary'
-                                    variant="h4"
+                                    variant="h5"
                                     component="h1"
+                                    sx={{mt:0.25}}
                                 >
                                     {title}
                                 </Typography>}
-                                action={null}
                             />
                         </Container>
                     </AppBar>
@@ -193,7 +188,7 @@ export default async function Page(props: any) {
 
                             <Box sx={{ display: 'flex', width: '100%' }}>
 
-                                <Box sx={{ mx: 1 }}>
+                                <Box sx={{ mr: 2 }}>
                                     {data.icon && (
                                         <Icon icon={data.icon} color="primary" />
                                     )}
