@@ -38,7 +38,7 @@ const Nav: React.FC<I_Nav> = ({
     const dispatch = useDispatch();
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
-
+    const { themeSwitching } = designSystem || {};
 
     const handleThemeModeToggle = () => {
         const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
@@ -103,7 +103,7 @@ const Nav: React.FC<I_Nav> = ({
             })
             .filter(Boolean);
     }
-
+    console.log('themeSwitching', themeSwitching);
     
     if (mode === 'mobile') {
         return (
@@ -132,16 +132,19 @@ const Nav: React.FC<I_Nav> = ({
                             {renderNavItems(sortedNavItems)}
                         </List>
                         <Box sx={{ mt: 'auto' }}>
-                            <ListItemButton onClick={handleThemeModeToggle}>
-                                <ListItemIcon>
-                                    <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={<Typography>
-                                        {currentThemeMode === 'light' ? 'Dark' : 'Light'} mode
-                                    </Typography>}
-                                />
-                            </ListItemButton>
+
+                            {themeSwitching && <>
+                                <ListItemButton onClick={handleThemeModeToggle}>
+                                    <ListItemIcon>
+                                        <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
+                                    </ListItemIcon>
+                                    <ListItemText
+                                        primary={<Typography>
+                                            {currentThemeMode === 'light' ? 'Dark' : 'Light'} mode
+                                        </Typography>}
+                                    />
+                                </ListItemButton>
+                            </>}
 
                             <ListItemButton onClick={handleNXAdmin}>
                                 <ListItemIcon>
