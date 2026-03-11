@@ -1,5 +1,57 @@
-import type { T_UbereduxDispatch } from '../NX/Uberedux/store';
-export { T_UbereduxDispatch }
+import type { T_UbereduxDispatch, T_RootState } from '../NX/Uberedux/store';
+export type { T_UbereduxDispatch, T_RootState }
+
+export type T_Tenant = 'nx' |
+    'mcuk' |
+    'echopay' |
+    'edtech'
+;
+
+export type T_Config = {
+    tenant: T_Tenant;
+    siteName: string;
+    label?: string;
+    description: string;
+    url: string;
+    icons: {
+        light: {
+            icon: string;
+            favicon: string;
+        };
+        dark: {
+            icon: string;
+            favicon: string;
+        };
+    };
+    images: {
+        light: string;
+        dark: string;
+    };
+    cartridges: {
+        paywall?: {
+            enabled: boolean;
+            userMode: string;
+            email: string;
+        };
+        designSystem?: {
+            themeSwitching: boolean;
+            defaultTheme: string;
+            themes: {
+                [key: string]: {
+                    mode: string;
+                    primary: string;
+                    secondary: string;
+                    background: string;
+                    paper: string;
+                    text: string;
+                    border: string;
+                };
+            };
+        };
+        lingua?: T_LinguaCartridge;
+        // Add other cartridge types as needed
+    };
+}
 
 export type T_Meta = {
     siteName?: string;
@@ -18,15 +70,11 @@ export type T_Meta = {
     };
 };
 
-export type T_Tenant = 'nx' |
-    'mcuk' |
-    'echopay' |
-    'edtech' |
-    'aki' |
-    'flash';
-
-
-export type T_ProjectSlug = 'nx' | 'mcuk' | 'echopay' | 'edtech' | 'aki' | 'flash';
+export interface I_Nav {
+    navItems: I_NavNode[];
+    mode?: 'mobile' | 'desktop';
+    frontmatter?: T_Frontmatter;
+}
 
 export interface I_NX {
     children: React.ReactNode;
@@ -69,51 +117,6 @@ export type T_CommerceCartridge = {
 export type T_CommerceShortcode = {
     [key: string]: any;
 };
-
-export type T_Config = {
-    tenant: string;
-    siteName: string;
-    description: string;
-    url: string;
-    icons: {
-        light: {
-            icon: string;
-            favicon: string;
-        };
-        dark: {
-            icon: string;
-            favicon: string;
-        };
-    };
-    images: {
-        light: string;
-        dark: string;
-    };
-    cartridges: {
-        paywall?: {
-            enabled: boolean;
-            userMode: string;
-            email: string;
-        };
-        designSystem?: {
-            themeSwitching: boolean;
-            defaultTheme: string;
-            themes: {
-                [key: string]: {
-                    mode: string;
-                    primary: string;
-                    secondary: string;
-                    background: string;
-                    paper: string;
-                    text: string;
-                    border: string;
-                };
-            };
-        };
-        lingua?: T_LinguaCartridge;
-        // Add other cartridge types as needed
-    };
-}
 
 // Lingua
 export type T_LinguaCartridge = {
