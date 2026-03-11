@@ -34,7 +34,7 @@ const Nav: React.FC<I_Nav> = ({
 }) => {
     const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
-    const [drawerOpen, setDrawerOpen] = React.useState(true);
+    const [drawerOpen, setDrawerOpen] = React.useState(false);
     const dispatch = useDispatch();
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
@@ -74,6 +74,8 @@ const Nav: React.FC<I_Nav> = ({
                     : (typeof (item as any).path === 'string' && (item as any).path.trim().length > 0 ? (item as any).path : undefined);
                 const isRoutable = typeof navTarget === 'string' && navTarget.trim().length > 0;
                 const label = navTarget === '/' ? 'Home' : item.title;
+
+                const icon = item.icon || 'settings';
                 let filteredChildren = item.children;
                 if (hasChildren && item.path) {
                     filteredChildren = item.children!.filter(child => child.path !== item.path);
@@ -88,7 +90,11 @@ const Nav: React.FC<I_Nav> = ({
                             disabled={!isRoutable}
                             sx={!isRoutable ? { opacity: 0.5, cursor: 'not-allowed' } : {}}
                         >
+                            <ListItemIcon>
+                                <Icon icon={icon as any} color="primary" />
+                            </ListItemIcon>
                             <ListItemText primary={label} />
+                            
                         </ListItemButton>
                         {hasChildren && filteredChildren && filteredChildren.length > 0 && (
                             <List sx={{ ml: 2 }}>

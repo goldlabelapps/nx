@@ -1,4 +1,12 @@
 [
+        {
+            "collection": "tenants",
+            "level": 2,
+            "single": "Tenant",
+            "title": "Tenants",
+            "description": "Only level 2 users should see this",
+            "icon": "tenant"
+        },
     {
         "collection": "users",
         "title": "Users",
@@ -6,14 +14,7 @@
         "description": "Manage user accounts and permissions",
         "icon": "users"
     },
-    {
-        "collection": "tenants",
-        "level": 2,
-        "single": "Tenant",
-        "title": "Tenants",
-        "description": "Only level 2 users should see this",
-        "icon": "tenant"
-    },
+
     {
         "collection": "media",
         "single": "File",

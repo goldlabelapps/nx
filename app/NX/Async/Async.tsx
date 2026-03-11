@@ -1,8 +1,9 @@
 import React from 'react';
 import {
     Box,
+    IconButton,
+    Button,
     Paper,
-    Typography,
 } from '@mui/material';
 import {
     Heart, 
@@ -10,6 +11,7 @@ import {
     initAsync,
 } from '../Async'
 import { useDispatch} from '../Uberedux';
+import { Icon } from '../DesignSystem';
 
 export interface I_Async {
     id?: string;
@@ -28,16 +30,19 @@ export const Async: React.FC<I_Async> = ({ id }) => {
     return (
         <Paper 
             id={id}
-            sx={{ p: 2 }}
-            variant="outlined" 
-        >
-            <Heart />
-            {/* <Typography>
-                Async 
-            </Typography> */}
-            <pre>state: 
-                {JSON.stringify(state, null, 2)}
-            </pre>
+            sx={{ p: 2, display: 'flex' }}
+            variant="outlined">
+            <Box sx={{ flexGrow: 1 }}>
+                <Heart />
+            </Box>
+            <Box>
+                <IconButton 
+                    color="primary"
+                    aria-label='Reset'
+                    onClick={() => dispatch(initAsync())}>
+                    <Icon icon="reset" />
+                </IconButton>
+            </Box>
         </Paper>
     );
 };

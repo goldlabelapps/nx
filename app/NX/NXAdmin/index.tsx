@@ -20,11 +20,11 @@ import { useCollection } from './hooks/useCollection';
 import { useActive } from './hooks/useActive';
 import MiniListItem from './components/Menus/MiniListItem';
 import OptionSelect from './components/UI/OptionSelect';
-import Strings from './components/UI/Strings';
+import InputString from './components/UI/InputString';
 
 export {
     NXAdmin,
-    Strings,
+    InputString,
     OptionSelect,
     Layout,
     Dashboard,
