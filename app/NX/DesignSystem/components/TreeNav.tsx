@@ -42,7 +42,8 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                         return undefined;
                     }
                     const clickedItem = findItem(treeViewItems, itemId);
-                    if (clickedItem && clickedItem.route) {
+                    // Only navigate if the clicked item is a leaf node (no children)
+                    if (clickedItem && clickedItem.route && !clickedItem.children) {
                         router.push(clickedItem.route);
                     }
                 }}

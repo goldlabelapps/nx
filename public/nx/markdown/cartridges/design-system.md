@@ -1,6 +1,6 @@
 ---
-order: 50
-slug: /design-system
+order: 70
+slug: /cartridges/design-system
 title: Design System
 description: Based on Material UI
 tags: features, cartridges,

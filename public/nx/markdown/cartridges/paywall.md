@@ -1,6 +1,6 @@
 ---
-order: 50
-slug: /paywall
+order: 80
+slug: /cartridges/paywall
 title: Paywall
 description: User authentication, membership, payments and more
 tags: features, cartridges,

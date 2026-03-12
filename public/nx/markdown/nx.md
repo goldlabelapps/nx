@@ -4,6 +4,7 @@ slug: /nx
 title: What is NX?
 description: Multi-tenant Next.js application
 tags: NX, Features, n64, Cartridges
+image: https://live.staticflickr.com/65535/55053909901_5f8999ff92_b.jpg
 icon: info
 ---
 
@@ -20,12 +21,9 @@ A cartridge is a self-contained piece of application logic: React components, st
 
 Because each cartridge is standalone, it can be added, removed, or swapped out without affecting the rest of the system. This makes development faster, maintenance simpler, and code reuse effortless.
 
+#### Cartridges
+
 - Design System
-    - Material UI
 - Uberedux
-- Commerce
 - Shortcodes
-- Paywall 
-    - Firebase Auth
-
-
+- Paywall
