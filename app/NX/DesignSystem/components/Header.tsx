@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
 	Box,
+	Container,
 	Avatar,
 	useTheme,
 	CardHeader,
@@ -43,6 +44,7 @@ export default function Header({
 					boxShadow: 0,
 					background: theme.palette?.background?.default || 'transparent',
 				}}>
+				<Container maxWidth="lg">
 				<CardHeader
 					action={<><Box sx={{ m: 1.5 }}>
 							<Virus frontmatter={frontmatter} />
@@ -59,6 +61,7 @@ export default function Header({
 						{title}
 					</Typography>}
 				/>
+				</Container>
 			</AppBar>			
 		</header>
 	);
