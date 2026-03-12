@@ -4,7 +4,7 @@ import SignIn from './SignIn';
 import { firebaseLogin } from '../../Paywall';
 import { getFirebaseAuth } from '../../lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { Typography } from "@mui/material";
+import { Typography, Backdrop, CircularProgress, Box } from "@mui/material";
 import { useDispatch } from '../../Uberedux';
 import { setPaywall } from '../../Paywall';
 
@@ -55,9 +55,16 @@ export default function RequireAuth({ children, config }: { children: React.Reac
         return () => unsubscribe();
     }, []);
 
-    if (loading) return <Typography variant='caption' color="text.secondary">
-        Checking credentials ...
-    </Typography>;
+    if (loading) return (
+        <Backdrop open sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, color: '#fff' }}>
+            <Box display="flex" flexDirection="column" alignItems="center">
+                <CircularProgress color="inherit" />
+                <Typography variant="h6" sx={{ mt: 2 }}>
+                    Checking credentials...
+                </Typography>
+            </Box>
+        </Backdrop>
+    );
     if (!user) return <SignIn config={config} onSignIn={handleSignIn} />;
     return <>{children}</>;
 }

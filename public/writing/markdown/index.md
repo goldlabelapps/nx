@@ -7,6 +7,7 @@ tags: tenants,
 image: /_new_tenant/png/default.png
 icon: home
 ---
+- Wei Zang's Writing
 
 ## What is a tenant?
 

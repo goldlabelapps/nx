@@ -1,20 +1,20 @@
 {
-    "tenant": "_new_tenant",
-    "siteName": "New Tenant",
-    "description": "Description of Tenant",
-    "url": "https://_new_tenant.goldlabel.pro",
+    "tenant": "writing",
+    "siteName": "魏臧的写作",
+    "description": "Wei Zang's Writing",
+    "url": "https://writing.goldlabel.pro",
     "images": {
-        "light": "/_new_tenant/png/default.png",
-        "dark": "/_new_tenant/png/default.png"
+        "light": "/writing/jpg/default.jpg",
+        "dark": "/writing/jpg/default.jpg"
     },
     "icons": {
         "light": {
-            "icon": "/_new_tenant/svg/favicon_light.svg",
-            "favicon": "/_new_tenant/svg/favicon_light.svg"
+            "icon": "/writing/svg/favicon_light.svg",
+            "favicon": "/writing/svg/favicon_light.svg"
         },
         "dark": {
-            "icon": "/_new_tenant/svg/favicon_dark.svg",
-            "favicon": "/_new_tenant/svg/favicon_dark.svg"
+            "icon": "/writing/svg/favicon_dark.svg",
+            "favicon": "/writing/svg/favicon_dark.svg"
         }
     },
     "cartridges": {
