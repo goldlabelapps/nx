@@ -3,26 +3,6 @@ import Box from '@mui/material/Box';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter } from 'next/navigation';
 
-const MUI_X_PRODUCTS = [
-    {
-        id: 'grid',
-        label: 'Data Grid',
-        children: [
-            { id: 'grid-community', label: '@mui/x-data-grid' },
-            { id: 'grid-pro', label: '@mui/x-data-grid-pro' },
-            { id: 'grid-premium', label: '@mui/x-data-grid-premium' },
-        ],
-    },
-    {
-        id: 'tree-view',
-        label: 'Tree View',
-        children: [
-            { id: 'tree-view-community', label: '@mui/x-tree-view' },
-            { id: 'tree-view-pro', label: '@mui/x-tree-view-pro' },
-        ],
-    },
-];
-
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
     return items.map((item, idx) => {
         let baseId = item.path || item.slug || item.title || String(idx);
@@ -42,16 +22,28 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
     });
 }
 
-export default function TreeNav({ navItems = MUI_X_PRODUCTS }: { navItems?: any[] }) {
+export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const router = useRouter();
     const treeViewItems = mapNavItemsToTreeView(navItems);
     return (
         <Box sx={{}}>
             <RichTreeView
                 items={treeViewItems}
-                onItemClick={(event, item) => {
-                    if (item.route) {
-                        router.push(item.route);
+                onItemClick={(event, itemId) => {
+                    // console.log('Clicked item ID:', event);
+                    function findItem(items: any[], id: string): any | undefined {
+                        for (const item of items) {
+                            if (item.id === id) return item;
+                            if (item.children) {
+                                const found = findItem(item.children, id);
+                                if (found) return found;
+                            }
+                        }
+                        return undefined;
+                    }
+                    const clickedItem = findItem(treeViewItems, itemId);
+                    if (clickedItem && clickedItem.route) {
+                        router.push(clickedItem.route);
                     }
                 }}
             />

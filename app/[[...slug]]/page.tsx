@@ -93,7 +93,7 @@ export default async function Page(props: any) {
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-    const navItems = await serverUseNav(data.slug || "/");
+    const navItems = await serverUseNav();
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themedImage = config?.images?.[themeMode] || null;
     const backgroundColor = config?.cartridges?.designSystem?.themes?.[themeMode]?.background;

@@ -43,7 +43,7 @@ function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title
     return { title, order, slug, icon, type };
 }
 
-function buildNavTree(dir: string, baseUrl: string, targetSlug?: string): NavItem[] {
+function buildNavTree(dir: string, baseUrl: string): NavItem[] {
     if (!fs.existsSync(dir)) {
         return [];
     }
@@ -83,48 +83,12 @@ function buildNavTree(dir: string, baseUrl: string, targetSlug?: string): NavIte
         if (orderA !== orderB) return orderA - orderB;
         return a.title.localeCompare(b.title);
     });
-    // If no targetSlug, return the full tree
-    if (!targetSlug) return navItems;
-
-    // Helper to find the parent whose children contain the slug
-    function findSiblings(items: NavItem[], slug: string): NavItem[] | undefined {
-        for (const item of items) {
-            if (item.children) {
-                if (item.children.some(child => child.path === slug)) {
-                    return item.children;
-                }
-                const found = findSiblings(item.children, slug);
-                if (found) return found;
-            }
-        }
-        return undefined;
-    }
-    // Helper to strip children deeper than one level
-    function stripDeeperChildren(items: NavItem[]): NavItem[] {
-        return items.map(item => {
-            if (item.children && Array.isArray(item.children)) {
-                // Only keep one level of children, remove their children
-                return {
-                    ...item,
-                    children: item.children.map(child => ({ ...child, children: undefined }))
-                };
-            }
-            return item;
-        });
-    }
-    // Check if the slug is at the root level
-    if (navItems.some(item => item.path === targetSlug)) {
-        return stripDeeperChildren(navItems);
-    }
-    const siblings = findSiblings(navItems, targetSlug);
-    return siblings ? stripDeeperChildren(siblings) : [];
+    return navItems;
 }
 
-
-export async function serverUseNav(slug?: string): Promise<NavItem[]> {
-    const project = process.env.NEXT_PUBLIC_TENANT || "goldlabel";
+export async function serverUseNav(): Promise<NavItem[]> {
+    const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const markdownRoot = await getMarkdownRoot();
-    const baseUrl = `/${project}/markdown`;
-    // console.log("slug", slug);
-    return buildNavTree(markdownRoot, baseUrl, slug);
+    const baseUrl = `/${tenant}/markdown`;
+    return buildNavTree(markdownRoot, baseUrl);
 }

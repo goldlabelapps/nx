@@ -27,7 +27,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     if (theme) {
         theme = { ...theme, mode: themeMode };
     }
-    const navItems = await serverUseNav(data.slug || "/");
+    const navItems = await serverUseNav();
 
     return (
         <ShareClient
