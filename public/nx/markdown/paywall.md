@@ -5,7 +5,6 @@ title: Paywall
 description: User authentication, membership, payments and more
 tags: features, cartridges,
 icon: cash
-image: https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg
 ---
 
 > All handled seamlessly with Firebase Auth and Stripe integration

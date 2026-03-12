@@ -173,11 +173,25 @@ import CashIcon from '@mui/icons-material/Savings';
 import TenantIcon from '@mui/icons-material/Anchor';
 import RequiredIcon from '@mui/icons-material/PriorityHigh';
 import HeartIcon from '@mui/icons-material/Favorite';
+import DessertIcon from '@mui/icons-material/Cake';
+import AsianIcon from '@mui/icons-material/RamenDining';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'asian':
+      iconFragment = <AsianIcon color={color} />;
+      break;
+
+    case 'cake':
+      iconFragment = <DessertIcon color={color} />;
+      break;
+
+    case 'dessert':
+      iconFragment = <DessertIcon color={color} />;
+      break;
+
     case 'heart':
       iconFragment = <HeartIcon color={color} />;
       break;

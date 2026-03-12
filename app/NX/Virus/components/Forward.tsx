@@ -4,6 +4,7 @@ import React from "react";
 import {
     ButtonBase,
     Tooltip,
+    Typography,
 } from '@mui/material';
 import { Icon } from '../../DesignSystem'
 
@@ -18,13 +19,11 @@ export const Forward: React.FC<{
         console.log('Forward clicked.');
     };
 
-    return (<Tooltip title="Send to a friend" placement="top">
-        <ButtonBase
-            onClick={handleClick}
-        >
+    return (<ButtonBase onClick={handleClick} >
             <Icon icon="forward" color="primary" />
-        </ButtonBase>
-    </Tooltip>
-    );
+            <Typography variant="h6" sx={{ ml: 3 }}>    
+                {'Send to friend'}
+            </Typography>
+        </ButtonBase>);
 };
 
