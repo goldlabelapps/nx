@@ -16,9 +16,10 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/echopay/favicon.webp",
-      "type": "image/webp",
-      "sizes": "16x16"
+      "src": "/echopay/svg/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ]
 }

@@ -21,14 +21,14 @@ import {
 } from '../NX/lib';
 import {
     Icon,
-    Nav,
+    Header,
     Hero,
     Footer,
     ThemedIcon,
     TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
-import { Virus } from '../NX/Virus';
+import { Async } from '../NX/Async';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -108,39 +108,19 @@ export default async function Page(props: any) {
 
     return (
         <NX config={config} frontmatter={data}>
-            <header>
-                <Box sx={{ flexGrow: 1 }}>
-                    <AppBar
-                        position="fixed"
-                        sx={{
-                            top: 0,
-                            boxShadow: 0,
-                            // to fix this we'll need to abstract it to a client component
-                            background: 0,
-                        }}>
-                        <CardHeader
-                            avatar={<IconButton href='/'>
-                                <ThemedIcon config={config} />
-                            </IconButton>}
-                            title={<Typography
-                                color='secondary'
-                                variant="h5"
-                                component="h1"
-                                sx={{mt:0.25}}
-                            >
-                                {title}
-                            </Typography>}
-                        />
-                    </AppBar>
-                </Box>
-            </header>
 
-            <Container id="main" maxWidth="lg" sx={{ mx:2,mt: '100px', pb: '90px' }}>
+            <Header config={config} frontmatter={data} />
+
+            <Container id="main" maxWidth="lg" 
+                sx={{
+                    mt: '100px', 
+                    pb: '90px',
+                }}>
                 <Box
                     sx={{
                         width: '100%',
                         display: 'flex',
-                        gap: 2,
+                        gap: 1,
                     }}
                 >
 
@@ -181,9 +161,7 @@ export default async function Page(props: any) {
                             component="h2">
 
                             <Box sx={{ display: 'flex', width: '100%' }}>
-                                <Box sx={{ mr: 2 }}>
-                                <Virus frontmatter={data} />
-                                </Box>
+                                
                                 {data.icon && <Box sx={{ mr: 2 }}><Icon icon={data.icon} color="primary" /></Box>}
                                 <Box sx={{ flexGrow: 1 }}>
                                     {description}
@@ -202,8 +180,6 @@ export default async function Page(props: any) {
                             {content}
                         </RenderMarkdown>
                     </Box>
-
-
                 </Box>
             </Container>
             <footer>
@@ -211,7 +187,9 @@ export default async function Page(props: any) {
                     meta={meta as any}
                     frontmatter={data}
                     navItems={navItems as I_NestedNav["navItems"]}
-                />
+                >
+                    <Async />
+                </Footer>
             </footer>
         </NX >
     );

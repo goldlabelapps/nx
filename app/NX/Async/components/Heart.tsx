@@ -4,7 +4,6 @@ import {
     Paper,
     Typography,
 } from '@mui/material';
-import {Icon} from '../../DesignSystem';
 import {
     tick,
     useAsync,
@@ -29,17 +28,10 @@ export const Heart: React.FC<I_Heart> = ({ id }) => {
     }, [dispatch]);
     
     return (
-        <Box id={id} sx={{
-            display: 'flex',
-        }}>
-            <Box sx={{m:1}}>
-                <Icon icon="heart" color="primary" />
-            </Box>
-            <Box sx={{mt:1, ml:2}}>
-                <Typography variant="caption">
-                    {ticks} secs
-                </Typography>
-            </Box>
+        <Box id={id} sx={{}}>
+            <Typography variant="caption">
+                {ticks}
+            </Typography>
         </Box>
     );
 };

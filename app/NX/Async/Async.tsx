@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import {
     Box,
@@ -31,10 +32,10 @@ export const Async: React.FC<I_Async> = ({ id }) => {
         <>
         <Box 
             id={id}
-            sx={{ p: 1, display: 'flex' }}
-        >
-            <Divider />
-            <Box sx={{ flexGrow: 1 }}>
+            sx={{ 
+                display: 'flex',
+            }}>
+            <Box sx={{ mt: 0.75 }}>
                 <Heart />
             </Box>
             <Box>
@@ -42,7 +43,7 @@ export const Async: React.FC<I_Async> = ({ id }) => {
                     color="primary"
                     aria-label='Reset'
                     onClick={() => dispatch(initAsync())}>
-                    <Icon icon="reset" />
+                    <Icon icon="heart" />
                 </IconButton>
             </Box>
         </Box>

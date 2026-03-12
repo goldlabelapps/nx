@@ -10,10 +10,16 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/mcuk/favicon.png",
+      "src": "/mcuk/png/favicon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/mcuk/svg/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ]
 }
