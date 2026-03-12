@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import { useDispatch } from '../../../Uberedux';
-import { setCRUD, useCRUD, InputString } from '../../../NXAdmin';
+import { setCRUD, useCRUD, InputString, JSONInput, edit } from '../../../NXAdmin';
 
 export interface I_UpdateDoc {
   collection: string;
@@ -21,6 +21,8 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
   const crud = useCRUD();
   const state = crud[collection];
   const { selected, typescript, saving } = state;
+
+  
   const [fieldValues, setFieldValues] = React.useState<Record<string, string | number>>(() => {
     const initial: Record<string, string | number> = {};
     if (selected && typescript) {
@@ -59,6 +61,20 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
     setValid(allValid);
   }, [fieldValues, typescript]);
 
+  const handleUpdate = () => {
+
+    const data = { ...selected, ...fieldValues };
+    // console.log('edit document with data:', data);
+    dispatch(edit(collection, data));
+    dispatch(setCRUD(collection, 'saving', true));
+
+    // const updated = { ...selected, ...fieldValues };
+    // updated.updated = Date.now();
+    // dispatch(setCRUD(collection, 'selected', updated));
+    // dispatch(setCRUD(collection, 'mode', 'read'));
+  };
+
+
   const handleCancel = () => {
     dispatch(setCRUD(collection, 'mode', 'read'));
     dispatch(setCRUD(collection, 'selected', null));
@@ -66,14 +82,6 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
 
   const handleDelete = () => {
     dispatch(setCRUD(collection, 'mode', 'delete'));
-  };
-
-  const handleUpdate = () => {
-    dispatch(setCRUD(collection, 'saving', true));
-    const updated = { ...selected, ...fieldValues };
-    updated.updated = Date.now();
-    dispatch(setCRUD(collection, 'selected', updated));
-    dispatch(setCRUD(collection, 'mode', 'read'));
   };
 
   return (
@@ -107,12 +115,18 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
               const type = config.type;
               const required = config.required;
               const autoFocus = idx === 0;
-              // Render string/email fields
+               
+              if (type === 'json') {
+                return (
+                  <JSONInput key={`${field}_${idx}`} label={label} />
+                );
+              }
+
               if (type === 'string' || type === 'email') {
                 return (
                   <InputString
                     type={type}
-                    key={field}
+                    key={`${ field}_${idx}`}
                     required={required}
                     description={description}
                     label={label}
@@ -127,8 +141,10 @@ export default function UpdateDoc({ collection }: I_UpdateDoc) {
                   />
                 );
               }
-              // Add more field types as needed
-              return <Box key={field} sx={{my:2}}>Create field type <strong>
+              
+              return <Box key={`${field}_${idx}`} sx={{my:2}}>
+                Create field type
+                <strong>
                 {type}</strong></Box>;
             });
           })()}

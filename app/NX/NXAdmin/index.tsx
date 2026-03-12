@@ -14,6 +14,7 @@ import { setCRUD } from './actions/setCRUD';
 import { saveNewDoc} from './actions/saveNewDoc';
 import { readTypescript } from './actions/readTypescript';
 import { initCollection } from './actions/initCollection';
+import { edit } from './actions/edit';
 import { useNXAdmin } from './hooks/useNXAdmin';
 import { useCRUD } from './hooks/useCRUD';
 import { useCollection } from './hooks/useCollection';
@@ -21,6 +22,8 @@ import { useActive } from './hooks/useActive';
 import MiniListItem from './components/Menus/MiniListItem';
 import OptionSelect from './components/UI/OptionSelect';
 import InputString from './components/UI/InputString';
+import JSONInput from './components/UI/JSONInput';
+
 
 export {
     NXAdmin,
@@ -44,9 +47,11 @@ export {
     saveNewDoc,
     readTypescript,
     initCollection,
+    edit,
     useCRUD,
     useNXAdmin,
     useCollection,
     useActive,
+    JSONInput,
     collectionDelete,
 };

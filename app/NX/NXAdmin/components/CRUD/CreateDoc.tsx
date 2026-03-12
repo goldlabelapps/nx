@@ -83,7 +83,7 @@ export interface I_CreateDoc {
     const now = Date.now();
     extended.created = now;
     extended.updated = now;
-    extended.icon = icon ?? '';
+    // extended.icon = icon ?? '';
     dispatch(saveNewDoc(collection, extended));
   }
 
