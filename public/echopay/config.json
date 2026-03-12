@@ -1,7 +1,7 @@
 {
     "tenant": "echopay",
     "siteName": "EchoPay",
-    "description": "Gamify getting paid",
+    "description": "Payment Plugin",
     "url": "https://echopay.goldlabel.pro",
     "icons": {
         "light": {
@@ -19,9 +19,7 @@
     },
     "cartridges": {
         "paywall": {
-            "enabled": false,
-            "userMode": "single",
-            "email": "echopay@goldlabel.pro"
+            "enabled": true
         },
         "designSystem": {
             "themeSwitching": true,

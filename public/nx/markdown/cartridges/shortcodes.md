@@ -1,6 +1,6 @@
 ---
 order: 60
-slug: /shortcodes
+slug: /cartridges/shortcodes
 title: Shortcodes
 description: Extend your content with reusable, customizable, and maintainable features, all with a simple and intuitive syntax
 tags: features, cartridges, shortcodes

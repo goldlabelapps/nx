@@ -10,10 +10,16 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/edtech/favicon.png",
+      "src": "/edtech/png/favicon.png",
       "type": "image/png",
       "sizes": "180x180",
       "purpose": "any maskable"
+    },
+    {
+      "src": "/edtech/svg/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ]
 }

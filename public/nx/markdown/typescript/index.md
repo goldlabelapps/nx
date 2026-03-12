@@ -6,14 +6,51 @@ description: types.d.ts
 tags: NX, TypeScript
 icon: js
 ---
-## Goldlabel Apps. Real results, real fast
 
-- _Small_ team. _Big_ output
-- Real deployments from Day One
-- Readable, extensible, Open Source
-
-Create and deploy super fast, modern Next.js apps. Perfectly optimised for SEO. Anyone can launch scalable, production-ready web apps with lightning-fast frontends and top search engine rankings. 
-
-> Accessibility, performance, and seamless user experience as standard. 
-
-NX empowers developers and businesses to build future-proof web solutions with minimal effort. As ideal for new products as scaling an enterprise solution, NX are the tools and architecture to ensure marketing is always at the cutting edge of web technology
+```typescript
+export type T_Config = {
+    tenant: T_Tenant;
+    siteName: string;
+    label?: string;
+    description: string;
+    url: string;
+    icons: {
+        light: {
+            icon: string;
+            favicon: string;
+        };
+        dark: {
+            icon: string;
+            favicon: string;
+        };
+    };
+    images: {
+        light: string;
+        dark: string;
+    };
+    cartridges: {
+        paywall?: {
+            enabled: boolean;
+            userMode: string;
+            email: string;
+        };
+        designSystem?: {
+            themeSwitching: boolean;
+            defaultTheme: string;
+            themes: {
+                [key: string]: {
+                    mode: string;
+                    primary: string;
+                    secondary: string;
+                    background: string;
+                    paper: string;
+                    text: string;
+                    border: string;
+                };
+            };
+        };
+        lingua?: T_LinguaCartridge;
+        // Add other cartridge types as needed
+    };
+}
+```

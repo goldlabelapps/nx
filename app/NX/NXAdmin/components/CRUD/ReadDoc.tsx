@@ -40,19 +40,18 @@ function SingleDoc({
   }
 
   return <ListItemButton onClick={handleSelect}>
-    { avatar && <>
-      <ListItemAvatar>
-        <Avatar
-          src={avatar}
-          alt={label}
-        />
-      </ListItemAvatar>
-      </>}
-    { icon && <>
-      <ListItemIcon>
-        <Icon icon={icon as any} color="primary" />
-      </ListItemIcon>
-    </>}
+      { avatar ? (
+        <ListItemAvatar>
+          <Avatar
+            src={avatar}
+            alt={label}
+          />
+        </ListItemAvatar>
+      ) : icon ? (
+        <ListItemIcon>
+          <Icon icon={icon as any} color="primary" />
+        </ListItemIcon>
+      ) : null }
     <ListItemText
       primary={label}
       secondary={description}

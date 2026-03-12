@@ -113,7 +113,7 @@ const Nav: React.FC<I_Nav> = ({
                 <IconButton
                     color="primary"
                     onClick={() => setDrawerOpen(true)} aria-label="Open Menu">
-                    <Icon icon='menu' />
+                    <Icon icon='fingerprint' />
                 </IconButton>
 
                 <Drawer
@@ -129,10 +129,8 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
-                        
                         <Box sx={{ my: 2, display: 'flex' }}>
                             <Virus frontmatter={frontmatter} />
-                            <Async />
                         </Box>
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto' }}>

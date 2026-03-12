@@ -29,7 +29,7 @@ export default function Feedback() {
     <Snackbar
       open
       anchorOrigin={{
-        vertical: 'bottom',
+        vertical: 'top',
         horizontal: 'left',
       }}
       onClose={handleClose}

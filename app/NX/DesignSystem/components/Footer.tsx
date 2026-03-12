@@ -12,7 +12,9 @@ import {
 	Nav,
 	TreeNav,
 } from '../../DesignSystem';
-
+import {
+	Async,
+} from '../../Async';
 export interface I_Footer {
 	children?: React.ReactNode;
 	frontmatter?: T_Frontmatter;
@@ -24,7 +26,6 @@ export default function Footer({
 	children,
 	frontmatter,
 	navItems,
-	meta,
 }: I_Footer) {
 
 	const theme = useTheme();
@@ -41,15 +42,16 @@ export default function Footer({
 		<React.Fragment>
 			<AppBar
 				position="fixed"
+				color="default"
 				sx={{
 					background: theme.palette.background.default,
 					boxShadow: 0, top: 'auto', bottom: 0
-				}}
-			>
+				}}>
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
+					{children}
 					<Box sx={{ display: 'flex', }}>
-						<Box sx={{ my: 3 }}>
+						<Box sx={{ my: 1 }}>
 							<Nav
 								mode="mobile"
 								navItems={navItems as I_NestedNav["navItems"]}
@@ -57,11 +59,7 @@ export default function Footer({
 							/>
 						</Box>
 					</Box>
-					{children && (
-						<Box sx={{ ml: 2 }}>
-							{children}
-						</Box>
-					)}
+					<Box sx={{ flexGrow: 1 }} />
 				</Toolbar>
 			</AppBar>
 		</React.Fragment>

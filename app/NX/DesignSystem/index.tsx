@@ -3,6 +3,7 @@ import Nav from './components/Nav';
 import Feedback from './components/Feedback';
 import Hero from './components/Hero';
 import { CleverText } from './components/CleverText';
+import Header from './components/Header';
 import Footer from './components/Footer';
 import Tags from './components/Tags';
 import Settings from './components/Settings';
@@ -28,6 +29,7 @@ export {
     useMUITheme,
     Icon,
     Share,
+    Header,
     Footer,
     Hero,
     CleverText,
