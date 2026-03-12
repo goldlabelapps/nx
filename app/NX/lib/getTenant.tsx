@@ -4,6 +4,10 @@ import mcukConfig from '../../../public/mcuk/config.json';
 import echopayConfig from '../../../public/echopay/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 import companyConfig from '../../../public/company/config.json';
+import foodConfig from '../../../public/food/config.json';
+// 
+// writing
+
 
 export const getTenant = (tenant?: T_Tenant) => {
 
@@ -12,6 +16,11 @@ export const getTenant = (tenant?: T_Tenant) => {
     let markdownDir;
 
     switch (t) {
+
+        case 'food':
+            config = foodConfig;
+            markdownDir = process.cwd() + '/public/food/markdown';
+            break;
         case 'company':
             config = companyConfig;
             markdownDir = process.cwd() + '/public/company/markdown';
