@@ -1,23 +1,26 @@
 {
-    "tenant": "company",
-    "siteName": "Goldlabel Apps",
-    "description": "UK Ltd Company ",
-    "url": "https://company.goldlabel.pro",
+    "tenant": "_new_tenant",
+    "siteName": "New Tenant",
+    "description": "Description of Tenant",
+    "url": "https://_new_tenant.goldlabel.pro",
     "images": {
-        "light": "/company/png/cartridge.png",
-        "dark": "/company/png/cartridge.png"
+        "light": "/_new_tenant/png/default.png",
+        "dark": "/_new_tenant/png/default.png"
     },
     "icons": {
         "light": {
-            "icon": "/company/svg/favicon_goldlabel.svg",
-            "favicon": "/company/svg/favicon_goldlabel.svg"
+            "icon": "/_new_tenant/svg/favicon_light.svg",
+            "favicon": "/_new_tenant/svg/favicon_light.svg"
         },
         "dark": {
-            "icon": "/company/svg/favicon_goldlabel.svg",
-            "favicon": "/company/svg/favicon_goldlabel.svg"
+            "icon": "/_new_tenant/svg/favicon_dark.svg",
+            "favicon": "/_new_tenant/svg/favicon_dark.svg"
         }
     },
     "cartridges": {
+        "paywall": {
+            "enabled": true
+        },
         "designSystem": {
             "themeSwitching": true,
             "defaultTheme": "light",
