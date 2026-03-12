@@ -25,6 +25,7 @@ import {
     Hero,
     Footer,
     ThemedIcon,
+    TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import { Virus } from '../NX/Virus';
@@ -92,7 +93,7 @@ export default async function Page(props: any) {
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-    const navItems = await serverUseNav(data.slug || "/");
+    const navItems = await serverUseNav();
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themedImage = config?.images?.[themeMode] || null;
     const backgroundColor = config?.cartridges?.designSystem?.themes?.[themeMode]?.background;
@@ -114,6 +115,7 @@ export default async function Page(props: any) {
                         sx={{
                             top: 0,
                             boxShadow: 0,
+                            // to fix this we'll need to abstract it to a client component
                             background: 0,
                         }}>
                         <CardHeader
@@ -148,20 +150,12 @@ export default async function Page(props: any) {
                             flexDirection: 'column',
                         }}
                     >
-                        {/* Virus at top */}
-                        <Box>
-                            <Virus frontmatter={data} />
-                        </Box>
-                        {/* Spacer fills remaining space */}
                         <Box sx={{
                             flexGrow: 1,
-                            minHeight: 0, overflow: 'auto'
+                            minHeight: 0,
+                            minWidth: 300,
                         }}>
-                            <Nav
-                                navItems={navItems as I_NestedNav["navItems"]}
-                                frontmatter={data}
-                                mode="desktop"
-                            />
+                            <TreeNav navItems={navItems}/>                            
                         </Box>
                     </Box>
 
@@ -175,6 +169,8 @@ export default async function Page(props: any) {
                             pl: { xs: 2, lg: 0 },
                             flexGrow: 1,
                         }}>
+
+                        {/* <pre>navItems: {JSON.stringify(navItems, null, 2)}</pre> */}
                         <Typography
                             sx={{
                                 display: 'flex',
@@ -185,12 +181,10 @@ export default async function Page(props: any) {
                             component="h2">
 
                             <Box sx={{ display: 'flex', width: '100%' }}>
-
                                 <Box sx={{ mr: 2 }}>
-                                    {data.icon && (
-                                        <Icon icon={data.icon} color="primary" />
-                                    )}
+                                <Virus frontmatter={data} />
                                 </Box>
+                                {data.icon && <Box sx={{ mr: 2 }}><Icon icon={data.icon} color="primary" /></Box>}
                                 <Box sx={{ flexGrow: 1 }}>
                                     {description}
                                 </Box>

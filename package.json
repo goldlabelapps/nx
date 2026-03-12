@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
+    "@mui/x-tree-view": "^8.0.0",
     "@reduxjs/toolkit": "^2.11.2",
     "firebase": "^12.10.0",
     "firebase-admin": "^13.6.0",

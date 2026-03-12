@@ -16,6 +16,7 @@ import { useDesignSystem } from './hooks/useDesignSystem';
 import { setDesignSystem } from './actions/setDesignSystem';
 import ThemedIcon from "./components/ThemedIcon";
 import SettingsMenu from "./components/SettingsMenu";
+import TreeNav from "./components/TreeNav";
 export {
     Nav,
     Settings,
@@ -35,4 +36,5 @@ export {
     Feedback,
     setFeedback,
     useFeedback,
+    TreeNav,
 };

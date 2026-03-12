@@ -12,7 +12,7 @@ import {
     ListItemIcon,
     Typography,
 } from '@mui/material';
-import { Icon, setDesignSystem, useDesignSystem } from '../../../NX/DesignSystem';
+import { Icon, setDesignSystem, useDesignSystem, TreeNav } from '../../../NX/DesignSystem';
 import { useDispatch } from '../../../NX/Uberedux';
 import { Virus } from '../../../NX/Virus';
 import { Async } from '../../../NX/Async';
@@ -130,17 +130,12 @@ const Nav: React.FC<I_Nav> = ({
                         }}
                         role="presentation">
                         
-                        <Box sx={{ my: 2 }}>
+                        <Box sx={{ my: 2, display: 'flex' }}>
                             <Virus frontmatter={frontmatter} />
-                        </Box>
-                        <Box>
                             <Async />
                         </Box>
-                        <List component={'nav'}>
-                            {renderNavItems(sortedNavItems)}
-                        </List>
+                        <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto' }}>
-
                             {themeSwitching && <>
                                 <ListItemButton onClick={handleThemeModeToggle}>
                                     <ListItemIcon>
@@ -153,14 +148,11 @@ const Nav: React.FC<I_Nav> = ({
                                     />
                                 </ListItemButton>
                             </>}
-
                             <ListItemButton onClick={handleNXAdmin}>
                                 <ListItemIcon>
                                     <Icon icon="admin" color="primary" />
                                 </ListItemIcon>
-                                <ListItemText primary={'NX Admin'} />
                             </ListItemButton>
-                            
                         </Box>
                     </Box>
                 </Drawer>

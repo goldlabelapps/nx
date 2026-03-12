@@ -10,7 +10,7 @@ import {
 import {
 	// Icon,
 	Nav,
-	SettingsMenu,
+	TreeNav,
 } from '../../DesignSystem';
 
 export interface I_Footer {
@@ -49,8 +49,7 @@ export default function Footer({
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
 					<Box sx={{ display: 'flex', }}>
-						
-						<Box sx={{ my: 2 }}>
+						<Box sx={{ my: 3 }}>
 							<Nav
 								mode="mobile"
 								navItems={navItems as I_NestedNav["navItems"]}
