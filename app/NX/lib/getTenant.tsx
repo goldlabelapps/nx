@@ -1,9 +1,11 @@
 import type { T_Tenant } from '../types';
+import newTenantConfig from '../../../public/_new_tenant/config.json';
 import nxConfig from '../../../public/nx/config.json';
 import mcukConfig from '../../../public/mcuk/config.json';
 import echopayConfig from '../../../public/echopay/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 import companyConfig from '../../../public/company/config.json';
+import foodConfig from '../../../public/food/config.json';
 
 export const getTenant = (tenant?: T_Tenant) => {
 
@@ -12,6 +14,14 @@ export const getTenant = (tenant?: T_Tenant) => {
     let markdownDir;
 
     switch (t) {
+        case '_new_tenant':
+            config = newTenantConfig;
+            markdownDir = process.cwd() + '/public/_new_tenant/markdown';
+            break;
+        case 'food':
+            config = foodConfig;
+            markdownDir = process.cwd() + '/public/food/markdown';
+            break;
         case 'company':
             config = companyConfig;
             markdownDir = process.cwd() + '/public/company/markdown';

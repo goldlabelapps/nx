@@ -1,0 +1,46 @@
+{
+    "tenant": "food",
+    "siteName": "Wei Zang's Food",
+    "description": "Bladdy give it some!",
+    "url": "https://food.goldlabel.pro",
+    "images": {
+        "light": "/food/jpg/default.jpg",
+        "dark": "/food/jpg/default.jpg"
+    },
+    "icons": {
+        "light": {
+            "icon": "/food/svg/favicon_light.svg",
+            "favicon": "/food/svg/favicon_light.svg"
+        },
+        "dark": {
+            "icon": "/food/svg/favicon_dark.svg",
+            "favicon": "/food/svg/favicon_dark.svg"
+        }
+    },
+    "cartridges": {
+        "designSystem": {
+            "themeSwitching": true,
+            "defaultTheme": "light",
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#07A090",
+                    "secondary": "#07A090",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#222",
+                    "border": "#2EAF4A"
+                },
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#4CF2E1",
+                    "secondary": "#1FF9E2",
+                    "background": "#07A090",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#222"
+                }
+            }
+        }
+    }
+}

@@ -4,7 +4,7 @@ slug: /
 title: NX
 description: Multi-tenant NextJS
 tags: NX, Goldlabel, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
-icon: goldlabel
+icon: home
 image: https://live.staticflickr.com/65535/55142286450_f00fd4cddf_b.jpg
 ---
 NX is a multi-tenant Next.js platform for building and deploying high-performance web applications quickly.

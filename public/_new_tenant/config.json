@@ -1,0 +1,46 @@
+{
+    "tenant": "_new_tenant",
+    "siteName": "New Tenant",
+    "description": "Description of Tenant",
+    "url": "https://_new_tenant.goldlabel.pro",
+    "images": {
+        "light": "/_new_tenant/png/default.png",
+        "dark": "/_new_tenant/png/default.png"
+    },
+    "icons": {
+        "light": {
+            "icon": "/_new_tenant/svg/favicon_light.svg",
+            "favicon": "/_new_tenant/svg/favicon_light.svg"
+        },
+        "dark": {
+            "icon": "/_new_tenant/svg/favicon_dark.svg",
+            "favicon": "/_new_tenant/svg/favicon_dark.svg"
+        }
+    },
+    "cartridges": {
+        "designSystem": {
+            "themeSwitching": true,
+            "defaultTheme": "light",
+            "themes": {
+                "light": {
+                    "mode": "light",
+                    "primary": "#07A090",
+                    "secondary": "#07A090",
+                    "background": "#fff",
+                    "paper": "#fff",
+                    "text": "#222",
+                    "border": "#2EAF4A"
+                },
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#4CF2E1",
+                    "secondary": "#1FF9E2",
+                    "background": "#07A090",
+                    "paper": "#000",
+                    "text": "#fff",
+                    "border": "#222"
+                }
+            }
+        }
+    }
+}
