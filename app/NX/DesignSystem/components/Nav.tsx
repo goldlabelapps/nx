@@ -130,10 +130,15 @@ const Nav: React.FC<I_Nav> = ({
                         }}
                         role="presentation">
                         
+                        <Box sx={{ my: 2 }}>
+                            <Virus frontmatter={frontmatter} />
+                        </Box>
+                        <Box>
+                            <Async />
+                        </Box>
                         <List component={'nav'}>
                             {renderNavItems(sortedNavItems)}
                         </List>
-                        <Async />
                         <Box sx={{ mt: 'auto' }}>
 
                             {themeSwitching && <>
@@ -155,9 +160,7 @@ const Nav: React.FC<I_Nav> = ({
                                 </ListItemIcon>
                                 <ListItemText primary={'NX Admin'} />
                             </ListItemButton>
-                            <Box sx={{ my: 2 }}>
-                                <Virus frontmatter={frontmatter} />
-                            </Box>
+                            
                         </Box>
                     </Box>
                 </Drawer>
