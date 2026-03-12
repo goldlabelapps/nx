@@ -1,0 +1,19 @@
+{
+  "short_name": "Writing",
+  "name": "Wei Zang's Writing",
+  "theme_color": "#FFF",
+  "background_color": "#FFF",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/company/png/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}

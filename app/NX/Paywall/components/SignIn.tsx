@@ -46,10 +46,23 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
     if (theme) {
         theme = { ...theme, mode: themeMode };
     }
-    const { title, description, images } = config;
+    const { siteName, description, images } = config;
     const image = images?.[themeMode] || '';
     return (
         <DesignSystem theme={theme}>
+            <Box sx={{ position: 'absolute', top: 16, left: 16 }}>
+                <IconButton onClick={() => router.back()} color="primary">
+                    <Icon icon="left" />
+                </IconButton>
+            </Box>
+            <Box sx={{ margin: 'auto', mt: 4, mb: 0, textAlign: 'center' }}>
+                <Typography variant="h4" color="primary">
+                    {siteName}
+                </Typography>
+                <Typography variant="h6" color="text.secondary">
+                    {description}
+                </Typography>
+            </Box>
             <form onSubmit={handleSubmit}>
                 <Box sx={{ maxWidth: 400, margin: 'auto', mt: 3 }}>
                     <Box
@@ -60,11 +73,12 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                             alignItems: 'center',
                             justifyContent: 'center',
                             overflow: 'hidden',
+                            borderRadius: 2,
                         }}
                     >
                         <img
                             src={image}
-                            alt={`${title} ${description}`}
+                            alt={`${siteName} ${description}`}
                             style={{
                                 width: '100%',
                                 height: '100%',
@@ -115,6 +129,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                         
                     </CardContent>
                     <CardActions>
+                        <Box sx={{flexGrow:1}}/>
                         <Button
                             startIcon={<Icon icon="left" />}
                             sx={{ mx: 1 }}
@@ -123,15 +138,14 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                             Back
                         </Button>
                         <Button
-
-                            fullWidth
                             type="submit"
                             endIcon={<Icon icon="signin" />}
-                            variant="outlined"
+                            variant="contained"
                             sx={{ mx: 1 }}
                         >
                             Sign In
                         </Button>
+                        <Box sx={{ flexGrow: 1 }} />
                     </CardActions>
                     <CardContent>
                         {(error || externalError) && <Typography sx={{ mt: 2 }} color="primary">{error || externalError}</Typography>}

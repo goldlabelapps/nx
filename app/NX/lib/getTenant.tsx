@@ -6,6 +6,8 @@ import echopayConfig from '../../../public/echopay/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 import companyConfig from '../../../public/company/config.json';
 import foodConfig from '../../../public/food/config.json';
+import writingConfig from '../../../public/writing/config.json';
+
 
 export const getTenant = (tenant?: T_Tenant) => {
 
@@ -17,6 +19,10 @@ export const getTenant = (tenant?: T_Tenant) => {
         case '_new_tenant':
             config = newTenantConfig;
             markdownDir = process.cwd() + '/public/_new_tenant/markdown';
+            break;
+        case 'writing':
+            config = writingConfig;
+            markdownDir = process.cwd() + '/public/writing/markdown';
             break;
         case 'food':
             config = foodConfig;

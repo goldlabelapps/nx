@@ -116,21 +116,19 @@ export default async function Page(props: any) {
                             boxShadow: 0,
                             background: 0,
                         }}>
-                        <Container maxWidth="lg">
-                            <CardHeader
-                                avatar={<IconButton href='/'>
-                                    <ThemedIcon config={config} />
-                                </IconButton>}
-                                title={<Typography
-                                    color='secondary'
-                                    variant="h5"
-                                    component="h1"
-                                    sx={{mt:0.25}}
-                                >
-                                    {title}
-                                </Typography>}
-                            />
-                        </Container>
+                        <CardHeader
+                            avatar={<IconButton href='/'>
+                                <ThemedIcon config={config} />
+                            </IconButton>}
+                            title={<Typography
+                                color='secondary'
+                                variant="h5"
+                                component="h1"
+                                sx={{mt:0.25}}
+                            >
+                                {title}
+                            </Typography>}
+                        />
                     </AppBar>
                 </Box>
             </header>
