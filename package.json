@@ -1,6 +1,6 @@
 {
   "name": "nx",
-  "version": "1.9.8",
+  "version": "1.9.9",
   "scripts": {
     "dev": "yarn kill && yarn install && rm -rf .next && next dev -p 1999 --webpack",
     "build": "next build --webpack",
@@ -14,6 +14,7 @@
     "@ducanh2912/next-pwa": "^10.2.9",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@fingerprintjs/fingerprintjs": "^5.1.0",
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
     "@mui/x-tree-view": "^8.0.0",
@@ -23,9 +24,11 @@
     "gray-matter": "^4.0.3",
     "gsap": "^3.14.2",
     "inquirer": "^13.1.0",
+    "mapbox-gl": "^3.20.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "react-map-gl": "^8.1.0",
     "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "react-share": "^5.2.2",

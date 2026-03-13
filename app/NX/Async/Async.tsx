@@ -3,16 +3,17 @@ import React from 'react';
 import {
     Box,
     IconButton,
-    Divider,
-    Paper,
+    Badge,
 } from '@mui/material';
 import {
-    Heart, 
     useAsync,
     initAsync,
+    tick,
+    setAsync,
 } from '../Async'
 import { useDispatch} from '../Uberedux';
 import { Icon } from '../DesignSystem';
+import { AsyncDialog } from '../Async'
 
 export interface I_Async {
     id?: string;
@@ -22,31 +23,37 @@ export const Async: React.FC<I_Async> = ({ id }) => {
 
     const dispatch = useDispatch();
     const state = useAsync();
-    const {sessionStart} = state || {};
+    const {sessionStart, ticks} = state || {};
 
     React.useEffect(() => {
         if (!sessionStart) dispatch(initAsync());
     }, [dispatch, sessionStart]);
 
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            dispatch(tick());
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [dispatch]);
+
+    const handleOpenDialog = () => {
+        dispatch(setAsync('dialogOpen', true));
+    };
+
     return (
         <>
-        <Box 
-            id={id}
-            sx={{ 
-                display: 'flex',
-            }}>
-            <Box sx={{ mt: 0.75 }}>
-                <Heart />
+            <AsyncDialog />
+            <Box id={id}>
+                <Badge badgeContent={state?.ticks ? ticks : null}>
+                    <IconButton 
+                        color="primary"
+                        aria-label='Reset'
+                        onClick={handleOpenDialog}>
+                            <Icon icon="async" />
+                    </IconButton>
+                </Badge>
             </Box>
-            <Box>
-                <IconButton 
-                    color="primary"
-                    aria-label='Reset'
-                    onClick={() => dispatch(initAsync())}>
-                    <Icon icon="heart" />
-                </IconButton>
-            </Box>
-        </Box>
         </>
     );
 };

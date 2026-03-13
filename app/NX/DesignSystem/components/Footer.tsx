@@ -49,7 +49,7 @@ export default function Footer({
 				}}>
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
-					{children}
+					
 					<Box sx={{ display: 'flex', }}>
 						<Box sx={{ my: 1 }}>
 							<Nav
@@ -59,6 +59,7 @@ export default function Footer({
 							/>
 						</Box>
 					</Box>
+					{children}
 					<Box sx={{ flexGrow: 1 }} />
 				</Toolbar>
 			</AppBar>

@@ -309,6 +309,7 @@ export type I_Icon = {
     | 'preview'
     | 'add'
     | 'account'
+    | 'async'
     | 'download'
     | 'job'
     | 'copy'
