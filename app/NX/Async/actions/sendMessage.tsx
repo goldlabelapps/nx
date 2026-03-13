@@ -1,6 +1,6 @@
 import type { T_UbereduxDispatch } from '../../types';
 import { setUbereduxKey } from '../../Uberedux';
-import { setTing } from '../../Async';
+import { setTing, setAsync } from '../../Async';
 // import { setFeedback, useFeedback } from '../../DesignSystem';
 // import { militaryTime } from '../../lib';
 
@@ -20,6 +20,8 @@ export const sendMessage = (
             const updatedMessages = [...current, message];
             console.log('updatedMessages', updatedMessages);
             dispatch(setTing('messages', updatedMessages));
+            dispatch(setAsync('dialogOpen', true));
+
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             dispatch(setUbereduxKey({ key: 'error', value: msg }));

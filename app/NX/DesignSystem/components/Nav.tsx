@@ -113,7 +113,7 @@ const Nav: React.FC<I_Nav> = ({
                 <IconButton
                     color="primary"
                     onClick={() => setDrawerOpen(true)} aria-label="Open Menu">
-                    <Icon icon='fingerprint' />
+                    <Icon icon='menu' />
                 </IconButton>
 
                 <Drawer

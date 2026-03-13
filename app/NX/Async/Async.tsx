@@ -2,6 +2,7 @@
 import React from 'react';
 import {
     Box,
+    Avatar,
     IconButton,
     Badge,
 } from '@mui/material';
@@ -23,9 +24,10 @@ export const Async: React.FC<I_Async> = ({ id }) => {
 
     const dispatch = useDispatch();
     const state = useAsync();
-    const {sessionStart, ticks} = state || {};
+    const {sessionStart, ticks, ting} = state || {};
 
     React.useEffect(() => {
+        console.log('initAsync');
         if (!sessionStart) dispatch(initAsync());
     }, [dispatch, sessionStart]);
 
@@ -37,23 +39,14 @@ export const Async: React.FC<I_Async> = ({ id }) => {
         return () => clearInterval(interval);
     }, [dispatch]);
 
-    const handleOpenDialog = () => {
-        dispatch(setAsync('dialogOpen', true));
-    };
 
+
+        const avatar = ting?.avatar;
+        const name = ting?.name;
+    
     return (
         <>
             <AsyncDialog />
-            <Box id={id}>
-                <Badge badgeContent={state?.ticks ? ticks : null}>
-                    <IconButton 
-                        color="primary"
-                        aria-label='Reset'
-                        onClick={handleOpenDialog}>
-                            <Icon icon="async" />
-                    </IconButton>
-                </Badge>
-            </Box>
         </>
     );
 };

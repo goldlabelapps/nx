@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-    Button,
+    Avatar,
     IconButton,
     Box,
     CardHeader,
@@ -25,6 +25,10 @@ export const TingCard: React.FC<I_TingCard> = ({ id }) => {
     const dispatch = useDispatch();
     const state = useAsync();
     const { ting } = state || {};
+    const {
+        name,
+        avatar,
+    } = ting || {};
 
     const handleCloseDialog = () => {
         dispatch(setAsync('dialogOpen', false));
@@ -51,8 +55,8 @@ export const TingCard: React.FC<I_TingCard> = ({ id }) => {
     return (
         <>
             <CardHeader
-                avatar={<Icon icon="async" />}
-                title={label}
+                avatar={avatar && <Avatar src={avatar} />}
+                title={name}
                 subheader={device?.label}
                 action={<IconButton 
                             color="primary"

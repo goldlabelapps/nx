@@ -30,7 +30,6 @@ export const AsyncMessages: React.FC<I_AsyncMessages> = ({ id }) => {
     };
     const { messages } = ting as { messages: Message[] };
     
-
     return (
         <>
             <Box sx={{ mt: 1 }}>
