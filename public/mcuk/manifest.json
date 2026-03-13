@@ -1,5 +1,5 @@
 {
-  "short_name": "Pothead",
+  "short_name": "MCUK",
   "name": "Diary of a pothead",
   "theme_color": "#FFF",
   "background_color": "#FFF",
@@ -14,12 +14,6 @@
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/mcuk/svg/favicon.svg",
-      "type": "image/svg+xml",
-      "sizes": "512x512",
-      "purpose": "any"
     }
   ]
 }
