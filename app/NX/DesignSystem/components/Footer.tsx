@@ -13,6 +13,7 @@ import {
 	TreeNav,
 } from '../../DesignSystem';
 import {
+	NewMessage,
 	Async,
 } from '../../Async';
 export interface I_Footer {
@@ -30,14 +31,6 @@ export default function Footer({
 
 	const theme = useTheme();
 
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-	const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
 	return (
 		<React.Fragment>
 			<AppBar
@@ -49,7 +42,8 @@ export default function Footer({
 				}}>
 				<Toolbar>
 					<Box sx={{ flexGrow: 1 }} />
-					
+					{children}
+					<NewMessage />
 					<Box sx={{ display: 'flex', }}>
 						<Box sx={{ my: 1 }}>
 							<Nav
@@ -59,10 +53,10 @@ export default function Footer({
 							/>
 						</Box>
 					</Box>
-					{children}
-					<Box sx={{ flexGrow: 1 }} />
+					
 				</Toolbar>
 			</AppBar>
+			<Async />
 		</React.Fragment>
 	);
 }

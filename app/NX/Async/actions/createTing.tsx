@@ -1,8 +1,9 @@
-// /Users/goldlabel/GitHub/example-app/gl-core/cartridges/Paywall/actions/createTing.tsx
-
 import type { T_UbereduxDispatch, T_RootState } from '../../Uberedux/store';
 import { setUbereduxKey } from '../../Uberedux';
 import { setAsync } from '../../Async';
+
+import { makeIdentity } from '../../lib'
+
 // import { setPaywall } from '../../Paywall';
 
 // ─────────────────────────────────────────────────────────────
@@ -144,10 +145,30 @@ export const createTing =
       // 3. Device info (now async)
       const device = await getDeviceInfo();
       const label = `${fingerprint.slice(0, 10)}... from ${geoData.ip}`;
+
       // 4. Build ping object
+      // const identity = makeIdentity();
+
+      const choices = [
+        'Biker',
+        'Chix',
+        'Dapper',
+        'Hippy',
+        'Hipster',
+        'Mumma',
+        'Punk',
+        'Rasta',
+        'Rocker',
+      ]
+      const choice = Math.floor(Math.random() * choices.length);
+      const name = choices[choice];
+      const avatar = `/shared/svg/characters/${choices[choice].toLowerCase()}.svg`;
+
       const tingObject = {
         created: Date.now(),
         fingerprint,
+        avatar,
+        name,
         label,
         window: {
           tenant,
@@ -190,6 +211,7 @@ export const createTing =
       };
 
       // 5. 
+      // console.log('Created ting:', tingObject);
       dispatch(setAsync('ting', tingObject));
       return tingObject;
 

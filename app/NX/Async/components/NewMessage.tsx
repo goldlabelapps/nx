@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import {
+    Avatar,
     useTheme,
     Box,
     IconButton,
@@ -12,6 +13,7 @@ import {
 import {
     useAsync,
     sendMessage,
+    setAsync,
 } from '../../Async'
 import { useDispatch } from '../../Uberedux';
 
@@ -26,6 +28,8 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
     const [value, setValue] = React.useState("");
     const { ting } = state || {};
     if (!ting) return null;
+
+    const {avatar, name} = ting;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
@@ -43,9 +47,31 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
         setValue("");
     };
     
+    const handleOpenDialog = () => {
+        dispatch(setAsync('dialogOpen', true));
+    };
 
     return (
-        <Box sx={{ width: '100%', display: 'flex', alignItems: 'flex-end', gap: 1, py: 1 }}>
+        <Box sx={{ 
+            width: '100%', 
+            display: 'flex', 
+            gap: 1, 
+            pb: 1,
+        }}>
+
+            
+            {(avatar || name) && (
+                <Box>
+                    <IconButton
+                        color="primary"
+                        aria-label='Reset'
+                        onClick={handleOpenDialog}
+                    >
+                        <Avatar src={avatar ?? undefined} alt={name ?? ''} />
+                    </IconButton>
+                </Box>
+            )}
+
             <Box sx={{ flex: 1 }}>
                 <TextField
                     autoFocus
@@ -64,7 +90,7 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
                     }}
                 />
             </Box>
-            <Box>
+            <Box sx={{mt:1}}>
                 <IconButton 
                     onClick={handleSend} 
                     color="primary">
