@@ -33,7 +33,7 @@ export default function Mapbox(map: T_Map) {
   return (
     <Box
       sx={{ 
-        height: 300, 
+        height: 250, 
         width: '100%', 
         borderRadius: 1, 
         overflow: 'hidden', 
@@ -48,8 +48,8 @@ export default function Mapbox(map: T_Map) {
             m:1,
             position: 'absolute',
             top: 8,
-            background: theme.palette.background.paper,
-            padding: 1,
+            background: theme.palette.background.default,
+            padding: 0.5,
             borderRadius: 1,
             zIndex: 2,
           }}
@@ -59,12 +59,12 @@ export default function Mapbox(map: T_Map) {
               <Avatar 
                 sx={{
                   m:1,
-                  width: 24,
-                  height: 24,
+                  width: 16,
+                  height: 16,
                 }}
                 src={`/shared/svg/flags/${country_code.toLowerCase()}.svg`} />
             </Box>
-            <Box sx={{mt: 0.75, pr:1}}>
+            <Box sx={{mt: 0.5, pr:1}}>
               <Typography variant="caption" component="div">
                 {map.label}
               </Typography>

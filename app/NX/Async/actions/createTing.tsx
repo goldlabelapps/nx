@@ -143,7 +143,7 @@ export const createTing =
 
       // 3. Device info (now async)
       const device = await getDeviceInfo();
-      const label = `Welcome ${fingerprint.slice(0, 12)}... from ${geoData.country_name}`;
+      const label = `${fingerprint.slice(0, 10)}... from ${geoData.ip}`;
       // 4. Build ping object
       const tingObject = {
         created: Date.now(),

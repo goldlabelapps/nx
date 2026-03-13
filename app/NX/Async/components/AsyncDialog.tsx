@@ -13,7 +13,9 @@ import {
     Icon,
 } from '../../DesignSystem'
 import {
+    AsyncMessages,
     TingCard,
+    NewMessage,
     useAsync,
     setAsync,
 } from '../../Async'
@@ -42,18 +44,16 @@ export const AsyncDialog: React.FC<I_AsyncDialog> = ({ id }) => {
 
             <DialogContent>
                 <TingCard />
+                <AsyncMessages />
+
             </DialogContent>
 
             <DialogActions>
                 <Box sx={{ flexGrow: 1 }} />
-                <Button 
-                    variant='outlined'
-                    endIcon={<Icon icon="close" />}
-                    onClick={handleCloseDialog} 
-                    color="primary">
-                    Close
-                </Button>
-                <Box sx={{flexGrow:1}}/>
+                <NewMessage />
+                
+                <Box sx={{ flexGrow: 1 }} />
+                
             </DialogActions>
                 
         </Dialog>

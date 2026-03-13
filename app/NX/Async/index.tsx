@@ -1,18 +1,25 @@
 import Async from './Async';
 import AsyncDialog from './components/AsyncDialog';
+import AsyncMessages from './components/AsyncMessages';
+import NewMessage from './components/NewMessage';
 import Mapbox from './components/Mapbox';
 import TingCard from './components/TingCard';
 import {useAsync} from './hooks/useAsync';
+import { setTing } from './actions/setTing';
 import { setAsync } from './actions/setAsync';
 import { every5 } from './actions/every5';
 import { initAsync } from './actions/initAsync';
 import { tick } from './actions/tick';
 import { createTing } from './actions/createTing';
+import { sendMessage } from './actions/sendMessage';
 
 export {
     Async,
     AsyncDialog,
+    AsyncMessages,
+    NewMessage,
     TingCard,
+    sendMessage,
     useAsync,
     setAsync,
     initAsync,
@@ -20,4 +27,5 @@ export {
     every5,
     createTing,
     Mapbox,
+    setTing,
 };

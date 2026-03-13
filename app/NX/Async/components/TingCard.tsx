@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+    Button,
+    IconButton,
     Box,
     CardHeader,
     Chip,
@@ -52,19 +54,17 @@ export const TingCard: React.FC<I_TingCard> = ({ id }) => {
                 avatar={<Icon icon="async" />}
                 title={label}
                 subheader={device?.label}
+                action={<IconButton 
+                            color="primary"
+                            onClick={handleCloseDialog}
+                        >
+                            <Icon icon="close" />
+                        </IconButton>}
             />
-            <Mapbox
-                country_code={geo?.country_code || ''}
-                label={isp || ''}
-                lat={56.02670}
-                lon={-3.43988}
-            />
-
             
             {/* <pre>device: {JSON.stringify(device, null, 2)}</pre>  */}
 
-                <Box sx={{mt: 1}}>
-
+                <Box sx={{my: 1}}>
                     {modelCode && <Chip
                         sx={{m:0.5}}
                         size="small"
@@ -108,21 +108,32 @@ export const TingCard: React.FC<I_TingCard> = ({ id }) => {
                         variant="outlined"
                     />}
                     
-                    {currency && <Chip
+                    {/* {currency && <Chip
                     size="small"
                         sx={{ mx: 1 }}
                             label={`${currency.currency_code} (${currency.currency_symbol})`}
                     variant="outlined"
-                        />}
+                        />} */}
 
-                {ip && <Chip
+                {/* {ip && <Chip
                     size="small"
                     sx={{ mx: 1 }}
                     label={`IP ${ip}`}
                     variant="outlined"
-                />}
+                />} */}
+
+
                 </Box>           
+            <Box sx={{m:1}}>
+                <Mapbox
+                    country_code={geo?.country_code || ''}
+                    label={isp || ''}
+                    lat={56.02670}
+                    lon={-3.43988}
+                />
+            </Box>
         </>
+
     );
 };
 

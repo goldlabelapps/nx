@@ -27,7 +27,6 @@ export const Async: React.FC<I_Async> = ({ id }) => {
 
     React.useEffect(() => {
         if (!sessionStart) dispatch(initAsync());
-        dispatch(setAsync('dialogOpen', true));
     }, [dispatch, sessionStart]);
 
 
