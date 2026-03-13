@@ -1,21 +1,15 @@
 import type { T_UbereduxDispatch } from '../../types';
 import { setUbereduxKey } from '../../Uberedux';
-import { setAsync, every5 } from '../../Async';
-import {setFeedback, useFeedback} from '../../DesignSystem';
+// import { setAsync } from '../../Async';
+// import { setFeedback, useFeedback } from '../../DesignSystem';
 // import { militaryTime } from '../../lib';
 
-export const TICKS_PER_PING = 5;
-
-export const tick = (): any =>
+export const every5 = (): any =>
     async (dispatch: T_UbereduxDispatch, getState: () => any) => {
         try {
             const { ticks } = getState().redux.async;
-            const newTicks = ticks + 1;
-            dispatch(setAsync('ticks', newTicks));
-            if (newTicks === TICKS_PER_PING) {
-                dispatch(every5());
-                dispatch(setAsync('ticks', 0));
-            }
+            // console.log('every5');
+            
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             dispatch(setUbereduxKey({ key: 'error', value: msg }));

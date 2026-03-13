@@ -1,17 +1,23 @@
 import Async from './Async';
-import Heart from './components/Heart';
+import AsyncDialog from './components/AsyncDialog';
+import Mapbox from './components/Mapbox';
+import TingCard from './components/TingCard';
 import {useAsync} from './hooks/useAsync';
 import { setAsync } from './actions/setAsync';
+import { every5 } from './actions/every5';
 import { initAsync } from './actions/initAsync';
 import { tick } from './actions/tick';
-import { timeHook } from './actions/timeHook';
+import { createTing } from './actions/createTing';
 
 export {
     Async,
-    Heart,
+    AsyncDialog,
+    TingCard,
     useAsync,
     setAsync,
     initAsync,
     tick,
-    timeHook,
+    every5,
+    createTing,
+    Mapbox,
 };

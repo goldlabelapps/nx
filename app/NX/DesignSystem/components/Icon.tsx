@@ -180,6 +180,10 @@ export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+
+    case 'async':
+      iconFragment = <BlokeyIcon color={color} />;
+      break;
     case 'asian':
       iconFragment = <AsianIcon color={color} />;
       break;
