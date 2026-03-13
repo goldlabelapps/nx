@@ -6,11 +6,11 @@
     "icons": {
         "light": {
             "icon": "/echopay/svg/favicon_184791.svg",
-            "favicon": "/echopay/favicon.webp"
+            "favicon": "/echopay/webp/favicon.webp"
         },
         "dark": {
             "icon": "/echopay/svg/favicon_FFFFFF.svg",
-            "favicon": "/echopay/favicon_w.webp"
+            "favicon": "/echopay/webp/favicon_w.webp"
         }
     },
     "images": {

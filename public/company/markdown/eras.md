@@ -3,7 +3,6 @@ order: 1000
 title: Internet Eras
 description: Two decades of experience over every era of web development
 slug: /eras
-image: /company/png/cartridge.png
 icon: goldlabel
 tags: eras
 ---

@@ -17,3 +17,47 @@ image: https://live.staticflickr.com/65535/55139727398_05d97ed1d6_b.jpg
 – Components like Card, Grid, Box, Button, Dialog, Typography form the structural building blocks of all shared layouts
 
 – Custom elements (StandardCard, ConfirmDialog, PageGrid, etc.) wrap these primitives to enforce Goldlabel’s design language while staying flexible across cartridges and apps
+
+Status / Feedback
+
+✅ ✔️ ☑️ ❌ ✖️ ⚠️ 🚫 ⛔ ℹ️ ❓ ❗ 🔔 🔕 🔄 🔁
+
+Stars / Highlights
+
+⭐ 🌟 ✨ 💫 🔥 💥 🎯 🏆 🥇
+
+Development / Tech
+
+💻 🖥️ ⌨️ 🖱️ 📱 🧠 ⚙️ 🔧 🛠️ 📦 🧩 🔗 🧪 🧬
+
+Git / Repo / Docs
+
+📁 📂 📄 📝 📚 📦 🗂️ 🧾 🗃️ 🏷️ 🔖
+
+Communication
+
+💬 🗨️ 📣 📢 📩 ✉️ 📬
+
+Actions
+
+➕ ➖ ✏️ 🗑️ 📌 📍 📎 🔍 🔒 🔓
+
+Time / Progress
+
+⏳ ⌛ 🕒 📅 🗓️ ⏱️
+
+People / Community
+
+👤 👥 🙌 👍 👎 👏 🤝
+
+Symbols / Simple Icons
+
+⭐ ✨ ✔️ ❌ ⚡ 🔥 💡 🎯 🧭 🪄
+
+Nature / Fun (commonly used in READMEs)
+
+🐱 🐶 🐼 🐧 🐢 🐙 🦄 🐉 🐳 🐝 🐞 🐾 🌱 🌿 🌳 🍀
+
+Arrows / Navigation
+
+⬆️ ⬇️ ⬅️ ➡️ ↗️ ↘️ 🔼 🔽
