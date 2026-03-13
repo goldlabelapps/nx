@@ -19,13 +19,13 @@
     },
     "cartridges": {
         "designSystem": {
-            "themeSwitching": true,
+            "themeSwitching": false,
             "defaultTheme": "light",
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#07A090",
-                    "secondary": "#07A090",
+                    "primary": "#C09F52",
+                    "secondary": "#C09F52",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#222",

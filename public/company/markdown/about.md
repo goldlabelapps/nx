@@ -4,7 +4,6 @@ slug: /about
 title: About
 description: Goldlabel Apps Ltd
 tags: goldlabel, contact, Twitter, Facebook, LinkedIn, GitHub, YoutTube
-image: /company/png/cartridge.png
 icon: goldlabel
 ---
 

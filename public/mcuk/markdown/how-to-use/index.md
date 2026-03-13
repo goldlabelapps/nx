@@ -1,7 +1,7 @@
 ---
 order: 40
 slug: /how-to-use
-title: How to use
+title: 🍀 How to use
 icon: activities
 description: Different ways to consume cannabis, including smoking, vaping, and edibles
 tags: UK law, access routes, prescriptions, clinics, compliance, risks.

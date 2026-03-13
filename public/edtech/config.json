@@ -5,12 +5,12 @@
     "description": "News",
     "icons": {
         "light": {
-            "icon": "/edtech/svg/favicon.svg",
-            "favicon": "/edtech/svg/favicon.svg"
+            "icon": "/edtech/svg/favicon_light.svg",
+            "favicon": "/edtech/svg/favicon_light.svg"
         },
         "dark": {
-            "icon": "/edtech/svg/favicon.svg",
-            "favicon": "/edtech/svg/favicon.svg"
+            "icon": "/edtech/svg/favicon_dark.svg",
+            "favicon": "/edtech/svg/favicon_dark.svg"
         }
     },
     "images": {
@@ -19,7 +19,7 @@
     },
     "cartridges": {
         "designSystem": {
-            "themeSwitching": false,
+            "themeSwitching": true,
             "defaultTheme": "light",
             "themes": {
                 "light": {
@@ -33,9 +33,9 @@
                 },
                 "dark": {
                     "mode": "dark",
-                    "primary": "#1db954",
-                    "secondary": "#21e065",
-                    "background": "#000",
+                    "primary": "#DCD613",
+                    "secondary": "#DCD613",
+                    "background": "#444",
                     "paper": "#000",
                     "text": "#fff",
                     "border": "#222"

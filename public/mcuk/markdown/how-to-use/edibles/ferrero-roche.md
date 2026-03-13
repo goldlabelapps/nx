@@ -9,8 +9,6 @@ image: https://budbuddies.cc/wp-content/uploads/2025/01/D629959-768x768.webp
 affiliate: https://budbuddies.cc/product/ferrero-roche/bud/listingslab/?campaign=MCUK
 ---
 
-[CommerceShortcode slug="chocolate"]
-
 #### Wellbeing Notes & Responsible Use
 
 Comfort and calmer nights, dessert style. Non-inhaled cannabinoids can show on-average improvements for pain and sleep for some adults compared with placebo, with responses that vary person to person. That is why portion control matters.
@@ -25,7 +23,7 @@ Total per pack: 2 x 50 mg truffles, 100 mg total. If you are new, begin with ¼ 
 #### Reviews 
 
 Hannah Mohamed
-<span title="5 out of 5 stars">⭐⭐⭐⭐⭐</span>
+<span title="5 out of 5 cats">🐱🐱🐱🐱🐱</span>
 filnxx – April 17, 2025
 
 This is one of my guilty pleasures, Ferrero Rocher. It’s a Hazelnut dream confection with a hint of herb delicious every time. A thin wafer shell filled with hazelnut chocolate, encasing a whole roasted hazelnut, covered with milk chocolate and chopped hazelnuts. Not only is it the most delicious, decadent, luxurious weed confectionery delight but also the wrapping is exquisite. Each individual piece is wrapped in gold and brown foil in its own brown liner. I like that these aren’t to sweet and strong, but perfectly balanced between the sweetness of chocolate, taste of weed and the salty hazelnut. I don’t often indulge in sweet treats but one is never enough. Giving them as a gift or enjoying them for yourself these are the perfect chocolate hazelnut delights.
