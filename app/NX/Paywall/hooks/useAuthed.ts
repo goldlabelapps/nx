@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getFirebaseAuth } from "../../lib/firebase";
 import { User } from "firebase/auth";
 import { setPaywall} from '../../Paywall';
+import { setTing } from '../../Async';
 
 /**
  * useAuthed - React hook to get Firebase auth state
@@ -15,6 +16,9 @@ export function useAuthed(): User | null {
 		const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
 			setUser(firebaseUser ?? null);
 			setPaywall('user', firebaseUser ?? null);
+			setTing('subscribed', {
+				dsakf: 1
+			});
 		});
 		return () => unsubscribe();
 	}, []);

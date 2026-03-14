@@ -32,8 +32,9 @@ import {
 } from '../../NXAdmin';
 import nav from '../nav.json';
 import { useDispatch } from '../../Uberedux';
+import { Synched } from '../../Async';
 
-const drawerWidth = 220;
+const drawerWidth = 320;
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -163,6 +164,7 @@ export default function Layout({ config }: { config: any }) {
                     )}
 
                     <CardHeader 
+                        sx={{width: '100%'}}
                         title={<Typography variant="h6" color="text.secondary">{config.siteName}</Typography>}
                         subheader={<Typography variant="body2" color="text.secondary">{config.description}</Typography>}
                         avatar={<IconButton>
@@ -171,6 +173,13 @@ export default function Layout({ config }: { config: any }) {
                                         alt={config.siteName} />
                                 </IconButton>
                         }
+                        action={<>
+                            <IconButton>
+                                <Avatar
+                                    src={config.icons[currentThemeMode]?.icon}
+                                    alt={config.siteName} />
+                            </IconButton>
+                        </>}
                     />
                 </Toolbar>
             </AppBar>

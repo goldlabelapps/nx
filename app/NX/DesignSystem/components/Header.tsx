@@ -13,8 +13,8 @@ import {
 	Typography,
 } from '@mui/material';
 import {
-	Virus,
-} from '../../Virus';
+	Synched,
+} from '../../Async';
 
 export interface I_Header {
 	config: T_Config;
@@ -46,7 +46,7 @@ export default function Header({
 				}}>
 				<Container maxWidth="lg">
 				<CardHeader
-					
+					action={<Synched  />}
 					avatar={<IconButton onClick={handleAvatarClick}>
                         <Avatar src={icon} />
 					</IconButton>}

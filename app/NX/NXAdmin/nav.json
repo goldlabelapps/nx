@@ -14,10 +14,10 @@
         "icon": "files"
     },
     {
-        "collection": "share",
-        "single": "Share",
-        "title": "Share",
-        "description": "Viral marketing landing pages",
-        "icon": "share"
+        "collection": "notify",
+        "single": "Notify",
+        "title": "Notify",
+        "description": "Logs of emails sent",
+        "icon": "notify"
     }
 ]

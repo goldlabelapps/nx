@@ -1,6 +1,7 @@
 import Async from './Async';
 import AsyncDialog from './components/AsyncDialog';
 import AsyncMessages from './components/AsyncMessages';
+import Synched from './components/Synched';
 import NewMessage from './components/NewMessage';
 import Mapbox from './components/Mapbox';
 import TingCard from './components/TingCard';
@@ -20,6 +21,7 @@ export {
     AsyncMessages,
     NewMessage,
     TingCard,
+    Synched,
     notify,
     sendMessage,
     useAsync,

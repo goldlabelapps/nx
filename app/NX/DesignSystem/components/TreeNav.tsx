@@ -31,7 +31,7 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     let md = ``;
 
     if (authed)
-        md = `You are signed in. Click the button below to access the NX Admin dashboard.`;
+        md = ``;
 
     const handleCTA = () => {
         router.push('/nx-admin');
