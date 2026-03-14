@@ -33,7 +33,7 @@ export const AsyncDialog: React.FC<I_AsyncDialog> = ({ id }) => {
     
     return (
         <Dialog
-            fullScreen
+            fullScreen={false}
             open={!!dialogOpen}
             onClose={handleCloseDialog}
         >

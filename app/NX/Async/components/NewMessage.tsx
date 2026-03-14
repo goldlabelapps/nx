@@ -5,6 +5,7 @@ import {
     useTheme,
     Box,
     IconButton,
+    Button,
     TextField,
 } from '@mui/material';
 import {
@@ -42,9 +43,9 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
             avatar: 'https://i.pravatar.cc/150?img=3',
             align: 'right',
         };
-        console.log('newMessage', newMessage);
-        dispatch(sendMessage(newMessage as any))
-        setValue("");
+        // console.log('newMessage', newMessage);
+        // dispatch(sendMessage(newMessage as any))
+        // setValue("");
     };
     
     const handleOpenDialog = () => {
@@ -55,26 +56,27 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
         <Box sx={{ 
             width: '100%', 
             display: 'flex', 
-            gap: 1, 
-            pb: 1,
+            gap: 2, 
+            py: 1,
         }}>
 
             
-            {(avatar || name) && (
+            {/* {(avatar || name) && (
                 <Box>
                     <IconButton
                         color="primary"
                         aria-label='Reset'
                         onClick={handleOpenDialog}
                     >
-                        <Avatar src={avatar ?? undefined} alt={name ?? ''} />
+                        <Avatar sx={{border: `2px solid ${theme.palette.primary.main}`}} src={avatar ?? undefined} alt={name ?? ''} />
                     </IconButton>
                 </Box>
-            )}
+            )} */}
 
             <Box sx={{ flex: 1 }}>
                 <TextField
                     autoFocus
+                    size='small'
                     fullWidth
                     value={value}
                     onChange={handleChange}
@@ -84,18 +86,22 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
                     variant="outlined"
                     placeholder="Type a message..."
                     sx={{
-                        fontSize: 16,
+                        mt:1,
+                        // fontSize: 16,
                         borderRadius: 2,
                         background: theme.palette.background.paper,
                     }}
                 />
             </Box>
             <Box sx={{mt:1}}>
-                <IconButton 
+                <Button 
                     onClick={handleSend} 
-                    color="primary">
-                    <Icon icon="send" />
-                </IconButton>
+                    color="primary"
+                    variant='contained'
+                    endIcon={<Icon icon="send" />}
+                    >
+                        Send
+                </Button>
             </Box>
         </Box>
     );

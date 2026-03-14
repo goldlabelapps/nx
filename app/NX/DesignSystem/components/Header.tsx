@@ -46,9 +46,7 @@ export default function Header({
 				}}>
 				<Container maxWidth="lg">
 				<CardHeader
-					action={<><Box sx={{ m: 1.5 }}>
-							<Virus frontmatter={frontmatter} />
-						</Box></>}
+					
 					avatar={<IconButton onClick={handleAvatarClick}>
                         <Avatar src={icon} />
 					</IconButton>}

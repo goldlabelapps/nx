@@ -1,6 +1,6 @@
 ---
 order: 10
-slug: /docker
+slug: /developer/docker
 title: Docker
 description: Learn Docker fundamentals for developers.
 tags: ed-tech, docker, devops, free

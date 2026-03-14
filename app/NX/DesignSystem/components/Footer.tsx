@@ -6,6 +6,7 @@ import {
 	Toolbar,
 	Box,
 	AppBar,
+	Container,
 } from '@mui/material';
 import {
 	// Icon,
@@ -40,21 +41,22 @@ export default function Footer({
 					background: theme.palette.background.default,
 					boxShadow: 0, top: 'auto', bottom: 0
 				}}>
-				<Toolbar>
-					<Box sx={{ flexGrow: 1 }} />
-					{children}
-					<NewMessage />
-					<Box sx={{ display: 'flex', }}>
-						<Box sx={{ my: 1 }}>
-							<Nav
-								mode="mobile"
-								navItems={navItems as I_NestedNav["navItems"]}
-								frontmatter={frontmatter}
-							/>
+				<Container maxWidth="lg">
+					<Toolbar>
+						<Box sx={{ flexGrow: 1 }} />
+						{children}
+						<NewMessage />
+						<Box sx={{ display: 'flex', }}>
+							<Box sx={{ my: 1, ml: 2 }}>
+								<Nav
+									mode="mobile"
+									navItems={navItems as I_NestedNav["navItems"]}
+									frontmatter={frontmatter}
+								/>
+							</Box>
 						</Box>
-					</Box>
-					
-				</Toolbar>
+					</Toolbar>
+				</Container>
 			</AppBar>
 			<Async />
 		</React.Fragment>

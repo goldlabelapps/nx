@@ -51,7 +51,7 @@ export default function Virus({
 
   return (
     <>
-      <ButtonBase onClick={() => setOpen(true)} sx={{ mb: 1 }}>
+      <ButtonBase onClick={() => setOpen(true)} sx={{ }}>
         <Icon icon="share" color="primary" />
       </ButtonBase>
       <Popover

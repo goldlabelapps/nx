@@ -7,6 +7,7 @@ import TingCard from './components/TingCard';
 import {useAsync} from './hooks/useAsync';
 import { setTing } from './actions/setTing';
 import { setAsync } from './actions/setAsync';
+import { notify } from './actions/notify';
 import { every5 } from './actions/every5';
 import { initAsync } from './actions/initAsync';
 import { tick } from './actions/tick';
@@ -19,6 +20,7 @@ export {
     AsyncMessages,
     NewMessage,
     TingCard,
+    notify,
     sendMessage,
     useAsync,
     setAsync,

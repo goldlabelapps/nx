@@ -27,10 +27,9 @@ export const Async: React.FC<I_Async> = ({ id }) => {
     const {sessionStart, ticks, ting} = state || {};
 
     React.useEffect(() => {
-        console.log('initAsync');
+        // console.log('initAsync');
         if (!sessionStart) dispatch(initAsync());
     }, [dispatch, sessionStart]);
-
 
     React.useEffect(() => {
         const interval = setInterval(() => {
@@ -39,10 +38,8 @@ export const Async: React.FC<I_Async> = ({ id }) => {
         return () => clearInterval(interval);
     }, [dispatch]);
 
-
-
-        const avatar = ting?.avatar;
-        const name = ting?.name;
+    const avatar = ting?.avatar;
+    const name = ting?.name;
     
     return (
         <>

@@ -1,6 +1,6 @@
 ---
 order: 49
-slug: /mock-interviews
+slug: /interviews/mock-interviews
 title: Mock Interviews
 description: Master interview preparation through realistic practice. Learn how to conduct effective mock interviews, give and receive feedback, and track improvement.
 tags: ed-tech, interviews, practice, preparation

@@ -129,28 +129,23 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
-                        <Box sx={{ my: 2, display: 'flex' }}>
-                            <Virus frontmatter={frontmatter} />
-                        </Box>
+                        
                         <TreeNav navItems={navItems}/>
-                        <Box sx={{ mt: 'auto' }}>
+                        <Box sx={{ mt: 'auto', display: 'flex' }}>
+
+                            <Box sx={{ mx: 1.5 }}>
+                                <Virus frontmatter={frontmatter} />
+                            </Box>
                             {themeSwitching && <>
-                                <ListItemButton onClick={handleThemeModeToggle}>
-                                    <ListItemIcon>
-                                        <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
-                                    </ListItemIcon>
-                                    <ListItemText
-                                        primary={<Typography>
-                                            {currentThemeMode === 'light' ? 'Dark' : 'Light'} mode
-                                        </Typography>}
-                                    />
-                                </ListItemButton>
+                                <IconButton onClick={handleThemeModeToggle}>
+                                    <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
+                                </IconButton>
                             </>}
-                            <ListItemButton onClick={handleNXAdmin}>
-                                <ListItemIcon>
-                                    <Icon icon="admin" color="primary" />
-                                </ListItemIcon>
-                            </ListItemButton>
+
+                            <IconButton onClick={handleNXAdmin}>
+                                <Icon icon="admin" color="primary" />
+                            </IconButton>
+
                         </Box>
                     </Box>
                 </Drawer>
