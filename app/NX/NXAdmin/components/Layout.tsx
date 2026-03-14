@@ -14,7 +14,8 @@ import {
     ListItemText,
     Toolbar,
     IconButton,
-    Divider,
+    CardHeader,
+    Avatar,
     Typography,
 } from '@mui/material';
 import { 
@@ -160,31 +161,27 @@ export default function Layout({ config }: { config: any }) {
                             {theme.direction === 'rtl' ? <Icon icon="left" /> : <Icon icon="right" />}
                         </IconButton>
                     )}
-                    <Typography sx={{m:1}} color='primary' variant="h6" component="h1">
-                        {config.siteName} Admin
-                    </Typography>
+
+                    <CardHeader 
+                        title={<Typography variant="h6" color="text.secondary">{config.siteName}</Typography>}
+                        subheader={<Typography variant="body2" color="text.secondary">{config.description}</Typography>}
+                        avatar={<IconButton>
+                                    <Avatar 
+                                src={config.icons[currentThemeMode]?.icon} 
+                                        alt={config.siteName} />
+                                </IconButton>
+                        }
+                    />
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open} sx={{ border: 0, }}>
-                <DrawerHeader sx={{ border: 0, }}>
+                <DrawerHeader sx={{ border: 0 }}>
                     {open && (
                         <IconButton onClick={handleDrawerClose}>
                             {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
                         </IconButton>
                     )}
                 </DrawerHeader>
-                <Divider />
-                <MiniListItem
-                    open={open}
-                    onClick={() => {
-                        window.location.href = '/nx-admin';
-                    }}
-                    options={{
-                        label: 'Home',
-                        icon: 'home',
-                    }}
-                />
-                <Divider />
                 <List>
                     {nav.map((item, i: number) => (
                         <ListItem
@@ -216,10 +213,8 @@ export default function Layout({ config }: { config: any }) {
                         </ListItem>
                     ))}
                 </List>
-                <Divider />
+                
                 <Box sx={{flexGrow: 1}} />
-
-               
 
                 <MiniListItem
                     open={open}

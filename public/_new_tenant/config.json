@@ -1,6 +1,6 @@
 {
-    "tenant": "_new_tenant",
     "siteName": "New Tenant",
+    "tenant": "_new_tenant",
     "description": "Description of Tenant",
     "url": "https://_new_tenant.goldlabel.pro",
     "images": {
@@ -26,8 +26,8 @@
                     "mode": "light",
                     "primary": "#5D4E2A",
                     "secondary": "#818053",
-                    "background": "#fff",
-                    "paper": "#fff",
+                    "background": "#F8F8F8",
+                    "paper": "#EDEBE7",
                     "text": "#222",
                     "border": "#2EAF4A"
                 },
@@ -36,7 +36,7 @@
                     "primary": "#4CF2E1",
                     "secondary": "#1FF9E2",
                     "background": "#07A090",
-                    "paper": "#000",
+                    "paper": "#43A89C",
                     "text": "#fff",
                     "border": "#222"
                 }
