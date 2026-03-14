@@ -75,6 +75,7 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
             <Box sx={{ flex: 1 }}>
                 <TextField
                     autoFocus
+                    size='small'
                     fullWidth
                     value={value}
                     onChange={handleChange}
@@ -84,7 +85,8 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
                     variant="outlined"
                     placeholder="Type a message..."
                     sx={{
-                        fontSize: 16,
+                        mt:1,
+                        // fontSize: 16,
                         borderRadius: 2,
                         background: theme.palette.background.paper,
                     }}
