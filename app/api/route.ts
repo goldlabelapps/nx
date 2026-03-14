@@ -6,7 +6,7 @@ import { getEndpoints } from './';
 export async function GET() {
     const res = makeRes({
         severity: 'success',
-        message: 'NXAPI',
+        message: 'Welcome to NXAPI',
         data: getEndpoints()
     });
     return NextResponse.json(res);

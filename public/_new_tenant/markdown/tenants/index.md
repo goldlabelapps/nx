@@ -1,11 +1,18 @@
 ---
-order: 10
+order: 100
 slug: /tenants
-title: About Tenants
-description: Imagine you have a shop in a posh shopping centre arcade
+title: Tenants
+description: Imagine you have a shop in a posh shopping centre arcade...
 tags: tenants,
-image: /_new_tenant/png/default.png
 icon: tenant
 ---
 
-
+```typescript
+export type T_Tenant = 'nx' |
+    'mcuk' |
+    'echopay' |
+    'edtech' | 
+    'writing' | 
+    'company'
+;
+```

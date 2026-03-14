@@ -4,8 +4,8 @@
     "description": "Description of Tenant",
     "url": "https://_new_tenant.goldlabel.pro",
     "images": {
-        "light": "/_new_tenant/png/default.png",
-        "dark": "/_new_tenant/png/default.png"
+        "light": "/_new_tenant/jpg/default.jpg",
+        "dark": "/_new_tenant/jpg/default.jpg"
     },
     "icons": {
         "light": {
@@ -24,8 +24,8 @@
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#07A090",
-                    "secondary": "#07A090",
+                    "primary": "#5D4E2A",
+                    "secondary": "#818053",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#222",

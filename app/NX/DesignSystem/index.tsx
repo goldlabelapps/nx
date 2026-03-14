@@ -18,6 +18,8 @@ import { setDesignSystem } from './actions/setDesignSystem';
 import ThemedIcon from "./components/ThemedIcon";
 import SettingsMenu from "./components/SettingsMenu";
 import TreeNav from "./components/TreeNav";
+import {Surface} from "./components/Surface";
+
 export {
     Nav,
     Settings,
@@ -39,4 +41,5 @@ export {
     setFeedback,
     useFeedback,
     TreeNav,
+    Surface,
 };

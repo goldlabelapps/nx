@@ -1,10 +1,9 @@
 ---
-order: 60
+order: 699
 title: Murray Hallam
 description: Simple engineering, reliability, and water efficiency
 slug: /fish/aquaponics/murray-hallam
 icon: fish
-image: /food/jpg/default.jpg
 youtube: https://www.youtube.com/watch?v=qknk7jUABq8
 ---
 

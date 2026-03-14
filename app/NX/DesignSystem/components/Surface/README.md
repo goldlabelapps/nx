@@ -1,0 +1,7 @@
+- Loading
+- Evaluating
+- Preparing
+- Analysing
+- Reading
+- Preparing
+- Processing

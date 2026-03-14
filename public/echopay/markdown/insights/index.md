@@ -1,7 +1,7 @@
 ---
 order: 100
 slug: /insights
-title: Insights & Blog
+title: Insights
 description: Open Banking News, and Case Studies
 icon: right
 tags: Insights

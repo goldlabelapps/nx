@@ -1,8 +1,8 @@
 ---
-order: 5
+order: 450
 title: Recipes
 description: You wan' recipe? interweb is full them
-slug: /recipes
+slug: /how-to/recipes
 icon: info
 image: https://live.staticflickr.com/65535/55021434005_3cb12dc491_b.jpg
 ---

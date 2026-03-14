@@ -173,6 +173,18 @@ export default function Layout({ config }: { config: any }) {
                         </IconButton>
                     )}
                 </DrawerHeader>
+                <Divider />
+                <MiniListItem
+                    open={open}
+                    onClick={() => {
+                        window.location.href = '/nx-admin';
+                    }}
+                    options={{
+                        label: 'Home',
+                        icon: 'home',
+                    }}
+                />
+                <Divider />
                 <List>
                     {nav.map((item, i: number) => (
                         <ListItem
@@ -207,16 +219,7 @@ export default function Layout({ config }: { config: any }) {
                 <Divider />
                 <Box sx={{flexGrow: 1}} />
 
-                <MiniListItem
-                    open={open}
-                    onClick={() => {
-                        window.location.href = '/nx-admin';
-                    }}
-                    options={{
-                        label: 'Reset',
-                        icon: 'reset',
-                    }}
-                />
+               
 
                 <MiniListItem
                     open={open}
@@ -243,8 +246,8 @@ export default function Layout({ config }: { config: any }) {
                         window.location.href = '/';
                     }}
                     options={{
-                        label: 'Home',
-                        icon: 'home',
+                        label: 'Public',
+                        icon: 'public',
                     }}
                 />
             </Drawer>

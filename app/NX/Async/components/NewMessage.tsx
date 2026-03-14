@@ -95,11 +95,10 @@ export const NewMessage: React.FC<I_NewMessage> = ({ id }) => {
             </Box>
             <Box sx={{mt:1}}>
                 <Button 
+                    disabled={false}
                     onClick={handleSend} 
-                    color="primary"
-                    variant='contained'
-                    endIcon={<Icon icon="send" />}
-                    >
+                    variant='outlined'
+                    endIcon={<Icon icon="send" />}>
                         Send
                 </Button>
             </Box>
