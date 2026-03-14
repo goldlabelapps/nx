@@ -1,10 +1,9 @@
 ---
 order: 3
-slug: /copilot
+slug: /ai/copilot
 title: Copilot
 description: Using GitHub Copilot for AI-powered coding
 tags: ed-tech, copilot, ai, free, GitHub
-image: https://live.staticflickr.com/65535/55066164370_2470ff2c5c_b.jpg
 ---
 
 GitHub Copilot is an AI-powered coding assistant that helps both new and experienced developers by providing real-time code suggestions, autocompletions, and even generating entire functions or files based on natural language prompts. Here’s what it offers:

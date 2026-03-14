@@ -1,3 +1,13 @@
+---
+order: 35
+slug: /react/redux
+title: Redux
+description: There can be multiple instances of Flash on the screen at the same timew
+tags: ed-tech, copilot, ai, free, GitHub, Pythin
+image: https://live.staticflickr.com/65535/55064901972_b9a00dc36f_b.jpg
+---
+
+
 PROBLEM: There can be multiple instances of Flash on the screen at the same time. Should they have separate redux stores (preferred) and if so, can we setup the store in the ./Flash.tsx file and use the unique id variable to separate the stores?
 
 ___

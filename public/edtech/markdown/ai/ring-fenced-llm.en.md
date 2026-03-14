@@ -2,7 +2,7 @@
 order: 20
 title: Ring‑fenced LLM
 description: Hosted entirely within your firm’s secure environment
-slug: /ring-fenced-llm
+slug: /ai/ring-fenced-llm
 icon: ai
 image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
 ---

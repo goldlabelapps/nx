@@ -90,7 +90,7 @@ export default function NXAdminMenu() {
                 >
                  
                   <ListItemIcon>
-                    <Icon icon="left" color="primary" />
+                    <Icon icon="home" color="primary" />
                   </ListItemIcon>
                 <ListItemText
                   primary="Back to site"

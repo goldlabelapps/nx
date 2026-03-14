@@ -6,16 +6,16 @@
     "icons": {
         "light": {
             "icon": "/edtech/svg/favicon_light.svg",
-            "favicon": "/edtech/svg/favicon_light.svg"
+            "favicon": "/edtech/svg/favicon.svg"
         },
         "dark": {
             "icon": "/edtech/svg/favicon_dark.svg",
-            "favicon": "/edtech/svg/favicon_dark.svg"
+            "favicon": "/edtech/svg/favicon.svg"
         }
     },
     "images": {
-        "light": "https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg",
-        "dark": "https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg"
+        "light": "https://live.staticflickr.com/65535/55033320139_1d7826b622_b.jpg",
+        "dark": "https://live.staticflickr.com/65535/55033320139_1d7826b622_b.jpg"
     },
     "cartridges": {
         "designSystem": {
@@ -34,11 +34,11 @@
                 "dark": {
                     "mode": "dark",
                     "primary": "#DCD613",
-                    "secondary": "#DCD613",
-                    "background": "#222",
-                    "paper": "#000",
+                    "secondary": "#FFF700",
+                    "background": "#303026",
+                    "paper": "#303026",
                     "text": "#fff",
-                    "border": "#222"
+                    "border": "#3C3C33"
                 }
             }
         }

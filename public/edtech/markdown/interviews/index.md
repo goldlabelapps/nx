@@ -1,7 +1,7 @@
 ---
 order: 30
-slug: /developer-interviews
-title: Tech Interviews
+slug: /interviews
+title: Job Interviews
 description: Ace your software developer interviews. Master technical interview communication, behavioral questions, system design explanations, and English interview skills.
 tags: ed-tech, interviews, career, communication
 ---

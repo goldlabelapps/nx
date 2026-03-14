@@ -1,8 +1,8 @@
 ---
-order: 1 
-slug: /
-title: Educational Technology
-description: Technical Interviews
+order: 15
+slug: /next-js
+title: NextJS
+description: Best thing since sliced bread and chololate spread
 tags: nx, goldlabel, coding
 icon: right
 ---

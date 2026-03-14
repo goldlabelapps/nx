@@ -50,11 +50,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
     const image = images?.[themeMode] || '';
     return (
         <DesignSystem theme={theme}>
-            <Box sx={{ position: 'absolute', top: 16, left: 16 }}>
-                <IconButton onClick={() => router.back()} color="primary">
-                    <Icon icon="left" />
-                </IconButton>
-            </Box>
+            
             <Box sx={{ margin: 'auto', mt: 4, mb: 0, textAlign: 'center' }}>
                 <Typography variant="h4" color="primary">
                     {siteName}
@@ -130,6 +126,9 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                     </CardContent>
                     <CardActions>
                         <Box sx={{flexGrow:1}}/>
+                        
+                       
+
                         <Button
                             startIcon={<Icon icon="left" />}
                             sx={{ mx: 1 }}
@@ -137,6 +136,11 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                         >
                             Back
                         </Button>
+
+                        <IconButton sx={{ mx: 1 }} onClick={() => router.push('/')} color="primary">
+                            <Icon icon="home" />
+                        </IconButton>
+                        
                         <Button
                             type="submit"
                             endIcon={<Icon icon="signin" />}

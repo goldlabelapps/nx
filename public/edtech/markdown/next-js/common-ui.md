@@ -1,3 +1,11 @@
+---
+order: 290
+slug: /next-js/common-ui
+title: Common UI
+tags: nx, goldlabel, aki
+icon: ai
+---
+
 # Common UI
 
 ## NextJS - React

@@ -3,6 +3,8 @@ import * as React from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import { getFirebaseAuth } from '../../lib/firebase';
+import { useRouter } from 'next/navigation';
 import {
     Box,
     List,
@@ -12,8 +14,8 @@ import {
     ListItemText,
     Toolbar,
     IconButton,
-    Typography,
     Divider,
+    Typography,
 } from '@mui/material';
 import { 
     Icon,
@@ -104,12 +106,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function Layout({ config }: { config: any }) {
 
     const dispatch = useDispatch();
+    const router = useRouter();
     const [open, setOpen] = React.useState(false);
     const nxAdmin = useNXAdmin();
     const { active } = nxAdmin;
     const theme = useTheme();
     const activeNavItem = nav.find(item => item.collection === active);
-    
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
 
@@ -125,6 +127,15 @@ export default function Layout({ config }: { config: any }) {
 
     const handleDrawerClose = () => {
         setOpen(false);
+    };
+
+    const handleSignout = async () => {
+        
+        const auth = getFirebaseAuth();
+        const { signOut } = await import('firebase/auth');
+        await signOut(auth);
+        console.log('handleSignout_ done');
+
     };
 
     return (
@@ -149,9 +160,9 @@ export default function Layout({ config }: { config: any }) {
                             {theme.direction === 'rtl' ? <Icon icon="left" /> : <Icon icon="right" />}
                         </IconButton>
                     )}
-                    {/* <Typography sx={{m:1}} color='primary' variant="h6" component="h1">
+                    <Typography sx={{m:1}} color='primary' variant="h6" component="h1">
                         {config.siteName} Admin
-                    </Typography> */}
+                    </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open} sx={{ border: 0, }}>
@@ -195,6 +206,7 @@ export default function Layout({ config }: { config: any }) {
                 </List>
                 <Divider />
                 <Box sx={{flexGrow: 1}} />
+
                 <MiniListItem
                     open={open}
                     onClick={() => {
@@ -205,6 +217,7 @@ export default function Layout({ config }: { config: any }) {
                         icon: 'reset',
                     }}
                 />
+
                 <MiniListItem
                     open={open}
                     onClick={handleThemeModeToggle}
@@ -213,14 +226,25 @@ export default function Layout({ config }: { config: any }) {
                         icon: currentThemeMode === 'light' ? 'darkmode' : 'lightmode',
                     }}
                 />
+
+                <MiniListItem
+                    open={open}
+                    onClick={handleSignout}
+                    options={{
+                        label: 'Sign out',
+                        icon: 'signout',
+                    }}
+                />
+
+
                 <MiniListItem
                     open={open}
                     onClick={() => {
                         window.location.href = '/';
                     }}
                     options={{
-                        label: 'Back to site',
-                        icon: 'left',
+                        label: 'Home',
+                        icon: 'home',
                     }}
                 />
             </Drawer>

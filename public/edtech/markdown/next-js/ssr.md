@@ -1,25 +1,19 @@
 ---
-title: "Static Site Generation (SSG)"
-featuredImage: "/images/example-featured.jpg"
-description: "This is an example markdown page."
-date: "2025-01-18"
+order: 15
+slug: /next-js/ssr
+title: SSR
+description: Server Side Rendering
+tags: nx, goldlabel, coding
+icon: right
+image: https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg
 ---
 
 To implement a structure for your markdown documents that includes concepts like titles, featured images, and other metadata while setting up static site generation (SSG) in Next.js, follow these steps:
 
----
 
 ### **Markdown File Structure**
 Use [YAML front matter](https://jekyllrb.com/docs/front-matter/) for metadata at the top of each markdown file. Here's an example:
 
-#### `/markdown/example.md`
-```markdown
----
-title: "Example Page"
-featuredImage: "/images/example-featured.jpg"
-description: "This is an example markdown page."
-date: "2025-01-18"
----
 
 ## Welcome to the Example Page
 

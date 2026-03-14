@@ -2,7 +2,7 @@
 order: 20
 title: Abgeschottetes LLM
 description: Vollständig innerhalb der sicheren Umgebung Ihrer Kanzlei gehostet
-slug: /ring-fenced-llm-de
+slug: /ai/ring-fenced-llm-de
 icon: ai
 image: https://live.staticflickr.com/65535/54676004619_ac1207c621_c.jpg
 ---

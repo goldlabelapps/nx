@@ -1,3 +1,12 @@
+---
+order: 5
+slug: /developer/apps
+title: Apps
+description: A user uses it to do something.
+tags: nx, goldlabel, aki
+icon: ai
+smartImage: default
+---
 # Apps
 
 What is an app? A user uses it to do something. Finding stuff, editing stuff, creating stuff; the bottom line is that a user asks the things through their interation with the UI and app answers with changes in the display layer

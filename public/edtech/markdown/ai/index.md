@@ -1,7 +1,7 @@
 ---
-order: 1 
-slug: /aki
-title: AKI
+order: 2
+slug: /ai
+title: Artificial Intelligence
 description: Ring‑fenced LLM Hosted entirely within your firm’s secure environment
 tags: nx, goldlabel, aki
 icon: ai

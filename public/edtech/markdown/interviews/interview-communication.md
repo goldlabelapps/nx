@@ -1,6 +1,6 @@
 ---
 order: 51
-slug: /developer-interviews/interview-communication
+slug: /interviews/interview-communication
 title: Interview Communication
 description: Master technical communication in interviews. Learn to explain your thinking clearly, handle questions effectively, and collaborate with interviewers.
 tags: ed-tech, interviews, communication, soft-skills

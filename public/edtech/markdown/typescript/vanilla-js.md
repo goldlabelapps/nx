@@ -1,3 +1,10 @@
+---
+order: 35
+slug: /typescript/vanilla-js
+title: Vanilla JS
+tags: ed-tech, copilot, ai, free, GitHub, Python
+---
+
 # Vanilla Viewer <=> Next/React
 
 [Branch vucity-3d-web-connect](https://gitlab.com/vucity/web/vu-web-monorepo/-/tree/apps/vucity-3d-web-connect?ref_type=heads)

@@ -1,6 +1,6 @@
 ---
 order: 52
-slug: /developer-interviews/interview-english
+slug: /interviews/interview-english
 title: Interview English
 description: Master English for technical interviews. Build interview vocabulary, improve pronunciation, handle listening challenges, and communicate technical concepts clearly.
 tags: ed-tech, interviews, english, language-learning
