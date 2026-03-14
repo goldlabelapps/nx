@@ -2,6 +2,7 @@
 import Box from '@mui/material/Box';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter } from 'next/navigation';
+import {Surface} from '../../DesignSystem';
 
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
     return items.map((item, idx) => {
@@ -25,9 +26,15 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
 export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const router = useRouter();
     const treeViewItems = mapNavItemsToTreeView(navItems);
+    const md = `Surfacing content...`;
+
+    const handleCTA = () => {
+        // console.log('CTA clicked!');
+    };
+
     return (
         <Box sx={{}}>
-            Surface
+            
             <RichTreeView
                 items={treeViewItems}
                 onItemClick={(event, itemId) => {
@@ -49,6 +56,21 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                 }}
             />
+
+            <Box sx={{ maxWidth: 300, m: 2 }}>
+                <Surface options={{
+                    id: 'surface',
+                    label: 'Sign in',
+                    icon: 'rocket',
+                    markdown: md,
+                    onClick: handleCTA,
+                    onFinish: () => {
+                        // console.log('done.');
+                    }
+                }}
+                />
+            </Box>
+
         </Box>
     );
 }

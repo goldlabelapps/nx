@@ -1,11 +1,16 @@
 ---
-order: 20
-title: Technique
-description: Bladdy give it some
-slug: /technique
-icon: info
+order: 400
+slug: /how-to
+title: How To
+description: 魏藏的鱼
+tags: food, eurotrash,
 image: /food/jpg/default.jpg
+icon: food
 ---
+
+## How to, err... cook
+
+> 魏藏的鱼
 
 
 > When we bladdy give it some, we Apply max heat to bring the food to max temperature as quickly as possible.

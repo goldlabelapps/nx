@@ -1,8 +1,8 @@
 ---
-order: 35
+order: 235
 title: 'Air Fried Peppers'
 description: 'Got bolognese and peppers?'
-slug: /air-fried-peppers
+slug: /eurotrash/air-fried-peppers
 icon: 'food'
 image: /food/jpg/default.jpg
 tags: 'food, punching dolphins, recipes, air fryer, peppers'

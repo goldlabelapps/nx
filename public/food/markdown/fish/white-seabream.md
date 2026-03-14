@@ -1,5 +1,5 @@
 ---
-order: 70
+order: 680
 title: Seabream
 description: Diplodus sargus sargus (White seabream)
 slug: /fish/white-seabream

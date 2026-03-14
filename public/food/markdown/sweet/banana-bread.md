@@ -1,5 +1,5 @@
 ---
-order: 50
+order: 1250
 title: Banana Bread
 description: Proper crowd pleaser
 slug: /sweet/banana-bread

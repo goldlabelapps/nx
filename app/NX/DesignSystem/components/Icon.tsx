@@ -175,12 +175,15 @@ import RequiredIcon from '@mui/icons-material/PriorityHigh';
 import HeartIcon from '@mui/icons-material/Favorite';
 import DessertIcon from '@mui/icons-material/Cake';
 import AsianIcon from '@mui/icons-material/RamenDining';
+import PublicIcon from '@mui/icons-material/Language';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
-
+    case 'public':
+      iconFragment = <PublicIcon color={color} />;
+      break;
     case 'async':
       iconFragment = <BlokeyIcon color={color} />;
       break;

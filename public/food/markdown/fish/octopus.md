@@ -1,5 +1,5 @@
 ---
-order: 70
+order: 670
 title: Octopus
 description: Octopus vulgaris (Common octopus)
 slug: /fish/octopus
