@@ -1,8 +1,8 @@
 {
   "short_name": "New Tenant",
   "name": "New NX Tenant",
-  "theme_color": "#FFF",
-  "background_color": "#FFF",
+  "theme_color": "#C09F52",
+  "background_color": "#C09F52",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",
@@ -16,7 +16,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/_new_tenant/svg/favicon.svg",
+      "src": "/_new_tenant/svg/favicon_light.svg",
       "type": "image/svg+xml",
       "sizes": "512x512",
       "purpose": "any"

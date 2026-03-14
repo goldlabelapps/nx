@@ -27,6 +27,7 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const treeViewItems = mapNavItemsToTreeView(navItems);
     return (
         <Box sx={{}}>
+            Surface
             <RichTreeView
                 items={treeViewItems}
                 onItemClick={(event, itemId) => {

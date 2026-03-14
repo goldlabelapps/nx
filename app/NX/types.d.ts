@@ -4,7 +4,9 @@ export type { T_UbereduxDispatch, T_RootState }
 export type T_Tenant = 'nx' |
     'mcuk' |
     'echopay' |
-    'edtech'
+    'edtech' | 
+    'writing' | 
+    'company'
 ;
 
 export type T_Config = {
