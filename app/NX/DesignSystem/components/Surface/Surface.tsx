@@ -26,13 +26,13 @@ export interface I_Surface {
 };
 
 const erms: string[] = [
-    "_Loading_",
-    "_Evaluating_",
-    "_Preparing_",
-    "_Analysing_",
-    "_Reading_",
-    "_Preparing_",
-    "_Processing_"
+    "Loading...",
+    "Evaluating...",
+    "Preparing...",
+    "Analysing...",
+    "Reading...",
+    "Preparing...",
+    "Processing..."
 ];
 
 export default function Surface({ options }: I_Surface) {
@@ -125,20 +125,17 @@ export default function Surface({ options }: I_Surface) {
         <Box id={options.id} ref={clipRef}>
             <ReactMarkdown>{displayed}</ReactMarkdown>
             <Collapse in={done}>
-            {!authed ? <>
-                    <Button
-                        onClick={onClick}
-                        startIcon={options.iconAlign !== 'right' ? <Icon icon={options.icon as any} /> : undefined}
-                        endIcon={options.iconAlign === 'right' ? <Icon icon={options.icon as any} /> : undefined}
-                    >
-                        {label}
-                    </Button>
-            </> : <>
-                <p>Please sign in to continue.</p>
-            </>}
+                <Button
+                    variant="contained"
+                    onClick={onClick}
+                    startIcon={options.iconAlign !== 'right' ? <Icon icon={options.icon as any} /> : undefined}
+                    endIcon={options.iconAlign === 'right' ? <Icon icon={options.icon as any} /> : undefined}
+                >
+                    {label}
+                </Button>
                 
             </Collapse>
-            <pre>authed: {JSON.stringify(authed, null, 2)}</pre>
+            {/* <pre>authed: {JSON.stringify(authed, null, 2)}</pre> */}
         </Box>
     );
 }

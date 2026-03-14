@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter } from 'next/navigation';
 import {Surface} from '../../DesignSystem';
+import { useAuthed } from '../../Paywall';
 
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
     return items.map((item, idx) => {
@@ -25,15 +26,30 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
 
 export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const router = useRouter();
-    const treeViewItems = mapNavItemsToTreeView(navItems);    
-    const md = ``;
+    const treeViewItems = mapNavItemsToTreeView(navItems);
+    const authed = useAuthed();    
+    let md = ``;
+
+    if (authed)
+        md = `You are signed in. Click the button below to access the NX Admin dashboard.`;
+
     const handleCTA = () => {
         router.push('/nx-admin');
     };
 
     return (
         <Box sx={{}}>
-            
+            <Box sx={{ maxWidth: 250, m: 2 }}>
+                <Surface options={{
+                    id: 'surface',
+                    label: authed ? 'NX Admin' : 'Sign in',
+                    icon: authed ? 'admin' : 'signin',
+                    markdown: md,
+                    onClick: handleCTA,
+                    onFinish: () => {}
+                }}
+                />
+            </Box>            
             <RichTreeView
                 items={treeViewItems}
                 onItemClick={(event, itemId) => {
@@ -55,17 +71,6 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                 }}
             />
-            <Box sx={{ maxWidth: 300, m: 2 }}>
-                <Surface options={{
-                    id: 'surface',
-                    label: 'Sign in',
-                    icon: 'signin',
-                    markdown: md,
-                    onClick: handleCTA,
-                    onFinish: () => {}
-                }}
-                />
-            </Box>
         </Box>
     );
 }

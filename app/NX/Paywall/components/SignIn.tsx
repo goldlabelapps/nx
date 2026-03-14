@@ -125,13 +125,13 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                     </CardContent>
                     <CardActions>
                         <Box sx={{flexGrow:1}}/>
-                        <Button
+                        {/* <Button
                             startIcon={<Icon icon="left" />}
                             sx={{ mx: 1 }}
                             onClick={() => router.back()}
                         >
                             Back
-                        </Button>
+                        </Button> */}
                         <IconButton sx={{ mx: 1 }} onClick={() => router.push('/')} color="primary">
                             <Icon icon="home" />
                         </IconButton>
