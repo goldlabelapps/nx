@@ -25,11 +25,10 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
 
 export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const router = useRouter();
-    const treeViewItems = mapNavItemsToTreeView(navItems);
-    const md = `Surfacing content...`;
-
+    const treeViewItems = mapNavItemsToTreeView(navItems);    
+    const md = ``;
     const handleCTA = () => {
-        // console.log('CTA clicked!');
+        console.log('handleCTA clicked!');
     };
 
     return (
@@ -56,21 +55,17 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                 }}
             />
-
             <Box sx={{ maxWidth: 300, m: 2 }}>
                 <Surface options={{
                     id: 'surface',
                     label: 'Sign in',
-                    icon: 'rocket',
+                    icon: 'signin',
                     markdown: md,
                     onClick: handleCTA,
-                    onFinish: () => {
-                        // console.log('done.');
-                    }
+                    onFinish: () => {}
                 }}
                 />
             </Box>
-
         </Box>
     );
 }

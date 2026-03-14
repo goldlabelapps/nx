@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useState } from 'react';
@@ -115,8 +114,7 @@ export default function Surface({ options }: I_Surface) {
     }, [showMarkdown, markdownText]);
 
     return (
-        <Box id={options.id}
-            ref={clipRef}>
+        <Box id={options.id} ref={clipRef}>
             <ReactMarkdown>{displayed}</ReactMarkdown>
             <Collapse in={done}>
                 <Button 
