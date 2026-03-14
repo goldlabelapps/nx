@@ -10,6 +10,8 @@ import {
 import { SurfaceAS } from './';
 import { useDispatch } from '../../../../NX/Uberedux';
 import { Icon } from '../../../DesignSystem';
+import { useAuthed } from '../../../Paywall';
+
 
 export interface I_Surface {
     options: {
@@ -24,13 +26,13 @@ export interface I_Surface {
 };
 
 const erms: string[] = [
-    "Loading",
-    "Evaluating",
-    "Preparing",
-    "Analysing",
-    "Reading",
-    "Preparing",
-    "Processing"
+    "_Loading_",
+    "_Evaluating_",
+    "_Preparing_",
+    "_Analysing_",
+    "_Reading_",
+    "_Preparing_",
+    "_Processing_"
 ];
 
 export default function Surface({ options }: I_Surface) {
@@ -41,6 +43,12 @@ export default function Surface({ options }: I_Surface) {
     const [done, setDone] = React.useState(false);
     const [displayed, setDisplayed] = useState('');
     const [showMarkdown, setShowMarkdown] = useState(false);
+    const authed = useAuthed();
+    let mode = 'signedout';
+    if (authed){
+
+    };
+
     const markdownText = options.markdown;
     const { onClick, label } = options;
     
@@ -117,17 +125,20 @@ export default function Surface({ options }: I_Surface) {
         <Box id={options.id} ref={clipRef}>
             <ReactMarkdown>{displayed}</ReactMarkdown>
             <Collapse in={done}>
-                <Button 
-                    fullWidth={false}
-                    variant="outlined"
-                    color='primary'
-                    onClick={onClick}
-                    startIcon={options.iconAlign !== 'right' ? <Icon icon={options.icon as any} /> : undefined}
-                    endIcon={options.iconAlign === 'right' ? <Icon icon={options.icon as any} /> : undefined}
-                >
-                    {label}
-                </Button>
+            {!authed ? <>
+                    <Button
+                        onClick={onClick}
+                        startIcon={options.iconAlign !== 'right' ? <Icon icon={options.icon as any} /> : undefined}
+                        endIcon={options.iconAlign === 'right' ? <Icon icon={options.icon as any} /> : undefined}
+                    >
+                        {label}
+                    </Button>
+            </> : <>
+                <p>Please sign in to continue.</p>
+            </>}
+                
             </Collapse>
+            <pre>authed: {JSON.stringify(authed, null, 2)}</pre>
         </Box>
     );
 }

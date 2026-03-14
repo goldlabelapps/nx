@@ -28,7 +28,7 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const treeViewItems = mapNavItemsToTreeView(navItems);    
     const md = ``;
     const handleCTA = () => {
-        console.log('handleCTA clicked!');
+        router.push('/nx-admin');
     };
 
     return (

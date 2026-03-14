@@ -5,6 +5,7 @@ import SignOutBtn from './components/SignOutBtn'
 import { setPaywall } from './actions/setPaywall';
 import { firebaseLogin, firebaseLogout } from './actions/firebaseAuth';
 import { usePaywall } from './hooks/usePaywall';
+import { useAuthed } from './hooks/useAuthed';
 
 export {
     Paywall,
@@ -12,6 +13,7 @@ export {
     SignOutBtn,
     setPaywall,
     usePaywall,
+    useAuthed,
     firebaseLogin,
     firebaseLogout,
 };

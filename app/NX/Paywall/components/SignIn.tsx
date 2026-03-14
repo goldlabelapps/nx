@@ -95,7 +95,6 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                                 fullWidth
                                 required
                                 margin="normal"
-                                autoFocus
                             />
                         )}
 
@@ -126,9 +125,6 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                     </CardContent>
                     <CardActions>
                         <Box sx={{flexGrow:1}}/>
-                        
-                       
-
                         <Button
                             startIcon={<Icon icon="left" />}
                             sx={{ mx: 1 }}
@@ -136,11 +132,9 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                         >
                             Back
                         </Button>
-
                         <IconButton sx={{ mx: 1 }} onClick={() => router.push('/')} color="primary">
                             <Icon icon="home" />
                         </IconButton>
-                        
                         <Button
                             type="submit"
                             endIcon={<Icon icon="signin" />}
@@ -152,7 +146,10 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                         <Box sx={{ flexGrow: 1 }} />
                     </CardActions>
                     <CardContent>
-                        {(error || externalError) && <Typography sx={{ mt: 2 }} color="primary">{error || externalError}</Typography>}
+                        {(error || externalError) && 
+                        <Typography sx={{ mt: 2 }} color="primary">
+                            {error || externalError}
+                        </Typography>}
                     </CardContent>
                 </Box>
             </form>
