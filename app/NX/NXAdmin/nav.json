@@ -1,5 +1,12 @@
 [
     {
+        "id": "account",
+        "title": "Account",
+        "description": "Manage user accounts and permissions",
+        "icon": "account"
+    },
+    {
+        "id": "users",
         "collection": "users",
         "title": "Users",
         "single": "User",
@@ -7,17 +14,19 @@
         "icon": "users"
     },
     {
+        "id": "async",
+        "collection": "async",
+        "single": "Async",
+        "title": "Async",
+        "description": "Live users",
+        "icon": "async"
+    },
+    {
+        "id": "files",
         "collection": "files",
         "single": "File",
         "title": "Files",
         "description": "Images, sounds, videos and PDFs etc",
         "icon": "files"
-    },
-    {
-        "collection": "notify",
-        "single": "Notify",
-        "title": "Notify",
-        "description": "Logs of emails sent",
-        "icon": "notify"
     }
 ]

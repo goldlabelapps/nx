@@ -25,7 +25,6 @@ import OptionSelect from './components/UI/OptionSelect';
 import InputString from './components/UI/InputString';
 import JSONInput from './components/UI/JSONInput';
 
-
 export {
     NXAdmin,
     InputString,

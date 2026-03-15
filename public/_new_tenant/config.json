@@ -3,6 +3,10 @@
     "tenant": "_new_tenant",
     "description": "Description of Tenant",
     "url": "https://_new_tenant.goldlabel.pro",
+    "owner":{
+        "name": "listingslab",
+        "email": "listingslab@gmail.com"
+    },
     "images": {
         "light": "/_new_tenant/jpg/default.jpg",
         "dark": "/_new_tenant/jpg/default.jpg"

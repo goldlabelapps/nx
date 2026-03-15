@@ -3,6 +3,10 @@
     "siteName": "EchoPay",
     "description": "Payment Plugin",
     "url": "https://echopay.goldlabel.pro",
+    "owner": {
+        "name": "listingslab",
+        "email": "listingslab@gmail.com"
+    },
     "icons": {
         "light": {
             "icon": "/echopay/svg/favicon_184791.svg",

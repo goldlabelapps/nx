@@ -3,6 +3,10 @@
     "siteName": "Diary of a pothead",
     "description": "Medical cannabis dispensed by licensed pharmacies. Delivered to your door",
     "url": "https://listingslab.com",
+    "owner": {
+        "name": "listingslab",
+        "email": "listingslab@gmail.com"
+    },
     "icons": {
         "light": {
             "icon": "/mcuk/png/favicon.png",

@@ -3,6 +3,10 @@
     "siteName": "Wei Zang's Food",
     "description": "Bladdy give it some!",
     "url": "https://food.goldlabel.pro",
+    "owner": {
+        "name": "listingslab",
+        "email": "listingslab@gmail.com"
+    },
     "images": {
         "light": "/food/jpg/default.jpg",
         "dark": "/food/jpg/default.jpg"

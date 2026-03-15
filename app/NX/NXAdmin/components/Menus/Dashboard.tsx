@@ -23,13 +23,12 @@ export default function Dashboard({ nav }: { nav: any }) {
         }
     };
 
+    // Filter out nav items with id 'acccount'
+    const filteredNav = Array.isArray(nav) ? nav.filter((item: any) => item.id !== 'acccount') : [];
     return (
         <>
         <Grid container spacing={2} sx={{mb: 4}}>
-            <Grid size={{xs: 12, md: 6}}>
-                <Account />
-            </Grid>
-            {Array.isArray(nav) && nav.map((item: any, i: number) => (
+            {filteredNav.map((item: any, i: number) => (
                 <Grid key={`navItem_${i}`} size={{ xs: 12, md: 6 }}>
                     <ButtonBase
                         onClick={() => handleClick(item)}

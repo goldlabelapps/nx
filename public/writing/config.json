@@ -3,6 +3,10 @@
     "siteName": "魏臧的写作",
     "description": "Wei Zang's Writing",
     "url": "https://writing.goldlabel.pro",
+    "owner": {
+        "name": "listingslab",
+        "email": "listingslab@gmail.com"
+    },
     "images": {
         "light": "/writing/jpg/default.jpg",
         "dark": "/writing/jpg/default.jpg"

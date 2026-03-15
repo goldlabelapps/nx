@@ -32,7 +32,6 @@ import {
 } from '../../NXAdmin';
 import nav from '../nav.json';
 import { useDispatch } from '../../Uberedux';
-import { Synched } from '../../Async';
 
 const drawerWidth = 320;
 
@@ -173,13 +172,6 @@ export default function Layout({ config }: { config: any }) {
                                         alt={config.siteName} />
                                 </IconButton>
                         }
-                        action={<>
-                            <IconButton>
-                                <Avatar
-                                    src={config.icons[currentThemeMode]?.icon}
-                                    alt={config.siteName} />
-                            </IconButton>
-                        </>}
                     />
                 </Toolbar>
             </AppBar>
@@ -224,7 +216,7 @@ export default function Layout({ config }: { config: any }) {
                 </List>
                 
                 <Box sx={{flexGrow: 1}} />
-
+                
                 <MiniListItem
                     open={open}
                     onClick={handleThemeModeToggle}
@@ -242,8 +234,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: 'signout',
                     }}
                 />
-
-
                 <MiniListItem
                     open={open}
                     onClick={() => {
@@ -261,7 +251,7 @@ export default function Layout({ config }: { config: any }) {
                 {!active && <Dashboard nav={nav} />}
                 {active && activeNavItem && (
                     <Collection
-                        collection={activeNavItem.collection}
+                        collection={activeNavItem.collection ?? ""}
                         title={activeNavItem.title}
                         description={activeNavItem.description}
                         icon={activeNavItem.icon}

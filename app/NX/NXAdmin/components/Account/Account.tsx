@@ -4,7 +4,7 @@ import {
   // Box,
   Card,
   CardHeader,
-  // CardContent,
+  CardContent,
   // Typography,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
@@ -12,11 +12,13 @@ import {
   useAuthed,
   SignOutBtn,
 } from '../../../Paywall'
-// import { useDispatch } from '../../../Uberedux';
+import { useAsync } from '../../../Async';
 
 export default function Account() {
   // const dispatch = useDispatch();
   const authed = useAuthed();
+  const async = useAsync();
+
   const {
     uid, 
     email,
@@ -33,14 +35,13 @@ export default function Account() {
             <SignOutBtn />
           </>}
         />
-        {/* <CardContent>
-          <Typography variant="body2">
-            {uid}
-          </Typography>
-        </CardContent> */}
+        <CardContent>
+          <pre>async: {JSON.stringify(async, null, 2)}</pre>
+          
+        </CardContent>
       </Card>
     </>
   );
 }
 
-/* <pre>authed: {JSON.stringify(authed, null, 2)}</pre> */
+/* */

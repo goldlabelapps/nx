@@ -1,11 +1,8 @@
 "use client";
 import React from 'react';
-import {
-    Box,
-    Avatar,
-    IconButton,
-    Badge,
-} from '@mui/material';
+// import {
+//     Box,
+// } from '@mui/material';
 import {
     useAsync,
     initAsync,
@@ -13,7 +10,7 @@ import {
     setAsync,
 } from '../Async'
 import { useDispatch} from '../Uberedux';
-import { Icon } from '../DesignSystem';
+// import { useAuthed } from '../Paywall';
 import { AsyncDialog } from '../Async'
 
 export interface I_Async {
@@ -24,10 +21,11 @@ export const Async: React.FC<I_Async> = ({ id }) => {
 
     const dispatch = useDispatch();
     const state = useAsync();
-    const {sessionStart, ticks, ting} = state || {};
-
+    const { sessionStart, ting } = state || {};
+    // const authed = useAuthed();
+    // const {uid} = authed || {};
+    
     React.useEffect(() => {
-        // console.log('initAsync');
         if (!sessionStart) dispatch(initAsync());
     }, [dispatch, sessionStart]);
 
@@ -37,12 +35,12 @@ export const Async: React.FC<I_Async> = ({ id }) => {
         }, 1000);
         return () => clearInterval(interval);
     }, [dispatch]);
-
-    const avatar = ting?.avatar;
-    const name = ting?.name;
     
     return (
         <>
+            {/* <pre style={{ color: 'black', fontSize: 10 }}>
+                uid: {JSON.stringify(uid, null, 2)}
+            </pre> */}
             <AsyncDialog />
         </>
     );

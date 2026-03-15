@@ -15,6 +15,10 @@ export type T_Config = {
     label?: string;
     description: string;
     url: string;
+    owner: {
+        name: string;
+        email: string;
+    };
     icons: {
         light: {
             icon: string;

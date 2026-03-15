@@ -9,13 +9,12 @@ import {
 	Container,
 } from '@mui/material';
 import {
-	// Icon,
 	Nav,
-	TreeNav,
 } from '../../DesignSystem';
 import {
-	NewMessage,
 	Async,
+	Synched,
+	useAsync,
 } from '../../Async';
 export interface I_Footer {
 	children?: React.ReactNode;
@@ -31,7 +30,10 @@ export default function Footer({
 }: I_Footer) {
 
 	const theme = useTheme();
-
+	const async = useAsync();
+	const {ting} = async || {};
+	const { fingerprint } = ting || {};
+	
 	return (
 		<React.Fragment>
 			<AppBar
@@ -45,7 +47,7 @@ export default function Footer({
 					<Toolbar>
 						<Box sx={{ flexGrow: 1 }} />
 						{children}
-						<NewMessage />
+						<Synched />
 						<Box sx={{ display: 'flex', }}>
 							<Box sx={{ my: 1, ml: 2 }}>
 								<Nav
@@ -59,6 +61,7 @@ export default function Footer({
 				</Container>
 			</AppBar>
 			<Async />
+			<pre>fingerprint: {JSON.stringify(fingerprint, null, 2)}</pre>
 		</React.Fragment>
 	);
 }
