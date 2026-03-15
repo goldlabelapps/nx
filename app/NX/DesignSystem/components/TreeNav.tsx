@@ -39,17 +39,7 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
 
     return (
         <Box sx={{}}>
-            <Box sx={{ maxWidth: 250, m: 2 }}>
-                <Surface options={{
-                    id: 'surface',
-                    label: authed ? 'NX Admin' : 'Sign in',
-                    icon: authed ? 'admin' : 'signin',
-                    markdown: md,
-                    onClick: handleCTA,
-                    onFinish: () => {}
-                }}
-                />
-            </Box>            
+                      
             <RichTreeView
                 items={treeViewItems}
                 onItemClick={(event, itemId) => {
@@ -71,6 +61,17 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                 }}
             />
+            <Box sx={{ maxWidth: 250, m: 2 }}>
+                <Surface options={{
+                    id: 'surface',
+                    label: authed ? 'NX Admin' : 'Sign in',
+                    icon: authed ? 'admin' : 'signin',
+                    markdown: md,
+                    onClick: handleCTA,
+                    onFinish: () => { }
+                }}
+                />
+            </Box>  
         </Box>
     );
 }

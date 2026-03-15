@@ -14,6 +14,8 @@ import { initAsync } from './actions/initAsync';
 import { tick } from './actions/tick';
 import { createTing } from './actions/createTing';
 import { sendMessage } from './actions/sendMessage';
+import { subscribeDoc } from './actions/subscribeDoc';
+import { initDoc } from './actions/initDoc';
 
 export {
     Async,
@@ -22,6 +24,8 @@ export {
     NewMessage,
     TingCard,
     Synched,
+    initDoc,
+    subscribeDoc,
     notify,
     sendMessage,
     useAsync,

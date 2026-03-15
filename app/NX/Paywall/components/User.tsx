@@ -1,19 +1,19 @@
 import React from 'react';
 import { IconButton, Box, Avatar } from '@mui/material';
-
 import { useRouter } from 'next/navigation';
+import { useAsync } from '../../Async';
 import { useAuthed } from '../../Paywall';
 
 
 export default function User() {
     
-    const authed = useAuthed();
-
-    if (!authed) return null;
-
+    const async = useAsync();
+    const { ting } = async || {};
+    const {avatar} = ting || {};
+    if (!avatar) return null;
     return (<>
         <IconButton>
-            <Avatar />
+            <Avatar src={avatar} />
         </IconButton>
         </>
     );

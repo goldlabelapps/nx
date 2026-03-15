@@ -131,12 +131,9 @@ export default function Layout({ config }: { config: any }) {
     };
 
     const handleSignout = async () => {
-        
         const auth = getFirebaseAuth();
         const { signOut } = await import('firebase/auth');
         await signOut(auth);
-        console.log('handleSignout_ done');
-
     };
 
     return (

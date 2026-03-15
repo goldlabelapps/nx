@@ -1,33 +1,38 @@
 "use client";
 import React from 'react';
-// import {
-//     Box,
-// } from '@mui/material';
 import {
     useAsync,
     initAsync,
     tick,
+    subscribeDoc,
     setAsync,
 } from '../Async'
 import { useDispatch} from '../Uberedux';
-// import { useAuthed } from '../Paywall';
+import { usePaywall } from '../Paywall';
 import { AsyncDialog } from '../Async'
 
-export interface I_Async {
-    id?: string;
-}
-
-export const Async: React.FC<I_Async> = ({ id }) => {
+export const Async: React.FC<any> = () => {
 
     const dispatch = useDispatch();
     const state = useAsync();
-    const { sessionStart, ting } = state || {};
-    // const authed = useAuthed();
-    // const {uid} = authed || {};
-    
+    const { sessionStart, docId, subscribed } = state || {};
+    const paywall = usePaywall();
+    const {authChecked} = paywall || {};
+
+    const subscribedRef = React.useRef(false);
+
     React.useEffect(() => {
-        if (!sessionStart) dispatch(initAsync());
-    }, [dispatch, sessionStart]);
+        if (docId && !subscribed && !subscribedRef.current) {
+            dispatch(subscribeDoc());
+            subscribedRef.current = true;
+        }
+    }, [dispatch, docId, subscribed]);
+
+    React.useEffect(() => {
+        if (!sessionStart && authChecked){
+            dispatch(initAsync());
+        } 
+    }, [dispatch, sessionStart, authChecked]);
 
     React.useEffect(() => {
         const interval = setInterval(() => {
@@ -36,14 +41,10 @@ export const Async: React.FC<I_Async> = ({ id }) => {
         return () => clearInterval(interval);
     }, [dispatch]);
     
-    return (
-        <>
-            {/* <pre style={{ color: 'black', fontSize: 10 }}>
-                uid: {JSON.stringify(uid, null, 2)}
-            </pre> */}
-            <AsyncDialog />
-        </>
-    );
+    return <>
+        {/* <pre>subscribed:{JSON.stringify(subscribed, null, 2)}</pre> */}
+    <AsyncDialog />
+    </>
 };
 
 export default Async;

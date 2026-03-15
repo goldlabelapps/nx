@@ -9,11 +9,11 @@
     },
     "icons": {
         "light": {
-            "icon": "/mcuk/png/favicon.png",
+            "icon": "/mcuk/svg/favicon_light.svg",
             "favicon": "/mcuk/png/favicon.png"
         },
         "dark": {
-            "icon": "/mcuk/png/favicon.png",
+            "icon": "/mcuk/svg/favicon_dark.svg",
             "favicon": "/mcuk/png/favicon.png"
         }
     },
@@ -23,7 +23,7 @@
     },
     "cartridges": {
         "designSystem": {
-            "themeSwitching": false,
+            "themeSwitching": true,
             "defaultTheme": "light",
             "themes": {
                 "light": {

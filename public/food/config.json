@@ -13,12 +13,12 @@
     },
     "icons": {
         "light": {
-            "icon": "/food/svg/favicon_light.svg",
-            "favicon": "/food/svg/favicon_light.svg"
+            "icon": "/food/png/favicon.png",
+            "favicon": "/food/png/favicon.png"
         },
         "dark": {
-            "icon": "/food/svg/favicon_dark.svg",
-            "favicon": "/food/svg/favicon_dark.svg"
+            "icon": "/food/png/favicon.png",
+            "favicon": "/food/png/favicon.png"
         }
     },
     "cartridges": {

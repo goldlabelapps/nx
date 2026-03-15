@@ -14,6 +14,7 @@ import {
 import {
 	User,
 	useAuthed,
+	usePaywall,
 } from '../../Paywall';
 import {
 	Async,
@@ -35,6 +36,7 @@ export default function Footer({
 
 	const theme = useTheme();
 	const authed = useAuthed();
+	const paywall = usePaywall();
 	const async = useAsync();
 	const {ting} = async || {};
 	const { fingerprint } = ting || {};
@@ -53,7 +55,10 @@ export default function Footer({
 						<Box sx={{ flexGrow: 1 }} />
 						{children}
 						<Box sx={{ display: 'flex', }}>
-							<Box sx={{ my: 1, mr: authed ? 1 : 0 }}>
+							<Box>
+								<User />
+							</Box>
+							<Box sx={{ my: 1, mr: 1 }}>
 								<Nav
 									mode="mobile"
 									navItems={navItems as I_NestedNav["navItems"]}
@@ -61,14 +66,10 @@ export default function Footer({
 								/>
 							</Box>
 						</Box>
-						<Box>
-							<User />
-						</Box>
 					</Toolbar>
 				</Container>
 			</AppBar>
 			<Async />
-			{/* <pre>fingerprint: {JSON.stringify(fingerprint, null, 2)}</pre> */}
 		</React.Fragment>
 	);
 }

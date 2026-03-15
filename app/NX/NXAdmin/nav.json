@@ -2,7 +2,6 @@
     {
         "id": "account",
         "title": "Account",
-        "description": "Manage user accounts and permissions",
         "icon": "account"
     },
     {
