@@ -5,6 +5,7 @@ import { setAsync } from '../../Async';
 export const subscribeUser = (): any =>
         async (dispatch: Dispatch, getState: () => any) => {
             try {
+                
                 console.log('subscribeUser');
                 
             } catch (e: unknown) {

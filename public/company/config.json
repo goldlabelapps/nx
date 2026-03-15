@@ -14,11 +14,11 @@
     "icons": {
         "light": {
             "icon": "/company/svg/favicon.svg",
-            "favicon": "/company/svg/favicon.svg"
+            "favicon": "/company/png/favicon.png"
         },
         "dark": {
             "icon": "/company/svg/favicon.svg",
-            "favicon": "/company/svg/favicon.svg"
+            "favicon": "/company/png/favicon.png"
         }
     },
     "cartridges": {
