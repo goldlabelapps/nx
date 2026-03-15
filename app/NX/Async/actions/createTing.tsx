@@ -1,10 +1,6 @@
 import type { T_UbereduxDispatch, T_RootState } from '../../Uberedux/store';
 import { setUbereduxKey } from '../../Uberedux';
-import { setAsync } from '../../Async';
-
-import { makeIdentity } from '../../lib'
-
-// import { setPaywall } from '../../Paywall';
+import { setAsync, useAsync } from '../../Async';
 
 // ─────────────────────────────────────────────────────────────
 // 1️⃣ FingerprintJS: client-side unique ID
@@ -108,9 +104,14 @@ export async function getDeviceInfo() {
 export const createTing =
   () => async (dispatch: T_UbereduxDispatch, getState: () => T_RootState) => {
     try {
+      const { authChecked, user } = getState().redux.paywall || {};
+      if (!authChecked) {
+        console.warn('Auth not checked yet, skipping ting creation');
+        return;
+      }
+      const uid = user?.uid || null;
       const state = getState();
       const current = state?.redux.async;
-
       const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
 
       // Avoid re-creating if already ready
@@ -144,7 +145,6 @@ export const createTing =
 
       // 3. Device info (now async)
       const device = await getDeviceInfo();
-      const label = `${fingerprint.slice(0, 10)}... from ${geoData.ip}`;
 
       // 4. Build ping object
       // const identity = makeIdentity();
@@ -167,9 +167,9 @@ export const createTing =
       const tingObject = {
         created: Date.now(),
         fingerprint,
+        ...(uid ? { uid } : {}),
         avatar,
         name,
-        label,
         window: {
           tenant,
           hostname: window.location.hostname,
@@ -206,7 +206,6 @@ export const createTing =
           isMobile: device.isMobile,
           platform: device.platform,
           vendor: device.vendor,
-          
         },
       };
 

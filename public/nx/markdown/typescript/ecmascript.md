@@ -1,8 +1,8 @@
 ---
-order: 2
+order: 200
 title: ECMAScript
 description: Language specification behind JavaScript, JScript, ActionScript, and other languages
-slug: /techstack/javascript/ecmascript
+slug: /typescript/ecmascript
 icon: js
 image: https://live.staticflickr.com/65535/54953844493_dce461ec4c_b.jpg
 tags: expertise, ECMAScript, JScript, ActionScript

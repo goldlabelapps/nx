@@ -1,5 +1,5 @@
 ---
-order: 45
+order: 288
 slug: /features/service-workers
 title: Service Workers
 description: Background JavaScript that runs separately from the main browser thread

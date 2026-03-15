@@ -12,9 +12,6 @@ import {
 	AppBar,
 	Typography,
 } from '@mui/material';
-import {
-	Virus,
-} from '../../Virus';
 
 export interface I_Header {
 	config: T_Config;
@@ -46,7 +43,6 @@ export default function Header({
 				}}>
 				<Container maxWidth="lg">
 				<CardHeader
-					
 					avatar={<IconButton onClick={handleAvatarClick}>
                         <Avatar src={icon} />
 					</IconButton>}

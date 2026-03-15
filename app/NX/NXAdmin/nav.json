@@ -1,5 +1,11 @@
 [
     {
+        "id": "account",
+        "title": "Account",
+        "icon": "account"
+    },
+    {
+        "id": "users",
         "collection": "users",
         "title": "Users",
         "single": "User",
@@ -7,17 +13,19 @@
         "icon": "users"
     },
     {
+        "id": "async",
+        "collection": "async",
+        "single": "Async",
+        "title": "Async",
+        "description": "Live users",
+        "icon": "async"
+    },
+    {
+        "id": "files",
         "collection": "files",
         "single": "File",
         "title": "Files",
         "description": "Images, sounds, videos and PDFs etc",
         "icon": "files"
-    },
-    {
-        "collection": "share",
-        "single": "Share",
-        "title": "Share",
-        "description": "Viral marketing landing pages",
-        "icon": "share"
     }
 ]

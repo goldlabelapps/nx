@@ -12,6 +12,7 @@ export default function Paywall({
 
   const paywallRaw = usePaywall();
   const paywall = paywallRaw && typeof paywallRaw === 'object' ? paywallRaw : {};
+  
   return (
     <Box sx={{ border: '1px solid red' }}>
       <pre style={{ padding: '1em', borderRadius: '8px' }}>

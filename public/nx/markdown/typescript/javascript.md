@@ -2,7 +2,7 @@
 order: 3
 title: JavaScript
 description: JavaScript Whatever the Weather
-slug: /techstack/javascript
+slug: /typescript/javascript
 icon: js
 image: https://live.staticflickr.com/65535/54929673394_69c76ac4a3_b.jpg
 tags: Fullstack JavaScript, Vanilla JavaScript, TypeScript, React, Angular, Vue, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS, JSON

@@ -33,7 +33,7 @@ import {
 import nav from '../nav.json';
 import { useDispatch } from '../../Uberedux';
 
-const drawerWidth = 220;
+const drawerWidth = 320;
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -131,12 +131,9 @@ export default function Layout({ config }: { config: any }) {
     };
 
     const handleSignout = async () => {
-        
         const auth = getFirebaseAuth();
         const { signOut } = await import('firebase/auth');
         await signOut(auth);
-        console.log('handleSignout_ done');
-
     };
 
     return (
@@ -163,6 +160,7 @@ export default function Layout({ config }: { config: any }) {
                     )}
 
                     <CardHeader 
+                        sx={{width: '100%'}}
                         title={<Typography variant="h6" color="text.secondary">{config.siteName}</Typography>}
                         subheader={<Typography variant="body2" color="text.secondary">{config.description}</Typography>}
                         avatar={<IconButton>
@@ -215,7 +213,7 @@ export default function Layout({ config }: { config: any }) {
                 </List>
                 
                 <Box sx={{flexGrow: 1}} />
-
+                
                 <MiniListItem
                     open={open}
                     onClick={handleThemeModeToggle}
@@ -233,8 +231,6 @@ export default function Layout({ config }: { config: any }) {
                         icon: 'signout',
                     }}
                 />
-
-
                 <MiniListItem
                     open={open}
                     onClick={() => {
@@ -252,7 +248,7 @@ export default function Layout({ config }: { config: any }) {
                 {!active && <Dashboard nav={nav} />}
                 {active && activeNavItem && (
                     <Collection
-                        collection={activeNavItem.collection}
+                        collection={activeNavItem.collection ?? ""}
                         title={activeNavItem.title}
                         description={activeNavItem.description}
                         icon={activeNavItem.icon}

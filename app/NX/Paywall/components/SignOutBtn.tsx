@@ -19,9 +19,6 @@ export default function SignOutBtn() {
             console.error('Signout failed', err);
         }
     }
-
-
-
     return (
         <IconButton onClick={handleSignout} color="primary">
             <Icon icon="signout" />

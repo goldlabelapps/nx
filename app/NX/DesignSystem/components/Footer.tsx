@@ -9,13 +9,17 @@ import {
 	Container,
 } from '@mui/material';
 import {
-	// Icon,
 	Nav,
-	TreeNav,
 } from '../../DesignSystem';
 import {
-	NewMessage,
+	User,
+	useAuthed,
+	usePaywall,
+} from '../../Paywall';
+import {
 	Async,
+	Synched,
+	useAsync,
 } from '../../Async';
 export interface I_Footer {
 	children?: React.ReactNode;
@@ -31,7 +35,12 @@ export default function Footer({
 }: I_Footer) {
 
 	const theme = useTheme();
-
+	const authed = useAuthed();
+	const paywall = usePaywall();
+	const async = useAsync();
+	const {ting} = async || {};
+	const { fingerprint } = ting || {};
+	
 	return (
 		<React.Fragment>
 			<AppBar
@@ -45,9 +54,11 @@ export default function Footer({
 					<Toolbar>
 						<Box sx={{ flexGrow: 1 }} />
 						{children}
-						<NewMessage />
 						<Box sx={{ display: 'flex', }}>
-							<Box sx={{ my: 1, ml: 2 }}>
+							<Box>
+								<User />
+							</Box>
+							<Box sx={{ my: 1, mr: 1 }}>
 								<Nav
 									mode="mobile"
 									navItems={navItems as I_NestedNav["navItems"]}

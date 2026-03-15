@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Dashboard from './components/Menus/Dashboard';
 import { CreateDoc, ReadDoc, UpdateDoc, DeleteDoc } from './components/CRUD';
 import { Collection } from './components/Collection';
+import { Account } from './components/Account';
 import { TypeScript } from './components/TypeScript';
 import NXAdminBtn from './components/Menus/NXAdminBtn';
 import CloseAdmin from './components/Menus/CloseAdmin';
@@ -23,7 +24,6 @@ import MiniListItem from './components/Menus/MiniListItem';
 import OptionSelect from './components/UI/OptionSelect';
 import InputString from './components/UI/InputString';
 import JSONInput from './components/UI/JSONInput';
-
 
 export {
     NXAdmin,
@@ -54,4 +54,5 @@ export {
     useActive,
     JSONInput,
     collectionDelete,
+    Account,
 };

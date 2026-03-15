@@ -5,7 +5,6 @@ description: Your trust means everything to us
 slug: /privacy
 icon: company
 image: https://live.staticflickr.com/65535/54940372447_3ca7baef00_b.jpg
-noImage: true
 tags: cookies, gdpr, privacy, terms, trust, intellectual-property
 ---
 

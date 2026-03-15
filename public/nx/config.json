@@ -3,9 +3,13 @@
     "siteName": "NX",
     "description": "Multi-tenant NextJS",
     "url": "https://goldlabel.pro",
+    "owner": {
+        "name": "listingslab",
+        "email": "listingslab@gmail.com"
+    },
     "images": {
-        "light": "https://live.staticflickr.com/65535/55139905255_a68875695b_b.jpg",
-        "dark": "/nx/gif/dark.gif"
+        "light": "/nx/jpg/default.jpg",
+        "dark": "/nx/jpg/default.jpg"
     },
     "icons": {
         "light": {

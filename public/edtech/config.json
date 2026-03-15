@@ -3,6 +3,10 @@
     "url": "https://ed-tech.co",
     "siteName": "Educational Technology",
     "description": "Education in the workplace",
+    "owner": {
+        "name": "listingslab",
+        "email": "listingslab@gmail.com"
+    },
     "icons": {
         "light": {
             "icon": "/edtech/svg/favicon_light.svg",
