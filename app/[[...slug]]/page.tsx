@@ -5,9 +5,6 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import {
     Box,
-    AppBar,
-    IconButton,
-    CardHeader,
     Container,
     Typography,
 } from '@mui/material';
@@ -24,7 +21,6 @@ import {
     Header,
     Hero,
     Footer,
-    ThemedIcon,
     TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';

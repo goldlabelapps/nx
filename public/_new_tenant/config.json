@@ -7,7 +7,7 @@
         "name": "listingslab",
         "email": "listingslab@gmail.com"
     },
-    "favicon": "/_new_tenant/svg/favicon_light.svg",
+    "favicon": "/_new_tenant/png/favicon.png",
     "avatars": {
         "light": "/_new_tenant/svg/favicon_light.svg",
         "dark": "/_new_tenant/svg/favicon_dark.svg"
@@ -17,6 +17,9 @@
         "dark": "/_new_tenant/jpg/default.jpg"
     },
     "cartridges": {
+        "async": {
+            "enabled": false
+        },
         "designSystem": {
             "themeSwitching": true,
             "defaultTheme": "light",

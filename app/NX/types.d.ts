@@ -6,7 +6,8 @@ export type T_Tenant = 'nx' |
     'echopay' |
     'edtech' | 
     'writing' | 
-    'company'
+    'company' | 
+    'soho'
 ;
 
 export type T_Config = {
@@ -28,6 +29,12 @@ export type T_Config = {
         dark: string;
     };
     cartridges: {
+        async?: {
+            enabled: boolean;
+        },
+        paywall?: {
+            enabled: boolean;
+        },
         designSystem?: {
             themeSwitching: boolean;
             defaultTheme: string;
@@ -43,7 +50,6 @@ export type T_Config = {
                 };
             };
         };
-        // Add other cartridge types as needed
     };
 }
 

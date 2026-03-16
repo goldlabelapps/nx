@@ -17,6 +17,9 @@
         "dark": "/nx/jpg/default.jpg"
     },
     "cartridges": {
+        "async": {
+            "enabled": false
+        },
         "designSystem": {
             "themeSwitching": true,
             "defaultTheme": "light",

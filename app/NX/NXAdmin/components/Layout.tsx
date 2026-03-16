@@ -244,7 +244,6 @@ export default function Layout({ config }: { config: any }) {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                {/* <pre>active: {JSON.stringify(active, null, 2)}</pre> */}
                 {!active && <Dashboard nav={nav} />}
                 {active && activeNavItem && (
                     <Collection

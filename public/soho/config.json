@@ -17,6 +17,9 @@
         "dark": "/soho/jpg/soho.jpg"
     },
     "cartridges": {
+        "async": {
+            "enabled": false
+        },
         "designSystem": {
             "themeSwitching": true,
             "defaultTheme": "light",

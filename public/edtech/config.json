@@ -7,7 +7,7 @@
         "name": "listingslab",
         "email": "listingslab@gmail.com"
     },
-    "favicon": "/edtech/svg/favicon.svg",
+    "favicon": "/edtech/png/favicon.png",
     "avatars": {
         "light": "/edtech/svg/favicon_light.svg",
         "dark": "/edtech/svg/favicon_dark.svg"
@@ -17,8 +17,11 @@
         "dark": "https://live.staticflickr.com/65535/55033320139_1d7826b622_b.jpg"
     },
     "cartridges": {
+        "async": {
+            "enabled": false
+        },
         "designSystem": {
-            "themeSwitching": false,
+            "themeSwitching": true,
             "defaultTheme": "dark",
             "themes": {
                 "light": {

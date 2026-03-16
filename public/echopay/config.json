@@ -17,6 +17,9 @@
         "dark": "/echopay/gif/echopay.gif"
     },
     "cartridges": {
+        "async": {
+            "enabled": false
+        },
         "paywall": {
             "enabled": true
         },

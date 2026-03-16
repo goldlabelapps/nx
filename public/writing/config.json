@@ -17,6 +17,9 @@
         "dark": "/writing/jpg/default.jpg"
     },
     "cartridges": {
+        "async": {
+            "enabled": false
+        },
         "paywall": {
             "enabled": true
         },

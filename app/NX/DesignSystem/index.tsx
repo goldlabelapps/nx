@@ -15,7 +15,6 @@ import { useMUITheme } from './hooks/useMUITheme';
 import { setFeedback } from './actions/setFeedback';
 import { useDesignSystem } from './hooks/useDesignSystem';
 import { setDesignSystem } from './actions/setDesignSystem';
-import ThemedIcon from "./components/ThemedIcon";
 import SettingsMenu from "./components/SettingsMenu";
 import TreeNav from "./components/TreeNav";
 import {Surface} from "./components/Surface";
@@ -25,7 +24,6 @@ export {
     Settings,
     Tags,
     SmartImage,
-    ThemedIcon,
     SettingsMenu,
     DesignSystem,
     useMUITheme,

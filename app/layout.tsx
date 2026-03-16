@@ -9,9 +9,8 @@ const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
 const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
-const { title, description, avatars } = config;
+const { title, description, avatars, favicon } = config;
 const avatar = avatars?.light;
-const favicon = avatars?.favicon;
 
 export const metadata: Metadata = {
   title: `${title}, ${description}`,
