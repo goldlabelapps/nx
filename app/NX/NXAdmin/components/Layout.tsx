@@ -163,11 +163,10 @@ export default function Layout({ config }: { config: any }) {
                         sx={{width: '100%'}}
                         title={<Typography variant="h6" color="text.secondary">{config.siteName}</Typography>}
                         subheader={<Typography variant="body2" color="text.secondary">{config.description}</Typography>}
-                        avatar={<IconButton>
-                                    <Avatar 
-                                src={config.icons[currentThemeMode]?.icon} 
-                                        alt={config.siteName} />
-                                </IconButton>
+                        avatar={
+                            <Avatar 
+                                src={config.avatars?.[currentThemeMode] ?? config.avatars?.light} 
+                                alt={config.siteName} />
                         }
                     />
                 </Toolbar>
