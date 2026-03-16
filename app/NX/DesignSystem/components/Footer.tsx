@@ -69,7 +69,6 @@ export default function Footer({
 					</Toolbar>
 				</Container>
 			</AppBar>
-			<Async />
 		</React.Fragment>
 	);
 }
