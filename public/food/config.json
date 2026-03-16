@@ -7,19 +7,14 @@
         "name": "listingslab",
         "email": "listingslab@gmail.com"
     },
+    "favicon": "/food/png/favicon.png",
+    "avatars": {
+        "light": "/food/png/favicon.png",
+        "dark": "/food/png/favicon.png"
+    },
     "images": {
         "light": "/food/jpg/default.jpg",
         "dark": "/food/jpg/default.jpg"
-    },
-    "icons": {
-        "light": {
-            "icon": "/food/png/favicon.png",
-            "favicon": "/food/png/favicon.png"
-        },
-        "dark": {
-            "icon": "/food/png/favicon.png",
-            "favicon": "/food/png/favicon.png"
-        }
     },
     "cartridges": {
         "designSystem": {

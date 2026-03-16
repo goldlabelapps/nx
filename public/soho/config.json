@@ -1,20 +1,20 @@
 {
-    "siteName": "New Tenant",
-    "tenant": "_new_tenant",
-    "description": "Description of Tenant",
-    "url": "https://_new_tenant.goldlabel.pro",
+    "siteName": "Soho",
+    "tenant": "soho",
+    "description": "Cash and carry",
+    "url": "https://soho.goldlabel.pro",
     "owner":{
         "name": "listingslab",
         "email": "listingslab@gmail.com"
     },
-    "favicon": "/_new_tenant/svg/favicon_light.svg",
+    "favicon": "/soho/png/favicon.png",
     "avatars": {
-        "light": "/_new_tenant/svg/favicon_light.svg",
-        "dark": "/_new_tenant/svg/favicon_dark.svg"
+        "light": "/soho/svg/avatar_light.svg",
+        "dark": "/soho/svg/avatar_dark.svg"
     },
     "images": {
-        "light": "/_new_tenant/jpg/default.jpg",
-        "dark": "/_new_tenant/jpg/default.jpg"
+        "light": "/soho/jpg/soho.jpg",
+        "dark": "/soho/jpg/soho.jpg"
     },
     "cartridges": {
         "designSystem": {

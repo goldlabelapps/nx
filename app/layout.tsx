@@ -9,10 +9,9 @@ const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
 const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
-const { title, description, icons } = config;
-const icon = icons?.light?.icon;
-const favicon = icons?.light?.favicon;
-
+const { title, description, avatars } = config;
+const avatar = avatars?.light;
+const favicon = avatars?.favicon;
 
 export const metadata: Metadata = {
   title: `${title}, ${description}`,
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   icons: {
     icon: favicon,
     shortcut: favicon,
-    apple: icon,
+    apple: avatar,
   },
 };
 
@@ -41,7 +40,7 @@ export default async function RootLayout({
           content={
             config.cartridges?.designSystem?.themes?.[
               config.cartridges?.designSystem?.defaultTheme || "light"
-            ]?.background || "#971e1e"
+            ]?.background || "#000"
           }
         />
         <link rel="manifest" href={`/${tenant}/manifest.json`} />

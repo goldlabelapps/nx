@@ -7,6 +7,7 @@ import edtechConfig from '../../../public/edtech/config.json';
 import companyConfig from '../../../public/company/config.json';
 import foodConfig from '../../../public/food/config.json';
 import writingConfig from '../../../public/writing/config.json';
+import sohoConfig from '../../../public/soho/config.json';
 
 
 export const getTenant = (tenant?: T_Tenant) => {
@@ -19,6 +20,10 @@ export const getTenant = (tenant?: T_Tenant) => {
         case '_new_tenant':
             config = newTenantConfig;
             markdownDir = process.cwd() + '/public/_new_tenant/markdown';
+            break;
+        case 'soho':
+            config = sohoConfig;
+            markdownDir = process.cwd() + '/public/soho/markdown';
             break;
         case 'writing':
             config = writingConfig;

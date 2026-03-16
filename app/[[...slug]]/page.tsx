@@ -96,7 +96,6 @@ export default async function Page(props: any) {
     const navItems = await serverUseNav();
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themedImage = config?.images?.[themeMode] || null;
-    const backgroundColor = config?.cartridges?.designSystem?.themes?.[themeMode]?.background;
 
     const meta = getMeta({
         siteName: config.siteName,

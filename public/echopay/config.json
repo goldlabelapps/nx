@@ -7,15 +7,10 @@
         "name": "listingslab",
         "email": "listingslab@gmail.com"
     },
-    "icons": {
-        "light": {
-            "icon": "/echopay/svg/favicon_184791.svg",
-            "favicon": "/echopay/webp/favicon.webp"
-        },
-        "dark": {
-            "icon": "/echopay/svg/favicon_FFFFFF.svg",
-            "favicon": "/echopay/webp/favicon_w.webp"
-        }
+    "favicon": "/echopay/webp/favicon.webp",
+    "avatars": {
+        "light": "/echopay/svg/favicon_184791.svg",
+        "dark": "/echopay/svg/favicon_FFFFFF.svg"
     },
     "images": {
         "light": "/echopay/gif/echopay_white.gif",

@@ -7,15 +7,10 @@
         "name": "listingslab",
         "email": "listingslab@gmail.com"
     },
-    "icons": {
-        "light": {
-            "icon": "/edtech/svg/favicon_light.svg",
-            "favicon": "/edtech/svg/favicon.svg"
-        },
-        "dark": {
-            "icon": "/edtech/svg/favicon_dark.svg",
-            "favicon": "/edtech/svg/favicon.svg"
-        }
+    "favicon": "/edtech/svg/favicon.svg",
+    "avatars": {
+        "light": "/edtech/svg/favicon_light.svg",
+        "dark": "/edtech/svg/favicon_dark.svg"
     },
     "images": {
         "light": "https://live.staticflickr.com/65535/55033320139_1d7826b622_b.jpg",
