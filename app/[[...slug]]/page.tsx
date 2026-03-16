@@ -5,9 +5,6 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import {
     Box,
-    AppBar,
-    IconButton,
-    CardHeader,
     Container,
     Typography,
 } from '@mui/material';
@@ -24,7 +21,6 @@ import {
     Header,
     Hero,
     Footer,
-    ThemedIcon,
     TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
@@ -35,6 +31,9 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const slugArr = resolvedParams?.slug || [];
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
+
+    const async = config.cartridges?.async?.enabled === true;
+
     const filePath = serverUseMDBySlug(slugArr, tenant);
     let frontmatter: T_Frontmatter = {};
     if (filePath && fs.existsSync(filePath)) {
@@ -96,7 +95,6 @@ export default async function Page(props: any) {
     const navItems = await serverUseNav();
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
     const themedImage = config?.images?.[themeMode] || null;
-    const backgroundColor = config?.cartridges?.designSystem?.themes?.[themeMode]?.background;
 
     const meta = getMeta({
         siteName: config.siteName,
@@ -188,7 +186,6 @@ export default async function Page(props: any) {
                     frontmatter={data}
                     navItems={navItems as I_NestedNav["navItems"]}
                 >
-                    <Async />
                 </Footer>
             </footer>
         </NX >

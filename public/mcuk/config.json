@@ -7,21 +7,22 @@
         "name": "listingslab",
         "email": "listingslab@gmail.com"
     },
-    "icons": {
-        "light": {
-            "icon": "/mcuk/svg/favicon_light.svg",
-            "favicon": "/mcuk/png/favicon.png"
-        },
-        "dark": {
-            "icon": "/mcuk/svg/favicon_dark.svg",
-            "favicon": "/mcuk/png/favicon.png"
-        }
+    "favicon": "/mcuk/png/favicon.png",
+    "avatars": {
+        "light": "/mcuk/svg/favicon_light.svg",
+        "dark": "/mcuk/svg/favicon_dark.svg"
     },
     "images": {
         "light": "https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg",
         "dark": "https://live.staticflickr.com/65535/55111661741_6844b1cc48_b.jpg"
     },
     "cartridges": {
+        "nxadmin": {
+            "enabled": false
+        },
+        "async": {
+            "enabled": false
+        },
         "designSystem": {
             "themeSwitching": true,
             "defaultTheme": "light",

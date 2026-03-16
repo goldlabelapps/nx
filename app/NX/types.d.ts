@@ -6,39 +6,38 @@ export type T_Tenant = 'nx' |
     'echopay' |
     'edtech' | 
     'writing' | 
-    'company'
+    'company' | 
+    'soho'
 ;
 
 export type T_Config = {
-    tenant: T_Tenant;
     siteName: string;
-    label?: string;
+    tenant: string;
     description: string;
     url: string;
     owner: {
         name: string;
         email: string;
     };
-    icons: {
-        light: {
-            icon: string;
-            favicon: string;
-        };
-        dark: {
-            icon: string;
-            favicon: string;
-        };
-    };
     images: {
         light: string;
         dark: string;
     };
+    favicon: string;
+    avatars: {
+        light: string;
+        dark: string;
+    };
     cartridges: {
+        nxadmin?: {
+            enabled: boolean;
+        },
+        async?: {
+            enabled: boolean;
+        },
         paywall?: {
             enabled: boolean;
-            userMode: string;
-            email: string;
-        };
+        },
         designSystem?: {
             themeSwitching: boolean;
             defaultTheme: string;
@@ -54,8 +53,6 @@ export type T_Config = {
                 };
             };
         };
-        lingua?: T_LinguaCartridge;
-        // Add other cartridge types as needed
     };
 }
 

@@ -55,10 +55,7 @@ export default function Footer({
 						<Box sx={{ flexGrow: 1 }} />
 						{children}
 						<Box sx={{ display: 'flex', }}>
-							<Box>
-								<User />
-							</Box>
-							<Box sx={{ my: 1, mr: 1 }}>
+							<Box sx={{ my: 1, mr: 0 }}>
 								<Nav
 									mode="mobile"
 									navItems={navItems as I_NestedNav["navItems"]}
@@ -69,7 +66,6 @@ export default function Footer({
 					</Toolbar>
 				</Container>
 			</AppBar>
-			<Async />
 		</React.Fragment>
 	);
 }

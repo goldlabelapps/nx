@@ -60,5 +60,3 @@ const NX: React.FC<I_NX> = ({
 };
 
 export default NX;
-
-// <Async />

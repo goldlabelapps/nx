@@ -1,9 +1,8 @@
 "use client";
-import type { T_Config, T_Frontmatter } from '../../types';
 import * as React from 'react';
+import type { T_Config, T_Frontmatter } from '../../types';
 import { useRouter } from 'next/navigation';
 import {
-	Box,
 	Container,
 	Avatar,
 	useTheme,
@@ -25,7 +24,7 @@ export default function Header({
 	const theme = useTheme();
 	const router = useRouter();
     const themeMode = theme?.palette?.mode || 'light';
-    const icon = config?.icons?.[themeMode]?.icon || '';
+	const avatar = config?.avatars?.[themeMode] || '';
     const {title} = frontmatter || {};
 
 	const handleAvatarClick = () => {
@@ -42,10 +41,10 @@ export default function Header({
 					background: theme.palette?.background?.default || 'transparent',
 				}}>
 				<Container maxWidth="lg">
-				<CardHeader
+					<CardHeader
 					avatar={<IconButton onClick={handleAvatarClick}>
-                        <Avatar src={icon} />
-					</IconButton>}
+								<Avatar src={avatar} />
+							</IconButton>}
 					title={<Typography
 						color='secondary'
 						variant="h5"
