@@ -17,6 +17,9 @@
         "dark": "/company/jpg/default.jpg"
     },
     "cartridges": {
+        "nxadmin": {
+            "enabled": false
+        },
         "async": {
             "enabled": false
         },

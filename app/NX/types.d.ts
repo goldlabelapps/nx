@@ -29,6 +29,9 @@ export type T_Config = {
         dark: string;
     };
     cartridges: {
+        nxadmin?: {
+            enabled: boolean;
+        },
         async?: {
             enabled: boolean;
         },

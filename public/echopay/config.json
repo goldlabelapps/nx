@@ -17,6 +17,9 @@
         "dark": "/echopay/gif/echopay.gif"
     },
     "cartridges": {
+        "nxadmin": {
+            "enabled": false
+        },
         "async": {
             "enabled": false
         },

@@ -17,6 +17,9 @@
         "dark": "https://live.staticflickr.com/65535/55111661741_6844b1cc48_b.jpg"
     },
     "cartridges": {
+        "nxadmin": {
+            "enabled": false
+        },
         "async": {
             "enabled": false
         },
