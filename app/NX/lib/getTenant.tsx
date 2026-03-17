@@ -1,7 +1,7 @@
 import type { T_Tenant } from '../types';
 import newTenantConfig from '../../../public/_new_tenant/config.json';
 import nxConfig from '../../../public/nx/config.json';
-import mcukConfig from '../../../public/mcuk/config.json';
+import listingslabConfig from '../../../public/listingslab/config.json';
 import echopayConfig from '../../../public/echopay/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 import companyConfig from '../../../public/company/config.json';
@@ -37,9 +37,9 @@ export const getTenant = (tenant?: T_Tenant) => {
             config = companyConfig;
             markdownDir = process.cwd() + '/public/company/markdown';
             break;
-        case 'mcuk':
-            config = mcukConfig;
-            markdownDir = process.cwd() + '/public/mcuk/markdown';
+        case 'listingslab':
+            config = listingslabConfig;
+            markdownDir = process.cwd() + '/public/listingslab/markdown';
             break;
         case 'echopay':
             config = echopayConfig;

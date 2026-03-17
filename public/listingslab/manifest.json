@@ -10,7 +10,7 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/mcuk/png/favicon.png",
+      "src": "/listingslab/png/favicon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
