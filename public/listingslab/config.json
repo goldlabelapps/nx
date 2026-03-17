@@ -1,5 +1,5 @@
 {
-    "tenant": "mcuk",
+    "tenant": "listingslab",
     "siteName": "Diary of a pothead",
     "description": "Medical cannabis dispensed by licensed pharmacies. Delivered to your door",
     "url": "https://listingslab.com",
@@ -7,10 +7,10 @@
         "name": "Goldlabel",
         "email": "goldlabel.apps@gmail.com"
     },
-    "favicon": "/mcuk/png/favicon.png",
+    "favicon": "/listingslab/png/favicon.png",
     "avatars": {
-        "light": "/mcuk/svg/favicon_light.svg",
-        "dark": "/mcuk/svg/favicon_dark.svg"
+        "light": "/listingslab/svg/favicon_light.svg",
+        "dark": "/listingslab/svg/favicon_dark.svg"
     },
     "images": {
         "light": "https://live.staticflickr.com/65535/55019680500_9d68f883f8_b.jpg",
