@@ -1,20 +1,20 @@
 {
-    "tenant": "writing",
+    "tenant": "nhtfs",
     "siteName": "魏臧的写作",
-    "description": "Wei Zang's Writing",
-    "url": "https://writing.goldlabel.pro",
+    "description": "Not here to fuck spiders",
+    "url": "https://nhtfs.goldlabel.pro",
     "owner": {
         "name": "Goldlabel",
         "email": "goldlabel.apps@gmail.com"
     },
-    "favicon": "/writing/png/favicon.png",
+    "favicon": "/nhtfs/png/favicon.png",
     "avatars": {
-        "light": "/writing/png/favicon.png",
-        "dark": "/writing/png/favicon.png"
+        "light": "/nhtfs/svg/avatar_light.svg",
+        "dark": "/nhtfs/svg/avatar_dark.svg"
     },
     "images": {
-        "light": "/writing/jpg/default.jpg",
-        "dark": "/writing/jpg/default.jpg"
+        "light": "/nhtfs/jpg/default.jpg",
+        "dark": "/nhtfs/jpg/default.jpg"
     },
     "cartridges": {
         "nxadmin": {
@@ -28,12 +28,12 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#07A090",
-                    "secondary": "#07A090",
+                    "primary": "#000",
+                    "secondary": "#000",
                     "background": "#fff",
                     "paper": "#fff",
                     "text": "#222",
@@ -41,9 +41,9 @@
                 },
                 "dark": {
                     "mode": "dark",
-                    "primary": "#4CF2E1",
-                    "secondary": "#1FF9E2",
-                    "background": "#07A090",
+                    "primary": "#FFF",
+                    "secondary": "#FFFs",
+                    "background": "#000",
                     "paper": "#000",
                     "text": "#fff",
                     "border": "#222"

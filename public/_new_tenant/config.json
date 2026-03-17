@@ -9,8 +9,8 @@
     },
     "favicon": "/_new_tenant/png/favicon.png",
     "avatars": {
-        "light": "/_new_tenant/svg/favicon_light.svg",
-        "dark": "/_new_tenant/svg/favicon_dark.svg"
+        "light": "/_new_tenant/svg/avatar_light.svg",
+        "dark": "/_new_tenant/svg/avatar_dark.svg"
     },
     "images": {
         "light": "/_new_tenant/jpg/default.jpg",
