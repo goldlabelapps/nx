@@ -4,13 +4,13 @@
     "description": "UK Ltd Company",
     "url": "https://company.goldlabel.pro",
     "owner": {
-        "name": "listingslab",
-        "email": "listingslab@gmail.com"
+        "name": "Goldlabel",
+        "email": "goldlabel.apps@gmail.com"
     },
     "favicon": "/company/png/favicon.png",
     "avatars": {
-        "light": "/company/svg/favicon.svg",
-        "dark": "/company/svg/favicon.svg"
+        "light": "/company/svg/avatar_light.svg",
+        "dark": "/company/svg/avatar_dark.svg"
     },
     "images": {
         "light": "/company/jpg/default.jpg",

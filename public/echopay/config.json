@@ -4,8 +4,8 @@
     "description": "Payment Plugin",
     "url": "https://echopay.goldlabel.pro",
     "owner": {
-        "name": "listingslab",
-        "email": "listingslab@gmail.com"
+        "name": "Goldlabel",
+        "email": "goldlabel.apps@gmail.com"
     },
     "favicon": "/echopay/webp/favicon.webp",
     "avatars": {
