@@ -4,8 +4,8 @@
     "description": "Multi-tenant NextJS",
     "url": "https://goldlabel.pro",
     "owner": {
-        "name": "listingslab",
-        "email": "listingslab@gmail.com"
+        "name": "Goldlabel",
+        "email": "goldlabel.apps@gmail.com"
     },
     "favicon": "/nx/svg/favicon.svg",
     "avatars": {
