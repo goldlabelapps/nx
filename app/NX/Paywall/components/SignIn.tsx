@@ -106,7 +106,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
                             type="submit"
                             endIcon={<Icon icon="signin" />}
                             variant="contained"
-                            sx={{ mx: 1 }}
+                            sx={{ mx: 0 }}
                         >
                             Sign In
                         </Button>
