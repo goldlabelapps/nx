@@ -6,7 +6,7 @@ import echopayConfig from '../../../public/echopay/config.json';
 import edtechConfig from '../../../public/edtech/config.json';
 import companyConfig from '../../../public/company/config.json';
 import foodConfig from '../../../public/food/config.json';
-import writingConfig from '../../../public/writing/config.json';
+import nhtfsConfig from '../../../public/nhtfs/config.json';
 import sohoConfig from '../../../public/soho/config.json';
 
 
@@ -25,9 +25,9 @@ export const getTenant = (tenant?: T_Tenant) => {
             config = sohoConfig;
             markdownDir = process.cwd() + '/public/soho/markdown';
             break;
-        case 'writing':
-            config = writingConfig;
-            markdownDir = process.cwd() + '/public/writing/markdown';
+        case 'nhtfs':
+            config = nhtfsConfig;
+            markdownDir = process.cwd() + '/public/nhtfs/markdown';
             break;
         case 'food':
             config = foodConfig;

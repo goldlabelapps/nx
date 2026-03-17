@@ -4,13 +4,13 @@ import { useRouter } from 'next/navigation';
 import { Box, IconButton, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { DesignSystem, Icon } from '../../DesignSystem';
 
-interface SignInProps {
+export interface I_SignIn {
     onSignIn: (email: string, password: string) => void;
     config: any;
     error?: string;
 }
 
-export default function SignIn({ onSignIn, config, error: externalError }: SignInProps) {
+export default function SignIn({ onSignIn, config, error: externalError }: I_SignIn) {
     const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -70,6 +70,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                             justifyContent: 'center',
                             overflow: 'hidden',
                             borderRadius: 2,
+                            mx: 2
                         }}
                     >
                         <img
@@ -85,7 +86,6 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                         />
                     </Box>
                     <CardContent>
-
                         {userMode !== 'single' && (
                             <TextField
                                 label="Email"
@@ -97,7 +97,6 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                                 margin="normal"
                             />
                         )}
-
                         <TextField
                             label="Password"
                             type={showPassword ? 'text' : 'password'}
@@ -121,17 +120,9 @@ export default function SignIn({ onSignIn, config, error: externalError }: SignI
                                 ),
                             }}
                         />
-                        
                     </CardContent>
                     <CardActions>
                         <Box sx={{flexGrow:1}}/>
-                        {/* <Button
-                            startIcon={<Icon icon="left" />}
-                            sx={{ mx: 1 }}
-                            onClick={() => router.back()}
-                        >
-                            Back
-                        </Button> */}
                         <IconButton sx={{ mx: 1 }} onClick={() => router.push('/')} color="primary">
                             <Icon icon="home" />
                         </IconButton>
