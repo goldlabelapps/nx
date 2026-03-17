@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Avatar, Box, IconButton, CardHeader, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
+import { Container, Avatar, Box, IconButton, CardHeader, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { DesignSystem, Icon } from '../../DesignSystem';
 import Image from 'next/image';
 
@@ -54,7 +54,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
 
     return (
         <DesignSystem theme={theme}>
-            
+            <Container maxWidth="xs" sx={{ mt: 3 }}>
             <form onSubmit={handleSubmit}>
                     <CardHeader 
                     avatar={<IconButton onClick={() => router.push('/')} >
@@ -119,6 +119,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
                         </Typography>}
                     </CardContent>
             </form>
+            </Container>
         </DesignSystem>
     );
 }
