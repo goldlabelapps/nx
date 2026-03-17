@@ -1,8 +1,9 @@
 "use client";
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Box, IconButton, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
+import { Avatar, Box, IconButton, CardHeader, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { DesignSystem, Icon } from '../../DesignSystem';
+import Image from 'next/image';
 
 export interface I_SignIn {
     onSignIn: (email: string, password: string) => void;
@@ -48,43 +49,20 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
     }
     const { siteName, description, images } = config;
     const image = images?.[themeMode] || '';
+
+    const avatar = config?.avatars?.[themeMode] || '';
+
     return (
         <DesignSystem theme={theme}>
             
-            <Box sx={{ margin: 'auto', mt: 4, mb: 0, textAlign: 'center' }}>
-                <Typography variant="h4" color="primary">
-                    {siteName}
-                </Typography>
-                <Typography variant="h6" color="text.secondary">
-                    {description}
-                </Typography>
-            </Box>
             <form onSubmit={handleSubmit}>
-                <Box sx={{ maxWidth: 400, margin: 'auto', mt: 3 }}>
-                    <Box
-                        sx={{
-                            width: '100%',
-                            aspectRatio: '1.91 / 1',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            overflow: 'hidden',
-                            borderRadius: 2,
-                            mx: 2
-                        }}
-                    >
-                        <img
-                            src={image}
-                            alt={`${siteName} ${description}`}
-                            style={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                objectPosition: 'center',
-                                borderRadius: 'inherit',
-                            }}
-                        />
-                    </Box>
+                    <CardHeader 
+                    avatar={<IconButton onClick={() => router.push('/')} >
+                                    <Avatar src={avatar} alt="Avatar" />
+                                </IconButton>}
+                        title={siteName}
+                        subheader={description}
+                    />
                     <CardContent>
                         {userMode !== 'single' && (
                             <TextField
@@ -123,10 +101,8 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
                     </CardContent>
                     <CardActions>
                         <Box sx={{flexGrow:1}}/>
-                        <IconButton sx={{ mx: 1 }} onClick={() => router.push('/')} color="primary">
-                            <Icon icon="home" />
-                        </IconButton>
                         <Button
+                            fullWidth
                             type="submit"
                             endIcon={<Icon icon="signin" />}
                             variant="contained"
@@ -142,7 +118,6 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
                             {error || externalError}
                         </Typography>}
                     </CardContent>
-                </Box>
             </form>
         </DesignSystem>
     );
