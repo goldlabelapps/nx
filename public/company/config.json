@@ -18,21 +18,21 @@
     },
     "cartridges": {
         "nxadmin": {
-            "enabled": false
+            "enabled": true
         },
         "async": {
             "enabled": false
         },
         "designSystem": {
-            "themeSwitching": false,
+            "themeSwitching": true,
             "defaultTheme": "light",
             "themes": {
                 "light": {
                     "mode": "light",
-                    "primary": "#C09F52",
-                    "secondary": "#C09F52",
-                    "background": "#eee",
-                    "paper": "#eee",
+                    "primary": "#5D4E2A",
+                    "secondary": "#818053",
+                    "background": "#F8F8F8",
+                    "paper": "#EDEBE7",
                     "text": "#222",
                     "border": "#2EAF4A"
                 },
@@ -41,7 +41,7 @@
                     "primary": "#4CF2E1",
                     "secondary": "#1FF9E2",
                     "background": "#07A090",
-                    "paper": "#000",
+                    "paper": "#43A89C",
                     "text": "#fff",
                     "border": "#222"
                 }

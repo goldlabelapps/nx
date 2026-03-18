@@ -1,7 +1,7 @@
 {
     "tenant": "listingslab",
     "siteName": "Diary of a pothead",
-    "description": "Medical cannabis dispensed by licensed pharmacies. Delivered to your door",
+    "description": "Coming soon",
     "url": "https://listingslab.com",
     "owner": {
         "name": "Goldlabel",
@@ -18,7 +18,7 @@
     },
     "cartridges": {
         "nxadmin": {
-            "enabled": false
+            "enabled": true
         },
         "paywall": {
             "enabled": true

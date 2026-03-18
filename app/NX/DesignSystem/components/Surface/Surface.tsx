@@ -45,11 +45,6 @@ export default function Surface({ options }: I_Surface) {
     const [displayed, setDisplayed] = useState('');
     const [showMarkdown, setShowMarkdown] = useState(false);
     const authed = useAuthed();
-    let mode = 'signedout';
-    if (authed){
-
-    };
-
     const markdownText = options.markdown;
     const { onClick, label } = options;
     
@@ -129,6 +124,7 @@ export default function Surface({ options }: I_Surface) {
                 <IconButton
                     title={label}
                     onClick={onClick}
+                    color="primary"
                 >
                     <Icon icon={options.icon as any} />
                 </IconButton>

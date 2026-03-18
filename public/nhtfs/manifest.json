@@ -1,6 +1,6 @@
 {
-  "short_name": "Writing",
-  "name": "Wei Zang's Writing",
+  "short_name": "Nhtfs",
+  "name": "Not here to fuck spiders",
   "theme_color": "#000000",
   "background_color": "#000000",
   "display": "fullscreen",
@@ -10,7 +10,7 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/writing/png/favicon.png",
+      "src": "/nhtfs/png/favicon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
