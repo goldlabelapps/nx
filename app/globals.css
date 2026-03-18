@@ -1,39 +1,37 @@
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
-        pre {
-            font-size: 0.8em;
-        }
+pre {
+    font-size: 0.8em;
+}
 
-        /* Make all links the same color as surrounding text */
-        a,
-        a:visited,
-        h1 a,
-        h2 a,
-        h3 a,
-        h4 a,
-        h5 a,
-        h6 a {
-            color: inherit;
-            text-decoration: none;
-        }
+a,
+a:visited,
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    color: inherit;
+    text-decoration: none;
+}
 
-        /* Set all heading font-weights to normal */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: normal;
-        }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
 
-        blockquote {
-            border-left: 2px solid currentColor;
-            padding-left: 1em;
-            margin-left: 0;
-        }
+blockquote {
+    border-left: 2px solid currentColor;
+    padding-left: 1em;
+    margin-left: 0;
+}

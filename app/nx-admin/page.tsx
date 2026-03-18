@@ -1,31 +1,24 @@
-import type { T_Theme, T_Tenant } from '../NX/types';
+import type { T_Tenant } from '../NX/types';
 import { Metadata } from "next";
 import { getTenant } from '../NX/lib';
 import { getBaseurl } from '../api';
-import {
-    DesignSystem,
-} from '../NX/DesignSystem';
 import NXAdminAuthWrapper from './NXAdminAuthWrapper';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
 
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
-
     const siteName = config.siteName || 'NX';
-
     const title = `${siteName} Admin`;
     const description = `Admin dashboard for ${siteName}`;
-    // Safely determine theme mode
     const designSystem = config?.cartridges?.designSystem;
     const defaultThemeModeRaw = designSystem?.defaultTheme;
-    const defaultThemeMode: 'light' | 'dark' = defaultThemeModeRaw === 'light' || defaultThemeModeRaw === 'dark' ? defaultThemeModeRaw : 'light';
-    // Safely access images
+    const defaultThemeMode: 'light' | 'dark' = defaultThemeModeRaw === 'light' 
+        || defaultThemeModeRaw === 'dark' ? defaultThemeModeRaw : 'light';
     const imagesObj: { light?: string; dark?: string } | undefined = config.images;
     const imageRaw = imagesObj && defaultThemeMode in imagesObj ? imagesObj[defaultThemeMode] : undefined;
     const image: string = imageRaw || config.siteName;
     const url = `${getBaseurl()}/nx-admin`;
-
 
     return {
         title,
@@ -58,17 +51,15 @@ export default async function Page(
     const { config } = getTenant(tenant as T_Tenant);
     const designSystem = config?.cartridges?.designSystem;
     const defaultThemeModeRaw = designSystem?.defaultTheme;
-    const defaultThemeMode: 'light' | 'dark' = defaultThemeModeRaw === 'light' || defaultThemeModeRaw === 'dark' ? defaultThemeModeRaw : 'light';
+    const defaultThemeMode: 'light' | 'dark' = defaultThemeModeRaw === 'light' 
+        || defaultThemeModeRaw === 'dark' ? defaultThemeModeRaw : 'light';
     const themes = designSystem?.themes;
     let theme = themes && defaultThemeMode in themes ?
         themes[defaultThemeMode] : undefined;
     if (theme) {
         theme = { ...theme, mode: defaultThemeMode };
     }
-    return (
-        // <DesignSystem config={config} theme={theme as T_Theme}>
-        <NXAdminAuthWrapper config={config} />
-        // </DesignSystem>
-    );
+
+    return <NXAdminAuthWrapper config={config} />;
 }
 

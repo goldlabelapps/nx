@@ -1,6 +1,6 @@
 import NXAdmin from './NXAdmin';
 import { MiniDrawer, SwipeDrawer, MaxiDrawer } from './components/Layout';
-import Dashboard from './components/Menus/Dashboard';
+import Dashboard from './components/Dashboard';
 import { CreateDoc, ReadDoc, UpdateDoc, DeleteDoc } from './components/CRUD';
 import { Collection } from './components/Collection';
 import { Account } from './components/Account';

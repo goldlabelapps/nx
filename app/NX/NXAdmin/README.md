@@ -12,6 +12,13 @@ Interestingly, all data on the screen is a live representation of what's in the 
 
 [Cartridges](https://github.com/goldlabelapps/nx/tree/master/app/NX)
 
+    {
+        "id": "account",
+        "title": "Account",
+        "icon": "account"
+    },
+
+
 ## Lorem Ipsum
 
 ```markdown

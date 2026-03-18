@@ -14,29 +14,24 @@ import {
 export default function NotFound() {
 
     const theme = config?.cartridges?.designSystem?.themes?.['dark'];
-    // const navItems = await serverUseNav("/");
 
     return <DesignSystem theme={theme as T_Theme}>
-
-        <Clip404 />
-
-        <div
-            style={{
-                zIndex: 1000,
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-            }}
-        >
-
+            <Clip404 />
+            <div
+                style={{
+                    zIndex: 1000,
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                }}
+            >
             {/* <Nav
-                config={config}
-                navItems={navItems as I_NestedNav["navItems"]}
-                currentPath={data.slug || '/'}
-                mode="desktop"
-            /> */}
-            {/* Oh no, bro. */}
-        </div>
-    </DesignSystem>;
+                    config={config}
+                    navItems={navItems as I_NestedNav["navItems"]}
+                    currentPath={data.slug || '/'}
+                    mode="desktop"
+                /> */}
+            </div>
+        </DesignSystem>;
 }
