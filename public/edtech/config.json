@@ -18,7 +18,7 @@
     },
     "cartridges": {
         "nxadmin": {
-            "enabled": false
+            "enabled": true
         },
         "async": {
             "enabled": false

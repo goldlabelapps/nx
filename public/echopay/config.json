@@ -25,7 +25,7 @@
             "enabled": false
         },
         "paywall": {
-            "enabled": false
+            "enabled": true
         },
         "designSystem": {
             "themeSwitching": true,

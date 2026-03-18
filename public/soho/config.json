@@ -4,8 +4,8 @@
     "description": "Cash and carry",
     "url": "https://soho.goldlabel.pro",
     "owner":{
-        "name": "listingslab",
-        "email": "listingslab@gmail.com"
+        "name": "James Ward",
+        "email": "james@olthem.com"
     },
     "favicon": "/soho/png/favicon.png",
     "avatars": {
@@ -17,15 +17,18 @@
         "dark": "/soho/jpg/soho.jpg"
     },
     "cartridges": {
+        "paywall": {
+            "enabled": true
+        },
         "nxadmin": {
-            "enabled": false
+            "enabled": true
         },
         "async": {
             "enabled": false
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "light": {
                     "mode": "light",
@@ -38,12 +41,12 @@
                 },
                 "dark": {
                     "mode": "dark",
-                    "primary": "#4CF2E1",
-                    "secondary": "#1FF9E2",
-                    "background": "#07A090",
-                    "paper": "#43A89C",
+                    "primary": "#AFBFFF",
+                    "secondary": "#AFBFFF",
+                    "background": "#2C3E85",
+                    "paper": "#2C3E85",
                     "text": "#fff",
-                    "border": "#222"
+                    "border": "#AFBFFF"
                 }
             }
         }

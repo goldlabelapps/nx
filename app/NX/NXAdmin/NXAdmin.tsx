@@ -23,8 +23,10 @@ export default function NXAdmin({
 
   const designSystem = useDesignSystem();
   const configThemes = config?.cartridges?.designSystem?.themes || {};
-  const configDefaultTheme = config?.cartridges?.designSystem?.defaultTheme || 'light';
-  const themeMode = (designSystem?.themeMode !== undefined && designSystem?.themeMode !== null)
+  const configDefaultTheme = config?.cartridges?.designSystem?.defaultTheme 
+    || 'light';
+  const themeMode = (designSystem?.themeMode !== undefined 
+      && designSystem?.themeMode !== null)
     ? designSystem.themeMode
     : configDefaultTheme;
   const themeObj = (designSystem?.themes && designSystem?.themes[themeMode])
@@ -40,10 +42,10 @@ export default function NXAdmin({
         <Feedback />
         {layout === 'swipedrawer' ? (
           <SwipeDrawer config={config} />
-        ) : layout === 'maxidrawer' ? (
-          <MaxiDrawer config={config} />
-        ) : (
+        ) : layout === 'minidrawer' ? (
           <MiniDrawer config={config} />
+        ) : (
+          <MaxiDrawer config={config} />
         )}
       </DesignSystem>
     </>
