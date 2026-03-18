@@ -21,7 +21,8 @@
             "enabled": true
         },
         "nxadmin": {
-            "enabled": true
+            "enabled": true,
+            "layout": "minidrawer"
         },
         "async": {
             "enabled": false

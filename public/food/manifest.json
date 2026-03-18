@@ -1,5 +1,5 @@
 {
-  "short_name": "Food",
+  "short_name": "魏藏的食物",
   "name": "Wei Zang's Food",
   "theme_color": "#000000",
   "background_color": "000000",
@@ -12,7 +12,7 @@
     {
       "src": "/food/png/favicon.png",
       "type": "image/png",
-      "sizes": "126x126",
+      "sizes": "180x180",
       "purpose": "any maskable"
     }
   ]

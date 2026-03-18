@@ -103,13 +103,11 @@ export default async function Page(props: any) {
         image: themedImage || data.image,
     });
 
-    
-
     return (
             <NX config={config} frontmatter={data}>
                 <Header config={config} frontmatter={data} />
-                {data.layout ? (
-                    data.layout === 'soho' ? (
+                {data.cartridge ? (
+                    data.cartridge === 'soho' ? (
                         <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
                                 <Soho config={config} />
