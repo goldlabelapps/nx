@@ -6,6 +6,7 @@ import {
     Box,
     Button,
     Collapse,
+    IconButton,
 } from '@mui/material';
 import { SurfaceAS } from './';
 import { useDispatch } from '../../../../NX/Uberedux';
@@ -125,14 +126,12 @@ export default function Surface({ options }: I_Surface) {
         <Box id={options.id} ref={clipRef}>
             <ReactMarkdown>{displayed}</ReactMarkdown>
             <Collapse in={done}>
-                <Button
-                    variant="contained"
+                <IconButton
+                    title={label}
                     onClick={onClick}
-                    startIcon={options.iconAlign !== 'right' ? <Icon icon={options.icon as any} /> : undefined}
-                    endIcon={options.iconAlign === 'right' ? <Icon icon={options.icon as any} /> : undefined}
                 >
-                    {label}
-                </Button>
+                    <Icon icon={options.icon as any} />
+                </IconButton>
                 
             </Collapse>
             {/* <pre>authed: {JSON.stringify(authed, null, 2)}</pre> */}

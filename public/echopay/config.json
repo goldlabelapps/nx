@@ -18,13 +18,14 @@
     },
     "cartridges": {
         "nxadmin": {
-            "enabled": false
+            "enabled": false,
+            "layout": "minidrawer"
         },
         "async": {
             "enabled": false
         },
         "paywall": {
-            "enabled": true
+            "enabled": false
         },
         "designSystem": {
             "themeSwitching": true,

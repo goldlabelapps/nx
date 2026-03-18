@@ -1,6 +1,10 @@
 'use client';
 import * as React from 'react';
-import type { I_ReadDoc } from '../../types';
+// import type { I_ReadDoc } from '../../types';
+
+export interface I_ReadDoc {
+  collection: string;
+}
 import {
   ListItemButton,
   ListItemText,
