@@ -24,7 +24,6 @@ import {
     TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
-import { Async } from '../NX/Async';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -91,7 +90,8 @@ export default async function Page(props: any) {
     if (data.title) title = data.title;
     if (data.description) description = data.description;
     const navItems = await serverUseNav();
-    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme === 'dark') ? 'dark' : 'light';
+    const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme 
+            === 'dark') ? 'dark' : 'light';
     const themedImage = config?.images?.[themeMode] || null;
 
     const meta = getMeta({
@@ -145,8 +145,6 @@ export default async function Page(props: any) {
                             pl: { xs: 2, lg: 0 },
                             flexGrow: 1,
                         }}>
-
-                        {/* <pre>navItems: {JSON.stringify(navItems, null, 2)}</pre> */}
                         <Typography
                             sx={{
                                 display: 'flex',

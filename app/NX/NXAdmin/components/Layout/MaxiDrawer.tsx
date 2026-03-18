@@ -7,11 +7,6 @@ import { getFirebaseAuth } from '../../../lib/firebase';
 import { useRouter } from 'next/navigation';
 import {
     Box,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
     Toolbar,
     IconButton,
     CardHeader,
@@ -25,7 +20,6 @@ import {
 } from '../../../DesignSystem';
 import {
     useNXAdmin,
-    setNXAdmin,
     Dashboard,
     Collection,
     MiniListItem,
@@ -33,7 +27,7 @@ import {
 import nav from '../../nav.json';
 import { useDispatch } from '../../../Uberedux';
 
-const drawerWidth = 320;
+const drawerWidth = 200;
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -108,7 +102,7 @@ export default function MaxiDrawer({ config }: { config: any }) {
 
     const dispatch = useDispatch();
     const router = useRouter();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const nxAdmin = useNXAdmin();
     const { active } = nxAdmin;
     const theme = useTheme();
@@ -179,37 +173,6 @@ export default function MaxiDrawer({ config }: { config: any }) {
                         </IconButton>
                     )}
                 </DrawerHeader>
-                <List>
-                    {nav.map((item, i: number) => (
-                        <ListItem
-                            key={`item_${i}`}
-                            disablePadding
-                            sx={{ display: 'block' }}>
-                            <ListItemButton
-                                onClick={() => dispatch(setNXAdmin('active', item.collection))}
-                                sx={[
-                                    { minHeight: 48, px: 2.5 },
-                                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' },
-                                ]}
-                            >
-                                <ListItemIcon
-                                    sx={[
-                                        { minWidth: 0, justifyContent: 'center' },
-                                        open ? { mr: 3 } : { mr: 'auto' },
-                                    ]}
-                                >
-                                    <Icon icon={item.icon as any} color="primary" />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={item.title}
-                                    sx={[
-                                        open ? { opacity: 1 } : { opacity: 0 },
-                                    ]}
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
                 
                 <Box sx={{flexGrow: 1}} />
                 
@@ -236,14 +199,14 @@ export default function MaxiDrawer({ config }: { config: any }) {
                         window.location.href = '/';
                     }}
                     options={{
-                        label: 'Public',
+                        label: 'View Site',
                         icon: 'public',
                     }}
                 />
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                {!active && <Dashboard nav={nav} />}
+                {!active && <Dashboard />}
                 {active && activeNavItem && (
                     <Collection
                         collection={activeNavItem.collection ?? ""}

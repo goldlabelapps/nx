@@ -1,9 +1,5 @@
 [
-    {
-        "id": "account",
-        "title": "Account",
-        "icon": "account"
-    },
+
     {
         "id": "users",
         "collection": "users",

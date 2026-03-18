@@ -20,6 +20,9 @@
         "nxadmin": {
             "enabled": false
         },
+        "paywall": {
+            "enabled": true
+        },
         "async": {
             "enabled": false
         },

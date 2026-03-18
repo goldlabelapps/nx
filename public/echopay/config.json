@@ -4,8 +4,8 @@
     "description": "Payment Plugin",
     "url": "https://echopay.goldlabel.pro",
     "owner": {
-        "name": "Goldlabel",
-        "email": "goldlabel.apps@gmail.com"
+        "name": "James Ward",
+        "email": "james@olthem.com"
     },
     "favicon": "/echopay/webp/favicon.webp",
     "avatars": {
