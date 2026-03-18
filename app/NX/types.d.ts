@@ -206,8 +206,7 @@ export type T_Frontmatter = {
     icon?: string;
     order?: number;
     image?: string;
-    smartImage?: string | false;
-    flash?: string;
+    layout?: string;
 };
 
 export type T_Markdown = {
@@ -217,7 +216,6 @@ export type T_Markdown = {
     updatedAt: string;
     frontmatter?: T_Frontmatter;
 };
-
 
 export interface I_Header {
     title: string;

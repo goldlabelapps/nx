@@ -117,6 +117,8 @@ export default function Surface({ options }: I_Surface) {
         return () => clearTimeout(timeout);
     }, [showMarkdown, markdownText]);
 
+    if (authed) return null;
+
     return (
         <Box id={options.id} ref={clipRef}>
             <ReactMarkdown>{displayed}</ReactMarkdown>
@@ -130,7 +132,7 @@ export default function Surface({ options }: I_Surface) {
                 </IconButton>
                 
             </Collapse>
-            {/* <pre>authed: {JSON.stringify(authed, null, 2)}</pre> */}
+            <pre>authed: {JSON.stringify(authed, null, 2)}</pre>
         </Box>
     );
 }

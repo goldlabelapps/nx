@@ -12,7 +12,7 @@
     {
       "src": "/food/png/favicon.png",
       "type": "image/png",
-      "sizes": "512x512",
+      "sizes": "126x126",
       "purpose": "any maskable"
     }
   ]
