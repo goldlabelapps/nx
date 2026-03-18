@@ -3,7 +3,7 @@ import * as React from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import { getFirebaseAuth } from '../../lib/firebase';
+import { getFirebaseAuth } from '../../../lib/firebase';
 import { useRouter } from 'next/navigation';
 import {
     Box,
@@ -22,16 +22,16 @@ import {
     Icon,
     useDesignSystem,
     setDesignSystem,
-} from '../../DesignSystem';
+} from '../../../DesignSystem';
 import {
     useNXAdmin,
     setNXAdmin,
     Dashboard,
     Collection,
     MiniListItem,
-} from '../../NXAdmin';
-import nav from '../nav.json';
-import { useDispatch } from '../../Uberedux';
+} from '../../../NXAdmin';
+import nav from '../../nav.json';
+import { useDispatch } from '../../../Uberedux';
 
 const drawerWidth = 320;
 
@@ -104,7 +104,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     })
 );
 
-export default function Layout({ config }: { config: any }) {
+export default function MiniDrawer({ config }: { config: any }) {
 
     const dispatch = useDispatch();
     const router = useRouter();

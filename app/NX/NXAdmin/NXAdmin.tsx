@@ -2,7 +2,9 @@
 import type { T_Config } from '../types';
 import * as React from 'react';
 import {
-  Layout,
+  MiniDrawer,
+  SwipeDrawer,
+  MaxiDrawer,
 } from '../NXAdmin';
 import {
   DesignSystem,
@@ -29,11 +31,20 @@ export default function NXAdmin({
     || configThemes[themeMode]
     || configThemes[configDefaultTheme];
 
+  // Safely get layout value
+  const layout = config?.cartridges?.nxadmin?.layout;
+
   return (
     <>
       <DesignSystem config={config} theme={themeObj}>
         <Feedback />
-        <Layout config={config} />
+        {layout === 'swipedrawer' ? (
+          <SwipeDrawer config={config} />
+        ) : layout === 'maxidrawer' ? (
+          <MaxiDrawer config={config} />
+        ) : (
+          <MiniDrawer config={config} />
+        )}
       </DesignSystem>
     </>
   );

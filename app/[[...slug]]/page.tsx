@@ -122,14 +122,14 @@ export default async function Page(props: any) {
 
                     <Box
                         sx={{
-                            display: { xs: 'none', md: 'flex' },
+                            display: { xs: 'none', sm: 'flex' },
                             flexDirection: 'column',
                         }}
                     >
                         <Box sx={{
                             flexGrow: 1,
-                            minHeight: 0,
-                            minWidth: 300,
+                                minHeight: 0,
+                                minWidth: 250,
                         }}>
                             <TreeNav navItems={navItems}/>                            
                         </Box>

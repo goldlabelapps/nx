@@ -18,7 +18,8 @@
     },
     "cartridges": {
         "nxadmin": {
-            "enabled": false
+            "enabled": false,
+            "layout": "maxidrawer"
         },
         "async": {
             "enabled": false

@@ -31,6 +31,7 @@ export type T_Config = {
     cartridges: {
         nxadmin?: {
             enabled: boolean;
+            layout?: 'swipedrawer' | 'minidrawer' | 'maxidrawer';
         },
         async?: {
             enabled: boolean;
