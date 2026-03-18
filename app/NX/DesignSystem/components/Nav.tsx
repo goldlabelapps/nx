@@ -132,7 +132,7 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
-                        
+                        <Box sx={{mt:4}} />
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
                             {themeSwitching && <>
@@ -144,6 +144,11 @@ const Nav: React.FC<I_Nav> = ({
                             </>}
                             <Box sx={{ mt: 1 }}>
                                 <Virus frontmatter={frontmatter} />
+                            </Box>
+                            <Box sx={{ ml: 0 }}>
+                                <IconButton onClick={handleNXAdmin}>
+                                    <Icon icon={'settings'} color="primary" />
+                                </IconButton>
                             </Box>
                         </Box>
                     </Box>

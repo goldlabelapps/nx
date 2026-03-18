@@ -2,7 +2,7 @@
 order: 1
 slug: /
 title: Not here to fuck spiders
-description: I am Wei Zang and this is my story
+description: 我不是来和蜘蛛交配的
 tags: wei zang,
 icon: writing
 image: https://live.staticflickr.com/65535/54338019655_94e8e39903_b.jpg

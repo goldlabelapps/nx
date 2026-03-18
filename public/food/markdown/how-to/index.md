@@ -1,5 +1,5 @@
 ---
-order: 400
+order: 100
 slug: /how-to
 title: How To
 description: 魏藏的鱼

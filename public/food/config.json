@@ -1,7 +1,7 @@
 {
     "tenant": "food",
-    "siteName": "Wei Zang's Food",
-    "description": "Bladdy give it some!",
+    "siteName": "魏藏的食物",
+    "description": "Wei Zang's Food",
     "url": "https://food.goldlabel.pro",
     "owner": {
         "name": "Goldlabel",

@@ -15,12 +15,17 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
             suffix++;
         }
         usedIds.add(id);
-        return {
-            id,
-            label: item.title,
-            route: item.path || item.slug,
-            children: item.children ? mapNavItemsToTreeView(item.children, usedIds) : undefined,
-        };
+            const route = item.path || item.slug;
+            let label = item.title;
+            if (route === "/") {
+                label = "Home";
+            }
+            return {
+                id,
+                label,
+                route,
+                children: item.children ? mapNavItemsToTreeView(item.children, usedIds) : undefined,
+            };
     });
 }
 

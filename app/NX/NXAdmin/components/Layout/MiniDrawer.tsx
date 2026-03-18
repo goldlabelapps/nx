@@ -211,7 +211,6 @@ export default function MiniDrawer({ config }: { config: any }) {
                     ))}
                 </List>
                 
-                <Box sx={{flexGrow: 1}} />
                 
                 <MiniListItem
                     open={open}
