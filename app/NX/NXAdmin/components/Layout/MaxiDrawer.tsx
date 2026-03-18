@@ -206,7 +206,7 @@ export default function MaxiDrawer({ config }: { config: any }) {
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                {!active && <Dashboard nav={nav} />}
+                {!active && <Dashboard />}
                 {active && activeNavItem && (
                     <Collection
                         collection={activeNavItem.collection ?? ""}
