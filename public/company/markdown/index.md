@@ -5,7 +5,6 @@ title: Goldlabel Apps
 description: Software Development through the ages
 tags: Goldlabel, Work, Jobs, Permanent, Contract
 icon: api
-image: /company/jpg/default.jpg
 ---
 
 > Evolution from the Flash era with basic dial-up experiences to today's AI-enhanced, cloud-native web apps built on React and Next.js

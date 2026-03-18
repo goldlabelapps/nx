@@ -31,8 +31,8 @@
                     "mode": "light",
                     "primary": "#C09F52",
                     "secondary": "#C09F52",
-                    "background": "#fff",
-                    "paper": "#fff",
+                    "background": "#eee",
+                    "paper": "#eee",
                     "text": "#222",
                     "border": "#2EAF4A"
                 },
