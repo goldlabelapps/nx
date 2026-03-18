@@ -24,6 +24,7 @@ import {
     TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
+import { Soho } from '../NX/Soho';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -102,88 +103,70 @@ export default async function Page(props: any) {
         image: themedImage || data.image,
     });
 
+    
+
     return (
-        <NX config={config} frontmatter={data}>
-
-            <Header config={config} frontmatter={data} />
-
-            <Container id="main" maxWidth="lg" 
-                sx={{
-                    mt: '100px', 
-                    pb: '90px',
-                }}>
-                <Box
-                    sx={{
-                        width: '100%',
-                        display: 'flex',
-                        gap: 1,
-                    }}
-                >
-
-                    <Box
-                        sx={{
-                            display: { xs: 'none', sm: 'flex' },
-                            flexDirection: 'column',
-                        }}
-                    >
-                        <Box sx={{
-                            flexGrow: 1,
-                                minHeight: 0,
-                                minWidth: 250,
-                        }}>
-                            <TreeNav navItems={navItems}/>                            
-                        </Box>
-                    </Box>
-
-                    <Box
-                        component="main"
-                        sx={{
-                            gridColumn: { lg: '1' },
-                            width: '100%',
-                            minWidth: 0,
-                            pr: { xs: 2, lg: 3 },
-                            pl: { xs: 2, lg: 0 },
-                            flexGrow: 1,
-                        }}>
-                        <Typography
-                            sx={{
-                                display: 'flex',
-                                mt: 1
-                            }}
-                            color='secondary'
-                            variant="h5"
-                            component="h2">
-
-                            <Box sx={{ display: 'flex', width: '100%' }}>
-                                
-                                {data.icon && <Box sx={{ mr: 2 }}><Icon icon={data.icon} color="primary" /></Box>}
-                                <Box sx={{ flexGrow: 1 }}>
-                                    {description}
+            <NX config={config} frontmatter={data}>
+                <Header config={config} frontmatter={data} />
+                {data.layout ? (
+                    data.layout === 'soho' ? (
+                        <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
+                            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                <Soho config={config} />
+                            </Box>
+                        </Container>
+                    ) : (
+                        <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
+                            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                <Typography variant="h4" color="primary" sx={{ mb: 2 }}>
+                                    {data.title || title} (Custom Layout)
+                                </Typography>
+                                <Box>
+                                    <RenderMarkdown config={config}>
+                                        {content}
+                                    </RenderMarkdown>
                                 </Box>
                             </Box>
-
-                        </Typography>
-
-                        <Hero
-                            config={config}
-                            frontmatter={data}
-                            navItems={navItems as I_NestedNav["navItems"]}
-                        />
-
-                        <RenderMarkdown config={config}>
-                            {content}
-                        </RenderMarkdown>
-                    </Box>
-                </Box>
-            </Container>
-            <footer>
-                <Footer
-                    meta={meta as any}
-                    frontmatter={data}
-                    navItems={navItems as I_NestedNav["navItems"]}
-                >
-                </Footer>
-            </footer>
-        </NX >
+                        </Container>
+                    )
+                ) : (
+                    <Container id="main" maxWidth="lg" 
+                        sx={{ mt: '100px', pb: '90px' }}>
+                        <Box sx={{ width: '100%', display: 'flex', gap: 1 }}>
+                            <Box sx={{ display: { xs: 'none', sm: 'flex' }, flexDirection: 'column' }}>
+                                <Box sx={{ flexGrow: 1, minHeight: 0, minWidth: 250 }}>
+                                    <TreeNav navItems={navItems}/>
+                                </Box>
+                            </Box>
+                            <Box component="main" sx={{ gridColumn: { lg: '1' }, width: '100%', minWidth: 0, pr: { xs: 2, lg: 3 }, pl: { xs: 2, lg: 0 }, flexGrow: 1 }}>
+                                <Typography sx={{ display: 'flex', mt: 1 }} color='secondary' variant="h5" component="h2">
+                                    <Box sx={{ display: 'flex', width: '100%' }}>
+                                        {data.icon && <Box sx={{ mr: 2 }}><Icon icon={data.icon} color="primary" /></Box>}
+                                        <Box sx={{ flexGrow: 1 }}>
+                                            {description}
+                                        </Box>
+                                    </Box>
+                                </Typography>
+                                <Hero
+                                    config={config}
+                                    frontmatter={data}
+                                    navItems={navItems as I_NestedNav["navItems"]}
+                                />
+                                <RenderMarkdown config={config}>
+                                    {content}
+                                </RenderMarkdown>
+                            </Box>
+                        </Box>
+                    </Container>
+                )}
+                <footer>
+                    <Footer
+                        meta={meta as any}
+                        frontmatter={data}
+                        navItems={navItems as I_NestedNav["navItems"]}
+                    >
+                    </Footer>
+                </footer>
+            </NX>
     );
 }
