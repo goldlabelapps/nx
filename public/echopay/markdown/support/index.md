@@ -14,7 +14,7 @@ tags: Support, FAQ, help
 
 
 
-2. - I am not being redirected to my mobile banking app?
+2. I am not being redirected to my mobile banking app?
 
 > A few things to check before you attempt another payment would be:
 Check you have selected the correct bank (i.e personal or business).

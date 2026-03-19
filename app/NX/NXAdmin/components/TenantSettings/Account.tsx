@@ -4,7 +4,7 @@ import {
   Avatar,
   Card,
   CardHeader,
-  Badge,
+  CardContent,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 import {
@@ -25,7 +25,7 @@ export default function Account() {
       email,
     } = authed || {};
 
-  const {name, avatar, level} = subscribedUser || {};
+  const {name, avatar} = subscribedUser || {};
   
   React.useEffect(() => {
     if (uid && (!subscribedUser || subscribedUser.uid !== uid)) {
@@ -37,9 +37,7 @@ export default function Account() {
     <>
       <Card variant="outlined">
         <CardHeader 
-          avatar={<Badge badgeContent={level} color='primary'>
-            <Avatar src={avatar} />
-          </Badge>}
+          avatar={avatar ? <Avatar src={avatar} /> : <Icon icon="account" />}
           title={name}
           subheader={email}
           action={<SignOutBtn />}

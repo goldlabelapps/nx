@@ -14,6 +14,7 @@ import { collectionDelete } from './actions/collectionDelete';
 import { setCRUD } from './actions/setCRUD';
 import { saveNewDoc} from './actions/saveNewDoc';
 import { readTypescript } from './actions/readTypescript';
+import { subscribeUser } from './actions/subscribeUser';
 import { initCollection } from './actions/initCollection';
 import { edit } from './actions/edit';
 import { useNXAdmin } from './hooks/useNXAdmin';
@@ -51,6 +52,7 @@ export {
     edit,
     useCRUD,
     useNXAdmin,
+    subscribeUser,
     useCollection,
     useActive,
     JSONInput,

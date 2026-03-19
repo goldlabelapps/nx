@@ -1,5 +1,5 @@
 ---
-order: 50
+order: 350
 slug: /support/install
 title: Install
 description: Install the EchoPay Magento 2 module
