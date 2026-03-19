@@ -10,21 +10,29 @@ export const subscribeUser = (): any =>
     async (dispatch: Dispatch, getState: () => any) => {
         try {
             const { subscribedUser } = getState().redux.nxadmin || {};
-            console.log('subscribedUser', subscribedUser);
-            if (!subscribedUser) {
-                dispatch(setNXAdmin('subscribedUser', {uid:1123}));
-            }
+            const { firebaseUser } = getState().redux.paywall || {};
+            const { uid } = firebaseUser || {};
+            if (!uid) return;
 
-            // const { docId, subscribed } = getState().redux.nxadmin || {};
-            // if (!subscribed && docId && !activeSubscriptions[docId]) {
-            //     activeSubscriptions[docId] = true;
-            //     const firestore = getFirebaseFirestore();
-            //     const docRef = doc(firestore, 'nxadmin', docId);
-            //     onSnapshot(docRef, (snapshot) => {
-            //         const docData = snapshot.exists() ? snapshot.data() : null;
-            //         dispatch(setNXAdmin('subscribedUser', docData));
-            //     });
-            // }
+            // Guard: only subscribe if not already subscribed to this uid
+            if (!subscribedUser || subscribedUser.uid !== uid) {
+                dispatch(setNXAdmin('subscribedUser', { uid }));
+                if (!activeSubscriptions[uid]) {
+                    activeSubscriptions[uid] = true;
+                    const firestore = getFirebaseFirestore();
+                    // Query for the document in 'users' collection where 'uid' field matches
+                    const { query, collection, where, onSnapshot } = await import('firebase/firestore');
+                    const usersCol = collection(firestore, 'users');
+                    const q = query(usersCol, where('uid', '==', uid));
+                    onSnapshot(q, (snapshot) => {
+                        let docData = null;
+                        snapshot.forEach(doc => {
+                            docData = { id: doc.id, ...doc.data() };
+                        });
+                        dispatch(setNXAdmin('subscribedUser', docData));
+                    });
+                }
+            }
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             dispatch(setUbereduxKey({ key: 'error', value: msg }));

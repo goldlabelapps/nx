@@ -104,9 +104,10 @@ export default function MiniDrawer({ config }: { config: any }) {
     const nxAdmin = useNXAdmin();
     const { active } = nxAdmin;
     const theme = useTheme();
+    const themeMode = theme?.palette?.mode || 'light';
     const activeNavItem = nav.find(item => item.collection === active);
     const designSystem = useDesignSystem();
-    const currentThemeMode = designSystem?.themeMode ?? 'light';
+    const currentThemeMode = themeMode ?? designSystem?.themeMode ?? 'light';
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -169,7 +170,8 @@ export default function MiniDrawer({ config }: { config: any }) {
                             {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
                         </IconButton>
                     )}
-                </DrawerHeader>                
+                </DrawerHeader>  
+                <Box sx={{height: 25}}/>              
                 {/* <MiniListItem
                     open={open}
                     onClick={handleThemeModeToggle}
@@ -178,15 +180,7 @@ export default function MiniDrawer({ config }: { config: any }) {
                         icon: currentThemeMode === 'light' ? 'darkmode' : 'lightmode',
                     }}
                 />
-
-                <MiniListItem
-                    open={open}
-                    onClick={handleSignout}
-                    options={{
-                        label: 'Sign out',
-                        icon: 'signout',
-                    }}
-                /> */}
+                */}
                 <MiniListItem
                     open={open}
                     onClick={() => {

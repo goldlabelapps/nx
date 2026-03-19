@@ -149,7 +149,7 @@ const Nav: React.FC<I_Nav> = ({
                             
                             <Box sx={{ ml: 1 }}>
                                 <IconButton onClick={handleNXAdmin}>
-                                    <Icon icon={'settings'} color="primary" />
+                                    <Icon icon={'admin'} color="primary" />
                                 </IconButton>
                             </Box>
                         </Box>

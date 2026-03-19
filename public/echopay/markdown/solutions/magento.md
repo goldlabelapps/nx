@@ -1,5 +1,5 @@
 ---
-order: 50
+order: 55
 slug: /solutions/magento
 title: Magento
 description: Adobe Commerce Plugin

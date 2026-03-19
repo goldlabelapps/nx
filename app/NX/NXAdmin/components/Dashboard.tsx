@@ -9,7 +9,7 @@ export default function Dashboard() {
 
     return (
         <Grid container spacing={2} sx={{mb: 4}}>
-            <Grid size={{ xs: 12, sm: 6 }}>
+            <Grid size={{ xs: 12 }}>
                 <Account />
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
