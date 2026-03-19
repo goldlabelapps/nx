@@ -2,8 +2,8 @@
 order: 1
 slug: /
 title: EchoPay
-description: Payment Plugin
-icon: cash
+description: Open Banking
+icon: shop
 tags: EchoPay, Flash, API, NX, Payments, Open Banking,
 flashXXX: EchoPay
 ---

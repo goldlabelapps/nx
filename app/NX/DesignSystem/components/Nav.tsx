@@ -135,17 +135,19 @@ const Nav: React.FC<I_Nav> = ({
                         <Box sx={{mt:4}} />
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
+                            <Box sx={{ mt: 1, ml: 2 }}>
+                                <Virus frontmatter={frontmatter} />
+                            </Box>
+
                             {themeSwitching && <>
-                                <Box sx={{ pb: 1.5 }}>
+                                <Box sx={{ pb: 1.5, ml:2 }}>
                                     <IconButton onClick={handleThemeModeToggle}>
                                         <Icon icon={currentThemeMode === 'light' ? 'darkmode' : 'lightmode'} color="primary" />
                                     </IconButton>
                                 </Box>
                             </>}
-                            <Box sx={{ mt: 1 }}>
-                                <Virus frontmatter={frontmatter} />
-                            </Box>
-                            <Box sx={{ ml: 0 }}>
+                            
+                            <Box sx={{ ml: 1 }}>
                                 <IconButton onClick={handleNXAdmin}>
                                     <Icon icon={'settings'} color="primary" />
                                 </IconButton>

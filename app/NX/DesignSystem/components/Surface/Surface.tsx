@@ -132,7 +132,7 @@ export default function Surface({ options }: I_Surface) {
                 </IconButton>
                 
             </Collapse>
-            <pre>authed: {JSON.stringify(authed, null, 2)}</pre>
+            {/* <pre>authed: {JSON.stringify(authed, null, 2)}</pre> */}
         </Box>
     );
 }
