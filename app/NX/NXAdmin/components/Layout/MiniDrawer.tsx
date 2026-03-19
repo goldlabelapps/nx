@@ -4,14 +4,8 @@ import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import { getFirebaseAuth } from '../../../lib/firebase';
-import { useRouter } from 'next/navigation';
 import {
     Box,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
     Toolbar,
     IconButton,
     CardHeader,
@@ -25,7 +19,6 @@ import {
 } from '../../../DesignSystem';
 import {
     useNXAdmin,
-    setNXAdmin,
     Dashboard,
     Collection,
     MiniListItem,
@@ -33,7 +26,11 @@ import {
 import nav from '../../nav.json';
 import { useDispatch } from '../../../Uberedux';
 
-const drawerWidth = 320;
+const drawerWidth = 200;
+
+export interface I_AppBar extends MuiAppBarProps {
+    open?: boolean;
+}
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -64,13 +61,9 @@ const DrawerHeader = styled('div')(({ theme }) => ({
     ...theme.mixins.toolbar,
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-    open?: boolean;
-}
-
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
+})<I_AppBar>(({ theme, open }) => ({
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
@@ -107,7 +100,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer({ config }: { config: any }) {
 
     const dispatch = useDispatch();
-    const router = useRouter();
     const [open, setOpen] = React.useState(false);
     const nxAdmin = useNXAdmin();
     const { active } = nxAdmin;
@@ -116,12 +108,6 @@ export default function MiniDrawer({ config }: { config: any }) {
     const designSystem = useDesignSystem();
     const currentThemeMode = designSystem?.themeMode ?? 'light';
 
-    const handleThemeModeToggle = () => {
-        const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
-        dispatch(setDesignSystem('themeMode', nextMode));
-    }
-
-
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -129,6 +115,11 @@ export default function MiniDrawer({ config }: { config: any }) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const handleThemeModeToggle = () => {
+        const nextMode = currentThemeMode === 'light' ? 'dark' : 'light';
+        dispatch(setDesignSystem('themeMode', nextMode));
+    }
 
     const handleSignout = async () => {
         const auth = getFirebaseAuth();
@@ -178,41 +169,8 @@ export default function MiniDrawer({ config }: { config: any }) {
                             {theme.direction === 'rtl' ? <Icon icon="right" color="primary" /> : <Icon icon="left" color="primary" />}
                         </IconButton>
                     )}
-                </DrawerHeader>
-                <List>
-                    {nav.map((item, i: number) => (
-                        <ListItem
-                            key={`item_${i}`}
-                            disablePadding
-                            sx={{ display: 'block' }}>
-                            <ListItemButton
-                                onClick={() => dispatch(setNXAdmin('active', item.collection))}
-                                sx={[
-                                    { minHeight: 48, px: 2.5 },
-                                    open ? { justifyContent: 'initial' } : { justifyContent: 'center' },
-                                ]}
-                            >
-                                <ListItemIcon
-                                    sx={[
-                                        { minWidth: 0, justifyContent: 'center' },
-                                        open ? { mr: 3 } : { mr: 'auto' },
-                                    ]}
-                                >
-                                    <Icon icon={item.icon as any} color="primary" />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={item.title}
-                                    sx={[
-                                        open ? { opacity: 1 } : { opacity: 0 },
-                                    ]}
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-                </List>
-                
-                
-                <MiniListItem
+                </DrawerHeader>                
+                {/* <MiniListItem
                     open={open}
                     onClick={handleThemeModeToggle}
                     options={{
@@ -228,14 +186,14 @@ export default function MiniDrawer({ config }: { config: any }) {
                         label: 'Sign out',
                         icon: 'signout',
                     }}
-                />
+                /> */}
                 <MiniListItem
                     open={open}
                     onClick={() => {
                         window.location.href = '/';
                     }}
                     options={{
-                        label: 'Public',
+                        label: 'Visit site',
                         icon: 'public',
                     }}
                 />

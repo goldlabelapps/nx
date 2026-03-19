@@ -16,7 +16,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "/_new_tenant/svg/favicon_light.svg",
+      "src": "/_new_tenant/svg/avatar_light.svg",
       "type": "image/svg+xml",
       "sizes": "512x512",
       "purpose": "any"

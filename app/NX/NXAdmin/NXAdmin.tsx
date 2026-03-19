@@ -4,7 +4,6 @@ import * as React from 'react';
 import {
   MiniDrawer,
   SwipeDrawer,
-  MaxiDrawer,
 } from '../NXAdmin';
 import {
   DesignSystem,
@@ -42,10 +41,8 @@ export default function NXAdmin({
         <Feedback />
         {layout === 'swipedrawer' ? (
           <SwipeDrawer config={config} />
-        ) : layout === 'minidrawer' ? (
-          <MiniDrawer config={config} />
         ) : (
-          <MaxiDrawer config={config} />
+          <MiniDrawer config={config} />
         )}
       </DesignSystem>
     </>

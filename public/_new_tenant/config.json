@@ -25,7 +25,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "light": {
                     "mode": "light",
@@ -40,10 +40,10 @@
                     "mode": "dark",
                     "primary": "#4CF2E1",
                     "secondary": "#1FF9E2",
-                    "background": "#07A090",
-                    "paper": "#43A89C",
+                    "background": "#145D55",
+                    "paper": "#145D55",
                     "text": "#fff",
-                    "border": "#222"
+                    "border": "#145D55"
                 }
             }
         }

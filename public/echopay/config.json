@@ -1,7 +1,7 @@
 {
     "tenant": "echopay",
     "siteName": "EchoPay",
-    "description": "Payment Plugin",
+    "description": "Open Banking",
     "url": "https://echopay.goldlabel.pro",
     "owner": {
         "name": "James Ward",
@@ -29,7 +29,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",

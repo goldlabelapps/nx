@@ -1,5 +1,5 @@
 import NXAdmin from './NXAdmin';
-import { MiniDrawer, SwipeDrawer, MaxiDrawer } from './components/Layout';
+import { MiniDrawer, SwipeDrawer } from './components/Layout';
 import Dashboard from './components/Dashboard';
 import { CreateDoc, ReadDoc, UpdateDoc, DeleteDoc } from './components/CRUD';
 import { Collection } from './components/Collection';
@@ -27,7 +27,6 @@ import JSONInput from './components/UI/JSONInput';
 
 export {
     NXAdmin,
-    MaxiDrawer,
     SwipeDrawer,
     InputString,
     OptionSelect,
