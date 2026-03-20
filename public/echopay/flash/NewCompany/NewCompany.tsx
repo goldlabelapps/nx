@@ -1,5 +1,5 @@
 "use client";
-import type { I_NewCompany } from '../../types'
+// import type { I_NewCompany } from './types'
 import * as React from 'react';
 import { NewCompanyAS } from './';
 import {
@@ -14,6 +14,15 @@ import { CleverText, NumberSlider } from '../';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
 import { useDispatch } from '../../../../app/NX/Uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
+
+export interface I_NewCompany {
+    options?: {
+        id?: string;
+        markdown?: string;
+        [key: string]: any;
+    };
+}
+
 
 export const defaultCompany = {
     name: 'Example Ltd',

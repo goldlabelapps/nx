@@ -1,11 +1,16 @@
 "use client";
-import type { I_OldCompany } from '../../types';
 import { OldCompanyAS } from './';
 import * as React from 'react';
 import {
     Box,
 } from '@mui/material';
 
+export interface I_OldCompany {
+    options?: {
+        slug?: string;
+        [key: string]: any;
+    };
+}
 
 export default function OldCompany({ options }: I_OldCompany) {
 
