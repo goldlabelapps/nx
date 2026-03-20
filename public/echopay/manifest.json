@@ -1,8 +1,8 @@
 {
   "short_name": "EchoPay",
   "name": "EchoPay",
-  "theme_color": "#184791",
-  "background_color": "#184791",
+  "theme_color": "#FFF",
+  "background_color": "#FFF",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",

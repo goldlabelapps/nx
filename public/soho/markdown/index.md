@@ -8,10 +8,13 @@ icon: food
 image: https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg
 # cartridge: soho
 ---
-> New for Summer 2026
 
-- Browse and search instantly – find what you need in seconds.
-- Order anytime, anywhere – our Progressive Web App works on any device.
-- Pay your way – complete your purchase securely with EchoPay.
-- Stay in control – see stock, promotions, and manage your orders with ease.
-- No more queues. No more paper forms. Just fast, convenient shopping 
+> **New for Summer 2026** Shop smarter and faster with our app. Search products, order anytime, and pay securely with EchoPay. EchoPay Orders™ puts the full catalogue in the palm of your hand.
+
+- Browse and search instantly.
+- Order anytime, anywhere on any device.
+- Pay securely with EchoPay.
+- Stay in control with live stock, promotions, and order management.
+
+No queues. No paper forms. Just fast, convenient shopping.
+Sign up for early access and be the first to try it!
