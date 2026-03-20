@@ -2,15 +2,14 @@
 import React from 'react';
 import { 
     Box,
-    Card,
     CardHeader,
     CardContent,
     CardActions,
-    Typography,
     Button,
  } from '@mui/material';
-import { useAuthed, usePaywall } from '../../Paywall';
+import { useIsAuthed, SimpleSignIn, firebaseLogin, setPaywall } from '../../Paywall';
 import { Icon } from '../../DesignSystem';
+import { useDispatch } from '../../Uberedux';
 
 export interface I_Account {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -18,26 +17,52 @@ export interface I_Account {
 
 export default function Account({ onClick }: I_Account) {
     
-    const paywall = usePaywall();
+    const isAuthed = useIsAuthed();
+    const dispatch = useDispatch();
+
+    const handleSignin = async (email: string, password: string) => {
+        console.log('handleSignin');
+        try {
+            const user = await firebaseLogin(email, password);
+            console.log('handleSignin user', user);
+            // dispatch(setPaywall({ user, authChecked: true }));
+        } catch (error) {
+            // dispatch(setPaywall({ user: null, authChecked: true }));
+            console.log('handleSignin error', error);
+        }
+    }
+
+    if (isAuthed){
+        return <>isAuthed !!</>
+    }
     
-    return (<Card variant='outlined'>
-                <CardHeader 
-                    avatar={<Icon icon="account" color="primary"/>}
-                    title="Name" 
-                    subheader="email"
-                />
-                {/* <CardContent>
-                    <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre>
-                </CardContent> */}
+    return (<Box>
+                
+                {isAuthed && <>
+                    <CardHeader
+                        avatar={<Icon icon="async" color="primary" />}
+                        title={isAuthed ? " (authed)" : " (not authed)"}
+                    />
+                </>}
+
+                <CardContent>
+                {/* <pre>isAuthed: {JSON.stringify(isAuthed, null, 2)}</pre> */}
+                {!isAuthed && <>
+                    <SimpleSignIn onSignIn={handleSignin}/>
+                
+                {/* {!isAuthed && <>
+                    <Button
+                        variant='outlined'
+                        onClick={() => { }}>
+                        Sign Up
+                    </Button>
+                </>} */}
+                </>}
+                </CardContent>
                 <CardActions>
                     <Box sx={{ flexGrow: 1 }} />
-                    <Button 
-                        endIcon={<Icon icon="save" />}
-                        variant='outlined'
-                        onClick={onClick}>
-                        Save
-                    </Button>
+                    
                 </CardActions>
-            </Card>);
+    </Box>);
 
 }

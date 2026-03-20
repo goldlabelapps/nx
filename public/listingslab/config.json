@@ -4,7 +4,7 @@
     "description": "Coming soon",
     "url": "https://listingslab.com",
     "owner": {
-        "name": "Goldlabel",
+        "name": "Milky",
         "email": "goldlabel.apps@gmail.com"
     },
     "favicon": "/listingslab/png/favicon.png",
@@ -21,7 +21,7 @@
             "enabled": true
         },
         "paywall": {
-            "enabled": true
+            "enabled": false
         },
         "async": {
             "enabled": false
