@@ -13,7 +13,7 @@
         "dark": "/soho/svg/avatar_dark.svg"
     },
     "images": {
-        "light": "/soho/jpg/soho.jpg",
+        "light": "https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg",
         "dark": "/soho/jpg/soho.jpg"
     },
     "cartridges": {
@@ -35,7 +35,7 @@
                     "mode": "light",
                     "primary": "#2c3e85",
                     "secondary": "#2c3e85",
-                    "background": "#F8F8F8",
+                    "background": "#FFF",
                     "paper": "#EDEBE7",
                     "text": "#222",
                     "border": "#2c3e85"

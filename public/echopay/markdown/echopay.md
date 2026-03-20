@@ -5,7 +5,6 @@ title: EchoPay
 description: Soho Cash & Carry App – EchoPay Orders™ Summer 2026
 tags: Soho Cash & Carry, B2B ordering app, EchoPay Orders, wholesale shopping, PWA ordering, fast product search, secure checkout,
 icon: food
-image: https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg
 ---
 
 > Shop smarter and faster with Soho Cash & Carry’s EchoPay Orders™ app. Browse products, order anytime, and pay securely with EchoPay.
