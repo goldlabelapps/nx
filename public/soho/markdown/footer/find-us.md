@@ -1,15 +1,14 @@
 ---
-order: 200
-slug: /find-us
+order: 504
+slug: /footer/find-us
 title: Find us
-description: A wide range of Spirits, Wines, Beers & Ciders at very competitive prices
+description: Soho Cash and Carry 
 tags: spirits, wine, beer, cider
 icon: food
 ---
 
-### Birmingham
+#### Birmingham
 
-Soho Cash and Carry  
 Sandwell Business Park  
 Units 9,11,13  
 Crystal Drive  
@@ -19,9 +18,7 @@ B66 1QG
 Tel: 0121 511 1057  
 Fax: 0121 552 9972  
 
-### Wolverhampton  
-
-Soho Cash and Carry  
+#### Wolverhampton  
 Tremont Street  
 Wolverhampton  
 WV10 0ED  

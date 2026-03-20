@@ -4,6 +4,7 @@ import {
   Avatar,
   Card,
   CardHeader,
+  CardContent,
   Badge,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
@@ -44,6 +45,9 @@ export default function Account() {
           subheader={email}
           action={<SignOutBtn />}
         />
+        <CardContent>
+          Additional content can be added here
+        </CardContent>
       </Card>
     </>
   );

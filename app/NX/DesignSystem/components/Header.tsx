@@ -31,6 +31,10 @@ export default function Header({
 		router.push('/');
 	}
 
+	const handleUserClick = () => {
+		router.push('/nx-admin');
+	}
+
 	return (
 		<header>
 			<AppBar
@@ -45,6 +49,9 @@ export default function Header({
 					avatar={<IconButton onClick={handleAvatarClick}>
 								<Avatar src={avatar} />
 							</IconButton>}
+						action={<IconButton onClick={handleUserClick}>
+							<Avatar src={avatar} />
+						</IconButton>}
 					title={<Typography
 						color='secondary'
 						variant="h5"

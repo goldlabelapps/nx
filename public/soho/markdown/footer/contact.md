@@ -1,6 +1,6 @@
 ---
-order: 500
-slug: /contact
+order: 502
+slug: /footer/contact
 title: Contact us
 description: A wide range of Spirits, Wines, Beers & Ciders at very competitive prices
 tags: spirits, wine, beer, cider
