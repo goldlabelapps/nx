@@ -11,16 +11,7 @@ import {
 import {
 	Nav,
 } from '../../DesignSystem';
-import {
-	User,
-	useAuthed,
-	usePaywall,
-} from '../../Paywall';
-import {
-	Async,
-	Synched,
-	useAsync,
-} from '../../Async';
+
 export interface I_Footer {
 	children?: React.ReactNode;
 	frontmatter?: T_Frontmatter;
@@ -35,11 +26,6 @@ export default function Footer({
 }: I_Footer) {
 
 	const theme = useTheme();
-	const authed = useAuthed();
-	const paywall = usePaywall();
-	const async = useAsync();
-	const {ting} = async || {};
-	const { fingerprint } = ting || {};
 	
 	return (
 		<React.Fragment>
