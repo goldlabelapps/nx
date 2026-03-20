@@ -29,7 +29,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "themes": {
                 "light": {
                     "mode": "light",
