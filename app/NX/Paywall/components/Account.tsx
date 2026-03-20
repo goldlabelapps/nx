@@ -22,16 +22,18 @@ export default function Account({ onClick }: I_Account) {
     
     return (<Card variant='outlined'>
                 <CardHeader 
-                avatar={<Icon icon="account" color="primary"/>}
-                title="Account" />
-                <CardContent>
-                    <pre>{JSON.stringify(paywall, null, 2)}</pre>
-                </CardContent>
+                    avatar={<Icon icon="account" color="primary"/>}
+                    title="Name" 
+                    subheader="email"
+                />
+                {/* <CardContent>
+                    <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre>
+                </CardContent> */}
                 <CardActions>
                     <Box sx={{ flexGrow: 1 }} />
                     <Button 
                         endIcon={<Icon icon="save" />}
-                        variant='contained'
+                        variant='outlined'
                         onClick={onClick}>
                         Save
                     </Button>

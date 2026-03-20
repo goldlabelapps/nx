@@ -2,7 +2,6 @@
 import Box from '@mui/material/Box';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter } from 'next/navigation';
-import {Surface} from '../../DesignSystem';
 import { useAuthed } from '../../Paywall';
 
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
@@ -66,17 +65,6 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                 }}
             />
-            <Box sx={{ maxWidth: 250, m: 2 }}>
-                <Surface options={{
-                    id: 'surface',
-                    label: authed ? 'NX Admin' : 'Sign in',
-                    icon: authed ? 'admin' : 'signin',
-                    markdown: md,
-                    onClick: handleCTA,
-                    onFinish: () => { }
-                }}
-                />
-            </Box>  
         </Box>
     );
 }
