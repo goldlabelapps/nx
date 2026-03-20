@@ -1,6 +1,7 @@
 
 import Paywall from "./Paywall";
 import SignIn from './components/SignIn';
+import SimpleSignIn from './components/SimpleSignIn';
 import UserSpot from './components/UserSpot';
 import Account from './components/Account';
 import SignOutBtn from './components/SignOutBtn';
@@ -15,6 +16,7 @@ export {
     Paywall,
     Account,
     SignIn,
+    SimpleSignIn,
     SignOutBtn,
     setPaywall,
     useAuthed,
