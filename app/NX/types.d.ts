@@ -2,7 +2,7 @@ import type { T_UbereduxDispatch, T_RootState } from '../NX/Uberedux/store';
 export type { T_UbereduxDispatch, T_RootState }
 
 export type T_Tenant = 'nx' |
-    'mcuk' |
+    'listingslab' |
     'echopay' |
     'edtech' | 
     'writing' | 
