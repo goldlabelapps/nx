@@ -1,20 +1,20 @@
 import React from 'react';
 import { IconButton, Box, Avatar } from '@mui/material';
-import { useRouter } from 'next/navigation';
-import { useAsync } from '../../Async';
 import { useAuthed } from '../../Paywall';
+import { Icon } from '../../DesignSystem';
 
+export interface I_User {
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
 
-export default function User() {
+export default function User({ onClick }: I_User) {
+    const authed = useAuthed();
+    // const { avatar } = authed || {};
+
     
-    const async = useAsync();
-    const { ting } = async || {};
-    const {avatar} = ting || {};
-    if (!avatar) return null;
-    return (<>
-        <IconButton>
-            <Avatar src={avatar} />
+    return (
+        <IconButton onClick={onClick} color="primary">
+            <Icon icon={authed ? "user" : "account"} color="primary" />
         </IconButton>
-        </>
     );
 }

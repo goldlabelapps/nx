@@ -11,6 +11,7 @@ import {
 	AppBar,
 	Typography,
 } from '@mui/material';
+import {User} from '../../Paywall';
 
 export interface I_Header {
 	config: T_Config;
@@ -32,7 +33,7 @@ export default function Header({
 	}
 
 	const handleUserClick = () => {
-		router.push('/nx-admin');
+		router.push('/account');
 	}
 
 	return (
@@ -46,12 +47,6 @@ export default function Header({
 				}}>
 				<Container maxWidth="lg">
 					<CardHeader
-					avatar={<IconButton onClick={handleAvatarClick}>
-								<Avatar src={avatar} />
-							</IconButton>}
-						action={<IconButton onClick={handleUserClick}>
-							<Avatar src={avatar} />
-						</IconButton>}
 					title={<Typography
 						color='secondary'
 						variant="h5"
@@ -60,6 +55,10 @@ export default function Header({
 					>
 						{title}
 					</Typography>}
+					avatar={<IconButton onClick={handleAvatarClick}>
+								<Avatar src={avatar} />
+							</IconButton>}
+					action={<User onClick={handleUserClick} />}
 				/>
 				</Container>
 			</AppBar>			
