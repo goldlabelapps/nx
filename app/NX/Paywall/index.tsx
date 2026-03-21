@@ -7,6 +7,7 @@ import Account from './components/Account';
 import SignOutBtn from './components/SignOutBtn';
 import { setPaywall } from './actions/setPaywall';
 import { firebaseLogin, firebaseLogout } from './actions/firebaseAuth';
+import { useUID } from './hooks/useUID';
 import { useAuthed } from './hooks/useAuthed';
 import { usePaywall } from './hooks/usePaywall';
 import { useIsAuthed } from './hooks/useIsAuthed';
@@ -26,4 +27,5 @@ export {
     useIsAuthed,
     subscribeUser,
     UserSpot,
+    useUID,
 };
