@@ -14,6 +14,12 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    // Simple email validation regex
+    function isValidEmail(email: string) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    const isFormValid = isValidEmail(email) && password.length >= 6;
 
     return <>
             
@@ -57,8 +63,9 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
                 type="submit"
                 endIcon={<Icon icon="signin" />}
                 variant="outlined"
-                sx={{ mx: 0 }}
+                sx={{ mt: 1 }}
                 onClick={() => onSignIn && onSignIn(email, password)}
+                disabled={!isFormValid}
             >
                 Sign In
             </Button>
