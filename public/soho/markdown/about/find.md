@@ -1,7 +1,7 @@
 ---
 order: 504
-slug: /footer/find-us
-title: Find us
+slug: /find
+title: Find
 description: Soho Cash and Carry 
 tags: spirits, wine, beer, cider
 icon: food

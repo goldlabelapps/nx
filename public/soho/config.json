@@ -13,7 +13,7 @@
         "dark": "/soho/svg/avatar_dark.svg"
     },
     "images": {
-        "light": "https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg",
+        "light": "/soho/jpg/soho.jpg",
         "dark": "/soho/jpg/soho.jpg"
     },
     "cartridges": {

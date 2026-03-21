@@ -1,7 +1,7 @@
 ---
-order: 510
-slug: /footer/about
-title: About us
+order: 500
+slug: /about
+title: About
 description: A wide range of Spirits, Wines, Beers & Ciders at very competitive prices
 tags: spirits, wine, beer, cider
 icon: food
