@@ -1,7 +1,9 @@
+// Backup of TreeNav.tsx before adding pathname-based open logic
+
 "use client";
 import Box from '@mui/material/Box';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useAuthed } from '../../Paywall';
 
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
@@ -30,9 +32,8 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
 
 export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const router = useRouter();
-    const pathname = usePathname();
     const treeViewItems = mapNavItemsToTreeView(navItems);
-    const authed = useAuthed();
+    const authed = useAuthed();    
     let md = ``;
 
     if (authed)
@@ -42,32 +43,10 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
         router.push('/nx-admin');
     };
 
-    // Helper to collect all node ids along the path to the current page
-    function getExpandedIds(items: any[], pathname: string): string[] {
-        let expanded: string[] = [];
-        function traverse(nodes: any[], parentIds: string[] = []) {
-            for (const node of nodes) {
-                if (node.route && typeof node.route === 'string' && pathname.startsWith(node.route) && node.route !== '/') {
-                    expanded = [...parentIds, node.id];
-                    if (node.children) {
-                        traverse(node.children, [...parentIds, node.id]);
-                    }
-                } else if (node.children) {
-                    traverse(node.children, [...parentIds, node.id]);
-                }
-            }
-        }
-        traverse(items);
-        return expanded;
-    }
-
-    const defaultExpandedItems = getExpandedIds(treeViewItems, pathname);
-
     return (
         <Box sx={{}}>
             <RichTreeView
                 items={treeViewItems}
-                defaultExpandedItems={defaultExpandedItems}
                 onItemClick={(event, itemId) => {
                     function findItem(items: any[], id: string): any | undefined {
                         for (const item of items) {

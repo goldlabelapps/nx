@@ -7,7 +7,7 @@ import {
     CardActions,
     Button,
  } from '@mui/material';
-import { useIsAuthed, SimpleSignIn, firebaseLogin, setPaywall } from '../../Paywall';
+import { useIsAuthed, SimpleSignIn, firebaseLogin, usePaywall } from '../../Paywall';
 import { Icon } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 
@@ -18,7 +18,7 @@ export interface I_Account {
 export default function Account({ onClick }: I_Account) {
     
     const isAuthed = useIsAuthed();
-    const dispatch = useDispatch();
+    const paywall = usePaywall();
 
     const handleSignin = async (email: string, password: string) => {
         console.log('handleSignin');
@@ -33,7 +33,10 @@ export default function Account({ onClick }: I_Account) {
     }
 
     if (isAuthed){
-        return <>isAuthed !!</>
+        return <>
+        
+            <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre>
+        </>
     }
     
     return (<Box>
@@ -46,7 +49,7 @@ export default function Account({ onClick }: I_Account) {
                 </>}
 
                 <CardContent>
-                {/* <pre>isAuthed: {JSON.stringify(isAuthed, null, 2)}</pre> */}
+                
                 {!isAuthed && <>
                     <SimpleSignIn onSignIn={handleSignin}/>
                 
@@ -59,10 +62,6 @@ export default function Account({ onClick }: I_Account) {
                 </>} */}
                 </>}
                 </CardContent>
-                <CardActions>
-                    <Box sx={{ flexGrow: 1 }} />
-                    
-                </CardActions>
     </Box>);
 
 }
