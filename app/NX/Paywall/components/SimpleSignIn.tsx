@@ -14,9 +14,22 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+    // Simple email validation regex
+    function isValidEmail(email: string) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
 
-    return <>
-            
+    const isFormValid = isValidEmail(email) && password.length >= 6;
+
+    const handleSubmit = (e?: React.FormEvent | React.KeyboardEvent) => {
+        if (e) e.preventDefault();
+        if (isFormValid && onSignIn) {
+            onSignIn(email, password);
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
             <TextField
                 label="Email"
                 type="email"
@@ -48,6 +61,11 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
                         </InputAdornment>
                     ),
                 }}
+                onKeyDown={e => {
+                    if (e.key === 'Enter') {
+                        handleSubmit(e);
+                    }
+                }}
             />
             <Typography sx={{ my: 1 }} color="primary">
                 {error}
@@ -57,11 +75,12 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
                 type="submit"
                 endIcon={<Icon icon="signin" />}
                 variant="outlined"
-                sx={{ mx: 0 }}
-                onClick={() => onSignIn && onSignIn(email, password)}
+                sx={{ mt: 1 }}
+                disabled={!isFormValid}
+                onClick={handleSubmit}
             >
                 Sign In
             </Button>
-        </>
-    
+        </form>
+    );
 }

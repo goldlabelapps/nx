@@ -26,37 +26,37 @@ export default function Feedback() {
   };
 
   return (
-    <Snackbar
-      open
-      anchorOrigin={{
-        vertical: 'bottom',
-        horizontal: 'left',
-      }}
-      onClose={handleClose}
-    >
-      <Alert
-        variant="filled"
-        severity={severity}
-        sx={{ minWidth: 250 }}
-        action={
-          <IconButton
-            aria-label="close"
-            color="inherit"
-            size="small"
-            onClick={handleClose}
-          >
-            <Icon icon="close" />
-          </IconButton>
-        }
-      >
-        <Typography variant='body1'>
-          {title}
-        </Typography>
-        <Typography variant='body2'>
-          {description}
-        </Typography>
 
-      </Alert>
-    </Snackbar>
+      <Snackbar
+        open
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        onClose={handleClose}
+      >
+        <Alert
+          variant="filled"
+          severity={severity}
+          sx={{ minWidth: 250 }}
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={handleClose}
+            >
+              <Icon icon="close" />
+            </IconButton>
+          }
+        >
+          <Typography variant='body1'>
+            {title}
+          </Typography>
+          <Typography variant='body2'>
+            {description}
+          </Typography>
+        </Alert>
+      </Snackbar>
   );
 }

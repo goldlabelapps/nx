@@ -16,7 +16,7 @@ export default function RequireAuth({ children, config }: { children: React.Reac
     const handleSignIn = async (email: string, password: string) => {
         setLoading(true);
         try {
-            const user = await firebaseLogin(email, password);
+            const user = await firebaseLogin(email, password, dispatch);
             setUser(user);
         } catch (e) {
             // dispatch(setPaywall("user", null));
