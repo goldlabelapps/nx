@@ -1,27 +1,39 @@
 "use client";
 import React from 'react';
-import { IconButton } from '@mui/material';
+import { IconButton, Avatar } from '@mui/material';
 import { Icon } from '../../DesignSystem';
+import { usePaywall, subscribeAccount, setPaywall } from '../../Paywall';
+import { useDispatch } from '../../Uberedux';
 
 export interface I_UserSpot {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function UserSpot({ onClick }: I_UserSpot) {
-    
-    const [hide, setHide] = React.useState(false);
+
+    const paywall = usePaywall();
+    const account = paywall ? paywall.account : null;
+    const accountSubscribing = paywall ? paywall.accountSubscribing : null;
+    const dispatch = useDispatch();
 
     React.useEffect(() => {
-        if (window.location.pathname === "/account") {
-            setHide(true);
-        }
-    }, []);
+        if (!account && !accountSubscribing) {
+            dispatch(setPaywall('accountSubscribing', true));
+            dispatch(subscribeAccount());
+        };
+    }, [account, accountSubscribing, dispatch]);
 
-    if (hide) return null;
-
+    if (typeof window !== "undefined" && window.location.pathname === "/account") {
+        return null;
+    }
+    
     return (
         <IconButton onClick={onClick} color="primary">
-            <Icon icon="async" />
+            {account ? (
+                <Avatar alt={account.name} src={account.avatar} />
+            ) : (
+                <Icon icon="async" />
+            )}
         </IconButton>
     );
 }

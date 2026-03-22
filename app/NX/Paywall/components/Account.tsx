@@ -4,19 +4,17 @@ import {
     Box,
     CardHeader,
     CardContent,
-    Button,
- } from '@mui/material';
+} from '@mui/material';
 import { 
     useUID,
     useIsAuthed, 
     SimpleSignIn, 
     firebaseLogin, 
     usePaywall,
-    firebaseLogout,
     setPaywall,
     AccountCard,
  } from '../../Paywall';
-import { Icon, setFeedback } from '../../DesignSystem';
+import { Icon } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 
 export interface I_Account {
@@ -29,21 +27,7 @@ export default function Account({ onClick }: I_Account) {
     const uid = useUID();
     const dispatch = useDispatch();
 
-    // Wait for authChecked before rendering
     if (!paywall?.authChecked) return null;
-
-    const handleSignOut = async () => {
-        try {
-            const user = await firebaseLogout();
-            dispatch(setFeedback({
-                severity: 'success',
-                title: 'Signed out successfully',
-            }))
-        } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : String(error);
-            dispatch(setPaywall('error', errorMsg));
-        }
-    }
 
     const handleSignin = async (email: string, password: string) => {
         try {

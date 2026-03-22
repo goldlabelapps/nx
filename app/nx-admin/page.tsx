@@ -16,8 +16,12 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const defaultThemeMode: 'light' | 'dark' = defaultThemeModeRaw === 'light' 
         || defaultThemeModeRaw === 'dark' ? defaultThemeModeRaw : 'light';
     const imagesObj: { light?: string; dark?: string } | undefined = config.images;
-    const imageRaw = imagesObj && defaultThemeMode in imagesObj ? imagesObj[defaultThemeMode] : undefined;
-    const image: string = imageRaw || config.siteName;
+    const imageRaw = imagesObj && defaultThemeMode in imagesObj ? imagesObj[defaultThemeMode] : imagesObj?.light;
+    let image: string = imageRaw || config.siteName;
+    // If you have a data.image from frontmatter, use it if non-empty string (not available here, but for consistency)
+    // image = (typeof data?.image === 'string' && data.image.trim()) ? data.image : imageRaw;
+    // Icon fallback logic (not available here, but for consistency)
+    let icon = null;
     const url = `${getBaseurl()}/nx-admin`;
 
     return {

@@ -49,7 +49,7 @@ export default function RequireAuth({ children, config }: { children: React.Reac
                     photoURL: photoURL ?? null
                 };
             }
-            dispatch(setPaywall("firebaseUser", safeUser));
+            dispatch(setPaywall("user", safeUser));
             setLoading(false);
         });
         return () => unsubscribe();
