@@ -109,7 +109,7 @@ export default async function Page(props: any) {
                     data.cartridge === 'orders-frontend' ? (
                         <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                <OrdersFrontend config={config} />
+                                <OrdersFrontend />
                             </Box>
                         </Container>
                     ) : data.cartridge === 'orders-admin' ? (
