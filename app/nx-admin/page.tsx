@@ -20,6 +20,8 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     let image: string = imageRaw || config.siteName;
     // If you have a data.image from frontmatter, use it if non-empty string (not available here, but for consistency)
     // image = (typeof data?.image === 'string' && data.image.trim()) ? data.image : imageRaw;
+    // Icon fallback logic (not available here, but for consistency)
+    let icon = null;
     const url = `${getBaseurl()}/nx-admin`;
 
     return {

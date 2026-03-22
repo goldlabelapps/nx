@@ -7,7 +7,12 @@ import {
   WhatsappShareButton,
   TwitterShareButton,
 } from 'react-share';
-import { Tooltip, Box, Typography, ButtonBase, Popover, Dialog} from '@mui/material';
+import { 
+  CardMedia,
+  CardHeader,
+  Skeleton,
+  Box, Typography, ButtonBase, Popover, Dialog,
+} from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
 
 export default function Virus({
@@ -20,6 +25,7 @@ export default function Virus({
   let title = meta?.title || '';
   let description = meta?.description || '';
   let image = '';
+  let icon = '';
   const [copied, setCopied] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const [url, setUrl] = React.useState('');
@@ -29,9 +35,13 @@ export default function Virus({
     title = frontmatter.title || title;
     description = frontmatter.description || description;
     image = frontmatter.image || '';
+    icon = frontmatter.icon || '';
   } else if (meta) {
     image = meta.openGraph?.images?.[0] || '';
   }
+
+  // Preloader state for image
+  const [imgLoaded, setImgLoaded] = React.useState(false);
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -50,6 +60,8 @@ export default function Virus({
       <ButtonBase onClick={() => setOpen(true)} sx={{ }}>
         <Icon icon="share" color="primary" />
       </ButtonBase>
+
+      
       <Popover
         open={copied}
         anchorEl={anchorEl}
@@ -67,14 +79,36 @@ export default function Virus({
           </Typography>
         </Box>
       </Popover>
-      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth>
+
+      <Dialog open={open} onClose={() => setOpen(false)} maxWidth="xs" fullWidth>
 
         <Box id="virus" sx={{ p: 1 }}>
-
           <Box sx={{  }}>
-            <pre>title: {JSON.stringify(title, null, 2)}</pre>
-            <pre>description: {JSON.stringify(description, null, 2)}</pre>
-            <pre>image: {JSON.stringify(image, null, 2)}</pre>
+
+            
+
+            {/* Show CardMedia with Skeleton preloader if image is a non-empty string */}
+            {typeof image === 'string' && image.trim() ? (
+              <Box sx={{ width: '100%', maxWidth: 400, m: 2 }}>
+                {!imgLoaded && (
+                  <Skeleton variant="rectangular" width="100%" height={200} />
+                )}
+                <CardMedia
+                  component="img"
+                  image={image}
+                  alt={title || 'image'}
+                  sx={{ display: imgLoaded ? 'block' : 'none', width: '100%', height: 200, objectFit: 'cover', borderRadius: 2 }}
+                  onLoad={() => setImgLoaded(true)}
+                  onError={() => setImgLoaded(true)}
+                />
+              </Box>
+            ) : null}
+
+            <CardHeader
+              title={title || 'No title'}
+              subheader={description || 'No description'}
+              avatar={icon ? <Icon icon={icon as any} color="primary" /> : null}
+            />
 
             <Box sx={{ display: 'flex' }}>
               
@@ -105,37 +139,50 @@ export default function Virus({
             </Box>
 
             <Box sx={{ m: 1 }}>
-              <Tooltip title="X/Twitter" placement="top">
-                <TwitterShareButton url={url}>
+              <TwitterShareButton url={url}>
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="twitter" color={'primary'} />
-                </TwitterShareButton>
-              </Tooltip>
-            
-              <Tooltip title="Facebook" placement="top">
-                <FacebookShareButton url={url} >
+                  <Typography variant="body1" sx={{ ml: 1 }}>
+                    X/Twitter
+                  </Typography>
+                </Box>
+              </TwitterShareButton>
+
+              <FacebookShareButton url={url} >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="facebook" color={'primary'} />
-                </FacebookShareButton>
-              </Tooltip>
-              <Tooltip title="Share on LinkedIn" placement="top">
-                <LinkedinShareButton
-                  url={url}
-                  summary={description}
-                >
+                  <Typography variant="body1" sx={{ ml: 1 }}>
+                    Facebook
+                  </Typography>
+                </Box>
+              </FacebookShareButton>
+
+              <LinkedinShareButton
+                url={url}
+                summary={description}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="linkedin" color={'primary'} />
-                </LinkedinShareButton>
-              </Tooltip>
-              <Tooltip title="Share on WhatsApp" placement="top">
-                <WhatsappShareButton
-                  url={url}
-                  separator=" - "
-                >
+                  <Typography variant="body1" sx={{ ml: 1 }}>
+                    LinkedIn
+                  </Typography>
+                </Box>
+              </LinkedinShareButton>
+
+              <WhatsappShareButton
+                url={url}
+                separator=" - "
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="whatsapp" color={'primary'} />
-                </WhatsappShareButton>
-              </Tooltip>
+                  <Typography variant="body1" sx={{ ml: 1 }}>
+                    WhatsApp
+                  </Typography>
+                </Box>
+              </WhatsappShareButton>
+
             </Box>
-            
           </Box>
-          
         </Box>
       </Dialog>
     </>
