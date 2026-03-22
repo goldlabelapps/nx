@@ -71,7 +71,6 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
                 {error}
             </Typography>
             <Button
-                fullWidth
                 type="submit"
                 endIcon={<Icon icon="signin" />}
                 variant="outlined"
