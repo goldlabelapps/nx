@@ -212,6 +212,7 @@ export type T_Frontmatter = {
     order?: number;
     image?: string;
     layout?: string;
+    hideInNav?: boolean | string;
 };
 
 export type T_Markdown = {
