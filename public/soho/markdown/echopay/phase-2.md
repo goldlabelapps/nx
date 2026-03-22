@@ -1,6 +1,6 @@
 ---
 order: 1030
-slug: /orders/phase-2
+slug: /echopay/phase-2
 title: Phase 2
 description: Minimum Viable Product
 tags: orders

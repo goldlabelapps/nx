@@ -33,7 +33,12 @@ export type T_Config = {
             enabled: boolean;
             layout?: 'swipedrawer' | 'minidrawer' | 'maxidrawer';
         },
-        async?: {
+        orders?: {
+            enabled: boolean;
+            frontPage: string;
+            adminPage: string;
+        },
+        tings?: {
             enabled: boolean;
         },
         paywall?: {

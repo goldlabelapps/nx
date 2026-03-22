@@ -1,6 +1,6 @@
 ---
 order: 1020
-slug: /orders/phase-1
+slug: /echopay/phase-1
 title: Phase 1
 description: Proof of Concept
 tags: orders

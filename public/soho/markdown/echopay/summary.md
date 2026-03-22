@@ -1,6 +1,6 @@
 ---
 order: 1005
-slug: /orders/summary
+slug: /echopay/summary
 title: Summary
 description: Estimated completion 15th June 2025
 tags: orders

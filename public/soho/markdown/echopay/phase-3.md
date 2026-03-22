@@ -1,6 +1,6 @@
 ---
 order: 1040
-slug: /orders/phase-3
+slug: /echopay/phase-3
 title: Phase 3
 description: Hardening
 tags: orders
