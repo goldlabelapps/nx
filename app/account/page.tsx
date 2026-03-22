@@ -40,14 +40,16 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const themeMode: 'light' | 'dark' = 'light';
     let title = config.siteName || "";
     let description = config.description || "";
-    let image = config.images?.[themeMode] || "";
+    let image = config.images?.[themeMode] || config.images?.light || "";
     if (filePath && fs.existsSync(filePath)) {
         const md = fs.readFileSync(filePath, "utf-8");
         const { data } = matter(md);
         if (data?.title) title = data.title;
         if (data?.description) description = data.description;
         if (data?.url) url = data.url;
-        if (data?.image) image = data.image;
+        if (typeof data?.image === 'string' && data.image.trim()) {
+            image = data.image;
+        }
     }
     const slugPath = Array.isArray(slugArr) && slugArr.length ? slugArr.join("/") : "";
     const pageUrl = url.replace(/\/$/, "") + (slugPath ? `/${slugPath}` : "");
@@ -90,14 +92,15 @@ export default async function Page(props: any) {
     const navItems = await serverUseNav();
     const themeMode: 'light' | 'dark' = (config?.cartridges?.designSystem?.defaultTheme 
             === 'dark') ? 'dark' : 'light';
-    const themedImage = config?.images?.[themeMode] || null;
+    const themedImage = config?.images?.[themeMode] || config?.images?.light || null;
 
+    // Use data.image if it's a non-empty string, otherwise fallback to themedImage
     const meta = getMeta({
         siteName: config.siteName,
         title,
         description,
         url: config.url || "",
-        image: themedImage || data.image,
+        image: (typeof data.image === 'string' && data.image.trim()) ? data.image : themedImage,
     });
 
     return (
