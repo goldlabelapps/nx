@@ -176,6 +176,7 @@ import HeartIcon from '@mui/icons-material/Favorite';
 import DessertIcon from '@mui/icons-material/Cake';
 import AsianIcon from '@mui/icons-material/RamenDining';
 import PublicIcon from '@mui/icons-material/Language';
+import OrdersIcon from '@mui/icons-material/ShoppingCart';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
@@ -183,6 +184,9 @@ export default function Icon({ icon, color }: I_Icon) {
   switch (icon) {
     case 'public':
       iconFragment = <PublicIcon color={color} />;
+      break;
+    case 'orders':
+      iconFragment = <OrdersIcon color={color} />;
       break;
     case 'async':
       iconFragment = <BlokeyIcon color={color} />;

@@ -11,7 +11,7 @@ import {
 	AppBar,
 	Typography,
 } from '@mui/material';
-import {UserSpot} from '../../Paywall';
+// import {UserSpot} from '../../Paywall';
 
 export interface I_Header {
 	config: T_Config;
@@ -58,7 +58,7 @@ export default function Header({
 					avatar={<IconButton onClick={handleAvatarClick}>
 								<Avatar src={avatar} />
 							</IconButton>}
-					action={<UserSpot onClick={handleUserClick} />}
+					// action={<UserSpot onClick={handleUserClick} />}
 				/>
 				</Container>
 			</AppBar>			

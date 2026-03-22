@@ -24,7 +24,7 @@ import {
     TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
-import { Soho } from '../NX/Soho';
+import { OrdersFrontend, OrdersAdmin } from '../NX/Orders';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -107,17 +107,23 @@ export default async function Page(props: any) {
             <NX config={config} frontmatter={data}>
                 <Header config={config} frontmatter={data} />
                 {data.cartridge ? (
-                    data.cartridge === 'soho' ? (
+                    data.cartridge === 'orders-frontend' ? (
                         <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                <Soho config={config} />
+                                <OrdersFrontend config={config} />
+                            </Box>
+                        </Container>
+                    ) : data.cartridge === 'orders-admin' ? (
+                        <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
+                            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
+                                <OrdersAdmin config={config} />
                             </Box>
                         </Container>
                     ) : (
                         <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
                                 <Typography variant="h4" color="primary" sx={{ mb: 2 }}>
-                                    {data.title || title} (Custom Layout)
+                                    {data.title || title} (CARTRIDGE)
                                 </Typography>
                                 <Box>
                                     <RenderMarkdown config={config}>
