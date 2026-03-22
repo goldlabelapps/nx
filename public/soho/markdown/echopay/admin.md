@@ -1,9 +1,8 @@
 ---
 order: 2500
 slug: /echopay/orders-admin
-title: Soho Cash and Carry
-description: Manage the Orders App
+title: Orders Admin
+description: Orders App Manager
 icon: shop
 cartridge: orders-admin
-hideInNav: true
 ---

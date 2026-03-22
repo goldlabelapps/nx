@@ -8,6 +8,7 @@ import {
     CardHeader,
     CardContent,
     Typography,
+    Alert,
 } from '@mui/material';
 
 import {Icon} from '../../DesignSystem';
@@ -26,7 +27,7 @@ export default function OrdersFrontend({
     const router = useRouter();
     const dispatch = useDispatch();
     const orders = useOrders();
-    const {message} = orders || {};
+    const {message, error} = orders || {};
 
     React.useEffect(() => {
         if (!orders){
@@ -35,7 +36,7 @@ export default function OrdersFrontend({
     }, [dispatch, orders]);
 
     const onActionClick = () => {
-        router.push('/admin');
+        router.push('/echopay/orders-admin');
     };
     
     return (<>
@@ -49,13 +50,18 @@ export default function OrdersFrontend({
                 </IconButton>}
             />
             <CardContent>
-                <Typography variant='body1'>
+                {error && <Alert 
+                            color="success"
+                            variant='filled' 
+                            severity='error'>
+                            {error}
+                        </Alert>}
+                {/* <Typography variant='body1' sx={{my:3}}>
                     <span dangerouslySetInnerHTML={{ __html: message }} />
-                </Typography>
-                
+                </Typography> */}
             </CardContent>
         </Card>
-        <pre>orders: {JSON.stringify(orders, null, 2)}</pre>
+        {/* <pre>error: {JSON.stringify(error, null, 2)}</pre> */}
     </>
     );
 }

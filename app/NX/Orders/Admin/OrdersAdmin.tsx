@@ -3,7 +3,7 @@ import type { T_Config } from '../../types';
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
-    Box,
+    Alert,
     Card,
     CardHeader,
     CardContent,
@@ -28,7 +28,7 @@ export default function OrdersAdmin({
     const router = useRouter();
     const dispatch = useDispatch();
     const orders = useOrders();
-    const {message} = orders || {};
+    const {message, error} = orders || {};
 
     React.useEffect(() => {
         if (!orders){
@@ -37,7 +37,7 @@ export default function OrdersAdmin({
     }, [dispatch, orders]);
     
     const onActionClick = () => {
-        router.push('/frontend');
+        router.push('/echopay/orders');
     };
 
     return (<>
@@ -51,13 +51,19 @@ export default function OrdersAdmin({
                         </IconButton>}
             />
             <CardContent>
-                <Typography variant='body1'>
+                {error && <Alert 
+                            color="success"
+                            variant='filled' 
+                            severity='error'>
+                            {error}
+                        </Alert>}
+                {/* <Typography variant='body1' sx={{my:3}}>
                     <span dangerouslySetInnerHTML={{ __html: message }} />
-                </Typography>
+                </Typography> */}
                 
             </CardContent>
         </Card>
-        <pre>orders: {JSON.stringify(orders, null, 2)}</pre>
+        {/* <pre>orders: {JSON.stringify(orders, null, 2)}</pre> */}
     </>
     );
 }
