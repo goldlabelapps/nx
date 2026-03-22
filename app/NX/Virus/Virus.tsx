@@ -142,7 +142,7 @@ export default function Virus({
               <TwitterShareButton url={url}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="twitter" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
+                  <Typography variant="body1" sx={{ mx: 1 }}>
                     X/Twitter
                   </Typography>
                 </Box>
@@ -151,7 +151,7 @@ export default function Virus({
               <FacebookShareButton url={url} >
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="facebook" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
+                  <Typography variant="body1" sx={{ mx: 1 }}>
                     Facebook
                   </Typography>
                 </Box>
@@ -163,7 +163,7 @@ export default function Virus({
               >
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="linkedin" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
+                  <Typography variant="body1" sx={{ mx: 1 }}>
                     LinkedIn
                   </Typography>
                 </Box>
@@ -175,7 +175,7 @@ export default function Virus({
               >
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Icon icon="whatsapp" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
+                  <Typography variant="body1" sx={{ mx: 1 }}>
                     WhatsApp
                   </Typography>
                 </Box>
