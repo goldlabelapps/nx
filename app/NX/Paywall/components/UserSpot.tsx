@@ -1,10 +1,7 @@
 "use client";
-
 import React from 'react';
 import { IconButton } from '@mui/material';
-import { useIsAuthed } from '../../Paywall';
 import { Icon } from '../../DesignSystem';
-
 
 export interface I_UserSpot {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -12,7 +9,6 @@ export interface I_UserSpot {
 
 export default function UserSpot({ onClick }: I_UserSpot) {
     
-    const isAuthed = useIsAuthed();
     const [hide, setHide] = React.useState(false);
 
     React.useEffect(() => {
@@ -29,4 +25,3 @@ export default function UserSpot({ onClick }: I_UserSpot) {
         </IconButton>
     );
 }
-

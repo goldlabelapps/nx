@@ -14,6 +14,7 @@ import {
     usePaywall,
     firebaseLogout,
     setPaywall,
+    UserCard,
  } from '../../Paywall';
 import { Icon, setFeedback } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
@@ -55,14 +56,14 @@ export default function Account({ onClick }: I_Account) {
     }
 
     if (isAuthed){
-        return <>
-            <pre>uid: {JSON.stringify(uid, null, 2)}</pre>
+        return <><UserCard />
+            {/* <pre>uid: {JSON.stringify(uid, null, 2)}</pre>
             <Button
                 endIcon={<Icon icon="signout" color="primary" />}
                 variant='outlined'
                 onClick={handleSignOut}>
                 Sign Out
-            </Button>
+            </Button> */}
             
         </>
     }

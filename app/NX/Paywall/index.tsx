@@ -1,6 +1,7 @@
 
 import Paywall from "./Paywall";
 import SignIn from './components/SignIn';
+import UserCard from './components/UserCard';
 import SimpleSignIn from './components/SimpleSignIn';
 import UserSpot from './components/UserSpot';
 import Account from './components/Account';
@@ -28,4 +29,5 @@ export {
     subscribeUser,
     UserSpot,
     useUID,
+    UserCard,
 };
