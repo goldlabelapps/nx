@@ -1,32 +1,22 @@
 'use client';
-import type { T_Config } from '../../types';
 import * as React from 'react';
 import {useRouter} from 'next/navigation';
 import {
     IconButton,
-    Card,
     CardHeader,
     CardContent,
-    Typography,
+    Alert,
 } from '@mui/material';
-
 import {Icon} from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
-import { useOrders, initOrders } from '../../Orders';
+import { useOrders, initOrders, ProductSearch } from '../../Orders';
 
-export interface I_OrdersFrontend {
-    config: T_Config;
-    children?: React.ReactNode;
-};
-
-export default function OrdersFrontend({
-    config,
-}: I_OrdersFrontend) {
+export default function OrdersFrontend() {
 
     const router = useRouter();
     const dispatch = useDispatch();
     const orders = useOrders();
-    const {message} = orders || {};
+    const {error, products, search} = orders || {};
 
     React.useEffect(() => {
         if (!orders){
@@ -35,13 +25,13 @@ export default function OrdersFrontend({
     }, [dispatch, orders]);
 
     const onActionClick = () => {
-        router.push('/admin');
+        router.push('/echopay/orders-admin');
     };
     
     return (<>
-        <Card variant='outlined'>
+        <>
             <CardHeader 
-                title='Frontend' 
+                title='Orders Frontend' 
                 subheader='Find products, create orders, pay.'
                 avatar={<Icon icon='orders' color={'primary'} />}
                 action={<IconButton color={'primary'} onClick={onActionClick}>
@@ -49,13 +39,16 @@ export default function OrdersFrontend({
                 </IconButton>}
             />
             <CardContent>
-                <Typography variant='body1'>
-                    <span dangerouslySetInnerHTML={{ __html: message }} />
-                </Typography>
-                
+                {error && <Alert 
+                            color="success"
+                            variant='filled' 
+                            severity='error'>
+                            {error}
+                        </Alert>}
+                <ProductSearch />
             </CardContent>
-        </Card>
-        <pre>orders: {JSON.stringify(orders, null, 2)}</pre>
+        </>
+        <pre>search: {JSON.stringify(search, null, 2)}</pre>
     </>
     );
 }

@@ -1,6 +1,5 @@
-
-import Paywall from "./Paywall";
 import SignIn from './components/SignIn';
+import AccountCard from './components/AccountCard';
 import SimpleSignIn from './components/SimpleSignIn';
 import UserSpot from './components/UserSpot';
 import Account from './components/Account';
@@ -11,10 +10,9 @@ import { useUID } from './hooks/useUID';
 import { useAuthed } from './hooks/useAuthed';
 import { usePaywall } from './hooks/usePaywall';
 import { useIsAuthed } from './hooks/useIsAuthed';
-import { subscribeUser } from './actions/subscribeUser';
+import { subscribeAccount } from './actions/subscribeAccount';
 
 export {
-    Paywall,
     Account,
     SignIn,
     SimpleSignIn,
@@ -25,7 +23,8 @@ export {
     firebaseLogout,
     usePaywall,
     useIsAuthed,
-    subscribeUser,
+    subscribeAccount,
     UserSpot,
     useUID,
+    AccountCard,
 };

@@ -3,7 +3,7 @@ import type { T_Config } from '../../types';
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
 import {
-    Box,
+    Alert,
     Card,
     CardHeader,
     CardContent,
@@ -28,7 +28,7 @@ export default function OrdersAdmin({
     const router = useRouter();
     const dispatch = useDispatch();
     const orders = useOrders();
-    const {message} = orders || {};
+    const {message, error, products} = orders || {};
 
     React.useEffect(() => {
         if (!orders){
@@ -37,7 +37,7 @@ export default function OrdersAdmin({
     }, [dispatch, orders]);
     
     const onActionClick = () => {
-        router.push('/frontend');
+        router.push('/echopay/orders');
     };
 
     return (<>
@@ -51,13 +51,30 @@ export default function OrdersAdmin({
                         </IconButton>}
             />
             <CardContent>
-                <Typography variant='body1'>
-                    <span dangerouslySetInnerHTML={{ __html: message }} />
-                </Typography>
-                
+                {error && <Alert 
+                            color="success"
+                            variant='filled' 
+                            severity='error'>
+                            {error}
+                        </Alert>}
+
+                {Array.isArray(products) && products.length > 0 && (
+                    <ul>
+                        {products.map((product: any, idx: number) => (
+                            <li key={product.id || idx}>
+                                {product.title || product.name || 'Untitled Product'}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                {Array.isArray(products) && products.length === 0 && (
+                    <Typography variant="body2" color="textSecondary">
+                        No products found.
+                    </Typography>
+                )}
             </CardContent>
         </Card>
-        <pre>orders: {JSON.stringify(orders, null, 2)}</pre>
+        {/* <pre>products: {JSON.stringify(products, null, 2)}</pre> */}
     </>
     );
 }

@@ -1,9 +1,8 @@
 ---
 order: 3000
 slug: /echopay/orders
-title: Soho Cash and Carry
+title: Orders App
 description: Frontend
 icon: shop
 cartridge: orders-frontend
-hideInNav: true
 ---
