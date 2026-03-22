@@ -1,6 +1,6 @@
 import type { T_UbereduxDispatch, T_RootState } from '../../types';
 import { setUbereduxKey } from '../../Uberedux';
-import { setOrders } from '../../Orders';
+import { setOrders, fetchProducts } from '../../Orders';
 import {setFeedback} from '../../DesignSystem';
 
 export const initOrders = (): any =>
@@ -31,9 +31,11 @@ export const initOrders = (): any =>
                 } else {
                     dispatch(setFeedback({
                         severity: 'success',
-                        title: 'API Health Check Passed',
-                        description: 'API is healthy.',
+                        title: `${baseURL}`,
+                        description: 'API Healthy.',
                     }));
+                    // Healthcheck successful, now fetch products
+                    dispatch(fetchProducts());
                 }
 
                 return;

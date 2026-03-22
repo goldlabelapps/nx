@@ -28,7 +28,7 @@ export default function OrdersAdmin({
     const router = useRouter();
     const dispatch = useDispatch();
     const orders = useOrders();
-    const {message, error} = orders || {};
+    const {message, error, products} = orders || {};
 
     React.useEffect(() => {
         if (!orders){
@@ -57,13 +57,24 @@ export default function OrdersAdmin({
                             severity='error'>
                             {error}
                         </Alert>}
-                {/* <Typography variant='body1' sx={{my:3}}>
-                    <span dangerouslySetInnerHTML={{ __html: message }} />
-                </Typography> */}
-                
+
+                {Array.isArray(products) && products.length > 0 && (
+                    <ul>
+                        {products.map((product: any, idx: number) => (
+                            <li key={product.id || idx}>
+                                {product.title || product.name || 'Untitled Product'}
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                {Array.isArray(products) && products.length === 0 && (
+                    <Typography variant="body2" color="textSecondary">
+                        No products found.
+                    </Typography>
+                )}
             </CardContent>
         </Card>
-        {/* <pre>orders: {JSON.stringify(orders, null, 2)}</pre> */}
+        {/* <pre>products: {JSON.stringify(products, null, 2)}</pre> */}
     </>
     );
 }
