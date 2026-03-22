@@ -1,6 +1,5 @@
 import type { Dispatch } from 'redux';
 import { setUbereduxKey } from '../../Uberedux';
-import { setAsync } from '../../Async';
 
 export const subscribeUser = (): any =>
 async (dispatch: Dispatch, getState: () => any) => {

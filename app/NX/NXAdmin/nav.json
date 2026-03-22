@@ -9,14 +9,6 @@
         "icon": "users"
     },
     {
-        "id": "async",
-        "collection": "async",
-        "single": "Async",
-        "title": "Async",
-        "description": "Live users",
-        "icon": "async"
-    },
-    {
         "id": "files",
         "collection": "files",
         "single": "File",

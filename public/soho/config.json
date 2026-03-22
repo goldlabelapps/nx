@@ -24,7 +24,12 @@
             "enabled": true,
             "layout": "minidrawer"
         },
-        "async": {
+        "orders": {
+            "enabled": true,
+            "frontPage": "/echopay/orders",
+            "adminPage": "/echopay/orders-admin"
+        },
+        "tings": {
             "enabled": false
         },
         "designSystem": {

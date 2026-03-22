@@ -1,7 +1,7 @@
 ---
 order: 1000
-slug: /orders
-title: EchoPay Orders
+slug: /echopay
+title: EchoPay
 description: New Shop for Summer 2026
 tags: spirits, wine, beer, cider, orders, echopay
 icon: shop

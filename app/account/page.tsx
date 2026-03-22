@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: { params: any }): Promise<Met
     const slugArr = resolvedParams?.slug || [];
     const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const { config } = getTenant(tenant as T_Tenant);
-    const async = config.cartridges?.async?.enabled === true;
     const filePath = serverUseMDBySlug(slugArr, tenant);
     let frontmatter: T_Frontmatter = {};
     if (filePath && fs.existsSync(filePath)) {

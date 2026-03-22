@@ -5,7 +5,6 @@ import { Box } from '@mui/material';
 import { DesignSystem, Feedback } from './DesignSystem';
 import { useDispatch } from './Uberedux';
 import { setDesignSystem, useDesignSystem } from './DesignSystem';
-import { Async } from './Async';
 import { EchoPay } from '../../public/echopay/flash';
 
 const NX: React.FC<I_NX> = ({

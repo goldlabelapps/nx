@@ -5,27 +5,31 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useAuthed } from '../../Paywall';
 
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
-    return items.map((item, idx) => {
-        let baseId = item.path || item.slug || item.title || String(idx);
-        let id = baseId;
-        let suffix = 1;
-        while (usedIds.has(id)) {
-            id = `${baseId}_${suffix}`;
-            suffix++;
-        }
-        usedIds.add(id);
+    return items
+        .filter(item => !(item.hideInNav === true || item.hideInNav === 'true'))
+        .map((item, idx) => {
+            let baseId = item.path || item.slug || item.title || String(idx);
+            let id = baseId;
+            let suffix = 1;
+            while (usedIds.has(id)) {
+                id = `${baseId}_${suffix}`;
+                suffix++;
+            }
+            usedIds.add(id);
             const route = item.path || item.slug;
             let label = item.title;
             if (route === "/") {
                 label = "Home";
             }
+            // Recursively filter children as well
+            const filteredChildren = item.children ? mapNavItemsToTreeView(item.children, usedIds) : undefined;
             return {
                 id,
                 label,
                 route,
-                children: item.children ? mapNavItemsToTreeView(item.children, usedIds) : undefined,
+                children: filteredChildren && filteredChildren.length > 0 ? filteredChildren : undefined,
             };
-    });
+        });
 }
 
 export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {

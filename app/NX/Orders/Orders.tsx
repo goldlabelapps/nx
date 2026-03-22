@@ -2,21 +2,16 @@
 import type { T_Config } from '../types';
 import * as React from 'react';
 
-
-
-export interface I_Soho {
+export interface I_Orders {
     config: T_Config;
     children?: React.ReactNode;
 };
 
-export default function Soho({
+export default function Orders({
     config,
-}: I_Soho) {
-    
-
-
+}: I_Orders) {
 
     return (
-        <>Hello world. </>
+        <>Orders App </>
     );
 }

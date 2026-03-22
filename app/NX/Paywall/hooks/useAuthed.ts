@@ -4,7 +4,6 @@ import { getFirebaseAuth } from "../../lib/firebase";
 import { User } from "firebase/auth";
 import { setPaywall} from '../../Paywall';
 import { useDispatch } from '../../Uberedux';
-import { setTing } from '../../Async';
 
 /**
  * useAuthed - React hook to get Firebase auth state

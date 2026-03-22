@@ -1,6 +1,6 @@
 ---
 order: 1050
-slug: /orders/phase-4
+slug: /echopay/phase-4
 title: Phase 4
 description: Deployment
 tags: orders
