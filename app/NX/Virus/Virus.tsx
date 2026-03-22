@@ -7,12 +7,8 @@ import {
   WhatsappShareButton,
   TwitterShareButton,
 } from 'react-share';
-import { Tooltip, Box, Typography, ButtonBase, Popover, Dialog
-
-  
- } from '@mui/material';
+import { Tooltip, Box, Typography, ButtonBase, Popover, Dialog} from '@mui/material';
 import { Icon } from '../../NX/DesignSystem';
-import { Forward } from '../../NX/Virus';
 
 export default function Virus({
   meta,
@@ -76,7 +72,12 @@ export default function Virus({
         <Box id="virus" sx={{ p: 1 }}>
 
           <Box sx={{  }}>
+            <pre>title: {JSON.stringify(title, null, 2)}</pre>
+            <pre>description: {JSON.stringify(description, null, 2)}</pre>
+            <pre>image: {JSON.stringify(image, null, 2)}</pre>
+
             <Box sx={{ display: 'flex' }}>
+              
               <Box sx={{m:1, mr: 2}}>
                 <ButtonBase
                   onClick={e => {
@@ -100,9 +101,6 @@ export default function Virus({
                     </Typography>
                 </ButtonBase>
               </Box>
-              <Box sx={{ m: 1 }}>
-                  <Forward />
-                </Box>
               
             </Box>
 
@@ -112,17 +110,12 @@ export default function Virus({
                   <Icon icon="twitter" color={'primary'} />
                 </TwitterShareButton>
               </Tooltip>
-            </Box>
-
-            <Box sx={{ m: 1 }}>
+            
               <Tooltip title="Facebook" placement="top">
                 <FacebookShareButton url={url} >
                   <Icon icon="facebook" color={'primary'} />
                 </FacebookShareButton>
               </Tooltip>
-            </Box>
-
-            <Box sx={{ m: 1 }}>
               <Tooltip title="Share on LinkedIn" placement="top">
                 <LinkedinShareButton
                   url={url}
@@ -131,9 +124,6 @@ export default function Virus({
                   <Icon icon="linkedin" color={'primary'} />
                 </LinkedinShareButton>
               </Tooltip>
-            </Box>
-
-            <Box sx={{ m: 1 }}>
               <Tooltip title="Share on WhatsApp" placement="top">
                 <WhatsappShareButton
                   url={url}
