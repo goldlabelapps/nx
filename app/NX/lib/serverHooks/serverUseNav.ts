@@ -33,7 +33,7 @@ function normalizeSlug(slug: string | undefined, fallback: string): string {
     return slug;
 }
 
-function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title: string; order?: number; slug: string; icon?: string; type?: string } {
+function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title: string; order?: number; slug: string; icon?: string; type?: string; hideInNav?: boolean | string } {
     const content = fs.readFileSync(filePath, "utf-8");
     const { data } = matter(content);
     const title = data.title || path.basename(filePath, ".md");

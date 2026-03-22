@@ -31,12 +31,15 @@ export type T_Config = {
     cartridges: {
         nxadmin?: {
             enabled: boolean;
-            layout?: 'swipedrawer' | 'minidrawer' | 'maxidrawer';
+            layout?: string;
         },
         orders?: {
             enabled: boolean;
             frontPage: string;
             adminPage: string;
+        },
+        async?: {
+            enabled: boolean;
         },
         tings?: {
             enabled: boolean;
