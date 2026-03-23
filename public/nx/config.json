@@ -13,8 +13,8 @@
         "dark": "/nx/svg/favicon_DCFFFB.svg"
     },
     "images": {
-        "light": "/nx/jpg/default.jpg",
-        "dark": "/nx/jpg/default.jpg"
+        "light": "/nx/png/nx-trans.png",
+        "dark": "/nx/png/nx-trans.png"
     },
     "cartridges": {
         "nxadmin": {
@@ -25,7 +25,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",

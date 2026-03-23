@@ -32,23 +32,26 @@ export default function OrdersFrontend() {
         <>
             <CardHeader 
                 title='Orders Frontend' 
-                subheader='Find products, create orders, pay.'
                 avatar={<Icon icon='orders' color={'primary'} />}
                 action={<IconButton color={'primary'} onClick={onActionClick}>
                     <Icon icon='admin' />
                 </IconButton>}
             />
             <CardContent>
-                {error && <Alert 
-                            color="success"
-                            variant='filled' 
-                            severity='error'>
+                {error ? <Alert 
+                            variant='outlined' 
+                            severity='warning'>
                             {error}
-                        </Alert>}
-                <ProductSearch />
+                        </Alert> : <>
+                    <ProductSearch />
+                </>}     
             </CardContent>
         </>
-        <pre>search: {JSON.stringify(search, null, 2)}</pre>
     </>
     );
 }
+
+/*
+ <pre>search: {JSON.stringify(search, null, 2)}</pre>
+subheader='Find products, create orders, pay.'
+*/

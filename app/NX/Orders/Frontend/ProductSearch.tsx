@@ -7,7 +7,7 @@ import {
     IconButton,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
-import { setOrders } from '../../Orders';
+import { setOrders, CreateOrder } from '../../Orders';
 import {Icon} from '../../DesignSystem';
 
 export default function ProductSearch() {
@@ -60,10 +60,9 @@ export default function ProductSearch() {
                 aria-label="Favourites">
                 <Icon icon="star" />
             </IconButton>
+            
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-            <IconButton color="primary" sx={{ p: '10px' }} aria-label="cart">
-                <Icon icon="orders" />
-            </IconButton>
+            <CreateOrder />
         </Paper>
     );
 }

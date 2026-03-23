@@ -43,7 +43,7 @@ export const initOrders = (): any =>
                 let msg = e instanceof Error ? e.message : String(e);
                 const baseURL = process.env.NEXT_PUBLIC_NX_AI;
                 if (msg === 'Failed to fetch') {
-                    msg = `Unable to reach the API at ${baseURL}. Please check your network connection and ensure the API server is running.`;
+                    msg = `Can't reach ${baseURL}. Check network & ensure the API server is running`;
                 }
                 dispatch(setOrders('error', `${msg}`));
                 dispatch(setUbereduxKey({ key: 'error', value: `${msg}` }));
