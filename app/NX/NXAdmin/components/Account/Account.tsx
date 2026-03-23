@@ -38,16 +38,16 @@ export default function Account() {
     <>
       <Card variant="outlined">
         <CardHeader 
-          avatar={<Badge badgeContent={level} color='primary'>
+          avatar={avatar &&<Badge badgeContent={level} color='primary'>
             <Avatar src={avatar} />
           </Badge>}
-          title={name}
-          subheader={email}
+          title={name || email}
+          subheader={uid}
           action={<SignOutBtn />}
         />
-        <CardContent>
+        {/* <CardContent>
           Additional content can be added here
-        </CardContent>
+        </CardContent> */}
       </Card>
     </>
   );

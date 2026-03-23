@@ -41,10 +41,9 @@ export default function OrdersAdmin({
     };
 
     return (<>
-        <Card variant='outlined'>
+        <>
             <CardHeader 
-                title='Admin' 
-                subheader='Orders App Tenant'
+                title='Orders Admin'
                 avatar={<Icon icon='admin' color={'primary'} />}
                 action={<IconButton color={'primary'} onClick={onActionClick}>
                             <Icon icon='orders' />
@@ -52,9 +51,8 @@ export default function OrdersAdmin({
             />
             <CardContent>
                 {error && <Alert 
-                            color="success"
-                            variant='filled' 
-                            severity='error'>
+                            variant='outlined' 
+                            severity='warning'>
                             {error}
                         </Alert>}
 
@@ -73,7 +71,7 @@ export default function OrdersAdmin({
                     </Typography>
                 )}
             </CardContent>
-        </Card>
+        </>
         {/* <pre>products: {JSON.stringify(products, null, 2)}</pre> */}
     </>
     );
