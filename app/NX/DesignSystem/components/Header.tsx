@@ -12,6 +12,9 @@ import {
 	Typography,
 } from '@mui/material';
 import {UserSpot} from '../../Paywall';
+import { navigateTo } from '../../DesignSystem';
+import { useDispatch } from '../../Uberedux';
+
 
 export interface I_Header {
 	config: T_Config;
@@ -23,17 +26,20 @@ export default function Header({
 	frontmatter,
 }: I_Header) {
 	const theme = useTheme();
-	const router = useRouter();
+	const dispatch = useDispatch();
+	const router: ReturnType<typeof useRouter> = useRouter();
     const themeMode = theme?.palette?.mode || 'light';
 	const avatar = config?.avatars?.[themeMode] || '';
     const {title} = frontmatter || {};
 
 	const handleAvatarClick = () => {
-		router.push('/');
+		//router.push('/');
+		dispatch(navigateTo(router, '/'));
 	}
 
 	const handleUserClick = () => {
-		router.push('/account');
+		// router.push('/account');
+		dispatch(navigateTo(router, '/account'));
 	}
 
 	return (
