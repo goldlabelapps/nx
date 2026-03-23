@@ -5,7 +5,7 @@ title: Phase 1
 description: Proof of Concept
 tags: orders
 icon: shop
-image: https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg
+image: /soho/png/orders-app.png
 ---
 
 Proves the core tech. In this phase we create a Cloud based backend using Python API with Postgres Database and tsvector to allow uploading and processing of large csv files and superfast searching of that product data

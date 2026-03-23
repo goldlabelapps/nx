@@ -7,7 +7,7 @@ tags: spirits, wine, beer, cider
 icon: food
 ---
 
-#### Birmingham
+## Birmingham
 
 Sandwell Business Park  
 Units 9,11,13  
@@ -18,7 +18,7 @@ B66 1QG
 Tel: 0121 511 1057  
 Fax: 0121 552 9972  
 
-#### Wolverhampton  
+## Wolverhampton  
 Tremont Street  
 Wolverhampton  
 WV10 0ED  

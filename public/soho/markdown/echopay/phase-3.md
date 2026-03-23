@@ -5,7 +5,7 @@ title: Phase 3
 description: Hardening
 tags: orders
 icon: shop
-image: https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg
+image: /soho/png/orders-app.png
 ---
 
 In which we repay technical debt and fill in the gaps between MVP and a production ready product ready for release

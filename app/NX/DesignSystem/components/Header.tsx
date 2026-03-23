@@ -1,7 +1,7 @@
 "use client";
 import * as React from 'react';
 import type { T_Config, T_Frontmatter } from '../../types';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import {
 	Container,
 	Avatar,
@@ -32,13 +32,15 @@ export default function Header({
 	const avatar = config?.avatars?.[themeMode] || '';
     const {title} = frontmatter || {};
 
+	const pathname = usePathname();
+
 	const handleAvatarClick = () => {
-		//router.push('/');
+		if (pathname === '/') return;
 		dispatch(navigateTo(router, '/'));
 	}
 
-	const handleUserClick = () => {
-		// router.push('/account');
+	const handleAccountClick = () => {
+		if (pathname === '/account') return;
 		dispatch(navigateTo(router, '/account'));
 	}
 
@@ -49,23 +51,24 @@ export default function Header({
 				color="default"
 				sx={{
 					boxShadow: 0,
-					background: theme.palette?.background?.default || 'transparent',
+					background: theme.palette?.background?.default || 'inherit',
 				}}>
 				<Container maxWidth="lg">
 					<CardHeader
-					title={<Typography
-						color='secondary'
-						variant="h5"
-						component="h1"
-						sx={{ mt: 0.25 }}
-					>
-						{title}
-					</Typography>}
-					avatar={<IconButton onClick={handleAvatarClick}>
-								<Avatar src={avatar} />
-							</IconButton>}
-					action={<UserSpot onClick={handleUserClick} />}
-				/>
+						title={<Typography
+							color='secondary'
+							variant="h5"
+							component="h1"
+							sx={{ mt: 0.25 }}
+						>
+							{title}
+						</Typography>}
+						// subheader={pathname}
+						avatar={<IconButton onClick={handleAvatarClick}>
+									<Avatar src={avatar} />
+								</IconButton>}
+						action={<UserSpot onClick={handleAccountClick} />}
+					/>
 				</Container>
 			</AppBar>			
 		</header>
