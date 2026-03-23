@@ -21,6 +21,7 @@ import { setDesignSystem } from './actions/setDesignSystem';
 import SettingsMenu from "./components/SettingsMenu";
 import TreeNav from "./components/TreeNav";
 import {Surface} from "./components/Surface";
+import Loader from "./components/Loader";
 
 export {
     Nav,
@@ -44,4 +45,5 @@ export {
     useFeedback,
     TreeNav,
     Surface,
+    Loader,
 };

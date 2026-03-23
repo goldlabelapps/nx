@@ -4,6 +4,7 @@ import { T_Theme, I_DesignSystem } from '../types';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import {
   useMUITheme,
+  Loader,
 } from '../DesignSystem';
 
 export default function DesignSystem({
@@ -22,6 +23,7 @@ export default function DesignSystem({
   return (
     <ThemeProvider theme={newtheme}>
       <CssBaseline />
+      <Loader />
       {children}
     </ThemeProvider>
   );
