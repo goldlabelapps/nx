@@ -1,5 +1,5 @@
 ---
-order: 255
+order: 1255
 slug: /dog/who-is-dog
 title: Who is Dog?
 description: Endlessly affectionate, completely clueless

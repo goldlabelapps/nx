@@ -10,6 +10,7 @@ import {
 import { 
   CardMedia,
   CardHeader,
+  CardContent,
   Skeleton,
   Box, Typography, ButtonBase, Popover, Dialog,
 } from '@mui/material';
@@ -82,11 +83,7 @@ export default function Virus({
 
       <Dialog open={open} onClose={() => setOpen(false)} maxWidth="xs" fullWidth>
 
-        <Box id="virus" sx={{ p: 1 }}>
-          <Box sx={{  }}>
-
-            
-
+        <Box id="virus">
             {/* Show CardMedia with Skeleton preloader if image is a non-empty string */}
             {typeof image === 'string' && image.trim() ? (
               <Box sx={{ width: '100%', maxWidth: 400, m: 2 }}>
@@ -105,14 +102,14 @@ export default function Virus({
             ) : null}
 
             <CardHeader
+              sx={{mx: 2}}
               title={title || 'No title'}
               subheader={description || 'No description'}
               avatar={icon ? <Icon icon={icon as any} color="primary" /> : null}
             />
 
-            <Box sx={{ display: 'flex' }}>
-              
-              <Box sx={{m:1, mr: 2}}>
+            <CardContent>
+              <Box sx={{ ml: 2 }}>
                 <ButtonBase
                   onClick={e => {
                     navigator.clipboard.writeText(url);
@@ -125,64 +122,68 @@ export default function Virus({
                   }}
                 >
                   <Icon icon="copy" color="primary" />
-                  <Typography 
-                    variant="h6" 
-                    sx={{ 
+                  <Typography
+                    variant="body2"
+                    sx={{
                       ml: 1,
-                     }}
+                    }}
                   >
                     Copy link
-                    </Typography>
+                  </Typography>
                 </ButtonBase>
               </Box>
-              
-            </Box>
+              <Box sx={{ m: 2 }}>
+                <TwitterShareButton url={url}>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Icon icon="twitter" color={'primary'} />
+                    <Typography variant="body2" sx={{ mx: 1 }}>
+                      X/Twitter
+                    </Typography>
+                  </Box>
+                </TwitterShareButton>
+              </Box>
 
-            <Box sx={{ m: 1 }}>
-              <TwitterShareButton url={url}>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Icon icon="twitter" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
-                    X/Twitter
-                  </Typography>
-                </Box>
-              </TwitterShareButton>
+              <Box sx={{ m: 2 }}>
+                <FacebookShareButton url={url} >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Icon icon="facebook" color={'primary'} />
+                    <Typography variant="body2" sx={{ mx: 1 }}>
+                      Facebook
+                    </Typography>
+                  </Box>
+                </FacebookShareButton>
+              </Box>
 
-              <FacebookShareButton url={url} >
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Icon icon="facebook" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
-                    Facebook
-                  </Typography>
-                </Box>
-              </FacebookShareButton>
+              <Box sx={{ m: 2 }}>
+                <LinkedinShareButton
+                  url={url}
+                  summary={description}
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Icon icon="linkedin" color={'primary'} />
+                    <Typography variant="body2" sx={{ mx: 1 }}>
+                      LinkedIn
+                    </Typography>
+                  </Box>
+                </LinkedinShareButton>
+              </Box>
+              <Box sx={{ m: 2 }}>
+                <WhatsappShareButton
+                  url={url}
+                  separator=" - "
+                >
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Icon icon="whatsapp" color={'primary'} />
+                    <Typography variant="body2" sx={{ mx: 1 }}>
+                      WhatsApp
+                    </Typography>
+                  </Box>
+                </WhatsappShareButton>
+              </Box>
 
-              <LinkedinShareButton
-                url={url}
-                summary={description}
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Icon icon="linkedin" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
-                    LinkedIn
-                  </Typography>
-                </Box>
-              </LinkedinShareButton>
+            </CardContent>
 
-              <WhatsappShareButton
-                url={url}
-                separator=" - "
-              >
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Icon icon="whatsapp" color={'primary'} />
-                  <Typography variant="body1" sx={{ ml: 1 }}>
-                    WhatsApp
-                  </Typography>
-                </Box>
-              </WhatsappShareButton>
-
-            </Box>
-          </Box>
+            
         </Box>
       </Dialog>
     </>

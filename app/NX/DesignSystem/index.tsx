@@ -12,12 +12,16 @@ import Share from './components/Share';
 import SmartImage from './components/SmartImage';
 import { useFeedback } from './hooks/useFeedback';
 import { useMUITheme } from './hooks/useMUITheme';
+import { navigateTo } from './actions/navigateTo';
+
+
 import { setFeedback } from './actions/setFeedback';
 import { useDesignSystem } from './hooks/useDesignSystem';
 import { setDesignSystem } from './actions/setDesignSystem';
 import SettingsMenu from "./components/SettingsMenu";
 import TreeNav from "./components/TreeNav";
 import {Surface} from "./components/Surface";
+import Loader from "./components/Loader";
 
 export {
     Nav,
@@ -35,9 +39,11 @@ export {
     CleverText,
     useDesignSystem,
     setDesignSystem,
+    navigateTo,
     Feedback,
     setFeedback,
     useFeedback,
     TreeNav,
     Surface,
+    Loader,
 };
