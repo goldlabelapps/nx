@@ -12,4 +12,4 @@ image: https://live.staticflickr.com/65535/54340497432_b8c92a3215_b.jpg
 
 "Oh yeh, you mean Karen?"
 
-> That's her. Like a cat pissing in tbe corner
+> That's her. Like a cat pissing in the corner
