@@ -29,11 +29,11 @@ export const initOrders = (): any =>
                     }));
                     dispatch(setOrders('error', description));
                 } else {
-                    dispatch(setFeedback({
-                        severity: 'success',
-                        title: `${baseURL}`,
-                        description: 'API Healthy.',
-                    }));
+                    // dispatch(setFeedback({
+                    //     severity: 'success',
+                    //     title: `${baseURL}`,
+                    //     description: 'API Healthy.',
+                    // }));
                     // Healthcheck successful, now fetch products
                     dispatch(fetchProducts());
                 }

@@ -1,6 +1,6 @@
 import type { T_Tenant } from '../NX/types';
 import { Metadata } from "next";
-import { getTenant } from '../NX/lib';
+import { getTenant } from '../NX/lib/index.server';
 import { getBaseurl } from '../api';
 import NXAdminAuthWrapper from './NXAdminAuthWrapper';
 
