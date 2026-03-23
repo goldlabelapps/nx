@@ -67,7 +67,7 @@ export default function AccountCard() {
                 </Button>
             </DialogActions>
         </Dialog>
-        {/* <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre> */}
+        <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre>
     </>
     );
 }
