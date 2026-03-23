@@ -30,7 +30,7 @@ export default function Loader() {
             sx={{ 
                 zIndex: (theme) => theme.zIndex.drawer + 2000,
             }}>
-            <CircularProgress color="primary" />
+            <CircularProgress color="info" />
         </Backdrop>
     );
 }

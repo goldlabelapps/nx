@@ -10,7 +10,7 @@ export function useMUITheme(t: T_Theme) {
       secondary: { main: t.secondary },
 
       // success: { main: t.background },
-      // info: { main: t.background },
+      info: { main: t.text },
       // warning: { main: t.background },
       // error: { main: t.background },
 

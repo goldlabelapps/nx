@@ -5,7 +5,7 @@ title: Soho Cash and Carry
 description: Shop smarter, faster, and easier
 tags: spirits, wine, beer, cider
 icon: shop
-image: /soho/jpg/soho.jpg
+image: /soho/png/orders-app.png
 # cartridge: soho
 ---
 

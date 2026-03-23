@@ -5,7 +5,7 @@ title: Phase 2
 description: Minimum Viable Product
 tags: orders
 icon: shop
-image: https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg
+image: /soho/png/orders-app.png
 ---
 
 In which we build out the rest of the app 

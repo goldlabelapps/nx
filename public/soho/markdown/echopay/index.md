@@ -5,7 +5,7 @@ title: EchoPay
 description: New Shop for Summer 2026
 tags: spirits, wine, beer, cider, orders, echopay
 icon: shop
-image: https://live.staticflickr.com/65535/55158091848_c9c249983f_b.jpg
+image: /soho/png/orders-app.png
 ---
 
 > Shop smarter, faster, and easier

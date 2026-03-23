@@ -13,8 +13,8 @@
         "dark": "/soho/svg/avatar_dark.svg"
     },
     "images": {
-        "light": "/soho/jpg/soho.jpg",
-        "dark": "/soho/jpg/soho.jpg"
+        "light": "/soho/png/orders-app.png",
+        "dark": "/soho/png/orders-app.png"
     },
     "cartridges": {
         "paywall": {
@@ -34,7 +34,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "light": {
                     "mode": "light",
