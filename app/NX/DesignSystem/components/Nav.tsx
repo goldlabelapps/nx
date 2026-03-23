@@ -49,14 +49,15 @@ const Nav: React.FC<I_Nav> = ({
         setDrawerOpen(false);
     }
 
+    const { navigateTo } = require('../../../NX/DesignSystem');
     const handleNXAdmin = () => {
         setDrawerOpen(false);
-        router.push('/nx-admin');
+        dispatch(navigateTo(router, '/nx-admin'));
     };
 
     function handleNavClick(slug?: string) {
         if (typeof slug === 'string' && slug.trim().length > 0) {
-            router.push(slug);
+            dispatch(navigateTo(router, slug));
             setDrawerOpen(false);
         } else {
             console.log('No valid slug for nav item:', slug);

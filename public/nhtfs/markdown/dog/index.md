@@ -1,7 +1,7 @@
 ---
 order: 999
 slug: /dog
-title: dog
+title: Dog
 description: I am dog
 tags: dog
 icon: dog

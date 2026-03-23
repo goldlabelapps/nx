@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuthed } from '../../Paywall';
+import { useDispatch } from '../../Uberedux';
+import { navigateTo } from '../../DesignSystem';
 
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
     return items
@@ -34,17 +36,12 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
 
 export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const router = useRouter();
+    const dispatch = useDispatch();
     const pathname = usePathname();
     const treeViewItems = mapNavItemsToTreeView(navItems);
     const authed = useAuthed();
     let md = ``;
-
-    if (authed)
-        md = ``;
-
-    const handleCTA = () => {
-        router.push('/nx-admin');
-    };
+    if (authed) md = ``;
 
     // Helper to collect all node ids along the path to the current page
     function getExpandedIds(items: any[], pathname: string): string[] {
@@ -85,7 +82,7 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                     const clickedItem = findItem(treeViewItems, itemId);
                     if (clickedItem && clickedItem.route && !clickedItem.children) {
-                        router.push(clickedItem.route);
+                        dispatch(navigateTo(router, clickedItem.route));
                     }
                 }}
             />

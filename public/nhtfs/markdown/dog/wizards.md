@@ -1,7 +1,7 @@
 ---
 order: 1260
 slug: /dog/wizards
-title: Who are Wizards?
+title: Wizards
 description: Any sufficiently advanced technology is indistinguishable from magic
 tags: dog
 icon: dog
