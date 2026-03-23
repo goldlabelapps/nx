@@ -4,7 +4,7 @@ slug: /nx
 title: What is NX?
 description: Multi-tenant Next.js application
 tags: NX, Features, n64, Cartridges
-image: https://live.staticflickr.com/65535/55053909901_5f8999ff92_b.jpg
+image: /nx/png/nx-trans.png
 icon: info
 ---
 
