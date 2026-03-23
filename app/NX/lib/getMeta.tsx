@@ -1,5 +1,5 @@
 // import type { I_Meta } from '../types';
-import { getTenant } from './';
+import { getTenant } from './getTenant';
 
 export const getMeta = (props: any) => {
 

@@ -3,18 +3,9 @@ import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import {
-    Box,
-    Container,
-} from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { NX } from '../NX';
-import {
-    serverUseMDBySlug,
-    serverUseAllMd,
-    serverUseNav,
-    getTenant,
-    getMeta,
-} from '../NX/lib';
+import { serverUseMDBySlug, serverUseAllMd, serverUseNav, getTenant, getMeta } from '../NX/lib/index.server';
 import {
     Header,
     Footer,

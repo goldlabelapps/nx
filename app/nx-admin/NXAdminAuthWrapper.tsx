@@ -1,5 +1,7 @@
+// The import for getFirebaseAuth is not present in the file, so no action is needed.
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useFirebaseAuthListener } from '../NX/lib';
 import { getFirebaseAuth } from '../NX/lib/firebase';
 import { SignIn } from '../NX/Paywall';
 import { NXAdmin } from '../NX/NXAdmin';
@@ -13,14 +15,10 @@ export default function NXAdminAuthWrapper({
     const [user, setUser] = useState<any>(null);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const auth = getFirebaseAuth();
-        const unsubscribe = auth.onAuthStateChanged((u) => {
-            setUser(u);
-            setLoading(false);
-        });
-        return () => unsubscribe();
-    }, []);
+    useFirebaseAuthListener((u) => {
+        setUser(u);
+        setLoading(false);
+    });
 
     const [signInError, setSignInError] = useState<string>("");
 

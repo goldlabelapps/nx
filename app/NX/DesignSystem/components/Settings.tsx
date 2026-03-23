@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { getFirebaseAuth } from '../../lib/firebase';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { User } from 'firebase/auth';
+import { useFirebaseAuthListener } from '../../lib';
 import {
 	List,
 	ListItemButton,
@@ -27,14 +27,10 @@ const Settings: React.FC<I_Settings> = () => {
 	const designSystem = useDesignSystem();
 	const currentThemeMode = designSystem?.themeMode ?? 'light';
 
-	useEffect(() => {
-		const auth = getFirebaseAuth();
-		const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-			setUser(firebaseUser);
-			setLoading(false);
-		});
-		return () => unsubscribe();
-	}, []);
+	useFirebaseAuthListener((firebaseUser) => {
+		setUser(firebaseUser);
+		setLoading(false);
+	});
 
 	const handleLogout = async () => {
 		await firebaseLogout();

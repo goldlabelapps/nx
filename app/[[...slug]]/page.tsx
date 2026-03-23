@@ -15,7 +15,7 @@ import {
     serverUseNav,
     getTenant,
     getMeta,
-} from '../NX/lib';
+} from '../NX/lib/index.server';
 import {
     Icon,
     Header,

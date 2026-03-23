@@ -1,7 +1,7 @@
 import type { T_Theme, T_Tenant, T_Meta, I_NestedNav } from '../../NX/types';
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
-import { getTenant, getMeta, serverUseNav } from '../../NX/lib';
+import { getTenant, getMeta, serverUseNav } from '../../NX/lib/index.server';
 import { getBaseurl } from '../../api';
 import { mergeData } from './mergeData';
 import ShareClient from './ShareClient';

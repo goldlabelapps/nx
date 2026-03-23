@@ -7,9 +7,7 @@ import config from '../public/nx/config.json';
 import {
     Nav,
 } from './NX/DesignSystem';
-import {
-    serverUseNav,
-} from './NX/lib';
+
 
 export default function NotFound() {
 
