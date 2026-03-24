@@ -55,9 +55,7 @@ export default function AccountCard() {
                     onSave={onNameSave}
                 />}
                 subheader={email || null}
-                avatar={<Badge badgeContent={level}>
-                    <Avatar src={avatar} />
-                </Badge>}
+                avatar={<Avatar src={avatar} />}
                 action={<IconButton color="primary" onClick={handleOpen}>
                     <Icon icon="signout" />
                 </IconButton>}
@@ -69,7 +67,7 @@ export default function AccountCard() {
             </CardContent>
         </Box>
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Paywall</DialogTitle>
+            <DialogTitle>{name}</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     Are you sure you want to sign out?
@@ -79,7 +77,10 @@ export default function AccountCard() {
                 <Button onClick={handleClose} color="primary">
                     No
                 </Button>
-                <Button variant="outlined" onClick={onSignOut} color="primary" autoFocus>
+                <Button 
+                    endIcon={<Icon icon="tick" />}
+                    variant="outlined" 
+                    onClick={onSignOut} color="primary" autoFocus>
                     Yes
                 </Button>
             </DialogActions>
