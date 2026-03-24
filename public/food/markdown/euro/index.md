@@ -1,7 +1,7 @@
 ---
 order: 200
-slug: /eurotrash
-title: Eurotrash
+slug: /euro
+title: Euro
 description: 魏藏的鱼
 tags: food, eurotrash,
 image: /food/jpg/default.jpg
