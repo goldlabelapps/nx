@@ -13,6 +13,7 @@ import {
     usePaywall,
     setPaywall,
     AccountCard,
+    Register,
  } from '../../Paywall';
 import { Icon } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
@@ -40,19 +41,21 @@ export default function Account({ onClick }: I_Account) {
     }
 
     if (isAuthed) return <AccountCard />;
-    
-    return (<Box maxWidth={400}>
-                {isAuthed && <>
-                    <CardHeader
-                        avatar={<Icon icon="async" color="primary" />}
-                        title={isAuthed ? " (authed)" : " (not authed)"}
-                    />
-                </>}
-                <CardContent>
-                    {!isAuthed && <>
-                        <SimpleSignIn onSignIn={handleSignin}/>
-                    </>}
-                    {/* <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre> */}
-                </CardContent>
-            </Box>);
+
+    // Show Register or SimpleSignIn based on paywall.mode
+    let content = null;
+    if (paywall?.mode === 'register') {
+        content = <Register onSignIn={handleSignin} />;
+    } else if (paywall?.mode === 'signin') {
+        content = <SimpleSignIn onSignIn={handleSignin} />;
+    } else {
+        content = <SimpleSignIn onSignIn={handleSignin} />;
+    }
+
+    return (
+        <Box maxWidth={400}>
+            {content}
+            {/* <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre> */}
+        </Box>
+    );
 }

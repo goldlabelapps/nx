@@ -102,7 +102,7 @@ import BalanceIcon from '@mui/icons-material/Balance';
 import JavascriptIcon from '@mui/icons-material/JavascriptOutlined';
 import ScubaIcon from '@mui/icons-material/ScubaDivingOutlined';
 import DockerIcon from '@mui/icons-material/StorageOutlined';
-import SignupIcon from '@mui/icons-material/StorageOutlined';
+import SignupIcon from '@mui/icons-material/PersonAdd';
 import FullscreenIcon from '@mui/icons-material/FullscreenOutlined';
 import HideIcon from '@mui/icons-material/VisibilityOffOutlined';
 import ShowIcon from '@mui/icons-material/VisibilityOutlined';
@@ -177,12 +177,22 @@ import DessertIcon from '@mui/icons-material/Cake';
 import AsianIcon from '@mui/icons-material/RamenDining';
 import PublicIcon from '@mui/icons-material/Language';
 import OrdersIcon from '@mui/icons-material/ShoppingCart';
+import StarOnIcon from '@mui/icons-material/Star';
+import StarOffIcon from '@mui/icons-material/StarBorder';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
-    case 'public':
+
+    case 'staroff':
+      iconFragment = <StarOffIcon color={color} />;
+      break;
+    case 'staron':
+      iconFragment = <StarOnIcon color={color} />;
+      break;
+      
+      case 'public':
       iconFragment = <PublicIcon color={color} />;
       break;
     case 'orders':

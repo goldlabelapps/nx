@@ -1,6 +1,8 @@
 import SignIn from './components/SignIn';
 import AccountCard from './components/AccountCard';
 import SimpleSignIn from './components/SimpleSignIn';
+import Register from './components/Register';
+
 import UserSpot from './components/UserSpot';
 import Account from './components/Account';
 import SignOutBtn from './components/SignOutBtn';
@@ -27,4 +29,5 @@ export {
     UserSpot,
     useUID,
     AccountCard,
+    Register,
 };

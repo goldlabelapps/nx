@@ -3,14 +3,14 @@ import * as React from 'react';
 import {
     Grid,
 } from '@mui/material';
-import { Account } from '../../NXAdmin';
+import { AccountCard } from '../../Paywall';
 
 export default function Dashboard() {
 
     return (
         <Grid container spacing={2} sx={{mb: 4}}>
             <Grid size={{ xs: 12 }}>
-                <Account />
+                <AccountCard />
             </Grid>
             <Grid size={{ xs: 12, sm: 6 }}>
                 
