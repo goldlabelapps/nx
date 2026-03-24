@@ -1,5 +1,5 @@
 ---
-order: 1200
+order: 1299
 slug: /dog/wigglepud-lady
 title: Wigglepud Lady
 description: She didn’t just lick the wigglepud. She lifted it up!
@@ -7,6 +7,8 @@ tags: dog
 icon: dog
 image: https://live.staticflickr.com/65535/54353713944_5571897d59_b.jpg
 ---
+
+[abc.net.au](https://www.abc.net.au/news/2025-03-14/sam-jones-baby-wombat-video-leaves-australia/105051630?future=true)
 
 I have heard a fing from the wizardz.
 A lady got a baby little Fing. A wigglepud.

@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Badge, IconButton, Avatar } from '@mui/material';
+import { Box, Badge, IconButton, Avatar } from '@mui/material';
 import { Icon } from '../../DesignSystem';
 import { usePaywall, subscribeAccount, setPaywall } from '../../Paywall';
 import { useDispatch } from '../../Uberedux';
@@ -34,13 +34,13 @@ export default function UserSpot({ onClick }: I_UserSpot) {
     if (!show) return null;
 
     return (
-        <IconButton onClick={onClick} color="primary">
+        <IconButton onClick={onClick} color="primary" sx={{ mt: 1 }}>
             {account ? (
                 <Badge badgeContent={account.level}>
                     <Avatar alt={account.name} src={account.avatar} />
                 </Badge>
             ) : (
-                <Icon icon="async" />
+                    <Icon icon="async" />
             )}
         </IconButton>
     );

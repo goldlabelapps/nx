@@ -101,11 +101,22 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
                     </CardContent>
                     <CardActions>
                         <Box sx={{flexGrow:1}}/>
+
+                        <Button
+                            fullWidth
+                            type="submit"
+                            endIcon={<Icon icon="signup" />}
+                            variant="outlined"
+                            sx={{ mx: 0 }}
+                        >
+                            Register
+                        </Button>
+
                         <Button
                             fullWidth
                             type="submit"
                             endIcon={<Icon icon="signin" />}
-                            variant="contained"
+                            variant="outlined"
                             sx={{ mx: 0 }}
                         >
                             Sign In
