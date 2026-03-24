@@ -15,7 +15,6 @@ import {UserSpot} from '../../Paywall';
 import { navigateTo } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 
-
 export interface I_Header {
 	config: T_Config;
 	frontmatter: T_Frontmatter;

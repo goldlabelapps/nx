@@ -12,6 +12,7 @@ import { setPaywall } from '../../Paywall';
  * @param onUserChange Optional callback for user state changes
  * @param onAuthChecked Optional callback when auth check completes
  */
+
 export function useFirebaseAuthListener(
   onUserChange?: (user: User | null) => void,
   onAuthChecked?: () => void
@@ -21,6 +22,7 @@ export function useFirebaseAuthListener(
   useEffect(() => {
     const auth = getFirebaseAuth();
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      //console.log('Firebase auth state changed:', firebaseUser);
       let safeUser = null;
       if (firebaseUser) {
         const { uid, email, emailVerified, isAnonymous, providerData, displayName, photoURL } = firebaseUser;
@@ -43,6 +45,7 @@ export function useFirebaseAuthListener(
       }
       dispatch(setPaywall('user', safeUser));
       dispatch(setPaywall('authChecked', true));
+      dispatch(setPaywall('uid', safeUser?.uid ?? null));
       if (onUserChange) onUserChange(firebaseUser);
       if (onAuthChecked) onAuthChecked();
     });

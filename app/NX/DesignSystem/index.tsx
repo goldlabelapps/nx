@@ -8,13 +8,11 @@ import Footer from './components/Footer';
 import Tags from './components/Tags';
 import Settings from './components/Settings';
 import Icon from './components/Icon';
-import Share from './components/Share';
 import SmartImage from './components/SmartImage';
 import { useFeedback } from './hooks/useFeedback';
 import { useMUITheme } from './hooks/useMUITheme';
+import { useConfig } from './hooks/useConfig';
 import { navigateTo } from './actions/navigateTo';
-
-
 import { setFeedback } from './actions/setFeedback';
 import { useDesignSystem } from './hooks/useDesignSystem';
 import { setDesignSystem } from './actions/setDesignSystem';
@@ -32,7 +30,6 @@ export {
     DesignSystem,
     useMUITheme,
     Icon,
-    Share,
     Header,
     Footer,
     Hero,
@@ -43,6 +40,7 @@ export {
     Feedback,
     setFeedback,
     useFeedback,
+    useConfig,
     TreeNav,
     Surface,
     Loader,

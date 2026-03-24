@@ -10,23 +10,29 @@ export interface I_UserSpot {
 }
 
 export default function UserSpot({ onClick }: I_UserSpot) {
-
     const paywall = usePaywall();
     const account = paywall ? paywall.account : null;
     const accountSubscribing = paywall ? paywall.accountSubscribing : null;
+    const uid = paywall ? paywall.uid : null;
     const dispatch = useDispatch();
 
+    const [show, setShow] = React.useState(true);
+
     React.useEffect(() => {
-        if (!account && !accountSubscribing) {
+        if (uid && !account && !accountSubscribing) {
             dispatch(setPaywall('accountSubscribing', true));
             dispatch(subscribeAccount());
-        };
-    }, [account, accountSubscribing, dispatch]);
+        }
+    }, [uid, account, accountSubscribing, dispatch]);
 
-    if (typeof window !== "undefined" && window.location.pathname === "/account") {
-        return null;
-    }
-    
+    React.useEffect(() => {
+        if (typeof window !== "undefined" && window.location.pathname === "/account") {
+            setShow(false);
+        }
+    }, []);
+
+    if (!show) return null;
+
     return (
         <IconButton onClick={onClick} color="primary">
             {account ? (

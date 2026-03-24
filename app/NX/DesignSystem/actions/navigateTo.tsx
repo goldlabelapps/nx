@@ -10,14 +10,15 @@ export const navigateTo = (
 ): any =>
     async (dispatch: T_UbereduxDispatch, getState: () => any) => {
         try {
-            dispatch(setDesignSystem('loading', true));
+            const isBlank = (target || '_self') === '_blank';
+            dispatch(setDesignSystem('loading', !isBlank));
             // Scroll viewport to top before navigation
             if (typeof window !== 'undefined') {
                 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
             }
             // Perform navigation
             if (typeof window !== 'undefined') {
-                if ((target || '_self') === '_blank') {
+                if (isBlank) {
                     window.open(url, '_blank');
                 } else {
                     router.push(url);

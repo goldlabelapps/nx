@@ -13,7 +13,7 @@ export default function NotFound() {
 
     const theme = config?.cartridges?.designSystem?.themes?.['dark'];
 
-    return <DesignSystem theme={theme as T_Theme}>
+    return <DesignSystem theme={theme as T_Theme} config={config}>
             <Clip404 />
             <div
                 style={{

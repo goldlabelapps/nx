@@ -10,14 +10,16 @@ import {
 import { DesignSystem, Footer } from '../../NX/DesignSystem';
 import { NXAdminBtn } from '../../NX/NXAdmin';
 
+
 interface ShareClientProps {
     theme: T_Theme | undefined;
     mergedMeta: T_Meta;
     data: any;
     navItems: I_NestedNav["navItems"];
+    config?: any;
 }
 
-export default function ShareClient({ theme, mergedMeta, data, navItems }: ShareClientProps) {
+export default function ShareClient({ theme, mergedMeta, data, navItems, config }: ShareClientProps) {
     const {
         title,
         description,
@@ -25,7 +27,7 @@ export default function ShareClient({ theme, mergedMeta, data, navItems }: Share
     } = data || {};
     const { markdown } = body || {};
     return (
-        <DesignSystem theme={theme}>
+        <DesignSystem theme={theme} config={config}>
             <Container>
                 <pre>data.data: {JSON.stringify(data, null, 2)}</pre>
                 <Card sx={{ mt: 2 }}>

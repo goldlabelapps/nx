@@ -45,13 +45,23 @@ export default function OrdersFrontend() {
                         </Alert> : <>
                     <ProductSearch />
                 </>}     
+
+                {Array.isArray(products) && products.length > 0 && (
+                    <ul>
+                        {products.map((product) => (
+                            <li key={product.id}>{product.title}</li>
+                        ))}
+                    </ul>
+                )}
             </CardContent>
+            {/* <pre>search: {JSON.stringify(search, null, 2)}</pre>
+            <pre>products: {JSON.stringify(products, null, 2)}</pre> */}
         </>
     </>
     );
 }
 
 /*
- <pre>search: {JSON.stringify(search, null, 2)}</pre>
+ 
 subheader='Find products, create orders, pay.'
 */

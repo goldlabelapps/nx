@@ -52,7 +52,7 @@ export default function AccountCard() {
             />
         </Box>
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Confirm Sign Out</DialogTitle>
+            <DialogTitle>Paywall</DialogTitle>
             <DialogContent>
                 <DialogContentText>
                     Are you sure you want to sign out?
@@ -60,10 +60,10 @@ export default function AccountCard() {
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">
-                    Cancel
+                    No
                 </Button>
-                <Button onClick={onSignOut} color="primary" autoFocus>
-                    Sign Out
+                <Button variant="outlined" onClick={onSignOut} color="primary" autoFocus>
+                    Yes
                 </Button>
             </DialogActions>
         </Dialog>
