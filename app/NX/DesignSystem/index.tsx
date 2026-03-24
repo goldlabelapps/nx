@@ -1,5 +1,6 @@
 import DesignSystem from "./DesignSystem";
 import Nav from './components/Nav';
+import EditableStr from './components/Forms/EditableStr';
 import Feedback from './components/Feedback';
 import Hero from './components/Hero';
 import { CleverText } from './components/CleverText';
@@ -23,6 +24,7 @@ import Loader from "./components/Loader";
 
 export {
     Nav,
+    EditableStr,
     Settings,
     Tags,
     SmartImage,

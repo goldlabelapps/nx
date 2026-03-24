@@ -5,16 +5,18 @@ import {
     Badge,
     Avatar,
     Box,
-    Typography,
     CardHeader,
     CardContent,
-    CardActions,
     Button,
     IconButton,
 } from '@mui/material';
-import { usePaywall, setPaywall, subscribeAccount, firebaseLogout } from '../../Paywall';
+import { 
+    usePaywall, 
+    setPaywall,
+    firebaseLogout,
+} from '../../Paywall';
 import { useDispatch } from '../../Uberedux';
-import { Icon } from '../../DesignSystem';
+import { Icon, EditableStr } from '../../DesignSystem';
 
 export default function AccountCard() {
 
@@ -40,10 +42,18 @@ export default function AccountCard() {
         setOpen(false);
     }
     
+    const onNameSave = (newName: string) => {
+        console.log('Saving new name:', newName);
+    };
+
     return (<>
         <Box>
             <CardHeader
-                title={name || null}
+                title={<EditableStr 
+                    id="account-name"
+                    value={name}
+                    onSave={onNameSave}
+                />}
                 subheader={email || null}
                 avatar={<Badge badgeContent={level}>
                     <Avatar src={avatar} />
@@ -53,21 +63,10 @@ export default function AccountCard() {
                 </IconButton>}
             />
             <CardContent>
-                {/* <Typography>
-                    Access Level
-                </Typography> */}
                 {[...Array(5)].map((_, i) => (
-                    <Icon key={i} icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} />
+                    <Icon key={i} color={'primary'} icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} />
                 ))}
             </CardContent>
-            {/* <CardActions>
-                <Button 
-                    endIcon={<Icon icon="right" />}
-                    variant="contained" color="primary">
-                    Manage Subscription
-                </Button>
-            </CardActions> */}
-
         </Box>
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Paywall</DialogTitle>
