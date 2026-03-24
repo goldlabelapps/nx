@@ -2,6 +2,7 @@
 import type { T_Config } from '../../types';
 import * as React from 'react';
 import { useRouter } from 'next/navigation';
+
 import {
     Alert,
     Card,
@@ -10,11 +11,11 @@ import {
     Typography,
     IconButton,
 } from '@mui/material';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 import {Icon} from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 import { useOrders, initOrders } from '../../Orders';
-import router from 'next/dist/shared/lib/router/router';
 
 export interface I_OrdersAdmin {
     config: T_Config;
@@ -28,7 +29,7 @@ export default function OrdersAdmin({
     const router = useRouter();
     const dispatch = useDispatch();
     const orders = useOrders();
-    const {message, error, products} = orders || {};
+    const {error, products} = orders || {};
 
     React.useEffect(() => {
         if (!orders){
@@ -40,7 +41,39 @@ export default function OrdersAdmin({
         router.push('/echopay/orders');
     };
 
-    return (<>
+    // Define columns for DataGrid, easy to remove or comment out
+    const columns: GridColDef[] = [
+        
+        { field: 'item', headerName: 'Item', width: 100 },
+        { field: 'ean', headerName: 'Barcode', width: 160 },
+        { field: 'title', headerName: 'Title', width: 300 },
+        { field: 'ssell1', headerName: 'Price', width: 90 },
+        { field: 'hierarchy1', headerName: '', width: 140 },
+        // { field: 'uos', headerName: 'UOS', width: 80 },
+        { field: 'pack_description', headerName: 'Pack Description', width: 140 },
+        // { field: 'hierarchy2', headerName: 'Hierarchy2', width: 120 },
+        // { field: 'hierarchy3', headerName: 'Hierarchy3', width: 120 },
+        // { field: 'uop', headerName: 'UOP', width: 80 },
+        // { field: 'ssell2', headerName: 'Sell 2', width: 90 },
+        // { field: 'ssell3', headerName: 'Sell 3', width: 90 },
+        // { field: 'ssell4', headerName: 'Sell 4', width: 90 },
+        // { field: 'ssell5', headerName: 'Sell 5', width: 90 },
+        { field: 'pack1', headerName: 'Pack 1', width: 80 },
+        // { field: 'pack2', headerName: 'Pack 2', width: 80 },
+        // { field: 'pack3', headerName: 'Pack 3', width: 80 },
+        // { field: 'pack4', headerName: 'Pack 4', width: 80 },
+        // { field: 'pack5', headerName: 'Pack 5', width: 80 },
+        // { field: 'params', headerName: 'Params', width: 300 },
+        // { field: 'search_vector', headerName: 'Search Vector', width: 300 },
+    ];
+
+    // DataGrid expects each row to have a unique 'id' property
+    const rows = Array.isArray(products) ? products.map((p: any, idx: number) => ({
+        ...p,
+        id: p.id || idx,
+    })) : [];
+
+    return (
         <>
             <CardHeader 
                 title='Orders Admin'
@@ -56,15 +89,16 @@ export default function OrdersAdmin({
                             {error}
                         </Alert>}
 
-                {Array.isArray(products) && products.length > 0 && (
-                    <ul>
-                        {products.map((product: any, idx: number) => (
-                            <li key={product.id || idx}>
-                                {product.title || product.name || 'Untitled Product'}
-                            </li>
-                        ))}
-                    </ul>
-                )}
+                <div style={{ height: 600, width: '100%' }}>
+                    <DataGrid
+                        rows={rows}
+                        columns={columns}
+                        pageSize={10}
+                        rowsPerPageOptions={[10, 25, 50]}
+                        disableRowSelectionOnClick
+                        autoHeight={false}
+                    />
+                </div>
                 {Array.isArray(products) && products.length === 0 && (
                     <Typography variant="body2" color="textSecondary">
                         No products found.
@@ -72,7 +106,5 @@ export default function OrdersAdmin({
                 )}
             </CardContent>
         </>
-        {/* <pre>products: {JSON.stringify(products, null, 2)}</pre> */}
-    </>
     );
 }

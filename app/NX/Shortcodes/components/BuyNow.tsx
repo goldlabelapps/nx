@@ -30,7 +30,7 @@ export default function BuyNow({
       <CardActionArea onClick={handleClick}>
         <CardHeader
           sx={{ alignItems: 'flex-start' }}
-          avatar={<Icon icon={"shop"} color="primary" />}
+          avatar={<Icon icon={icon as any} color="primary" />}
           title={<Typography variant="h6">{label}</Typography>}
         />
       </CardActionArea>

@@ -2,7 +2,7 @@
 order: 255
 title: Beef Wellie
 description: Knollenblätterpilze optional – falls du deine Schwiegereltern nicht besonders magst.
-slug: /eurotrash/beef-wellie
+slug: /euro/beef-wellie
 icon: food
 image: https://live.staticflickr.com/65535/54933884869_f82145fd92_b.jpg
 ---

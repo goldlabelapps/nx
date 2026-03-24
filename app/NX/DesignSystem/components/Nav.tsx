@@ -142,13 +142,7 @@ const Nav: React.FC<I_Nav> = ({
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
 
-                            <Box sx={{ ml: 2 }}>
-                                <IconButton 
-                                    color="primary" 
-                                    onClick={handleHomeClick}>
-                                    <Icon icon={'home'} />
-                                </IconButton>
-                            </Box>
+                            
 
                             <Box sx={{ mt: 1, ml: 2 }}>
                                 <Virus frontmatter={frontmatter} />
@@ -165,6 +159,14 @@ const Nav: React.FC<I_Nav> = ({
                             <Box sx={{ ml: 1 }}>
                                 <IconButton onClick={handleNXAdmin}>
                                     <Icon icon={'admin'} color="primary" />
+                                </IconButton>
+                            </Box>
+
+                            <Box sx={{ ml: 1 }}>
+                                <IconButton
+                                    color="primary"
+                                    onClick={handleHomeClick}>
+                                    <Icon icon={'home'} />
                                 </IconButton>
                             </Box>
                         </Box>

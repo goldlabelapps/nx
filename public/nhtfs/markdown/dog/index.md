@@ -8,34 +8,25 @@ icon: dog
 image: https://live.staticflickr.com/65535/54353713944_5571897d59_b.jpg
 ---
 
-Usually, when the wizardz start waking up, I am on the bed. If they are not too grumpy, I might try lickin. Lickin is my faaaaavourite thing.
+Dog is….. obviously… a dog. She’s a nice dog, but not very bright. When we meet her she’s about 11 years old. She’s never been trained and being a Shitzu Maltese cross, which are supposedly hard to train she’s not going to be learning anything new anytime. w
 
-In the morning, it is very important to follow the wizardz closely because sometimes the fluffy wizard gives out bisskits. Bisskits are crunchy and mouth-happy and my faaaaavourite thing.
+She’s nice, though. Show her a ball and she’ll have no idea what you mean. She’ll just try to lick you. Because licking humans is what she lives for.
 
-The wizardz have a loudbox called Van. It is mad. You get in it, and everything goes mental for ages. Windyface! Too too too many smells! Then it stops, and you could be anywhere. Most of the time, I don’t know where I am.
+Name: Dog (because what else would you call her?)
+Breed: Shih Tzu-Maltese cross
+Age: 11 years old
+Personality: Endlessly affectionate, completely clueless
 
-Some days we go to beach.
-Oh, I luuuuuvvvv beach.
-It is sandysalty and wetsmelly and birdychasy and otherdoggy. But when we get home, sometimes I have a bath. Bath is not my faaaaavourite thing.
+- Has never been trained and shows no particular inclination to start now
+- Responds to most situations with either enthusiastic tail wagging or mild confusion
+- Absolutely no concept of fetch—show her a ball, and she’ll stare blankly before deciding to lick your hand instead
+- Licking is her one true purpose in life; if there is a human nearby, she must lick them
+- Can be alarmingly persistent about getting close enough to deliver licks, even in situations where it is neither appropriate nor wanted
+- Not particularly aware of personal space, frequently found sitting on people rather than next to them
+- Barks at seemingly random things—air, distant sounds, the concept of existence—then forgets why and settles back down
+- Grooming is a lost cause; even on a good day, she looks slightly disheveled, like an old mop that’s given up on life
+- Deeply content with the simplest pleasures: a warm lap, a kind voice, and unlimited licking opportunities
 
-I am digging a hole behind the shed under the ropeytreevinefing. Today, I got stuck in the ropeytreevine and had to wait for a wizard to come get me out. That kind of thing happens a lot when you are Sillydog.
+Not a guard dog, not a working dog, not a particularly useful dog in any capacity—but she is a nice dog, and that’s all that really matters.
 
-When it is darktime and the wizardz have humanfood, I stare at them until they give me some. Sometimes, if I am very lucky, I get a fing.
-
-Fings are great.
-I do not normally have fings.
-Usually, people take fings away from me.
-
-When I get a fing, I like to take it away and look at it. Then I like to show it to the wizardz. Then I eat it just in case it is food.
-
-My bed is on the floor next to the wizardz, but as soon as big wizard snores, I jump on the bed.
-
-In the sleepworld otherplace, I chase rabbits and bark a little bit. But that is a whole other story.
-
-Fluffy wizard says I snore as loud as big wizard, but I do not believe her.
-
-I get in the way a lot. Wizardz accidentally boot me in the gish. Dun’t matter. It’s pretty good being Sillydog.
-
-The only thing that ever troubles me is...
-
-What if I never find out who’s a good doggy?
+Dog is the kind of companion who brings zero practicality but 100% unfiltered love. She may not fetch, heel, or do anything remotely impressive, but she will sit by your side (or on your foot) and lick your hand with the unwavering devotion of a creature who knows that her only job is to love humans. And in that, she excels.

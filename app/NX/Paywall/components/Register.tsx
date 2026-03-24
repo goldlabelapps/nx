@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { IconButton,Button, TextField, Typography, InputAdornment } from '@mui/material';
+import { CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { Icon } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 import { setPaywall } from '../../Paywall';
@@ -48,8 +48,10 @@ export default function Register({ onSignIn}: I_Register) {
             <Typography sx={{ my: 1 }} color="primary">
                 {error}
             </Typography>
+            <CardActions>
             <Button
                 type="submit"
+                fullWidth
                 endIcon={<Icon icon="signin" />}
                 variant="text"
                 sx={{ mt: 1, mr: 2 }}
@@ -58,13 +60,16 @@ export default function Register({ onSignIn}: I_Register) {
                 Sign In
             </Button>
             <Button
+                fullWidth
                 startIcon={<Icon icon="signup" />}
                 variant="outlined"
                 sx={{ mt: 1, mr: 2 }}
                 onClick={handleSignup}
+                disabled
             >
                 Register
             </Button>
+            </CardActions>
         </>            
     );
 }

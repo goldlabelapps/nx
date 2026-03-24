@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { IconButton,Button, TextField, Typography, InputAdornment } from '@mui/material';
+import { IconButton,Button, TextField, Typography, InputAdornment, CardActions } from '@mui/material';
 import { Icon } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 import { setPaywall } from '../../Paywall';
@@ -78,7 +78,9 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
             <Typography sx={{ my: 1 }} color="primary">
                 {error}
             </Typography>
+            <CardActions>
             <Button
+                fullWidth
                 startIcon={<Icon icon="signup" />}
                 variant="text"
                 sx={{ mt: 1, mr: 2 }}
@@ -88,6 +90,7 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
             </Button>
             <Button
                 type="submit"
+                fullWidth
                 endIcon={<Icon icon="signin" />}
                 variant="outlined"
                 sx={{ mt: 1 }}
@@ -96,6 +99,7 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
             >
                 Sign In
             </Button>
+            </CardActions>
         </form>
     );
 }
