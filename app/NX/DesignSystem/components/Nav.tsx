@@ -64,6 +64,11 @@ const Nav: React.FC<I_Nav> = ({
         }
     }
 
+    function handleHomeClick() {
+            dispatch(navigateTo(router, '/'));
+            setDrawerOpen(false);
+    }
+
     function renderNavItems(
         items: I_NavNode[],
         parentKey = '',
@@ -136,6 +141,15 @@ const Nav: React.FC<I_Nav> = ({
                         <Box sx={{mt:4}} />
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
+
+                            <Box sx={{ ml: 2 }}>
+                                <IconButton 
+                                    color="primary" 
+                                    onClick={handleHomeClick}>
+                                    <Icon icon={'home'} />
+                                </IconButton>
+                            </Box>
+
                             <Box sx={{ mt: 1, ml: 2 }}>
                                 <Virus frontmatter={frontmatter} />
                             </Box>

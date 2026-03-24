@@ -4,24 +4,30 @@ import { T_Theme, I_DesignSystem } from '../types';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { usePathname } from 'next/navigation';
 import { useDispatch } from '../Uberedux';
-import { setDesignSystem, useMUITheme, Loader } from '../DesignSystem';
+import { setDesignSystem, useMUITheme, Loader, useConfig } from '../DesignSystem';
 
 export default function DesignSystem({
   theme,
   children,
-  // config,
+  config,
 }: I_DesignSystem) {
+
   const newtheme = useMUITheme(theme as T_Theme);
   const pathname = usePathname();
   const dispatch = useDispatch();
+  const currentConfig = useConfig();
 
   React.useEffect(() => {
-    // Turn off loader after route change
     dispatch(setDesignSystem('loading', false));
   }, [pathname, dispatch]);
 
+  React.useEffect(() => {
+    if (!currentConfig){
+      dispatch(setDesignSystem('config', config));
+    }
+  }, [currentConfig, config, dispatch]);
+
   if (!newtheme) {
-    // Provide a minimal fallback theme if theme is undefined
     return <>{children}</>;
   }
 

@@ -6,7 +6,9 @@ import { getFirebaseApp, getFirebaseFirestore } from "../../lib/firebase";
 export const subscribeAccount = (): any =>
 async (dispatch: Dispatch, getState: () => any) => {
     try {
-        const uid = getState()?.redux?.paywall?.user?.uid ?? null;
+
+        const uid = getState()?.redux?.paywall?.uid ?? null;
+
         if (!uid) {
             dispatch(setPaywall('error', 'No UID found'));
             return;

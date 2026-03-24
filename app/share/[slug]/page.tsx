@@ -35,6 +35,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
             mergedMeta={mergedMeta as T_Meta}
             data={data.data}
             navItems={navItems as I_NestedNav["navItems"]}
+            config={config}
         />
     );
 }

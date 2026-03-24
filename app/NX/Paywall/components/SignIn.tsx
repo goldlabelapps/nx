@@ -53,7 +53,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
     const avatar = config?.avatars?.[themeMode] || '';
 
     return (
-        <DesignSystem theme={theme}>
+        <DesignSystem theme={theme} config={config}>
             <Container maxWidth="xs" sx={{ mt: 3 }}>
             <form onSubmit={handleSubmit}>
                     <CardHeader 

@@ -61,7 +61,7 @@ export default function ProductSearch() {
                 <Icon icon="star" />
             </IconButton>
             
-            <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+            {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> */}
             <CreateOrder />
         </Paper>
     );
