@@ -1,6 +1,6 @@
 ---
 order: 35
-slug: /react/redux
+slug: /typescript/redux
 title: Redux
 description: There can be multiple instances of Flash on the screen at the same timew
 tags: ed-tech, copilot, ai, free, GitHub, Pythin

@@ -1,7 +1,7 @@
 ---
 order: 50
 slug: interviews/behavioral-interviews
-title: Behavioral Interviews
+title: Behavioral
 description: Master behavioral interviews with the STAR method, compelling storytelling, and effective responses to common questions about teamwork, leadership, and conflict.
 tags: ed-tech, interviews, behavioral, soft-skills
 ---

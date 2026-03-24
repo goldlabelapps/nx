@@ -15,6 +15,15 @@ export const navigateTo = (
             // Scroll viewport to top before navigation
             if (typeof window !== 'undefined') {
                 window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+                // Check if navigating to the same page
+                const currentUrl = window.location.pathname + window.location.search + window.location.hash;
+                // Normalize both URLs for comparison (ignore trailing slashes)
+                const normalize = (u: string) => u.replace(/\/$/, '');
+                if (!isBlank && normalize(currentUrl) === normalize(url)) {
+                    // Already on the same page, stop loading and do not navigate
+                    dispatch(setDesignSystem('loading', false));
+                    return;
+                }
             }
             // Perform navigation
             if (typeof window !== 'undefined') {

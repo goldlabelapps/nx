@@ -1,7 +1,7 @@
 ---
 order: 48
 slug: /interviews/coding-interviews
-title: Coding Interviews
+title: Coding
 description: Master coding interviews with effective problem-solving strategies, communication techniques, and common algorithmic patterns for technical interviews.
 tags: ed-tech, interviews, coding, algorithms
 smartImage: teams

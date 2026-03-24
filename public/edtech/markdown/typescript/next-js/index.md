@@ -1,10 +1,11 @@
 ---
 order: 15
-slug: /next-js
+slug: /typescript/next-js
 title: NextJS
 description: Best thing since sliced bread and chololate spread
 tags: nx, goldlabel, coding
-icon: right
+icon: js
+image: https://live.staticflickr.com/65535/55142286450_f00fd4cddf_b.jpg
 ---
 > Ace your software developer interviews. Master technical interview communication, behavioral questions, system design explanations, and English interview skills.
 

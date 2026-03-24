@@ -5,6 +5,7 @@ title: Educational Technology
 description: Technical Interviews
 tags: nx, goldlabel, coding
 icon: right
+image: https://live.staticflickr.com/65535/55142286450_f00fd4cddf_b.jpg
 ---
 > Ace your software developer interviews. Master technical interview communication, behavioral questions, system design explanations, and English interview skills.
 

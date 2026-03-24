@@ -1,6 +1,6 @@
 ---
-order: 5
-slug: /developer/apps
+order: 205
+slug: /courses/apps
 title: Apps
 description: A user uses it to do something.
 tags: nx, goldlabel, aki
