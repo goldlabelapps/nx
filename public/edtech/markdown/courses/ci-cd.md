@@ -1,6 +1,6 @@
 ---
-order: 200
-slug: /developer/ci-cd
+order: 240
+slug: /courses/ci-cd
 title: CI/CD
 description: CI/CD pipeline failing
 tags: nx, goldlabel, aki

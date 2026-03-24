@@ -1,6 +1,6 @@
 ---
-order: 200
-slug: /developer/auth0
+order: 210
+slug: /courses/auth0
 title: Apps
 description: To implement Auth0 authentication in an Next.js app
 tags: nx, goldlabel, aki

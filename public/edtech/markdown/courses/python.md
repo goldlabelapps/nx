@@ -1,12 +1,11 @@
 ---
-order: 30
-slug: /developer/python
+order: 230
+slug: /courses/python
 title: Python
 description: Get started learning Python
 tags: ed-tech, copilot, ai, free, GitHub, Pythin
 image: https://live.staticflickr.com/65535/55064901972_b9a00dc36f_b.jpg
 ---
-
 
 # Python for the Hesitant Developer: A Friendly Introduction
 

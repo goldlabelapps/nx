@@ -1,9 +1,10 @@
 ---
 order: 290
-slug: /next-js/common-ui
+slug: /typescript/next-js/common-ui
 title: Common UI
 tags: nx, goldlabel, aki
-icon: ai
+icon: js
+image: https://live.staticflickr.com/65535/55142286450_f00fd4cddf_b.jpg
 ---
 
 # Common UI

@@ -1,7 +1,7 @@
 ---
 order: 49
 slug: /interviews/system-design-interviews
-title: System Design
+title: System
 description: Master system design interviews with proven frameworks, scalability patterns, and effective communication strategies for technical architecture discussions.
 tags: ed-tech, interviews, system-design, architecture
 ---

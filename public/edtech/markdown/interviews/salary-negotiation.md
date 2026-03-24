@@ -1,7 +1,7 @@
 ---
 order: 54
 slug: /interviews/salary-negotiation
-title: Salary Negotiation
+title: Salary
 description: Master salary negotiation for developer roles. Learn to research compensation, negotiate confidently, evaluate offers, and maximize your total package.
 tags: ed-tech, interviews, salary, negotiation, career
 ---

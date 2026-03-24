@@ -9,7 +9,7 @@ export function useMUITheme(t: T_Theme) {
       primary: { main: t.primary },
       secondary: { main: t.secondary },
 
-      // success: { main: t.background },
+      success: { main: t.background },
       info: { main: t.text },
       // warning: { main: t.background },
       // error: { main: t.background },
