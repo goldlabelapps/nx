@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { IconButton,Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { Icon } from '../../DesignSystem';
+import { useDispatch } from '../../Uberedux';
+import { setPaywall } from '../../Paywall';
 
 export interface I_SimpleSignIn {
     onSignIn?: (email: string, password: string) => void;
@@ -9,12 +11,13 @@ export interface I_SimpleSignIn {
 }
 
 export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
-
+    
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    // Simple email validation regex
+    
     function isValidEmail(email: string) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
@@ -26,6 +29,11 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
         if (isFormValid && onSignIn) {
             onSignIn(email, password);
         }
+    };
+
+    const handleRegister= (e?: React.MouseEvent<HTMLButtonElement>) => {
+        if (e) e.preventDefault();
+        dispatch(setPaywall('mode', 'register'));
     };
 
     return (
@@ -70,6 +78,14 @@ export default function SimpleSignIn({ onSignIn}: I_SimpleSignIn) {
             <Typography sx={{ my: 1 }} color="primary">
                 {error}
             </Typography>
+            <Button
+                startIcon={<Icon icon="signup" />}
+                variant="text"
+                sx={{ mt: 1, mr: 2 }}
+                onClick={handleRegister}
+            >
+                Register
+            </Button>
             <Button
                 type="submit"
                 endIcon={<Icon icon="signin" />}

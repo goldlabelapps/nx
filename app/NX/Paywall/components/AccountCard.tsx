@@ -1,11 +1,13 @@
 "use client";
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Card } from '@mui/material';
 import { 
     Badge,
     Avatar,
     Box,
+    Typography,
     CardHeader,
+    CardContent,
     CardActions,
     Button,
     IconButton,
@@ -50,6 +52,22 @@ export default function AccountCard() {
                     <Icon icon="signout" />
                 </IconButton>}
             />
+            <CardContent>
+                {/* <Typography>
+                    Access Level
+                </Typography> */}
+                {[...Array(5)].map((_, i) => (
+                    <Icon key={i} icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} />
+                ))}
+            </CardContent>
+            {/* <CardActions>
+                <Button 
+                    endIcon={<Icon icon="right" />}
+                    variant="contained" color="primary">
+                    Manage Subscription
+                </Button>
+            </CardActions> */}
+
         </Box>
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle>Paywall</DialogTitle>

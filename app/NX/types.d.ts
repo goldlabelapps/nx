@@ -477,6 +477,8 @@ export type I_Icon = {
     | 'vape'
     | 'terminal'
     | 'orders'
+    | 'staroff'
+    | 'staron'
     | 'bouncer';
     color?: any;
 };
