@@ -7,7 +7,10 @@ export const firebaseLogin = async (email: string, password: string, dispatch: D
     const auth = getFirebaseAuth();
     try {
         const result = await signInWithEmailAndPassword(auth, email, password);
-        dispatch(setFeedback({ severity: 'success', title: 'Login successful', description: email }));
+        dispatch(setFeedback({
+             severity: 'success', 
+             title: `Hello ${email}`, 
+        }));
         return result.user;
     } catch (error: any) {
         dispatch(setFeedback({ severity: 'error', title: 'Login failed', description: error.message }));

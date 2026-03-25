@@ -1,116 +1,123 @@
 "use client";
-import type { 
-	T_Frontmatter,
-} from '../../../types';
-
 import * as React from 'react';
-import { useRef, useEffect } from 'react';
 import {
 	Box,
-	IconButton,
 	Typography,
 	TextField,
 	Button,
-	Collapse,
+	Dialog,
+	DialogContent,
+	DialogActions,
+	DialogTitle,
+	IconButton,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
 
 export interface I_EditableStr {
 	id: string;
+	dialogTitle?: string;
 	value?: string;
 	onSave?: (newValue: string) => void;
 }
 
-export default function EditableStr({
-  id,
-  value = '',
-  onSave,
+
+export default function EditableStr({ 
+	id, 
+	value = '', 
+	onSave,
+	dialogTitle = 'Editing...'
 }: I_EditableStr) {
-	const [editing, setEditing] = React.useState(false);
-	const [inputValue, setInputValue] = React.useState(value);
-	const editRef = useRef<HTMLDivElement>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const [editing, setEditing] = React.useState(false);
+  const [inputValue, setInputValue] = React.useState(value);
 
-	// Keep inputValue in sync if value prop changes
-	React.useEffect(() => {
-		setInputValue(value);
-	}, [value]);
 
-	// Click outside to cancel
-	useEffect(() => {
-		if (!editing) return;
-		function handleClickOutside(event: MouseEvent) {
-			if (editRef.current && !editRef.current.contains(event.target as Node)) {
-				handleCancel();
-			}
-		}
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
-		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [editing]);
+  // Focus and select text when dialog opens
+  React.useEffect(() => {
+      setTimeout(() => {
+          if (inputRef.current) {
+            inputRef.current.focus();
+            const len = inputRef.current.value.length;
+            inputRef.current.setSelectionRange(len, len);
+          }
+      }, 500);
+  }, [editing]);
 
-	const handleEditClick = () => {
-		setEditing(true);
-	};
+  // Keep inputValue in sync if value prop changes
+  React.useEffect(() => {
+    setInputValue(value);
+  }, [value]);
 
-	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		setInputValue(e.target.value);
-	};
+  const handleEditClick = () => {
+    setEditing(true);
+  };
 
-	const handleSave = () => {
-		if (onSave) {
-			onSave(inputValue);
-		}
-		setEditing(false);
-	};
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
 
-	const handleCancel = () => {
-		setInputValue(value);
-		setEditing(false);
-	};
+  const handleSave = () => {
+    if (onSave) {
+      onSave(inputValue);
+    }
+    setEditing(false);
+  };
 
-	return (
-		<Box id={id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-			{/* Display mode */}
-			<Collapse in={!editing} orientation="horizontal" sx={{ display: editing ? 'none' : 'flex', alignItems: 'center', flex: 1 }}>
-				<Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }} onClick={handleEditClick} style={{ cursor: 'pointer' }}>
-					<Typography variant='h6' sx={{ flex: 1 }}>{value}</Typography>
-					<IconButton size='small' onClick={handleEditClick} aria-label="Edit">
-						<Icon icon="edit" />
-					</IconButton>
-				</Box>
-			</Collapse>
+  const handleCancel = () => {
+    setInputValue(value);
+    setEditing(false);
+  };
 
-			{/* Edit mode */}
-			<Collapse in={editing} orientation="horizontal" sx={{ display: editing ? 'flex' : 'none', alignItems: 'center', flex: 1 }}>
-				<Box ref={editRef} sx={{ display: 'flex', alignItems: 'center', flex: 1, gap: 1 }}>
-					<TextField
-						
-						value={inputValue}
-						onChange={handleInputChange}
-						autoFocus
-						sx={{ flex: 1 }}
-						onKeyDown={(e) => {
-							if (e.key === 'Enter') handleSave();
-							if (e.key === 'Escape') handleCancel();
-						}}
-					/>
-					<IconButton
-						
-						color="primary"
-						onClick={handleSave}
-						aria-label="Save"
-						sx={{ ml: 1 }}
-						disabled={inputValue === value}
-					>
-						<Icon icon="save" />
-					</IconButton>
-					<IconButton  color="primary" onClick={handleCancel} aria-label="Cancel">
-						<Icon icon="close" />
-					</IconButton>
-				</Box>
-			</Collapse>
-		</Box>
-	);
+  return (
+    <>
+      <Box id={id} sx={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }} onClick={handleEditClick} style={{ cursor: 'pointer' }}>
+          <Typography variant='h6' sx={{ flex: 1 }}>{value}</Typography>
+        </Box>
+      </Box>
+      <Dialog open={editing} onClose={handleCancel} fullWidth maxWidth="xs">
+        <DialogTitle>
+        	<Box sx={{ display: 'flex' }}>
+        		<Typography variant="h6" component="span" sx={{mt:1}}>
+        			{dialogTitle}
+        		</Typography>
+        		<Box sx={{flexGrow:1}}/>
+        		<IconButton
+        			sx={{mr:-2}}
+        			onClick={handleCancel}
+        			color="primary"
+        		>
+        			<Icon icon="close" />
+        		</IconButton>
+        	</Box>
+        </DialogTitle>
+        <DialogContent>
+          <TextField
+            inputRef={inputRef}
+            value={inputValue}
+            onChange={handleInputChange}
+            fullWidth
+            margin="dense"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && inputValue !== value) handleSave();
+              if (e.key === 'Escape') handleCancel();
+            }}
+          />
+        </DialogContent>
+        <DialogActions sx={{px:2}}>
+          <Button 
+					  sx={{ mr: 1 }}
+		  	onClick={handleSave} 
+			endIcon={<Icon icon="save" />}
+			color="primary" 
+			variant="contained" 
+			disabled={inputValue === value}>
+            Save
+          </Button>
+				  
+        </DialogActions>
+
+      </Dialog>
+    </>
+  );
 }
