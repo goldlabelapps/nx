@@ -1,16 +1,14 @@
 ---
-order: 3
+order: 650
 title: JavaScript
 description: JavaScript Whatever the Weather
 slug: /typescript/javascript
 icon: js
-image: https://live.staticflickr.com/65535/54929673394_69c76ac4a3_b.jpg
-tags: Fullstack JavaScript, Vanilla JavaScript, TypeScript, React, Angular, Vue, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS, JSON
+image: https://live.staticflickr.com/65535/54953844493_dce461ec4c_b.jpg
+tags: Fullstack JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, Gatsby, NextJS, Headless CMS, JSON
 ---
 
 > "A JavaScript team that’s battle-tested, precise, and fast."
-
-[PageGrid pages="/work/skills/javascript/ecmascript, /work/skills/javascript/typescript, /work/skills/javascript/react, /work/skills/javascript/react/react-native, /work/skills/javascript/npm, /work/skills/javascript/node, /work/skills/javascript/nextjs, /work/skills/javascript/vercel, /work/skills/javascript/js-testing"]
 
 Before the frameworks, before npm, before it ate the world—we were already deep in the language that powers the modern web.
 

@@ -4,8 +4,8 @@ slug: /next-js/ssr
 title: SSR
 description: Server Side Rendering
 tags: nx, goldlabel, coding
-icon: right
-image: https://live.staticflickr.com/65535/55065814741_d54d903eba_b.jpg
+icon: js
+image: /shared/png/nextjs.png
 ---
 
 To implement a structure for your markdown documents that includes concepts like titles, featured images, and other metadata while setting up static site generation (SSG) in Next.js, follow these steps:

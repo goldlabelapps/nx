@@ -2,16 +2,17 @@
 order: 1 
 slug: /
 title: NX
-description: EchoPay Orders™ Summer 2026
+description: TypeScript App framework built on Next.js and Python
 tags: NX, Goldlabel, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
-icon: home
-image: /nx/png/nx-trans.png
+icon: js
+image: /shared/png/nextjs.png
 ---
 
+>  TypeScript App framework built on Next.js, React and also Python
 
+It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
 
-
-#### Vot iss?
+#### Coming Summer 2026: EchoPay Orders™
 
 NX is a multi-tenant Next.js platform for building and deploying high-performance web applications quickly.
 It delivers built-in SEO optimisation, accessibility, and scalable architecture so teams can launch modern web products without rebuilding the foundations each time.

@@ -16,3 +16,12 @@ If you've used Redux before, you already know how to use Uberedux. If you haven'
 We’ve trimmed the fat: no reducers to wire up manually, no sprawling folder trees, no indirection. Instead, you get a single useSlice() hook that gives you what you need, when you need it — whether that's in a form field, a route guard, or a floating modal.
 
 Uberedux isn’t trying to win design awards. It's just here to work — cleanly, quietly, and consistently across your app. No surprises. No rewrites. Just state management that stays out of your way.
+
+
+"I'm not sure if we need redux". This worries me.
+
+I've lost count of the number of times I've implemented redux, but it's a LOT. It's the first thing I do on every single App I've bootstrapped for the past 5 years. So much so that I've made it as easy as quick as possible. 
+
+It has to have a name and I can't call it redux, so the current name I'm using is Uberedux. It comes in a nice directory which gets pasted into any react app. You can connect it up and start using redux in under 10 mins.
+
+Let's see how that is implemented

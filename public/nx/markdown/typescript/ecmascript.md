@@ -1,5 +1,5 @@
 ---
-order: 200
+order: 680
 title: ECMAScript
 description: Language specification behind JavaScript, JScript, ActionScript, and other languages
 slug: /typescript/ecmascript

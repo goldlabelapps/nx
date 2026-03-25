@@ -13,8 +13,8 @@
         "dark": "/nx/svg/favicon_DCFFFB.svg"
     },
     "images": {
-        "light": "/nx/png/nx-trans.png",
-        "dark": "/nx/png/nx-trans.png"
+        "light": "/shared/png/nextjs.png",
+        "dark": "/shared/png/nextjs.png"
     },
     "cartridges": {
         "nxadmin": {

@@ -2,9 +2,10 @@
 order: 1
 slug: /
 title: Creating New Tenants
-description: is easy...
+description: Next JS
 tags: tenants, how to,
-icon: new
+icon: js
+image: /shared/png/nextjs.png
 ---
 
 
