@@ -1,5 +1,5 @@
 ---
-order: 20
+order: 600
 slug: /typescript
 title: TypeScript
 description: types.d.ts
@@ -18,39 +18,5 @@ export type T_Config = {
         light: {
             icon: string;
             favicon: string;
-        };
-        dark: {
-            icon: string;
-            favicon: string;
-        };
-    };
-    images: {
-        light: string;
-        dark: string;
-    };
-    cartridges: {
-        paywall?: {
-            enabled: boolean;
-            userMode: string;
-            email: string;
-        };
-        designSystem?: {
-            themeSwitching: boolean;
-            defaultTheme: string;
-            themes: {
-                [key: string]: {
-                    mode: string;
-                    primary: string;
-                    secondary: string;
-                    background: string;
-                    paper: string;
-                    text: string;
-                    border: string;
-                };
-            };
-        };
-        lingua?: T_LinguaCartridge;
-        // Add other cartridge types as needed
-    };
-}
+      ...
 ```

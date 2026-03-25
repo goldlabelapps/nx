@@ -4,7 +4,7 @@ title: Techstack
 description: Fullstack JavaScript & more
 slug: /techstack
 icon: techstack
-image: https://live.staticflickr.com/65535/54929673394_69c76ac4a3_b.jpg
+image: /shared/png/nextjs.png
 tags: expertise, fields, work
 ---
 
