@@ -2,7 +2,7 @@ import SignIn from './components/SignIn';
 import AccountCard from './components/AccountCard';
 import SimpleSignIn from './components/SimpleSignIn';
 import Register from './components/Register';
-
+import ChooseAvatar from './components/ChooseAvatar';
 import UserSpot from './components/UserSpot';
 import Account from './components/Account';
 import SignOutBtn from './components/SignOutBtn';
@@ -11,6 +11,7 @@ import { firebaseLogin, firebaseLogout } from './actions/firebaseAuth';
 import { useUID } from './hooks/useUID';
 import { useAuthed } from './hooks/useAuthed';
 import { usePaywall } from './hooks/usePaywall';
+import { useAccount } from './hooks/useAccount';
 import { useIsAuthed } from './hooks/useIsAuthed';
 import { subscribeAccount } from './actions/subscribeAccount';
 import { updateAccount } from './actions/updateAccount';
@@ -26,10 +27,12 @@ export {
     firebaseLogout,
     usePaywall,
     useIsAuthed,
+    useAccount,
     subscribeAccount,
     UserSpot,
     useUID,
     AccountCard,
     Register,
     updateAccount,
+    ChooseAvatar,
 };
