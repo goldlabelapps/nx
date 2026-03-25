@@ -1,14 +1,30 @@
 "use client";
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Container, Avatar, Box, IconButton, CardHeader, CardContent, CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
+import { 
+    Container, 
+    Avatar, 
+    Box, 
+    IconButton, 
+    CardHeader, 
+    CardContent, 
+    CardActions, 
+    Button, 
+    TextField, 
+    Typography, 
+    InputAdornment, 
+    CardMedia 
+} from '@mui/material';
 import { DesignSystem, Icon } from '../../DesignSystem';
-import Image from 'next/image';
 
 export interface I_SignIn {
     onSignIn: (email: string, password: string) => void;
     config: any;
     error?: string;
+}
+
+function isValidEmail(email: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 export default function SignIn({ onSignIn, config, error: externalError }: I_SignIn) {
@@ -24,6 +40,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
             setEmail(paywallEmail);
         }
     }, [userMode, paywallEmail]);
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (userMode === 'single') {
@@ -34,8 +51,8 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
             setError('');
             onSignIn(paywallEmail, password);
         } else {
-            if (!email || !password) {
-                setError('Please enter both email and password.');
+            if (!isValidEmail(email) || !password) {
+                setError('Please enter a valid email and password.');
                 return;
             }
             setError('');
@@ -49,20 +66,46 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
     }
     const { siteName, description, images } = config;
     const image = images?.[themeMode] || '';
-
     const avatar = config?.avatars?.[themeMode] || '';
+    const [imgLoaded, setImgLoaded] = useState(false);
 
     return (
         <DesignSystem theme={theme} config={config}>
             <Container maxWidth="xs" sx={{ mt: 3 }}>
             <form onSubmit={handleSubmit}>
-                    <CardHeader 
-                    avatar={<IconButton onClick={() => router.push('/')} >
+                
+                <CardHeader
+                    avatar={<IconButton onClick={() => router.push('/') } >
                                     <Avatar src={avatar} alt="Avatar" />
                                 </IconButton>}
-                        title={siteName}
-                        subheader={description}
+                    title={siteName}
+                    subheader={description}
+                />
+
+                    <CardMedia
+                        component="img"
+                        image={image}
+                        alt={siteName || 'image'}
+                        sx={{
+                            display: imgLoaded ? 'block' : 'none',
+                            width: '100%',
+                            height: 175,
+                            objectFit: 'contain',
+                            objectPosition: 'center',
+                            borderRadius: 0,
+                            mt: 1
+                        }}
+                        onLoad={() => setImgLoaded(true)}
+                        onError={() => setImgLoaded(true)}
                     />
+                    
+                    {(error || externalError) &&
+                        <CardContent>
+                            <Typography sx={{ mt: 2 }} color="primary">
+                                {error || externalError}
+                            </Typography>
+                        </CardContent>
+                    }
                     <CardContent>
                         {userMode !== 'single' && (
                             <TextField
@@ -108,6 +151,7 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
                             endIcon={<Icon icon="signup" />}
                             variant="outlined"
                             sx={{ mx: 0 }}
+                            disabled={userMode !== 'single' && (!isValidEmail(email) || password.length < 1)}
                         >
                             Register
                         </Button>
@@ -116,19 +160,17 @@ export default function SignIn({ onSignIn, config, error: externalError }: I_Sig
                             fullWidth
                             type="submit"
                             endIcon={<Icon icon="signin" />}
-                            variant="outlined"
+                            variant="contained"
                             sx={{ mx: 0 }}
+                            disabled={userMode !== 'single' && (!isValidEmail(email) || password.length < 1)}
                         >
                             Sign In
                         </Button>
                         <Box sx={{ flexGrow: 1 }} />
                     </CardActions>
-                    <CardContent>
-                        {(error || externalError) && 
-                        <Typography sx={{ mt: 2 }} color="primary">
-                            {error || externalError}
-                        </Typography>}
-                    </CardContent>
+                    
+                        
+                    
             </form>
             </Container>
         </DesignSystem>

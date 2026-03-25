@@ -13,6 +13,7 @@ import { useAuthed } from './hooks/useAuthed';
 import { usePaywall } from './hooks/usePaywall';
 import { useIsAuthed } from './hooks/useIsAuthed';
 import { subscribeAccount } from './actions/subscribeAccount';
+import { updateAccount } from './actions/updateAccount';
 
 export {
     Account,
@@ -30,4 +31,5 @@ export {
     useUID,
     AccountCard,
     Register,
+    updateAccount,
 };

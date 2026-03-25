@@ -2,7 +2,7 @@
 order: 550
 slug: /bez/cat
 title: Cat
-description: That HR chick who leaves her notepad lying around so people notice
+description: That HR chick who leaves her notepad lying around
 tags: bez
 icon: writing
 image: https://live.staticflickr.com/65535/53518242682_21988edbc8_b.jpg

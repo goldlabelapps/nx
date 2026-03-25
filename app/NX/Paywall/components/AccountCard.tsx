@@ -1,20 +1,22 @@
 "use client";
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Card } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Card, Typography } from '@mui/material';
 import { 
-    Badge,
+    Button,
     Avatar,
     Box,
-    Typography,
+    CardActions,
     CardHeader,
     CardContent,
-    CardActions,
-    Button,
-    IconButton,
 } from '@mui/material';
-import { usePaywall, setPaywall, subscribeAccount, firebaseLogout } from '../../Paywall';
+import { 
+    usePaywall, 
+    setPaywall,
+    firebaseLogout,
+    updateAccount,
+} from '../../Paywall';
 import { useDispatch } from '../../Uberedux';
-import { Icon } from '../../DesignSystem';
+import { Icon, EditableStr } from '../../DesignSystem';
 
 export default function AccountCard() {
 
@@ -40,47 +42,56 @@ export default function AccountCard() {
         setOpen(false);
     }
     
+    const onNameSave = (newName: string) => {
+        dispatch(updateAccount('name', newName, `You are now called ${newName}`));
+    };
+
     return (<>
         <Box>
             <CardHeader
-                title={name || null}
+                title={<EditableStr 
+                    id="account-name"
+                    dialogTitle='Change your name'
+                    value={name}
+                    onSave={onNameSave}
+                />}
                 subheader={email || null}
-                avatar={<Badge badgeContent={level}>
-                    <Avatar src={avatar} />
-                </Badge>}
-                action={<IconButton color="primary" onClick={handleOpen}>
-                    <Icon icon="signout" />
-                </IconButton>}
+                avatar={<Avatar src={avatar} />}
             />
             <CardContent>
-                {/* <Typography>
-                    Access Level
-                </Typography> */}
                 {[...Array(5)].map((_, i) => (
-                    <Icon key={i} icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} />
+                    <Icon key={i} color={'primary'} icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} />
                 ))}
             </CardContent>
-            {/* <CardActions>
+            <CardActions>
                 <Button 
-                    endIcon={<Icon icon="right" />}
-                    variant="contained" color="primary">
-                    Manage Subscription
+                    endIcon={<Icon icon="signout" />}
+                    color="primary" onClick={handleOpen}>
+                    Sign out
                 </Button>
-            </CardActions> */}
 
+            </CardActions>
+            
         </Box>
-        <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>Paywall</DialogTitle>
+        <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
+            <DialogTitle>
+                <Typography variant="h6" component="span" sx={{mt:1}}>
+                    Sign {name} out?
+                </Typography>
+            </DialogTitle>
             <DialogContent>
                 <DialogContentText>
-                    Are you sure you want to sign out?
+                    Are you sure?
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose} color="primary">
                     No
                 </Button>
-                <Button variant="outlined" onClick={onSignOut} color="primary" autoFocus>
+                <Button 
+                    endIcon={<Icon icon="tick" />}
+                    variant="outlined" 
+                    onClick={onSignOut} color="primary" autoFocus>
                     Yes
                 </Button>
             </DialogActions>
