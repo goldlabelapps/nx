@@ -50,9 +50,15 @@ export default function AccountCard() {
         dispatch(updateAccount('name', newName, `You are now called ${newName}`));
     };
 
+    const onAvatarSave = (newAvatar: string) => {
+        // console.log('new avatar url', newAvatar);
+        dispatch(updateAccount('avatar', newAvatar, `You have a new avatar`));
+    };
+
     return (<>
         <Box>
             <CardHeader
+                avatar={<ChooseAvatar onSave={onAvatarSave} />}
                 title={<EditableStr 
                     id="account-name"
                     dialogTitle='Change your name'
@@ -68,19 +74,16 @@ export default function AccountCard() {
                         />
                     ))}
                 </>}
-                avatar={
-                    <ChooseAvatar />
-                    
-                }
+                
             />
 
-            <CardActions>
+            {/* <CardActions>
                 <Button 
                     endIcon={<Icon icon="signout" />}
                     color="primary" onClick={handleOpen}>
                     Sign out
                 </Button>
-            </CardActions>
+            </CardActions> */}
             
         </Box>
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">

@@ -6,19 +6,22 @@ import {
     Box,
     IconButton,
     Avatar,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogActions,
+    Button,
 } from '@mui/material';
 import { Icon } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 import { usePaywall, setPaywall, useAccount } from '../../Paywall';
 
 export interface I_ChooseAvatar {
-    options?: any;
+    onSave: (newAvatar: string) => void;
 };
 
 export default function ChooseAvatar({
-    options={
-        avatar: '/shared/svg/blank.svg',
-    },
+    onSave,
 }: I_ChooseAvatar) {
     const dispatch = useDispatch();
     const account = useAccount();
@@ -26,18 +29,23 @@ export default function ChooseAvatar({
     const [uploading, setUploading] = React.useState(false);
     const [selected, setSelected] = React.useState<string | null>(null);
     const presetAvatars = [
-        'https://randomuser.me/api/portraits/men/1.jpg',
-        'https://randomuser.me/api/portraits/women/1.jpg',
-        'https://randomuser.me/api/portraits/men/2.jpg',
-        'https://randomuser.me/api/portraits/women/2.jpg',
+        '/shared/svg/characters/biker.svg',
+        '/shared/svg/characters/chix.svg',
+        '/shared/svg/characters/dapper.svg',
+        '/shared/svg/characters/hippy.svg',
+        '/shared/svg/characters/hipster.svg',
+        '/shared/svg/characters/mumma.svg',
+        '/shared/svg/characters/punk.svg',
+        '/shared/svg/characters/rasta.svg',
+        '/shared/svg/characters/rocker.svg',
     ];
 
     const handleAvatarClick = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handlePresetSelect = (url: string) => {
+    const handleChoice = (url: string) => {
         setSelected(url);
-        dispatch(setPaywall('account', { ...account, avatar: url }));
+        onSave(url);
         setOpen(false);
     };
 
@@ -62,7 +70,10 @@ export default function ChooseAvatar({
         <>
             <Box sx={{ position: 'relative', display: 'inline-block' }}>
                 <IconButton onClick={handleAvatarClick} disabled={uploading}>
-                    <Avatar sx={{ width: 64, height: 64 }} src={selected || account?.avatar || options.avatar} />
+                    <Avatar sx={{ 
+                        width: 64, height: 64 }} 
+                        src={account?.avatar} 
+                    />
                 </IconButton>
                 <Box
                     sx={{
@@ -78,54 +89,50 @@ export default function ChooseAvatar({
                     <Icon icon="photo" color="info" />
                 </Box>
             </Box>
-            {/* Avatar selection dialog */}
-            <Box
-                component="dialog"
-                open={open}
-                sx={{
-                    zIndex: 1300,
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100vw',
-                    height: '100vh',
-                    bgcolor: 'rgba(0,0,0,0.4)',
-                    display: open ? 'flex' : 'none',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                }}
-                onClick={handleClose}
-            >
-                <Box
-                    sx={{
-                        bgcolor: 'background.paper',
-                        borderRadius: 2,
-                        p: 3,
-                        minWidth: 320,
-                        boxShadow: 6,
-                        position: 'relative',
-                    }}
-                    onClick={e => e.stopPropagation()}
-                >
-                    <Box sx={{ mb: 2, fontWeight: 600 }}>Choose your avatar</Box>
-                    <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 2 }}>
-                        {presetAvatars.map((url, i) => (
-                            <IconButton key={url} onClick={() => handlePresetSelect(url)}>
-                                <Avatar src={url} sx={{ border: selected === url ? '2px solid #1976d2' : undefined }} />
-                            </IconButton>
-                        ))}
-                    </Box>
-                    <Box sx={{ mb: 2 }}>
-                        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
-                            <input type="file" accept="image/*" style={{ display: 'none' }} onChange={handleUpload} />
-                            <Icon icon="upload" color="primary" /> Upload your own
-                        </label>
-                    </Box>
+            {/* Avatar selection dialog using MUI Dialog */}
+            <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
+                <DialogTitle sx={{  }}>
                     <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 8, right: 8 }}>
                         <Icon icon="close" />
                     </IconButton>
-                </Box>
-            </Box>
+                </DialogTitle>
+                <DialogContent>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', mb: 0 }}>
+                        {presetAvatars.map((url, i) => (
+                            <IconButton key={url} onClick={() => handleChoice(url)}>
+                                <Avatar 
+                                src={url} 
+                                sx={{ 
+                                    width: 64,
+                                    height: 64,
+                                    border: selected === url ? '2px solid #1976d2' : undefined }} />
+                            </IconButton>
+                        ))}
+                    </Box>
+                    
+                </DialogContent>
+                <DialogActions>
+                    <Box sx={{ display: 'flex',width: '100%', m:2}}>
+                        <Box sx={{ flexGrow: 1 }} />
+                        <label style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 8,
+                            cursor: 'pointer',
+                        }}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                style={{ display: 'none' }}
+                                onChange={handleUpload} />
+                            
+                            Upload
+                            <Icon icon="upload" color="primary" />
+                        </label>
+                        <Box sx={{ flexGrow: 1 }} />
+                    </Box>
+                </DialogActions>
+            </Dialog>
         </>
     );
 }

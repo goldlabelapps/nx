@@ -1,13 +1,11 @@
 'use client';
 import React from "react";
 import { useRouter } from 'next/navigation';
-// import type { T_Config, T_Frontmatter } from '../../types';
 import {
-	useTheme,
 	Box,
 	Button,
 } from '@mui/material';
-import { Icon, navigateTo } from '../../DesignSystem';
+import { Icon, navigateTo, setFeedback } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 
 export interface I_Related {
@@ -20,9 +18,13 @@ const Related: React.FC<I_Related> = ({ related }) => {
 	const router = useRouter();
 
 	const handleTagsClick = () => {
-		dispatch(navigateTo(router, `/tags`));
+		dispatch(setFeedback({
+			severity: 'success',
+			title: 'Tags coming soon'
+		}));
+		// dispatch(navigateTo(router, `/tags`));
 	};
-
+	return null
 	return (
 		<Box>
 			<Button 
