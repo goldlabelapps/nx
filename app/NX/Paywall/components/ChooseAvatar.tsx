@@ -12,6 +12,7 @@ import {
 import { Icon, setFeedback } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 import { setPaywall, useAccount, usePaywall } from '../../Paywall';
+import { getAuth } from 'firebase/auth';
 
 export interface I_ChooseAvatar {
     onSave: (newAvatar: string) => void;
@@ -59,9 +60,18 @@ export default function ChooseAvatar({
         formData.append('uid', account.uid);
 
         try {
+            // Get Firebase ID token for the current user
+            const auth = getAuth();
+            const user = auth.currentUser;
+            if (!user) throw new Error('User not authenticated');
+            const idToken = await user.getIdToken();
+
             const res = await fetch('/api/avatars/upload', {
                 method: 'POST',
                 body: formData,
+                headers: {
+                    'Authorization': `Bearer ${idToken}`
+                }
             });
             const result = await res.json();
             if (result?.data?.src) {
@@ -75,12 +85,16 @@ export default function ChooseAvatar({
                     title: 'Avatar uploaded',
                 }))
                 onSave(result.data.src);
+            } else {
+                dispatch(setFeedback({
+                    severity: 'error',
+                    title: result?.message || 'Avatar upload failed',
+                }))
             }
         } catch (err) {
-            // handle error (show feedback, etc.)
             dispatch(setFeedback({
                 severity: 'error',
-                title: 'Avatar uploaded',
+                title: 'Avatar upload failed',
             }))
         } finally {
             setUploading(false);
