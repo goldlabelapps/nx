@@ -20,6 +20,10 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'echopay.goldlabel.pro',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.aquaponics.net.au',
       }
     ],
   },

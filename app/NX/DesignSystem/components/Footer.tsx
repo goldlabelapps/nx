@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import {
 	Nav,
+	Related,
 } from '../../DesignSystem';
 
 export interface I_Footer {
@@ -38,6 +39,7 @@ export default function Footer({
 				}}>
 				<Container maxWidth="lg">
 					<Toolbar>
+						<Related />
 						<Box sx={{ flexGrow: 1 }} />
 						{children}
 						<Box sx={{ display: 'flex', }}>
@@ -47,6 +49,7 @@ export default function Footer({
 									navItems={navItems as I_NestedNav["navItems"]}
 									frontmatter={frontmatter}
 								/>
+								
 							</Box>
 						</Box>
 					</Toolbar>

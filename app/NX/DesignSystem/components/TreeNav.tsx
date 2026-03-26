@@ -1,5 +1,8 @@
 "use client";
-import Box from '@mui/material/Box';
+import {
+    Box,
+    Typography,
+} from '@mui/material';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuthed } from '../../Paywall';
@@ -95,6 +98,11 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                 }}
             />
+            {/* <Box sx={{mx: 1, mt: 2}}>
+                <Typography variant="caption">
+                    Related
+                </Typography>
+            </Box> */}
         </Box>
     );
 }

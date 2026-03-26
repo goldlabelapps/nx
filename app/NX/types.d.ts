@@ -462,6 +462,7 @@ export type I_Icon = {
     | 'desktopmac'
     | 'edge'
     | 'linux'
+    | 'tag'
     | 'windows'
     | 'xbox'
     | 'mac'

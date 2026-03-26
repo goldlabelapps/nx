@@ -1,7 +1,7 @@
 {
     "tenant": "echopay",
     "siteName": "EchoPay",
-    "description": "Orders™",
+    "description": "Prospects™",
     "url": "https://echopay.goldlabel.pro",
     "owner": {
         "name": "James Ward",
@@ -13,8 +13,8 @@
         "dark": "/echopay/svg/favicon_FFFFFF.svg"
     },
     "images": {
-        "light": "/echopay/gif/echopay_white.gif",
-        "dark": "/echopay/gif/echopay.gif"
+        "light": "/echopay/png/app.png",
+        "dark": "/echopay/png/app.png"
     },
     "cartridges": {
         "nxadmin": {
@@ -29,7 +29,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",
