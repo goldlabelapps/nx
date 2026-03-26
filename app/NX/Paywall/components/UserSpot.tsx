@@ -36,7 +36,7 @@ export default function UserSpot({ onClick }: I_UserSpot) {
     return (
         <IconButton onClick={onClick} color="primary" sx={{ mt: 1 }}>
             {account ? (
-                <Avatar alt={account.name} src={account.avatar} />
+                <Avatar sx={{ width: 32, height: 32 }} alt={account.name} src={account.avatar} />
             ) : (
                     <Icon icon="async" />
             )}

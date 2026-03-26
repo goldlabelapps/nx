@@ -26,7 +26,6 @@ export default function ChooseAvatar({
     const [uploading, setUploading] = React.useState(false);
     const [selected, setSelected] = React.useState<string | null>(null);
     const presetAvatars = [
-        '/shared/svg/blank.svg',
         'https://randomuser.me/api/portraits/men/1.jpg',
         'https://randomuser.me/api/portraits/women/1.jpg',
         'https://randomuser.me/api/portraits/men/2.jpg',
@@ -63,14 +62,13 @@ export default function ChooseAvatar({
         <>
             <Box sx={{ position: 'relative', display: 'inline-block' }}>
                 <IconButton onClick={handleAvatarClick} disabled={uploading}>
-                    <Avatar src={selected || account?.avatar || options.avatar} />
+                    <Avatar sx={{ width: 64, height: 64 }} src={selected || account?.avatar || options.avatar} />
                 </IconButton>
                 <Box
                     sx={{
                         position: 'absolute',
-                        bottom: 2,
-                        left: '-50%',
-                        transform: 'translateX(+60%)',
+                        bottom: 0,
+                        transform: 'translateX(56px)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
