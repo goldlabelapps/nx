@@ -1,14 +1,12 @@
 "use client";
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Card, Typography } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import { 
     Button,
-    Avatar,
     Box,
     CardActions,
     CardHeader,
     CardContent,
-    IconButton,
 } from '@mui/material';
 import { 
     usePaywall, 
