@@ -1,28 +1,69 @@
 "use client";
 import React from 'react';
-import { IconButton } from '@mui/material';
+import {
+    Button,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    DialogActions,
+    IconButton,
+    Typography,
+} from '@mui/material';
 import { Icon } from '../../DesignSystem';
+import { useDispatch } from '../../Uberedux';
 import { useRouter } from 'next/navigation';
-import { getFirebaseAuth } from '../../lib/firebase';
+import {
+    usePaywall,
+    setPaywall,
+    firebaseLogout,
+    updateAccount,
+    ChooseAvatar,
+} from '../../Paywall';
 
 export default function SignOutBtn() {
     const router = useRouter();
+    const dispatch = useDispatch();
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
-    const handleSignout = async (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault();
-        try {
-            const auth = getFirebaseAuth();
-            const { signOut } = await import('firebase/auth');
-            await signOut(auth);
-            router.push('/nx-admin');
-        } catch (err) {
-            // Optionally handle error (e.g., show notification)
-            console.error('Signout failed', err);
-        }
+    const handleSignout = async () => {
+        await firebaseLogout();
+        dispatch(setPaywall('user', null));
+        dispatch(setPaywall('account', null));
+        setOpen(false);
     }
+    
     return (
+        <>
         <IconButton onClick={handleSignout} color="primary">
             <Icon icon="signout" />
         </IconButton>
+
+        <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
+            <DialogTitle>
+                <Typography variant="h6" component="span" sx={{mt:1}}>
+                    Sign out?
+                </Typography>
+            </DialogTitle>
+            <DialogContent>
+                <DialogContentText>
+                    Are you sure?
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose} color="primary">
+                    No
+                </Button>
+                <Button 
+                    endIcon={<Icon icon="tick" />}
+                    variant="outlined" 
+                    onClick={handleSignout} color="primary" autoFocus>
+                    Yes
+                </Button>
+            </DialogActions>
+        </Dialog>
+        </>
     );
 }

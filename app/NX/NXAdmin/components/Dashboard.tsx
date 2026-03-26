@@ -7,8 +7,12 @@ import { AccountCard } from '../../Paywall';
 
 export default function Dashboard() {
 
-    return (
-        <Grid container spacing={2} sx={{mb: 4}}>
+    return <AccountCard />;
+}
+
+/*
+
+        <Grid container spacing={0} sx={{mb: 0}}>
             <Grid size={{ xs: 12 }}>
                 <AccountCard />
             </Grid>
@@ -16,10 +20,8 @@ export default function Dashboard() {
                 
             </Grid>
         </Grid>
-    );
-}
 
-/*
+
  <ButtonBase
     sx={{
         textAlign: 'left',

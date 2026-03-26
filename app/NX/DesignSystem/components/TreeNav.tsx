@@ -23,8 +23,17 @@ function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {
             if (route === "/") {
                 label = "Home";
             }
-            // Recursively filter children as well
-            const filteredChildren = item.children ? mapNavItemsToTreeView(item.children, usedIds) : undefined;
+            // Recursively filter children as well, but skip the first child if children exist
+            let filteredChildren = undefined;
+            if (item.children && Array.isArray(item.children) && item.children.length > 1) {
+                // Remove the first child (index 0)
+                filteredChildren = mapNavItemsToTreeView(item.children.slice(1), usedIds);
+            } else if (item.children && Array.isArray(item.children) && item.children.length === 1) {
+                // If only one child, removing it results in no children
+                filteredChildren = undefined;
+            } else if (item.children) {
+                filteredChildren = mapNavItemsToTreeView(item.children, usedIds);
+            }
             return {
                 id,
                 label,

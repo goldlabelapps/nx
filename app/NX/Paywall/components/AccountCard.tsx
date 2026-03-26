@@ -1,12 +1,15 @@
 "use client";
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import { 
     Button,
     Box,
-    CardActions,
     CardHeader,
-    CardContent,
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    DialogContentText,
+    DialogActions,
+    Typography,
 } from '@mui/material';
 import { 
     usePaywall, 
@@ -35,7 +38,7 @@ export default function AccountCard() {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const onSignOut = async () => {
+    const handleSignout = async () => {
         await firebaseLogout();
         dispatch(setPaywall('user', null));
         dispatch(setPaywall('account', null));
@@ -55,28 +58,28 @@ export default function AccountCard() {
                     value={name}
                     onSave={onNameSave}
                 />}
-                subheader={email || null}
+                subheader={<>
+                    {[...Array(5)].map((_, i) => (
+                        <Icon
+                            key={`star_${i}`}
+                            color={'primary'}
+                            icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'}
+                        />
+                    ))}
+                </>}
                 avatar={
                     <ChooseAvatar />
                     
                 }
             />
-            <CardContent>
-                {[...Array(5)].map((_, i) => (
-                    <Icon 
-                        key={`star_${i}`} 
-                        color={'primary'} 
-                        icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} 
-                    />
-                ))}
-            </CardContent>
-            <CardActions>
+
+            {/* <CardActions>
                 <Button 
                     endIcon={<Icon icon="signout" />}
                     color="primary" onClick={handleOpen}>
                     Sign out
                 </Button>
-            </CardActions>
+            </CardActions> */}
             
         </Box>
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
@@ -97,7 +100,7 @@ export default function AccountCard() {
                 <Button 
                     endIcon={<Icon icon="tick" />}
                     variant="outlined" 
-                    onClick={onSignOut} color="primary" autoFocus>
+                    onClick={handleSignout} color="primary" autoFocus>
                     Yes
                 </Button>
             </DialogActions>

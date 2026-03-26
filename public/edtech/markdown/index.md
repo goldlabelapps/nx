@@ -2,12 +2,13 @@
 order: 1 
 slug: /
 title: Educational Technology
-description: Technical Interviews
+description: Ace your software developer interviews. 
 tags: nx, goldlabel, coding
 icon: js
 image: /shared/png/nextjs.png
 ---
-> Ace your software developer interviews. Master technical interview communication, behavioral questions, system design explanations, and English interview skills.
+
+Master technical interview communication, behavioral questions, system design explanations, and English interview skills. Ace your software developer interviews. Master technical interview communication, behavioral questions, system design explanations, and English interview skills.
 
 > Coding Interviews  
 
