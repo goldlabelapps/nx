@@ -1,9 +1,8 @@
 "use client";
 import React from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Card, Typography } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import { 
     Button,
-    Avatar,
     Box,
     CardActions,
     CardHeader,
@@ -14,6 +13,7 @@ import {
     setPaywall,
     firebaseLogout,
     updateAccount,
+    ChooseAvatar,
 } from '../../Paywall';
 import { useDispatch } from '../../Uberedux';
 import { Icon, EditableStr } from '../../DesignSystem';
@@ -56,11 +56,18 @@ export default function AccountCard() {
                     onSave={onNameSave}
                 />}
                 subheader={email || null}
-                avatar={<Avatar src={avatar} />}
+                avatar={
+                    <ChooseAvatar />
+                    
+                }
             />
             <CardContent>
                 {[...Array(5)].map((_, i) => (
-                    <Icon key={i} color={'primary'} icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} />
+                    <Icon 
+                        key={`star_${i}`} 
+                        color={'primary'} 
+                        icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'} 
+                    />
                 ))}
             </CardContent>
             <CardActions>
@@ -69,7 +76,6 @@ export default function AccountCard() {
                     color="primary" onClick={handleOpen}>
                     Sign out
                 </Button>
-
             </CardActions>
             
         </Box>
@@ -96,7 +102,7 @@ export default function AccountCard() {
                 </Button>
             </DialogActions>
         </Dialog>
-        {/* <pre>paywall: {JSON.stringify(paywall, null, 2)}</pre> */}
+        {/* <pre>account: {JSON.stringify(account, null, 2)}</pre> */}
     </>
     );
 }
