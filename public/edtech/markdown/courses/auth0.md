@@ -3,9 +3,8 @@ order: 210
 slug: /courses/auth0
 title: Apps
 description: To implement Auth0 authentication in an Next.js app
-tags: nx, goldlabel, aki
-icon: ai
-smartImage: default
+tags: free
+icon: free
 ---
 
 To implement Auth0 authentication in an Next.js app with the entire application behind an authentication wall...

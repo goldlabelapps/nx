@@ -4,6 +4,7 @@ import {
     Button,
     Box,
     CardHeader,
+    CardActions,
     Dialog,
     DialogTitle,
     DialogContent,
@@ -73,13 +74,13 @@ export default function AccountCard() {
                 }
             />
 
-            {/* <CardActions>
+            <CardActions>
                 <Button 
                     endIcon={<Icon icon="signout" />}
                     color="primary" onClick={handleOpen}>
                     Sign out
                 </Button>
-            </CardActions> */}
+            </CardActions>
             
         </Box>
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
