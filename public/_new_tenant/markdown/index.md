@@ -1,13 +1,12 @@
 ---
 order: 1
 slug: /
-title: Creating New Tenants
-description: Next JS
+title: New Tenant
+description: Imagine you have a shop in a posh shopping centre arcade...
 tags: tenants, how to,
 icon: js
 image: /shared/png/nextjs.png
 ---
-
 
 ## What is a tenant?
 
