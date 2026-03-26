@@ -5,13 +5,13 @@ export const getEndpoints = (name?: string) => {
     const endpoints = [
         {
             name: 'Avatars',
-            description: 'Handles uploading, fetching and deleting of user avatars',
+            description: 'Upload, fetch and delete avatars',
             path: `${baseURL}/avatars`,
             endpoints: [
                 {
-                    name: 'Email',
-                    path: `${baseURL}/avatars/uplolad`,
-                    methos: 'POST',
+                    name: 'Upload',
+                    endpoint: `${baseURL}/avatars/upload`,
+                    method: 'POST',
                 },
             ]
         },
@@ -22,8 +22,8 @@ export const getEndpoints = (name?: string) => {
             endpoints: [
                 {
                     name: 'Email',
-                    path: `${baseURL}/notify/email`,
-                    methos: 'POST',
+                    endpoint: `${baseURL}/notify/email`,
+                    method: 'POST',
                 },
             ]
         },
