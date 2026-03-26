@@ -179,12 +179,15 @@ import PublicIcon from '@mui/icons-material/Language';
 import OrdersIcon from '@mui/icons-material/ShoppingCart';
 import StarOnIcon from '@mui/icons-material/Star';
 import StarOffIcon from '@mui/icons-material/StarBorder';
+import TagIcon from '@mui/icons-material/Tag';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
-
+    case 'tag':
+      iconFragment = <TagIcon color={color} />;
+      break;
     case 'staroff':
       iconFragment = <StarOffIcon color={color} />;
       break;

@@ -4,6 +4,7 @@ title: Murray Hallam
 description: Simple engineering, reliability, and water efficiency
 slug: /fish/aquaponics/murray-hallam
 icon: fish
+image: https://www.aquaponics.net.au/images/slide-shop.jpg
 youtube: https://www.youtube.com/watch?v=qknk7jUABq8
 ---
 

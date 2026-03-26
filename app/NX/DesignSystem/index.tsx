@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import { CleverText } from './components/CleverText';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Tags from './components/Tags';
+import Related from './components/Related';
 import Settings from './components/Settings';
 import Icon from './components/Icon';
 import SmartImage from './components/SmartImage';
@@ -26,7 +26,7 @@ export {
     Nav,
     EditableStr,
     Settings,
-    Tags,
+    Related,
     SmartImage,
     SettingsMenu,
     DesignSystem,
