@@ -3,9 +3,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useDispatch } from '../../Uberedux';
-import { setProspects, useProspects, useInitialData } from '../../Prospects';
-import {Icon} from '../../DesignSystem';
+// import { useDispatch } from '../../Uberedux';
+// import { setProspects, useProspects, useInitialData } from '../../Prospects';
+// import {Icon} from '../../DesignSystem';
 
 export type T_SelectaItem = {
     label: string;
@@ -18,7 +18,7 @@ export interface I_Selecta {
 }
 
 export default function Selecta({ 
-    label = 'bollix', 
+    label = 'Bo', 
     list = [
         { label: 'Option 1', value: 'option1' },
         { label: 'Option 2', value: 'option2' },
@@ -26,8 +26,8 @@ export default function Selecta({
     ],
 }: I_Selecta) {
     
-    const dispatch = useDispatch();
-    const initialData = useInitialData();
+    // const dispatch = useDispatch();
+    // const initialData = useInitialData();
 
     return (
         <Autocomplete
@@ -42,7 +42,7 @@ export default function Selecta({
                     label={label}
                     inputProps={{
                         ...params.inputProps,
-                        autoComplete: 'new-password', // disable autocomplete and autofill
+                        autoComplete: 'new-password',
                     }}
                 />
             )}

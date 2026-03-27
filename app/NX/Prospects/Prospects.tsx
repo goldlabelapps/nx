@@ -2,11 +2,10 @@
 import type { T_Config } from '../types';
 import * as React from 'react';
 import {
-    Typography,
-    LinearProgress,
     CircularProgress,
     Box,
     Alert,
+    Typography,
 } from '@mui/material';
 import {
     FindProspect,
@@ -32,9 +31,6 @@ export default function Prospects({
     const loading = state?.loading;
     const initialData = state?.initialData;
 
-    // If rawTitles is an array of objects with nested label/count, transform it for Selecta
-    const rawTitles = initialData?.title?.values || [];
-
     // Helper to slugify a string
     const slugify = (str: unknown) =>
         String(str)
@@ -43,36 +39,6 @@ export default function Prospects({
             .replace(/(^-|-$)+/g, '');
 
     // Handles both the nested and flat string cases, and sorts by count if available
-
-    type SelectaListItem = { label: string; value: string; count: number };
-    const selectaListFull: SelectaListItem[] = rawTitles.map((item: any, idx: number): SelectaListItem => {
-        // If item.label is an object, extract its label and count
-        let labelValue = '';
-        let countValue = 0;
-        if (typeof item === 'object' && item.label) {
-            labelValue = typeof item.label.label === 'string' ? item.label.label : String(item.label.label ?? '');
-            countValue = typeof item.label.count === 'number' ? item.label.count : 0;
-        } else {
-            labelValue = typeof item === 'string' ? item : String(item ?? '');
-        }
-        // Ensure label is not empty
-        let labelStr = `${labelValue}${countValue ? ` (${countValue})` : ''}`;
-        if (!labelStr) labelStr = `Item ${idx + 1}`;
-        let value = slugify(labelValue);
-        // Ensure value is not empty
-        if (!value) value = `item-${idx}`;
-        return {
-            label: labelStr,
-            value,
-            count: countValue,
-        };
-    });
-
-    // map to correct type for Selecta
-    const list: { label: string; value: string }[] = [...selectaListFull]
-        .sort((a, b) => b.count - a.count)
-        .map(({ label, value }: { label: string; value: string }) => ({ label, value }));
-
 
     React.useEffect(() => {
         if (!state) dispatch(initProspects());
@@ -99,12 +65,49 @@ export default function Prospects({
         );
     }
 
+
+    // Helper to flatten and combine label/count for any prop
+    // For new structure: groups.level, groups.job, groups.department
+    const flattenLabelCount = (rawArr: any[]) =>
+        (rawArr || []).map((item: any, idx: number) => {
+            if (typeof item === 'object' && typeof item.label === 'string') {
+                return item.label;
+            }
+            return typeof item === 'string' ? item : String(item ?? '');
+        });
+
+    const rawLevels: string[] = flattenLabelCount(initialData?.groups?.level?.list);
+    const rawJobs: string[] = flattenLabelCount(initialData?.groups?.job?.list);
+
+    // Map to correct type for Selecta, ensure unique and non-empty values
+    const makeSelectaList = (arr: string[]) =>
+        arr.map((label: string, idx: number) => {
+            let safeLabel = label && typeof label === 'string' ? label : `Item ${idx + 1}`;
+            let value = slugify(safeLabel);
+            if (!value) value = `item-${idx}`;
+            return {
+                label: safeLabel,
+                value,
+            };
+        }).slice(0, 10);
+
+    const levelList = makeSelectaList(rawLevels);
+    const jobList = makeSelectaList(rawJobs);
+
     return (
         <>
-            <FindProspect />  
-            <Selecta label="Job Title" list={list} />
+            {/* <Typography variant="h3" sx={{ mb: 2 }}>
+                {information}
+            </Typography> */}
+
+            {/* <FindProspect /> */}
+            
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', my: 0 }}>
+                <Selecta label="Level" list={levelList} />
+                <Selecta label="Job" list={jobList} />
+            </Box>
             {/* <pre style={{ marginTop: '20px', fontSize: '12px' }}>
-                loading: {JSON.stringify(loading, null, 2)}
+                initialData: {JSON.stringify(initialData, null, 2)}
             </pre> */}
         </>
     );
