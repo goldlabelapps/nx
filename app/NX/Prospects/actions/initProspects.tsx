@@ -27,19 +27,12 @@ export const initProspects = (): any =>
                 return;
 
             } catch (e: unknown) {
-                // const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prospects/init`;
                 let msg = e instanceof Error ? e.message : String(e);
-                const baseURL = process.env.NEXT_PUBLIC_NX_AI;
                 if (msg === 'Failed to fetch') {
-                    msg = `Can't reach ${baseURL}. Check network & ensure the API server is running`;
+                    msg = `Can't reach NX-AI. Check network & ensure the API server is running`;
                 }
                 dispatch(setProspects('error', `${msg}`));
                 dispatch(setProspects('loading', false)); 
-                // dispatch(setFeedback({
-                //     severity: 'error',
-                //     title: `${endpoint}`,
-                //     description: msg,
-                // }));
                 dispatch(setUbereduxKey({ key: 'error', value: `${msg}` }));
             }
         };

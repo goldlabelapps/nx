@@ -5,14 +5,23 @@ import {
     CircularProgress,
     Box,
     Alert,
-    Typography,
+    Button,
+    IconButton,
+    CardActions,
+    Grid,
+    Card,
 } from '@mui/material';
 import {
-    FindProspect,
+    Search,
     Selecta,
     useProspects,
     initProspects,
+    updateQuery,
+    resetQuery,
 } from '../Prospects';
+import {
+    Icon,
+} from '../DesignSystem';
 import {
     useDispatch,
 } from '../Uberedux';
@@ -30,6 +39,17 @@ export default function Prospects({
     const state = useProspects();
     const loading = state?.loading;
     const initialData = state?.initialData;
+    const query = state?.query;
+
+    const handleReset = () => {
+        // To reset/clear the query, pass an empty object
+        dispatch(resetQuery());
+    }
+
+    const handleTingClick = () => {
+        // Correct usage: pass an object with the query part
+        dispatch(updateQuery({ ting: 'New Ting' }));
+    }
 
     // Helper to slugify a string
     const slugify = (str: unknown) =>
@@ -67,7 +87,7 @@ export default function Prospects({
 
 
     // Helper to flatten and combine label/count for any prop
-    // For new structure: groups.level, groups.job, groups.department
+    // For new structure: groups.level, groups.job, groups.lane
     const flattenLabelCount = (rawArr: any[]) =>
         (rawArr || []).map((item: any, idx: number) => {
             if (typeof item === 'object' && typeof item.label === 'string') {
@@ -78,7 +98,7 @@ export default function Prospects({
 
     const rawLevels: string[] = flattenLabelCount(initialData?.groups?.level?.list);
     const rawJobs: string[] = flattenLabelCount(initialData?.groups?.job?.list);
-
+    const rawLanes: string[] = flattenLabelCount(initialData?.groups?.lane?.list);
     // Map to correct type for Selecta, ensure unique and non-empty values
     const makeSelectaList = (arr: string[]) =>
         arr.map((label: string, idx: number) => {
@@ -93,22 +113,77 @@ export default function Prospects({
 
     const levelList = makeSelectaList(rawLevels);
     const jobList = makeSelectaList(rawJobs);
+    const laneList = makeSelectaList(rawLanes);
 
     return (
         <>
-            {/* <Typography variant="h3" sx={{ mb: 2 }}>
-                {information}
-            </Typography> */}
-
-            {/* <FindProspect /> */}
-            
-            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', my: 0 }}>
-                <Selecta label="Level" list={levelList} />
-                <Selecta label="Job" list={jobList} />
+            <Box sx={{display: 'flex'}}>
+                
+                
+                
+                {/* <Box>
+                    <IconButton
+                        size='small'
+                        onClick={handleTingClick}>
+                        <Icon icon="ting" />
+                    </IconButton>
+                </Box> */}
+                <Box>
+                    
+                </Box>
             </Box>
-            {/* <pre style={{ marginTop: '20px', fontSize: '12px' }}>
-                initialData: {JSON.stringify(initialData, null, 2)}
+
+            <Grid container spacing={4} sx={{ mx: 1 }}>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <Search />
+                </Grid>
+                <Grid size={{xs: 12, sm: 6}}>
+                    <Selecta
+                        label="by Job"
+                        list={jobList}
+                        value={query?.job || null}
+                        onChange={value => dispatch(updateQuery({ job: value }))}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <Selecta
+                        label="by Level"
+                        list={levelList}
+                        value={query?.level || null}
+                        onChange={value => dispatch(updateQuery({ level: value }))}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <Selecta
+                        label="by Lane"
+                        list={laneList}
+                        value={query?.lane || null}
+                        onChange={value => dispatch(updateQuery({ lane: value }))}
+                    />
+                </Grid>
+            </Grid>
+                
+                
+            <CardActions>
+                <Button
+                    variant="outlined"
+                    startIcon={<Icon icon="reset" />}
+                    onClick={handleReset}
+                >   
+                    Reset Query
+                </Button>
+                {/* <IconButton
+                    size='small'
+                    onClick={handleReset}>
+                    <Icon icon="reset" />
+                </IconButton> */}
+            </CardActions>
+        
+            {/* <pre>
+                query: {JSON.stringify(query, null, 2)}
             </pre> */}
         </>
     );
 }
+/*
+*/
