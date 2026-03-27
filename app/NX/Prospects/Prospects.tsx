@@ -5,8 +5,11 @@ import {
     CircularProgress,
     Box,
     Alert,
+    Button,
     IconButton,
-    Toolbar,
+    CardActions,
+    Grid,
+    Card,
 } from '@mui/material';
 import {
     Search,
@@ -115,49 +118,70 @@ export default function Prospects({
     return (
         <>
             <Box sx={{display: 'flex'}}>
-                <Search label="Find prospects" />
-                <Box sx={{ flexGrow:1 }} />
-                <Box>
-
+                
+                
+                
+                {/* <Box>
                     <IconButton
                         size='small'
                         onClick={handleTingClick}>
                         <Icon icon="ting" />
                     </IconButton>
-                </Box>
+                </Box> */}
                 <Box>
-                    <IconButton
-                        size='small'
-                        onClick={handleReset}>
-                        <Icon icon="reset" />
-                    </IconButton>
+                    
                 </Box>
             </Box>
 
-            <Box sx={{
-
-                border: '1px solid #ccc',
-            }}>
-                <Selecta 
-                    label="by Job" 
-                    list={jobList} 
-                    onChange={value => dispatch(updateQuery({ job: value }))} 
-                />
-                <Selecta 
-                    label="by Level" 
-                    list={levelList} 
-                    onChange={value => dispatch(updateQuery({ level: value }))} 
-                />
-                <Selecta 
-                    label="by Lane" 
-                    list={laneList} 
-                    onChange={value => dispatch(updateQuery({ lane: value }))} 
-                />
-            </Box>
+            <Grid container spacing={4} sx={{ mx: 1 }}>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <Search />
+                </Grid>
+                <Grid size={{xs: 12, sm: 6}}>
+                    <Selecta
+                        label="by Job"
+                        list={jobList}
+                        value={query?.job || null}
+                        onChange={value => dispatch(updateQuery({ job: value }))}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <Selecta
+                        label="by Level"
+                        list={levelList}
+                        value={query?.level || null}
+                        onChange={value => dispatch(updateQuery({ level: value }))}
+                    />
+                </Grid>
+                <Grid size={{ xs: 12, sm: 6 }}>
+                    <Selecta
+                        label="by Lane"
+                        list={laneList}
+                        value={query?.lane || null}
+                        onChange={value => dispatch(updateQuery({ lane: value }))}
+                    />
+                </Grid>
+            </Grid>
+                
+                
+            <CardActions>
+                <Button
+                    variant="outlined"
+                    startIcon={<Icon icon="reset" />}
+                    onClick={handleReset}
+                >   
+                    Reset Query
+                </Button>
+                {/* <IconButton
+                    size='small'
+                    onClick={handleReset}>
+                    <Icon icon="reset" />
+                </IconButton> */}
+            </CardActions>
         
-            <pre>
+            {/* <pre>
                 query: {JSON.stringify(query, null, 2)}
-            </pre>
+            </pre> */}
         </>
     );
 }

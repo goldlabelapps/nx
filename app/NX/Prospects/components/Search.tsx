@@ -7,7 +7,8 @@ import {
     InputAdornment,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
-import { setProspects, updateQuery } from '../../Prospects';
+import { updateQuery } from '../../Prospects';
+import { useProspects } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 
 // ...existing code...
@@ -17,29 +18,25 @@ interface SearchProps {
 
 export default function Search({ label }: SearchProps) {
     const dispatch = useDispatch();
-    const [search, setSearch] = React.useState('');
-
-    const onSearch = (query: string) => {
-        dispatch(updateQuery({ search: query }));
-    };
+    const prospects = useProspects();
+    const search = prospects?.query?.search || '';
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(event.target.value);
-        onSearch(event.target.value);
+        dispatch(updateQuery({ search: event.target.value }));
     };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
             event.preventDefault();
-            onSearch(search);
+            dispatch(updateQuery({ search }));
         }
     };
 
     return (
         <Box component="form">
             <TextField
-                // autoFocus
-                variant="standard"
+                fullWidth
+                variant="filled"
                 placeholder={label || 'Search'}
                 inputProps={{ 'aria-label': 'Search' }}
                 value={search}
@@ -49,6 +46,7 @@ export default function Search({ label }: SearchProps) {
                     startAdornment: (
                         <InputAdornment position="start">
                             <IconButton 
+                                color="primary"
                                 edge="start" 
                                 tabIndex={-1} 
                                 aria-label="search">
