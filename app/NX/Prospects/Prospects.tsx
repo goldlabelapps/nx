@@ -2,11 +2,20 @@
 import type { T_Config } from '../types';
 import * as React from 'react';
 import {
+    CircularProgress,
+    Box,
+    Alert,
     Typography,
 } from '@mui/material';
 import {
     FindProspect,
+    Selecta,
+    useProspects,
+    initProspects,
 } from '../Prospects';
+import {
+    useDispatch,
+} from '../Uberedux';
 
 export interface I_Prospects {
     config: T_Config;
@@ -17,16 +26,89 @@ export default function Prospects({
     config,
 }: I_Prospects) {
 
+    const dispatch = useDispatch();
+    const state = useProspects();
+    const loading = state?.loading;
+    const initialData = state?.initialData;
+
+    // Helper to slugify a string
+    const slugify = (str: unknown) =>
+        String(str)
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)+/g, '');
+
+    // Handles both the nested and flat string cases, and sorts by count if available
+
+    React.useEffect(() => {
+        if (!state) dispatch(initProspects());
+    }, [state, dispatch]);
+
+    if (loading) return (
+        <Box
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '70vh',
+            }}
+        >
+            <CircularProgress />
+        </Box>
+    );
+
+    if (state?.error) {
+        return (
+            <Alert severity="error" sx={{ my: 2 }}>
+                {state.error}
+            </Alert>
+        );
+    }
+
+
+    // Helper to flatten and combine label/count for any prop
+    // For new structure: groups.level, groups.job, groups.department
+    const flattenLabelCount = (rawArr: any[]) =>
+        (rawArr || []).map((item: any, idx: number) => {
+            if (typeof item === 'object' && typeof item.label === 'string') {
+                return item.label;
+            }
+            return typeof item === 'string' ? item : String(item ?? '');
+        });
+
+    const rawLevels: string[] = flattenLabelCount(initialData?.groups?.level?.list);
+    const rawJobs: string[] = flattenLabelCount(initialData?.groups?.job?.list);
+
+    // Map to correct type for Selecta, ensure unique and non-empty values
+    const makeSelectaList = (arr: string[]) =>
+        arr.map((label: string, idx: number) => {
+            let safeLabel = label && typeof label === 'string' ? label : `Item ${idx + 1}`;
+            let value = slugify(safeLabel);
+            if (!value) value = `item-${idx}`;
+            return {
+                label: safeLabel,
+                value,
+            };
+        }).slice(0, 10);
+
+    const levelList = makeSelectaList(rawLevels);
+    const jobList = makeSelectaList(rawJobs);
+
     return (
         <>
-            <Typography 
-                sx={{ mx: 1 }}
-                variant="body1" gutterBottom>
-                Here we are looking to identify a single prospect for us to 
-                focus on. The goal is to be as quick and accurate as possible 
-                with as few clicks/taps and keyboard inputs as possible
-            </Typography>
-            <FindProspect />
+            {/* <Typography variant="h3" sx={{ mb: 2 }}>
+                {information}
+            </Typography> */}
+
+            {/* <FindProspect /> */}
+            
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', my: 0 }}>
+                <Selecta label="Level" list={levelList} />
+                <Selecta label="Job" list={jobList} />
+            </Box>
+            {/* <pre style={{ marginTop: '20px', fontSize: '12px' }}>
+                initialData: {JSON.stringify(initialData, null, 2)}
+            </pre> */}
         </>
     );
 }
