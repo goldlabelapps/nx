@@ -133,10 +133,20 @@ export default function Prospects({
                 </Box>
             </Box>
 
-            <Grid container spacing={4} sx={{ mx: 1 }}>
+            <Grid container spacing={2} sx={{ mx: 1, mb: 2 }}>
+                <Grid size={{ xs: 12}}>
+                    <Button
+                        startIcon={<Icon icon="reset" />}
+                        onClick={handleReset}
+                    >   
+                        Reset
+                    </Button>
+                </Grid>
+
                 <Grid size={{ xs: 12, sm: 6 }}>
                     <Search />
                 </Grid>
+
                 <Grid size={{xs: 12, sm: 6}}>
                     <Selecta
                         label="by Job"
@@ -163,27 +173,13 @@ export default function Prospects({
                 </Grid>
             </Grid>
                 
-                
-            <CardActions>
-                <Button
-                    variant="outlined"
-                    startIcon={<Icon icon="reset" />}
-                    onClick={handleReset}
-                >   
-                    Reset Query
-                </Button>
-                {/* <IconButton
-                    size='small'
-                    onClick={handleReset}>
-                    <Icon icon="reset" />
-                </IconButton> */}
-            </CardActions>
+            <pre>query: {JSON.stringify(query, null, 2)}</pre>
+           
         
-            {/* <pre>
-                query: {JSON.stringify(query, null, 2)}
-            </pre> */}
+            {/*  */}
         </>
     );
 }
 /*
+
 */
