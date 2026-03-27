@@ -3,19 +3,18 @@ import * as React from 'react';
 import {
     Paper,
     InputBase,
-    Divider,
     IconButton,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
-import { setOrders, CreateOrder } from '../../Orders';
+import { setProspects } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 
-export default function ProductSearch() {
+export default function FindProspect() {
     
     const dispatch = useDispatch();
     const [search, setSearch] = React.useState('');
     const onSearch = (query: string) => {
-        dispatch(setOrders('search', query));
+        dispatch(setProspects('search', query));
     };
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,8 +46,9 @@ export default function ProductSearch() {
                 <Icon icon="search" />
             </IconButton>
             <InputBase
+                autoFocus
                 sx={{ ml: 1, flex: 1 }}
-                placeholder="Search products"
+                placeholder="Find a prospect"
                 inputProps={{ 'aria-label': 'Search products' }}
                 value={search}
                 onChange={handleInputChange}
@@ -61,8 +61,6 @@ export default function ProductSearch() {
                 <Icon icon="star" />
             </IconButton>
             
-            {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> */}
-            <CreateOrder />
         </Paper>
     );
 }

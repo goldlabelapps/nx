@@ -50,6 +50,14 @@ export default function ChooseAvatar({
         setOpen(false);
     };
 
+    const handleUploadWIP = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(setFeedback({
+            severity: 'info',
+            title: 'Not available yet',
+        }))
+
+    };
+
     const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file || !account?.uid) return;
@@ -136,6 +144,20 @@ export default function ChooseAvatar({
                 </DialogTitle>
 
                 <DialogContent>
+                                        
+                    <Box sx={{ display: 'flex', alignContent: 'center', flexWrap: 'wrap', mb: 2 }}>
+                        {presetAvatars.map((url, i) => (
+                            <IconButton key={url} onClick={() => handleChoice(url)}>
+                                <Avatar 
+                                src={url} 
+                                sx={{ 
+                                    width: 75,
+                                    height: 75,
+                                    border: selected === url ? `2px solid ${theme.palette.primary.main}` : undefined }} />
+                            </IconButton>
+                        ))}
+                    </Box>
+
                     <Box sx={{ display: 'flex', width: '100%', m: 2 }}>
                         <Box sx={{ flexGrow: 1 }} />
                         <label style={{
@@ -148,27 +170,12 @@ export default function ChooseAvatar({
                                 type="file"
                                 accept="image/*"
                                 style={{ display: 'none' }}
-                                onChange={handleUpload} />
+                                onChange={handleUploadWIP} />
 
                             Upload
                             <Icon icon="upload" color="primary" />
                         </label>
                         <Box sx={{ flexGrow: 1 }} />
-                    </Box>
-
-                    <pre>avatars: {JSON.stringify(avatars, null, 2)}</pre>
-                    
-                    <Box sx={{ display: 'flex', alignContent: 'center', flexWrap: 'wrap', mb: 0 }}>
-                        {presetAvatars.map((url, i) => (
-                            <IconButton key={url} onClick={() => handleChoice(url)}>
-                                <Avatar 
-                                src={url} 
-                                sx={{ 
-                                    width: 75,
-                                    height: 75,
-                                    border: selected === url ? `2px solid ${theme.palette.primary.main}` : undefined }} />
-                            </IconButton>
-                        ))}
                     </Box>
                     
                 </DialogContent>

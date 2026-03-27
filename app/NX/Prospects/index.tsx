@@ -1,6 +1,5 @@
 import Prospects from './Prospects';
-import ProductSearch from './Frontend/ProductSearch';
-import CreateOrder from './Frontend/CreateOrder';
+import FindProspect from './components/FindProspect';
 import { initProspects } from './actions/initProspects';
 import { fetchProspects } from './actions/fetchProspects';
 import { setProspects } from './actions/setProspects';
@@ -12,6 +11,5 @@ export {
     fetchProspects,
     setProspects,
     useProspects,
-    ProductSearch,
-    CreateOrder,
+    FindProspect,
 };
