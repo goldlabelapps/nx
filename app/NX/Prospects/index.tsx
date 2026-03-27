@@ -1,8 +1,12 @@
 import Prospects from './Prospects';
-import FindProspect from './components/FindProspect';
+import Search from './components/Search';
 import Selecta from './components/Selecta';
+import Fing from './components/Fing';
+
 import { initProspects } from './actions/initProspects';
+import { updateQuery } from './actions/updateQuery';
 import { fetchProspects } from './actions/fetchProspects';
+import { resetQuery } from './actions/resetQuery';
 import { setProspects } from './actions/setProspects';
 import { useInitialData } from './hooks/useInitialData';
 import { useProspects } from './hooks/useProspects';
@@ -14,6 +18,9 @@ export {
     setProspects,
     useProspects,
     useInitialData,
-    FindProspect,
+    Search,
     Selecta,
+    Fing,
+    updateQuery,
+    resetQuery,
 };

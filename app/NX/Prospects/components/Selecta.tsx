@@ -15,6 +15,7 @@ export type T_SelectaItem = {
 export interface I_Selecta {
     label: string;
     list: T_SelectaItem[];
+    onChange?: (value: string | null) => void;
 }
 
 export default function Selecta({ 
@@ -24,6 +25,7 @@ export default function Selecta({
         { label: 'Option 2', value: 'option2' },
         { label: 'Option 3', value: 'option3' },    
     ],
+    onChange,
 }: I_Selecta) {
     
     // const dispatch = useDispatch();
@@ -31,14 +33,15 @@ export default function Selecta({
 
     return (
         <Autocomplete
-            id="selecta-autocomplete"
-            sx={{ width: '100%' }}
             options={list}
             autoHighlight
             getOptionLabel={(option) => option.label}
+            onChange={(_event, value) => onChange?.(value ? value.value : null)}
             renderInput={(params) => (
                 <TextField
                     {...params}
+                    variant="filled"
+                    sx={{ minWidth: 300 }}
                     label={label}
                     inputProps={{
                         ...params.inputProps,
