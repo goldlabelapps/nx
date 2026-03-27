@@ -1,20 +1,18 @@
 'use client';
-import type { T_Config } from '../../types';
 import * as React from 'react';
-import { useRouter } from 'next/navigation';
 import {
+    useTheme,
     Box,
     IconButton,
     Avatar,
     Dialog,
     DialogTitle,
     DialogContent,
-    DialogActions,
-    Button,
 } from '@mui/material';
-import { Icon } from '../../DesignSystem';
+import { Icon, setFeedback } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
-import { usePaywall, setPaywall, useAccount } from '../../Paywall';
+import { setPaywall, useAccount, usePaywall } from '../../Paywall';
+import { getAuth } from 'firebase/auth';
 
 export interface I_ChooseAvatar {
     onSave: (newAvatar: string) => void;
@@ -25,13 +23,16 @@ export default function ChooseAvatar({
 }: I_ChooseAvatar) {
     const dispatch = useDispatch();
     const account = useAccount();
+    const paywall = usePaywall();
+    const avatars = paywall?.avatars || {};
+    const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const [uploading, setUploading] = React.useState(false);
     const [selected, setSelected] = React.useState<string | null>(null);
     const presetAvatars = [
         '/shared/svg/characters/biker.svg',
         '/shared/svg/characters/chix.svg',
-        '/shared/svg/characters/dapper.svg',
+        // '/shared/svg/characters/dapper.svg',
         '/shared/svg/characters/hippy.svg',
         '/shared/svg/characters/hipster.svg',
         '/shared/svg/characters/mumma.svg',
@@ -49,21 +50,64 @@ export default function ChooseAvatar({
         setOpen(false);
     };
 
+    const handleUploadWIP = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(setFeedback({
+            severity: 'info',
+            title: 'Not available yet',
+        }))
+
+    };
+
     const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (!file) return;
+        if (!file || !account?.uid) return;
         setUploading(true);
-        // Resize to square and upload logic here (stubbed)
-        // For now, just use a local URL
-        const reader = new FileReader();
-        reader.onload = () => {
-            const url = reader.result as string;
-            setSelected(url);
-            dispatch(setPaywall('account', { ...account, avatar: url }));
+
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('uid', account.uid);
+
+        try {
+            // Get Firebase ID token for the current user
+            const auth = getAuth();
+            const user = auth.currentUser;
+            if (!user) throw new Error('User not authenticated');
+            const idToken = await user.getIdToken();
+
+            const res = await fetch('/api/avatars/upload', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Authorization': `Bearer ${idToken}`
+                }
+            });
+            const result = await res.json();
+            if (result?.data?.src) {
+                setSelected(result.data.src);
+                dispatch(setPaywall('account', { 
+                    ...account, 
+                    avatar: result.data.src 
+                }));
+                dispatch(setFeedback({
+                    severity: 'success',
+                    title: 'Avatar uploaded',
+                }))
+                onSave(result.data.src);
+            } else {
+                dispatch(setFeedback({
+                    severity: 'error',
+                    title: result?.message || 'Avatar upload failed',
+                }))
+            }
+        } catch (err) {
+            dispatch(setFeedback({
+                severity: 'error',
+                title: 'Avatar upload failed',
+            }))
+        } finally {
             setUploading(false);
             setOpen(false);
-        };
-        reader.readAsDataURL(file);
+        }
     };
 
     return (
@@ -89,6 +133,8 @@ export default function ChooseAvatar({
                     <Icon icon="photo" color="info" />
                 </Box>
             </Box>
+            
+
             {/* Avatar selection dialog using MUI Dialog */}
             <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
                 <DialogTitle sx={{  }}>
@@ -96,23 +142,23 @@ export default function ChooseAvatar({
                         <Icon icon="close" />
                     </IconButton>
                 </DialogTitle>
+
                 <DialogContent>
-                    <Box sx={{ display: 'flex', flexWrap: 'wrap', mb: 0 }}>
+                                        
+                    <Box sx={{ display: 'flex', alignContent: 'center', flexWrap: 'wrap', mb: 2 }}>
                         {presetAvatars.map((url, i) => (
                             <IconButton key={url} onClick={() => handleChoice(url)}>
                                 <Avatar 
                                 src={url} 
                                 sx={{ 
-                                    width: 64,
-                                    height: 64,
-                                    border: selected === url ? '2px solid #1976d2' : undefined }} />
+                                    width: 75,
+                                    height: 75,
+                                    border: selected === url ? `2px solid ${theme.palette.primary.main}` : undefined }} />
                             </IconButton>
                         ))}
                     </Box>
-                    
-                </DialogContent>
-                <DialogActions>
-                    <Box sx={{ display: 'flex',width: '100%', m:2}}>
+
+                    <Box sx={{ display: 'flex', width: '100%', m: 2 }}>
                         <Box sx={{ flexGrow: 1 }} />
                         <label style={{
                             display: 'flex',
@@ -124,14 +170,16 @@ export default function ChooseAvatar({
                                 type="file"
                                 accept="image/*"
                                 style={{ display: 'none' }}
-                                onChange={handleUpload} />
-                            
+                                onChange={handleUploadWIP} />
+
                             Upload
                             <Icon icon="upload" color="primary" />
                         </label>
                         <Box sx={{ flexGrow: 1 }} />
                     </Box>
-                </DialogActions>
+                    
+                </DialogContent>
+                
             </Dialog>
         </>
     );
