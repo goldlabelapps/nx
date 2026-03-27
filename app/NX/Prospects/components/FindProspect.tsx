@@ -6,7 +6,7 @@ import {
     IconButton,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
-import { setProspects } from '../../Prospects';
+import { setProspects, Selecta } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 
 export default function FindProspect() {
@@ -60,6 +60,8 @@ export default function FindProspect() {
                 aria-label="Favourites">
                 <Icon icon="star" />
             </IconButton>
+
+            
             
         </Paper>
     );
