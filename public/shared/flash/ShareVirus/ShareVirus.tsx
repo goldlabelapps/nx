@@ -14,7 +14,7 @@ import {
     Flash,
     MovieClip,
 } from '../../../../app/NX/Flash';
-import { NXLogo, NXLogoAS } from '../../../nx/flash/clips';
+import { NXLogo, NXLogoAS } from '../../../my-tenant/flash/clips';
 
 export const ShareVirus: React.FC<{
     config?: any;
