@@ -115,7 +115,7 @@ export default function Virus({
       <DialogContent>
         <Box id="virus">
           
-          <Card variant='outlined' sx={{mx: 2, mt: 3}}>
+          <Box sx={{mx: 0, mt: 0}}>
 
             {/* Show CardMedia with Skeleton preloader if image is a non-empty string */}
             {typeof image === 'string' && image.trim() ? (
@@ -123,6 +123,19 @@ export default function Virus({
                 {!imgLoaded && (
                   <Skeleton variant="rectangular" width="100%" height={175} />
                 )}
+
+                  <CardHeader
+                    sx={{ mx: 2 }}
+                    title={title || 'No title'}
+                    subheader={description || 'No description'}
+                    avatar={icon ? <Icon icon={icon as any} color="primary" /> : null}
+                    action={<IconButton
+                      color="primary"
+                      onClick={() => dispatch(navigateTo(router, url, '_blank'))}
+                    >
+                      <Icon icon="link" />
+                    </IconButton>}
+                  />
                 <CardMedia
                   component="img"
                   image={image}
@@ -142,19 +155,8 @@ export default function Virus({
               </Box>
             ) : null}
 
-            <CardHeader
-              sx={{mx: 2}}
-              title={title || 'No title'}
-              subheader={description || 'No description'}
-              avatar={icon ? <Icon icon={icon as any} color="primary" /> : null}
-              action={<IconButton 
-                color="primary"
-                onClick={() => dispatch(navigateTo(router, url, '_blank'))}
-              >
-                  <Icon icon="link" />
-                </IconButton> }
-            />
-            </Card>
+            
+            </Box>
             <CardContent>
               
               <Box sx={{ m: 2 }}>

@@ -1,0 +1,25 @@
+{
+  "short_name": "My Tenant",
+  "name": "My Tenant",
+  "theme_color": "#ffd849",
+  "background_color": "#ffd849",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/my-tenant/png/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/my-tenant/svg/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
+}

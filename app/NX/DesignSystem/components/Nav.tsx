@@ -50,10 +50,7 @@ const Nav: React.FC<I_Nav> = ({
     }
 
     const { navigateTo } = require('../../../NX/DesignSystem');
-    const handleNXAdmin = () => {
-        setDrawerOpen(false);
-        dispatch(navigateTo(router, '/nx-admin'));
-    };
+
 
     function handleNavClick(slug?: string) {
         if (typeof slug === 'string' && slug.trim().length > 0) {
@@ -90,9 +87,7 @@ const Nav: React.FC<I_Nav> = ({
                     filteredChildren = item.children!.filter(child => child.path !== item.path);
                 }
                 return (
-                    <Box key={key}>
-
-                        
+                    <Box key={key}>              
                         <ListItemButton
                             onClick={isRoutable ? (e) => {
                                 e.preventDefault();
@@ -158,12 +153,6 @@ const Nav: React.FC<I_Nav> = ({
                                 </Box>
                             </>}
                             
-                            <Box sx={{ ml: 1 }}>
-                                <IconButton onClick={handleNXAdmin}>
-                                    <Icon icon={'admin'} color="primary" />
-                                </IconButton>
-                            </Box>
-
                             <Box sx={{ ml: 1 }}>
                                 <IconButton
                                     color="primary"
