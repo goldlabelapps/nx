@@ -20,8 +20,8 @@
         "nxadmin": {
             "enabled": true
         },
-        "async": {
-            "enabled": false
+        "paywall": {
+            "enabled": true
         },
         "designSystem": {
             "themeSwitching": true,

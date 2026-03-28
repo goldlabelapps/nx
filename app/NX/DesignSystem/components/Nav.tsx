@@ -10,16 +10,16 @@ import {
     ListItemButton,
     ListItemText,
     ListItemIcon,
-    Typography,
 } from '@mui/material';
 import { 
     Icon, 
     setDesignSystem, 
     useDesignSystem, 
     TreeNav,
-} from '../../../NX/DesignSystem';
-import { useDispatch } from '../../../NX/Uberedux';
-import { Virus } from '../../../NX/Virus';
+} from '../../DesignSystem';
+import { useDispatch } from '../../Uberedux';
+import { Virus } from '../../Virus';
+import { MiniAccount } from '../../Paywall';
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
@@ -135,10 +135,10 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
-                        <Box sx={{mt:4}} />
+                        <MiniAccount />
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
-
+                            
                             
 
                             <Box sx={{ mt: 1, ml: 2 }}>
