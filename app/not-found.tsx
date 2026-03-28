@@ -1,13 +1,9 @@
 "use client";
 import React from 'react';
 import { T_Theme, I_NestedNav } from './NX/types';
-import { NotFound as Clip404 } from '../public/nx/flash'
+import { NotFound as Clip404 } from '../public/my-tenant/flash'
 import { DesignSystem } from './NX/DesignSystem';
-import config from '../public/nx/config.json';
-import {
-    Nav,
-} from './NX/DesignSystem';
-
+import config from '../public/my-tenant/config.json';
 
 export default function NotFound() {
 
@@ -24,12 +20,6 @@ export default function NotFound() {
                     transform: 'translate(-50%, -50%)',
                 }}
             >
-            {/* <Nav
-                    config={config}
-                    navItems={navItems as I_NestedNav["navItems"]}
-                    currentPath={data.slug || '/'}
-                    mode="desktop"
-                /> */}
             </div>
         </DesignSystem>;
 }

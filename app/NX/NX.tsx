@@ -5,7 +5,6 @@ import { Box } from '@mui/material';
 import { DesignSystem, Feedback } from './DesignSystem';
 import { useDispatch } from './Uberedux';
 import { setDesignSystem, useDesignSystem } from './DesignSystem';
-import { EchoPay } from '../../public/echopay/flash';
 
 const NX: React.FC<I_NX> = ({
     children,
@@ -47,7 +46,7 @@ const NX: React.FC<I_NX> = ({
 
     let flashContent = children;
     if (flash === 'EchoPay') {
-        flashContent = <EchoPay />;
+        //flashContent = <EchoPay />;
     }
 
     return (
