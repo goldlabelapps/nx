@@ -157,9 +157,29 @@ export default function ChooseAvatar({
                                         
                     <Box sx={{ display: 'flex', alignContent: 'center', flexWrap: 'wrap', mb: 2 }}>
 
-                        <Typography variant="h6" sx={{ width: '100%', mb: 2, textAlign: 'center' }}>
-                            Uploaded
-                        </Typography>
+                        <Box sx={{ display: 'flex', width: '100%', m: 2 }}>
+                            <Box sx={{ flexGrow: 1 }} />
+                            <label style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: 8,
+                                cursor: 'pointer',
+                            }}>
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    style={{ display: 'none' }}
+                                    onChange={handleUploadWIP} />
+
+                                Upload
+                                <Icon icon="upload" color="primary" />
+                            </label>
+                            <Box sx={{ flexGrow: 1 }} />
+                        </Box>
+{/* 
+                        <Typography variant="h6" sx={{ width: '100%', my: 2, textAlign: 'center' }}>
+                            Or choose
+                        </Typography> */}
 
                         {presetAvatars.map((url, i) => (
                             <IconButton key={url} onClick={() => handleChoice(url)}>
@@ -172,28 +192,12 @@ export default function ChooseAvatar({
                                 : undefined }} />
                             </IconButton>
                         ))}
+
+                        
                     </Box>
                 </DialogContent>
                 <DialogActions>
-                    <Box sx={{ display: 'flex', width: '100%', m: 2 }}>
-                        <Box sx={{ flexGrow: 1 }} />
-                        <label style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: 8,
-                            cursor: 'pointer',
-                        }}>
-                            <input
-                                type="file"
-                                accept="image/*"
-                                style={{ display: 'none' }}
-                                onChange={handleUploadWIP} />
-
-                            Upload
-                            <Icon icon="upload" color="primary" />
-                        </label>
-                        <Box sx={{ flexGrow: 1 }} />
-                    </Box>
+                    
 
                 </DialogActions>
                 

@@ -1,0 +1,51 @@
+{
+    "tenant": "my-tenant",
+    "siteName": "My Tenant",
+    "description": "Instance of NX",
+    "url": "https://my-tenant.goldlabel.pro",
+    "owner": {
+        "name": "Goldlabel",
+        "email": "goldlabel.apps@gmail.com"
+    },
+    "favicon": "/nx/svg/favicon.svg",
+    "avatars": {
+        "light": "/nx/svg/favicon_29867C.svg",
+        "dark": "/nx/svg/favicon_DCFFFB.svg"
+    },
+    "images": {
+        "light": "/shared/png/nextjs.png",
+        "dark": "/shared/png/nextjs.png"
+    },
+    "cartridges": {
+        "nxadmin": {
+            "enabled": true
+        },
+        "async": {
+            "enabled": false
+        },
+        "designSystem": {
+            "themeSwitching": true,
+            "defaultTheme": "light",
+            "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#dcfffb",
+                    "secondary": "#dcfffb",
+                    "background": "#073334",
+                    "paper": "#022626",
+                    "text": "#fff",
+                    "border": "#022626"
+                },
+                "light": {
+                    "mode": "light",
+                    "primary": "#29867C",
+                    "secondary": "#29867C",
+                    "background": "#fff",
+                    "paper": "#E7EBF2",
+                    "text": "#000",
+                    "border": "#C6CAD1"
+                }
+            }
+        }
+    }
+}
