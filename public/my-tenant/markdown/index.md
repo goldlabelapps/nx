@@ -5,7 +5,7 @@ title: NX
 description: TypeScript App framework built on Next.js and Python
 tags: NX, Goldlabel, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
 icon: js
-image: /shared/png/nextjs.png
+image: /shared/png/default.png
 ---
 
 ## Features

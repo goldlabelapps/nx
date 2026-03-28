@@ -7,14 +7,14 @@
         "name": "Goldlabel",
         "email": "goldlabel.apps@gmail.com"
     },
-    "favicon": "/nx/svg/favicon.svg",
+    "favicon": "/my-tenant/svg/favicon.svg",
     "avatars": {
-        "light": "/nx/svg/favicon_29867C.svg",
-        "dark": "/nx/svg/favicon_DCFFFB.svg"
+        "light": "/my-tenant/svg/avatarLight.svg",
+        "dark": "/my-tenant/svg/avatarDark.svg"
     },
     "images": {
-        "light": "/shared/png/nextjs.png",
-        "dark": "/shared/png/nextjs.png"
+        "light": "/shared/png/default.png",
+        "dark": "/shared/png/default.png"
     },
     "cartridges": {
         "nxadmin": {
