@@ -2,13 +2,15 @@
 import * as React from 'react';
 import {
     useTheme,
+    useMediaQuery,
     Box,
     IconButton,
     Avatar,
     Dialog,
     DialogTitle,
     DialogContent,
-    useMediaQuery,
+    DialogActions,
+    Typography,
 } from '@mui/material';
 import { Icon, setFeedback } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
@@ -28,13 +30,13 @@ export default function ChooseAvatar({
     const avatars = paywall?.avatars || {};
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
     const [uploading, setUploading] = React.useState(false);
     const [selected, setSelected] = React.useState<string | null>(null);
     const presetAvatars = [
         '/shared/svg/characters/biker.svg',
         '/shared/svg/characters/chix.svg',
-        // '/shared/svg/characters/dapper.svg',
+        '/shared/svg/characters/dapper.svg',
         '/shared/svg/characters/hippy.svg',
         '/shared/svg/characters/hipster.svg',
         '/shared/svg/characters/mumma.svg',
@@ -117,7 +119,7 @@ export default function ChooseAvatar({
             <Box sx={{ position: 'relative', display: 'inline-block' }}>
                 <IconButton onClick={handleAvatarClick} disabled={uploading}>
                     <Avatar sx={{ 
-                        width: 64, height: 64 }} 
+                        width: 50, height: 50 }} 
                         src={account?.avatar} 
                     />
                 </IconButton>
@@ -125,14 +127,14 @@ export default function ChooseAvatar({
                     sx={{
                         position: 'absolute',
                         bottom: 0,
-                        transform: 'translateX(56px)',
+                        transform: 'translateX(-15px)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         pointerEvents: 'none',
                     }}
                 >
-                    <Icon icon="photo" color="info" />
+                    <Icon icon="photo" color="primary" />
                 </Box>
             </Box>
             
@@ -154,18 +156,25 @@ export default function ChooseAvatar({
                 <DialogContent>
                                         
                     <Box sx={{ display: 'flex', alignContent: 'center', flexWrap: 'wrap', mb: 2 }}>
+
+                        <Typography variant="h6" sx={{ width: '100%', mb: 2, textAlign: 'center' }}>
+                            Uploaded
+                        </Typography>
+
                         {presetAvatars.map((url, i) => (
                             <IconButton key={url} onClick={() => handleChoice(url)}>
                                 <Avatar 
                                 src={url} 
                                 sx={{ 
-                                    width: 75,
-                                    height: 75,
-                                    border: selected === url ? `2px solid ${theme.palette.primary.main}` : undefined }} />
+                                    width: 85, 
+                                    height: 85,
+                                    border: selected === url ? `2px solid ${theme.palette.primary.main}` 
+                                : undefined }} />
                             </IconButton>
                         ))}
                     </Box>
-
+                </DialogContent>
+                <DialogActions>
                     <Box sx={{ display: 'flex', width: '100%', m: 2 }}>
                         <Box sx={{ flexGrow: 1 }} />
                         <label style={{
@@ -185,8 +194,8 @@ export default function ChooseAvatar({
                         </label>
                         <Box sx={{ flexGrow: 1 }} />
                     </Box>
-                    
-                </DialogContent>
+
+                </DialogActions>
                 
             </Dialog>
         </>

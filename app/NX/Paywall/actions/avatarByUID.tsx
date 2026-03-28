@@ -1,7 +1,7 @@
 import type { Dispatch } from 'redux';
 import { setUbereduxKey } from '../../Uberedux';
 
-export const avatarCRUD = (
+export const avatarByUID = (
     action: 'create' | 'read' | 'update' | 'delete',
 ) =>
     async (dispatch: Dispatch, getState: () => any) => {
