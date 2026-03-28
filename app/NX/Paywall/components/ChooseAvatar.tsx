@@ -8,6 +8,7 @@ import {
     Dialog,
     DialogTitle,
     DialogContent,
+    useMediaQuery,
 } from '@mui/material';
 import { Icon, setFeedback } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
@@ -26,6 +27,7 @@ export default function ChooseAvatar({
     const paywall = usePaywall();
     const avatars = paywall?.avatars || {};
     const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
     const [uploading, setUploading] = React.useState(false);
     const [selected, setSelected] = React.useState<string | null>(null);
@@ -136,7 +138,13 @@ export default function ChooseAvatar({
             
 
             {/* Avatar selection dialog using MUI Dialog */}
-            <Dialog open={open} onClose={handleClose} maxWidth="xs" fullWidth>
+            <Dialog 
+                open={open} 
+                onClose={handleClose} 
+                maxWidth="xs" 
+                fullWidth
+                fullScreen={isMobile}
+            >
                 <DialogTitle sx={{  }}>
                     <IconButton onClick={handleClose} sx={{ position: 'absolute', top: 8, right: 8 }}>
                         <Icon icon="close" />
