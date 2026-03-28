@@ -1,7 +1,4 @@
-Aquaponics. Fish are food. Not friends.
-https://food.goldlabel.pro/fish/aquaponics
 
-A sustainable farming method that combines aquaculture (raising fish) and hydroponics (growing plants without soil) in a closed-loop system.
 
 In this release, we offer an open sourced public repo for NX. Production ready, it will be fully documented allowing a developer to spin up a fully functinoing Firebase powered NX instance within 30mins
 
