@@ -154,9 +154,7 @@ export default function ChooseAvatar({
                 </DialogTitle>
 
                 <DialogContent>
-                                        
-                    <Box sx={{ display: 'flex', alignContent: 'center', flexWrap: 'wrap', mb: 2 }}>
-
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', mb: 2 }}>
                         <Box sx={{ display: 'flex', width: '100%', m: 2 }}>
                             <Box sx={{ flexGrow: 1 }} />
                             <label style={{
