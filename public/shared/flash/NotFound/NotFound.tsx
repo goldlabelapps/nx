@@ -61,11 +61,11 @@ export const NotFound: React.FC<{
         };
     }, []);
 
-    let svgSrc = "/nx/svg/NXLogo.svg";
+    let svgSrc = "/shared/svg/NXLogo404.svg";
 
     // if this is a 404 page log it out
     if (is404) {
-        svgSrc = "/nx/svg/NXLogo404.svg";
+        svgSrc = "/shared/svg/NXLogo404.svg";
         console.log('404 page detected');
     }
 
@@ -84,32 +84,23 @@ export const NotFound: React.FC<{
                 </MovieClip>
 
                 <MovieClip
-                    id='mc_home'
+                    id='mc_reset'
+                    
                     offsetY={50}
                     width={300}
                     height={100}
                     maxWidth={'90%'}
                     zIndex={800}>
                     <Button
-                        fullWidth
-                        sx={{ m: 1 }}
-                        startIcon={<Icon icon="reset" />}
-                        variant="outlined"
-                        onClick={() => window.location.href = '/'}
+                        color="success"
+                        sx={{ m: 0 }}
+                        startIcon={<Icon icon="home" />}
+                        variant="contained"
+                        onClick={() => window.location.href = '/?restart'}
                     >
-                        Restart
-
+                        Home
                     </Button>
 
-                    <Button
-                        fullWidth
-                        sx={{ m: 1 }}
-                        startIcon={<Icon icon="admin" />}
-                        variant="outlined"
-                        onClick={() => window.location.href = '/nx-admin'}
-                    >
-                        NX Admin
-                    </Button>
                 </MovieClip>
 
             </Flash>

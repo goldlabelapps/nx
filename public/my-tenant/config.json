@@ -1,6 +1,6 @@
 {
     "tenant": "my-tenant",
-    "siteName": "My Tenant",
+    "siteName": "NX Free",
     "description": "Instance of NX",
     "url": "https://my-tenant.goldlabel.pro",
     "owner": {
@@ -29,12 +29,11 @@
             "themes": {
                 "dark": {
                     "mode": "dark",
-                    "primary": "#dcfffb",
-                    "secondary": "#dcfffb",
-                    "background": "#073334",
+                    "primary": "#ffd849",
+                    "secondary": "#ffd849",
+                    "background": "#3775a9",
                     "paper": "#022626",
-                    "text": "#fff",
-                    "border": "#022626"
+                    "text": "#fff"
                 },
                 "light": {
                     "mode": "light",
@@ -42,8 +41,7 @@
                     "secondary": "#3775a9",
                     "background": "#ffd849",
                     "paper": "#ffd849",
-                    "text": "#222",
-                    "border": "#3775a9"
+                    "text": "#222"
                 }
             }
         }

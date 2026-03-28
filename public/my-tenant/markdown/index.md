@@ -1,14 +1,12 @@
 ---
 order: 1 
 slug: /
-title: My Tenant
-description: Next.js and Python
+title: NX Free
+description: Features
 tags: NX, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
-icon: js
+icon: rocket
 image: /my-tenant/jpg/default.jpg
 ---
-
-## Features
 
 - **Next.js 16**: SSR, SSG, API routes, and advanced routing
 - **TypeScript**: Strict typing and modern JavaScript features

@@ -9,8 +9,7 @@ const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
 const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
-const { title, description, avatars, favicon } = config;
-const avatar = avatars?.light;
+const { title, description, favicon } = config;
 
 export const metadata: Metadata = {
   title: `${title}, ${description}`,
@@ -36,11 +35,7 @@ export default async function RootLayout({
         <link rel="icon" href={favicon} />
         <meta
           name="theme-color"
-          content={
-            config.cartridges?.designSystem?.themes?.[
-              config.cartridges?.designSystem?.defaultTheme || "light"
-            ]?.background || "#000"
-          }
+          content={"#ffd849"}
         />
         <link rel="manifest" href={`/${tenant}/manifest.json`} />
         <meta name="application-name" content={title} />
