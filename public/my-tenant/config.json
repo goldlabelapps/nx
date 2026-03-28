@@ -39,7 +39,7 @@
                     "mode": "light",
                     "primary": "#3775a9",
                     "secondary": "#3775a9",
-                    "background": "#ffd849",
+                    "background": "#fff",
                     "paper": "#ffd849",
                     "text": "#222"
                 }
