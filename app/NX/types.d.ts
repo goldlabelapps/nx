@@ -53,7 +53,6 @@ export type T_Config = {
                     background: string;
                     paper: string;
                     text: string;
-                    border: string;
                 };
             };
         };
