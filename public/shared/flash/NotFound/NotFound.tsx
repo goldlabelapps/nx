@@ -14,9 +14,9 @@ import {
     Flash,
     MovieClip,
 } from '../../../../app/NX/Flash';
-import { NXLogo, NXLogoAS } from '../../../shared/flash/NXLogo';
+import { NXLogo, NXLogoAS } from '../NXLogo';
 
-export const ShareVirus: React.FC<{
+export const NotFound: React.FC<{
     config?: any;
     is404?: boolean;
 }> = ({ config, is404 }) => {
@@ -61,17 +61,17 @@ export const ShareVirus: React.FC<{
         };
     }, []);
 
-    let svgSrc = "/nx/svg/NXLogo.svg";
+    let svgSrc = "/shared/svg/NXLogo404.svg";
 
     // if this is a 404 page log it out
     if (is404) {
-        svgSrc = "/nx/svg/NXLogo404.svg";
+        svgSrc = "/shared/svg/NXLogo404.svg";
         console.log('404 page detected');
     }
 
     return (
         <DesignSystem theme={theme}>
-            <Flash id={'ShareVirus_flash'}>
+            <Flash id={'NotFound_flash'}>
                 <MovieClip
                     id='mc_logo'
                     style={{ visibility: 'hidden' }}
@@ -84,32 +84,23 @@ export const ShareVirus: React.FC<{
                 </MovieClip>
 
                 <MovieClip
-                    id='mc_home'
+                    id='mc_reset'
+                    
                     offsetY={50}
                     width={300}
                     height={100}
                     maxWidth={'90%'}
                     zIndex={800}>
                     <Button
-                        fullWidth
-                        sx={{ m: 1 }}
-                        startIcon={<Icon icon="reset" />}
-                        variant="outlined"
-                        onClick={() => window.location.href = '/'}
+                        color="success"
+                        sx={{ m: 0 }}
+                        startIcon={<Icon icon="home" />}
+                        variant="contained"
+                        onClick={() => window.location.href = '/?restart'}
                     >
-                        Restart
-
+                        Home
                     </Button>
 
-                    <Button
-                        fullWidth
-                        sx={{ m: 1 }}
-                        startIcon={<Icon icon="admin" />}
-                        variant="outlined"
-                        onClick={() => window.location.href = '/nx-admin'}
-                    >
-                        NX Admin
-                    </Button>
                 </MovieClip>
 
             </Flash>
