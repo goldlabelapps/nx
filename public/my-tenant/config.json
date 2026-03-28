@@ -13,8 +13,8 @@
         "dark": "/my-tenant/svg/avatarDark.svg"
     },
     "images": {
-        "light": "/shared/png/default.png",
-        "dark": "/shared/png/default.png"
+        "light": "/my-tenant/jpg/default.jpg",
+        "dark": "/my-tenant/jpg/default.jpg"
     },
     "cartridges": {
         "nxadmin": {

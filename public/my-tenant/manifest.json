@@ -1,8 +1,8 @@
 {
   "short_name": "My Tenant",
   "name": "My Tenant",
-  "theme_color": "#073334",
-  "background_color": "#073334",
+  "theme_color": "#ffd849",
+  "background_color": "#ffd849",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",

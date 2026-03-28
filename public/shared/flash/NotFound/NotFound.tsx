@@ -14,8 +14,7 @@ import {
     Flash,
     MovieClip,
 } from '../../../../app/NX/Flash';
-import { NXLogo, NXLogoAS } from '../clips';
-
+import { NXLogo, NXLogoAS } from '../NXLogo';
 
 export const NotFound: React.FC<{
     config?: any;

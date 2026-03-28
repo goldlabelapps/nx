@@ -5,7 +5,7 @@ title: My Tenant
 description: Next.js and Python
 tags: NX, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
 icon: js
-image: /my-tenant/png/python.png
+image: /my-tenant/jpg/default.jpg
 ---
 
 ## Features

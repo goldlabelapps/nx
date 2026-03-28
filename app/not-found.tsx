@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { T_Theme, I_NestedNav } from './NX/types';
-import { NotFound as Clip404 } from '../public/my-tenant/flash'
+import { NotFound as Clip404 } from '../public/shared/flash'
 import { DesignSystem } from './NX/DesignSystem';
 import config from '../public/my-tenant/config.json';
 

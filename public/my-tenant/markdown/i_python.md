@@ -4,7 +4,7 @@ slug: /i-python
 title: I_Python
 description: Superfast search with tsvector
 tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
-image: /my-tenant/png/python.png
+image: /my-tenant/jpg/default.jpg
 icon: api
 ---
 

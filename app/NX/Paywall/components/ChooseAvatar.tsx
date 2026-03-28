@@ -30,7 +30,7 @@ export default function ChooseAvatar({
     const avatars = paywall?.avatars || {};
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const [open, setOpen] = React.useState(true);
+    const [open, setOpen] = React.useState(false);
     const [uploading, setUploading] = React.useState(false);
     const [selected, setSelected] = React.useState<string | null>(null);
     const presetAvatars = [
