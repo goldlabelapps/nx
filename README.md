@@ -1,8 +1,31 @@
+## NEW> I_Python
+
+> Python with FastAPI using Postgres & tsvector. Open Source, production ready Python FastAPI/Postgres app. https://github.com/goldlabelapps/python-nx-ai https://nx-ai.onrender.com
+
 # ![NextJS](/public/nx/png/repoicon.png) NX Free
 
 NX is a modern, full-stack web application framework and platform built on [Next.js](https://nextjs.org/) and [React](https://react.dev/). It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
 
-> In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins
+> In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins. 
+
+
+## Quick Start
+
+1. **Clone the repository:**
+	```bash
+	git clone https://github.com/goldlabelapps/nx-free
+	cd nx
+	```
+2. **Install dependencies:**
+	```bash
+	yarn install
+	```
+3. **Run the development server:**
+	```bash
+	yarn dev
+	```
+
+The app will be available at [http://localhost:1999](http://localhost:1999). NX exposes a RESTful API under `/api`. See [app/api/README.md](app/api/README.md) for details and [live API docs](https://github.com/goldlabelapps/python-nx-ai).
 
 ## Techstack
 
@@ -28,27 +51,6 @@ NX is a modern, full-stack web application framework and platform built on [Next
 - **RESTful API**: Built-in API endpoints ([API Docs](https://goldlabel.pro/api))
 - **Design System**: Reusable components and hooks
 - **Rich Media Support**: Markdown, images, SVG, PDF, and more
-
-## Quick Start
-
-1. **Clone the repository:**
-	```bash
-	git clone https://github.com/goldlabelapps/nx
-	cd nx
-	```
-2. **Install dependencies:**
-	```bash
-	yarn install
-	```
-3. **Run the development server:**
-	```bash
-	yarn dev
-	```
-	The app will be available at [http://localhost:1999](http://localhost:1999)
-
-## API
-
-NX exposes a RESTful API under `/api`. See [app/api/README.md](app/api/README.md) for details and [live API docs](https://goldlabel.pro/api).
 
 
 ## Scripts
