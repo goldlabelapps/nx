@@ -8,6 +8,18 @@ image: /shared/png/nextjs.png
 tags: expertise, fields, work
 ---
 
+## Techsstack
+
+- [Next.js 16](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material UI](https://mui.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Firebase](https://firebase.google.com/)
+- [Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/)
+- [GSAP](https://greensock.com/gsap/)
+- [PWA](https://web.dev/progressive-web-apps/)
+
 > Working across the full JavaScript stack to help understand every perspective from interface to infrastructure
 
 [PageGrid pages="/work/skills/npm, /work/skills/ecmascript, /work/skills/javascript/react, /work/skills/javascript/react/react-native, /work/skills/javascript, /work/skills/fullstack, /work/skills/ai, /work/skills/design"]

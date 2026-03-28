@@ -8,9 +8,34 @@ icon: js
 image: /shared/png/nextjs.png
 ---
 
+## Features
+
+- **Next.js 16**: SSR, SSG, API routes, and advanced routing
+- **TypeScript**: Strict typing and modern JavaScript features
+- **Material UI (MUI)**: Beautiful, accessible UI components
+- **Redux Toolkit**: State management
+- **Firebase**: Authentication and backend integration
+- **PWA Support**: Offline-ready with service workers
+- **Multi-Tenant Architecture**: Easily support multiple brands/clients
+- **RESTful API**: Built-in API endpoints ([API Docs](https://goldlabel.pro/api))
+- **Design System**: Reusable components and hooks
+- **Rich Media Support**: Markdown, images, SVG, PDF, and more
+
 >  TypeScript App framework built on Next.js, React and also Python
 
 It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
+
+## Techsstack
+
+- [Next.js 16](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material UI](https://mui.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Firebase](https://firebase.google.com/)
+- [Mapbox GL](https://docs.mapbox.com/mapbox-gl-js/)
+- [GSAP](https://greensock.com/gsap/)
+- [PWA](https://web.dev/progressive-web-apps/)
 
 #### Coming Summer 2026: EchoPay Orders™
 
