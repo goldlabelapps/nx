@@ -1,4 +1,4 @@
-# NX ![NextJS](/public/nx/png/repoicon.png)
+# ![NextJS](/public/nx/png/repoicon.png) NX 
 
 NX is a modern, full-stack web application framework and platform built on [Next.js](https://nextjs.org/) and [React](https://react.dev/). It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
 
