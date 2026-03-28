@@ -1,12 +1,10 @@
 # NX
 
-> In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins
-
-## Summary
-
 NX is a modern, full-stack web application framework and platform built on [Next.js](https://nextjs.org/) and [React](https://react.dev/). It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
 
-## Techsstack
+> In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins
+
+## Techstack
 
 - [Next.js 16](https://nextjs.org/)
 - [React 19](https://react.dev/)
