@@ -3,7 +3,7 @@ order: 999
 title: Privacy
 description: Your trust means everything to us
 slug: /privacy
-icon: company
+icon: admin
 image: /my-tenant/jpg/default.jpg
 tags: cookies, gdpr, privacy, terms, trust, intellectual-property
 ---
