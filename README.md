@@ -1,8 +1,4 @@
-# ![NextJS](/public/my-tenant/png/repoicon.png) <NEW> I_Python
-
-> Python with FastAPI using Postgres & tsvector. Open Source, production ready Python FastAPI/Postgres app. [GitHub](https://github.com/goldlabelapps/python-nx-ai) | [NX-AI onrender](https://nx-ai.onrender.com)
-
-# ![NextJS](/public/my-tenant/png/repoicon.png) NX Free
+# ![NextJS](/public/shared/png/repoicon.png) NX Free
 
 NX is a modern, full-stack web application framework and platform built on [Next.js](https://nextjs.org/) and [React](https://react.dev/). It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
 

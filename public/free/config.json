@@ -17,15 +17,12 @@
         "dark": "/free/png/apps.png"
     },
     "cartridges": {
-        "nxadmin": {
-            "enabled": true
-        },
         "paywall": {
-            "enabled": true
+            "enabled": false
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "themes": {
                 "dark": {
                     "mode": "dark",

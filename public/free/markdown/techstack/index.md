@@ -1,11 +1,10 @@
 ---
-order: 201
-title: About
-description: Us
-slug: /about
-icon: about
-image: /shared/jpg/default.jpg
-tags: about
+order: 141
+title: Techstack
+description: Techstack
+slug: /techstack
+icon: techstack
+tags: about, techstack
 ---
 - **Next.js 16**: SSR, SSG, API routes, and advanced routing
 - **TypeScript**: Strict typing and modern JavaScript features
