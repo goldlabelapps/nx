@@ -11,7 +11,8 @@ const serviceAccount = JSON.parse(key);
 export function getFirebaseAdminApp() {
   if (!getApps().length) {
     return initializeApp({
-        credential: cert(serviceAccount),
+      credential: cert(serviceAccount),
+      storageBucket: "goldlabel-pr0",
     });
   }
   return getApp();
