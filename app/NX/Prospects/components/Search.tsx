@@ -35,7 +35,7 @@ export default function Search({ label }: I_Search) {
         <Box component="form">
             <TextField
                 fullWidth
-                variant="outlined"
+                variant="standard"
                 placeholder={label || 'Search'}
                 inputProps={{ 'aria-label': 'Search' }}
                 value={search}

@@ -5,14 +5,10 @@ import {
     ButtonBase,
     Typography,
     Box,
-    Link,
-    Chip,
-    Stack,
-    Paper,
 } from '@mui/material';
-import {
-    Icon,
-} from '../../DesignSystem';
+// import {
+//     Icon,
+// } from '../../DesignSystem';
 
 export interface I_Result {
     id: number;
@@ -65,16 +61,18 @@ export default function Result({ result }: ResultProps) {
     };
     
     return (
-        <ButtonBase sx={{width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
-            <Box sx={{ pl: 1, width: '100%', borderLeft: `3px solid ${theme.palette.primary.main}` }}>
-                <Typography variant="body1">
-                    {result.first_name} {result.last_name}
-                </Typography>
-                <Typography variant="body2">
-                    {result.title} at {result.company_name}
-                </Typography>
-            </Box>
-        </ButtonBase>
+        <>
+            <ButtonBase sx={{width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
+                <Box sx={{ pl: 1, width: '100%', borderLeft: `2px solid ${theme.palette.primary.main}` }}>
+                    <Typography variant="body1">
+                        {result.first_name} {result.last_name}
+                    </Typography>
+                    <Typography variant="caption">
+                        {result.title} at {result.company_name}
+                    </Typography>
+                </Box>
+            </ButtonBase>
+        </>
     );
 }
 

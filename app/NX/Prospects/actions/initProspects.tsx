@@ -14,12 +14,15 @@ export const initProspects = () =>
         dispatch(setProspects('loading', true));
         try {
             const base = process.env.NEXT_PUBLIC_NX_AI;
-            const [initial, data] = await Promise.all([
+            const [
+                initial, 
+                // data,
+            ] = await Promise.all([
                 fetchJson(`${base}prospects/init`),
-                fetchJson(`${base}prospects/read`)
+                // fetchJson(`${base}prospects/read`)
             ]);
             dispatch(setProspects('initialData', initial?.data));
-            dispatch(setProspects('results', data?.data));
+            // dispatch(setProspects('results', data?.data));
             dispatch(setProspects('loading', false));
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
