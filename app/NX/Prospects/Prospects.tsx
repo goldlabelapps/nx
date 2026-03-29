@@ -119,25 +119,11 @@ export default function Prospects({
 
     return (
         <>
-            
-
             <Grid container spacing={2} sx={{ mx: 1, mb: 2 }}>
                 <Grid size={{ xs: 12}}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
-                        <Search />
-                    <Button
-                        startIcon={<Icon icon="reset" />}
-                        onClick={handleReset}
-                    >   
-                        Reset
-                    </Button>
-                    
-                    </Box>
+                    <Search />
                 </Grid>
                 {/*
-                <Grid size={{ xs: 12, sm: 6 }}>
-                    
-                </Grid>
 
                 <Grid size={{xs: 12, sm: 6}}>
                     <Selecta

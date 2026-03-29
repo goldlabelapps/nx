@@ -11,12 +11,11 @@ import { updateQuery } from '../../Prospects';
 import { useProspects } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 
-// ...existing code...
-interface SearchProps {
+export interface I_Search {
     label?: string;
 }
 
-export default function Search({ label }: SearchProps) {
+export default function Search({ label }: I_Search) {
     const dispatch = useDispatch();
     const prospects = useProspects();
     const search = prospects?.query?.search || '';
@@ -36,7 +35,7 @@ export default function Search({ label }: SearchProps) {
         <Box component="form">
             <TextField
                 fullWidth
-                variant="filled"
+                variant="outlined"
                 placeholder={label || 'Search'}
                 inputProps={{ 'aria-label': 'Search' }}
                 value={search}
