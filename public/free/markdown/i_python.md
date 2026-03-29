@@ -1,11 +1,11 @@
 ---
-order: 32
+order: 320
 slug: /i-python
-title: I_Python
+title: I_Python™
 description: Superfast search with tsvector
 tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
-image: /my-tenant/jpg/default.jpg
-icon: api
+image: /my-tenant/png/apps.png
+icon: github
 ---
 
 > Python with FastAPI using Postgres & tsvector

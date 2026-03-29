@@ -1,27 +1,27 @@
 {
-    "tenant": "my-tenant",
+    "tenant": "free",
     "siteName": "NX Free",
-    "description": "Instance of NX",
-    "url": "https://my-tenant.goldlabel.pro",
+    "description": "Open Source",
+    "url": "https://free.goldlabel.pro",
     "owner": {
-        "name": "Goldlabel",
+        "name": "Chris",
         "email": "goldlabel.apps@gmail.com"
     },
-    "favicon": "/my-tenant/svg/favicon.svg",
+    "favicon": "/free/svg/favicon.svg",
     "avatars": {
-        "light": "/my-tenant/svg/avatarLight.svg",
-        "dark": "/my-tenant/svg/avatarDark.svg"
+        "light": "/free/svg/avatarLight.svg",
+        "dark": "/free/svg/avatarDark.svg"
     },
     "images": {
-        "light": "/my-tenant/jpg/default.jpg",
-        "dark": "/my-tenant/jpg/default.jpg"
+        "light": "/free/png/apps.png",
+        "dark": "/free/png/apps.png"
     },
     "cartridges": {
         "nxadmin": {
             "enabled": true
         },
-        "async": {
-            "enabled": false
+        "paywall": {
+            "enabled": true
         },
         "designSystem": {
             "themeSwitching": true,

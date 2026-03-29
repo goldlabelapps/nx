@@ -1,6 +1,6 @@
 {
-  "short_name": "My Tenant",
-  "name": "My Tenant",
+  "short_name": "NX Free",
+  "name": "NX Free",
   "theme_color": "#ffd849",
   "background_color": "#ffd849",
   "display": "fullscreen",
@@ -10,13 +10,13 @@
   "splash_pages": null,
   "icons": [
     {
-      "src": "/my-tenant/png/favicon.png",
+      "src": "/free/png/favicon.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
     },
     {
-      "src": "/my-tenant/svg/favicon.svg",
+      "src": "/free/svg/favicon.svg",
       "type": "image/svg+xml",
       "sizes": "512x512",
       "purpose": "any"

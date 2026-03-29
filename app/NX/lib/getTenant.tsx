@@ -1,5 +1,5 @@
 import type { T_Tenant } from '../types';
-import myTenantConfig from '../../../public/my-tenant/config.json';
+import freeConfig from '../../../public/free/config.json';
 
 export const getTenant = (tenant?: T_Tenant) => {
 
@@ -8,13 +8,13 @@ export const getTenant = (tenant?: T_Tenant) => {
     let markdownDir;
 
     switch (t) {
-        case 'my-tenant':
-            config = myTenantConfig;
-            markdownDir = process.cwd() + '/public/my-tenant/markdown';
+        case 'free':
+            config = freeConfig;
+            markdownDir = process.cwd() + '/public/free/markdown';
             break;
         default:
-            config = myTenantConfig;
-            markdownDir = process.cwd() + '/public/my-tenant/markdown';
+            config = freeConfig;
+            markdownDir = process.cwd() + '/public/free/markdown';
             break;
     }
     return {

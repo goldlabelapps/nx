@@ -1,13 +1,12 @@
 ---
-order: 1 
-slug: /
-title: NX Free
-description: Features
-tags: NX, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
-icon: rocket
-image: /my-tenant/jpg/default.jpg
+order: 201
+title: About
+description: Us
+slug: /about
+icon: about
+image: /shared/jpg/default.jpg
+tags: about
 ---
-
 - **Next.js 16**: SSR, SSG, API routes, and advanced routing
 - **TypeScript**: Strict typing and modern JavaScript features
 - **Material UI (MUI)**: Beautiful, accessible UI components
@@ -18,6 +17,4 @@ image: /my-tenant/jpg/default.jpg
 - **RESTful API**: Built-in API endpoints ([API Docs](https://goldlabel.pro/api))
 - **Design System**: Reusable components and hooks
 - **Rich Media Support**: Markdown, images, SVG, PDF, and more
-
-
 

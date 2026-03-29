@@ -4,7 +4,7 @@ import {
     Button,
     Box,
     CardHeader,
-    CardActions,
+    IconButton,
     Dialog,
     DialogTitle,
     DialogContent,
@@ -28,24 +28,11 @@ export default function AccountCard() {
     const paywall = usePaywall();
     const { account } = paywall || {};
     const {
-        avatar,
         level,
         name,
         email,
     } = account || {}; 
 
-    const [open, setOpen] = React.useState(false);
-
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const handleSignout = async () => {
-        await firebaseLogout();
-        dispatch(setPaywall('user', null));
-        dispatch(setPaywall('account', null));
-        setOpen(false);
-    }
-    
     const onNameSave = (newName: string) => {
         dispatch(updateAccount('name', newName, `You are now called ${newName}`));
     };
@@ -65,50 +52,18 @@ export default function AccountCard() {
                     value={name}
                     onSave={onNameSave}
                 />}
-                subheader={<>
-                    {[...Array(5)].map((_, i) => (
-                        <Icon
-                            key={`star_${i}`}
-                            color={'primary'}
-                            icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'}
-                        />
-                    ))}
-                </>}
+                subheader={email}
                 
             />
-
-            {/* <CardActions>
-                <Button 
-                    endIcon={<Icon icon="signout" />}
-                    color="primary" onClick={handleOpen}>
-                    Sign out
-                </Button>
-            </CardActions> */}
-            
+            {[...Array(5)].map((_, i) => (
+                <Icon
+                    key={`star_${i}`}
+                    color={'primary'}
+                    icon={i < (typeof level === 'number' ? level : 0) ? 'staron' : 'staroff'}
+                />
+            ))}
         </Box>
-        <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
-            <DialogTitle>
-                <Typography variant="h6" component="span" sx={{mt:1}}>
-                    Sign {name} out?
-                </Typography>
-            </DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Are you sure?
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                    No
-                </Button>
-                <Button 
-                    endIcon={<Icon icon="tick" />}
-                    variant="outlined" 
-                    onClick={handleSignout} color="primary" autoFocus>
-                    Yes
-                </Button>
-            </DialogActions>
-        </Dialog>
+        
         {/* <pre>account: {JSON.stringify(account, null, 2)}</pre> */}
     </>
     );

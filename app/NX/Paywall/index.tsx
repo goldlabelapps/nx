@@ -8,6 +8,7 @@ import ChooseAvatar from './components/ChooseAvatar';
 import UserSpot from './components/UserSpot';
 import Account from './components/Account';
 import SignOutBtn from './components/SignOutBtn';
+import MiniAccount from './components/MiniAccount';
 // Actions
 import { setPaywall } from './actions/setPaywall';
 import { avatarByUID } from './actions/avatarByUID';
@@ -32,6 +33,7 @@ export {
     Register,
     ChooseAvatar,
     UserSpot,
+    MiniAccount,
 };
 
 // Actions

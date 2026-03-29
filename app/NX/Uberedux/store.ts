@@ -1,6 +1,7 @@
 'use client';
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 
 export const initialState: any = {};
 
@@ -40,7 +41,9 @@ const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 export type T_RootState = ReturnType<typeof store.getState>;
 export type T_UbereduxDispatch = typeof store.dispatch;
+export type AppDispatch = typeof store.dispatch;
