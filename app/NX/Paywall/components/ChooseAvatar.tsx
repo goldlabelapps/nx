@@ -81,7 +81,7 @@ export default function ChooseAvatar({
             if (!user) throw new Error('User not authenticated');
             const idToken = await user.getIdToken();
 
-            const res = await fetch('/api/avatars/upload', {
+            const res = await fetch('/api/avatars', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -89,27 +89,29 @@ export default function ChooseAvatar({
                 }
             });
             const result = await res.json();
-            if (result?.data?.src) {
-                setSelected(result.data.src);
+            // Accept either result.data.src or result.data.url for compatibility
+            const avatarUrl = result?.data?.src || result?.data?.url;
+            if (avatarUrl) {
+                setSelected(avatarUrl);
                 dispatch(setPaywall('account', { 
                     ...account, 
-                    avatar: result.data.src 
+                    avatar: avatarUrl 
                 }));
                 dispatch(setFeedback({
                     severity: 'success',
                     title: 'Avatar uploaded',
                 }))
-                onSave(result.data.src);
+                onSave(avatarUrl);
             } else {
                 dispatch(setFeedback({
                     severity: 'error',
                     title: result?.message || 'Avatar upload failed',
                 }))
             }
-        } catch (err) {
+        } catch (err: any) {
             dispatch(setFeedback({
                 severity: 'error',
-                title: 'Avatar upload failed',
+                title: err?.message || 'Avatar upload failed',
             }))
         } finally {
             setUploading(false);
@@ -187,7 +189,7 @@ export default function ChooseAvatar({
                                     type="file"
                                     accept="image/*"
                                     style={{ display: 'none' }}
-                                    onChange={handleUploadWIP} />
+                                    onChange={handleUpload} />
 
                                 Upload
                                 <Icon icon="upload" color="primary" />

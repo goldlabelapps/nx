@@ -9,9 +9,10 @@ export const getEndpoints = (name?: string) => {
             path: `${baseURL}/avatars`,
             endpoints: [
                 {
-                    name: 'Upload',
-                    endpoint: `${baseURL}/avatars/upload`,
+                    name: 'Upload Avatar',
+                    endpoint: `${baseURL}/avatars/`,
                     method: 'POST',
+                    required: 'uid'
                 },
             ]
         },
