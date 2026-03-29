@@ -6,10 +6,7 @@ import {
     Box,
     Alert,
     Button,
-    IconButton,
-    CardActions,
     Grid,
-    Card,
 } from '@mui/material';
 import {
     Search,
@@ -18,6 +15,7 @@ import {
     initProspects,
     updateQuery,
     resetQuery,
+    Result,
 } from '../Prospects';
 import {
     Icon,
@@ -40,6 +38,7 @@ export default function Prospects({
     const loading = state?.loading;
     const initialData = state?.initialData;
     const query = state?.query;
+    const results = state?.results;
 
     const handleReset = () => {
         // To reset/clear the query, pass an empty object
@@ -117,34 +116,24 @@ export default function Prospects({
 
     return (
         <>
-            <Box sx={{display: 'flex'}}>
-                
-                
-                
-                {/* <Box>
-                    <IconButton
-                        size='small'
-                        onClick={handleTingClick}>
-                        <Icon icon="ting" />
-                    </IconButton>
-                </Box> */}
-                <Box>
-                    
-                </Box>
-            </Box>
+            
 
             <Grid container spacing={2} sx={{ mx: 1, mb: 2 }}>
                 <Grid size={{ xs: 12}}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flexWrap: 'wrap' }}>
+                        <Search />
                     <Button
                         startIcon={<Icon icon="reset" />}
                         onClick={handleReset}
                     >   
                         Reset
                     </Button>
+                    
+                    </Box>
                 </Grid>
-
+                {/*
                 <Grid size={{ xs: 12, sm: 6 }}>
-                    <Search />
+                    
                 </Grid>
 
                 <Grid size={{xs: 12, sm: 6}}>
@@ -170,13 +159,14 @@ export default function Prospects({
                         value={query?.lane || null}
                         onChange={value => dispatch(updateQuery({ lane: value }))}
                     />
-                </Grid>
+                </Grid> */}
+                {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
+                    <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
+                        <Result result={result} />
+                    </Grid>
+                ))}
             </Grid>
                 
-            <pre>query: {JSON.stringify(query, null, 2)}</pre>
-           
-        
-            {/*  */}
         </>
     );
 }

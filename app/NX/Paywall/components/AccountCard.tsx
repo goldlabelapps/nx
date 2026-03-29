@@ -28,24 +28,11 @@ export default function AccountCard() {
     const paywall = usePaywall();
     const { account } = paywall || {};
     const {
-        avatar,
         level,
         name,
         email,
     } = account || {}; 
 
-    const [open, setOpen] = React.useState(false);
-
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    const handleSignout = async () => {
-        await firebaseLogout();
-        dispatch(setPaywall('user', null));
-        dispatch(setPaywall('account', null));
-        setOpen(false);
-    }
-    
     const onNameSave = (newName: string) => {
         dispatch(updateAccount('name', newName, `You are now called ${newName}`));
     };
@@ -66,11 +53,7 @@ export default function AccountCard() {
                     onSave={onNameSave}
                 />}
                 subheader={email}
-                action={<IconButton 
-                    color="primary" 
-                    onClick={handleOpen}>
-                    <Icon icon="signout" />
-                </IconButton>}
+                
             />
             {[...Array(5)].map((_, i) => (
                 <Icon
@@ -80,29 +63,7 @@ export default function AccountCard() {
                 />
             ))}
         </Box>
-        <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
-            <DialogTitle>
-                <Typography variant="h6" component="span" sx={{mt:1}}>
-                    Sign {name} out?
-                </Typography>
-            </DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    Are you sure?
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                    No
-                </Button>
-                <Button 
-                    endIcon={<Icon icon="tick" />}
-                    variant="outlined" 
-                    onClick={handleSignout} color="primary" autoFocus>
-                    Yes
-                </Button>
-            </DialogActions>
-        </Dialog>
+        
         {/* <pre>account: {JSON.stringify(account, null, 2)}</pre> */}
     </>
     );

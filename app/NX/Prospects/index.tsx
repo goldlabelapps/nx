@@ -1,7 +1,7 @@
 import Prospects from './Prospects';
 import Search from './components/Search';
 import Selecta from './components/Selecta';
-import Fing from './components/Fing';
+import Result from './components/Result';
 
 import { initProspects } from './actions/initProspects';
 import { updateQuery } from './actions/updateQuery';
@@ -20,7 +20,7 @@ export {
     useInitialData,
     Search,
     Selecta,
-    Fing,
+    Result,
     updateQuery,
     resetQuery,
 };
