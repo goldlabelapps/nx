@@ -2,6 +2,7 @@
 import type { T_Config } from '../types';
 import * as React from 'react';
 import {
+    Container,
     CircularProgress,
     Box,
     Alert,
@@ -78,9 +79,11 @@ export default function Prospects({
 
     if (state?.error) {
         return (
-            <Alert severity="error" sx={{ my: 2 }}>
+            <Container maxWidth="xs" sx={{ my: 4 }}>
+            <Alert severity="info" sx={{ my: 2 }}>
                 {state.error}
             </Alert>
+            </Container>
         );
     }
 
