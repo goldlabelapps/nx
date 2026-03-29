@@ -10,11 +10,14 @@ import {
     DialogTitle,
     DialogContent,
     DialogActions,
-    Typography,
 } from '@mui/material';
 import { Icon, setFeedback } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
-import { setPaywall, useAccount, usePaywall } from '../../Paywall';
+import { 
+    usePaywall,
+    setPaywall, 
+    useAccount,
+} from '../../Paywall';
 import { getAuth } from 'firebase/auth';
 
 export interface I_ChooseAvatar {
@@ -27,7 +30,7 @@ export default function ChooseAvatar({
     const dispatch = useDispatch();
     const account = useAccount();
     const paywall = usePaywall();
-    const avatars = paywall?.avatars || {};
+    const avatarsByUID = paywall?.avatarsByUID || {};
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
@@ -155,6 +158,23 @@ export default function ChooseAvatar({
 
                 <DialogContent>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', mb: 2 }}>
+                        
+                        {Object.entries(avatarsByUID).map(([id, avatarObj]) => {
+                            const avatar = avatarObj as { src: string; uid: string };
+                            return (
+                                <IconButton key={id} onClick={() => handleChoice(avatar.src)}>
+                                    <Avatar
+                                        src={avatar.src}
+                                        sx={{
+                                            width: 85,
+                                            height: 85,
+                                            border: selected === avatar.src ? `2px solid ${theme.palette.primary.main}` : undefined
+                                        }}
+                                    />
+                                </IconButton>
+                            );
+                        })}
+                        
                         <Box sx={{ display: 'flex', width: '100%', m: 2 }}>
                             <Box sx={{ flexGrow: 1 }} />
                             <label style={{
@@ -174,10 +194,8 @@ export default function ChooseAvatar({
                             </label>
                             <Box sx={{ flexGrow: 1 }} />
                         </Box>
-{/* 
-                        <Typography variant="h6" sx={{ width: '100%', my: 2, textAlign: 'center' }}>
-                            Or choose
-                        </Typography> */}
+
+
 
                         {presetAvatars.map((url, i) => (
                             <IconButton key={url} onClick={() => handleChoice(url)}>

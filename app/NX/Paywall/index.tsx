@@ -11,7 +11,7 @@ import SignOutBtn from './components/SignOutBtn';
 import MiniAccount from './components/MiniAccount';
 // Actions
 import { setPaywall } from './actions/setPaywall';
-import { avatarByUID } from './actions/avatarByUID';
+import { avatarsByUID } from './actions/avatarsByUID';
 import { subscribeAccount } from './actions/subscribeAccount';
 import { updateAccount } from './actions/updateAccount';
 
@@ -39,7 +39,7 @@ export {
 // Actions
 export {
     setPaywall,
-    avatarByUID,
+    avatarsByUID,
     subscribeAccount,
     updateAccount,
     firebaseLogin,

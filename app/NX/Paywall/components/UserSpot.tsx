@@ -2,7 +2,12 @@
 import React from 'react';
 import { Box, Badge, IconButton, Avatar } from '@mui/material';
 import { Icon } from '../../DesignSystem';
-import { usePaywall, subscribeAccount, setPaywall } from '../../Paywall';
+import { 
+    avatarsByUID,
+    usePaywall, 
+    subscribeAccount, 
+    setPaywall,
+} from '../../Paywall';
 import { useDispatch } from '../../Uberedux';
 
 export interface I_UserSpot {
@@ -10,9 +15,11 @@ export interface I_UserSpot {
 }
 
 export default function UserSpot({ onClick }: I_UserSpot) {
+    
     const paywall = usePaywall();
     const account = paywall ? paywall.account : null;
     const accountSubscribing = paywall ? paywall.accountSubscribing : null;
+    const avatarsFetching = paywall ? paywall.avatarsFetching : null;
     const uid = paywall ? paywall.uid : null;
     const dispatch = useDispatch();
 
@@ -24,6 +31,13 @@ export default function UserSpot({ onClick }: I_UserSpot) {
             dispatch(subscribeAccount());
         }
     }, [uid, account, accountSubscribing, dispatch]);
+
+    React.useEffect(() => {
+        if (uid && !avatarsFetching) {
+            dispatch(setPaywall('avatarsFetching', true));
+            dispatch(avatarsByUID());
+        }
+    }, [uid, avatarsFetching, dispatch]);
 
     React.useEffect(() => {
         if (typeof window !== "undefined" && window.location.pathname === "/account") {
