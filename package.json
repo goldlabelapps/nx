@@ -1,6 +1,6 @@
 {
-  "name": "nx-free",
-  "version": "2.0.7",
+  "name": "nx",
+  "version": "2.0.8",
   "scripts": {
     "dev": "yarn kill && yarn install && rm -rf .next && next dev -p 1999 --webpack",
     "build": "next build --webpack",

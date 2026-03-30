@@ -60,9 +60,9 @@ export default function Prospects({
     if (state?.error) {
         return (
             <Container maxWidth="xs" sx={{ my: 4 }}>
-            <Alert severity="info" sx={{ my: 2 }}>
-                {state.error}
-            </Alert>
+                <Alert severity="info" sx={{ my: 2 }}>
+                    {state.error}
+                </Alert>
             </Container>
         );
     }
