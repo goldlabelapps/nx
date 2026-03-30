@@ -9,14 +9,17 @@ export const searchProspects = () => async (
 ) => {
     dispatch(setProspects('searching', true));
     try {
+        dispatch(setProspects('searching', true));
         const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prospects/search/?query=${encodeURIComponent(getState().redux.prospects?.query?.search)}`;
         const res = await fetch(endpoint);
         if (!res.ok) throw new Error(`Failed to fetch: ${endpoint}`);
         const data = await res.json();
         if (data?.data) {
             dispatch(setProspects('results', data.data));
+            dispatch(setProspects('pagination', data.pagination));
         } else {
             dispatch(setProspects('results', []));
+            dispatch(setProspects('pagination', null));
         }
         dispatch(setProspects('searching', false));
     } catch (e: unknown) {

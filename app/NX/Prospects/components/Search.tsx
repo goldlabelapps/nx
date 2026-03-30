@@ -6,12 +6,14 @@ import {
     TextField,
     IconButton,
     InputAdornment,
+    CircularProgress,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
 import { 
     useProspects, 
     updateQuery,
     searchProspects,
+    setProspects,
 } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 
@@ -24,16 +26,24 @@ export default function Search({ label }: I_Search) {
     const dispatch = useDispatch();
     const prospects = useProspects();
     const search = prospects?.query?.search || '';
+    const searching = prospects?.searching || null;
+    const pagination = prospects?.pagination || null;
+
+        const helperText = pagination
+            ? `Showing page ${pagination.page} of ${pagination.pages} (${pagination.total} results)`
+            : 'Search by name, title, company, email, etc.';
+
 
 
     // Debounce utility (only for searchProspects)
-    const debouncedSearch = useRef<() => void>();
+    const debouncedSearch = useRef<() => void>(null);
     if (!debouncedSearch.current) {
         let timer: ReturnType<typeof setTimeout>;
         debouncedSearch.current = () => {
             clearTimeout(timer);
             timer = setTimeout(() => {
                 dispatch(searchProspects());
+                dispatch(setProspects('searching', true));
             }, 400);
         };
     }
@@ -56,6 +66,7 @@ export default function Search({ label }: I_Search) {
                 autoFocus
                 fullWidth
                 variant="standard"
+                helperText={helperText}
                 placeholder={label || 'Search'}
                 inputProps={{ 'aria-label': 'Search' }}
                 value={search}
@@ -73,8 +84,18 @@ export default function Search({ label }: I_Search) {
                             </IconButton>
                         </InputAdornment>
                     ),
+                    endAdornment: searching ? (
+                        <InputAdornment position="end">
+                            <span style={{ display: 'flex', alignItems: 'center' }}>
+                                <span style={{ width: 24, height: 24, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <CircularProgress size={20} thickness={5} />
+                                </span>
+                            </span>
+                        </InputAdornment>
+                    ) : null
                 }}
             />
+            {/* <pre>pagination: {JSON.stringify(pagination, null, 2)}</pre> */}
         </Box>
     );
 }
