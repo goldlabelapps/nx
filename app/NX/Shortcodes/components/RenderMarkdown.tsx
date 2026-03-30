@@ -11,6 +11,7 @@ import {
 import {
   BuyNow,
   FeedbackBtn,
+  ChatResponse,
 } from '../../Shortcodes';
 
 export type I_RenderMarkdown = {
@@ -62,6 +63,10 @@ export default function RenderMarkdown({
     // FeedbackBtn
     const feedbackBtn = parseShortcode(/\[FeedbackBtn\s+(.*?)\]/, FeedbackBtn);
     if (feedbackBtn) return feedbackBtn;
+
+    // ChatResponse
+    const chatResponse = parseShortcode(/\[ChatResponse\s+(.*?)\]/, ChatResponse);
+    if (chatResponse) return chatResponse;
 
     // fallback: simply return text
     return text;

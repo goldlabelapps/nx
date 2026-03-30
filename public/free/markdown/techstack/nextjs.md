@@ -1,5 +1,5 @@
 ---
-order: 185
+order: 485
 slug: /techstack/nextjs
 title: NextJS
 description: SSR, SSG, API routes, and advanced routing

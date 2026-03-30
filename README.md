@@ -1,15 +1,15 @@
-# ![NextJS](/public/shared/png/repoicon.png) NX Free
+# Open Source NX 
 
 NX is a modern, full-stack web application framework and platform built on [Next.js](https://nextjs.org/) and [React](https://react.dev/). It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
 
-> In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins. 
+In this Open Source release we offer a public repo. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins. 
 
 
 ## Quick Start
 
 1. **Clone the repository:**
 	```bash
-	git clone https://github.com/goldlabelapps/nx-free
+	git clone https://github.com/goldlabelapps/nx
 	cd nx
 	```
 2. **Install dependencies:**
@@ -69,3 +69,5 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for detai
 ## Owner
 
 NX is built and maintained by [Goldlabel Apps Ltd](https://company.goldlabel.pro).
+
+![NextJS](public/shared/png/opengraph/apps.png) 

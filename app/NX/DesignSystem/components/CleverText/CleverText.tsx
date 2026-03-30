@@ -73,8 +73,6 @@ export default function CleverText({ options }: I_CleverText) {
             id={options.id}
             ref={clipRef}
             sx={{
-                borderRadius: 2,
-                px: 2,
                 wordBreak: 'break-word',
             }}
         >

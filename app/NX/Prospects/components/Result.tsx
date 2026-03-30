@@ -1,17 +1,14 @@
 'use client';
 import * as React from 'react';
 import {
-    Box,
+    useTheme,
+    ButtonBase,
     Typography,
-    IconButton,
-    Link,
-    Chip,
-    Stack,
-    Paper,
+    Box,
 } from '@mui/material';
-import {
-    Icon,
-} from '../../DesignSystem';
+// import {
+//     Icon,
+// } from '../../DesignSystem';
 
 export interface I_Result {
     id: number;
@@ -57,37 +54,25 @@ interface ResultProps {
 }
 
 export default function Result({ result }: ResultProps) {
+    const theme = useTheme();
     const handleResultClick = () => {
         // Handle click event, e.g., navigate to a detail page or open a modal
         console.log('Result clicked:', result);
     };
     
     return (
-        <Paper variant='outlined' sx={{ p:1 }}>
-            <Typography variant="h6">
-                {result.first_name} {result.last_name}
-            </Typography>
-            <Typography variant="subtitle1">
-                {result.company_name}
-            </Typography>
-            <Typography variant="body2">
-                {result.email}
-            </Typography>
-            <Chip label={result.title} size="small" color="primary" />
-            {result.person_linkedin_url && (
-                <Typography variant="body2">
-                    <Link href={result.person_linkedin_url} target="_blank" rel="noopener">
-                        LinkedIn
-                    </Link>
-                    <Icon icon="linkedin" />
-                </Typography>
-            )}
-            {result.corporate_phone && (
-                <Typography variant="body2">
-                    {result.corporate_phone}
-                </Typography>
-            )}
-        </Paper>
+        <>
+            <ButtonBase sx={{width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
+                <Box sx={{ pl: 1, width: '100%', borderLeft: `2px solid ${theme.palette.primary.main}` }}>
+                    <Typography variant="body1">
+                        {result.first_name} {result.last_name}
+                    </Typography>
+                    <Typography variant="caption">
+                        {result.title} at {result.company_name}
+                    </Typography>
+                </Box>
+            </ButtonBase>
+        </>
     );
 }
 

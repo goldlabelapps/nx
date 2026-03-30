@@ -14,17 +14,20 @@ export const initProspects = () =>
         dispatch(setProspects('loading', true));
         try {
             const base = process.env.NEXT_PUBLIC_NX_AI;
-            const [initial, data] = await Promise.all([
+            const [
+                initial, 
+                // data,
+            ] = await Promise.all([
                 fetchJson(`${base}prospects/init`),
-                fetchJson(`${base}prospects/read`)
+                // fetchJson(`${base}prospects/read`)
             ]);
             dispatch(setProspects('initialData', initial?.data));
-            dispatch(setProspects('results', data?.data));
+            // dispatch(setProspects('results', data?.data));
             dispatch(setProspects('loading', false));
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
             if (msg === 'Failed to fetch') {
-                msg = `Can't reach NX-AI. Check network & ensure the API server is running`;
+                msg = `Can't reach NX-AI.`;
             }
             dispatch(setProspects('error', msg));
             dispatch(setProspects('loading', false));
