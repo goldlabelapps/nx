@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import { useRef, useCallback } from 'react';
 import {
     Box,
     TextField,
@@ -7,8 +8,11 @@ import {
     InputAdornment,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
-import { updateQuery } from '../../Prospects';
-import { useProspects } from '../../Prospects';
+import { 
+    useProspects, 
+    updateQuery,
+    searchProspects,
+} from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 
 export interface I_Search {
@@ -16,13 +20,28 @@ export interface I_Search {
 }
 
 export default function Search({ label }: I_Search) {
+
     const dispatch = useDispatch();
     const prospects = useProspects();
     const search = prospects?.query?.search || '';
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+
+    // Debounce utility (only for searchProspects)
+    const debouncedSearch = useRef<() => void>();
+    if (!debouncedSearch.current) {
+        let timer: ReturnType<typeof setTimeout>;
+        debouncedSearch.current = () => {
+            clearTimeout(timer);
+            timer = setTimeout(() => {
+                dispatch(searchProspects());
+            }, 400);
+        };
+    }
+
+    const handleInputChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(updateQuery({ search: event.target.value }));
-    };
+        debouncedSearch.current && debouncedSearch.current();
+    }, [dispatch]);
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
@@ -34,6 +53,7 @@ export default function Search({ label }: I_Search) {
     return (
         <Box component="form">
             <TextField
+                autoFocus
                 fullWidth
                 variant="standard"
                 placeholder={label || 'Search'}

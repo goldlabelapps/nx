@@ -12,17 +12,14 @@ import {
     Grid,
 } from '@mui/material';
 import {
+    useDispatch,
+} from '../Uberedux';
+import {
     Search,
     useProspects,
     initProspects,
     Result,
 } from '../Prospects';
-import {
-    Icon,
-} from '../DesignSystem';
-import {
-    useDispatch,
-} from '../Uberedux';
 
 export interface I_Prospects {
     config: T_Config;
@@ -38,7 +35,7 @@ export default function Prospects({
     const loading = state?.loading;
     const theme = useTheme();
     const results = state?.results;
-
+    const query = state?.query || '';
 
     React.useEffect(() => {
         if (!state) dispatch(initProspects());
@@ -76,7 +73,7 @@ export default function Prospects({
                     </Box>
                 </Toolbar>
             </AppBar>   
-
+            
             <Grid container spacing={2} sx={{ mt: '50px' }}>
                 {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
                     <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
@@ -84,10 +81,13 @@ export default function Prospects({
                     </Grid>
                 ))}
             </Grid>
-                
+            {/* <pre>query: {JSON.stringify(query, null, 2)}</pre>
+            <pre>results: {JSON.stringify(results, null, 2)}</pre> */}
+            
         </>
     );
 }
+
 /*
 <Selecta
     label="by Level"
