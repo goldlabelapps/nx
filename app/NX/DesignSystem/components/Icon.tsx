@@ -180,6 +180,8 @@ import OrdersIcon from '@mui/icons-material/ShoppingCart';
 import StarOnIcon from '@mui/icons-material/Star';
 import StarOffIcon from '@mui/icons-material/StarBorder';
 import TagIcon from '@mui/icons-material/Tag';
+import FeaturesIcon from '@mui/icons-material/CheckCircle';
+// import OpensourceIcon from '@mui/icons-material/CheckCircle';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
@@ -187,6 +189,12 @@ export default function Icon({ icon, color }: I_Icon) {
   switch (icon) {
     case 'tag':
       iconFragment = <TagIcon color={color} />;
+      break;
+    case 'opensource':
+      iconFragment = <TagIcon color={color} />;
+      break;
+    case 'features':
+      iconFragment = <FeaturesIcon color={color} />;
       break;
     case 'staroff':
       iconFragment = <StarOffIcon color={color} />;
@@ -515,6 +523,9 @@ export default function Icon({ icon, color }: I_Icon) {
       break;
     case 'fullscreen':
       iconFragment = <FullscreenIcon color={color} />;
+      break;
+    case 'opensource':
+      iconFragment = <GithubIcon color={color} />;
       break;
     case 'github':
       iconFragment = <GithubIcon color={color} />;

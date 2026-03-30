@@ -465,6 +465,8 @@ export type I_Icon = {
     | 'tings'
     | 'info'
     | 'warning'
+    | 'opensource'
+    | 'features'
     | 'error'
     | 'signout'
     | 'api'

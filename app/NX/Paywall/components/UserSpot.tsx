@@ -40,7 +40,7 @@ export default function UserSpot({ onClick }: I_UserSpot) {
     }, [uid, avatarsFetching, dispatch]);
 
     React.useEffect(() => {
-        if (typeof window !== "undefined" && window.location.pathname === "/account" || window.location.pathname === "/prospects") {
+        if (typeof window !== "undefined" && window.location.pathname === "/account") {
             setShow(false);
         }
     }, []);
