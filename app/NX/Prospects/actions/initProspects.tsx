@@ -27,7 +27,8 @@ export const initProspects = () =>
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
             if (msg === 'Failed to fetch') {
-                msg = `Can't reach NX-AI.`;
+                const base = process.env.NEXT_PUBLIC_NX_AI;
+                msg = `Can't reach NX-AI at ${base}`;
             }
             dispatch(setProspects('error', msg));
             dispatch(setProspects('loading', false));
