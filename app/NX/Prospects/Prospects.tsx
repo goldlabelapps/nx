@@ -50,7 +50,7 @@ export default function Prospects({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: '90vh',
+                minHeight: '80vh',
             }}
         >
             <CircularProgress />
@@ -71,7 +71,7 @@ export default function Prospects({
         <>
             <AppBar position="fixed" sx={{ background: theme.palette.background.default, boxShadow:0, mt: '85px' }}>
                 <Toolbar>
-                    <Box sx={{ flexGrow: 1, mx: 3 }}>
+                    <Box sx={{ flexGrow: 1, mx: 4 }}>
                         <Search />
                     </Box>
                 </Toolbar>
