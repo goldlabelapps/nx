@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import type { I_Result } from '../types';
 import {
     useTheme,
     useMediaQuery,
@@ -8,9 +9,11 @@ import {
     Box,
     Dialog,
     DialogTitle,
+    CardHeader,
     DialogContent,
     DialogActions,
     Button,
+    Grid,
 } from '@mui/material';
 import {useRouter} from 'next/navigation';
 import {
@@ -21,72 +24,48 @@ import {
     useDispatch,
 } from '../../Uberedux';
 
-export interface I_Result {
-    id: number;
-    first_name: string;
-    last_name: string;
-    title: string;
-    company_name: string;
-    email: string;
-    email_status: string;
-    primary_email_source: string;
-    primary_email_verification_source: string;
-    email_confidence: string;
-    primary_email_catchall_status: string;
-    primary_email_last_verified_at: string;
-    seniority: string;
-    sub_departments: string;
-    work_direct_phone: string;
-    home_phone: string;
-    mobile_phone: string;
-    corporate_phone: string;
-    other_phone: string;
-    do_not_call: string;
-    lists: string;
-    person_linkedin_url: string;
-    country: string;
-    subsidiary_of: string;
-    subsidiary_of_organization_id: string;
-    tertiary_email: string;
-    tertiary_email_source: string;
-    tertiary_email_status: string;
-    tertiary_email_verification_source: string;
-    primary_intent_topic: string;
-    primary_intent_score: string;
-    secondary_intent_topic: string;
-    secondary_intent_score: string;
-    qualify_contact: string;
-    cleaned: string;
-    search_vector: string;
+// Helper to get TLD URL from email
+function emailToTldUrl(email: string): string {
+    if (typeof email !== 'string') return '';
+    const match = email.match(/@([\w.-]+)/);
+    if (!match) return '';
+    return `https://${match[1]}`;
 }
 
-interface ResultProps {
-    result: I_Result;
+// Helper to fix phone numbers
+function fixPhone(phone: string) {
+    return typeof phone === 'string' && phone.startsWith("'+44")
+        ? '0' + phone.slice(5)
+        : phone;
 }
 
-export default function Result({ result }: ResultProps) {
+export default function Result({ result }: I_Result) {
+    
+    const dispatch = useDispatch();
     const theme = useTheme();
     const router = useRouter();
-    const dispatch = useDispatch();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
+    
     const handleResultClick = () => {
         setOpen(true);
     };
+
     const handleClose = () => {
         setOpen(false);
     };
 
-    // Helper to fix phone numbers
-    function fixPhone(phone: string) {
-        return typeof phone === 'string' && phone.startsWith("'+44")
-            ? '0' + phone.slice(5)
-            : phone;
-    }
+    const handleLinkedin = () => {
+        dispatch(navigateTo(router, result.person_linkedin_url, '_blank'));
+    };
+
+    const handleWebsite = () => {
+        dispatch(navigateTo(router, emailToTldUrl(result.email as string), '_blank'));
+    };
 
     return (
         <>
-            <ButtonBase sx={{mx:3, width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
+            <ButtonBase sx={{mx:1, width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
                 <Box sx={{ pl: 1, width: '100%', borderLeft: `2px solid ${theme.palette.primary.main}` }}>
                     <Typography variant="body1">
                         {result.first_name} {result.last_name}
@@ -98,42 +77,65 @@ export default function Result({ result }: ResultProps) {
             </ButtonBase>
             <Dialog fullWidth maxWidth="sm" open={open} onClose={handleClose} fullScreen={isMobile}>
                 <DialogTitle>
+                    <CardHeader 
+                    sx={{mx:-2}}
+                        title={result.company_name}
+                        subheader={`${result.first_name} ${result.last_name}`}
+                    />
                 </DialogTitle>
                 <DialogContent>
-                    <Typography variant="h6">
-                        {result.first_name} {result.last_name}
-                    </Typography>
-                    <Typography variant="h6">
-                        {result.title}
-                    </Typography>
-                    <Typography variant="h6">
-                        {result.company_name}
-                    </Typography>
-                    <Typography variant="h6">
-                        {fixPhone(result.corporate_phone)}
-                    </Typography>
-                    <Typography variant="h6">
-                        {result.email}
-                    </Typography>
-                    <Typography variant="h6">
-                        {result.person_linkedin_url}
-                    </Typography>
-                    {/* <Button
-                        startIcon={<Icon icon="linkedin" />}
-                        onClick={dispatch(navigateTo(result.person_linkedin_url))}
-                    >
-                        LinkedIn
-                    </Button> */}
+                    <Grid container spacing={2} alignItems="center">
+                        <Grid size={{ xs: 12 }}>
+                            <Typography variant="h6">
+                                {result.title}
+                            </Typography>
+                        </Grid>
+                        
+                        <Grid size={{ xs: 12, sm: 6 }}>
+                            <Typography variant="body1">
+                                {fixPhone(result.corporate_phone)}
+                            </Typography>
+                            <Typography variant="body1">
+                                {result.email}
+                            </Typography>
+                        </Grid>
+
+                        <Grid size={{ xs: 12, sm: 6 }}>
+
+                            <Button
+                                startIcon={<Icon icon="linkedin" />}
+                                onClick={handleLinkedin}
+                            >
+                                LinkedIn
+                            </Button>
+
+                            <Button
+                                startIcon={<Icon icon="link" />}
+                                onClick={handleWebsite}
+                            >
+                                Website
+                            </Button>
+                        </Grid>
+                        <Grid size={{ xs: 12 }}>
+                            <Button
+                                fullWidth
+                                variant='contained'
+                                startIcon={<Icon icon="shop" />}
+
+                            >
+                                Add to basket
+                            </Button>
+                        </Grid>
+                    </Grid>
                     
                 </DialogContent>
                 <DialogActions>
                     <Button 
-                        endIcon={<Icon icon="close" />} 
+                        startIcon={<Icon icon="left" />} 
                         onClick={handleClose} 
                         color="primary"
-                        variant="outlined"
                     >
-                        Cancel
+                        Back
                     </Button>
                 </DialogActions>
             </Dialog>

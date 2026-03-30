@@ -19,6 +19,8 @@ import {
     useProspects,
     initProspects,
     Result,
+    updateQuery,
+    searchProspects,
 } from '../Prospects';
 
 export interface I_Prospects {
@@ -38,7 +40,14 @@ export default function Prospects({
     const query = state?.query || '';
 
     React.useEffect(() => {
-        if (!state) dispatch(initProspects());
+        if (!state) {
+            dispatch(initProspects());
+            // Simulate initial search for "chris" after a brief delay
+            setTimeout(() => {
+                dispatch(updateQuery({ search: 'chris' }));
+                dispatch(searchProspects());
+            }, 500); // 500ms delay to ensure everything is loaded
+        }
     }, [state, dispatch]);
 
     if (loading) return (
@@ -66,10 +75,10 @@ export default function Prospects({
 
     return (
         <>
-            <AppBar position="fixed" sx={{ background: theme.palette.background.default, boxShadow:0, mt: '85px' }}>
+            <AppBar position="fixed" sx={{ background: theme.palette.background.default, boxShadow:0, mt: '75px' }}>
                 <Toolbar>
                     <Container maxWidth="lg" sx={{ my: 3 }}>
-                        <Box sx={{ flexGrow: 1, mx: 4 }}>
+                        <Box sx={{ flexGrow: 1, mx: 1 }}>
                             <Search />
                         </Box>
                     </Container>
