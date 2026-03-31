@@ -3,7 +3,6 @@ import type { T_Config } from '../types';
 import * as React from 'react';
 import {
     useTheme,
-    Badge,
     Container,
     CircularProgress,
     Box,
@@ -12,6 +11,7 @@ import {
     Toolbar,
     Grid,
     Button,
+    IconButton,
 } from '@mui/material';
 import {
     Icon,
@@ -46,21 +46,25 @@ export default function Prospects({
     const results = state?.results;
     const basket = state?.basket || [];
 
-    const handleBasket = () => {
-        dispatch(setProspects('basketOpen', true));
-    };
+    // const handleBasket = () => {
+    //     dispatch(setProspects('basketOpen', true));
+    // };
 
-    // Dev: open first result dialog after initial search
+    // On mount: initialize prospects and trigger search if 'search' param is in query string
     React.useEffect(() => {
         if (!state) {
             dispatch(initProspects());
-            // Simulate initial search for "chris" after a brief delay
-            setTimeout(() => {
-                dispatch(updateQuery({ search: 'chris' }));
-                dispatch(searchProspects());
-                // Set a dev flag to open first result dialog
-                dispatch(setProspects('openFirstResultDialog', true));
-            }, 500); // 500ms delay to ensure everything is loaded
+            // Check for 'search' param in query string
+            const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
+            const searchParam = params?.get('search');
+            if (searchParam) {
+                setTimeout(() => {
+                    dispatch(updateQuery({ search: searchParam }));
+                    dispatch(searchProspects());
+                    // Optionally open first result dialog:
+                    // dispatch(setProspects('openFirstResultDialog', true));
+                }, 500); // 500ms delay to ensure everything is loaded
+            }
         }
     }, [state, dispatch]);
 
@@ -128,13 +132,55 @@ export default function Prospects({
             
             <Container maxWidth="lg" sx={{ my: 4 }}>
                 <Basket />
-                <Grid container spacing={2} sx={{ mt: '75px' }}>
-                    {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
-                        <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
-                            <Result result={result} autoOpen={idx === 0} />
-                        </Grid>
-                    ))}
-                </Grid>
+                {!results?.length ? (
+                    <Box sx={{ 
+                        mt: '85px', 
+                        display: 'flex',
+                        gap: 1,
+                        mx: 1,
+                        flexDirection: 'column', 
+                        alignItems: 'center', 
+                        justifyContent: 'center',
+                    }}>
+                        <Box sx={{ width: '100%' }}>
+                            <Button
+                                fullWidth
+                                variant="outlined"
+                                startIcon={<Icon icon="user" />}
+                            >
+                                search by job title
+                            </Button>
+                        </Box>
+                        <Box sx={{ width: '100%' }}>
+                            <Button
+                                fullWidth
+                                variant="outlined"
+                                startIcon={<Icon icon="company" />}
+                            >
+                                search by company
+                            </Button>
+                        </Box>
+
+                        <Box sx={{ width: '100%' }}>
+                            <Button
+                                fullWidth
+                                variant="outlined"
+                                startIcon={<Icon icon="user" />}
+                            >
+                                search by job title
+                            </Button>
+                        </Box>
+
+                    </Box>
+                ) : (
+                    <Grid container spacing={2} sx={{ mt: '75px' }}>
+                        {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
+                            <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
+                                <Result result={result} autoOpen={idx === 0} />
+                            </Grid>
+                        ))}
+                    </Grid>
+                )}
             </Container>
             {/* <pre>query: {JSON.stringify(query, null, 2)}</pre>
             <pre>results: {JSON.stringify(results, null, 2)}</pre> */}

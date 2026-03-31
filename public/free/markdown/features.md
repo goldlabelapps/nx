@@ -1,10 +1,9 @@
 ---
-order: 801
+order: 191
 title: Features
 description: Powerful Features at a Glance
 slug: /features
 icon: features
-image: /free/jpg/default.jpg
 tags: features
 ---
 

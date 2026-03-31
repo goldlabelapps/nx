@@ -32,7 +32,7 @@ export default function Search({ label }: I_Search) {
 
     const helperText = pagination
         ? `Showing page ${pagination.page} of ${pagination.pages} (${pagination.total} results)`
-        : 'Search by name, title, company, email, etc.';
+        : 'by name, job, company etc.';
 
     // Ref for the input
     const inputRef = useRef<HTMLInputElement>(null);
