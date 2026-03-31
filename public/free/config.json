@@ -1,8 +1,8 @@
 {
     "tenant": "free",
-    "siteName": "NX Free",
-    "description": "Open Source",
-    "url": "https://free.goldlabel.pro",
+    "siteName": "Open Source NX",
+    "description": "Free",
+    "url": "https://goldlabel.pro",
     "owner": {
         "name": "Chris",
         "email": "goldlabel.apps@gmail.com"

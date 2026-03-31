@@ -1,8 +1,8 @@
 {
   "short_name": "NX Free",
   "name": "NX Free",
-  "theme_color": "#ffd849",
-  "background_color": "#ffd849",
+  "theme_color": "#364450",
+  "background_color": "#364450",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",
