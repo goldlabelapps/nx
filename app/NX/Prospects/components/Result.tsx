@@ -46,7 +46,7 @@ function fixPhone(phone: string) {
         : phone;
 }
 
-export default function Result({ result }: I_Result) {
+export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boolean }) {
     
     const dispatch = useDispatch();
     const theme = useTheme();
@@ -65,6 +65,15 @@ export default function Result({ result }: I_Result) {
     const handleResultClick = () => {
         setOpen(true);
     };
+
+    // Listen for dev event to auto-open dialog for first result
+    React.useEffect(() => {
+        if (autoOpen) {
+            const handler = () => setOpen(true);
+            window.addEventListener('openFirstResultDialog', handler);
+            return () => window.removeEventListener('openFirstResultDialog', handler);
+        }
+    }, [autoOpen]);
 
     const handleClose = () => {
         setOpen(false);

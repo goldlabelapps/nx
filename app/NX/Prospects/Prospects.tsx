@@ -50,6 +50,7 @@ export default function Prospects({
         dispatch(setProspects('basketOpen', true));
     };
 
+    // Dev: open first result dialog after initial search
     React.useEffect(() => {
         if (!state) {
             dispatch(initProspects());
@@ -57,9 +58,21 @@ export default function Prospects({
             setTimeout(() => {
                 dispatch(updateQuery({ search: 'chris' }));
                 dispatch(searchProspects());
+                // Set a dev flag to open first result dialog
+                dispatch(setProspects('openFirstResultDialog', true));
             }, 500); // 500ms delay to ensure everything is loaded
         }
     }, [state, dispatch]);
+
+    // Effect to open the first result dialog for dev
+    React.useEffect(() => {
+        if (state?.openFirstResultDialog && Array.isArray(results) && results.length > 0) {
+            // Custom event to signal Result to open dialog
+            const event = new CustomEvent('openFirstResultDialog');
+            window.dispatchEvent(event);
+            dispatch(setProspects('openFirstResultDialog', false));
+        }
+    }, [state?.openFirstResultDialog, results, dispatch]);
 
     if (loading) return (
         <Box
@@ -118,7 +131,7 @@ export default function Prospects({
                 <Grid container spacing={2} sx={{ mt: '75px' }}>
                     {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
                         <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
-                            <Result result={result} />
+                            <Result result={result} autoOpen={idx === 0} />
                         </Grid>
                     ))}
                 </Grid>
