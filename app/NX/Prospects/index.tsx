@@ -3,6 +3,7 @@ import Search from './components/Search';
 import Selecta from './components/Selecta';
 import Basket from './components/Basket';
 import Result from './components/Result';
+import Prompt from './components/Prompt';
 import { initProspects } from './actions/initProspects';
 import { addToBasket } from './actions/addToBasket';
 import { updateQuery } from './actions/updateQuery';
@@ -23,6 +24,7 @@ export {
     Selecta,
     Result,
     Basket,
+    Prompt,
     updateQuery,
     resetQuery,
     addToBasket,

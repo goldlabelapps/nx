@@ -93,85 +93,63 @@ export default function Result({ result }: I_Result) {
             <Dialog fullWidth maxWidth="sm" open={open} onClose={handleClose} fullScreen={isMobile}>
                 <DialogTitle>
                     <CardHeader 
+                        avatar={<Icon icon="company" color="primary" />}
                         sx={{mx:-2}}
-                        action={<Button
-                            startIcon={<Icon icon="left" />}
+                        action={<IconButton
                             onClick={handleClose}
                             color="primary"
                         >
-                            Back
-                        </Button>}
+                            <Icon icon="close" />
+                        </IconButton>}
                         title={result.company_name}
-                        subheader={`${result.first_name} ${result.last_name}`}
+                        subheader={result.title}
                     />
                 </DialogTitle>
                 <DialogContent>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid size={{ xs: 12, sm: 6 }}>
+                    <Box sx={{ mx: 1 }}>
                             <Typography variant="h6">
-                                {result.title}
+                                {`${result.first_name} ${result.last_name}`}
                             </Typography>
-                            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                <Typography
-                                    variant="caption"
-                                    component="a"
-                                    href={`mailto:${result.email}`}
-                                    sx={{ color: 'primary.main', textDecoration: 'underline' }}
-                                >
-                                    {result.email}
-                                </Typography>
-                                <Tooltip title={copied ? 'Copied!' : 'Copy email'} open={Boolean(anchorEl)} disableFocusListener disableHoverListener disableTouchListener>
-                                    <IconButton
-                                        size="small"
-                                        onClick={e => {
-                                            navigator.clipboard.writeText(result.email);
-                                            setCopied(true);
-                                            setAnchorEl(e.currentTarget);
-                                            setTimeout(() => {
-                                                setCopied(false);
-                                                setAnchorEl(null);
-                                            }, 1500);
-                                        }}
-                                        aria-label="Copy email"
-                                    >
-                                        <Icon icon="copy" color="primary" />
-                                    </IconButton>
-                                </Tooltip>
-                            </Box>
-                            
-                        </Grid>
-                        
-                        <Grid size={{ xs: 12, sm: 6 }}>
                             <Typography variant="body1">
                                 {fixPhone(result.corporate_phone)}
                             </Typography>
+                    </Box>
+                    <Box sx={{ mt: 3 }}>
+                        <Button
+                            startIcon={<Icon icon="linkedin" />}
+                            onClick={handleLinkedin}
+                        >
+                            LinkedIn
+                        </Button>
+                        <Button
+                            startIcon={<Icon icon="link" />}
+                            onClick={handleWebsite}
+                        >
+                            Website
+                        </Button>
+                        <br />
+                        <Tooltip title={copied ? 'Copied!' : 'Copy email'} open={Boolean(anchorEl)} disableFocusListener disableHoverListener disableTouchListener>
                             <Button
-                                startIcon={<Icon icon="linkedin" />}
-                                onClick={handleLinkedin}
+                                color="primary"
+                                startIcon={<Icon icon="copy" />}
+                                onClick={e => {
+                                    navigator.clipboard.writeText(result.email);
+                                    setCopied(true);
+                                    setAnchorEl(e.currentTarget);
+                                    setTimeout(() => {
+                                        setCopied(false);
+                                        setAnchorEl(null);
+                                    }, 1500);
+                                }}
+                                aria-label="Copy email"
                             >
-                                LinkedIn
+                                {result.email}
                             </Button>
+                        </Tooltip>
+                        
+                        
 
-                            <Button
-                                startIcon={<Icon icon="link" />}
-                                onClick={handleWebsite}
-                            >
-                                Website
-                            </Button>
-                        </Grid>
-
-                        <Grid size={{ xs: 12 }}>
-                            <Button
-                                fullWidth
-                                variant='contained'
-                                startIcon={<Icon icon="shop" />}
-                                onClick={handleAddToBasket}
-                            >
-                                Add to basket
-                            </Button>
-                        </Grid>
-                    </Grid>
-                    
+                    </Box>
                 </DialogContent>
             </Dialog>
         </>
