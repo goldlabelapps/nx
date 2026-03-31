@@ -1,8 +1,10 @@
 import Prospects from './Prospects';
 import Search from './components/Search';
 import Selecta from './components/Selecta';
+import Basket from './components/Basket';
 import Result from './components/Result';
 import { initProspects } from './actions/initProspects';
+import { addToBasket } from './actions/addToBasket';
 import { updateQuery } from './actions/updateQuery';
 import { searchProspects } from './actions/searchProspects';
 import { resetQuery } from './actions/resetQuery';
@@ -20,6 +22,8 @@ export {
     Search,
     Selecta,
     Result,
+    Basket,
     updateQuery,
     resetQuery,
+    addToBasket,
 };

@@ -3,6 +3,7 @@ import type { T_Config } from '../types';
 import * as React from 'react';
 import {
     useTheme,
+    Badge,
     Container,
     CircularProgress,
     Box,
@@ -10,15 +11,21 @@ import {
     AppBar,
     Toolbar,
     Grid,
+    Button,
 } from '@mui/material';
+import {
+    Icon,
+} from '../DesignSystem';
 import {
     useDispatch,
 } from '../Uberedux';
 import {
     Search,
     useProspects,
+    setProspects,
     initProspects,
     Result,
+    Basket,
     updateQuery,
     searchProspects,
 } from '../Prospects';
@@ -37,7 +44,11 @@ export default function Prospects({
     const loading = state?.loading;
     const theme = useTheme();
     const results = state?.results;
-    const query = state?.query || '';
+    const basket = state?.basket || [];
+
+    const handleBasket = () => {
+        dispatch(setProspects('basketOpen', true));
+    };
 
     React.useEffect(() => {
         if (!state) {
@@ -78,13 +89,28 @@ export default function Prospects({
             <AppBar position="fixed" sx={{ background: theme.palette.background.default, boxShadow:0, mt: '75px' }}>
                 <Toolbar>
                     <Container maxWidth="lg" sx={{ my: 3 }}>
-                        <Box sx={{ flexGrow: 1, mx: 1 }}>
+                        <Box sx={{display: 'flex'}}>
+                        <Box sx={{ flexGrow: 1, mx: {xs:1, md:4} }}>
                             <Search />
+                        </Box>
+                        <Box>
+                            <Badge badgeContent={basket.length} color='primary'>
+                                <Button
+                                    variant="outlined"
+                                    startIcon={<Icon icon="shop" />}
+                                    onClick={handleBasket}
+                                >
+                                    Basket
+                                </Button>
+                            </Badge>
+                        </Box>
                         </Box>
                     </Container>
                 </Toolbar>
             </AppBar>   
+            
             <Container maxWidth="lg" sx={{ my: 4 }}>
+                <Basket />
                 <Grid container spacing={2} sx={{ mt: '60px' }}>
                     {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
                         <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
@@ -95,7 +121,6 @@ export default function Prospects({
             </Container>
             {/* <pre>query: {JSON.stringify(query, null, 2)}</pre>
             <pre>results: {JSON.stringify(results, null, 2)}</pre> */}
-            
         </>
     );
 }
