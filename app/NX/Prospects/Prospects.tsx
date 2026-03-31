@@ -76,7 +76,7 @@ export default function Prospects({
 
     if (state?.error) {
         return (
-            <Container maxWidth="xs" sx={{ my: 4 }}>
+            <Container maxWidth="md" sx={{ my: 4 }}>
                 <Alert severity="info" sx={{ my: 2 }}>
                     {state.error}
                 </Alert>
@@ -86,14 +86,18 @@ export default function Prospects({
 
     return (
         <>
-            <AppBar position="fixed" sx={{ background: theme.palette.background.default, boxShadow:0, mt: '75px' }}>
+            <AppBar position="fixed" sx={{ 
+                background: theme.palette.background.default, 
+                boxShadow:0, 
+                mt: '75px' 
+            }}>
                 <Toolbar>
                     <Container maxWidth="lg" sx={{ my: 3 }}>
                         <Box sx={{display: 'flex'}}>
                         <Box sx={{ flexGrow: 1, mx: {xs:1, md:4} }}>
                             <Search />
                         </Box>
-                        <Box>
+                        {/* <Box>
                             <Badge badgeContent={basket.length} color='primary'>
                                 <Button
                                     variant="outlined"
@@ -103,7 +107,7 @@ export default function Prospects({
                                     Basket
                                 </Button>
                             </Badge>
-                        </Box>
+                        </Box> */}
                         </Box>
                     </Container>
                 </Toolbar>
@@ -111,7 +115,7 @@ export default function Prospects({
             
             <Container maxWidth="lg" sx={{ my: 4 }}>
                 <Basket />
-                <Grid container spacing={2} sx={{ mt: '60px' }}>
+                <Grid container spacing={2} sx={{ mt: '75px' }}>
                     {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
                         <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
                             <Result result={result} />

@@ -7,6 +7,8 @@ export const resetQuery = (): any =>
             const current = getState().redux.prospects;
             const updated = {
                 ...current,
+                pagination: null,
+                results: null,
                 query: null, // or set to a factory default object if needed
             };
             dispatch(setUbereduxKey({ key: 'prospects', value: updated }));
