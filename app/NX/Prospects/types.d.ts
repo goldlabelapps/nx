@@ -1,4 +1,4 @@
-export type T_Result = {
+export type T_ApolloDoc = {
     id: number;
     first_name: string;
     last_name: string;
@@ -38,5 +38,5 @@ export type T_Result = {
 }
 
 export interface I_Result {
-    result: T_Result;
+    result: T_ApolloDoc;
 }
