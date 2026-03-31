@@ -12,6 +12,7 @@ import {
   BuyNow,
   FeedbackBtn,
   ChatResponse,
+  GithubLink,
 } from '../../Shortcodes';
 
 export type I_RenderMarkdown = {
@@ -67,6 +68,11 @@ export default function RenderMarkdown({
     // ChatResponse
     const chatResponse = parseShortcode(/\[ChatResponse\s+(.*?)\]/, ChatResponse);
     if (chatResponse) return chatResponse;
+
+    // ChatResponse
+    const githubLink = parseShortcode(/\[GithubLink\s+(.*?)\]/, GithubLink);
+    if (githubLink) return githubLink;
+    
 
     // fallback: simply return text
     return text;
