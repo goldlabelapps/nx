@@ -13,9 +13,7 @@ import {
 } from "@mui/material";
 import { useDispatch } from '../../Uberedux';
 import { 
-    useProspects, 
-    updateQuery,
-    setProspects,
+    sendPrompt,
 } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 import { promptMagentoPlugin } from '../../Prospects'
@@ -44,14 +42,6 @@ export default function Prompt({ result }: I_Prompt) {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
-    React.useEffect(() => {
-        // dispatch(setProspects('basketOpen', true));
-    }, [isMobile]);
-
-    const handleClose = () => {
-        // dispatch(setProspects('basketOpen', false));
-    };
-
     return (
         <>
             <CardContent>
@@ -72,16 +62,13 @@ export default function Prompt({ result }: I_Prompt) {
             </CardContent>
             <CardActions>
                 <Button 
-                    sx={{mx:1}}
+                    sx={{mx:1, mb:2}}
                     fullWidth
                     variant="contained" 
                     color="primary" 
                     startIcon={<Icon icon="ai" />}
                     onClick={() => {
-                        // Here you would typically dispatch an action to send the prompt to your backend/LLM
-                        // console.log('Prompt submitted:', prompt);
-                        // For example:
-                        // dispatch(sendPromptToLLM(prompt));
+                        dispatch(sendPrompt(prompt));
                     }}>
                     Do the clever thing
                 </Button>
