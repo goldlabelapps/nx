@@ -18,7 +18,7 @@ import {
     ListItemButton,
     ListItemText,
     ListItemIcon,
-    Button,
+    DialogActions,
     Grid,
 } from '@mui/material';
 import {useRouter} from 'next/navigation';
@@ -152,8 +152,11 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </Typography>
                         </Grid>
                     </Grid>
-                    <Prompt result={result} />
+                    
                 </DialogContent>
+                <DialogActions>
+                    <Prompt result={result} />
+                </DialogActions>
             </Dialog>
         </>
     );
