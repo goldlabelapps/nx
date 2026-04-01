@@ -1,16 +1,15 @@
 "use client";
 import * as React from "react";
+import type { T_ApolloDoc } from '../types';
 import {
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    Button,
-    Typography,
-    IconButton,
-    Box,
+    CardHeader,
     useTheme,
-    useMediaQuery
+    useMediaQuery,
+    TextField,
+    CardContent,
+    CardActions,
+    Button,
+    Box,
 } from "@mui/material";
 import { useDispatch } from '../../Uberedux';
 import { 
@@ -19,12 +18,27 @@ import {
     setProspects,
 } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
+import { promptMagentoPlugin } from '../../Prospects'
+
 
 export interface I_Prompt {
-    label?: string;
+    result?: T_ApolloDoc;
 }
 
-export default function Prompt({ label }: I_Prompt) {
+export default function Prompt({ result }: I_Prompt) {
+
+    const {
+        first_name,
+        last_name,
+        person_linkedin_url,
+    } = result || {};
+
+    const prompt = promptMagentoPlugin({
+        first_name: first_name || '',
+        last_name: last_name || '',
+        person_linkedin_url: person_linkedin_url || '',
+    });
+
 
     const dispatch = useDispatch();
     const theme = useTheme();
@@ -39,7 +53,40 @@ export default function Prompt({ label }: I_Prompt) {
     };
 
     return (
-        <><Icon icon="ai" /></>
+        <>
+            <CardContent>
+                <TextField
+                    fullWidth
+                    label="AI Prompt"
+                    value={prompt}
+                    variant="filled"
+                    multiline
+                    maxRows={20}
+                    InputProps={{
+                        style: { 
+                            fontFamily: 'monospace', 
+                            fontSize: '0.8rem', 
+                        }
+                    }}
+                />
+            </CardContent>
+            <CardActions>
+                <Button 
+                    sx={{mx:1}}
+                    fullWidth
+                    variant="contained" 
+                    color="primary" 
+                    endIcon={<Icon icon="right" />}
+                    onClick={() => {
+                        // Here you would typically dispatch an action to send the prompt to your backend/LLM
+                        console.log('Prompt submitted:', prompt);
+                        // For example:
+                        // dispatch(sendPromptToLLM(prompt));
+                    }}>
+                    Do the clever thing
+                </Button>
+            </CardActions>
+        </>
     );
 }
 

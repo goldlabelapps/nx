@@ -13,6 +13,7 @@ import {
   FeedbackBtn,
   ChatResponse,
   GithubLink,
+  ContentCard,
 } from '../../Shortcodes';
 
 export type I_RenderMarkdown = {
@@ -72,6 +73,10 @@ export default function RenderMarkdown({
     // ChatResponse
     const githubLink = parseShortcode(/\[GithubLink\s+(.*?)\]/, GithubLink);
     if (githubLink) return githubLink;
+
+    // ContentCard
+    const contentCard = parseShortcode(/\[ContentCard\s+(.*?)\]/, ContentCard);
+    if (contentCard) return contentCard;
     
 
     // fallback: simply return text

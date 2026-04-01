@@ -10,12 +10,7 @@ import {
     AppBar,
     Toolbar,
     Grid,
-    Button,
-    IconButton,
 } from '@mui/material';
-import {
-    Icon,
-} from '../DesignSystem';
 import {
     useDispatch,
 } from '../Uberedux';
@@ -28,7 +23,9 @@ import {
     Basket,
     updateQuery,
     searchProspects,
+    ChipSelect,
 } from '../Prospects';
+import { normaliseForChipSelect } from '../Prospects'
 
 export interface I_Prospects {
     config: T_Config;
@@ -41,16 +38,16 @@ export default function Prospects({
 
     const dispatch = useDispatch();
     const state = useProspects();
-    const loading = state?.loading;
     const theme = useTheme();
+    const loading = state?.loading;
     const results = state?.results;
-    const basket = state?.basket || [];
+    const query = state?.query;
+    const initialData = state?.initialData;
 
-    // const handleBasket = () => {
-    //     dispatch(setProspects('basketOpen', true));
-    // };
-
-    // On mount: initialize prospects and trigger search if 'search' param is in query string
+    // seniority
+    const seniorityOptions = normaliseForChipSelect(initialData?.groups?.seniority?.list || [], 'label', 'value');
+    const departmentOptions = normaliseForChipSelect(initialData?.groups?.sub_departments?.list || [], 'label', 'value');
+    
     React.useEffect(() => {
         if (!state) {
             dispatch(initProspects());
@@ -67,16 +64,6 @@ export default function Prospects({
             }
         }
     }, [state, dispatch]);
-
-    // Effect to open the first result dialog for dev
-    React.useEffect(() => {
-        if (state?.openFirstResultDialog && Array.isArray(results) && results.length > 0) {
-            // Custom event to signal Result to open dialog
-            const event = new CustomEvent('openFirstResultDialog');
-            window.dispatchEvent(event);
-            dispatch(setProspects('openFirstResultDialog', false));
-        }
-    }, [state?.openFirstResultDialog, results, dispatch]);
 
     if (loading) return (
         <Box
@@ -106,74 +93,46 @@ export default function Prospects({
             <AppBar position="fixed" sx={{ 
                 background: theme.palette.background.default, 
                 boxShadow:0, 
-                mt: '75px' 
+                mt: '60px' 
             }}>
                 <Toolbar>
                     <Container maxWidth="lg" sx={{ my: 3 }}>
-                        <Box sx={{display: 'flex'}}>
-                        <Box sx={{ flexGrow: 1, mx: {xs:1, md:4} }}>
-                            <Search />
-                        </Box>
-                        {/* <Box>
-                            <Badge badgeContent={basket.length} color='primary'>
-                                <Button
-                                    variant="outlined"
-                                    startIcon={<Icon icon="shop" />}
-                                    onClick={handleBasket}
-                                >
-                                    Basket
-                                </Button>
-                            </Badge>
-                        </Box> */}
-                        </Box>
+
+                        <Grid container spacing={2}>
+                            
+                            <Grid size={{ xs: 6 }}>
+                                <ChipSelect
+                                    icon="seniority"
+                                    label="Seniority"
+                                    list={seniorityOptions}
+                                    value={query?.level || null}
+                                    onChange={value => dispatch(updateQuery({ seniority: value }))}
+                                />
+                            </Grid>
+
+                            <Grid size={{ xs: 6 }}>
+                                <ChipSelect
+                                    icon="company"
+                                    label="Department"
+                                    list={departmentOptions}
+                                    value={query?.department || null}
+                                    onChange={value => dispatch(updateQuery({ department: value }))}
+                                />
+                            </Grid>
+
+                            <Grid size={{ xs: 12 }}>
+                                <Search />
+                            </Grid>
+
+                        </Grid>
                     </Container>
                 </Toolbar>
             </AppBar>   
             
             <Container maxWidth="lg" sx={{ my: 4 }}>
                 <Basket />
-                {!results?.length ? (
-                    <Box sx={{ 
-                        mt: '85px', 
-                        display: 'flex',
-                        gap: 1,
-                        mx: 1,
-                        flexDirection: 'column', 
-                        alignItems: 'center', 
-                        justifyContent: 'center',
-                    }}>
-                        <Box sx={{ width: '100%' }}>
-                            <Button
-                                fullWidth
-                                variant="outlined"
-                                startIcon={<Icon icon="user" />}
-                            >
-                                search by job title
-                            </Button>
-                        </Box>
-                        <Box sx={{ width: '100%' }}>
-                            <Button
-                                fullWidth
-                                variant="outlined"
-                                startIcon={<Icon icon="company" />}
-                            >
-                                search by company
-                            </Button>
-                        </Box>
-
-                        <Box sx={{ width: '100%' }}>
-                            <Button
-                                fullWidth
-                                variant="outlined"
-                                startIcon={<Icon icon="user" />}
-                            >
-                                search by job title
-                            </Button>
-                        </Box>
-
-                    </Box>
-                ) : (
-                    <Grid container spacing={2} sx={{ mt: '75px' }}>
+                {!results?.length ? null : (
+                    <Grid container spacing={2} sx={{ mt: '125px' }}>
                         {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
                             <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
                                 <Result result={result} autoOpen={idx === 0} />
@@ -182,17 +141,7 @@ export default function Prospects({
                     </Grid>
                 )}
             </Container>
-            {/* <pre>query: {JSON.stringify(query, null, 2)}</pre>
-            <pre>results: {JSON.stringify(results, null, 2)}</pre> */}
+            {/* <pre>total {JSON.stringify(initialData?.total, null, 2)}</pre> */}
         </>
     );
 }
-
-/*
-<Selecta
-    label="by Level"
-    list={levelList}
-    value={query?.level || null}
-    onChange={value => dispatch(updateQuery({ level: value }))}
-/>
-*/

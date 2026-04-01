@@ -293,6 +293,7 @@ export type I_Icon = {
     | 'heart'
     | 'maths'
     | 'free'
+    | 'seniority'
     | 'writing'
     | 'books'
     | 'ski'

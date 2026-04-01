@@ -9,7 +9,7 @@ export const resetQuery = (): any =>
                 ...current,
                 pagination: null,
                 results: null,
-                query: null, // or set to a factory default object if needed
+                query: null,
             };
             dispatch(setUbereduxKey({ key: 'prospects', value: updated }));
         } catch (e: unknown) {
