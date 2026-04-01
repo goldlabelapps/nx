@@ -3,19 +3,14 @@ import type { T_Config } from '../types';
 import * as React from 'react';
 import {
     useTheme,
-    Badge,
     Container,
     CircularProgress,
     Box,
     Alert,
     AppBar,
     Toolbar,
-    IconButton,
     Grid,
 } from '@mui/material';
-import {
-    Icon,
-} from '../DesignSystem';
 import {
     useDispatch,
 } from '../Uberedux';
@@ -30,6 +25,7 @@ import {
     searchProspects,
     ChipSelect,
 } from '../Prospects';
+import { normaliseForChipSelect } from '../Prospects'
 
 export interface I_Prospects {
     config: T_Config;
@@ -46,26 +42,11 @@ export default function Prospects({
     const loading = state?.loading;
     const results = state?.results;
     const query = state?.query;
+    const initialData = state?.initialData;
 
     // seniority
-
-    const seniorityOptions = [
-        { label: 'Intern', value: 'intern' },
-        { label: 'Junior', value: 'junior' },
-        { label: 'Mid', value: 'mid' },
-        { label: 'Senior', value: 'senior' },
-        { label: 'Lead', value: 'lead' },
-        { label: 'Manager', value: 'manager' },
-    ];
-
-    const departmentOptions = [
-        { label: 'Intern', value: 'intern' },
-        { label: 'Junior', value: 'junior' },
-        { label: 'Mid', value: 'mid' },
-        { label: 'Senior', value: 'senior' },
-        { label: 'Lead', value: 'lead' },
-        { label: 'Manager', value: 'manager' },
-    ];
+    const seniorityOptions = normaliseForChipSelect(initialData?.groups?.seniority?.list || [], 'label', 'value');
+    const departmentOptions = normaliseForChipSelect(initialData?.groups?.sub_departments?.list || [], 'label', 'value');
     
     React.useEffect(() => {
         if (!state) {
@@ -83,16 +64,6 @@ export default function Prospects({
             }
         }
     }, [state, dispatch]);
-
-    // Effect to open the first result dialog for dev
-    React.useEffect(() => {
-        if (state?.openFirstResultDialog && Array.isArray(results) && results.length > 0) {
-            // Custom event to signal Result to open dialog
-            const event = new CustomEvent('openFirstResultDialog');
-            window.dispatchEvent(event);
-            dispatch(setProspects('openFirstResultDialog', false));
-        }
-    }, [state?.openFirstResultDialog, results, dispatch]);
 
     if (loading) return (
         <Box
@@ -122,27 +93,27 @@ export default function Prospects({
             <AppBar position="fixed" sx={{ 
                 background: theme.palette.background.default, 
                 boxShadow:0, 
-                mt: '70px' 
+                mt: '60px' 
             }}>
                 <Toolbar>
                     <Container maxWidth="lg" sx={{ my: 3 }}>
 
-                        <Grid container spacing={2} sx={{ mt: '0px' }}>
+                        <Grid container spacing={2}>
                             
-                            <Grid size={{ xs: 4 }}>
+                            <Grid size={{ xs: 6 }}>
                                 <ChipSelect
                                     icon="seniority"
-                                    label="Select Seniority"
+                                    label="Seniority"
                                     list={seniorityOptions}
                                     value={query?.level || null}
                                     onChange={value => dispatch(updateQuery({ seniority: value }))}
                                 />
                             </Grid>
 
-                            <Grid size={{ xs: 4 }}>
+                            <Grid size={{ xs: 6 }}>
                                 <ChipSelect
                                     icon="company"
-                                    label="Select Department"
+                                    label="Department"
                                     list={departmentOptions}
                                     value={query?.department || null}
                                     onChange={value => dispatch(updateQuery({ department: value }))}
@@ -161,7 +132,7 @@ export default function Prospects({
             <Container maxWidth="lg" sx={{ my: 4 }}>
                 <Basket />
                 {!results?.length ? null : (
-                    <Grid container spacing={2} sx={{ mt: '150px' }}>
+                    <Grid container spacing={2} sx={{ mt: '125px' }}>
                         {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
                             <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
                                 <Result result={result} autoOpen={idx === 0} />
@@ -174,7 +145,3 @@ export default function Prospects({
         </>
     );
 }
-
-/*
-
-*/

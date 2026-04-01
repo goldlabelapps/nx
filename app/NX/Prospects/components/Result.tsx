@@ -14,7 +14,10 @@ import {
     DialogTitle,
     CardHeader,
     DialogContent,
-    DialogActions,
+    List,
+    ListItemButton,
+    ListItemText,
+    ListItemIcon,
     Button,
     Grid,
 } from '@mui/material';
@@ -30,6 +33,7 @@ import {
     setProspects,
     addToBasket,
     Prompt,
+    updateQuery,
 } from '../../Prospects'
 
 // Helper to get TLD URL from email
@@ -66,15 +70,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const handleResultClick = () => {
         setOpen(true);
     };
-
-    // Listen for dev event to auto-open dialog for first result
-    React.useEffect(() => {
-        if (autoOpen) {
-            const handler = () => setOpen(true);
-            window.addEventListener('openFirstResultDialog', handler);
-            return () => window.removeEventListener('openFirstResultDialog', handler);
-        }
-    }, [autoOpen]);
 
     const handleClose = () => {
         setOpen(false);
@@ -115,35 +110,24 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                         subheader={result.title}
                     />
                 </DialogTitle>
+
                 <DialogContent>
-                    <Box sx={{ mx: 1 }}>
-                            <Typography variant="h6">
-                                {`${result.first_name} ${result.last_name}`}
-                            </Typography>
-                            <Typography variant="body1">
-                                {fixPhone(result.corporate_phone)}
-                            </Typography>
-                    </Box>
-                    <Box sx={{ mt: 3 }}>
-                        <Button
-                            startIcon={<Icon icon="linkedin" />}
-                            onClick={handleLinkedin}
-                        >
-                            LinkedIn
-                        </Button>
-                        <Button
-                            startIcon={<Icon icon="link" />}
-                            onClick={handleWebsite}
-                        >
-                            Website
-                        </Button>
-                        <br />
-                        <Tooltip title={copied ? 'Copied!' : 'Copy email'} open={Boolean(anchorEl)} disableFocusListener disableHoverListener disableTouchListener>
-                            <Button
-                                color="primary"
-                                aria-label="Copy email"
-                                startIcon={<Icon icon="copy" />}
-                                onClick={e => {
+                    <Grid container spacing={1}>        
+                        <Grid size={{ xs: 12, sm: 6 }}>
+                            <List dense>
+                                <ListItemButton onClick={handleLinkedin}>
+                                    <ListItemIcon>
+                                        <Icon icon="linkedin" color="primary" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="LinkedIn Profile" />
+                                </ListItemButton>
+                                <ListItemButton onClick={handleWebsite}>
+                                    <ListItemIcon>
+                                        <Icon icon="link" color="primary" />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Website" />
+                                </ListItemButton>
+                                <ListItemButton onClick={e => {
                                     navigator.clipboard.writeText(result.email);
                                     setCopied(true);
                                     setAnchorEl(e.currentTarget);
@@ -152,14 +136,25 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                         setAnchorEl(null);
                                     }, 1500);
                                 }}>
-                                {result.email}
-                            </Button>
-                        </Tooltip>
-                    </Box>
+                                    <ListItemIcon>
+                                        <Icon icon="copy" color="primary" />
+                                    </ListItemIcon>
+                                    <ListItemText primary={result.email} />
+                                </ListItemButton>
+                            </List>
+                        </Grid>
+                        <Grid size={{ xs: 12, sm: 6 }}>
+                            <Typography variant="h6">
+                                {`${result.first_name} ${result.last_name}`}
+                            </Typography>
+                            <Typography variant="body1">
+                                {fixPhone(result.corporate_phone)}
+                            </Typography>
+                        </Grid>
+                    </Grid>
                     <Prompt result={result} />
                 </DialogContent>
             </Dialog>
         </>
     );
 }
-

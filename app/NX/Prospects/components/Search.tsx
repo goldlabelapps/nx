@@ -32,7 +32,7 @@ export default function Search({ label }: I_Search) {
     const total = prospects?.initialData?.total || 0;
 
     const helperText = pagination
-        ? `${pagination.total} prospects, page ${pagination.page} of ${pagination.pages}`
+        ? `${pagination.total} prospects`
         : `Total prospects ${total}`;
 
     // Ref for the input
@@ -76,7 +76,7 @@ export default function Search({ label }: I_Search) {
             <TextField
                 autoFocus
                 fullWidth
-                variant="filled"
+                variant="standard"
                 helperText={helperText}
                 placeholder={label || 'Search'}
                 inputProps={{ 'aria-label': 'Search' }}

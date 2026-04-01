@@ -39,20 +39,30 @@ export default function ChipSelect({
     // const dispatch = useDispatch();
     // const initialData = useInitialData();
 
-    const [open, setOpen] = React.useState(false);
+    const [collapseOpen, setCollapseOpen] = React.useState(false);
+    const [autoOpen, setAutoOpen] = React.useState(false);
+
+    // Open Autocomplete dropdown when Collapse is shown
+    React.useEffect(() => {
+        if (collapseOpen) {
+            setAutoOpen(true);
+        } else {
+            setAutoOpen(false);
+        }
+    }, [collapseOpen]);
 
     return (
         <>
             <Chip
-                sx={{ p: 2.5 }}
+                sx={{ p: 2.5, width: '100%' }}
                 label={label}
                 icon={<Icon icon={icon as any} color="primary"/>}
-                onClick={() => setOpen((prev) => !prev)}
+                onClick={() => setCollapseOpen((prev) => !prev)}
             />
 
-            <Collapse in={open}>
+            <Collapse in={collapseOpen}>
                 <Autocomplete
-                    sx={{mt:2}}
+                    sx={{mt: 1}}
                     options={list}
                     autoHighlight
                     getOptionLabel={(option) => option.label}
@@ -61,6 +71,9 @@ export default function ChipSelect({
                         _event: React.SyntheticEvent,
                         v: T_ChipSelectItem | null
                     ) => onChange?.(v ? v.value : null)}
+                    open={autoOpen}
+                    onOpen={() => setAutoOpen(true)}
+                    onClose={() => setAutoOpen(false)}
                     renderInput={(params) => (
                         <TextField
                             {...params}

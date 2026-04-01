@@ -18,7 +18,7 @@ import {
     setProspects,
 } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
-
+import { promptMagentoPlugin } from '../../Prospects'
 
 
 export interface I_Prompt {
@@ -33,10 +33,12 @@ export default function Prompt({ result }: I_Prompt) {
         person_linkedin_url,
     } = result || {};
 
-    // Example prompt string to be posted to LLM
-    const [prompt, setPrompt] = React.useState<string>(
-        `We are creating a personalised email to ${first_name} ${last_name}. His LinkedIn is here ${person_linkedin_url}\nResearch the profile and have a look for a link for their past and present experience and what that could possibly have to do with their company's Magento store. Create a personalised email intro based on this research.`
-    );
+    const prompt = promptMagentoPlugin({
+        first_name: first_name || '',
+        last_name: last_name || '',
+        person_linkedin_url: person_linkedin_url || '',
+    });
+
 
     const dispatch = useDispatch();
     const theme = useTheme();
@@ -56,12 +58,10 @@ export default function Prompt({ result }: I_Prompt) {
                 <TextField
                     fullWidth
                     label="AI Prompt"
-                    helperText="The prompt is created based on the prospect's data and will be sent to the LLM for processing. You can edit it before submission."
                     value={prompt}
-                    onChange={e => setPrompt(e.target.value)}
                     variant="filled"
                     multiline
-                    minRows={6}
+                    maxRows={20}
                     InputProps={{
                         style: { 
                             fontFamily: 'monospace', 
