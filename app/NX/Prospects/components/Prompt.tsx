@@ -61,7 +61,7 @@ export default function Prompt({ result }: I_Prompt) {
                     value={prompt}
                     variant="filled"
                     multiline
-                    maxRows={20}
+                    maxRows={13}
                     InputProps={{
                         style: { 
                             fontFamily: 'monospace', 
@@ -76,10 +76,10 @@ export default function Prompt({ result }: I_Prompt) {
                     fullWidth
                     variant="contained" 
                     color="primary" 
-                    endIcon={<Icon icon="right" />}
+                    startIcon={<Icon icon="ai" />}
                     onClick={() => {
                         // Here you would typically dispatch an action to send the prompt to your backend/LLM
-                        console.log('Prompt submitted:', prompt);
+                        // console.log('Prompt submitted:', prompt);
                         // For example:
                         // dispatch(sendPromptToLLM(prompt));
                     }}>

@@ -61,11 +61,15 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const [copied, setCopied] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     
-    const handleAddToBasket = () => {
-        setOpen(false);
-        dispatch(setProspects('basketOpen', true));
-        dispatch(addToBasket(result));
+    const handleHide = () => {
+        // setOpen(false);
+        // dispatch(setProspects('basketOpen', true));
+        // dispatch(addToBasket(result));
     }
+    
+    const handleFlag = () => {
+    }
+    
 
     const handleResultClick = () => {
         setOpen(true);
@@ -98,15 +102,32 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
             <Dialog fullWidth maxWidth="sm" open={open} onClose={handleClose} fullScreen={isMobile}>
                 <DialogTitle>
                     <CardHeader 
-                        avatar={<Icon icon="company" color="primary" />}
                         sx={{mx:-2}}
-                        action={<IconButton
-                            onClick={handleClose}
-                            color="primary"
-                        >
-                            <Icon icon="close" />
-                        </IconButton>}
-                        title={result.company_name}
+                        action={<>
+
+                            <IconButton
+                                onClick={handleFlag}
+                                color="primary"
+                            >
+                                <Icon icon="staroff" />
+                            </IconButton>
+
+                            <IconButton
+                                onClick={handleHide}
+                                color="primary"
+                            >
+                                <Icon icon="hide" />
+                            </IconButton>
+                        
+                            <IconButton
+                                onClick={handleClose}
+                                color="primary"
+                            >
+                                <Icon icon="close" />
+                            </IconButton>
+                        </>
+                        }
+                        title={`${result.first_name} ${result.last_name}`}
                         subheader={result.title}
                     />
                 </DialogTitle>
@@ -144,8 +165,8 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </List>
                         </Grid>
                         <Grid size={{ xs: 12, sm: 6 }}>
-                            <Typography variant="h6">
-                                {`${result.first_name} ${result.last_name}`}
+                            <Typography variant="body1">
+                                {result.company_name}
                             </Typography>
                             <Typography variant="body1">
                                 {fixPhone(result.corporate_phone)}
@@ -154,9 +175,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                     </Grid>
                     
                 </DialogContent>
-                <DialogActions>
-                    <Prompt result={result} />
-                </DialogActions>
+                <Prompt result={result} />
             </Dialog>
         </>
     );
