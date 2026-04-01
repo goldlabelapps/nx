@@ -17,7 +17,6 @@ import {
 import {
     Search,
     useProspects,
-    setProspects,
     initProspects,
     Result,
     Basket,
@@ -43,24 +42,19 @@ export default function Prospects({
     const results = state?.results;
     const query = state?.query;
     const initialData = state?.initialData;
-
-    // seniority
     const seniorityOptions = normaliseForChipSelect(initialData?.groups?.seniority?.list || [], 'label', 'value');
     const departmentOptions = normaliseForChipSelect(initialData?.groups?.sub_departments?.list || [], 'label', 'value');
     
     React.useEffect(() => {
         if (!state) {
             dispatch(initProspects());
-            // Check for 'search' param in query string
             const params = typeof window !== 'undefined' ? new URLSearchParams(window.location.search) : null;
             const searchParam = params?.get('search');
             if (searchParam) {
                 setTimeout(() => {
                     dispatch(updateQuery({ search: searchParam }));
                     dispatch(searchProspects());
-                    // Optionally open first result dialog:
-                    // dispatch(setProspects('openFirstResultDialog', true));
-                }, 500); // 500ms delay to ensure everything is loaded
+                }, 333);
             }
         }
     }, [state, dispatch]);
