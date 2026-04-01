@@ -7,6 +7,7 @@ import {
     IconButton,
     InputAdornment,
     CircularProgress,
+    Grid,
 } from '@mui/material';
 import { useDispatch } from '../../Uberedux';
 import { 
@@ -22,17 +23,17 @@ export interface I_Search {
     label?: string;
 }
 
-
 export default function Search({ label }: I_Search) {
     const dispatch = useDispatch();
     const prospects = useProspects();
     const search = prospects?.query?.search || '';
     const searching = prospects?.searching || null;
     const pagination = prospects?.pagination || null;
+    const total = prospects?.initialData?.total || 0;
 
     const helperText = pagination
-        ? `Showing page ${pagination.page} of ${pagination.pages} (${pagination.total} results)`
-        : 'by name, job, company etc.';
+        ? `${pagination.total} prospects, page ${pagination.page} of ${pagination.pages}`
+        : `Total ${total}`;
 
     // Ref for the input
     const inputRef = useRef<HTMLInputElement>(null);

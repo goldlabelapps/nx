@@ -3,15 +3,16 @@ import type { T_Config } from '../types';
 import * as React from 'react';
 import {
     useTheme,
+    Badge,
     Container,
     CircularProgress,
     Box,
     Alert,
     AppBar,
     Toolbar,
-    Grid,
-    Button,
     IconButton,
+    Button,
+    Grid,
 } from '@mui/material';
 import {
     Icon,
@@ -41,16 +42,10 @@ export default function Prospects({
 
     const dispatch = useDispatch();
     const state = useProspects();
-    const loading = state?.loading;
     const theme = useTheme();
+    const loading = state?.loading;
     const results = state?.results;
-    const basket = state?.basket || [];
-
-    // const handleBasket = () => {
-    //     dispatch(setProspects('basketOpen', true));
-    // };
-
-    // On mount: initialize prospects and trigger search if 'search' param is in query string
+    
     React.useEffect(() => {
         if (!state) {
             dispatch(initProspects());
@@ -106,26 +101,49 @@ export default function Prospects({
             <AppBar position="fixed" sx={{ 
                 background: theme.palette.background.default, 
                 boxShadow:0, 
-                mt: '75px' 
+                mt: '70px' 
             }}>
                 <Toolbar>
                     <Container maxWidth="lg" sx={{ my: 3 }}>
-                        <Box sx={{display: 'flex'}}>
-                        <Box sx={{ flexGrow: 1, mx: {xs:1, md:4} }}>
-                            <Search />
-                        </Box>
-                        {/* <Box>
-                            <Badge badgeContent={basket.length} color='primary'>
-                                <Button
-                                    variant="outlined"
-                                    startIcon={<Icon icon="shop" />}
-                                    onClick={handleBasket}
-                                >
-                                    Basket
-                                </Button>
-                            </Badge>
-                        </Box> */}
-                        </Box>
+
+                        <Grid container spacing={2} sx={{ mt: '0px' }}>
+                            
+                            <Grid size={{ xs: 4 }}>
+                                <Badge badgeContent={0} color='primary'>
+                                    <IconButton
+                                        color="primary"
+                                        title="By job title"
+                                    >
+                                        <Icon icon="user" />
+                                    </IconButton>
+                                </Badge>
+                            </Grid>
+                            <Grid size={{ xs: 4 }}>
+                                <Badge badgeContent={0} color='primary'>
+                                    <IconButton
+                                        color="primary"
+                                        title="By company"
+                                    >
+                                        <Icon icon="company" />
+                                    </IconButton>
+                                </Badge>
+                            </Grid>
+                            <Grid size={{ xs: 4 }}>
+                                <Badge badgeContent={0} color='primary'>
+                                    <IconButton
+                                        color="primary"
+                                        title="By company"
+                                    >
+                                        <Icon icon="company" />
+                                    </IconButton>
+                                </Badge>
+                            </Grid>
+
+                            <Grid size={{ xs: 12 }}>
+                                <Search />
+                            </Grid>
+
+                        </Grid>
                     </Container>
                 </Toolbar>
             </AppBar>   
@@ -133,45 +151,20 @@ export default function Prospects({
             <Container maxWidth="lg" sx={{ my: 4 }}>
                 <Basket />
                 {!results?.length ? (
-                    <Box sx={{ 
-                        mt: '85px', 
-                        display: 'flex',
-                        gap: 1,
-                        mx: 1,
-                        flexDirection: 'column', 
-                        alignItems: 'center', 
-                        justifyContent: 'center',
-                    }}>
-                        <Box sx={{ width: '100%' }}>
-                            <Button
-                                fullWidth
-                                variant="outlined"
-                                startIcon={<Icon icon="user" />}
-                            >
-                                search by job title
-                            </Button>
-                        </Box>
-                        <Box sx={{ width: '100%' }}>
-                            <Button
-                                fullWidth
-                                variant="outlined"
-                                startIcon={<Icon icon="company" />}
-                            >
-                                search by company
-                            </Button>
-                        </Box>
+                    <>
+                    <Grid container spacing={2} sx={{ mt: '85px' }}>
+                        <Grid size={{ xs:12, sm:4}}>
 
-                        <Box sx={{ width: '100%' }}>
-                            <Button
-                                fullWidth
-                                variant="outlined"
-                                startIcon={<Icon icon="user" />}
-                            >
-                                search by job title
-                            </Button>
-                        </Box>
+                        </Grid>
+                        <Grid size={{ xs: 12, sm: 4 }}>
 
-                    </Box>
+                        </Grid>
+                        <Grid size={{ xs: 12, sm: 4 }}>
+
+                        </Grid>
+                    </Grid>
+                    
+                    </>
                 ) : (
                     <Grid container spacing={2} sx={{ mt: '75px' }}>
                         {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
@@ -182,8 +175,7 @@ export default function Prospects({
                     </Grid>
                 )}
             </Container>
-            {/* <pre>query: {JSON.stringify(query, null, 2)}</pre>
-            <pre>results: {JSON.stringify(results, null, 2)}</pre> */}
+            {/* <pre>total {JSON.stringify(initialData?.total, null, 2)}</pre> */}
         </>
     );
 }

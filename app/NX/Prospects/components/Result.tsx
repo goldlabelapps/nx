@@ -29,6 +29,7 @@ import {
 import {
     setProspects,
     addToBasket,
+    Prompt,
 } from '../../Prospects'
 
 // Helper to get TLD URL from email
@@ -140,6 +141,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                         <Tooltip title={copied ? 'Copied!' : 'Copy email'} open={Boolean(anchorEl)} disableFocusListener disableHoverListener disableTouchListener>
                             <Button
                                 color="primary"
+                                aria-label="Copy email"
                                 startIcon={<Icon icon="copy" />}
                                 onClick={e => {
                                     navigator.clipboard.writeText(result.email);
@@ -149,16 +151,12 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                         setCopied(false);
                                         setAnchorEl(null);
                                     }, 1500);
-                                }}
-                                aria-label="Copy email"
-                            >
+                                }}>
                                 {result.email}
                             </Button>
                         </Tooltip>
-                        
-                        
-
                     </Box>
+                    <Prompt result={result} />
                 </DialogContent>
             </Dialog>
         </>
