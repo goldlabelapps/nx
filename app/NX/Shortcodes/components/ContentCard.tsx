@@ -8,30 +8,35 @@ import {
 } from '@mui/material';
 import { Icon, navigateTo } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
+import { serverUseSlugs } from '../../lib/index.server';
 
 export default function ContentCard({
     slugs = '',
 }: {
-    slugs?: string[];
+    slugs?: string;
 }) {
 
     const dispatch = useDispatch();
     const router = useRouter();
+    // const objs = serverUseSlugs(slugs);
 
+    // serverUseSlugs
 
-    return (
-        <ButtonBase
-            sx={{
-                textAlign: 'left',
-                width: '100%',
-            }}
-        >
-            <Paper variant="outlined" sx={{ p: 2, width: '100%', display: 'flex' }}>
-                <Icon icon="github" color="primary" />
-                <Typography variant="h6" sx={{ ml: 2 }}>
-                    sASAD
-                </Typography>
-            </Paper>
-        </ButtonBase>
+    return (<>
+                <ButtonBase
+                    sx={{
+                        textAlign: 'left',
+                        width: '100%',
+                    }}
+                >
+                    <Paper variant="outlined" sx={{ p: 2, width: '100%', display: 'flex' }}>
+                        <Icon icon="github" color="primary" />
+                        <Typography variant="h6" sx={{ ml: 2 }}>
+                            sASAD
+                        </Typography>
+                    </Paper>
+                </ButtonBase>
+                <pre>slugs: {JSON.stringify({}, null, 2)}</pre>
+            </>
     );
 }
