@@ -33,7 +33,7 @@ export default function Search({ label }: I_Search) {
 
     const helperText = pagination
         ? `${pagination.total} prospects, page ${pagination.page} of ${pagination.pages}`
-        : `Total ${total}`;
+        : `Total prospects ${total}`;
 
     // Ref for the input
     const inputRef = useRef<HTMLInputElement>(null);

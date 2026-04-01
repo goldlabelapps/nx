@@ -181,12 +181,15 @@ import StarOnIcon from '@mui/icons-material/Star';
 import StarOffIcon from '@mui/icons-material/StarBorder';
 import TagIcon from '@mui/icons-material/Tag';
 import FeaturesIcon from '@mui/icons-material/CheckCircle';
-// import OpensourceIcon from '@mui/icons-material/CheckCircle';
+import SeniorityIcon from '@mui/icons-material/Elderly';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'seniority':
+      iconFragment = <SeniorityIcon color={color} />;
+      break;
     case 'tag':
       iconFragment = <TagIcon color={color} />;
       break;

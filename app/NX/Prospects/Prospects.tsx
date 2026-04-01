@@ -11,7 +11,6 @@ import {
     AppBar,
     Toolbar,
     IconButton,
-    Button,
     Grid,
 } from '@mui/material';
 import {
@@ -29,6 +28,7 @@ import {
     Basket,
     updateQuery,
     searchProspects,
+    ChipSelect,
 } from '../Prospects';
 
 export interface I_Prospects {
@@ -45,6 +45,27 @@ export default function Prospects({
     const theme = useTheme();
     const loading = state?.loading;
     const results = state?.results;
+    const query = state?.query;
+
+    // seniority
+
+    const seniorityOptions = [
+        { label: 'Intern', value: 'intern' },
+        { label: 'Junior', value: 'junior' },
+        { label: 'Mid', value: 'mid' },
+        { label: 'Senior', value: 'senior' },
+        { label: 'Lead', value: 'lead' },
+        { label: 'Manager', value: 'manager' },
+    ];
+
+    const departmentOptions = [
+        { label: 'Intern', value: 'intern' },
+        { label: 'Junior', value: 'junior' },
+        { label: 'Mid', value: 'mid' },
+        { label: 'Senior', value: 'senior' },
+        { label: 'Lead', value: 'lead' },
+        { label: 'Manager', value: 'manager' },
+    ];
     
     React.useEffect(() => {
         if (!state) {
@@ -109,34 +130,23 @@ export default function Prospects({
                         <Grid container spacing={2} sx={{ mt: '0px' }}>
                             
                             <Grid size={{ xs: 4 }}>
-                                <Badge badgeContent={0} color='primary'>
-                                    <IconButton
-                                        color="primary"
-                                        title="By job title"
-                                    >
-                                        <Icon icon="user" />
-                                    </IconButton>
-                                </Badge>
+                                <ChipSelect
+                                    icon="seniority"
+                                    label="Select Seniority"
+                                    list={seniorityOptions}
+                                    value={query?.level || null}
+                                    onChange={value => dispatch(updateQuery({ seniority: value }))}
+                                />
                             </Grid>
+
                             <Grid size={{ xs: 4 }}>
-                                <Badge badgeContent={0} color='primary'>
-                                    <IconButton
-                                        color="primary"
-                                        title="By company"
-                                    >
-                                        <Icon icon="company" />
-                                    </IconButton>
-                                </Badge>
-                            </Grid>
-                            <Grid size={{ xs: 4 }}>
-                                <Badge badgeContent={0} color='primary'>
-                                    <IconButton
-                                        color="primary"
-                                        title="By company"
-                                    >
-                                        <Icon icon="company" />
-                                    </IconButton>
-                                </Badge>
+                                <ChipSelect
+                                    icon="company"
+                                    label="Select Department"
+                                    list={departmentOptions}
+                                    value={query?.department || null}
+                                    onChange={value => dispatch(updateQuery({ department: value }))}
+                                />
                             </Grid>
 
                             <Grid size={{ xs: 12 }}>
@@ -150,23 +160,8 @@ export default function Prospects({
             
             <Container maxWidth="lg" sx={{ my: 4 }}>
                 <Basket />
-                {!results?.length ? (
-                    <>
-                    <Grid container spacing={2} sx={{ mt: '85px' }}>
-                        <Grid size={{ xs:12, sm:4}}>
-
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 4 }}>
-
-                        </Grid>
-                        <Grid size={{ xs: 12, sm: 4 }}>
-
-                        </Grid>
-                    </Grid>
-                    
-                    </>
-                ) : (
-                    <Grid container spacing={2} sx={{ mt: '75px' }}>
+                {!results?.length ? null : (
+                    <Grid container spacing={2} sx={{ mt: '150px' }}>
                         {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
                             <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
                                 <Result result={result} autoOpen={idx === 0} />
@@ -181,10 +176,5 @@ export default function Prospects({
 }
 
 /*
-<Selecta
-    label="by Level"
-    list={levelList}
-    value={query?.level || null}
-    onChange={value => dispatch(updateQuery({ level: value }))}
-/>
+
 */

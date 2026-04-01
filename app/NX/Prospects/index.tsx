@@ -4,6 +4,7 @@ import Selecta from './components/Selecta';
 import Basket from './components/Basket';
 import Result from './components/Result';
 import Prompt from './components/Prompt';
+import ChipSelect from './components/ChipSelect';
 import { initProspects } from './actions/initProspects';
 import { addToBasket } from './actions/addToBasket';
 import { updateQuery } from './actions/updateQuery';
@@ -23,6 +24,7 @@ export {
     Search,
     Selecta,
     Result,
+    ChipSelect,
     Basket,
     Prompt,
     updateQuery,
