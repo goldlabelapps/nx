@@ -25,11 +25,11 @@ export const searchProspects = () => async (
     } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
         dispatch(setUbereduxKey({ key: 'error', value: msg }));
-        dispatch(setFeedback({
-            severity: 'error',
-            title: 'searchProspects Exception',
-            description: msg,
-        }));
+        // dispatch(setFeedback({
+        //     severity: 'error',
+        //     title: 'searchProspects Exception',
+        //     description: msg,
+        // }));
         dispatch(setProspects('searching', false));
     }
 };

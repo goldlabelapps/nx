@@ -28,7 +28,7 @@ export const initProspects = () =>
             let msg = e instanceof Error ? e.message : String(e);
             if (msg === 'Failed to fetch') {
                 const base = process.env.NEXT_PUBLIC_NX_AI;
-                msg = `Can't reach NX-AI at ${base}`;
+                msg = `Can't reach Python at ${base}`;
             }
             dispatch(setProspects('error', msg));
             dispatch(setProspects('loading', false));
