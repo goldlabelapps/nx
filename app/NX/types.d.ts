@@ -360,6 +360,7 @@ export type I_Icon = {
     | 'ai'
     | 'ask'
     | 'send'
+    | 'prospects'
     | 'forget'
     | 'book'
     | 'folder'

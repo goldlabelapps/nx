@@ -28,6 +28,7 @@ import { useConfig } from './hooks/useConfig';
 import { useDesignSystem } from './hooks/useDesignSystem';
 import { useFeedback } from './hooks/useFeedback';
 import { useMUITheme } from './hooks/useMUITheme';
+import { useMarkdown } from './hooks/useMarkdown';
 
 export {
     // Actions
@@ -59,4 +60,5 @@ export {
     useDesignSystem,
     useFeedback,
     useMUITheme,
+    useMarkdown,
 };

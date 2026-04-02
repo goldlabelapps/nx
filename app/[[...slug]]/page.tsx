@@ -156,7 +156,7 @@ export default async function Page(props: any) {
                                 </Box>
                             </Box>
                             <Box component="main" sx={{ gridColumn: { lg: '1' }, width: '100%', minWidth: 0, pr: { xs: 2, lg: 3 }, pl: { xs: 2, lg: 0 }, flexGrow: 1 }}>
-                                <Typography sx={{ display: 'flex', mt: 1 }} color='secondary' variant="h5" component="h2">
+                                <Typography sx={{ display: 'flex', mt: 1 }} color='secondary' variant="h6" component="h2">
                                     <Box sx={{ display: 'flex', width: '100%' }}>
                                         {data.icon && <Box sx={{ mr: 2 }}><Icon icon={data.icon} color="primary" /></Box>}
                                         <Box sx={{ flexGrow: 1 }}>

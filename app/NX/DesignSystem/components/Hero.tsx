@@ -27,8 +27,8 @@ export default function Hero({
 	}
 	if (!src) return null;
 	// Open Graph aspect ratio: 1200x630
-	const OG_WIDTH = 1200;
-	const OG_HEIGHT = 630;
+	const OG_WIDTH = 600;
+	const OG_HEIGHT = 315;
 	// const OG_ASPECT_RATIO = OG_WIDTH / OG_HEIGHT;
 
 	return (

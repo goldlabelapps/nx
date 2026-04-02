@@ -19,7 +19,7 @@ export default function ChatResponse({
         id: 'cleverText', 
         markdown: text,
         onFinish: () => {
-          console.log('Finished typing');
+          // console.log('Finished typing');
         },
       }} />
     </Box>
