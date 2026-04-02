@@ -5,6 +5,11 @@ description: Be more direct
 slug: /prospects
 icon: prospects
 image: /free/png/apps.png
-tags: cookies, gdpr, privacy, terms, trust, intellectual-property, B2B ordering app, EchoPay Orders, wholesale shopping, PWA ordering, fast product search, secure checkout,
+tags: PWA, fast search, tsvector, python
 cartridge: prospects
 ---
+
+- **FastAPI** — RESTful API framework
+- **Uvicorn** — ASGI server
+- **Pytest** — testing framework
+- **HTTPX / TestClient**

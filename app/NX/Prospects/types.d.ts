@@ -35,6 +35,8 @@ export type T_ApolloDoc = {
     qualify_contact: string;
     cleaned: string;
     search_vector: string;
+    flag: boolean;
+    hide: boolean;
 }
 
 export interface I_Result {

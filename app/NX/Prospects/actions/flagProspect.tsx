@@ -3,6 +3,7 @@ import { setUbereduxKey } from '../../Uberedux';
 import { setProspects, searchProspects } from '../../Prospects';
 import { setFeedback } from '../../DesignSystem';
 
+// Helper for PATCH with JSON body and error handling
 async function patchJson(endpoint: string, body: any) {
     const res = await fetch(endpoint, {
         method: 'PATCH',
@@ -13,15 +14,15 @@ async function patchJson(endpoint: string, body: any) {
     return res.json().catch(() => null);
 }
 
-export const hideProspect = (
+export const flagProspect = (
     id: number,
-    hide: boolean,
-    successMessage: string = 'Prospect visibility updated',
+    flag: boolean,
+    successMessage: string = 'Prospect flag updated',
 ) =>
     async (dispatch: T_UbereduxDispatch) => {
         try {
             const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prospects/${id}`;
-            await patchJson(endpoint, { hide });
+            await patchJson(endpoint, { flag });
             dispatch(searchProspects());
             dispatch(setFeedback({ 
                 severity: 'success',

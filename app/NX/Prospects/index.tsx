@@ -15,6 +15,10 @@ import { useInitialData } from './hooks/useInitialData';
 import { useProspects } from './hooks/useProspects';
 import { promptMagentoPlugin } from './lib/prompts';
 import { normaliseForChipSelect } from './lib/normalise';
+import { sendPrompt } from './actions/sendPrompt';
+import { flagProspect } from './actions/flagProspect';
+import { hideProspect } from './actions/hideProspect';
+
 
 export {
     Prospects,
@@ -33,5 +37,8 @@ export {
     resetQuery,
     addToBasket,
     normaliseForChipSelect,
+    sendPrompt,
     promptMagentoPlugin,
+    flagProspect,
+    hideProspect,
 };
