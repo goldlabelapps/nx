@@ -9,8 +9,10 @@ export const getEndpoints = (name?: string) => {
             path: `${baseURL}/markdown`,
             endpoints: [
                 {
-                    name: 'Upload ',
-                    endpoint: `${baseURL}/markdown/slug=urlencoded-slug`,
+                    name: 'Get Markdown by Slug',
+                    endpoint: `${baseURL}/api/markdown?slug=%2Ffeatures`,
+
+                    // /api/markdown?slug=%2Ffeatures
                     method: 'GET',
                 },
             ]

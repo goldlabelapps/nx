@@ -30,7 +30,7 @@ export default class CleverTextAS {
     }
 
     destroy() {
-        console.log('CleverTextAS destroyed');
+        // console.log('CleverTextAS destroyed');
     }
 
 }

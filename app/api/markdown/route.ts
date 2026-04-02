@@ -2,23 +2,22 @@
 import { NextResponse } from 'next/server';
 import { makeRes } from '../';
 import { serverUseMDBySlug } from '../../NX/lib/serverHooks/serverUseMDBySlug';
+import path from 'path';
 import matter from 'gray-matter';
 import fs from 'fs';
 
-
-// /api/markdown?slug=foo/bar
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const slug = searchParams.get('slug');
-    const slugArr = slug ? slug.split('/') : [];
-    const tenant = process.env.NEXT_PUBLIC_TENANT || 'nx';
+    const slugArr = slug ? decodeURIComponent(slug).split('/').filter(Boolean) : [];
+    const tenant = process.env.NEXT_PUBLIC_TENANT || 'free';
     const filePath = serverUseMDBySlug(slugArr, tenant);
+    console.log('[API/markdown] slug:', slug);
 
     if (!filePath || !fs.existsSync(filePath)) {
         return NextResponse.json(makeRes({
-            severity: 'error',
-            message: 'Markdown not found',
-            data: null,
+            severity: 'warning',
+            message: `404 on slug: ${slug} `,
         }), { status: 404 });
     }
 
@@ -27,12 +26,11 @@ export async function GET(req: Request) {
     const contentObj = {
         frontmatter: data,
         content,
-        slug: slugArr,
     };
 
     return NextResponse.json(makeRes({
         severity: 'success',
-        message: 'Markdown found',
+        message: `Markdown for ${contentObj?.frontmatter?.title || slug}`,
         data: contentObj,
     }));
 }

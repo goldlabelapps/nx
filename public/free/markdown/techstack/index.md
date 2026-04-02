@@ -1,11 +1,14 @@
 ---
 order: 441
 title: Techstack
-description: Built on the shoulders of giants
+description: Open Source
 slug: /techstack
 icon: techstack
 tags: about, techstack
 ---
+
+[ContentCard slug="/techstack/nextjs"]  
+[ContentCard slug="/techstack/python"]  
 
 - **Next.js 16**: SSR, SSG, API routes, and advanced routing
 - **TypeScript**: Strict typing and modern JavaScript features
