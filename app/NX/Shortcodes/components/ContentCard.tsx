@@ -9,6 +9,7 @@ import {
 import { 
     Icon, 
     navigateTo,
+    fetchMarkdown,
 } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 
@@ -19,6 +20,10 @@ export default function ContentCard({
 }) {
     const dispatch = useDispatch();
     const router = useRouter();
+
+    React.useEffect(() => {
+        dispatch(fetchMarkdown(slug));
+    }, [slug, dispatch]);
 
     const handleClick = () => {        
         dispatch(navigateTo(router, slug));
