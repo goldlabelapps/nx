@@ -23,8 +23,8 @@ import {
     updateQuery,
     searchProspects,
     ChipSelect,
+    normaliseForChipSelect,
 } from '../Prospects';
-import { normaliseForChipSelect } from '../Prospects'
 
 export interface I_Prospects {
     config: T_Config;
@@ -65,7 +65,7 @@ export default function Prospects({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                minHeight: '80vh',
+                minHeight: '75vh',
             }}
         >
             <CircularProgress />
@@ -115,7 +115,9 @@ export default function Prospects({
                             </Grid>
 
                             <Grid size={{ xs: 12 }}>
-                                <Search />
+                                <Box sx={{mx:1, mt:1}}>
+                                    <Search />
+                                </Box>
                             </Grid>
 
                         </Grid>
@@ -123,7 +125,7 @@ export default function Prospects({
                 </Toolbar>
             </AppBar>   
             
-            <Container maxWidth="lg" sx={{ my: 4 }}>
+            <Container maxWidth="lg" sx={{ my: 2 }}>
                 <Basket />
                 {!results?.length ? null : (
                     <Grid container spacing={2} sx={{ mt: '125px' }}>

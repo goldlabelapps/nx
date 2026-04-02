@@ -461,6 +461,8 @@ export type I_Icon = {
     | 'right'
     | 'menu'
     | 'success'
+    | 'flagoff'
+    | 'flagon'
     | 'categories'
     | 'category'
     | 'tings'

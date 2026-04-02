@@ -6,37 +6,40 @@ import {
     Paper,
     ButtonBase,
 } from '@mui/material';
-import { Icon, navigateTo } from '../../DesignSystem';
+import { 
+    Icon, 
+    navigateTo,
+} from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
-import { serverUseSlugs } from '../../lib/index.server';
 
 export default function ContentCard({
-    slugs = '',
+    slug = '/',
 }: {
-    slugs?: string;
+    slug: string;
 }) {
-
     const dispatch = useDispatch();
     const router = useRouter();
-    // const objs = serverUseSlugs(slugs);
 
-    // serverUseSlugs
+    const handleClick = () => {        
+        dispatch(navigateTo(router, slug));
+    };
 
     return (<>
                 <ButtonBase
+                    onClick={handleClick}
                     sx={{
                         textAlign: 'left',
                         width: '100%',
                     }}
                 >
                     <Paper variant="outlined" sx={{ p: 2, width: '100%', display: 'flex' }}>
-                        <Icon icon="github" color="primary" />
+                        <Icon icon="link" color="primary" />
                         <Typography variant="h6" sx={{ ml: 2 }}>
-                            sASAD
+                            ContentCard {slug}
                         </Typography>
                     </Paper>
                 </ButtonBase>
-                <pre>slugs: {JSON.stringify({}, null, 2)}</pre>
+                {/* <pre>slug: {JSON.stringify(slug, null, 2)}</pre> */}
             </>
     );
 }

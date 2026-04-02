@@ -129,7 +129,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PreviewIcon from '@mui/icons-material/Preview';
 import PhotoIcon from '@mui/icons-material/CameraAlt';
 import AlbumIcon from '@mui/icons-material/Collections';
-import LinkIcon from '@mui/icons-material/OpenInNewOutlined';
+import LinkIcon from '@mui/icons-material/Link';
 import AboutIcon from '@mui/icons-material/HelpOutlineOutlined';
 import ClientsIcon from '@mui/icons-material/PeopleAltOutlined';
 import MoreIcon from '@mui/icons-material/MoreVert';
@@ -182,11 +182,20 @@ import StarOffIcon from '@mui/icons-material/StarBorder';
 import TagIcon from '@mui/icons-material/Tag';
 import FeaturesIcon from '@mui/icons-material/CheckCircle';
 import SeniorityIcon from '@mui/icons-material/Elderly';
+import FlagonIcon from '@mui/icons-material/Flag';
+import FlagoffIcon from '@mui/icons-material/FlagOutlined';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
+    case 'flagon':
+      iconFragment = <FlagonIcon color={color} />;
+      break;
+    case 'flagoff':
+      iconFragment = <FlagoffIcon color={color} />;
+      break;
+
     case 'seniority':
       iconFragment = <SeniorityIcon color={color} />;
       break;

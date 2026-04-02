@@ -112,7 +112,7 @@ export default function Search({ label }: I_Search) {
                                     onClick={handleCancel}
                                     tabIndex={0}
                                 >
-                                    <Icon icon="cancel" />
+                                    <Icon icon="close" />
                                 </IconButton>
                             ) : null}
                         </InputAdornment>

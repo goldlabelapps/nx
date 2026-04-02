@@ -4,6 +4,18 @@ export const getEndpoints = (name?: string) => {
     const baseURL = getBaseurl();
     const endpoints = [
         {
+            name: 'Markdown',
+            description: 'Upload, fetch and delete markdown files',
+            path: `${baseURL}/markdown`,
+            endpoints: [
+                {
+                    name: 'Upload ',
+                    endpoint: `${baseURL}/markdown/slug=urlencoded-slug`,
+                    method: 'GET',
+                },
+            ]
+        },
+        {
             name: 'Avatars',
             description: 'Upload, fetch and delete avatars',
             path: `${baseURL}/avatars`,
