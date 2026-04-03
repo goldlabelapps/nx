@@ -1,12 +1,10 @@
 ---
 order: 100
 title: Apps
-description: What is a tenant?
+description: Examples
 slug: /apps
 icon: company
 tags: tenants, apps,
 ---
 
-[PageLink icon="right" title="Prospects™" url="/prospects"]  
-
-> [CleverText text="Imagine you rent a shop in a posh shopping mall..."]  
+[PageLink icon="prospects" title="Prospects™" url="/apps/prospects"]  

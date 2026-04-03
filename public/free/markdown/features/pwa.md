@@ -7,7 +7,5 @@ icon: features
 tags: features, pwa
 ---
 
-[PageLink url="/prospects" title="Prospects™" ]  
-
-[CleverText text="A Progressive Web App (PWA) is a web application that uses modern browser features to deliver a fast, reliable, app-like experience across devices, including offline access and installability."]
+> [CleverText text="A Progressive Web App (PWA) is a web application that uses modern browser features to deliver a fast, reliable, app-like experience across devices, including offline access and installability."]
 
