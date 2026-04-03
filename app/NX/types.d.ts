@@ -463,6 +463,7 @@ export type I_Icon = {
     | 'menu'
     | 'success'
     | 'flagoff'
+    | 'stalk'
     | 'flagon'
     | 'categories'
     | 'category'

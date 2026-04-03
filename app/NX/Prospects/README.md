@@ -1,4 +1,11 @@
-## MVP
+## Prospects™
+
+As a user I want to identify a single prospect to 
+focus on. The goal is to be as quick and accurate as possible 
+with as few clicks/taps and keyboard inputs as possible
+
+
+#### MVP vs PoC
 
 A demo is when a developer shows you something on his computer. It could be smoke & mirrors, you can't trust it. This is the next step. Proof of Concept. Or Minimum Viable Product. Depends how polished it is.
 
@@ -6,12 +13,7 @@ The concept we are trying to prove is this... Yes, yes NX - very good, but how d
 
 And if so, does it ACTUALLY increase the number of responses/sales/etc? 
 
+#### Extra points
 
-## The app.
-
-As a user I want to identify a single prospect to 
-focus on. The goal is to be as quick and accurate as possible 
-with as few clicks/taps and keyboard inputs as possible
-
-- List of prospects matching the search. Starts off empty
+- List of prospects matching the search. Starts off full
 - List of favourites

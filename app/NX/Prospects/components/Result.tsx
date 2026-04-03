@@ -6,6 +6,7 @@ import {
     Tooltip,
     useTheme,
     useMediaQuery,
+    CircularProgress,
     ButtonBase,
     Typography,
     Box,
@@ -32,6 +33,8 @@ import {
     hideProspect,
     flagProspect,
     Prompt,
+    WhoIs,
+    useProspects,
 } from '../../Prospects'
 
 
@@ -65,6 +68,9 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const [copied, setCopied] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const hostname = emailToHostname(result.email as string);
+    const prospects = useProspects();
+    const flagging = prospects?.flagging;
+    // console.log("flagging", flagging);
 
     const handleResultClick = () =>  setOpen(true);
     const handleClose = () => setOpen(false);
@@ -130,12 +136,18 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             >
                                 <Icon icon="hide" />
                             </IconButton>
-                            <IconButton
-                                onClick={handleFlag}
-                                color="primary"
-                            >
-                                <Icon icon={!!result.flag ? "flagon" : "flagoff"} />
-                            </IconButton>
+                            {flagging ? (
+                                <IconButton>   
+                                    <CircularProgress size={24} color="primary" />
+                                </IconButton>   
+                            ) : (
+                                <IconButton
+                                    onClick={handleFlag}
+                                    color="primary"
+                                >
+                                    <Icon icon={!!result.flag ? "flagon" : "flagoff"} />
+                                </IconButton>
+                            )}
                             
                             <IconButton
                                 onClick={handleClose}
@@ -206,6 +218,8 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </List>
                         </Grid>
                     </Grid>
+
+                    <WhoIs result={result} />
                 </DialogContent>
                 <DialogActions>
                     <Prompt result={result} />

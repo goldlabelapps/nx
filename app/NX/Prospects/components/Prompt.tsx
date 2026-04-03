@@ -53,16 +53,25 @@ export default function Prompt({ result }: I_Prompt) {
                         }
                     }}
                 /> */}
+            <Button
+                fullWidth
+                variant="outlined"
+                color="primary"
+                startIcon={<Icon icon="linkedin" />}
+                onClick={() => {
+                    dispatch(sendPrompt(prompt));
+                }}>
+                Who is?
+            </Button>
                 <Button 
-                    sx={{mx:1, mb:2}}
                     fullWidth
-                    variant="contained" 
+                    variant="outlined" 
                     color="primary" 
-                    startIcon={<Icon icon="ai" />}
+                    startIcon={<Icon icon="email" />}
                     onClick={() => {
                         dispatch(sendPrompt(prompt));
                     }}>
-                    Do the clever thing
+                    Write email
                 </Button>
         </>
     );
