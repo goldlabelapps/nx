@@ -13,12 +13,12 @@ import { resetQuery } from './actions/resetQuery';
 import { setProspects } from './actions/setProspects';
 import { useInitialData } from './hooks/useInitialData';
 import { useProspects } from './hooks/useProspects';
+import { useTable } from './hooks/useTable';
 import { promptMagentoPlugin } from './lib/prompts';
 import { normaliseForChipSelect } from './lib/normalise';
 import { sendPrompt } from './actions/sendPrompt';
 import { flagProspect } from './actions/flagProspect';
 import { hideProspect } from './actions/hideProspect';
-
 
 export {
     Prospects,
@@ -27,6 +27,7 @@ export {
     setProspects,
     useProspects,
     useInitialData,
+    useTable,
     Search,
     Selecta,
     Result,

@@ -19,11 +19,11 @@ import {
     useProspects,
     initProspects,
     Result,
-    Basket,
     updateQuery,
     searchProspects,
     ChipSelect,
     normaliseForChipSelect,
+    useTable,
 } from '../Prospects';
 
 export interface I_Prospects {
@@ -36,6 +36,7 @@ export default function Prospects({
 }: I_Prospects) {
 
     const dispatch = useDispatch();
+    const table = useTable();
     const state = useProspects();
     const theme = useTheme();
     const loading = state?.loading;
@@ -126,16 +127,29 @@ export default function Prospects({
             </AppBar>   
             
             <Container maxWidth="lg" sx={{ my: 2 }}>
-                <Basket />
-                {!results?.length ? null : (
-                    <Grid container spacing={2} sx={{ mt: '125px' }}>
-                        {Array.isArray(results) && results.length > 0 && results.map((result, idx) => (
-                            <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
-                                <Result result={result} autoOpen={idx === 0} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                )}
+                <Box sx={{ mt: '125px' }}>
+                    {Array.isArray(results) && results.length > 0 ? (
+                        <Grid container spacing={2}>
+                            {results.map((result, idx) => (
+                                <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
+                                    <Result result={result} autoOpen={idx === 0} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    ) : Array.isArray(table) && table.length > 0 ? (
+                        <Grid container spacing={2}>
+                            {table.map((row, idx) => (
+                                <Grid key={row.id || idx} size={{ xs: 12, sm: 6 }}>
+                                    <Result result={row} autoOpen={idx === 0} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    ) : (
+                        <Box sx={{ textAlign: 'center', color: 'text.secondary', py: 8 }}>
+                            No results found.
+                        </Box>
+                    )}
+                </Box>
             </Container>
             {/* <pre>total {JSON.stringify(initialData?.total, null, 2)}</pre> */}
         </>
