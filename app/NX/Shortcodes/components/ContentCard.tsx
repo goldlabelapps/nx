@@ -26,7 +26,9 @@ export default function ContentCard({
     const markdown = content && content.data ? content.data.data : null;
 
     React.useEffect(() => {
-        dispatch(fetchMarkdown(slug));
+        // TO DO: Implement a robust way to check if the markdown is already loaded before dispatching this action, to avoid unnecessary fetches.
+
+        //dispatch(fetchMarkdown(slug));
     }, [slug, dispatch]);
 
     const handleClick = () => {        
