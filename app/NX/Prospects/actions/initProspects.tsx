@@ -24,6 +24,7 @@ export const initProspects = () =>
             ]);
             dispatch(setProspects('initialData', initial?.data));
             dispatch(setProspects('table', table?.data));
+            dispatch(setProspects('pagination', table?.pagination));
             dispatch(setProspects('loading', false));
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
