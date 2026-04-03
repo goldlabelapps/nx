@@ -5,6 +5,7 @@ import FeedbackBtn from "./components/FeedbackBtn";
 import ChatResponse from "./components/ChatResponse";
 import ContentCard from "./components/ContentCard";
 import RenderMarkdown from "./components/RenderMarkdown";
+import PageLink from "./components/PageLink";
 
 export {
     RenderMarkdown,
@@ -13,4 +14,5 @@ export {
     ChatResponse,
     GithubLink,
     ContentCard,
+    PageLink,
 };
