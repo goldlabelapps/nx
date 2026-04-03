@@ -12,11 +12,11 @@ import { useDispatch } from '../../Uberedux';
 
 export default function PageLink({
   url = null,
-  icon = null,
+  icon = 'link',
   title = null,
   description = null
 }: {
-  url?: string;
+  url?: string | null;
   icon?: string | null;
   title?: string | null;
   description?: string | null;

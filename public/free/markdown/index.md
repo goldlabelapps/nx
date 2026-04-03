@@ -10,6 +10,6 @@ image: /free/png/apps.png
 
 [PageLink icon="prospects" title="Prospects™" description="Be more direct" url="/prospects"]  
 
-[ChatResponse text="In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins."]
+[CleverText text="In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins."]
 
 [GithubLink  label="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
