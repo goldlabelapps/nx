@@ -47,7 +47,9 @@ export default function UserSpot({ onClick }: I_UserSpot) {
         }
     }, []);
 
+
     if (!show) return null;
+    if (!account) return null;
 
     return (
         <IconButton onClick={onClick} color="primary" sx={{ mt: 1 }}>
