@@ -6,13 +6,13 @@ description: FastAPI, Postgres & tsvector
 tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
 icon: techstack
 ---
-[PageLink icon="github" title="Python" description="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
-
 - Python 3.x
 - FastAPI (web framework)
 - Render (deployment platform)
 - Postgres (database)
 - tsvector (for lightning-fast full-text search)
+
+[PageLink icon="github" title="Python" description="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
 
 A modern Python backend built with **FastAPI**, providing high performance and easy-to-use APIs. The app is deployed on [Render](https://render.com/), ensuring reliable and scalable hosting. For data storage, we use **Postgres** as our primary database. 
 

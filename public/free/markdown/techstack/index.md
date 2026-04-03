@@ -1,7 +1,6 @@
 ---
 order: 441
 title: Techstack
-description: Open Source
 slug: /techstack
 icon: techstack
 tags: about, techstack

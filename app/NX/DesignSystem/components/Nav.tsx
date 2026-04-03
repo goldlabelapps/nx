@@ -67,7 +67,7 @@ const Nav: React.FC<I_Nav> = ({
     }
 
     function handleGithubClick() {
-        // dispatch(navigateTo(router, '/'));
+        dispatch(navigateTo(router, '/techstack/git'));
         setDrawerOpen(false);
     }
 
