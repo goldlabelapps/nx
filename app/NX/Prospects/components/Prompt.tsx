@@ -2,14 +2,10 @@
 import * as React from "react";
 import type { T_ApolloDoc } from '../types';
 import {
-    CardHeader,
     useTheme,
     useMediaQuery,
     TextField,
-    CardContent,
-    CardActions,
     Button,
-    Box,
 } from "@mui/material";
 import { useDispatch } from '../../Uberedux';
 import { 
@@ -17,7 +13,6 @@ import {
 } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 import { promptMagentoPlugin } from '../../Prospects'
-
 
 export interface I_Prompt {
     result?: T_ApolloDoc;
@@ -43,9 +38,8 @@ export default function Prompt({ result }: I_Prompt) {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
-        <>
-            <CardContent>
-                <TextField
+            <>
+                {/* <TextField
                     fullWidth
                     label="AI Prompt"
                     value={prompt}
@@ -58,9 +52,7 @@ export default function Prompt({ result }: I_Prompt) {
                             fontSize: '0.8rem', 
                         }
                     }}
-                />
-            </CardContent>
-            <CardActions>
+                /> */}
                 <Button 
                     sx={{mx:1, mb:2}}
                     fullWidth
@@ -72,7 +64,6 @@ export default function Prompt({ result }: I_Prompt) {
                     }}>
                     Do the clever thing
                 </Button>
-            </CardActions>
         </>
     );
 }

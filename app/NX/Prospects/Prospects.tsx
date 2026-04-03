@@ -10,6 +10,7 @@ import {
     AppBar,
     Toolbar,
     Grid,
+    Pagination,
 } from '@mui/material';
 import {
     useDispatch,
@@ -43,6 +44,14 @@ export default function Prospects({
     const results = state?.results;
     const query = state?.query;
     const initialData = state?.initialData;
+    const pagination = state?.pagination;
+
+    // Handle page change for pagination
+    const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
+        dispatch(updateQuery({ page: value }));
+        dispatch(searchProspects());
+    };
+    
     const seniorityOptions = normaliseForChipSelect(initialData?.groups?.seniority?.list || [], 'label', 'value');
     const departmentOptions = normaliseForChipSelect(initialData?.groups?.sub_departments?.list || [], 'label', 'value');
     
@@ -128,6 +137,21 @@ export default function Prospects({
             
             <Container maxWidth="lg" sx={{ my: 2 }}>
                 <Box sx={{ mt: '125px' }}>
+
+                    {/* Pagination */}
+                    {pagination && pagination.pages > 1 && (
+                        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+                            <Pagination
+                                sx={{mb:4}}
+                                count={pagination.pages}
+                                page={pagination.page}
+                                onChange={handlePageChange}
+                                color="primary"
+                                shape="rounded"
+                            />
+                        </Box>
+                    )}
+
                     {Array.isArray(results) && results.length > 0 ? (
                         <Grid container spacing={2}>
                             {results.map((result, idx) => (
@@ -146,9 +170,11 @@ export default function Prospects({
                         </Grid>
                     ) : (
                         <Box sx={{ textAlign: 'center', color: 'text.secondary', py: 8 }}>
-                            No results found.
+                            Loading prospects...
                         </Box>
                     )}
+
+                    
                 </Box>
             </Container>
             {/* <pre>total {JSON.stringify(initialData?.total, null, 2)}</pre> */}

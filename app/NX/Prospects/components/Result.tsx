@@ -13,6 +13,7 @@ import {
     DialogTitle,
     CardHeader,
     DialogContent,
+    DialogActions,
     List,
     ListItemButton,
     ListItemText,
@@ -30,6 +31,7 @@ import {
 import {
     hideProspect,
     flagProspect,
+    Prompt,
 } from '../../Prospects'
 
 
@@ -181,7 +183,10 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                     disableFocusListener
                                     disableHoverListener
                                     disableTouchListener
-                                    PopperProps={{ anchorEl: anchorEl ? { getBoundingClientRect: () => anchorEl.getBoundingClientRect(), clientWidth: anchorEl.clientWidth } : undefined }}
+                                    PopperProps={{ 
+                                        anchorEl: anchorEl ? { getBoundingClientRect: () => anchorEl.getBoundingClientRect(), 
+                                        clientWidth: anchorEl.clientWidth } : undefined
+                                    }}
                                 >
                                     <ListItemButton onClick={e => {
                                         navigator.clipboard.writeText(result.email);
@@ -201,10 +206,10 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </List>
                         </Grid>
                     </Grid>
-                    {/* <pre>result: {JSON.stringify(result, null, 2)}</pre> */}
-                    
                 </DialogContent>
-                {/* <Prompt result={result} /> */}
+                <DialogActions>
+                    <Prompt result={result} />
+                </DialogActions>
             </Dialog>
         </>
     );
