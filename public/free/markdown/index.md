@@ -2,7 +2,7 @@
 order: 1 
 slug: /
 title: NX
-description: JavaScript Whatever the Weather
+description: by Goldlabel
 tags: NX, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
 icon: goldlabel
 image: /free/png/apps.png
