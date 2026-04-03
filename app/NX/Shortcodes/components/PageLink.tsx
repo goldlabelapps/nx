@@ -11,15 +11,15 @@ import { Icon, navigateTo } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 
 export default function PageLink({
-  url = '',
-  icon = 'link',
-  title = 'No title',
-  description = 'No description'
+  url = null,
+  icon = null,
+  title = null,
+  description = null
 }: {
   url?: string;
-  icon?: string;
-  title?: string;
-  description?: string;
+  icon?: string | null;
+  title?: string | null;
+  description?: string | null;
 }) {
 
   const dispatch = useDispatch();

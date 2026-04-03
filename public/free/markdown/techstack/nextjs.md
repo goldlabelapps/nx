@@ -7,4 +7,4 @@ tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
 icon: techstack
 ---
 
-- **Next.js 16**: SSR, SSG, API routes, and advanced routing
+[Clevertext text="Next.js 16 SSR, SSG, API routes, and advanced routing"]
