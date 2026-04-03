@@ -11,7 +11,7 @@ import {
 import {
   BuyNow,
   FeedbackBtn,
-  ChatResponse,
+  CleverTextShortcode,
   GithubLink,
   ContentCard,
   PageLink,
@@ -67,11 +67,11 @@ export default function RenderMarkdown({
     const feedbackBtn = parseShortcode(/\[FeedbackBtn\s+(.*?)\]/, FeedbackBtn);
     if (feedbackBtn) return feedbackBtn;
 
-    // ChatResponse
-    const chatResponse = parseShortcode(/\[ChatResponse\s+(.*?)\]/, ChatResponse);
-    if (chatResponse) return chatResponse;
+    // CleverText
+    const cleverText = parseShortcode(/\[CleverText\s+(.*?)\]/, CleverTextShortcode);
+    if (cleverText) return cleverText;
 
-    // ChatResponse
+    // GithubLink
     const githubLink = parseShortcode(/\[GithubLink\s+(.*?)\]/, GithubLink);
     if (githubLink) return githubLink;
 

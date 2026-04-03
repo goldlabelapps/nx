@@ -2,24 +2,23 @@
 import React from 'react';
 import {
   Box,
-  Typography,
 } from '@mui/material';
 import { CleverText } from '../../DesignSystem';
 
-
-export default function ChatResponse({
-  text = '',
+export default function CleverTextShortcode({
+  text = null
 }: {
-  text?: string;
+  text?: string | null;
 }) {
-
+  if (!text) return null;
+  
   return (
     <Box>
       <CleverText options={{ 
         id: 'cleverText', 
         markdown: text,
         onFinish: () => {
-          // console.log('Finished typing');
+          console.log('CleverTextShortcode');
         },
       }} />
     </Box>

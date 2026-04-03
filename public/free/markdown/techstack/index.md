@@ -7,8 +7,7 @@ icon: techstack
 tags: about, techstack
 ---
 
-[ContentCard slug="/techstack/nextjs"]  
-[ContentCard slug="/techstack/python"]  
+[PageLink icon="js" title="NextJS" url="/techstack/nextjs"]  
 
 - **Next.js 16**: SSR, SSG, API routes, and advanced routing
 - **TypeScript**: Strict typing and modern JavaScript features
