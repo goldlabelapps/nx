@@ -4,6 +4,7 @@ import Selecta from './components/Selecta';
 import Basket from './components/Basket';
 import Result from './components/Result';
 import Prompt from './components/Prompt';
+import WhoIs from './components/WhoIs';
 import ChipSelect from './components/ChipSelect';
 import { initProspects } from './actions/initProspects';
 import { addToBasket } from './actions/addToBasket';
@@ -14,7 +15,7 @@ import { setProspects } from './actions/setProspects';
 import { useInitialData } from './hooks/useInitialData';
 import { useProspects } from './hooks/useProspects';
 import { useTable } from './hooks/useTable';
-import { promptMagentoPlugin } from './lib/prompts';
+import { promptMagentoPlugin, stalkPrompt } from './lib/prompts';
 import { normaliseForChipSelect } from './lib/normalise';
 import { sendPrompt } from './actions/sendPrompt';
 import { flagProspect } from './actions/flagProspect';
@@ -34,6 +35,7 @@ export {
     ChipSelect,
     Basket,
     Prompt,
+    WhoIs,
     updateQuery,
     resetQuery,
     addToBasket,
@@ -42,4 +44,6 @@ export {
     promptMagentoPlugin,
     flagProspect,
     hideProspect,
+
+    stalkPrompt,
 };

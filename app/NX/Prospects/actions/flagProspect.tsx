@@ -22,12 +22,14 @@ export const flagProspect = (
     async (dispatch: T_UbereduxDispatch) => {
         try {
             const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prospects/${id}`;
+            dispatch(setProspects('flagging', true));
             await patchJson(endpoint, { flag });
             dispatch(searchProspects());
             dispatch(setFeedback({ 
                 severity: 'success',
                 title: successMessage,
             }));
+            dispatch(setProspects('flagging', false));
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
             dispatch(setProspects('error', msg));

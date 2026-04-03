@@ -103,6 +103,12 @@ export default function Prospects({
                     <Container maxWidth="lg" sx={{ my: 3 }}>
 
                         <Grid container spacing={2}>
+
+                            <Grid size={{ xs: 12 }}>
+                                <Box sx={{ mx: 1, mt: 1 }}>
+                                    <Search />
+                                </Box>
+                            </Grid>
                             
                             <Grid size={{ xs: 6 }}>
                                 <ChipSelect
@@ -124,11 +130,7 @@ export default function Prospects({
                                 />
                             </Grid>
 
-                            <Grid size={{ xs: 12 }}>
-                                <Box sx={{mx:1, mt:1}}>
-                                    <Search />
-                                </Box>
-                            </Grid>
+                            
 
                         </Grid>
                     </Container>
@@ -143,6 +145,7 @@ export default function Prospects({
                         <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                             <Pagination
                                 sx={{mb:4}}
+                                size="small"
                                 count={pagination.pages}
                                 page={pagination.page}
                                 onChange={handlePageChange}
