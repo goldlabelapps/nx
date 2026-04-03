@@ -66,6 +66,11 @@ const Nav: React.FC<I_Nav> = ({
             setDrawerOpen(false);
     }
 
+    function handleGithubClick() {
+        // dispatch(navigateTo(router, '/'));
+        setDrawerOpen(false);
+    }
+
     function renderNavItems(
         items: I_NavNode[],
         parentKey = '',
@@ -139,8 +144,6 @@ const Nav: React.FC<I_Nav> = ({
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
                             
-                            
-
                             <Box sx={{ mt: 1, ml: 2 }}>
                                 <Virus frontmatter={frontmatter} />
                             </Box>
@@ -153,6 +156,15 @@ const Nav: React.FC<I_Nav> = ({
                                 </Box>
                             </>}
                             
+                            
+                            <Box sx={{ ml: 1 }}>
+                                <IconButton
+                                    color="primary"
+                                    onClick={handleGithubClick}>
+                                    <Icon icon={'github'} />
+                                </IconButton>
+                            </Box>
+                            
                             <Box sx={{ ml: 1 }}>
                                 <IconButton
                                     color="primary"
@@ -160,6 +172,7 @@ const Nav: React.FC<I_Nav> = ({
                                     <Icon icon={'home'} />
                                 </IconButton>
                             </Box>
+
                         </Box>
                     </Box>
                 </Drawer>

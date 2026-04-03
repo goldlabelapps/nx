@@ -2,9 +2,12 @@
 order: 485
 slug: /techstack/nextjs
 title: NextJS
-description: SSR, SSG, API routes, and advanced routing
-tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
+description: Node and React
+tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres, SSR, SSG, API routes, advanced routing,
 icon: techstack
 ---
+[PageLink icon="github" title="Template" description="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
 
-[CleverText text="Next.js 16 SSR, SSG, API routes, and advanced routing"]
+Next.js is a leading modern web framework that seamlessly combines the power of React for building user interfaces with robust server-side features
+
+> [CleverText text="The world’s most popular environment for developing fast, scalable, and production-ready web applications"]
