@@ -7,5 +7,7 @@ tags: NX, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, Reac
 icon: goldlabel
 image: /free/png/apps.png
 ---
+[GithubLink  label="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
+
 [ChatResponse text="In this Open Source release of NX, we offer a public repo for NX. Production ready and fully documented it allows a fullstack JavaScript developer to spin up a fully functinoing Firebase powered NX instance within 30 mins."]
 
