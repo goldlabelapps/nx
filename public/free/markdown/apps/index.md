@@ -1,9 +1,9 @@
 ---
 order: 100
 title: Apps°
-description: Tenants in the wild
+description: Apps in the wild
 slug: /apps
-icon: tenant
+icon: mobile
 tags: tenants, apps,
 ---
 [PageLink icon="food" title="Food°" url="/apps/food" description="Bladdy give it some"]  

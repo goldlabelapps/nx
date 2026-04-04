@@ -1,12 +1,12 @@
 ---
 order: 441
 title: Techstack
-description: The technology we use
+description: Fullstack Framework 
 slug: /techstack
 icon: techstack
-tags: about, techstack
+tags: about, techstack, Vercel, Firebase, Render
 ---
-> [CleverText text="Where we live and work"]  
+> [CleverText text="Vercel, Firebase, Render"]  
 
 #### Vercel
 - Next.js  
