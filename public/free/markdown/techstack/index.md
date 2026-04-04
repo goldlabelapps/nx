@@ -9,21 +9,18 @@ tags: about, techstack, Vercel, Firebase, Render
 > [CleverText text="Vercel, Firebase, Render"]  
 
 #### Vercel
-- Next.js  
-SSR, SSG, API
-- Material UI (MUI)  
-Accessible Google UI components
-- Redux Toolkit: State management
-- TypeScript  
-Strict typing and modern JavaScript features
+- [Next.js](/techstack/nextjs)
+- [Material UI](/features/design-system)
+- TypeScript, React, Redux, Node
+
+#### Render
+- [Python 3](/techstack/python)
+- FastAPI
+- tsvector
+- Postgres
+
 
 #### Firebase  
 - Authentication
 - Storage
 - Firestore
-
-#### Render
-- Python 3
-- FastAPI
-- Postgres
-- tsvector
