@@ -4,7 +4,7 @@ title: PWA
 description: Progressive Web Apps
 slug: /features/pwa
 icon: features
-tags: features, pwa
+tags: features, pwa, 
 ---
 
 > [CleverText text="Installable on any phone"]
