@@ -1,4 +1,4 @@
-## Prospects™
+## Prospects°
 
 As a user I want to identify a single prospect to 
 focus on. The goal is to be as quick and accurate as possible 

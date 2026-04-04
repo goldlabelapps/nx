@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import type { I_Result } from '../types';
+import type { I_Result, T_ApolloDoc } from '../types';
 import {
     IconButton,
     Tooltip,
@@ -34,8 +34,8 @@ import {
     hideProspect,
     flagProspect,
     Prompt,
-    WhoIs,
     useProspects,
+    rateProspect,
 } from '../../Prospects'
 
 
@@ -71,10 +71,19 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const hostname = emailToHostname(result.email as string);
     const prospects = useProspects();
     const flagging = prospects?.flagging;
-    // console.log("flagging", flagging);
 
     const handleResultClick = () =>  setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const handleAutoRate = () => {
+        dispatch(rateProspect(result as T_ApolloDoc));
+    };
+
+    const handleEmail = () => {
+        console.log("Email clicked for", result.first_name, result.last_name);  
+        // dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} hidden`));
+        // handleClose();
+    }
     
     const handleHide = () => {
         dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} hidden`));
@@ -222,13 +231,20 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 <DialogActions>
                     <Button
                         fullWidth
-                        variant="contained"
+                        variant="outlined"
                         color="primary"
-                        startIcon={<Icon icon="stalk" />}
-                        onClick={() => {
-                            // dispatch(sendWhoIs(prompt));
-                        }}>
-                        Stalk
+                        startIcon={<Icon icon="star" />}
+                        onClick={handleAutoRate}>
+                        Auto Rate
+                    </Button>
+                    <Button
+                        disabled
+                        fullWidth
+                        variant="outlined"
+                        color="primary"
+                        startIcon={<Icon icon="email" />}
+                        onClick={handleEmail}>
+                        Email
                     </Button>
                 </DialogActions>
             </Dialog>

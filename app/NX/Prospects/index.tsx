@@ -17,7 +17,7 @@ import { useProspects } from './hooks/useProspects';
 import { useTable } from './hooks/useTable';
 import { promptMagentoPlugin, stalkPrompt } from './lib/prompts';
 import { normaliseForChipSelect } from './lib/normalise';
-import { sendPrompt } from './actions/sendPrompt';
+import { rateProspect } from './actions/rateProspect';
 import { flagProspect } from './actions/flagProspect';
 import { hideProspect } from './actions/hideProspect';
 
@@ -40,10 +40,9 @@ export {
     resetQuery,
     addToBasket,
     normaliseForChipSelect,
-    sendPrompt,
+    rateProspect,
     promptMagentoPlugin,
     flagProspect,
     hideProspect,
-
     stalkPrompt,
 };

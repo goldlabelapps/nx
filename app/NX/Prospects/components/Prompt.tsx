@@ -8,9 +8,9 @@ import {
     Button,
 } from "@mui/material";
 import { useDispatch } from '../../Uberedux';
-import { 
-    sendPrompt,
-} from '../../Prospects';
+// import { 
+//     sendPrompt,
+// } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
 import { promptMagentoPlugin } from '../../Prospects'
 
@@ -59,7 +59,7 @@ export default function Prompt({ result }: I_Prompt) {
                 color="primary"
                 startIcon={<Icon icon="linkedin" />}
                 onClick={() => {
-                    dispatch(sendPrompt(prompt));
+                    // dispatch(sendPrompt(prompt));
                 }}>
                 Who is?
             </Button>
@@ -69,7 +69,7 @@ export default function Prompt({ result }: I_Prompt) {
                     color="primary" 
                     startIcon={<Icon icon="email" />}
                     onClick={() => {
-                        dispatch(sendPrompt(prompt));
+                        // dispatch(sendPrompt(prompt));
                     }}>
                     Write email
                 </Button>
