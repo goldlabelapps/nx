@@ -1,6 +1,6 @@
 ---
 order: 701
-title: Prospects™
+title: Prospects°
 description: Be more direct
 slug: /prospects
 icon: prospects
