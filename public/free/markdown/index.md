@@ -6,12 +6,6 @@ description: Fullstack Framework
 tags: NX, framework, fullstack, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
 icon: js
 ---
-NX is a modern, full-stack web application framework and platform built on [Next.js](https://nextjs.org/) and [React](https://react.dev/). It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
-
-#### Examples  
-[PageLink icon="prospects" title="Prospects™" url="/apps/prospects"]  
-[PageLink icon="orders" title="Orders™" url="/apps/orders"]  
-[PageLink icon="virus" title="Virus™" url="/apps/virus"]  
 
 #### Features  
 [PageLink icon="design" title="Design System" url="/features/design-system"]  
@@ -20,7 +14,8 @@ NX is a modern, full-stack web application framework and platform built on [Next
 [PageLink icon="wordpress" url="/features/shortcodes" title="Shortcodes" ]  
 
 #### Techstack  
-[PageLink icon="techstack" title="Techstack" url="/techstack"]  
 [PageLink icon="github" title="Git" url="/techstack/git"]  
 [PageLink icon="api" title="Python" url="/techstack/python"]  
 [PageLink icon="js" title="NextJS" url="/techstack/nextjs"]  
+
+NX is a modern, full-stack web application framework and platform built on [Next.js](https://nextjs.org/) and [React](https://react.dev/). It provides a robust foundation for building scalable, modular, and high-performance web apps, with a focus on developer experience, design systems, and multi-tenant support.
