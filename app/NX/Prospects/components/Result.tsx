@@ -71,6 +71,11 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const hostname = emailToHostname(result.email as string);
     const prospects = useProspects();
     const flagging = prospects?.flagging;
+    const rating = prospects?.rating;
+    const ratingProspect = prospects?.ratingProspect;
+    
+    // console.log('ratingProspect', ratingProspect);
+    // console.log('rating', rating);
 
     const handleResultClick = () =>  setOpen(true);
     const handleClose = () => setOpen(false);
@@ -80,9 +85,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     };
 
     const handleEmail = () => {
-        console.log("Email clicked for", result.first_name, result.last_name);  
-        // dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} hidden`));
-        // handleClose();
+        console.log("Email clicked for", result.first_name, result.last_name);
     }
     
     const handleHide = () => {
@@ -227,9 +230,11 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </List>
                         </Grid>
                     </Grid>
+                    {/* <pre>{JSON.stringify(rating, null, 2)}</pre> */}
                 </DialogContent>
                 <DialogActions>
                     <Button
+                        disabled
                         fullWidth
                         variant="outlined"
                         color="primary"
