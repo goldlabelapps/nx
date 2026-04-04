@@ -3,7 +3,7 @@ order: 193
 title: Uberedux
 description: Zero config Redux pattern
 slug: /features/uberedux
-icon: features
+icon: js
 tags: features, pwa, 
 ---
 

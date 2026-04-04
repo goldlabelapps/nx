@@ -3,7 +3,7 @@ order: 192
 title: PWA
 description: Progressive Web Apps
 slug: /features/pwa
-icon: features
+icon: mobile
 tags: features, pwa, 
 ---
 
