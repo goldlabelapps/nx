@@ -18,7 +18,7 @@ import {
     TreeNav,
 } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
-import { Virus } from '../../Virus';
+import { NavVirus } from '../../Virus';
 import { MiniAccount } from '../../Paywall';
 
 function sortNavItems(items: any[]) {
@@ -145,7 +145,7 @@ const Nav: React.FC<I_Nav> = ({
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
                             
                             <Box sx={{ mt: 1, ml: 2 }}>
-                                <Virus frontmatter={frontmatter} />
+                                <NavVirus frontmatter={frontmatter} />
                             </Box>
 
                             {themeSwitching && <>

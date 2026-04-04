@@ -25,6 +25,8 @@ import {
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import { Prospects } from '../NX/Prospects';
+import { Orders } from '../NX/Orders';
+import { Virus } from '../NX/Virus';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
     const resolvedParams = typeof params.then === 'function' ? await params : params;
@@ -114,16 +116,16 @@ export default async function Page(props: any) {
             <NX config={config} frontmatter={data}>
                 <Header config={config} frontmatter={data} />
                 {data.cartridge ? (
-                    data.cartridge === 'orders-frontend' ? (
+                    data.cartridge === 'virus' ? (
                         <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                OrdersFrontend
+                                <Virus />
                             </Box>
                         </Container>
-                    ) : data.cartridge === 'orders-admin' ? (
+                    ) : data.cartridge === 'orders' ? (
                         <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                OrdersAdmin
+                                <Orders />
                             </Box>
                         </Container>
                     ) : data.cartridge === 'prospects' ? (

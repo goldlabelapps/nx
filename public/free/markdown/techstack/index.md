@@ -1,24 +1,29 @@
 ---
 order: 441
 title: Techstack
+description: The technology we use
 slug: /techstack
 icon: techstack
 tags: about, techstack
 ---
+> [CleverText text="Where we live and work"]  
 
-[PageLink icon="js" title="NextJS" url="/techstack/nextjs"]  
+#### Vercel
+- Next.js  
+SSR, SSG, API
+- Material UI (MUI)  
+Accessible Google UI components
+- Redux Toolkit: State management
+- TypeScript  
+Strict typing and modern JavaScript features
 
-- **Next.js 16**: SSR, SSG, API routes, and advanced routing
-- **Material UI (MUI)**: Beautiful, accessible UI components
-- **Redux Toolkit**: State management
-- **TypeScript**: Strict typing and modern JavaScript features
-- **Firebase**: Authentication and backend integration
-- **Vercel**: Deployment
+#### Firebase  
+- Authentication
+- Storage
+- Firestore
 
-[PageLink icon="api" title="Python" url="/techstack/python"]  
-
-- **Python 3.x**
-- **FastAPI** (web framework)
-- **Render** (deployment platform)
-- **Postgres** (database)
-- **tsvector** (for lightning-fast full-text search)
+#### Render
+- Python 3
+- FastAPI
+- Postgres
+- tsvector

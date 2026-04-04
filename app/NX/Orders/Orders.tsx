@@ -9,7 +9,7 @@ import {
 // import { Icon, useConfig, navigateTo } from '../../NX/DesignSystem';
 // import { useDispatch } from '../../NX/Uberedux';
 
-export default function Virus({
+export default function Orders({
   meta,
   frontmatter,
 }: {
@@ -20,7 +20,7 @@ export default function Virus({
   return (<>
       <Box>
         <Alert severity="info">
-          Virus requires level 3 paywall access
+          Orders requires level 3 paywall access
         </Alert>
       </Box>
     </>
