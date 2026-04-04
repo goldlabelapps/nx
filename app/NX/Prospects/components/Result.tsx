@@ -7,6 +7,7 @@ import {
     useTheme,
     useMediaQuery,
     CircularProgress,
+    Button,
     ButtonBase,
     Typography,
     Box,
@@ -100,7 +101,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 <Box sx={{ pl: 1, width: '100%', borderLeft: `2px solid ${theme.palette.primary.main}` }}>
                     <Box sx={{display: 'flex'}}>
 
-                        
                         <Box sx={{ display: 'block' }}>
                             <Typography variant="body1">
                                 {result.first_name} {result.last_name}
@@ -218,11 +218,18 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </List>
                         </Grid>
                     </Grid>
-
-                    <WhoIs result={result} />
                 </DialogContent>
                 <DialogActions>
-                    <Prompt result={result} />
+                    <Button
+                        fullWidth
+                        variant="contained"
+                        color="primary"
+                        startIcon={<Icon icon="stalk" />}
+                        onClick={() => {
+                            // dispatch(sendWhoIs(prompt));
+                        }}>
+                        Stalk
+                    </Button>
                 </DialogActions>
             </Dialog>
         </>
