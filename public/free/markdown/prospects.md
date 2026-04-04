@@ -2,7 +2,7 @@
 order: 701
 title: Prospects™
 description: Be more direct
-slug: /apps/prospects
+slug: /prospects
 icon: prospects
 image: /free/png/apps.png
 tags: PWA, fast search, tsvector, python
