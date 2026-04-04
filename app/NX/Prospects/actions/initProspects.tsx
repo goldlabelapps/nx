@@ -20,7 +20,7 @@ export const initProspects = () =>
                 table,
             ] = await Promise.all([
                 fetchJson(`${base}prospects/init`),
-                fetchJson(`${base}prospects/read`)
+                fetchJson(`${base}prospects/`)
             ]);
             dispatch(setProspects('initialData', initial?.data));
             dispatch(setProspects('table', table?.data));
