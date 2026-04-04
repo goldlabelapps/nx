@@ -22,14 +22,14 @@ import {
 import { useDispatch } from '../../Uberedux';
 import { Icon, EditableStr } from '../../DesignSystem';
 
-export default function MiniAccount() {
+export default function MiniAccount({ onCloseDrawer }: { onCloseDrawer?: () => void } = {}) {
 
     const dispatch = useDispatch();
     const paywall = usePaywall();
     const { account } = paywall || {};
     const {
-        avatar,
-        level,
+        // avatar,
+        // level,
         name,
         email,
     } = account || {}; 
@@ -44,6 +44,7 @@ export default function MiniAccount() {
         dispatch(setPaywall('user', null));
         dispatch(setPaywall('account', null));
         setOpen(false);
+        if (onCloseDrawer) onCloseDrawer();
     }
     
     const onNameSave = (newName: string) => {
@@ -65,11 +66,13 @@ export default function MiniAccount() {
                     onSave={onNameSave}
                 />}
                 subheader={email}
-                action={<IconButton 
-                    color="primary" 
-                    onClick={handleOpen}>
-                    <Icon icon="signout" />
-                </IconButton>}
+                                action={name || email ? (
+                                    <IconButton 
+                                        color="primary" 
+                                        onClick={handleOpen}>
+                                        <Icon icon="signout" />
+                                    </IconButton>
+                                ) : null}
             />
             
         </Box>
