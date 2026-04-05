@@ -165,14 +165,6 @@ const Nav: React.FC<I_Nav> = ({
                                 </IconButton>
                             </Box>
                             
-                            <Box sx={{ ml: 1 }}>
-                                <IconButton
-                                    color="primary"
-                                    onClick={handleHomeClick}>
-                                    <Icon icon={'home'} />
-                                </IconButton>
-                            </Box>
-
                         </Box>
                     </Box>
                 </Drawer>
