@@ -1,7 +1,7 @@
 ---
 order: 1 
 slug: /
-title: NX
+title: NX°
 tags: NX, framework, fullstack, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
 ---
 
