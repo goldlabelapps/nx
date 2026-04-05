@@ -1,11 +1,11 @@
 {
     "tenant": "free",
-    "siteName": "NX",
+    "siteName": "NX°",
     "description": "Open Source & Free",
     "url": "https://goldlabel.pro",
     "owner": {
-        "name": "Chris",
-        "email": "goldlabel.apps@gmail.com"
+        "name": "NX°",
+        "email": "nx@goldlabel.pro"
     },
     "favicon": "/free/svg/favicon.svg",
     "avatars": {
