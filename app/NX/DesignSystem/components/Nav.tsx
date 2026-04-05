@@ -61,10 +61,10 @@ const Nav: React.FC<I_Nav> = ({
         }
     }
 
-    function handleHomeClick() {
-            dispatch(navigateTo(router, '/'));
-            setDrawerOpen(false);
-    }
+    // function handleHomeClick() {
+    //         dispatch(navigateTo(router, '/'));
+    //         setDrawerOpen(false);
+    // }
 
     function handleGithubClick() {
         dispatch(navigateTo(router, '/techstack/git'));
@@ -144,9 +144,7 @@ const Nav: React.FC<I_Nav> = ({
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
                             
-                            <Box sx={{ mt: 1, ml: 2 }}>
-                                <NavVirus frontmatter={frontmatter} />
-                            </Box>
+                            
 
                             {themeSwitching && <>
                                 <Box sx={{ pb: 1.5, ml:2 }}>
@@ -156,23 +154,18 @@ const Nav: React.FC<I_Nav> = ({
                                 </Box>
                             </>}
                             
+                            <Box sx={{ mt: 1, ml: 2 }}>
+                                <NavVirus frontmatter={frontmatter} />
+                            </Box>
                             
-                            <Box sx={{ ml: 1 }}>
+                            {/* <Box sx={{ ml: 1 }}>
                                 <IconButton
                                     color="primary"
                                     onClick={handleGithubClick}>
                                     <Icon icon={'github'} />
                                 </IconButton>
-                            </Box>
+                            </Box> */}
                             
-                            <Box sx={{ ml: 1 }}>
-                                <IconButton
-                                    color="primary"
-                                    onClick={handleHomeClick}>
-                                    <Icon icon={'home'} />
-                                </IconButton>
-                            </Box>
-
                         </Box>
                     </Box>
                 </Drawer>
