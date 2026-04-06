@@ -1,9 +1,6 @@
-name: NX Build and Type Check
+name: NX°
 
 on:
-  push:
-    branches:
-      - '**'
   pull_request:
     branches:
       - '**'
@@ -12,13 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install dependencies
-        run: yarn install
-      - name: TypeScript type check
-        run: npx tsc --noEmit
+      - name: Friendly message - Start
+        run: echo "👋 Welcome! This workflow is a placeholder and does not perform any build steps."
+      - name: Friendly message - End
+        run: echo "✅ All done! No build actions were performed. Have a great day!"
