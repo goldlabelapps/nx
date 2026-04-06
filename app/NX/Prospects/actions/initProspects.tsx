@@ -14,17 +14,13 @@ export const initProspects = () =>
         dispatch(setProspects('loading', true));
         try {
             const base = process.env.NEXT_PUBLIC_NX_AI;
-            // also get the /read endpoint which gives us the first page of data for when no results are present
             const [
-                initial, 
-                table,
+                health,
             ] = await Promise.all([
-                fetchJson(`${base}prospects/init`),
-                fetchJson(`${base}prospects/`)
+                fetchJson(`${base}health`),
+                // fetchJson(`${base}prospects/`)
             ]);
-            dispatch(setProspects('initialData', initial?.data));
-            dispatch(setProspects('table', table?.data));
-            dispatch(setProspects('pagination', table?.pagination));
+            dispatch(setProspects('health', health?.data));
             dispatch(setProspects('loading', false));
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
