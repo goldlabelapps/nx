@@ -1,9 +1,9 @@
 ---
-order: 285
-title: NextJS
-description: Node and React
+order: 485
+title: Next.js
+description: TypeScript with Node and React
 slug: /techstack/nextjs
-tags: javascript, nextjs
+tags: javascript, nextjs, frontend, backend
 icon: js
 ---
 
@@ -11,4 +11,4 @@ icon: js
 
 Next.js is a leading modern web framework that seamlessly combines the power of React for building user interfaces with robust server-side features
 
-[PageLink icon="github" title="NX Template" description="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
+One of the most brilliant things about Next.js is how it lets you use JavaScript on both the client and server, joining frontend and backend in a single language. This makes development faster, simpler, and more enjoyable. Thank to Vercel, who made it.

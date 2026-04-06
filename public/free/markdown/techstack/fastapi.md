@@ -4,9 +4,11 @@ slug: /techstack/fastapi
 title: FastAPI
 description: High performance and easy-to-use APIs
 tags: Python, FastAPI, tsvector, Postgres
-icon: techstack
+icon: api
 ---
 > [CleverText text="Superfast search with tsvector"]  
+
+[PageLink icon="doc" title="redoc" description="Auto-generated & interactive" url="https://nx-ai.onrender.com/redoc"]  
 
 A modern Python backend built with **FastAPI**, providing high performance and easy-to-use APIs. The app is deployed on [Render.com](https://render.com/), ensuring reliable and scalable hosting. 
 

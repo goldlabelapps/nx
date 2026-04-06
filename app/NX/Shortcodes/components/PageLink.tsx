@@ -44,6 +44,10 @@ export default function PageLink({
         <CardHeader 
           sx={{
             width: '100%',
+            alignItems: 'flex-start',
+            '.MuiCardHeader-avatar': {
+              marginTop: 0,
+            },
           }}
           title={title}
           subheader={description}
