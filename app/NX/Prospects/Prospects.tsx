@@ -57,6 +57,9 @@ export default function Prospects({
                     dispatch(updateQuery({ search: searchParam }));
                     dispatch(searchProspects());
                 }, 333);
+            } else {
+                // No search param, load page 1 of unmodified query
+                dispatch(searchProspects());
             }
         }
     }, [state, dispatch]);
@@ -104,6 +107,7 @@ export default function Prospects({
                     {/* Pagination */}
 
                     <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 2}}>
+                        <Search label="Search" />
                         {pagination && pagination.pages > 1 && (
                             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
                                 <Pagination
@@ -117,7 +121,7 @@ export default function Prospects({
                                 />
                             </Box>
                         )}
-                        <Search label="Search" />
+                        
                     </Box>
 
                     
