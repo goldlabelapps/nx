@@ -7,8 +7,9 @@ tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
 icon: api
 ---
 
-> [CleverText text="Readable syntax, massive library support"]  
+[PageLink icon="github" description="Open Source, production ready Python FastAPI/Postgres" title="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
 
+> [CleverText text="Readable syntax, massive library support"]  
 
 Python is back in fashion because of its simplicity, huge ecosystem, and its central role in AI, data science, and automation. Its readable syntax, massive library support, and strong community make it the go-to language for rapid development and cutting-edge tech.
 

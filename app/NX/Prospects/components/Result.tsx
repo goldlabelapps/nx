@@ -103,7 +103,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     }
     
     const handleHide = () => {
-        dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} hidden`));
+        dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} deleted`));
         handleClose();
     }
 
@@ -160,7 +160,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                 onClick={handleHide}
                                 color="primary"
                             >
-                                <Icon icon="hide" />
+                                <Icon icon="delete" />
                             </IconButton>
                             {flagging ? (
                                 <IconButton>   
@@ -261,21 +261,21 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                     <pre>parsedCompletion: {JSON.stringify(parsedCompletion, null, 2)}</pre> */}
                     {parsedCompletion && (
                         <Box>
-                            <Typography variant="subtitle1">Prospect Analysis</Typography>
+                            <Typography variant="subtitle1">Analysis</Typography>
 
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Prospect Score:</b> {parsedCompletion.prospect_score}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Prospect Grade:</b> {parsedCompletion.prospect_grade}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Score:</b> {parsedCompletion.prospect_score}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Grade:</b> {parsedCompletion.prospect_grade}</Typography>
 
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Seniority Level:</b> {parsedCompletion.seniority_level}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Seniority:</b> {parsedCompletion.seniority_level}</Typography>
                             <Typography variant="body2" sx={{ mb: 1 }}><b>Decision Power:</b> {parsedCompletion.decision_power}</Typography>
                             
                             <Typography variant="body2" sx={{ mb: 1 }}><b>Recommendation:</b> {parsedCompletion.recommendation}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Summary:</b> {parsedCompletion.summary}</Typography>
+                            {/* <Typography variant="body2" sx={{ mb: 1 }}><b>Summary:</b> {parsedCompletion.summary}</Typography>
                             <Typography variant="body2" sx={{ mb: 1 }}><b>Role Inference:</b> {parsedCompletion.role_inference}</Typography>
                             
                             <Typography variant="body2" sx={{ mb: 1 }}><b>Key Priorities:</b> {parsedCompletion.key_priorities && parsedCompletion.key_priorities.length > 0 ? parsedCompletion.key_priorities.join(', ') : 'N/A'}</Typography>
                             <Typography variant="body2" sx={{ mb: 1 }}><b>Likely Pain Points:</b> {parsedCompletion.likely_pain_points && parsedCompletion.likely_pain_points.length > 0 ? parsedCompletion.likely_pain_points.join(', ') : 'N/A'}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Intent Alignment:</b> {parsedCompletion.intent_alignment}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Intent Alignment:</b> {parsedCompletion.intent_alignment}</Typography> */}
                         </Box>
                     )}
 

@@ -9,11 +9,11 @@ tags: Techstack, Vercel, Firebase, Render, React
 
 [PageLink icon="github" title="Git" url="/techstack/git"]  
 
-[PageLink icon="js" title="JavaScript" url="/techstack/javascript"]  
+[PageLink icon="js" title="TypeScript" url="/techstack/typescript"]  
 
-[PageLink icon="js" title="NextJS" url="/techstack/javascript/nextjs"]  
+[PageLink icon="js" title="NextJS" url="/techstack/nextjs"]  
 
-[PageLink icon="js" title="React" url="/techstack/javascript/react"]  
+[PageLink icon="js" title="React" url="/techstack/react"]  
 
 [PageLink icon="api" title="Python 3" url="/techstack/python-3"]  
 

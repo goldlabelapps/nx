@@ -11,4 +11,4 @@ Tenants are separate groups or customers, each with their own data and settings,
 
 [PageLink icon="rocket" title="Edtech°" description="Educational Technology" url="/tenants/edtech"]  
 
-[PageLink icon="writing" title="魏魏°" description="我不是来和蜘蛛交配的" url="/tenants/nhtfs"]  
+[PageLink icon="virus" title="魏魏°" description="我不是来和蜘蛛交配的" url="/tenants/nhtfs"]  
