@@ -153,7 +153,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 <DialogTitle>
                     <CardHeader 
                         sx={{mx:-2}}
-                        title={`${result.first_name} ${result.last_name} ${result.id}`}
+                        title={`${result.first_name} ${result.last_name}`}
                         subheader={result.title}
                         action={<>
                             <IconButton
