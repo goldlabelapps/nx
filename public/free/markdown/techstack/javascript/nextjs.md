@@ -1,10 +1,10 @@
 ---
 order: 485
-slug: /techstack/nextjs
 title: NextJS
 description: Node and React
-tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres, SSR, SSG, API routes, advanced routing,
-icon: techstack
+slug: /techstack/javascript/nextjs
+tags: javascript, nextjs
+icon: js
 ---
 
 > [CleverText text="The world’s most popular environment for developing fast, scalable, and production-ready web applications"]

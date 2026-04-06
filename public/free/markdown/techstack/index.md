@@ -4,23 +4,10 @@ title: Techstack
 description: Fullstack Framework 
 slug: /techstack
 icon: techstack
-tags: about, techstack, Vercel, Firebase, Render
+tags: Techstack, Vercel, Firebase, Render, React
 ---
-> [CleverText text="Vercel, Firebase, Render"]  
 
-#### Vercel
-- [Next.js](/techstack/nextjs)
-- [Material UI](/features/design-system)
-- TypeScript, React, Redux, Node
+[PageLink icon="js" title="JavaScript" description="JavaScript whatever the weather" url="/techstack/javascript"]  
 
-#### Render
-- [Python 3](/techstack/python)
-- FastAPI
-- tsvector
-- Postgres
+[PageLink icon="js" title="NextJS" description="Node and React" url="/techstack/javascript/nextjs"]  
 
-
-#### Firebase  
-- Authentication
-- Storage
-- Firestore
