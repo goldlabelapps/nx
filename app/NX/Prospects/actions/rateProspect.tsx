@@ -16,6 +16,7 @@ export const rateProspect = (
             });
             const prompt = stalkPrompt(prospect);
             const payload = {
+                prospect_id: prospect.id,
                 prompt,
             };
             const response = await fetch(endpoint, {
