@@ -1,5 +1,5 @@
 ---
-order: 485
+order: 472
 title: Next.js
 description: TypeScript with Node and React
 slug: /techstack/nextjs
