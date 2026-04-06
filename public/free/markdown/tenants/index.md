@@ -1,11 +1,13 @@
 ---
 order: 100
 title: Tenants°
-description: These apps use NX
+description: Separate apps. Same Next.js codebase
 slug: /tenants
 icon: web
 tags: tenants, apps,
 ---
+
+Tenants are separate groups or customers, each with their own data and settings, sharing the same Next.js app.
 
 [PageLink icon="doc" title="Edtech°" description="Educational Technology" url="/tenants/edtech"]  
 

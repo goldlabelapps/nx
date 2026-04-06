@@ -1,8 +1,8 @@
 ---
-order: 485
+order: 285
 title: NextJS
 description: Node and React
-slug: /techstack/javascript/nextjs
+slug: /techstack/nextjs
 tags: javascript, nextjs
 icon: js
 ---

@@ -1,6 +1,6 @@
 ---
 order: 489
-slug: /techstack/python-3/fastapi
+slug: /techstack/fastapi
 title: FastAPI
 description: High performance and easy-to-use APIs
 tags: Python, FastAPI, tsvector, Postgres

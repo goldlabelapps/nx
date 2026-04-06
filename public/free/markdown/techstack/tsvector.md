@@ -1,6 +1,6 @@
 ---
 order: 490
-slug: /techstack/python-3/tsvector
+slug: /techstack/tsvector
 title: tsvector
 description: Data types designed to support full text search
 tags: Python, FastAPI, tsvector, Postgres, PostgreSQL, data types,

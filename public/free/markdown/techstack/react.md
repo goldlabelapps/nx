@@ -1,8 +1,8 @@
 ---
-order: 490
+order: 290
 title: React
 description: by facebook
-slug: /techstack/javascript/react
+slug: /techstack/react
 tags: javascript, nextjs, react
 icon: js
 ---
