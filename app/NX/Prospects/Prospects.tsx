@@ -2,6 +2,7 @@
 import type { T_Config } from '../types';
 import * as React from 'react';
 import {
+    Button,
     Typography,
     Container,
     CircularProgress,
@@ -14,22 +15,24 @@ import {
     useDispatch,
 } from '../Uberedux';
 import {
+    Icon,
+} from '../DesignSystem';
+import Search from './components/Search';
+import {
     useProspects,
     initProspects,
     Result,
     updateQuery,
     searchProspects,
-    normaliseForChipSelect,
     useTable,
 } from '../Prospects';
 
 export interface I_Prospects {
-    config: T_Config;
     children?: React.ReactNode;
 };
 
 export default function Prospects({
-    config,
+    children,
 }: I_Prospects) {
 
     const dispatch = useDispatch();
@@ -37,7 +40,6 @@ export default function Prospects({
     const state = useProspects();
     const loading = state?.loading;
     const results = state?.results;
-    const initialData = state?.initialData;
     const pagination = state?.pagination;
 
     const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
@@ -75,7 +77,18 @@ export default function Prospects({
     if (state?.error) {
         return (
             <Container maxWidth="md" sx={{ my: 4 }}>
-                <Alert severity="warning" sx={{ my: 2 }}>
+                <Alert severity="warning" sx={{ my: 2 }}
+                    action={
+                        <Button
+                            startIcon={<Icon icon="reset" />}
+                            variant="outlined"
+                            color="primary"
+                            onClick={() => window.location.reload()}
+                        >
+                            Retry
+                        </Button>
+                    }
+                >
                     {state.error}
                 </Alert>
             </Container>
@@ -89,20 +102,25 @@ export default function Prospects({
                     // mt: '125px',
                  }}>
                     {/* Pagination */}
-                    {pagination && pagination.pages > 1 && (
-                        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
-                            <Pagination
-                                sx={{mb:4}}
-                                size="small"
-                                count={pagination.pages}
-                                page={pagination.page}
-                                onChange={handlePageChange}
-                                color="primary"
-                                shape="rounded"
-                            />
-                        </Box>
-                    )}
 
+                    <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 2}}>
+                        {pagination && pagination.pages > 1 && (
+                            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
+                                <Pagination
+                                    sx={{ mb: 4 }}
+                                    size="small"
+                                    count={pagination.pages}
+                                    page={pagination.page}
+                                    onChange={handlePageChange}
+                                    color="primary"
+                                    shape="rounded"
+                                />
+                            </Box>
+                        )}
+                        <Search label="Search" />
+                    </Box>
+
+                    
                     {Array.isArray(results) && results.length > 0 ? (
                         <Grid container spacing={2}>
                             {results.map((result, idx) => (
@@ -132,52 +150,3 @@ export default function Prospects({
         </>
     );
 }
-
-
-/*
-<Grid container spacing={2}>
-
-                            <Grid size={{ xs: 12 }}>
-                                <Box sx={{ mx: 1, mt: 1 }}>
-                                    <Search />
-                                </Box>
-                            </Grid>
-                            
-                            <Grid size={{ xs: 6 }}>
-                                <ChipSelect
-                                    icon="seniority"
-                                    label="Seniority"
-                                    list={seniorityOptions}
-                                    value={query?.level || null}
-                                    onChange={value => dispatch(updateQuery({ seniority: value }))}
-                                />
-                            </Grid>
-
-                            <Grid size={{ xs: 6 }}>
-                                <ChipSelect
-                                    icon="company"
-                                    label="Department"
-                                    list={departmentOptions}
-                                    value={query?.department || null}
-                                    onChange={value => dispatch(updateQuery({ department: value }))}
-                                />
-                            </Grid>
-
-                            
-
-                        </Grid>
-
-                                    <AppBar position="fixed" sx={{ 
-                background: theme.palette.background.default, 
-                boxShadow:0, 
-                mt: '60px' 
-            }}>
-                <Toolbar>
-                    <Container maxWidth="lg" sx={{ my: 3 }}>
-
-                        
-                    </Container>
-                </Toolbar>
-            </AppBar>   
-
-*/
