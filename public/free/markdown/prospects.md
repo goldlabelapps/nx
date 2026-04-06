@@ -1,5 +1,5 @@
 ---
-order: 701
+order: 2
 title: Prospects°
 description: Be more direct
 slug: /prospects

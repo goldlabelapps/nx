@@ -20,6 +20,7 @@ import {
     ListItemButton,
     ListItemText,
     ListItemIcon,
+    LinearProgress,
     Grid,
 } from '@mui/material';
 import {useRouter} from 'next/navigation';
@@ -33,7 +34,6 @@ import {
 import {
     hideProspect,
     flagProspect,
-    Prompt,
     useProspects,
     rateProspect,
 } from '../../Prospects'
@@ -71,7 +71,21 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const hostname = emailToHostname(result.email as string);
     const prospects = useProspects();
     const flagging = prospects?.flagging;
-    const rating = prospects?.rating;
+    const ratings = prospects?.ratings || {};
+    const isRatingMap = prospects?.isRating || {};
+    const isRating = !!isRatingMap[result.id];
+    const rating = ratings[result.id];
+    let parsedCompletion = null;
+    if (rating && rating.data && rating.data.completion) {
+        try {
+            parsedCompletion = JSON.parse(rating.data.completion);
+            // eslint-disable-next-line no-console
+            // console.log('Parsed completion:', parsedCompletion);
+        } catch (e) {
+            // eslint-disable-next-line no-console
+            // console.error('Failed to parse completion JSON:', e, rating.data.completion);
+        }
+    }
     const ratingProspect = prospects?.ratingProspect;
     
     // console.log('ratingProspect', ratingProspect);
@@ -230,26 +244,53 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </List>
                         </Grid>
                     </Grid>
-                    {/* <pre>{JSON.stringify(rating, null, 2)}</pre> */}
+
+
+                    {isRating && (
+                        <Box sx={{ my: 2 }}>
+                            <Typography variant="body2" sx={{ mb: 1, textAlign: 'center' }} color="primary">
+                                Analysing this prospect with AI... Please wait for a commercial summary and score.
+                            </Typography>
+                            <Box sx={{ width: '100%' }}>
+                                <LinearProgress color="primary" />
+                            </Box>
+                        </Box>
+                    )}
+{/*                     
+                    <pre>rating?: {JSON.stringify(ratingProspect, null, 2)}</pre>
+                    <pre>parsedCompletion: {JSON.stringify(parsedCompletion, null, 2)}</pre> */}
+                    {parsedCompletion && (
+                        <Box>
+                            <Typography variant="subtitle1">Prospect Analysis</Typography>
+
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Prospect Score:</b> {parsedCompletion.prospect_score}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Prospect Grade:</b> {parsedCompletion.prospect_grade}</Typography>
+
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Seniority Level:</b> {parsedCompletion.seniority_level}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Decision Power:</b> {parsedCompletion.decision_power}</Typography>
+                            
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Recommendation:</b> {parsedCompletion.recommendation}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Summary:</b> {parsedCompletion.summary}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Role Inference:</b> {parsedCompletion.role_inference}</Typography>
+                            
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Key Priorities:</b> {parsedCompletion.key_priorities && parsedCompletion.key_priorities.length > 0 ? parsedCompletion.key_priorities.join(', ') : 'N/A'}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Likely Pain Points:</b> {parsedCompletion.likely_pain_points && parsedCompletion.likely_pain_points.length > 0 ? parsedCompletion.likely_pain_points.join(', ') : 'N/A'}</Typography>
+                            <Typography variant="body2" sx={{ mb: 1 }}><b>Intent Alignment:</b> {parsedCompletion.intent_alignment}</Typography>
+                        </Box>
+                    )}
+
+
                 </DialogContent>
                 <DialogActions>
                     <Button
-                        disabled
                         fullWidth
-                        variant="outlined"
+                        variant="contained"
                         color="primary"
                         startIcon={<Icon icon="star" />}
-                        onClick={handleAutoRate}>
-                        Auto Rate
-                    </Button>
-                    <Button
-                        disabled
-                        fullWidth
-                        variant="outlined"
-                        color="primary"
-                        startIcon={<Icon icon="email" />}
-                        onClick={handleEmail}>
-                        Email
+                        onClick={handleAutoRate}
+                        disabled={isRating}
+                    >
+                        Auto Analyse
                     </Button>
                 </DialogActions>
             </Dialog>
