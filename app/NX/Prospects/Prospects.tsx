@@ -106,7 +106,7 @@ export default function Prospects({
                  }}>
                     {/* Pagination */}
 
-                    <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 2}}>
+                    <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2}}>
                         <Search label="Search" />
                         {pagination && pagination.pages > 1 && (
                             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
