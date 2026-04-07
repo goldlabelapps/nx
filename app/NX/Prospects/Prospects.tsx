@@ -112,12 +112,16 @@ export default function Prospects({
                         />
                     )}
                     <Box sx={{ flexGrow: 1 }} />
-                    <HammerMenu />
+                    
+                    <Box sx={{mr:-2}}>
+                        <HammerMenu />
+                    </Box>
                 </Box>
+                
                 {Array.isArray(results) && results.length > 0 ? (
                     <Grid container spacing={2}>
                         {results.map((result, idx) => (
-                            <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
+                            <Grid key={result.id || idx} size={{ xs: 12 }}>
                                 <Result result={result} autoOpen={idx === 0} />
                             </Grid>
                         ))}
@@ -125,7 +129,7 @@ export default function Prospects({
                 ) : Array.isArray(table) && table.length > 0 ? (
                     <Grid container spacing={2}>
                         {table.map((row, idx) => (
-                            <Grid key={row.id || idx} size={{ xs: 12, sm: 6 }}>
+                            <Grid key={row.id || idx} size={{ xs: 12 }}>
                                 <Result result={row} autoOpen={idx === 0} />
                             </Grid>
                         ))}
