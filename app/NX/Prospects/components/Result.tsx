@@ -123,16 +123,18 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
     return (
         <>
-            <ButtonBase sx={{mx:1, width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
+            <ButtonBase sx={{mx:2, width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
                 <Box sx={{ pl: 1, width: '100%', borderLeft: `2px solid ${theme.palette.primary.main}` }}>
                     <Box sx={{display: 'flex'}}>
 
-                        <Box sx={{ display: 'block' }}>
+                        <Box sx={{ display: 'block', }}>
                             <Typography variant="body1">
                                 {result.first_name} {result.last_name}
                             </Typography>
-                            <Typography variant="caption">
-                                {result.title} at {result.company_name}
+                            <Typography 
+                                variant="body2"
+                            >
+                                {result.title} at {result.company_name} 
                             </Typography>
                         </Box>
 
@@ -149,38 +151,56 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 maxWidth="sm" 
                 open={open} 
                 onClose={handleClose} 
-                fullScreen={isMobile}>
+                fullScreen={true}>
+
+                <DialogActions>
+                    <IconButton
+                        onClick={handleHide}
+                        color="primary"
+                    >
+                        <Icon icon="delete" />
+                    </IconButton>
+                    {flagging ? (
+                        <IconButton>
+                            <CircularProgress size={24} color="primary" />
+                        </IconButton>
+                    ) : (
+                        <IconButton
+                            onClick={handleFlag}
+                            color="primary"
+                        >
+                            <Icon icon={!!result.flag ? "flagon" : "flagoff"} />
+                        </IconButton>
+                    )}
+                    {/* <Button
+                        variant="contained"
+                        color="primary"
+                        startIcon={<Icon icon="ai" />}
+                        onClick={handleAutoRate}
+                        disabled={isRating}
+                    >
+                        Analyse
+                    </Button> */}
+
+                    <IconButton
+                        onClick={handleClose}
+                        color="primary"
+                    >
+                        <Icon icon="close" />
+                    </IconButton>
+                    
+                </DialogActions>
+                
                 <DialogTitle>
                     <CardHeader 
                         sx={{mx:-2}}
                         title={`${result.first_name} ${result.last_name}`}
                         subheader={result.title}
                         action={<>
-                            <IconButton
-                                onClick={handleHide}
-                                color="primary"
-                            >
-                                <Icon icon="delete" />
-                            </IconButton>
-                            {flagging ? (
-                                <IconButton>   
-                                    <CircularProgress size={24} color="primary" />
-                                </IconButton>   
-                            ) : (
-                                <IconButton
-                                    onClick={handleFlag}
-                                    color="primary"
-                                >
-                                    <Icon icon={!!result.flag ? "flagon" : "flagoff"} />
-                                </IconButton>
-                            )}
                             
-                            <IconButton
-                                onClick={handleClose}
-                                color="primary"
-                            >
-                                <Icon icon="close" />
-                            </IconButton>
+                            
+                            
+                            
                         </>
                         }
                         
@@ -281,18 +301,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
 
                 </DialogContent>
-                <DialogActions>
-                    <Button
-                        fullWidth
-                        variant="contained"
-                        color="primary"
-                        startIcon={<Icon icon="star" />}
-                        onClick={handleAutoRate}
-                        disabled={isRating}
-                    >
-                        Auto Analyse
-                    </Button>
-                </DialogActions>
+                
             </Dialog>
         </>
     );
