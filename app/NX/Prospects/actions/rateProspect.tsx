@@ -9,7 +9,7 @@ export const rateProspect = (
 ) =>
     async (dispatch: T_UbereduxDispatch) => {
         try {
-            const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}llm`;
+            const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}llm`;
             dispatch((dispatch, getState) => {
                 const current = getState().redux.prospects?.isRating || {};
                 dispatch(setProspects('isRating', { ...current, [prospect.id]: true }));
@@ -44,7 +44,7 @@ export const rateProspect = (
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
             if (msg === 'Failed to fetch') {
-                const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prompts`;
+                const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prompts`;
                 msg = `Can't fetch endpoint ${endpoint}`;
             };
             dispatch((dispatch, getState) => {

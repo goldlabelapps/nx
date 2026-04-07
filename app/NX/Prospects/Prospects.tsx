@@ -1,5 +1,4 @@
 'use client';
-import type { T_Config } from '../types';
 import * as React from 'react';
 import {
     Button,
@@ -17,8 +16,8 @@ import {
 import {
     Icon,
 } from '../DesignSystem';
-import Search from './components/Search';
 import {
+    HammerMenu,
     useProspects,
     initProspects,
     Result,
@@ -84,7 +83,7 @@ export default function Prospects({
                     action={
                         <Button
                             startIcon={<Icon icon="reset" />}
-                            variant="outlined"
+                            variant="contained"
                             color="primary"
                             onClick={() => window.location.reload()}
                         >
@@ -100,57 +99,45 @@ export default function Prospects({
 
     return (
         <>
-            <Container maxWidth="lg" sx={{ my: 0 }}>
-                <Box sx={{ 
-                    // mt: '125px',
-                 }}>
-                    {/* Pagination */}
-
-                    <Box sx={{display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2}}>
-                        <Search label="Search" />
-                        {pagination && pagination.pages > 1 && (
-                            <Box sx={{ display: 'flex', justifyContent: 'center', mt: 0 }}>
-                                <Pagination
-                                    sx={{ mb: 4 }}
-                                    size="small"
-                                    count={pagination.pages}
-                                    page={pagination.page}
-                                    onChange={handlePageChange}
-                                    color="primary"
-                                    shape="rounded"
-                                />
-                            </Box>
-                        )}
-                        
-                    </Box>
-
-                    
-                    {Array.isArray(results) && results.length > 0 ? (
-                        <Grid container spacing={2}>
-                            {results.map((result, idx) => (
-                                <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
-                                    <Result result={result} autoOpen={idx === 0} />
-                                </Grid>
-                            ))}
-                        </Grid>
-                    ) : Array.isArray(table) && table.length > 0 ? (
-                        <Grid container spacing={2}>
-                            {table.map((row, idx) => (
-                                <Grid key={row.id || idx} size={{ xs: 12, sm: 6 }}>
-                                    <Result result={row} autoOpen={idx === 0} />
-                                </Grid>
-                            ))}
-                        </Grid>
-                    ) : (
-                        <Box sx={{ textAlign: 'center', color: 'text.secondary', py: 2 }}>
-                            <Typography variant="h6" gutterBottom>
-                                Finding prospects...
-                            </Typography>
-                        </Box>
+            <Container maxWidth="lg">
+                <Box sx={{display: 'flex', mb: 2}}>
+                    {pagination && pagination.pages > 1 && (
+                        <Pagination
+                            sx={{mt:1}}
+                            count={pagination.pages}
+                            page={pagination.page}
+                            onChange={handlePageChange}
+                            color="primary"
+                            shape="rounded"
+                        />
                     )}
+                    <Box sx={{ flexGrow: 1 }} />
+                    <HammerMenu />
                 </Box>
+                {Array.isArray(results) && results.length > 0 ? (
+                    <Grid container spacing={2}>
+                        {results.map((result, idx) => (
+                            <Grid key={result.id || idx} size={{ xs: 12, sm: 6 }}>
+                                <Result result={result} autoOpen={idx === 0} />
+                            </Grid>
+                        ))}
+                    </Grid>
+                ) : Array.isArray(table) && table.length > 0 ? (
+                    <Grid container spacing={2}>
+                        {table.map((row, idx) => (
+                            <Grid key={row.id || idx} size={{ xs: 12, sm: 6 }}>
+                                <Result result={row} autoOpen={idx === 0} />
+                            </Grid>
+                        ))}
+                    </Grid>
+                ) : (
+                    <Box>
+                        <Typography variant="body1">
+                            Loading prospects...
+                        </Typography>
+                    </Box>
+                )}
             </Container>
-            {/* <pre>total {JSON.stringify(initialData?.total, null, 2)}</pre> */}
         </>
     );
 }

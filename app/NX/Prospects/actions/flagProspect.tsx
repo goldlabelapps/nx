@@ -21,7 +21,7 @@ export const flagProspect = (
 ) =>
     async (dispatch: T_UbereduxDispatch) => {
         try {
-            const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prospects/${id}`;
+            const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prospects/${id}`;
             dispatch(setProspects('flagging', true));
             await patchJson(endpoint, { flag });
             dispatch(searchProspects());

@@ -15,7 +15,7 @@ export const searchProspects = () => async (
         const limit = state?.query?.limit || 50;
         // Optionally add search param if needed in the future
         // const search = state?.query?.search;
-        const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prospects?page=${page}&limit=${limit}`;
+        const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prospects?page=${page}&limit=${limit}`;
         const res = await fetch(endpoint);
         if (!res.ok) throw new Error(`Failed to fetch: ${endpoint}`);
         const data = await res.json();
