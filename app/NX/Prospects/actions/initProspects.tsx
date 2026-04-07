@@ -13,7 +13,7 @@ export const initProspects = () =>
     async (dispatch: T_UbereduxDispatch) => {
         dispatch(setProspects('loading', true));
         try {
-            const base = process.env.NEXT_PUBLIC_NX_AI;
+            const base = process.env.NEXT_PUBLIC_PYTHON_URL;
             const [
                 health,
             ] = await Promise.all([
@@ -25,7 +25,7 @@ export const initProspects = () =>
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
             if (msg === 'Failed to fetch') {
-                const base = process.env.NEXT_PUBLIC_NX_AI;
+                const base = process.env.NEXT_PUBLIC_PYTHON_URL;
                 msg = `Can't reach Python at ${base}`;
             }
             dispatch(setProspects('error', msg));

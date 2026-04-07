@@ -20,7 +20,7 @@ export const hideProspect = (
 ) =>
     async (dispatch: T_UbereduxDispatch) => {
         try {
-            const endpoint = `${process.env.NEXT_PUBLIC_NX_AI}prospects/${id}`;
+            const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prospects/${id}`;
             await patchJson(endpoint, { hide });
             dispatch(searchProspects());
             dispatch(setFeedback({ 
