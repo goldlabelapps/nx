@@ -1,6 +1,7 @@
 import Prospects from './Prospects';
 import Search from './components/Search';
 import Selecta from './components/Selecta';
+import HammerMenu from './components/HammerMenu';
 import Basket from './components/Basket';
 import Result from './components/Result';
 import Prompt from './components/Prompt';
@@ -32,6 +33,7 @@ export {
     Search,
     Selecta,
     Result,
+    HammerMenu,
     ChipSelect,
     Basket,
     Prompt,
