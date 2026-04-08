@@ -186,12 +186,15 @@ import FlagonIcon from '@mui/icons-material/Flag';
 import FlagoffIcon from '@mui/icons-material/FlagOutlined';
 import ProspectsIcon from '@mui/icons-material/DataSaverOff';
 import StalkIcon from '@mui/icons-material/Camera';
+import HammerIcon from '@mui/icons-material/Build';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
-
+    case 'hammer':
+      iconFragment = <HammerIcon color={color} />;
+      break;
     case 'stalk':
       iconFragment = <StalkIcon color={color} />;
       break;

@@ -11,7 +11,7 @@ export const searchProspects = () => async (
         dispatch(setProspects('loading', true));
         const state = getState().redux.prospects;
         const page = state?.query?.page || 1;
-        const limit = state?.query?.limit || 50;
+        const limit = state?.query?.limit || 100;
         const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prospects?page=${page}&limit=${limit}`;
         const res = await fetch(endpoint);
         if (!res.ok) throw new Error(`Failed to fetch: ${endpoint}`);

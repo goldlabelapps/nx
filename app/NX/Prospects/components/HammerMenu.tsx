@@ -57,7 +57,7 @@ export default function HammerMenu() {
                 color="primary"
                 onClick={handleClick}
             >
-                <Icon icon='settings' />
+                <Icon icon='hammer' />
             </IconButton>
             <Menu
                 anchorEl={anchorEl}

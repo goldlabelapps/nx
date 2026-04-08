@@ -6,10 +6,19 @@ export const setProspects =
     async (dispatch: T_UbereduxDispatch, getState: () => T_RootState) => {
       try {
         const current = getState().redux.prospects;
-        const updated = {
-          ...current,
-          [key]: value,
-        };
+        let updated;
+        // Merge for bus, busLoading, busError
+        if (["bus", "busLoading", "busError"].includes(key)) {
+          updated = {
+            ...current,
+            [key]: { ...current?.[key], ...value },
+          };
+        } else {
+          updated = {
+            ...current,
+            [key]: value,
+          };
+        }
         dispatch(setUbereduxKey({ key: 'prospects', value: updated }));
       } catch (e: unknown) {
         const msg = e instanceof Error ? e.message : String(e);
