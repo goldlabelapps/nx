@@ -8,6 +8,7 @@ import {
     Alert,
     Grid,
     Pagination,
+    Typography,
 } from '@mui/material';
 import {
     useDispatch,
@@ -92,21 +93,28 @@ export default function Prospects() {
         <>
             <Container maxWidth="lg">
                 <Box sx={{display: 'flex', mb: 2}}>
+
+                    <Typography variant="h4" color="textSecondary" sx={{ mr: 1 }}>
+                        {pagination ? ` ${pagination.total || 0}` : null}
+                    </Typography>
                     
                     {Array.isArray(results) && !loading && <HammerMenu />}
 
+                    <Box sx={{ flexGrow: 1 }} />
                     {pagination && pagination.pages > 1 && (
                         <Pagination
                             size="small"
-                            sx={{mt: 0.5}}
+                            sx={{ mt: 0.5 }}
                             count={pagination.pages}
                             page={pagination.page}
                             onChange={handlePageChange}
                             color="standard"
                             shape="rounded"
+                            siblingCount={0}
+                            boundaryCount={1}
                         />
                     )}
-                    <Box sx={{ flexGrow: 1 }} />
+                    
                 </Box>
                 
                 {Array.isArray(results) && results.length > 0 ? (
