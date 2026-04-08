@@ -32,9 +32,10 @@ import {
     hideProspect,
     flagProspect,
     useProspects,
+    sendAnalysis,
     analyse,
     useBus,
-} from '../../Prospects'
+} from '../../Prospects';
 
 function emailToTldUrl(email: string): string {
     if (typeof email !== 'string') return '';
@@ -56,9 +57,7 @@ function fixPhone(phone: string) {
         : phone;
 }
 
-export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boolean }) {
-        
-    
+export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boolean }) {    
     const dispatch = useDispatch();
     const theme = useTheme();
     const router = useRouter();
@@ -68,7 +67,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const hostname = emailToHostname(result.email as string);
     const prospects = useProspects();
-    const flagging = prospects?.flagging;
     const isRatingMap = prospects?.isRating || {};
     const isRating = !!isRatingMap[result.id];
     const bus = useBus(result.id);
@@ -82,7 +80,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const hasSummary = typeof analysis === 'object' && analysis !== null && 'summary' in analysis;
     const summary = hasSummary ? analysis.summary : '';
     const score = (typeof analysis === 'object' && analysis !== null && 'prospect_score' in analysis) ? analysis.prospect_score : 0;
-    const grade = (typeof analysis === 'object' && analysis !== null && 'prospect_grade' in analysis) ? analysis.prospect_grade : 'Z';
+    // const grade = (typeof analysis === 'object' && analysis !== null && 'prospect_grade' in analysis) ? analysis.prospect_grade : 'Z';
 
     const recommendation = hasSummary ? analysis.recommendation : 'recommendation';
 
@@ -116,9 +114,27 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
     
 
-    const handleEmail = () => {
-        console.log("Email clicked for", result.first_name, result.last_name);
-    }
+    // Email dialog state
+    const [emailDialogOpen, setEmailDialogOpen] = React.useState(false);
+    const [emailInput, setEmailInput] = React.useState(result.email || '');
+    const [emailValid, setEmailValid] = React.useState(false);
+
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    React.useEffect(() => {
+        setEmailValid(emailRegex.test(emailInput));
+    }, [emailInput]);
+
+    const handleOpenEmailDialog = () => {
+        setEmailInput('goldlabel.apps@gmail.com');
+        setEmailDialogOpen(true);
+    };
+    const handleCloseEmailDialog = () => setEmailDialogOpen(false);
+    const handleSendEmail = () => {
+        if (!emailValid) return;
+        setEmailDialogOpen(false);
+        dispatch(sendAnalysis({ ...result }, analysis, emailInput));
+    };
 
     const handleResultClick = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -129,7 +145,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     };
 
     const handleHide = () => {
-        dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} deleted`));
+        dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} discarded`));
         handleClose();
     }
 
@@ -171,8 +187,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                 {result.title} at {result.company_name} 
                             </Typography>
                         </Box>
-
-                        
                     </Box>
                 </Box>
             </ButtonBase>
@@ -186,14 +200,12 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 fullScreen={true}>
                 <Container maxWidth="md">
                     <DialogActions>
-                        
                         <IconButton
                             onClick={handleClose}
                             color="primary"
                         >
                             <Icon icon="close" />
                         </IconButton>
-                        
                     </DialogActions>
                         
                     <DialogContent>
@@ -205,60 +217,57 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                         />
 
                         <Typography variant="body1">
-                            {result.company_name}
-                        </Typography>
-                        <Typography variant="body1">
-                            {fixPhone(result.corporate_phone)}
+                            {result.company_name} | {fixPhone(result.corporate_phone)}
                         </Typography>
 
-                                <List sx={{
-                                    mt: 2,
-                                }} dense disablePadding>
-                                    <ListItemButton onClick={handleLinkedin}>
-                                        <ListItemIcon>
-                                            <Icon icon="linkedin" color="primary" />
-                                        </ListItemIcon>
-                                        <ListItemText primary="Profile" />
-                                    </ListItemButton>
-                                    <ListItemButton onClick={handleWebsite}>
-                                        <ListItemIcon>
-                                            <Icon icon="link" color="primary" />
-                                        </ListItemIcon>
-                                        <ListItemText primary={hostname} />
-                                    </ListItemButton>
-                                    <Tooltip
-                                        open={copied}
-                                        title="Copied!"
-                                        placement="bottom"
-                                        arrow
-                                        disableFocusListener
-                                        disableHoverListener
-                                        disableTouchListener
-                                        PopperProps={{ 
-                                            anchorEl: anchorEl ? { getBoundingClientRect: () => anchorEl.getBoundingClientRect(), 
-                                            clientWidth: anchorEl.clientWidth } : undefined
-                                        }}
-                                    >
-                                        <ListItemButton onClick={e => {
-                                            navigator.clipboard.writeText(result.email);
-                                            setCopied(true);
-                                            setAnchorEl(e.currentTarget);
-                                            setTimeout(() => {
-                                                setCopied(false);
-                                                setAnchorEl(null);
-                                            }, 1500);
-                                        }}>
-                                            <ListItemIcon>
-                                                <Icon icon="email" color="primary" />
-                                            </ListItemIcon>
-                                            <ListItemText primary={result.email} />
-                                        </ListItemButton>
-                                    </Tooltip>
-                                </List>
+                        <List sx={{
+                            mt: 2,
+                        }} dense disablePadding>
+                            <ListItemButton onClick={handleLinkedin}>
+                                <ListItemIcon>
+                                    <Icon icon="linkedin" color="primary" />
+                                </ListItemIcon>
+                                <ListItemText primary="Profile" />
+                            </ListItemButton>
+                            <ListItemButton onClick={handleWebsite}>
+                                <ListItemIcon>
+                                    <Icon icon="link" color="primary" />
+                                </ListItemIcon>
+                                <ListItemText primary={hostname} />
+                            </ListItemButton>
+                            <Tooltip
+                                open={copied}
+                                title="Copied!"
+                                placement="bottom"
+                                arrow
+                                disableFocusListener
+                                disableHoverListener
+                                disableTouchListener
+                                PopperProps={{ 
+                                    anchorEl: anchorEl ? { getBoundingClientRect: () => anchorEl.getBoundingClientRect(), 
+                                    clientWidth: anchorEl.clientWidth } : undefined
+                                }}
+                            >
+                                <ListItemButton onClick={e => {
+                                    navigator.clipboard.writeText(result.email);
+                                    setCopied(true);
+                                    setAnchorEl(e.currentTarget);
+                                    setTimeout(() => {
+                                        setCopied(false);
+                                        setAnchorEl(null);
+                                    }, 1500);
+                                }}>
+                                    <ListItemIcon>
+                                        <Icon icon="email" color="primary" />
+                                    </ListItemIcon>
+                                    <ListItemText primary={result.email} />
+                                </ListItemButton>
+                            </Tooltip>
+                        </List>
 
                         {hasSummary && (
                             <>
-                                <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
+                                <Box sx={{ mt: 4, mb: 1, display: 'flex', alignItems: 'center' }}>
                                     <Box sx={{ minWidth: 75 }}>
                                         <Typography variant="h3">
                                             {`${Math.round(score)}%`}
@@ -269,31 +278,81 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                             variant="determinate"
                                             value={score}
                                             color="primary"
-
                                         />
                                     </Box>
                                 </Box>
                                 <Box sx={{display: 'flex', gap: 2}}>
                                     <Button
                                         fullWidth
-                                        variant="outlined"
+                                        variant="text"
                                         startIcon={<Icon icon="delete" />}
                                         onClick={handleHide}
                                         color="primary"
-                                        sx={{ mt: 2 }}>
+                                     >
                                         Discard
                                     </Button>
                                     <Button 
                                         fullWidth
-                                        variant="contained" 
-                                        startIcon={<Icon icon="save" />}
+                                        variant="outlined" 
+                                        startIcon={<Icon icon="archive" />}
                                         onClick={handleFlag}
                                         color="primary" 
-                                        sx={{ mt: 2 }}>
-                                        Save
+                                    >
+                                        Keep
                                     </Button>
+
+                                    <Button
+                                        fullWidth
+                                        variant="contained"
+                                        startIcon={<Icon icon="email" />}
+                                        onClick={handleOpenEmailDialog}
+                                    >
+                                        Send
+                                    </Button>
+                                                    {/* Email Input Dialog */}
+                                                    <Dialog open={emailDialogOpen} onClose={handleCloseEmailDialog} maxWidth="xs" fullWidth>
+                                                        <DialogContent>
+                                                            <Typography variant="h6" sx={{ mb: 2 }}>
+                                                                Send to
+                                                            </Typography>
+                                                            <input
+                                                                type="email"
+                                                                value={emailInput}
+                                                                onChange={e => setEmailInput(e.target.value)}
+                                                                placeholder="Enter recipient email"
+                                                                style={{
+                                                                    width: '100%',
+                                                                    padding: '12px',
+                                                                    fontSize: '16px',
+                                                                    border: emailValid ? '1px solid #ccc' : '1.5px solid #e57373',
+                                                                    borderRadius: '6px',
+                                                                    outline: 'none',
+                                                                    marginBottom: '12px',
+                                                                }}
+                                                                autoFocus
+                                                            />
+                                                            {!emailValid && emailInput && (
+                                                                <Typography color="error" variant="body2" sx={{ mb: 1 }}>
+                                                                    Please enter a valid email address.
+                                                                </Typography>
+                                                            )}
+                                                        </DialogContent>
+                                                        <DialogActions>
+                                                            <Button onClick={handleCloseEmailDialog} color="secondary">Cancel</Button>
+                                                            <Button
+                                                                onClick={handleSendEmail}
+                                                                color="primary"
+                                                                variant="contained"
+                                                                disabled={!emailValid}
+                                                                endIcon={<Icon icon="send" />}
+                                                            >
+                                                                Send
+                                                            </Button>
+                                                        </DialogActions>
+                                                    </Dialog>
                                         
                                 </Box>
+                               
                             </>
                         )}
 

@@ -1,12 +1,14 @@
 import Prospects from './Prospects';
 import Search from './components/Search';
 import HammerMenu from './components/HammerMenu';
+import Email from './components/Email';
 import Result from './components/Result';
 import { initProspects } from './actions/initProspects';
 import { updateQuery } from './actions/updateQuery';
 import { searchProspects } from './actions/searchProspects';
 import { resetQuery } from './actions/resetQuery';
 import { setProspects } from './actions/setProspects';
+import { sendAnalysis } from './actions/sendAnalysis';
 import { useProspects } from './hooks/useProspects';
 import { promptMagentoPlugin, stalkPrompt } from './lib/prompts';
 import { normaliseForChipSelect } from './lib/normalise';
@@ -21,11 +23,13 @@ export {
     initProspects,
     searchProspects,
     setProspects,
+    sendAnalysis,
     useProspects,
     useBus,
     Search,
     Result,
     HammerMenu,
+    Email,
     updateQuery,
     resetQuery,
     normaliseForChipSelect,

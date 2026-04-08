@@ -77,9 +77,9 @@ export default function HammerMenu() {
                 </MenuItem>
                 <MenuItem onClick={() => handleMenuItemClick('unhideAll')}>
                     <ListItemIcon sx={{mr:1}}>
-                        <Icon color="primary" icon="flagoff" />
+                        <Icon color="primary" icon="archive" />
                     </ListItemIcon>
-                    Show Flagged
+                    Show Saved
                 </MenuItem>
             </Menu>
 
