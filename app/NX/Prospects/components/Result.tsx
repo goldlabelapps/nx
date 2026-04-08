@@ -7,7 +7,6 @@ import {
     IconButton,
     Tooltip,
     useTheme,
-    CircularProgress,
     ButtonBase,
     Typography,
     Box,
@@ -20,7 +19,6 @@ import {
     ListItemText,
     ListItemIcon,
     LinearProgress,
-    Grid,
 } from '@mui/material';
 import {useRouter} from 'next/navigation';
 import {
@@ -137,7 +135,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
     const handleFlag = () => {
         const newFlag = !result.flag;
-        dispatch(flagProspect(result.id, newFlag, `${result.first_name} ${result.last_name} updated`));
+        dispatch(flagProspect(result.id, newFlag, `${result.first_name} ${result.last_name} saved`));
     }
 
     const handleLinkedin = () => {
@@ -158,6 +156,11 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                     borderLeft: `2px solid ${theme.palette.primary.main}`,
                 }}>
                     <Box sx={{display: 'flex'}}>
+                        {(!!result.flag) && (
+                            <Box sx={{ mr: 1, mt: 0.5 }}>
+                                <Icon icon="ai" color="primary" />
+                            </Box>
+                        )}
                         <Box sx={{ display: 'block', }}>
                             <Typography variant="body1">
                                 {result.first_name} {result.last_name}
@@ -169,11 +172,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             </Typography>
                         </Box>
 
-                        {(!!result.flag) && (
-                            <Box sx={{ ml: 1, mt: 2 }}>
-                                <Icon icon="flagon" color="primary" />
-                            </Box>
-                        )}
+                        
                     </Box>
                 </Box>
             </ButtonBase>
@@ -187,24 +186,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 fullScreen={true}>
                 <Container maxWidth="md">
                     <DialogActions>
-                        <IconButton
-                            onClick={handleHide}
-                            color="primary"
-                        >
-                            <Icon icon="archive" />
-                        </IconButton>
-                        {flagging ? (
-                            <IconButton>
-                                <CircularProgress size={24} color="primary" />
-                            </IconButton>
-                        ) : (
-                            <IconButton
-                                onClick={handleFlag}
-                                color="primary"
-                            >
-                                <Icon icon="save" />
-                            </IconButton>
-                        )}
+                        
                         <IconButton
                             onClick={handleClose}
                             color="primary"
@@ -228,18 +210,10 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                         <Typography variant="body1">
                             {fixPhone(result.corporate_phone)}
                         </Typography>
-                        
 
-
-                        <Grid container spacing={1}>
-                            <Grid size={{ xs: 12, sm: 5 }}>
-                                <Box sx={{ mb: { xs: 2, md: 0 } }}>
-                                    
-                                    
-                                </Box>
-                            </Grid>        
-                            <Grid size={{ xs: 12, sm: 7 }}>
-                                <List dense disablePadding>
+                                <List sx={{
+                                    mt: 2,
+                                }} dense disablePadding>
                                     <ListItemButton onClick={handleLinkedin}>
                                         <ListItemIcon>
                                             <Icon icon="linkedin" color="primary" />
@@ -281,9 +255,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                         </ListItemButton>
                                     </Tooltip>
                                 </List>
-                            </Grid>
-                        </Grid>
-
 
                         {hasSummary && (
                             <>
@@ -301,6 +272,27 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
                                         />
                                     </Box>
+                                </Box>
+                                <Box sx={{display: 'flex', gap: 2}}>
+                                    <Button
+                                        fullWidth
+                                        variant="outlined"
+                                        startIcon={<Icon icon="delete" />}
+                                        onClick={handleHide}
+                                        color="primary"
+                                        sx={{ mt: 2 }}>
+                                        Discard
+                                    </Button>
+                                    <Button 
+                                        fullWidth
+                                        variant="contained" 
+                                        startIcon={<Icon icon="save" />}
+                                        onClick={handleFlag}
+                                        color="primary" 
+                                        sx={{ mt: 2 }}>
+                                        Save
+                                    </Button>
+                                        
                                 </Box>
                             </>
                         )}
@@ -321,19 +313,27 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
                         {/* Only show Analyse button if there is no summary and not loading. Show loading text if loading and button is hidden. */}
                         {bus && !hasSummary && !analysisLoading && !busLoading ? (
-                            <Button
-                                variant="outlined"
-                                color="primary"
-                                onClick={handleAnalyse}
-                                startIcon={<Icon icon="google" />}
-                                sx={{my:3}}
-                            >
-                                Analyse
-                            </Button>
+                            <Box sx={{ display: 'flex', gap: 2, mt: 5 }}>
+                                <Button
+                                    variant="outlined"
+                                    startIcon={<Icon icon="delete" />}
+                                    onClick={handleHide}
+                                    color="primary">
+                                    Discard
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={handleAnalyse}
+                                    startIcon={<Icon icon="google" />}
+                                >
+                                    Analyse
+                                </Button>
+                            </Box>
                         ) : null}
             
                         {isRating && (
-                            <Box sx={{ my: 2, width: '100%' }}>
+                            <Box sx={{ mt: 4, width: '100%' }}>
                                 <LinearProgress color="primary" />
                                 <Typography variant="body2" sx={{ my: 2, }} color="primary">
                                     Analysing prospect with Gemini...
