@@ -13,6 +13,9 @@ import {
     DialogActions,
     Button,
 } from '@mui/material';
+import {
+    Build,
+} from '@mui/icons-material'
 // import { useDispatch } from '../../Uberedux';
 // import { setProspects } from '../../Prospects';
 import {Icon} from '../../DesignSystem';
@@ -57,7 +60,7 @@ export default function HammerMenu() {
                 color="primary"
                 onClick={handleClick}
             >
-                <Icon icon='hammer' />
+                <Build sx={{width: 20, height:20}} />
             </IconButton>
             <Menu
                 anchorEl={anchorEl}
@@ -68,22 +71,21 @@ export default function HammerMenu() {
             >
                 <MenuItem onClick={() => handleMenuItemClick('resetFlags')}>
                     <ListItemIcon sx={{ mr: 1 }}>
-                        <Icon color="primary" icon="flagoff" />
+                        <Icon color="primary" icon="reset" />
                     </ListItemIcon>
-                    Reset all flags
+                    Reset 
                 </MenuItem>
                 <MenuItem onClick={() => handleMenuItemClick('unhideAll')}>
                     <ListItemIcon sx={{mr:1}}>
-                        <Icon color="primary" icon="hide" />
+                        <Icon color="primary" icon="flagoff" />
                     </ListItemIcon>
-                    Unhide all hidden
+                    Show Flagged
                 </MenuItem>
             </Menu>
 
             <Dialog
                 open={dialogOpen}
-                onClose={handleDialogClose}
-            >
+                onClose={handleDialogClose}>
                 <DialogTitle>Confirm</DialogTitle>
                 <DialogContent>
                     <DialogContentText>

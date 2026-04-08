@@ -187,12 +187,17 @@ import FlagoffIcon from '@mui/icons-material/FlagOutlined';
 import ProspectsIcon from '@mui/icons-material/DataSaverOff';
 import StalkIcon from '@mui/icons-material/Camera';
 import HammerIcon from '@mui/icons-material/Build';
+import ArchiveIcon from '@mui/icons-material/Archive';
 
 export default function Icon({ icon, color }: I_Icon) {
   if (!color) color = 'inherit';
   let iconFragment = <React.Fragment />;
   switch (icon) {
-    case 'hammer':
+
+    case 'archive':
+      iconFragment = <ArchiveIcon color={color} />;
+      break;
+          case 'hammer':
       iconFragment = <HammerIcon color={color} />;
       break;
     case 'stalk':

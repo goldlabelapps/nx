@@ -12,7 +12,8 @@ export const searchProspects = () => async (
         const state = getState().redux.prospects;
         const page = state?.query?.page || 1;
         const limit = state?.query?.limit || 100;
-        const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prospects?page=${page}&limit=${limit}`;
+        const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prospects?page=${page}&limit=${limit}&hideflagged=true`;
+        // console.log('Fetching prospects with endpoint:', endpoint);
         const res = await fetch(endpoint);
         if (!res.ok) throw new Error(`Failed to fetch: ${endpoint}`);
         const data = await res.json();

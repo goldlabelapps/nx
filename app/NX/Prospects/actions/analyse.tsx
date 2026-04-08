@@ -1,7 +1,8 @@
 import type { T_UbereduxDispatch } from '../../types';
 import type { T_ApolloDoc } from '../types'
 import { setUbereduxKey } from '../../Uberedux';
-import { setProspects } from '../../Prospects';
+import { setProspects, bus } from '../../Prospects';
+import { setFeedback } from '../../DesignSystem';
 import { stalkPrompt } from '../lib/prompts';
 
 export const analyse = (
@@ -34,12 +35,17 @@ export const analyse = (
                 const current = getState().redux.prospects?.ratings || {};
                 dispatch(setProspects('ratings', { ...current, [prospect.id]: data }));
             });
+            dispatch(setFeedback({ 
+                severity: 'success', 
+                title: `Analysed ${prospect.first_name} ${prospect.last_name}`
+            }));
             dispatch((dispatch, getState) => {
                 const current = getState().redux.prospects?.isRating || {};
                 const updated = { ...current };
                 delete updated[prospect.id];
                 dispatch(setProspects('isRating', updated));
             });
+            dispatch(bus(prospect.id, true)); // Force reload of bus data to get latest analysis
 
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);

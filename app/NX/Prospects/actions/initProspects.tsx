@@ -26,7 +26,7 @@ export const initProspects = () =>
             let msg = e instanceof Error ? e.message : String(e);
             if (msg === 'Failed to fetch') {
                 const base = process.env.NEXT_PUBLIC_PYTHON_URL;
-                msg = `Can't reach Python at ${base}`;
+                msg = `Can't reach Python at ${base}/health`;
             }
             dispatch(setProspects('error', msg));
             dispatch(setProspects('loading', false));

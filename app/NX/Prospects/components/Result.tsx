@@ -59,10 +59,12 @@ function fixPhone(phone: string) {
 }
 
 export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boolean }) {
+        
     
     const dispatch = useDispatch();
     const theme = useTheme();
     const router = useRouter();
+    const [analysisLoading, setAnalysisLoading] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const [copied, setCopied] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -72,6 +74,32 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const isRatingMap = prospects?.isRating || {};
     const isRating = !!isRatingMap[result.id];
     const bus = useBus(result.id);
+    const busLoading = prospects?.[`bus.${result.id}_loading`];
+    let analysis = undefined;
+    try {
+        analysis = bus?.[0]?.completion ? JSON.parse(bus[0].completion) : undefined;
+    } catch (e) {
+        analysis = bus?.[0]?.completion;
+    }
+    const hasSummary = typeof analysis === 'object' && analysis !== null && 'summary' in analysis;
+    const summary = hasSummary ? analysis.summary : '';
+    const score = (typeof analysis === 'object' && analysis !== null && 'prospect_score' in analysis) ? analysis.prospect_score : 0;
+    const grade = (typeof analysis === 'object' && analysis !== null && 'prospect_grade' in analysis) ? analysis.prospect_grade : 'Z';
+
+    const recommendation = hasSummary ? analysis.recommendation : 'recommendation';
+
+    // Track previous state for summary loaded detection
+    const prevShowAnalyseRef = React.useRef(bus && !hasSummary && !analysisLoading && !busLoading);
+    // Alert when summary has loaded (transition from show-analyse to summary present)
+    React.useEffect(() => {
+        const showAnalyse = bus && !hasSummary && !analysisLoading && !busLoading;
+        if (prevShowAnalyseRef.current && !showAnalyse && hasSummary) {
+            alert('Summary has loaded!');
+        }
+        prevShowAnalyseRef.current = showAnalyse;
+    }, [bus, hasSummary, analysisLoading, busLoading]);
+
+/* {bus && !hasSummary && !analysisLoading && !busLoading ? ( */
 
     // Load LLM data when dialog opens and not already loaded
     React.useEffect(() => {
@@ -80,16 +108,27 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
         }
     }, [open, bus, dispatch, result.id]);
 
-    const handleResultClick = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+    React.useEffect(() => {
+        if (analysisLoading && (hasSummary || analysis)) {
+            setAnalysisLoading(false);
+            // Force refresh the bus data for this prospect
+            dispatch(require('../../Prospects').bus(result.id));
+        }
+    }, [analysis, hasSummary, analysisLoading, dispatch, result.id]);
 
-    const handleAnalyse = () => {
-        dispatch(analyse(result as T_ApolloDoc));
-    };
+    
 
     const handleEmail = () => {
         console.log("Email clicked for", result.first_name, result.last_name);
     }
+
+    const handleResultClick = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    const handleAnalyse = () => {
+        setAnalysisLoading(true);
+        dispatch(analyse(result as T_ApolloDoc));
+    };
 
     const handleHide = () => {
         dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} deleted`));
@@ -98,8 +137,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
     const handleFlag = () => {
         const newFlag = !result.flag;
-        const actionText = newFlag ? 'flagged' : 'unflagged';
-        dispatch(flagProspect(result.id, newFlag, `${result.first_name} ${result.last_name} ${actionText}`));
+        dispatch(flagProspect(result.id, newFlag, `${result.first_name} ${result.last_name} updated`));
     }
 
     const handleLinkedin = () => {
@@ -110,13 +148,16 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
         dispatch(navigateTo(router, emailToTldUrl(result.email as string), '_blank'));
     };
 
-    // console.log('prospect', prospect);
     return (
         <>
-            <ButtonBase sx={{p:1, width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
-                <Box sx={{ pl: 1, width: '100%', borderLeft: `2px solid ${theme.palette.primary.main}` }}>
+            <ButtonBase sx={{width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
+                <Box sx={{ 
+                    pl: 1, 
+                    py: 0.25, 
+                    width: '100%', 
+                    borderLeft: `2px solid ${theme.palette.primary.main}`,
+                }}>
                     <Box sx={{display: 'flex'}}>
-
                         <Box sx={{ display: 'block', }}>
                             <Typography variant="body1">
                                 {result.first_name} {result.last_name}
@@ -136,6 +177,8 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                     </Box>
                 </Box>
             </ButtonBase>
+
+            
             <Dialog 
                 fullWidth 
                 maxWidth="sm" 
@@ -143,124 +186,162 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 onClose={handleClose} 
                 fullScreen={true}>
                 <Container maxWidth="md">
-                <DialogActions>
-                    <IconButton
-                        onClick={handleHide}
-                        color="primary"
-                    >
-                        <Icon icon="delete" />
-                    </IconButton>
-                    {flagging ? (
-                        <IconButton>
-                            <CircularProgress size={24} color="primary" />
-                        </IconButton>
-                    ) : (
+                    <DialogActions>
                         <IconButton
-                            onClick={handleFlag}
+                            onClick={handleHide}
                             color="primary"
                         >
-                            <Icon icon={!!result.flag ? "flagon" : "flagoff"} />
+                            <Icon icon="archive" />
                         </IconButton>
-                    )}
-                    <IconButton
-                        onClick={handleClose}
-                        color="primary"
-                    >
-                        <Icon icon="close" />
-                    </IconButton>
-                    
-                </DialogActions>
-                    
-                <DialogContent>
-                    <CardHeader
-                        sx={{ mx: -2 }}
-                        title={`${result.first_name} ${result.last_name}`}
-                        subheader={result.title}
-                    />
-                    <Grid container spacing={1}>
-                        <Grid size={{ xs: 12, sm: 5 }}>
-                            <Box sx={{ mb: { xs: 2, md: 0 } }}>
-                                <Typography variant="body1">
-                                    {result.company_name}
-                                </Typography>
-                                <Typography variant="body1">
-                                    {fixPhone(result.corporate_phone)}
-                                </Typography>
-                            </Box>
-                        </Grid>        
-                        <Grid size={{ xs: 12, sm: 7 }}>
-                            <List dense disablePadding>
-                                <ListItemButton onClick={handleLinkedin}>
-                                    <ListItemIcon>
-                                        <Icon icon="linkedin" color="primary" />
-                                    </ListItemIcon>
-                                    <ListItemText primary="Profile" />
-                                </ListItemButton>
-                                <ListItemButton onClick={handleWebsite}>
-                                    <ListItemIcon>
-                                        <Icon icon="link" color="primary" />
-                                    </ListItemIcon>
-                                    <ListItemText primary={hostname} />
-                                </ListItemButton>
-                                <Tooltip
-                                    open={copied}
-                                    title="Copied!"
-                                    placement="bottom"
-                                    arrow
-                                    disableFocusListener
-                                    disableHoverListener
-                                    disableTouchListener
-                                    PopperProps={{ 
-                                        anchorEl: anchorEl ? { getBoundingClientRect: () => anchorEl.getBoundingClientRect(), 
-                                        clientWidth: anchorEl.clientWidth } : undefined
-                                    }}
-                                >
-                                    <ListItemButton onClick={e => {
-                                        navigator.clipboard.writeText(result.email);
-                                        setCopied(true);
-                                        setAnchorEl(e.currentTarget);
-                                        setTimeout(() => {
-                                            setCopied(false);
-                                            setAnchorEl(null);
-                                        }, 1500);
-                                    }}>
-                                        <ListItemIcon>
-                                            <Icon icon="email" color="primary" />
-                                        </ListItemIcon>
-                                        <ListItemText primary={result.email} />
-                                    </ListItemButton>
-                                </Tooltip>
-                            </List>
-                        </Grid>
-                    </Grid>
-
-                    <Button
+                        {flagging ? (
+                            <IconButton>
+                                <CircularProgress size={24} color="primary" />
+                            </IconButton>
+                        ) : (
+                            <IconButton
+                                onClick={handleFlag}
+                                color="primary"
+                            >
+                                <Icon icon="save" />
+                            </IconButton>
+                        )}
+                        <IconButton
+                            onClick={handleClose}
+                            color="primary"
+                        >
+                            <Icon icon="close" />
+                        </IconButton>
                         
-                        variant="contained"
-                        color="primary"
-                        onClick={handleAnalyse}
-                        startIcon={<Icon icon="ai" />}
-                        sx={{my:3}}
-                    >
+                    </DialogActions>
+                        
+                    <DialogContent>
 
-                        Analyse ?
+                        <CardHeader
+                            sx={{ mx: -2 }}
+                            title={`${result.first_name} ${result.last_name}`}
+                            subheader={result.title}
+                        />
 
-                    </Button>
+                        <Typography variant="body1">
+                            {result.company_name}
+                        </Typography>
+                        <Typography variant="body1">
+                            {fixPhone(result.corporate_phone)}
+                        </Typography>
+                        
 
-                        <pre>fetch /llm/{result.id}: {JSON.stringify(bus, null, 2)}</pre>
 
-                    {isRating && (
-                        <Box sx={{ my: 2 }}>
-                            <Typography variant="body2" sx={{ my: 2, }} color="primary">
-                                Analysing this prospect with Gemini... Please wait for a commercial summary and score.
-                            </Typography>
-                            <Box sx={{ width: '100%' }}>
-                                <LinearProgress color="primary" />
+                        <Grid container spacing={1}>
+                            <Grid size={{ xs: 12, sm: 5 }}>
+                                <Box sx={{ mb: { xs: 2, md: 0 } }}>
+                                    
+                                    
+                                </Box>
+                            </Grid>        
+                            <Grid size={{ xs: 12, sm: 7 }}>
+                                <List dense disablePadding>
+                                    <ListItemButton onClick={handleLinkedin}>
+                                        <ListItemIcon>
+                                            <Icon icon="linkedin" color="primary" />
+                                        </ListItemIcon>
+                                        <ListItemText primary="Profile" />
+                                    </ListItemButton>
+                                    <ListItemButton onClick={handleWebsite}>
+                                        <ListItemIcon>
+                                            <Icon icon="link" color="primary" />
+                                        </ListItemIcon>
+                                        <ListItemText primary={hostname} />
+                                    </ListItemButton>
+                                    <Tooltip
+                                        open={copied}
+                                        title="Copied!"
+                                        placement="bottom"
+                                        arrow
+                                        disableFocusListener
+                                        disableHoverListener
+                                        disableTouchListener
+                                        PopperProps={{ 
+                                            anchorEl: anchorEl ? { getBoundingClientRect: () => anchorEl.getBoundingClientRect(), 
+                                            clientWidth: anchorEl.clientWidth } : undefined
+                                        }}
+                                    >
+                                        <ListItemButton onClick={e => {
+                                            navigator.clipboard.writeText(result.email);
+                                            setCopied(true);
+                                            setAnchorEl(e.currentTarget);
+                                            setTimeout(() => {
+                                                setCopied(false);
+                                                setAnchorEl(null);
+                                            }, 1500);
+                                        }}>
+                                            <ListItemIcon>
+                                                <Icon icon="email" color="primary" />
+                                            </ListItemIcon>
+                                            <ListItemText primary={result.email} />
+                                        </ListItemButton>
+                                    </Tooltip>
+                                </List>
+                            </Grid>
+                        </Grid>
+
+
+                        {hasSummary && (
+                            <>
+                                <Box sx={{ mt: 2, display: 'flex', alignItems: 'center' }}>
+                                    <Box sx={{ minWidth: 75 }}>
+                                        <Typography variant="h3">
+                                            {`${Math.round(score)}%`}
+                                        </Typography>
+                                    </Box>
+                                    <Box sx={{ width: '100%' }}>
+                                        <LinearProgress
+                                            variant="determinate"
+                                            value={score}
+                                            color="primary"
+
+                                        />
+                                    </Box>
+                                </Box>
+                            </>
+                        )}
+
+                        {hasSummary && (
+                            <Box sx={{ my: 0 }}>
+                                
+                                <Typography variant="body1" sx={{ my: 2 }}>
+                                    {summary}
+                                </Typography>
+                                <Typography variant="body1" sx={{ my: 2 }}>
+                                    {recommendation}
+                                </Typography>
+
                             </Box>
-                        </Box>
-                    )}
-                    
-                </DialogContent>
+                        )}
+
+
+                        {/* Only show Analyse button if there is no summary and not loading. Show loading text if loading and button is hidden. */}
+                        {bus && !hasSummary && !analysisLoading && !busLoading ? (
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                onClick={handleAnalyse}
+                                startIcon={<Icon icon="google" />}
+                                sx={{my:3}}
+                            >
+                                Analyse
+                            </Button>
+                        ) : null}
+            
+                        {isRating && (
+                            <Box sx={{ my: 2, width: '100%' }}>
+                                <LinearProgress color="primary" />
+                                <Typography variant="body2" sx={{ my: 2, }} color="primary">
+                                    Analysing prospect with Gemini...
+                                </Typography>
+                            </Box>
+                        )}
+                        
+                    </DialogContent>
                 </Container>
             </Dialog>
         </>
