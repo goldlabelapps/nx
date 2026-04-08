@@ -74,7 +74,7 @@ export default function Prospects() {
                     action={
                         <Button
                             startIcon={<Icon icon="reset" />}
-                            variant="contained"
+                            variant="outlined"
                             color="primary"
                             onClick={() => window.location.reload()}
                         >
@@ -92,13 +92,13 @@ export default function Prospects() {
         <>
             <Container maxWidth="lg">
                 <Box sx={{display: 'flex', mb: 2}}>
-                    <Box sx={{ mr: 1 }}>
-                        <HammerMenu />
-                    </Box>
+                    
+                    {Array.isArray(results) && !loading && <HammerMenu />}
+
                     {pagination && pagination.pages > 1 && (
                         <Pagination
                             size="small"
-                            sx={{mt:1}}
+                            sx={{mt: 0.5}}
                             count={pagination.pages}
                             page={pagination.page}
                             onChange={handlePageChange}
@@ -107,8 +107,6 @@ export default function Prospects() {
                         />
                     )}
                     <Box sx={{ flexGrow: 1 }} />
-                    
-                    
                 </Box>
                 
                 {Array.isArray(results) && results.length > 0 ? (
