@@ -2,7 +2,6 @@
 import * as React from 'react';
 import {
     Button,
-    Typography,
     Container,
     CircularProgress,
     Box,
@@ -23,19 +22,11 @@ import {
     Result,
     updateQuery,
     searchProspects,
-    useTable,
 } from '../Prospects';
 
-export interface I_Prospects {
-    children?: React.ReactNode;
-};
-
-export default function Prospects({
-    children,
-}: I_Prospects) {
+export default function Prospects() {
 
     const dispatch = useDispatch();
-    const table = useTable();
     const state = useProspects();
     const loading = state?.loading;
     const results = state?.results;
@@ -101,21 +92,23 @@ export default function Prospects({
         <>
             <Container maxWidth="lg">
                 <Box sx={{display: 'flex', mb: 2}}>
+                    <Box sx={{ mr: 1 }}>
+                        <HammerMenu />
+                    </Box>
                     {pagination && pagination.pages > 1 && (
                         <Pagination
+                            size="small"
                             sx={{mt:1}}
                             count={pagination.pages}
                             page={pagination.page}
                             onChange={handlePageChange}
-                            color="primary"
+                            color="standard"
                             shape="rounded"
                         />
                     )}
                     <Box sx={{ flexGrow: 1 }} />
                     
-                    <Box sx={{mr:-2}}>
-                        <HammerMenu />
-                    </Box>
+                    
                 </Box>
                 
                 {Array.isArray(results) && results.length > 0 ? (
@@ -126,21 +119,7 @@ export default function Prospects({
                             </Grid>
                         ))}
                     </Grid>
-                ) : Array.isArray(table) && table.length > 0 ? (
-                    <Grid container spacing={2}>
-                        {table.map((row, idx) => (
-                            <Grid key={row.id || idx} size={{ xs: 12 }}>
-                                <Result result={row} autoOpen={idx === 0} />
-                            </Grid>
-                        ))}
-                    </Grid>
-                ) : (
-                    <Box>
-                        <Typography variant="body1">
-                            Loading prospects...
-                        </Typography>
-                    </Box>
-                )}
+                ) : null }
             </Container>
         </>
     );

@@ -4,7 +4,7 @@ import { setUbereduxKey } from '../../Uberedux';
 import { setProspects } from '../../Prospects';
 import { stalkPrompt } from '../lib/prompts';
 
-export const rateProspect = (
+export const analyse = (
     prospect: T_ApolloDoc
 ) =>
     async (dispatch: T_UbereduxDispatch) => {

@@ -2,17 +2,16 @@
 import * as React from 'react';
 import type { I_Result, T_ApolloDoc } from '../types';
 import {
+    Button,
+    Container,
     IconButton,
     Tooltip,
     useTheme,
-    useMediaQuery,
     CircularProgress,
-    Button,
     ButtonBase,
     Typography,
     Box,
     Dialog,
-    DialogTitle,
     CardHeader,
     DialogContent,
     DialogActions,
@@ -35,9 +34,9 @@ import {
     hideProspect,
     flagProspect,
     useProspects,
-    rateProspect,
+    analyse,
+    useBus,
 } from '../../Prospects'
-
 
 function emailToTldUrl(email: string): string {
     if (typeof email !== 'string') return '';
@@ -64,44 +63,34 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const dispatch = useDispatch();
     const theme = useTheme();
     const router = useRouter();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
     const [open, setOpen] = React.useState(false);
     const [copied, setCopied] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const hostname = emailToHostname(result.email as string);
     const prospects = useProspects();
     const flagging = prospects?.flagging;
-    const ratings = prospects?.ratings || {};
     const isRatingMap = prospects?.isRating || {};
     const isRating = !!isRatingMap[result.id];
-    const rating = ratings[result.id];
-    let parsedCompletion = null;
-    if (rating && rating.data && rating.data.completion) {
-        try {
-            parsedCompletion = JSON.parse(rating.data.completion);
-            // eslint-disable-next-line no-console
-            // console.log('Parsed completion:', parsedCompletion);
-        } catch (e) {
-            // eslint-disable-next-line no-console
-            // console.error('Failed to parse completion JSON:', e, rating.data.completion);
-        }
-    }
-    const ratingProspect = prospects?.ratingProspect;
-    
-    // console.log('ratingProspect', ratingProspect);
-    // console.log('rating', rating);
+    const bus = useBus(result.id);
 
-    const handleResultClick = () =>  setOpen(true);
+    // Load LLM data when dialog opens and not already loaded
+    React.useEffect(() => {
+        if (open && !bus) {
+            dispatch(require('../../Prospects').bus(result.id));
+        }
+    }, [open, bus, dispatch, result.id]);
+
+    const handleResultClick = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleAutoRate = () => {
-        dispatch(rateProspect(result as T_ApolloDoc));
+    const handleAnalyse = () => {
+        dispatch(analyse(result as T_ApolloDoc));
     };
 
     const handleEmail = () => {
         console.log("Email clicked for", result.first_name, result.last_name);
     }
-    
+
     const handleHide = () => {
         dispatch(hideProspect(result.id, !result.hide, `${result.first_name} ${result.last_name} deleted`));
         handleClose();
@@ -121,9 +110,10 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
         dispatch(navigateTo(router, emailToTldUrl(result.email as string), '_blank'));
     };
 
+    // console.log('prospect', prospect);
     return (
         <>
-            <ButtonBase sx={{mx:2, width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
+            <ButtonBase sx={{p:1, width: '100%', textAlign: 'left'}} onClick={handleResultClick}>
                 <Box sx={{ pl: 1, width: '100%', borderLeft: `2px solid ${theme.palette.primary.main}` }}>
                     <Box sx={{display: 'flex'}}>
 
@@ -152,7 +142,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 open={open} 
                 onClose={handleClose} 
                 fullScreen={true}>
-
+                <Container maxWidth="md">
                 <DialogActions>
                     <IconButton
                         onClick={handleHide}
@@ -172,16 +162,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             <Icon icon={!!result.flag ? "flagon" : "flagoff"} />
                         </IconButton>
                     )}
-                    {/* <Button
-                        variant="contained"
-                        color="primary"
-                        startIcon={<Icon icon="ai" />}
-                        onClick={handleAutoRate}
-                        disabled={isRating}
-                    >
-                        Analyse
-                    </Button> */}
-
                     <IconButton
                         onClick={handleClose}
                         color="primary"
@@ -190,24 +170,13 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                     </IconButton>
                     
                 </DialogActions>
-                
-                <DialogTitle>
-                    <CardHeader 
-                        sx={{mx:-2}}
+                    
+                <DialogContent>
+                    <CardHeader
+                        sx={{ mx: -2 }}
                         title={`${result.first_name} ${result.last_name}`}
                         subheader={result.title}
-                        action={<>
-                            
-                            
-                            
-                            
-                        </>
-                        }
-                        
                     />
-                </DialogTitle>
-
-                <DialogContent>
                     <Grid container spacing={1}>
                         <Grid size={{ xs: 12, sm: 5 }}>
                             <Box sx={{ mb: { xs: 2, md: 0 } }}>
@@ -265,43 +234,34 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                         </Grid>
                     </Grid>
 
+                    <Button
+                        
+                        variant="contained"
+                        color="primary"
+                        onClick={handleAnalyse}
+                        startIcon={<Icon icon="ai" />}
+                        sx={{my:3}}
+                    >
+
+                        Analyse ?
+
+                    </Button>
+
+                        <pre>fetch /llm/{result.id}: {JSON.stringify(bus, null, 2)}</pre>
 
                     {isRating && (
                         <Box sx={{ my: 2 }}>
-                            <Typography variant="body2" sx={{ mb: 1, textAlign: 'center' }} color="primary">
-                                Analysing this prospect with AI... Please wait for a commercial summary and score.
+                            <Typography variant="body2" sx={{ my: 2, }} color="primary">
+                                Analysing this prospect with Gemini... Please wait for a commercial summary and score.
                             </Typography>
                             <Box sx={{ width: '100%' }}>
                                 <LinearProgress color="primary" />
                             </Box>
                         </Box>
                     )}
-{/*                     
-                    <pre>rating?: {JSON.stringify(ratingProspect, null, 2)}</pre>
-                    <pre>parsedCompletion: {JSON.stringify(parsedCompletion, null, 2)}</pre> */}
-                    {parsedCompletion && (
-                        <Box>
-                            <Typography variant="subtitle1">Analysis</Typography>
-
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Score:</b> {parsedCompletion.prospect_score}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Grade:</b> {parsedCompletion.prospect_grade}</Typography>
-
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Seniority:</b> {parsedCompletion.seniority_level}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Decision Power:</b> {parsedCompletion.decision_power}</Typography>
-                            
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Recommendation:</b> {parsedCompletion.recommendation}</Typography>
-                            {/* <Typography variant="body2" sx={{ mb: 1 }}><b>Summary:</b> {parsedCompletion.summary}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Role Inference:</b> {parsedCompletion.role_inference}</Typography>
-                            
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Key Priorities:</b> {parsedCompletion.key_priorities && parsedCompletion.key_priorities.length > 0 ? parsedCompletion.key_priorities.join(', ') : 'N/A'}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Likely Pain Points:</b> {parsedCompletion.likely_pain_points && parsedCompletion.likely_pain_points.length > 0 ? parsedCompletion.likely_pain_points.join(', ') : 'N/A'}</Typography>
-                            <Typography variant="body2" sx={{ mb: 1 }}><b>Intent Alignment:</b> {parsedCompletion.intent_alignment}</Typography> */}
-                        </Box>
-                    )}
-
-
+                    
                 </DialogContent>
-                
+                </Container>
             </Dialog>
         </>
     );

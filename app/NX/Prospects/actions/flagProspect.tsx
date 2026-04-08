@@ -24,7 +24,8 @@ export const flagProspect = (
             const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}prospects/${id}`;
             dispatch(setProspects('flagging', true));
             await patchJson(endpoint, { flag });
-            dispatch(searchProspects());
+            // Refresh prospects after flagging/unflagging
+            await dispatch(searchProspects());
             dispatch(setFeedback({ 
                 severity: 'success',
                 title: successMessage,
