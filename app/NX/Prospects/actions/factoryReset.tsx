@@ -8,7 +8,7 @@ async function patchJson(endpoint: string, body?: any) {
     const res = await fetch(endpoint, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: body ? JSON.stringify(body) : undefined,
+        body: body ? JSON.stringify(body) : JSON.stringify({}),
     });
     if (!res.ok) throw new Error(`Failed to PATCH: ${endpoint}`);
     return res.json().catch(() => null);

@@ -20,6 +20,7 @@ import {
     ListItemText,
     ListItemIcon,
     LinearProgress,
+    DialogTitle,
 } from '@mui/material';
 import {useRouter} from 'next/navigation';
 import {
@@ -66,7 +67,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const [open, setOpen] = React.useState(false);
     const [copied, setCopied] = React.useState(false);
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-    const hostname = emailToHostname(result.email as string);
+    const hostname = emailToHostname(result.email ?? '');
     const prospects = useProspects();
     const isRatingMap = prospects?.isRating || {};
     const isRating = !!isRatingMap[result.id];
@@ -147,11 +148,11 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     }
 
     const handleLinkedin = () => {
-        dispatch(navigateTo(router, result.person_linkedin_url, '_blank'));
+        dispatch(navigateTo(router, result.linkedin ?? '', '_blank'));
     };
 
     const handleWebsite = () => {
-        dispatch(navigateTo(router, emailToTldUrl(result.email as string), '_blank'));
+        dispatch(navigateTo(router, emailToTldUrl(result.email ?? ''), '_blank'));
     };
 
     return (
@@ -176,7 +177,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                             <Typography 
                                 variant="body2"
                             >
-                                {result.title} at {result.company_name} 
+                                {result.title} at {result.company} 
                             </Typography>
                         </Box>
                     </Box>
@@ -191,29 +192,54 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                 onClose={handleClose} 
                 fullScreen={true}>
                 <Container maxWidth="md">
-                    <DialogActions>
-                        <IconButton
-                            onClick={handleClose}
-                            color="primary"
-                        >
-                            <Icon icon="close" />
-                        </IconButton>
-                    </DialogActions>
-                        
-                    <DialogContent>
+                    <DialogTitle>
 
                         <CardHeader
                             sx={{ mx: -2 }}
                             title={`${result.first_name} ${result.last_name}`}
-                            subheader={result.title}
+                            subheader={`${result.title} at ${result.company}`}
+                            action={<IconButton
+                                onClick={handleClose}
+                                color="primary"
+                            >
+                                <Icon icon="close" />
+                            </IconButton>}
                         />
+                        
+                    </DialogTitle>
+                        
+                    <DialogContent>
+                        
+                        
 
+                        <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+                            <Button
+                                fullWidth
+                                variant="outlined"
+                                endIcon={<Icon icon="close" />}
+                                onClick={handleHide}
+                                color="primary"
+                            >
+                                No
+                            </Button>
+                            <Button
+                                fullWidth
+                                variant="outlined"
+                                endIcon={<Icon icon="tick" />}
+                                onClick={handleFlag}
+                                color="primary"
+                            >
+                                Yes
+                            </Button>
+                        </Box>
+
+                        
                         <Typography variant="body1">
-                            {result.company_name} | {fixPhone(result.corporate_phone)}
+                            {fixPhone(result.phone ?? '')}
                         </Typography>
 
                         <List sx={{
-                            mt: 2,
+                            my: 2,
                         }} dense disablePadding>
                             <ListItemButton onClick={handleLinkedin}>
                                 <ListItemIcon>
@@ -241,7 +267,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                 }}
                             >
                                 <ListItemButton onClick={e => {
-                                    navigator.clipboard.writeText(result.email);
+                                    navigator.clipboard.writeText(result.email ?? '');
                                     setCopied(true);
                                     setAnchorEl(e.currentTarget);
                                     setTimeout(() => {
@@ -256,6 +282,50 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                 </ListItemButton>
                             </Tooltip>
                         </List>
+
+                        
+
+                        {/* Email Input Dialog */}
+                        <Dialog open={emailDialogOpen} onClose={handleCloseEmailDialog} maxWidth="xs" fullWidth>
+                            <DialogContent>
+                                <Typography variant="h6" sx={{ mb: 2 }}>
+                                    Send to
+                                </Typography>
+                                <input
+                                    type="email"
+                                    value={emailInput}
+                                    onChange={e => setEmailInput(e.target.value)}
+                                    placeholder="Enter recipient email"
+                                    style={{
+                                        width: '100%',
+                                        padding: '12px',
+                                        fontSize: '16px',
+                                        border: emailValid ? '1px solid #ccc' : '1.5px solid #e57373',
+                                        borderRadius: '6px',
+                                        outline: 'none',
+                                        marginBottom: '12px',
+                                    }}
+                                    autoFocus
+                                />
+                                {!emailValid && emailInput && (
+                                    <Typography color="error" variant="body2" sx={{ mb: 1 }}>
+                                        Please enter a valid email address.
+                                    </Typography>
+                                )}
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleCloseEmailDialog} color="secondary">Cancel</Button>
+                                <Button
+                                    onClick={handleSendEmail}
+                                    color="primary"
+                                    variant="contained"
+                                    disabled={!emailValid}
+                                    endIcon={<Icon icon="send" />}
+                                >
+                                    Send
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
 
                         {hasSummary && (
                             <>
@@ -273,77 +343,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                         />
                                     </Box>
                                 </Box>
-                                <Box sx={{display: 'flex', gap: 2}}>
-                                    <Button
-                                        fullWidth
-                                        variant="text"
-                                        startIcon={<Icon icon="delete" />}
-                                        onClick={handleHide}
-                                        color="primary"
-                                     >
-                                        Discard
-                                    </Button>
-                                    <Button 
-                                        fullWidth
-                                        variant="outlined" 
-                                        startIcon={<Icon icon="archive" />}
-                                        onClick={handleFlag}
-                                        color="primary" 
-                                    >
-                                        Keep
-                                    </Button>
-
-                                    <Button
-                                        fullWidth
-                                        variant="contained"
-                                        startIcon={<Icon icon="email" />}
-                                        onClick={handleOpenEmailDialog}
-                                    >
-                                        Send
-                                    </Button>
-                                                    {/* Email Input Dialog */}
-                                                    <Dialog open={emailDialogOpen} onClose={handleCloseEmailDialog} maxWidth="xs" fullWidth>
-                                                        <DialogContent>
-                                                            <Typography variant="h6" sx={{ mb: 2 }}>
-                                                                Send to
-                                                            </Typography>
-                                                            <input
-                                                                type="email"
-                                                                value={emailInput}
-                                                                onChange={e => setEmailInput(e.target.value)}
-                                                                placeholder="Enter recipient email"
-                                                                style={{
-                                                                    width: '100%',
-                                                                    padding: '12px',
-                                                                    fontSize: '16px',
-                                                                    border: emailValid ? '1px solid #ccc' : '1.5px solid #e57373',
-                                                                    borderRadius: '6px',
-                                                                    outline: 'none',
-                                                                    marginBottom: '12px',
-                                                                }}
-                                                                autoFocus
-                                                            />
-                                                            {!emailValid && emailInput && (
-                                                                <Typography color="error" variant="body2" sx={{ mb: 1 }}>
-                                                                    Please enter a valid email address.
-                                                                </Typography>
-                                                            )}
-                                                        </DialogContent>
-                                                        <DialogActions>
-                                                            <Button onClick={handleCloseEmailDialog} color="secondary">Cancel</Button>
-                                                            <Button
-                                                                onClick={handleSendEmail}
-                                                                color="primary"
-                                                                variant="contained"
-                                                                disabled={!emailValid}
-                                                                endIcon={<Icon icon="send" />}
-                                                            >
-                                                                Send
-                                                            </Button>
-                                                        </DialogActions>
-                                                    </Dialog>
-                                        
-                                </Box>
+                                
                                
                             </>
                         )}
@@ -354,9 +354,14 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
                                 <Typography variant="body1" sx={{ my: 2 }}>
                                     {summary}
                                 </Typography>
-                                <Typography variant="body1" sx={{ my: 2 }}>
-                                    {recommendation}
-                                </Typography>
+                                
+                                <Button
+                                    variant="outlined"
+                                    startIcon={<Icon icon="google" />}
+                                    onClick={handleOpenEmailDialog}
+                                >
+                                    Send Analysis
+                                </Button>
 
                             </Box>
                         )}

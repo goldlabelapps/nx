@@ -96,9 +96,9 @@ export default function Prospects() {
             <Container maxWidth="lg">
                 <Box sx={{display: 'flex', mb: 2}}>
 
-                    <Typography variant="h4" color="textSecondary" sx={{ mr: 1 }}>
-                        {pagination ? ` ${pagination.total || 0}` : null}
-                    </Typography>
+                    {/* <Typography variant="h4" color="textSecondary" sx={{ mr: 1 }}>
+                        {pagination ? ` ${pagination.total || }` : null}
+                    </Typography> */}
                     
                     
 

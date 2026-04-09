@@ -5,6 +5,7 @@ description: Progressive Web Apps
 slug: /features/pwa
 icon: mobile
 tags: features, pwa, 
+image: https://live.staticflickr.com/65535/53160956233_21a5d3e088_b.jpg
 ---
 
 > [CleverText text="Installable on any phone"]
