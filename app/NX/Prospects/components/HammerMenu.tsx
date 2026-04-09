@@ -93,12 +93,13 @@ export default function HammerMenu() {
                     Factory Reset
                 </DialogTitle>
                 <DialogContent>
+                    <DialogContentText color="warning">
+                        此操作会获取 PATCH /prospects/factory-reset 文件，将所有潜在客户重置为默认状态。此操作不可逆。您确定要执行此操作吗？
+                    </DialogContentText>
                     <DialogContentText>
                         This fetches PATCH /prospects/factory-reset, resetting all prospects to their default state. Irreversible. Are you sure you want to do it?
                     </DialogContentText>
-                    <DialogContentText color="info">
-                        此操作会获取 PATCH /prospects/factory-reset 文件，将所有潜在客户重置为默认状态。此操作不可逆。您确定要执行此操作吗？
-                    </DialogContentText>
+                    
                 </DialogContent>
                 <DialogActions>
                     <Button 

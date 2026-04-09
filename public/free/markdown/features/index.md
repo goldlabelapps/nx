@@ -3,7 +3,7 @@ order: 191
 title: Features
 description: Powerful modern technologies
 slug: /features
-icon: features
+icon: tick
 tags: features
 ---
 [PageLink icon="design" url="/features/design-system" title="Design System" ]  
