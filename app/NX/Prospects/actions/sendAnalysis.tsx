@@ -52,13 +52,13 @@ export const sendAnalysis = (
 
     <div style=\"margin-bottom: 18px;\">
         <h4 style=\"margin: 0 0 4px 0; font-size: 15px; color: #222;\">Key Priorities</h4>
-        <ul style=\"margin: 8px 0 0 18px; color: #444; font-size: 13px;\">
+        <ul style=\"color: #444; font-size: 13px;\">
             ${(analysis.key_priorities || []).map((item: string) => `<li>${item}</li>`).join('')}
         </ul>
     </div>
     <div style=\"margin-bottom: 18px;\">
         <h4 style=\"margin: 0 0 4px 0; font-size: 15px; color: #222;\">Likely Pain Points</h4>
-        <ul style=\"margin: 8px 0 0 18px; color: #444; font-size: 13px;\">
+        <ul style=\"color: #444; font-size: 13px;\">
             ${(analysis.likely_pain_points || []).map((item: string) => `<li>${item}</li>`).join('')}
         </ul>
     </div>
