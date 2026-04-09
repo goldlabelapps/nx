@@ -5,6 +5,7 @@ description: Built with Open Source
 slug: /techstack
 icon: techstack
 tags: Techstack, Vercel, Firebase, Render, React
+image: /free/png/python.png
 ---
 
 [PageLink icon="github" title="Git" url="/techstack/git"]  

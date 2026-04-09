@@ -38,6 +38,7 @@ export default function PageLink({
       sx={{
         textAlign: 'left', 
         width: '100%',
+        mb:1
       }}
     >
       <Paper variant="outlined" sx={{ width: '100%' }}>

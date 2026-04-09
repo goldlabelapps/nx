@@ -55,6 +55,28 @@ export default function Prospects() {
         }
     }, [state, dispatch]);
 
+
+    if (state?.error) {
+        return (
+            <Container maxWidth="sm" sx={{ my: 4 }}>
+                <Alert severity="info" sx={{ my: 2 }}
+                    action={
+                        <Button
+                            startIcon={<Icon icon="reset" />}
+                            variant="contained"
+                            color="primary"
+                            onClick={() => window.location.reload()}
+                        >
+                            Retry
+                        </Button>
+                    }
+                >
+                    {state.error}
+                </Alert>
+            </Container>
+        );
+    }
+
     if (loading) return (
         <Box
             sx={{
@@ -68,26 +90,6 @@ export default function Prospects() {
         </Box>
     );
 
-    if (state?.error) {
-        return (
-            <Container maxWidth="md" sx={{ my: 4 }}>
-                <Alert severity="warning" sx={{ my: 2 }}
-                    action={
-                        <Button
-                            startIcon={<Icon icon="reset" />}
-                            variant="outlined"
-                            color="primary"
-                            onClick={() => window.location.reload()}
-                        >
-                            Retry
-                        </Button>
-                    }
-                >
-                    {state.error}
-                </Alert>
-            </Container>
-        );
-    }
 
     return (
         <>
