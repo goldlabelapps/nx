@@ -53,8 +53,7 @@ export default function HammerMenu() {
 
     const handleDialogConfirm = () => {
         if (dialogAction === 'factoryReset') {
-            // You may want to pass a real id and flag value here
-            dispatch(factoryReset(0, true, 'Factory Reset complete'));
+            dispatch(factoryReset('Factory Reset complete'));
         }
         setDialogOpen(false);
         setDialogAction(null);
