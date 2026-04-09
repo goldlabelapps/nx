@@ -100,7 +100,7 @@ export default function Prospects() {
                         {pagination ? ` ${pagination.total || 0}` : null}
                     </Typography>
                     
-                    {Array.isArray(results) && !loading && <HammerMenu />}
+                    
 
                     <Box sx={{ flexGrow: 1 }} />
                     {pagination && pagination.pages > 1 && (
@@ -116,6 +116,7 @@ export default function Prospects() {
                             boundaryCount={1}
                         />
                     )}
+                    {Array.isArray(results) && !loading && <HammerMenu />}
                     
                 </Box>
                 
