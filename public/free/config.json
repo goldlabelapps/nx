@@ -13,8 +13,8 @@
         "dark": "/free/svg/avatarDark.svg"
     },
     "images": {
-        "light": "/free/png/apps.png",
-        "dark": "/free/png/apps.png"
+        "light": "/free/png/python.png",
+        "dark": "/free/png/python.png"
     },
     "cartridges": {
         "paywall": {
@@ -22,7 +22,7 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "themes": {
                 "dark": {
                     "mode": "dark",
@@ -37,7 +37,7 @@
                     "primary": "#3775a9",
                     "secondary": "#3775a9",
                     "background": "#fff",
-                    "paper": "#ffd849",
+                    "paper": "#eaf0f5",
                     "text": "#222"
                 }
             }

@@ -55,27 +55,15 @@ export default function Prospects() {
         }
     }, [state, dispatch]);
 
-    if (loading) return (
-        <Box
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minHeight: '75vh',
-            }}
-        >
-            <CircularProgress />
-        </Box>
-    );
 
     if (state?.error) {
         return (
-            <Container maxWidth="md" sx={{ my: 4 }}>
-                <Alert severity="warning" sx={{ my: 2 }}
+            <Container maxWidth="sm" sx={{ my: 4 }}>
+                <Alert severity="info" sx={{ my: 2 }}
                     action={
                         <Button
                             startIcon={<Icon icon="reset" />}
-                            variant="outlined"
+                            variant="contained"
                             color="primary"
                             onClick={() => window.location.reload()}
                         >
@@ -89,6 +77,20 @@ export default function Prospects() {
         );
     }
 
+    if (loading) return (
+        <Box
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                minHeight: '75vh',
+            }}
+        >
+            <CircularProgress />
+        </Box>
+    );
+
+
     return (
         <>
             <Container maxWidth="lg">
@@ -98,7 +100,7 @@ export default function Prospects() {
                         {pagination ? ` ${pagination.total || 0}` : null}
                     </Typography>
                     
-                    {Array.isArray(results) && !loading && <HammerMenu />}
+                    
 
                     <Box sx={{ flexGrow: 1 }} />
                     {pagination && pagination.pages > 1 && (
@@ -114,6 +116,7 @@ export default function Prospects() {
                             boundaryCount={1}
                         />
                     )}
+                    {Array.isArray(results) && !loading && <HammerMenu />}
                     
                 </Box>
                 

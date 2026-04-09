@@ -1,7 +1,3 @@
-export interface I_Result {
-    result: I_Prospect;
-}
-
 export interface I_Prospect {
     id: number;
     name?: string | null;
@@ -23,5 +19,3 @@ export interface I_Prospect {
     country?: string | null;
     search_vector?: unknown;
 }
-
-

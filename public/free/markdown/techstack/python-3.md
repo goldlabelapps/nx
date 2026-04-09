@@ -5,6 +5,7 @@ title: Python 3
 description: Central to AI and automation
 tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
 icon: api
+image: /free/png/python.png
 ---
 
 [PageLink icon="github" description="Open Source, production ready Python FastAPI/Postgres" title="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
