@@ -14,6 +14,4 @@ icon: mobile
 
 [PageLink icon="techstack" title="Techstack" url="/techstack" description="Modern, full-stack web application framework and platform built on Next.js and Reacts"]  
 
-[PageLink icon="prospects" title="Prospects°" url="/prospects" description="Be more direct"]  
-
 [PageLink icon="virus" title="魏魏°" description="我不是来和蜘蛛交配的" url="/tenants/nhtfs"]  
