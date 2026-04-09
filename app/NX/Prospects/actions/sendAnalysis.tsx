@@ -1,13 +1,13 @@
 import type { T_UbereduxDispatch } from '../../types';
-import type { T_ApolloDoc } from '../types'
+import type { I_Prospect } from '../types'
 import { setUbereduxKey } from '../../Uberedux';
 import { setProspects, bus } from '../../Prospects';
 import { setFeedback } from '../../DesignSystem';
 
 export const sendAnalysis = (
-        prospect: T_ApolloDoc,
-        analysis: any,
-        to: string
+    prospect: I_Prospect,
+    analysis: any,
+    to: string
 ) => async (dispatch: T_UbereduxDispatch) => {
         try {
                 const endpoint = `${process.env.NEXT_PUBLIC_PYTHON_URL}resend`;
@@ -23,7 +23,7 @@ export const sendAnalysis = (
     <h2 style=\"margin: 0 0 8px 0; color: #364450; font-size: 24px;\">Prospects°</h2>
     <div style=\"color: #555; font-size: 16px; margin-bottom: 16px;\">
         <strong>${prospect.first_name} ${prospect.last_name}</strong><br/>
-        ${prospect.title ? prospect.title + ' at ' : ''}${prospect.company_name || ''}
+        ${prospect.title ? prospect.title + ' at ' : ''}${prospect.company || ''}
     </div>
 
     <p style=\"font-size: 13px; color: #333; margin-bottom: 24px;\">${analysis.summary}</p>

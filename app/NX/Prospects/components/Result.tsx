@@ -1,6 +1,7 @@
 'use client';
+import type { I_Prospect } from '../types'
 import * as React from 'react';
-import type { I_Result, T_ApolloDoc } from '../types';
+import type { I_Result } from '../types';
 import {
     Button,
     Container,
@@ -80,13 +81,9 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const hasSummary = typeof analysis === 'object' && analysis !== null && 'summary' in analysis;
     const summary = hasSummary ? analysis.summary : '';
     const score = (typeof analysis === 'object' && analysis !== null && 'prospect_score' in analysis) ? analysis.prospect_score : 0;
-    // const grade = (typeof analysis === 'object' && analysis !== null && 'prospect_grade' in analysis) ? analysis.prospect_grade : 'Z';
-
     const recommendation = hasSummary ? analysis.recommendation : 'recommendation';
-
-    // Track previous state for summary loaded detection
     const prevShowAnalyseRef = React.useRef(bus && !hasSummary && !analysisLoading && !busLoading);
-    // Alert when summary has loaded (transition from show-analyse to summary present)
+    
     React.useEffect(() => {
         const showAnalyse = bus && !hasSummary && !analysisLoading && !busLoading;
         if (prevShowAnalyseRef.current && !showAnalyse && hasSummary) {
@@ -95,9 +92,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
         prevShowAnalyseRef.current = showAnalyse;
     }, [bus, hasSummary, analysisLoading, busLoading]);
 
-/* {bus && !hasSummary && !analysisLoading && !busLoading ? ( */
-
-    // Load LLM data when dialog opens and not already loaded
     React.useEffect(() => {
         if (open && !bus) {
             dispatch(require('../../Prospects').bus(result.id));
@@ -111,8 +105,6 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
             dispatch(require('../../Prospects').bus(result.id));
         }
     }, [analysis, hasSummary, analysisLoading, dispatch, result.id]);
-
-    
 
     // Email dialog state
     const [emailDialogOpen, setEmailDialogOpen] = React.useState(false);
@@ -133,7 +125,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
     const handleSendEmail = () => {
         if (!emailValid) return;
         setEmailDialogOpen(false);
-        dispatch(sendAnalysis({ ...result }, analysis, emailInput));
+        dispatch(sendAnalysis(result, analysis, emailInput));
     };
 
     const handleResultClick = () => setOpen(true);
@@ -141,7 +133,7 @@ export default function Result({ result, autoOpen }: I_Result & { autoOpen?: boo
 
     const handleAnalyse = () => {
         setAnalysisLoading(true);
-        dispatch(analyse(result as T_ApolloDoc));
+        dispatch(analyse(result));
     };
 
     const handleHide = () => {
