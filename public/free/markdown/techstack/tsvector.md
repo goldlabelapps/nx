@@ -5,6 +5,7 @@ title: tsvector
 description: Superfast full text search
 tags: Python, FastAPI, tsvector, Postgres, PostgreSQL, data types,
 icon: api
+image: https://live.staticflickr.com/65535/55198277139_08236ed419_b.jpg
 ---
 
 [PageLink icon="github" description="Open Source, production ready Python FastAPI/Postgres app for NX" title="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
