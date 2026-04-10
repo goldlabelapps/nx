@@ -1,11 +1,13 @@
 ---
 order: 472
 title: Next.js
-description: TypeScript with Node and React
+description: Fullstack Node and React
 slug: /techstack/nextjs
 tags: javascript, nextjs, frontend, backend
 icon: js
 ---
+
+[PageLink icon="github" description="Our open source NX repo is production-ready and fully documented, letting any fullstack JavaScript developer launch a working Firebase-powered NX instance in under 30 minutes." title="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
 
 > [CleverText text="The world’s most popular environment for developing fast, scalable, and production-ready web applications"]
 
