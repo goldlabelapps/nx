@@ -7,7 +7,7 @@ icon: blokey
 tags: open source, free, git, github
 --- 
 
-[PageLink icon="github" description="Our open source NX repo is production-ready and fully documented, letting any fullstack JavaScript developer launch a working Firebase-powered NX instance in under 30 minutes." title="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
+[PageLink icon="github" description="Free, open source NextJS app framework for rapid fullstack development" title="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
 
 [PageLink icon="github" description="Open Source, production ready Python FastAPI/Postgres app for NX" title="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
 
