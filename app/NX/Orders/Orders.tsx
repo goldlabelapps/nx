@@ -4,27 +4,95 @@ import { useRouter } from 'next/navigation';
 import { 
   Box, 
   Alert,
+  Button,
+  Container,
+  Typography,
 } from '@mui/material';
 import { init, useState } from '../../NX/Orders';
 import { useDispatch } from '../../NX/Uberedux';
+import {
+  Icon,
+} from '../DesignSystem';
 
 export default function Orders() {
 
+  const dispatch = useDispatch(); 
   const state = useState();
-  const dispatch = useDispatch();
+  const {
+    error,
+    initted,
+    pagination,
+    search,
+    results,
+  } = state || {};
 
   React.useEffect(() => {
-      if (!state) {
+    if (!initted) {
           dispatch(init());
       }
-  }, [state, dispatch]);
+  }, [initted, dispatch]);
 
+  if (!initted) return null
+
+  if (error) {
+    return (
+      <Container maxWidth="lg" sx={{ my: 4 }}>
+        <Alert severity="info" sx={{ my: 2 }}
+          action={
+            <Button
+              startIcon={<Icon icon="reset" />}
+              variant="contained"
+              color="primary"
+              onClick={() => window.location.reload()}
+            >
+              Retry
+            </Button>
+          }
+        >
+          {error}
+        </Alert>
+      </Container>
+    );
+  }
+  
   return (<>
       <Box>
-        <Alert severity="warning">
-          Orders
-        </Alert>
-        <pre>state: {JSON.stringify(state, null, 2)}</pre>
+        {pagination && (
+          <Typography variant="subtitle1" sx={{ mb: 2 }} align="center">
+            {(() => {
+              const { page, limit, total } = pagination;
+              if (!page || !limit || !total) return null;
+              const start = (page - 1) * limit + 1;
+              const end = Math.min(page * limit, total);
+              return `Showing ${start}-${end} of ${total} results`;
+            })()}
+          </Typography>
+        )}
+
+        {search && search.searchStr && (
+          <Typography variant="subtitle2" align="center" sx={{ mb: 2 }}>
+            {search.searchStr}
+          </Typography>
+        )}
+
+        {results && results.length === 0 && (
+          <Typography variant="body1" align="center" sx={{ mb: 2 }}>
+            No results found.
+          </Typography>
+        )}
+
+        {results && results.length > 0 && (
+          <Box sx={{ mb: 2 }}>
+            {results.map((order: any, idx: number) => (
+              <Box key={order.id ?? idx} sx={{}}>
+                <Typography variant="body1">
+                  {order.name}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        )}
+        
       </Box>
     </>
   );
