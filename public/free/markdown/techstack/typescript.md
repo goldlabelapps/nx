@@ -5,6 +5,7 @@ description: Statically typed superset of JavaScript
 slug: /techstack/typescript
 icon: js
 tags: Techstack, javascript, typescript
+image: https://live.staticflickr.com/65535/55139762319_146b661982_b.jpg
 ---
 [PageLink icon="js" title="NextJS" url="/techstack/nextjs"] 
 
