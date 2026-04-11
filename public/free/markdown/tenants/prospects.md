@@ -1,6 +1,6 @@
 ---
 order: 769
-title: prospects°
+title: Prospects°
 description: Be more direct
 slug: /tenants/prospects
 icon: prospects

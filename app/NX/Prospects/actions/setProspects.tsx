@@ -7,7 +7,6 @@ export const setProspects =
       try {
         const current = getState().redux.prospects;
         let updated;
-        // Merge for bus, busLoading, busError
         if (["bus", "busLoading", "busError"].includes(key)) {
           updated = {
             ...current,

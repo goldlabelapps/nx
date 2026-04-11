@@ -8,7 +8,6 @@ import {
     Alert,
     Grid,
     Pagination,
-    Typography,
 } from '@mui/material';
 import {
     useDispatch,
@@ -55,10 +54,9 @@ export default function Prospects() {
         }
     }, [state, dispatch]);
 
-
     if (state?.error) {
         return (
-            <Container maxWidth="sm" sx={{ my: 4 }}>
+            <Container maxWidth="lg" sx={{ my: 4 }}>
                 <Alert severity="info" sx={{ my: 2 }}
                     action={
                         <Button
