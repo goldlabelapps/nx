@@ -24,6 +24,7 @@
     "firebase-admin": "^13.6.0",
     "gray-matter": "^4.0.3",
     "gsap": "^3.14.2",
+    "he": "^1.2.0",
     "inquirer": "^13.1.0",
     "mapbox-gl": "^3.20.0",
     "next": "16.1.1",
@@ -34,11 +35,13 @@
     "react-redux": "^9.2.0",
     "react-share": "^5.2.2",
     "recharts": "^3.7.0",
+    "rehype-raw": "^7.0.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "resend": "^6.9.3"
   },
   "devDependencies": {
+    "@types/he": "^1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

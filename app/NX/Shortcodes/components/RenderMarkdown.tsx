@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import {
   Box,
   Link as MuiLink,
@@ -114,6 +115,7 @@ export default function RenderMarkdown({
         tabIndex={0}
       >
         <ReactMarkdown
+          rehypePlugins={[rehypeRaw]}
           components={{
             h1: ({ children }) => (
               <Typography variant="h4" sx={{ my: 1, fontWeight: 'lighter' }}>
