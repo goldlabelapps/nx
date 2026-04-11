@@ -18,23 +18,40 @@ async function fetchJson(endpoint: string) {
 export const init = () =>
     async (dispatch: T_UbereduxDispatch) => {
         try {
-            dispatch(setKey('loadingOrders', true));
+            dispatch(setKey('loading', true));
+            // set default search params from search.tsx
+            // import { defaultOrderSearchParams } from './search';
+            // (import at top required)
+            const { defaultOrderSearchParams } = await import('./search');
+            dispatch(setKey('searchParams', defaultOrderSearchParams));
+
+            // check the api health
             const base = process.env.NEXT_PUBLIC_PYTHON_URL;
-            const [
-                health,
-            ] = await Promise.all([
+            const [health] = await Promise.all([
                 fetchJson(`${base}health`),
             ]);
             dispatch(setKey('health', health));
-            dispatch(setKey('loadingOrders', false));
+            if (health && health.status === 'ok') {
+                // Only dispatch search if health is ok
+                const { search } = await import('./search');
+                dispatch(search());
+                dispatch(setKey('loading', false));
+            } else {
+                const msg = 'Health check failed: status not ok';
+                dispatch(setKey('error', msg));
+                dispatch(setUbereduxKey({ key: 'error', value: msg }));
+                dispatch(setKey('loading', false));
+            }
+            dispatch(setKey('initted', true));
         } catch (e) {
             let msg = e instanceof Error ? e.message : String(e);
             if (msg === 'Failed to fetch') {
                 const base = process.env.NEXT_PUBLIC_PYTHON_URL;
-                msg = `Can't reach Python at ${base}/health`;
+                msg = `Python endpoint unhealthy ${base}health`;
             }
             dispatch(setKey('error', msg));
-            dispatch(setKey('loadingOrders', false));
+            dispatch(setKey('loading', false));
+            dispatch(setKey('initted', true));
             dispatch(setUbereduxKey({ key: 'error', value: msg }));
         }
     };
