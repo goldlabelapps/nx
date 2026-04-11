@@ -7,6 +7,7 @@ import {
     Card,
     CardHeader,
     Typography,
+    CardMedia,
 } from '@mui/material';
 import { useDispatch } from '../../../NX/Uberedux';
 import { Icon } from '../../DesignSystem';
@@ -22,7 +23,8 @@ const Order: FC<I_Order> = ({ data }) => {
     const {
         name,
         categories,
-        base_image,
+        attribute_set_code,
+        thumbnail_image,
     } = data || {};
     // React.useEffect(() => {
     //     if (!initted) {
@@ -30,8 +32,9 @@ const Order: FC<I_Order> = ({ data }) => {
     //     }
     // }, [initted, dispatch]);
 
-    const src = base_image || '/placeholder.png';
+    const src = `/shared/jpg/magento/${thumbnail_image}`;
 
+    const thumbSize = 75;
     return (
         <>
             <Card 
@@ -41,9 +44,28 @@ const Order: FC<I_Order> = ({ data }) => {
                 <CardHeader 
                     avatar={<Icon icon="orders" color="primary"/>}
                     title={name}
-                    subheader={src}
+                    subheader={attribute_set_code}
+                    action={<Box sx={{
+                        backgroundColor: '#fff',
+                        borderRadius: 2,
+                        width: thumbSize,
+                        height: thumbSize,
+                    }}>
+                        <CardMedia
+                            component="img"
+                            image={src}
+                            alt={name}
+                            sx={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'contain',
+                            }}
+                        />
+                    </Box>}
                     
                 />
+                
+
             </Card>
         </>
     );
