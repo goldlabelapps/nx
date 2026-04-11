@@ -8,7 +8,11 @@ import {
   Container,
   Typography,
 } from '@mui/material';
-import { init, useState } from '../../NX/Orders';
+import { 
+  init, 
+  useState,
+  Order,
+} from '../../NX/Orders';
 import { useDispatch } from '../../NX/Uberedux';
 import {
   Icon,
@@ -84,11 +88,7 @@ export default function Orders() {
         {results && results.length > 0 && (
           <Box sx={{ mb: 2 }}>
             {results.map((order: any, idx: number) => (
-              <Box key={order.id ?? idx} sx={{}}>
-                <Typography variant="body1">
-                  {order.name}
-                </Typography>
-              </Box>
+              <Order key={`order_${idx}`} data={order} />
             ))}
           </Box>
         )}
