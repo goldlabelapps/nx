@@ -16,7 +16,6 @@ import {
   GithubLink,
   ContentCard,
   PageLink,
-  AIExample,
 } from '../../Shortcodes';
 
 export type I_RenderMarkdown = {
@@ -84,10 +83,6 @@ export default function RenderMarkdown({
     // PageLink
     const pageLink = parseShortcode(/\[PageLink\s+(.*?)\]/, PageLink);
     if (pageLink) return pageLink;
-
-    // AIExample
-    const aiExample = parseShortcode(/\[AIExample\s+(.*?)\]/, AIExample);
-    if (aiExample) return aiExample;
 
     // fallback: simply return text
     return text;

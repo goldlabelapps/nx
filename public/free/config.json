@@ -22,23 +22,23 @@
         },
         "designSystem": {
             "themeSwitching": true,
-            "defaultTheme": "dark",
+            "defaultTheme": "light",
             "themes": {
                 "dark": {
                     "mode": "dark",
-                    "primary": "#ffd849",
-                    "secondary": "#ffd849",
-                    "background": "#364450",
-                    "paper": "#364450",
-                    "text": "#fff"
+                    "primary": "#888888",
+                    "secondary": "#bbbbbb",
+                    "background": "#222222",
+                    "paper": "#333333",
+                    "text": "#f5f5f5"
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#3775a9",
-                    "secondary": "#3775a9",
-                    "background": "#fff",
-                    "paper": "#eaf0f5",
-                    "text": "#222"
+                    "primary": "#bbbbbb",
+                    "secondary": "#888888",
+                    "background": "#f5f5f5",
+                    "paper": "#eeeeee",
+                    "text": "#222222"
                 }
             }
         }

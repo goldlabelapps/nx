@@ -8,7 +8,7 @@ tags: help, support
 ---
 ## Getting started
 
-These instruction help you spin up a new working NX tenant on vercel.
+These instructions help you spin up a new working NX tenant on vercel.
 
 - Go to https://github.com/goldlabelapps/nx
 - Click Use this template

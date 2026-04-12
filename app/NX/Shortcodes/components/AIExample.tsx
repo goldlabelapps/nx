@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import {Prompt} from '../../Prompt';
+// import {Prompt} from '../../Prompt';
 
 export default function AIExample({
   url = null,
@@ -13,10 +13,11 @@ export default function AIExample({
   title?: string | null;
   description?: string | null;
 }) {
-  return <Prompt 
-            title={title} 
-            description={description} 
-            url={url} 
-            icon={icon} 
-          />;
+  return null;
+  // return <Prompt 
+  //           title={title} 
+  //           description={description} 
+  //           url={url} 
+  //           icon={icon} 
+  //         />;
 }
