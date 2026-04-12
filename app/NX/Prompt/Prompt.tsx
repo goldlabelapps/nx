@@ -116,6 +116,15 @@ export default function Prompt({
             <Typography variant="body2">
               Here we'll brief Gemini on what we want
             </Typography>
+            <Box sx={{ my: 2 }}>
+              <Button
+                variant="outlined"
+                startIcon={<Icon icon="left" />}
+                onClick={() => setActiveStep(0)}
+              >
+                Back
+              </Button>
+            </Box>
           </StepContent>
         </Step>
       </Stepper>
