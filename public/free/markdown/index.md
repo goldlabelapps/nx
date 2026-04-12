@@ -7,8 +7,6 @@ tags: NX, framework, fullstack, Multi-tenant, Tenant, JavaScript, Vanilla JavaSc
 icon: mobile
 ---
 
-[AIExample title="Try our AI"]  
-
 [PageLink icon="mobile" title="Tenants°" description="Separate apps. Same NextJS codebase"  url="/tenants"]   
 
 [PageLink icon="github" title="Open Source" description="Free, open source NextJS app framework for rapid fullstack development" url="/techstack/git"]  
