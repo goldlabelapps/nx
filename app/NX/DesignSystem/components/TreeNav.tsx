@@ -1,11 +1,6 @@
 "use client";
-import {
-    Box,
-    Typography,
-} from '@mui/material';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter, usePathname } from 'next/navigation';
-import { useAuthed } from '../../Paywall';
 import { useDispatch } from '../../Uberedux';
 import { navigateTo } from '../../DesignSystem';
 
@@ -51,9 +46,6 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const dispatch = useDispatch();
     const pathname = usePathname();
     const treeViewItems = mapNavItemsToTreeView(navItems);
-    const authed = useAuthed();
-    let md = ``;
-    if (authed) md = ``;
 
     // Helper to collect all node ids along the path to the current page
     function getExpandedIds(items: any[], pathname: string): string[] {
@@ -77,7 +69,6 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
     const defaultExpandedItems = getExpandedIds(treeViewItems, pathname);
 
     return (
-        <Box sx={{}}>
             <RichTreeView
                 items={treeViewItems}
                 defaultExpandedItems={defaultExpandedItems}
@@ -98,11 +89,5 @@ export default function TreeNav({ navItems = [] }: { navItems?: any[] }) {
                     }
                 }}
             />
-            {/* <Box sx={{mx: 1, mt: 2}}>
-                <Typography variant="caption">
-                    Related
-                </Typography>
-            </Box> */}
-        </Box>
     );
 }

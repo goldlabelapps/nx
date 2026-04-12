@@ -22,7 +22,6 @@ import {
 } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 import { NavVirus } from '../../Virus';
-import { MiniAccount } from '../../Paywall';
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
@@ -144,12 +143,10 @@ const Nav: React.FC<I_Nav> = ({
                             minWidth: 310,
                         }}
                         role="presentation">
-                        <MiniAccount />
+
                         <TreeNav navItems={navItems}/>
                         <Box sx={{ mt: 'auto', display: 'flex' }}>
                             
-                            
-
                             {themeSwitching && <>
                                 <Box sx={{ pb: 1.5, ml:2 }}>
                                     <IconButton onClick={handleThemeModeToggle}>

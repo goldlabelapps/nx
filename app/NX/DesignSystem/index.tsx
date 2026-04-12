@@ -17,9 +17,6 @@ import Loader from "./components/Loader";
 import Nav from './components/Nav';
 import { CleverText } from './components/CleverText';
 import Related from './components/Related';
-import Settings from './components/Settings';
-import SettingsMenu from "./components/SettingsMenu";
-import { Surface } from "./components/Surface";
 import TreeNav from "./components/TreeNav";
 
 // Hooks
@@ -48,9 +45,6 @@ export {
     Loader,
     Nav,
     Related,
-    Settings,
-    SettingsMenu,
-    Surface,
     TreeNav,
 
     // Hooks

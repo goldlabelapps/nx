@@ -11,7 +11,6 @@ import {
 	AppBar,
 	Typography,
 } from '@mui/material';
-import {UserSpot} from '../../Paywall';
 import { navigateTo } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 
@@ -66,7 +65,6 @@ export default function Header({
 						avatar={<IconButton onClick={handleAvatarClick}>
 									<Avatar src={avatar} />
 								</IconButton>}
-						action={<UserSpot onClick={handleAccountClick} />}
 					/>
 				</Container>
 			</AppBar>			
