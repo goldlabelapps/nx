@@ -10,7 +10,7 @@ tags: help, support
 
 These instruction help you spin up a new working NX tenant on vercel.
 
-- Navigate to https://github.com/goldlabelapps/nx
+- Go to https://github.com/goldlabelapps/nx
 - Click Use this template
 
 This will create a new repo on your github account. It can be public or private. Private is recommended.
@@ -23,7 +23,7 @@ cd <repo-name>
 yarn
 ```
 
-- Once the javascript deps are installed, run `yarn dev` to start the NextJS dev server. You will see the NX 404 page. 
+- Once the javascript dependencies are installed, run `yarn dev` to start the NextJS dev server. You will see the NX 404 page. 
 
 ![NX 404](/free/png/NX404.png)
 

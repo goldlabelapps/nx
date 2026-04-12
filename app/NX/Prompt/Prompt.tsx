@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { Icon, navigateTo } from '../DesignSystem';
 import { useDispatch } from '../Uberedux';
+import VerticalLinearStepper from './components/VerticalLinearStepper';
 
 export default function Prompt({
   url = null,
@@ -41,61 +42,9 @@ export default function Prompt({
     return 'LinkedIn URL looks good!';
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value;
-    setInput(val);
-    setHelperText(validate(val));
-  };
-
-  // const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
-  //   e.preventDefault();
-  //   const val = e.clipboardData.getData('Text');
-  //   // Use setTimeout to ensure only clipboard data is set, avoiding race with native paste
-  //   setTimeout(() => {
-  //     setInput(val);
-  //     setHelperText(validate(val));
-  //   }, 100);
-  // };
-
   return (
     <Box sx={{ width: '100%' }}>
-      <Paper 
-        variant="outlined" 
-        elevation={3} 
-        sx={{ 
-          p: 2, 
-          display: 'flex', 
-          flexDirection: 'column', 
-          gap: 2 
-        }}>
-        <Typography variant="h5" sx={{ mb: 1 }}>
-          {title || 'Paste LinkedIn Profile'}
-        </Typography>
-        <TextField
-          value={input}
-          onChange={handleInputChange}
-          // onPaste={handlePaste}
-          placeholder="https://www.linkedin.com/in/username"
-          fullWidth
-          variant="outlined"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Icon icon="link" color="primary" />
-              </InputAdornment>
-            ),
-            sx: {
-              py: 1.5,
-              px: 2,
-            },
-          }}
-          helperText={helperText}
-          FormHelperTextProps={{ 
-            sx: { 
-              color: helperText === 'LinkedIn URL looks good!' ? 'primary.main' : 'text.secondary' 
-            } }}
-        />
-      </Paper>
+        <VerticalLinearStepper />
     </Box>
   );
 }

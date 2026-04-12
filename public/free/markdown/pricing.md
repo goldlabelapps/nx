@@ -1,5 +1,5 @@
 ---
-order: 2000
+order: 250
 title: Pricing
 description: Start free and scale up as needed
 slug: /pricing
