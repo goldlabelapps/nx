@@ -25,3 +25,8 @@ The core NX platform is free and open source on [GitHub](https://github.com/gold
 ### Setup & Configured
 
 For a one-time flat fee of **£1000**, we set up and configure NX for you, resolve any initial issues, and hand over the instance after two weeks. Ongoing management is not included, but you retain full control
+
+[PageLink icon="mobile" title="Tenants°" description="Separate apps. Same NextJS codebase"  url="/tenants"]   
+[PageLink icon="github" title="Open Source" description="Free, open source NextJS app framework for rapid fullstack development" url="/techstack/git"]  
+[PageLink icon="techstack" title="Techstack" url="/techstack" description="Built Next.js React & Python"]  
+[PageLink icon="virus" title="魏魏°" description="我不是来和蜘蛛交配的" url="/tenants/nhtfs"]  
