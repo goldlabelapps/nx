@@ -12,5 +12,3 @@ tags: tenants, apps,
 [PageLink icon="virus" title="魏魏°" description="我不是来和蜘蛛交配的" url="/tenants/nhtfs"]  
 
 [PageLink icon="orders" title="Orders°" description="Sell more" url="/tenants/orders"]  
-
-[PageLink icon="prospects" title="Prospects°" description="Be more direct" url="/tenants/prospects"]  
