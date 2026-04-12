@@ -16,32 +16,7 @@ export const getEndpoints = (name?: string) => {
                     method: 'GET',
                 },
             ]
-        },
-        {
-            name: 'Avatars',
-            description: 'Upload, fetch and delete avatars',
-            path: `${baseURL}/avatars`,
-            endpoints: [
-                {
-                    name: 'Upload Avatar',
-                    endpoint: `${baseURL}/avatars/`,
-                    method: 'POST',
-                    required: 'uid'
-                },
-            ]
-        },
-        {
-            name: 'Notify',
-            description: 'Handles all channels of notification and logging',
-            path: `${baseURL}/notify`,
-            endpoints: [
-                {
-                    name: 'Email',
-                    endpoint: `${baseURL}/notify/email`,
-                    method: 'POST',
-                },
-            ]
-        },
+        }
     ];
     if (name) {
         const found = endpoints.find(e => e.name === name);
