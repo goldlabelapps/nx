@@ -49,24 +49,6 @@ export type T_Config = {
         dark: string;
     };
     cartridges: {
-        nxadmin?: {
-            enabled: boolean;
-            layout?: string;
-        },
-        orders?: {
-            enabled: boolean;
-            frontPage: string;
-            adminPage: string;
-        },
-        async?: {
-            enabled: boolean;
-        },
-        tings?: {
-            enabled: boolean;
-        },
-        paywall?: {
-            enabled: boolean;
-        },
         designSystem?: {
             themeSwitching: boolean;
             defaultTheme: string;
