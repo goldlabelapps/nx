@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import fs from 'fs';
 import path from 'path';
 import { UbereduxProvider } from './NX/Uberedux';
-import RequireAuthWrapper from './NX/Paywall/components/RequireAuthWrapper';
 
 const tenant = process.env.NEXT_PUBLIC_TENANT || "free";
 const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
@@ -43,11 +42,7 @@ export default async function RootLayout({
       <body>
         <div className="wrapper">
           <UbereduxProvider config={config}>
-            {paywall ? (
-              <RequireAuthWrapper config={config}>{children}</RequireAuthWrapper>
-            ) : (
-              children
-            )}
+            {children}
           </UbereduxProvider>
         </div>
       </body>
