@@ -9,7 +9,6 @@ import { setDesignSystem, useDesignSystem } from './DesignSystem';
 const NX: React.FC<I_NX> = ({
     children,
     config,
-    flash,
 }) => {
     const dispatch = useDispatch();
     const designSystem = useDesignSystem();
@@ -42,11 +41,6 @@ const NX: React.FC<I_NX> = ({
                 {children}
             </Box>
         );
-    }
-
-    let flashContent = children;
-    if (flash === 'EchoPay') {
-        //flashContent = <EchoPay />;
     }
 
     return (
