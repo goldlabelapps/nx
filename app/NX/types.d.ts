@@ -114,18 +114,6 @@ export interface I_NX {
     flash?: string;
 }
 
-export interface I_SmartImage {
-    smartImage?: T_SmartImage;
-}
-
-export type T_SmartImage = {
-    src: string;
-    meta?: {
-        alt?: string;
-        mode?: 'image' | 'config' | 'smartImage' | 'none';
-    };
-};
-
 export type T_Ad =
     | {
         type: string;
@@ -171,7 +159,6 @@ export type T_UbereduxCartridge = Record<string, unknown>;
 export type T_DesignSystemCartridge = {
     allowTheme: boolean;
     defaultTheme: string;
-    smartImages?: boolean | T_SmartImage[];
     themes: {
         [key: string]: {
             mode: string;

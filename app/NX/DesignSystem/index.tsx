@@ -19,7 +19,6 @@ import { CleverText } from './components/CleverText';
 import Related from './components/Related';
 import Settings from './components/Settings';
 import SettingsMenu from "./components/SettingsMenu";
-import SmartImage from './components/SmartImage';
 import { Surface } from "./components/Surface";
 import TreeNav from "./components/TreeNav";
 
@@ -51,7 +50,6 @@ export {
     Related,
     Settings,
     SettingsMenu,
-    SmartImage,
     Surface,
     TreeNav,
 
