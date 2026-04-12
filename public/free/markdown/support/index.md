@@ -25,8 +25,6 @@ yarn
 
 - Once the javascript dependencies are installed, run `yarn dev` to start the NextJS dev server. You will see the NX 404 page. 
 
-![NX 404](/free/png/NX404.png)
-
 Now we need to setup the rest of our environment using an .env file. 
 
 ```sh
