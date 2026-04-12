@@ -4,8 +4,10 @@ slug: /
 title: NX°
 description: Hello.
 tags: NX, framework, fullstack, Multi-tenant, Tenant, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, Server Side JavaScript, Node, NextJS, Headless CMS
-icon: mobile
+icon: examples
 ---
+
+[AIExample ]  
 
 [PageLink icon="mobile" title="Tenants°" description="Separate apps. Same NextJS codebase"  url="/tenants"]   
 
