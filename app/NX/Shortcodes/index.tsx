@@ -6,8 +6,10 @@ import CleverTextShortcode from "./components/CleverTextShortcode";
 import ContentCard from "./components/ContentCard";
 import RenderMarkdown from "./components/RenderMarkdown";
 import PageLink from "./components/PageLink";
+import AIExample from "./components/AIExample";
 
 export {
+    AIExample,
     RenderMarkdown,
     BuyNow,
     FeedbackBtn,

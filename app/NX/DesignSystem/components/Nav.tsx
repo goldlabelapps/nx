@@ -1,4 +1,5 @@
 "use client";
+import pJSON from '../../../../package.json'
 import { I_Nav, I_NavNode } from '../../types';
 import React from 'react';
 import Drawer from '@mui/material/Drawer';
@@ -10,12 +11,14 @@ import {
     ListItemButton,
     ListItemText,
     ListItemIcon,
+    Typography,
 } from '@mui/material';
 import { 
     Icon, 
     setDesignSystem, 
     useDesignSystem, 
     TreeNav,
+    useConfig,
 } from '../../DesignSystem';
 import { useDispatch } from '../../Uberedux';
 import { NavVirus } from '../../Virus';
@@ -35,6 +38,7 @@ const Nav: React.FC<I_Nav> = ({
     mode = 'desktop',
     frontmatter,
 }) => {
+
     const router = useRouter();
     const sortedNavItems = sortNavItems(navItems);
     const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -157,16 +161,14 @@ const Nav: React.FC<I_Nav> = ({
                             <Box sx={{ mt: 1, ml: 2 }}>
                                 <NavVirus frontmatter={frontmatter} />
                             </Box>
-                            
-                            {/* <Box sx={{ ml: 1 }}>
-                                <IconButton
-                                    color="primary"
-                                    onClick={handleGithubClick}>
-                                    <Icon icon={'github'} />
-                                </IconButton>
-                            </Box> */}
-                            
+                            <Box sx={{ flexGrow: 1 }} />
+                            <Box sx={{mt: 1}}>
+                                <Typography variant='caption' fontSize={10}>
+                                    NX° {pJSON.version}
+                                </Typography>
+                            </Box>
                         </Box>
+                        
                     </Box>
                 </Drawer>
             </>

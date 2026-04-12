@@ -24,8 +24,6 @@ import {
     TreeNav,
 } from '../NX/DesignSystem';
 import { RenderMarkdown } from '../NX/Shortcodes';
-import { Prospects } from '../NX/Prospects';
-import { Orders } from '../NX/Orders';
 import { Virus } from '../NX/Virus';
 
 export async function generateMetadata({ params }: { params: any }): Promise<Metadata> {
@@ -120,18 +118,6 @@ export default async function Page(props: any) {
                         <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
                             <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
                                 <Virus />
-                            </Box>
-                        </Container>
-                    ) : data.cartridge === 'orders' ? (
-                        <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
-                            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                <Orders />
-                            </Box>
-                        </Container>
-                    ) : data.cartridge === 'prospects' ? (
-                        <Container id="main" maxWidth="lg" sx={{ mt: '100px', pb: '90px' }}>
-                            <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 2 }}>
-                                <Prospects />
                             </Box>
                         </Container>
                     ) : (

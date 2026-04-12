@@ -1,6 +1,5 @@
 import type { T_UbereduxDispatch } from '../../types';
 import { setUbereduxKey } from '../../Uberedux';
-import { setProspects, searchProspects } from '../../Prospects';
 import { setFeedback } from '../../DesignSystem';
 import { setDesignSystem } from './setDesignSystem';
 
@@ -63,7 +62,6 @@ export const fetchMarkdown = (
                     : item
             );
             dispatch(setDesignSystem('markdown', updatedArr));
-            dispatch(setProspects('error', msg));
             dispatch(setUbereduxKey({ key: 'error', value: msg }));
         }
     };
