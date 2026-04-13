@@ -1,10 +1,10 @@
 ---
 order: 500
-title: Tenants°
+title: Examples°
 description: Separate apps. Same NextJS codebase
-slug: /tenants
+slug: /examples
 icon: mobile
-tags: tenants, apps,
+tags: tenants, apps, examples
 ---
 
 [PageLink icon="rocket" title="Edtech°" description="Educational Technology" url="/tenants/edtech"]  
