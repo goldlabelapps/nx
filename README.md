@@ -6,8 +6,6 @@ In this Open Source release we offer a public repo. Production ready and fully d
 
 ![NX°](public/shared/png/opengraph/apps.png)
 
-
-
 #### Features
 
 - **Next.js 16**: SSR, SSG, API routes, and advanced App Router
@@ -23,8 +21,6 @@ In this Open Source release we offer a public repo. Production ready and fully d
 - **Flash Animation Engine**: GSAP-powered animation system with MovieClips and ActionScript controllers
 - **Shortcodes**: MDX-style custom components embeddable in Markdown content
 - **Rich Media Support**: Markdown, Mapbox maps, Recharts, images, SVG, PDF, and more
-
-
 
 #### Quick Start
 
@@ -51,8 +47,6 @@ The app will be available at [http://localhost:1999](http://localhost:1999).
 
 NX° exposes a RESTful API under `/api`. See [app/api/README.md](app/api/README.md) for details and [live API docs](https://github.com/goldlabelapps/python-nx-ai).
 
-
-
 #### Tech Stack
 
 | Technology | Role |
@@ -69,8 +63,6 @@ NX° exposes a RESTful API under `/api`. See [app/api/README.md](app/api/README.
 | [Resend](https://resend.com/) | Email sending |
 | [FingerprintJS](https://fingerprint.com/) | Visitor fingerprinting |
 | [PWA](https://web.dev/progressive-web-apps/) | Service workers & offline support |
-
-
 
 #### Codebase Structure
 
