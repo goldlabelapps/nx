@@ -6,7 +6,7 @@ In this Open Source release we offer a public repo. Production ready and fully d
 
 ![NX°](public/shared/png/opengraph/apps.png)
 
----
+
 
 #### Features
 
@@ -24,7 +24,7 @@ In this Open Source release we offer a public repo. Production ready and fully d
 - **Shortcodes**: MDX-style custom components embeddable in Markdown content
 - **Rich Media Support**: Markdown, Mapbox maps, Recharts, images, SVG, PDF, and more
 
----
+
 
 #### Quick Start
 
@@ -51,12 +51,12 @@ The app will be available at [http://localhost:1999](http://localhost:1999).
 
 NX° exposes a RESTful API under `/api`. See [app/api/README.md](app/api/README.md) for details and [live API docs](https://github.com/goldlabelapps/python-nx-ai).
 
----
+
 
 #### Tech Stack
 
 | Technology | Role |
-|---|---|
+|||
 | [Next.js 16](https://nextjs.org/) | Core framework — SSR, SSG, API routes, App Router |
 | [React 19](https://react.dev/) | UI rendering |
 | [TypeScript](https://www.typescriptlang.org/) | Strict typing throughout |
@@ -70,7 +70,7 @@ NX° exposes a RESTful API under `/api`. See [app/api/README.md](app/api/README.
 | [FingerprintJS](https://fingerprint.com/) | Visitor fingerprinting |
 | [PWA](https://web.dev/progressive-web-apps/) | Service workers & offline support |
 
----
+
 
 #### Codebase Structure
 
@@ -123,7 +123,7 @@ NX° exposes a RESTful API under `/api`. See [app/api/README.md](app/api/README.
     └── shared/                 # Shared assets (images, SVGs, fonts, PDFs)
 ```
 
----
+
 
 #### Architecture
 
@@ -168,32 +168,32 @@ URL → [[...slug]]/page.tsx
   → <Header> <TreeNav> <Hero> <RenderMarkdown> <Footer>
 ```
 
----
+
 
 #### Scripts
 
 | Command | Description |
-|---|---|
+|||
 | `yarn dev` | Start development server at port 1999 |
 | `yarn build` | Build for production |
 | `yarn start` | Start production server |
 | `yarn lint` | Run ESLint |
 | `yarn clean` | Clean build artifacts |
 
----
+
 
 #### Contributing
 
 Contributions are welcome! Please open issues or submit pull requests.
 For major changes, open an issue first to discuss what you would like to change.
 
----
+
 
 #### License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
----
+
 
 #### Owner
 
