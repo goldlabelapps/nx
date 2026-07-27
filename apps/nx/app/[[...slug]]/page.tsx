@@ -136,29 +136,18 @@ export default async function Page({ params }: T_PageProps) {
     const pageDescription = description || config?.description || '';
 
     return (
-        <NX config={config} frontmatter={data}>
             <div className="site-shell">
                 <header className="site-header">
                     <div className="site-header-top" aria-label="Main header bar">
                         <div className="site-brand">
                             <a className="site-home-reset" href="/" aria-label="Home and reset to root">
-                                <span
+                                <img
+                                    src="/nx/png/favicon.png"
+                                    alt=""
                                     aria-hidden={true}
-                                    style={{
-                                        display: 'inline-flex',
-                                        width: 30,
-                                        height: 30,
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        border: '1px solid currentColor',
-                                        borderRadius: 4,
-                                        fontSize: 12,
-                                        fontWeight: 700,
-                                        lineHeight: 1,
-                                    }}
-                                >
-                                    NX
-                                </span>
+                                    width={30}
+                                    height={30}
+                                />
                             </a>
                         </div>
                     </div>
@@ -286,6 +275,5 @@ export default async function Page({ params }: T_PageProps) {
                     </div>
                 </footer>
             </div>
-        </NX>
     );
 }
