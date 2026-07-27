@@ -1,7 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "installCommand": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm --version && corepack pnpm install --frozen-lockfile",
-  "buildCommand": "corepack pnpm build-storybook",
-  "outputDirectory": "storybook-static"
-}

@@ -15,7 +15,6 @@ import {
 import { normalizeTenant } from '../NX/lib/normalizeTenant';
 import { RenderMarkdown } from '../NX/Shortcodes';
 import { ShareVirus } from '../../public/shared/flash';
-import { Favicon } from '@nx/oldfashioned';
 
 type T_NavNode = {
     title?: string;
@@ -143,7 +142,23 @@ export default async function Page({ params }: T_PageProps) {
                     <div className="site-header-top" aria-label="Main header bar">
                         <div className="site-brand">
                             <a className="site-home-reset" href="/" aria-label="Home and reset to root">
-                                <Favicon size={30} tone="current" aria-hidden={true} />
+                                <span
+                                    aria-hidden={true}
+                                    style={{
+                                        display: 'inline-flex',
+                                        width: 30,
+                                        height: 30,
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        border: '1px solid currentColor',
+                                        borderRadius: 4,
+                                        fontSize: 12,
+                                        fontWeight: 700,
+                                        lineHeight: 1,
+                                    }}
+                                >
+                                    NX
+                                </span>
                             </a>
                         </div>
                     </div>
