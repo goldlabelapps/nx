@@ -3,9 +3,6 @@
   "name": "nx",
   "description": "NX°",
   "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184",
-  "engines": {
-    "node": ">=20 <25"
-  },
   "scripts": {
     "dev": "pnpm run kill && rm -rf .next && next dev -p 1999 --webpack",
     "build": "next build --webpack",
@@ -14,9 +11,9 @@
     "test:watch": "jest --watch",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "clean": "pnpm run kill && bash app/NX/lib/bash/clean.sh",
-    "kill": "bash app/NX/lib/bash/kill.sh",
-    "open": "bash app/NX/lib/bash/open.sh"
+    "clean": "pnpm run kill && bash ../../shell/clean.sh",
+    "kill": "bash ../../shell/kill.sh",
+    "open": "bash ../../shell/open.sh"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
