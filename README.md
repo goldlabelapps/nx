@@ -9,29 +9,17 @@
         </a>
         <span>NX° Turbo</span>
     </h1>
+
+
+    
 </div>
 
-## NX° Turbo
+## Docs Links
 
-NX° turborepo implementation
+- https://docs.goldlabel.pro
+- https://docs.goldlabel.pro/NX
+- https://docs.goldlabel.pro/Virus
+- https://docs.goldlabel.pro/account
+- https://docs.goldlabel.pro/search
 
-- [Home](apps/docs/public/docs/README.md)
-- [NX Guide](apps/docs/public/docs/nx.md)
-- [NX Guide](apps/docs/public/docs/nx.md)
-- [API + TypeScript Guide](apps/docs/public/docs/api-typescript.md)
-- [Testing Guide](apps/docs/public/docs/testing.md)
-- [Theme Guide](apps/docs/public/docs/theme.md)
 
-## Apps
-
-- [Overview](apps/docs/public/docs/apps/v3.md)
-- [NX Runtime Notes](apps/docs/public/docs/apps/nx-runtime.md)
-- [NX Shortcodes](apps/docs/public/docs/apps/nx-shortcodes.md)
-- [NX CleverText](apps/docs/public/docs/apps/nx-clevertext.md)
-- [NX Chatbot Flash Notes](apps/docs/public/docs/apps/nx-chatbot.md)
-
-## Packages
-
-### packages/ui
-
-- [Overview](apps/docs/public/docs/packages/design-system.md)

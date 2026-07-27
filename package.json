@@ -7,16 +7,14 @@
   },
   "private": true,
   "scripts": {
-    "dev": "turbo run dev storybook --filter=!python",
-    "dev:all": "turbo run dev",
+    "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "type-check": "turbo run type-check",
     "ci:github": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && NEXT_TELEMETRY_DISABLED=1 sh -c 'if [ -d apps/nx ]; then corepack pnpm --dir apps/nx build; else corepack pnpm build; fi'",
     "ci:full": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm lint && corepack pnpm type-check && corepack pnpm -r --if-present test && corepack pnpm build",
     "storybook": "turbo run storybook --filter=@nx/themes-storybook",
-    "build-storybook": "turbo run build-storybook --filter=@nx/themes-storybook",
-    "preview:concept-lab": "open 'packages/ui/templates/concept-lab/ConceptLab.dc.html'"
+    "build-storybook": "turbo run build-storybook --filter=@nx/themes-storybook"
   },
   "devDependencies": {
     "turbo": "2.10.5"
