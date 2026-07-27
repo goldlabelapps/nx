@@ -1,6 +1,6 @@
 {
   "name": "nx",
-  "version": "1.5.2",
+  "version": "2.0.0",
   "packageManager": "pnpm@11.13.0",
   "engines": {
     "node": ">=20 <25"
@@ -17,6 +17,6 @@
     "build-storybook": "turbo run build-storybook --filter=@nx/themes-storybook"
   },
   "devDependencies": {
-    "turbo": "2.10.5"
+    "turbo": "2.10.7"
   }
 }
