@@ -23,7 +23,7 @@
         "designSystem": {
             "themeSwitching": true,
             "defaultTheme": "light",
-            "system": "nx",
+            "system": "unix",
             "themes": {
                 "dark": {
                     "mode": "dark",

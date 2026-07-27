@@ -13,13 +13,3 @@
 
     
 </div>
-
-## Docs Links
-
-- https://docs.goldlabel.pro
-- https://docs.goldlabel.pro/NX
-- https://docs.goldlabel.pro/Virus
-- https://docs.goldlabel.pro/account
-- https://docs.goldlabel.pro/search
-
-
