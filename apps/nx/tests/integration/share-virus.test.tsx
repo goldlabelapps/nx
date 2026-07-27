@@ -79,12 +79,12 @@ describe('ShareVirus logic', () => {
     expect(screen.getByTestId('nx-logo')).toHaveAttribute('data-svg-src', '/nhtfs/svg/NXLogo.svg');
   });
 
-  it('initializes and destroys animation lifecycle hooks', () => {
+  it('does not initialize legacy animation lifecycle hooks', () => {
     const { unmount } = render(<ShareVirus config={{ tenant: 'nx' }} />);
 
-    expect(initMock).toHaveBeenCalled();
+    expect(initMock).not.toHaveBeenCalled();
 
     unmount();
-    expect(destroyMock).toHaveBeenCalled();
+    expect(destroyMock).not.toHaveBeenCalled();
   });
 });
