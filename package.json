@@ -1,6 +1,6 @@
 {
-  "name": "nx-turbo",
-  "version": "1.5.1",
+  "name": "nx",
+  "version": "1.5.2",
   "packageManager": "pnpm@11.13.0",
   "engines": {
     "node": ">=20 <25"
