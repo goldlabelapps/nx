@@ -14,7 +14,6 @@ import {
 } from '../NX/lib/index.server';
 import { normalizeTenant } from '../NX/lib/normalizeTenant';
 import { RenderMarkdown } from '../NX/Shortcodes';
-import { ShareVirus } from '../../public/shared/flash';
 
 type T_NavNode = {
     title?: string;
@@ -132,32 +131,34 @@ export default async function Page({ params }: T_PageProps) {
     if (data.description) description = data.description;
     const featuredImage = typeof data.image === 'string' && data.image.trim() ? data.image : null;
     const navItems = (await serverUseNav()) as T_NavNode[];
-    const siteName = config?.siteName || tenant.toUpperCase();
+    const siteName = config?.siteName || 'NX°';
     const pageDescription = description || config?.description || '';
 
     return (
             <div className="site-shell">
                 <header className="site-header">
                     <div className="site-header-top" aria-label="Main header bar">
+                        
+                    <div className="site-footer-brand" aria-label="Brand and overview">
+                        <h2>{siteName}</h2>
+                        <p>{config?.description || 'Template'}</p>
+                    </div>
+                        
+                        
                         <div className="site-brand">
                             <a className="site-home-reset" href="/" aria-label="Home and reset to root">
                                 <img
                                     src="/nx/png/favicon.png"
                                     alt=""
                                     aria-hidden={true}
-                                    width={30}
-                                    height={30}
+                                    width={50}
+                                    height={50}
                                 />
                             </a>
                         </div>
                     </div>
 
-                    <div className="site-header-hero" aria-label="Page introduction">
-                        <div className="site-header-copy">
-                            <p className="site-header-eyebrow">{data.title || title}</p>
-                            <p>{pageDescription}</p>
-                        </div>
-                    </div>
+                    
                 </header>
 
                 <details className="site-floating-nav" aria-label="Mobile navigation">
@@ -181,17 +182,13 @@ export default async function Page({ params }: T_PageProps) {
                                     <img className="site-featured-image-bg" src={featuredImage} alt="" />
                                 </div>
                             ) : null}
-                            {data.cartridge ? (
-                                data.cartridge === 'virus' ? (
-                                    <ShareVirus config={config} />
-                                ) : (
-                                    <>
-                                        <h2>{data.title || title} (CARTRIDGE)</h2>
-                                        <RenderMarkdown config={config}>
-                                            {content}
-                                        </RenderMarkdown>
-                                    </>
-                                )
+                            {data.cartridge && data.cartridge !== 'virus' ? (
+                                <>
+                                    <h2>{data.title || title} (CARTRIDGE)</h2>
+                                    <RenderMarkdown config={config}>
+                                        {content}
+                                    </RenderMarkdown>
+                                </>
                             ) : (
                                 <RenderMarkdown config={config}>
                                     {content}
@@ -200,17 +197,17 @@ export default async function Page({ params }: T_PageProps) {
                         </div>
                     </section>
 
-                    <aside className="site-col site-col-right" aria-label="Sidebar placeholder">
+                    {/* <aside className="site-col site-col-right" aria-label="Sidebar placeholder">
                         <section className="site-panel site-panel-sidebar site-sidebar-placeholder">
                             <p className="site-sidebar-placeholder-label">Placeholder</p>
                             <p className="site-sidebar-placeholder-text">
                                 Sidebar module intentionally muted for now.
                             </p>
                         </section>
-                    </aside>
+                    </aside> */}
                 </main>
 
-                <footer className="site-footer">
+                {/* <footer className="site-footer">
                     <div className="site-footer-top">
                         <div className="site-footer-brand" aria-label="Brand and overview">
                             <h2>{siteName}</h2>
@@ -273,7 +270,7 @@ export default async function Page({ params }: T_PageProps) {
                             </li>
                         </ul>
                     </div>
-                </footer>
+                </footer> */}
             </div>
     );
 }

@@ -71,15 +71,32 @@ a {
 	gap: var(--space-3);
 }
 
+.site-header-top .site-footer-brand {
+	margin-left: auto;
+	text-align: right;
+}
+
+.site-header-top .site-footer-brand h2 {
+	margin-bottom: 0.15rem;
+}
+
+.site-header-top .site-footer-brand p {
+	margin-top: 0;
+}
+
+.site-brand {
+	order: -1;
+}
+
 .site-home-reset {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	width: 42px;
 	height: 42px;
-	border: 1px solid var(--border);
+	border: 0;
 	border-radius: 10px;
-	background: #fff;
+	background: transparent;
 }
 
 .site-header-hero {

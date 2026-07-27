@@ -1,7 +1,7 @@
 {
     "tenant": "nx",
-    "siteName": "NX° Turbo",
-    "description": "Open Source & Free",
+    "siteName": "",
+    "description": "",
     "url": "https://nx.goldlabel.pro",
     "owner": {
         "name": "NX°",
@@ -35,11 +35,11 @@
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#3F3F3F",
-                    "secondary": "#0E0E0E",
-                    "background": "#ECECEC",
-                    "paper": "#E1E1E1",
-                    "text": "#0E0E0E"
+                    "primary": "#000",
+                    "secondary": "#000",
+                    "background": "#000",
+                    "paper": "#000",
+                    "text": "#FFF"
                 }
             }
         }
