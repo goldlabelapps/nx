@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { usePathname } from 'next/navigation';
-import { Button } from '@nx/oldfashioned';
 
 function normalizeRoutePath(input: string): string {
   const trimmed = input.trim();
@@ -35,22 +34,25 @@ export default function PageLink({
   const label = title || description || url;
 
   return (
-    <Button
-      as="a"
-      variant="quiet"
-      block={true}
+    <a
       href={url}
       target={isExternal ? '_blank' : '_self'}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       style={{
+        display: 'flex',
         justifyContent: 'flex-start',
+        alignItems: 'center',
+        width: '100%',
+        textDecoration: 'none',
+        color: 'inherit',
         padding: '12px 14px',
-        borderColor: 'transparent',
+        border: '1px dashed rgba(0,0,0,0.25)',
+        borderRadius: 8,
         background: 'rgba(255,255,255,0.46)',
         boxShadow: 'none',
       }}
     >
       {label}
-    </Button>
+    </a>
   );
 }

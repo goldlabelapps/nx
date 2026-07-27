@@ -1,6 +1,5 @@
 packages:
   - 'packages/*'
-  - 'packages/themes/*'
   - 'apps/*'
 verifyDepsBeforeRun: false
 allowBuilds:
