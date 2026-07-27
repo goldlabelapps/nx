@@ -18,6 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - name: Setup Node.js 24
         uses: actions/setup-node@v4
         with:
@@ -25,19 +28,18 @@ jobs:
 
       - name: Prepare pnpm (match vercel.json)
         run: |
-          corepack enable
           corepack prepare pnpm@11.13.0 --activate
-          corepack pnpm --version
+          pnpm --version
 
       - name: Install dependencies (frozen lockfile)
-        run: corepack pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build (match vercel.json)
         env:
           NEXT_TELEMETRY_DISABLED: "1"
         run: |
           if [ -d apps/nx ]; then
-            corepack pnpm --dir apps/nx build
+            pnpm --dir apps/nx build
           else
-            corepack pnpm build
+            pnpm build
           fi
