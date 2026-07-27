@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
+    "clean": "bash ./shell/clean-repo.sh",
     "lint": "turbo run lint",
     "test": "node ./tests/run-monorepo-tests.mjs",
     "type-check": "turbo run type-check",
