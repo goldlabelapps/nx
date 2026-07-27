@@ -227,7 +227,7 @@ export default async function Page({ params }: T_PageProps) {
                             <section className="site-footer-section" aria-label="Resources links">
                                 <h3>Resources</h3>
                                 <ul>
-                                    <li><a href="/docs">Documentation</a></li>
+                                    <li><a href="/shared">Documentation</a></li>
                                     <li><a href="/free">Free tools</a></li>
                                     <li><a href="/shared">Templates</a></li>
                                     <li><a href="/history">Release notes</a></li>

@@ -5,7 +5,6 @@ title: NX° Turbo
 description: Turbo Boost Your Stuff
 tags: NX°, free, framework, fullstack, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, SSG, Server Side JavaScript, Node, NextJS
 icon: rocket
-image: https://live.staticflickr.com/65535/55389698357_c019ec2039_b.jpg
 ---
 
 NX° is a high-level framework for rapidly bootstrapping modern PWAs. Built on modular JavaScript and NextJS, it streamlines fullstack development for both server-side Node and client-side React—so you can launch new web apps fast, without starting from scratch.

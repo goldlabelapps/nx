@@ -21,9 +21,9 @@ describe('actions/navigateTo', () => {
     const router = { push: jest.fn() } as any;
     const openSpy = jest.spyOn(window, 'open').mockImplementation(() => null);
 
-    await navigateTo(router, '/docs', '_blank')(dispatch as any, getState as any);
+    await navigateTo(router, '/shared', '_blank')(dispatch as any, getState as any);
 
-    expect(openSpy).toHaveBeenCalledWith('/docs', '_blank');
+    expect(openSpy).toHaveBeenCalledWith('/shared', '_blank');
     expect(router.push).not.toHaveBeenCalled();
   });
 
