@@ -10,9 +10,14 @@
   "exports": {
     ".": {
       "import": "./dist/index.js",
+      "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./styles.css": "./dist/styles/globals.css"
+    "./styles.css": {
+      "import": "./dist/styles/globals.css",
+      "require": "./dist/styles/globals.css",
+      "default": "./dist/styles/globals.css"
+    }
   },
   "files": ["dist"],
   "scripts": {

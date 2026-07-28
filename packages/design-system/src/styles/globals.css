@@ -1,3 +1,5 @@
+@import './tokens.css';
+
 :root {
   color-scheme: light;
   --nx-ink: #1a1814;
