@@ -1,6 +1,6 @@
 # Design System
 
-This package is the shared home for presentation-layer work in NX. It is meant to own the frontend experience beyond a simple color theme, including:
+This package is the shared home for presentation-layer work in NX°. It is meant to own the frontend experience beyond a simple color theme, including:
 
 - a reusable design token and theme layer
 - layout primitives for pages and sections

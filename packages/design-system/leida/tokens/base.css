@@ -1,0 +1,54 @@
+/* ============================================================
+   Leida, Base elements & core utilities
+   Minimal, opt-in foundations mirrored from the product. Consumers
+   linking styles.css get sensible element defaults plus the three
+   signature helper classes: .eyebrow, .serif, .mono.
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display headings - editorial serif, italic, warm ink */
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  color: var(--text-strong);
+  letter-spacing: var(--track-display);
+  line-height: var(--leading-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+h1 { font-size: var(--type-h1); }
+h2 { font-size: var(--type-h2); }
+h3 { font-size: var(--type-h3); letter-spacing: 0; line-height: var(--leading-snug); }
+
+p  { margin: 0 0 1em; text-wrap: pretty; }
+a  { color: inherit; }
+
+/* --- Signature helper classes --- */
+.serif   { font-family: var(--font-serif); font-style: italic; }
+.mono    { font-family: var(--font-mono); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--type-eyebrow);
+  letter-spacing: var(--track-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-accent);
+}
+
+.lede {
+  font-size: var(--type-lede);
+  line-height: 1.65;
+  color: var(--text-body);
+}

@@ -1,0 +1,25 @@
+<!-- @dsCard group="Type" viewport="700x240" name="Type scale" subtitle="Display → body → label, in one ramp" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); padding: 22px 28px; }
+  .r { display: flex; align-items: baseline; gap: 16px; padding: 6px 0; border-bottom: 1px solid var(--border-faint); }
+  .r:last-child { border-bottom: 0; }
+  .name { font-family: var(--font-mono); font-size: 0.54rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--leida-muted); width: 78px; flex: 0 0 78px; }
+  .spec { font-family: var(--font-serif); font-style: italic; color: var(--leida-ink); line-height: 1; }
+  .s-body { font-family: var(--font-sans); font-style: normal; color: var(--text-body); }
+  .s-mono { font-family: var(--font-mono); font-style: normal; text-transform: uppercase; letter-spacing: 0.12em; color: var(--leida-clay); }
+</style>
+</head>
+<body>
+  <div class="r"><div class="name">H1</div><div class="spec" style="font-size:2.6rem">Aftercare</div></div>
+  <div class="r"><div class="name">H2</div><div class="spec" style="font-size:1.9rem">Morning &amp; evening</div></div>
+  <div class="r"><div class="name">H3</div><div class="spec" style="font-size:1.35rem">That's everything for now.</div></div>
+  <div class="r"><div class="name">Lede</div><div class="spec s-body" style="font-size:1.18rem">Never out of date.</div></div>
+  <div class="r"><div class="name">Body</div><div class="spec s-body" style="font-size:0.95rem">Saves to their phone like an app.</div></div>
+  <div class="r"><div class="name">Eyebrow</div><div class="spec s-mono" style="font-size:0.7rem">Client aftercare</div></div>
+</body>
+</html>

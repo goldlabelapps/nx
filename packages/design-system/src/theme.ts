@@ -9,32 +9,35 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
     palette: {
       mode,
       primary: {
-        main: '#2563eb'
+        main: '#a8927a'
       },
       secondary: {
-        main: '#7c3aed'
+        main: '#1a1814'
       },
       background: {
-        default: isDark ? '#030712' : '#f8fbff',
-        paper: isDark ? '#111827' : '#ffffff'
+        default: isDark ? '#111827' : '#f7f7f4',
+        paper: isDark ? '#1f2937' : '#fbfaf7'
       },
       text: {
-        primary: isDark ? '#f8fafc' : '#0f172a',
-        secondary: isDark ? '#94a3b8' : '#475569'
+        primary: isDark ? '#f7f7f4' : '#1a1814',
+        secondary: isDark ? '#cbd5e1' : '#3a3530'
       }
     },
     shape: {
-      borderRadius: 16
+      borderRadius: 20
     },
     typography: {
-      fontFamily: 'Inter, "Segoe UI", Roboto, sans-serif',
+      fontFamily: '"DM Sans", "Segoe UI", Roboto, sans-serif',
       h1: {
         fontWeight: 700,
-        fontSize: '2.5rem'
+        fontSize: '2.5rem',
+        lineHeight: 1.05,
+        letterSpacing: '-0.02em'
       },
       h2: {
         fontWeight: 700,
-        fontSize: '2rem'
+        fontSize: '2rem',
+        lineHeight: 1.1
       },
       h3: {
         fontWeight: 600,
@@ -42,7 +45,8 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
       },
       button: {
         textTransform: 'none',
-        fontWeight: 600
+        fontWeight: 600,
+        letterSpacing: '0.01em'
       }
     },
     components: {
@@ -50,15 +54,23 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
         styleOverrides: {
           root: {
             borderRadius: '999px',
-            padding: '0.7rem 1.2rem'
+            padding: '0.7rem 1.2rem',
+            boxShadow: '0 12px 30px rgba(26, 24, 20, 0.22)'
           }
         }
       },
       MuiCard: {
         styleOverrides: {
           root: {
-            border: '1px solid rgba(148, 163, 184, 0.2)',
-            boxShadow: '0 12px 30px rgba(15, 23, 42, 0.08)'
+            border: '1px solid rgba(40, 34, 28, 0.12)',
+            boxShadow: '0 12px 40px rgba(40, 34, 28, 0.12)'
+          }
+        }
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            borderRadius: '26px'
           }
         }
       }

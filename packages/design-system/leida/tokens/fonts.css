@@ -1,0 +1,9 @@
+/* ============================================================
+   Leida, Webfonts
+   DM Sans (body) + DM Mono (labels) are loaded from Google Fonts.
+   The display face is Times New Roman, a system serif used
+   deliberately as an editorial italic; no webfont is shipped for it.
+   "Tinos" is listed as a metric-compatible Times fallback for
+   systems without it.
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap");

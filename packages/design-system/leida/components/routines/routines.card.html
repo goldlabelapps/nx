@@ -1,0 +1,53 @@
+<!-- @dsCard group="Components" viewport="940x720" name="Routines - Scroller & SideBySide" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); padding: 26px; }
+  .stack { display: flex; flex-direction: column; gap: 24px; max-width: 920px; margin: 0 auto; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { RoutineProductScroller, RoutineSideBySide } = window.LeidaDesignSystem_ab1d28;
+
+    const am = [
+      { id: "am-1", name: "Cicaplast B5 Cleanser", brand: "La Roche-Posay", price: "GBP 16.50" },
+      { id: "am-2", name: "Vitamin C Tetra Serum", brand: "Medik8", price: "GBP 35.00", tag: "New" },
+      { id: "am-3", name: "Total Moisture Daily Cream", brand: "Medik8", price: "GBP 48.00" },
+      { id: "am-4", name: "Relief Sun SPF50+", brand: "Beauty of Joseon", price: "GBP 18.00" },
+    ];
+
+    const pm = [
+      { id: "pm-1", name: "Cicaplast B5 Cleanser", brand: "La Roche-Posay", price: "GBP 16.50" },
+      { id: "pm-2", name: "6 Peptide Booster", brand: "COSRX", price: "GBP 27.00", tag: "Moved" },
+      { id: "pm-3", name: "Total Moisture Daily Cream", brand: "Medik8", price: "GBP 48.00" },
+    ];
+
+    const steps = [
+      { stage: "Cleanse", morning: { name: "Cicaplast" }, evening: { name: "Cicaplast" } },
+      { stage: "Treat", morning: { name: "Vitamin C" }, evening: { name: "Peptide" } },
+      { stage: "Moisturise", morning: { name: "Moisturiser" }, evening: { name: "Moisturiser" } },
+      { stage: "Protect", morning: { name: "SPF" }, evening: null },
+    ];
+
+    function Demo() {
+      return (
+        <div className="stack">
+          <RoutineProductScroller morningProducts={am} eveningProducts={pm} />
+          <RoutineSideBySide steps={steps} />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<Demo />);
+  </script>
+</body>
+</html>

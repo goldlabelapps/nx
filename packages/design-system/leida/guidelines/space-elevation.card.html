@@ -1,0 +1,20 @@
+<!-- @dsCard group="Spacing" viewport="700x190" name="Elevation" subtitle="Warm, brown-tinted shadows - never neutral grey" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); padding: 26px 22px; display: flex; gap: 20px; align-items: center; }
+  .box { flex: 1; height: 96px; background: var(--leida-paper); border-radius: var(--radius-xl); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+  .box span { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--leida-ink); }
+  .box small { font-family: var(--font-mono); font-size: 0.52rem; color: var(--leida-muted); }
+</style>
+</head>
+<body>
+  <div class="box" style="box-shadow:var(--shadow-card)"><span>Card</span><small>0 12 40 · .12</small></div>
+  <div class="box" style="box-shadow:var(--shadow-card-hover)"><span>Hover</span><small>0 28 66 · .20</small></div>
+  <div class="box" style="box-shadow:var(--shadow-glass)"><span>Glass</span><small>0 26 60 −12</small></div>
+  <div class="box" style="box-shadow:var(--shadow-float)"><span>Float</span><small>0 40 80 · .32</small></div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* ============================================================
+   Leida, Colour tokens
+   A warm, editorial "skin & parchment" palette. Everything is
+   built on paper-white grounds with a single soft clay accent.
+   ============================================================ */
+:root {
+  /* --- Base neutrals (warm, low-chroma) --- */
+  --leida-ink:        #1a1814; /* near-black, warm - headings, primary UI */
+  --leida-ink-logo:   #1b1617; /* exact logo black */
+  --leida-dusty:      #2c2c2a; /* "dusty black" logo variant */
+  --leida-body:       #3a3530; /* body copy - soft dark brown */
+  --leida-sign:       #574f43; /* italic sign-off / secondary ink */
+  --leida-ash:        #675f52; /* tertiary label ink */
+  --leida-muted:      #9a9080; /* muted taupe - captions, meta */
+  --leida-fog:        #8c8478; /* fine print on dark grounds */
+
+  /* --- Grounds / papers --- */
+  --leida-parchment:  #f7f7f4; /* primary page ground */
+  --leida-paper:      #fbfaf7; /* raised paper (cards, screens) */
+  --leida-oat:        #cfc8bd; /* muted text on ink grounds */
+
+  /* --- Accent (the only "colour") --- */
+  --leida-clay:       #a8927a; /* tan/clay - eyebrows, accents, marks */
+
+  /* --- Translucent surfaces (glass over texture) --- */
+  --leida-line:       rgba(40, 34, 28, 0.12);  /* hairline border */
+  --leida-line-soft:  rgba(40, 34, 28, 0.06);  /* faint divider */
+  --leida-glass:      rgba(255, 255, 255, 0.42);/* frosted panel */
+  --leida-glass-hi:   rgba(255, 255, 255, 0.5); /* frosted panel, lighter */
+  --leida-tile:       rgba(255, 255, 255, 0.72);/* opaque-ish card tile */
+  --leida-scrim:      rgba(26, 24, 20, 0.93);   /* toast / overlay ground */
+
+  /* ============================================================
+     Semantic aliases, reference these in components
+     ============================================================ */
+  --text-body:      var(--leida-body);
+  --text-strong:    var(--leida-ink);
+  --text-muted:     var(--leida-muted);
+  --text-subtle:    var(--leida-sign);
+  --text-accent:    var(--leida-clay);
+  --text-on-ink:    var(--leida-parchment);
+  --text-on-ink-dim:var(--leida-oat);
+
+  --surface-page:   var(--leida-parchment);
+  --surface-paper:  var(--leida-paper);
+  --surface-card:   var(--leida-tile);
+  --surface-glass:  var(--leida-glass);
+  --surface-ink:    var(--leida-ink);
+   --surface-input:       rgba(251, 250, 247, 0.92);
+   --surface-input-hover: #f2ecdf;
+   --surface-input-focus: #fffaf0;
+   --surface-input-disabled: #e2dbc9;
+
+  --accent-clay:    var(--leida-clay);
+
+  --border-hairline:var(--leida-line);
+  --border-faint:   var(--leida-line-soft);
+   --border-input:   rgba(40, 34, 28, 0.28);
+   --border-input-hover: rgba(40, 34, 28, 0.4);
+   --border-input-focus: var(--leida-clay);
+
+  --focus-ring:     var(--leida-clay);
+}
