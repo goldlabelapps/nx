@@ -16,6 +16,7 @@ import {
     SiteHeader,
     SiteMain,
     SiteNav,
+    SiteSidebar,
 } from '../components';
 import type { T_NavNode } from '../components';
 
@@ -87,24 +88,29 @@ export default async function Page({ params }: T_PageProps) {
     if (data.description) description = data.description;
     const featuredImage = typeof data.image === 'string' && data.image.trim() ? data.image : null;
     const navItems = (await serverUseNav()) as T_NavNode[];
-    const siteName = config?.siteName || 'NX°';
+    const breadcrumbItems = slugArr.length
+        ? [
+            { label: 'Home', href: '/' },
+            ...slugArr.map((segment, index) => {
+                const path = `/${slugArr.slice(0, index + 1).join('/')}`;
+                const isCurrent = index === slugArr.length - 1;
+                const label = isCurrent ? (data.title || title) : segment.replace(/[-_]/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
+                return isCurrent ? { label } : { label, href: path };
+            }),
+        ]
+        : [];
 
     return (
         <div className="site-shell">
             <SiteHeader
-                siteName={siteName}
-                description={config?.description || 'Template'}
+                title={data.title || title}
+                description={slugArr.length ? '' : (config?.description || '')}
+                breadcrumbItems={breadcrumbItems}
                 homeHref="/"
                 logoSrc="/nx/png/favicon.png"
                 logoAlt=""
+                navItems={<SiteNav items={navItems} />}
             />
-
-            <details className="site-floating-nav" aria-label="Mobile navigation">
-                <summary className="site-mobile-nav-trigger">Menu</summary>
-                <nav className="site-mobile-nav-panel" aria-label="Primary navigation">
-                    <SiteNav items={navItems} />
-                </nav>
-            </details>
 
             <main className="site-main" id="main">
                 <aside className="site-col site-col-left" aria-label="Primary navigation">
@@ -115,23 +121,17 @@ export default async function Page({ params }: T_PageProps) {
 
                 <SiteMain
                     title={data.title || title}
+                    description={description || config?.description || ''}
                     cartridge={data.cartridge}
                     config={config}
                     content={content}
                     featuredImage={featuredImage}
                 />
 
-                {/* <aside className="site-col site-col-right" aria-label="Sidebar placeholder">
-                    <section className="site-panel site-panel-sidebar site-sidebar-placeholder">
-                        <p className="site-sidebar-placeholder-label">Placeholder</p>
-                        <p className="site-sidebar-placeholder-text">
-                            Sidebar module intentionally muted for now.
-                        </p>
-                    </section>
-                </aside> */}
+                <SiteSidebar />
             </main>
 
-            <SiteFooter />
+            {/* <SiteFooter /> */}
         </div>
     );
 }

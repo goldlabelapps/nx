@@ -5,11 +5,10 @@ description: Fullstack Node and React
 slug: /techstack/nextjs
 tags: javascript, nextjs, frontend, backend
 icon: js
+image: https://live.staticflickr.com/65535/55410631846_e442e2fd4a_b.jpg
 ---
 
-[PageLink icon="github" description="Our open source NX repo is production-ready and fully documented, letting any fullstack JavaScript developer launch a working Firebase-powered NX instance in under 30 minutes." title="goldlabelapps/nx" url="https://github.com/goldlabelapps/nx"]  
-
-> [CleverText text="The world’s most popular environment for developing fast, scalable, and production-ready web applications"]
+## World’s most popular environment for developing fast, scalable, and production-ready web applications
 
 Next.js is a leading modern web framework that seamlessly combines the power of React for building user interfaces with robust server-side features
 

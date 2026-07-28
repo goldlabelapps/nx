@@ -14,6 +14,7 @@ export interface NavItem {
     children?: NavItem[];
 }
 
+
 async function getMarkdownRoot() {
     const project = normalizeTenant();
     return path.join(process.cwd(), `public/${project}/markdown`);
@@ -46,6 +47,10 @@ function getFrontmatterFromMarkdown(filePath: string, fallback: string): { title
     return { title, order, slug, icon, type, hideInNav };
 }
 
+function normalizeNavTitle(title: string, slug: string): string {
+    return slug === '/' ? 'Home' : title;
+}
+
 function buildNavTree(dir: string, baseUrl: string): NavItem[] {
     if (!fs.existsSync(dir)) {
         return [];
@@ -60,19 +65,20 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
                 let meta: { title: string; slug: string; order?: number; icon?: string; type?: string; hideInNav?: any } = { title: entry.name, slug: normalizeSlug(undefined, `/${entry.name}`), order: undefined, icon: undefined, type: undefined, hideInNav: undefined };
                 if (fs.existsSync(indexPath)) {
                     const { title, order, slug, icon, type, hideInNav } = getFrontmatterFromMarkdown(indexPath, `/${entry.name}`);
-                    meta = { title, slug, order, icon, type, hideInNav };
+                    meta = { title: normalizeNavTitle(title, slug), slug, order, icon, type, hideInNav };
                 }
+                const filteredChildren = (children || []).filter((child) => child.path !== meta.slug);
                 return {
                     ...meta,
                     path: meta.slug,
-                    children,
+                    children: filteredChildren,
                 };
             } else {
                 const filePath = path.join(dir, entry.name);
                 const fallback = `/${entry.name.replace(/\.md$/, "")}`;
                 const { title, order, slug, icon, type, hideInNav } = getFrontmatterFromMarkdown(filePath, fallback);
                 return {
-                    title,
+                    title: normalizeNavTitle(title, slug),
                     order,
                     path: slug,
                     icon,
