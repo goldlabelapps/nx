@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leida - Instagram carousels</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--leida-parchment); font-family: var(--font-sans); color: var(--leida-body); padding: 80px 32px; }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  .star { display: block; margin-bottom: 28px; }
+  .eyebrow { margin-bottom: 18px; }
+  h1 { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: clamp(2.4rem,5vw,3.4rem); color: var(--leida-ink); letter-spacing: -0.02em; margin: 0 0 16px; }
+  .lede { font-size: 1.1rem; line-height: 1.6; max-width: 52ch; margin: 0 0 48px; }
+  .setlabel { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--leida-clay); margin: 40px 0 16px; display: flex; align-items: center; gap: 14px; }
+  .setlabel::after { content: ""; flex: 1; height: 1px; background: var(--leida-line); }
+  .setlabel:first-of-type { margin-top: 0; }
+  .list { display: flex; flex-direction: column; gap: 16px; }
+  a.card { display: flex; align-items: center; justify-content: space-between; gap: 20px; text-decoration: none; background: var(--leida-paper); border: 1px solid var(--leida-line); border-radius: var(--radius-xl); padding: 26px 28px; box-shadow: var(--shadow-card); transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out); }
+  a.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+  .card .n { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--leida-clay); }
+  .card h2 { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 1.5rem; color: var(--leida-ink); margin: 8px 0 4px; }
+  .card p { font-size: 0.9rem; color: var(--leida-muted); margin: 0; }
+  .card .go { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--leida-ink); border: 1px solid var(--leida-line); border-radius: 999px; padding: 12px 20px; white-space: nowrap; }
+  .note { margin-top: 44px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; line-height: 1.7; color: var(--leida-muted); border-top: 1px solid var(--leida-line); padding-top: 24px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="star" src="../../assets/logos/leida-star-black.svg" width="44" height="44" alt="">
+    <div class="eyebrow">Social · Instagram</div>
+    <h1>Three text carousels</h1>
+    <p class="lede">Editorial, type-led carousels in the Leida voice, for solo skin therapists. Portrait 1080 × 1350, six slides each. Swipe each strip left to right.</p>
+    <div class="setlabel">Set one</div>
+    <div class="list">
+      <a class="card" href="carousel-1-aftercare-pdf.html">
+        <div><span class="n">Carousel 1 · Problem</span><h2>The trouble with the aftercare PDF</h2><p>Why the beautiful PDF quietly fails.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="carousel-2-follow-through.html">
+        <div><span class="n">Carousel 2 · Insight</span><h2>Why clients don't follow the routine</h2><p>Follow-through is a design problem, with a 3× payoff.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="carousel-3-one-tap.html">
+        <div><span class="n">Carousel 3 · How it works</span><h2>Send aftercare in one tap</h2><p>Build, send, update, and a founding-member CTA.</p></div>
+        <span class="go">Open →</span>
+      </a>
+    </div>
+    <div class="setlabel">Set two · new</div>
+    <div class="list">
+      <a class="card" href="carousel-4-built-by-a-therapist.html">
+        <div><span class="n">Carousel 4 · Story</span><h2>Built by a skin therapist</h2><p>The founder's why, a page that stays current for you.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="carousel-5-what-clients-see.html">
+        <div><span class="n">Carousel 5 · Product</span><h2>What your client actually sees</h2><p>The living page: opens like an app, always current.</p></div>
+        <span class="go">Open →</span>
+      </a>
+      <a class="card" href="carousel-6-quicker-than-whatsapp.html">
+        <div><span class="n">Carousel 6 · Comparison</span><h2>Quicker than a WhatsApp</h2><p>WhatsApp vs Canva PDF vs the living link.</p></div>
+        <span class="go">Open →</span>
+      </a>
+    </div>
+    <div class="note">
+      Each slide is built at true 1080 × 1350. To export: open a carousel and screenshot each slide, or ask me to render every slide as a numbered PNG set ready to upload.
+    </div>
+  </div>
+</body>
+</html>

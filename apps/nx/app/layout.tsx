@@ -1,7 +1,8 @@
-import "./globals.css";
 import type { Metadata } from "next";
+import '@nx/design-system';
 import fs from 'fs';
 import path from 'path';
+import { AppShell, DesignSystemProvider } from '@nx/design-system';
 import { UbereduxProvider } from './NX/Uberedux';
 import { normalizeTenant } from './NX/lib/normalizeTenant';
 
@@ -65,9 +66,11 @@ export default async function RootLayout({
       </head>
       <body>
         <div className="wrapper">
-          <UbereduxProvider config={config}>
-            {children}
-          </UbereduxProvider>
+          <DesignSystemProvider mode="light">
+            <UbereduxProvider config={config}>
+              <AppShell>{children}</AppShell>
+            </UbereduxProvider>
+          </DesignSystemProvider>
         </div>
       </body>
     </html>

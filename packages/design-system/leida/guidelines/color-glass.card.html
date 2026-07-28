@@ -1,0 +1,47 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Frosted glass" subtitle="Translucent panels floating over photographic texture" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body {
+    margin: 0; padding: 22px; min-height: 180px;
+    background:
+      radial-gradient(120% 120% at 20% 10%, #cbb9a2 0%, #a8927a 40%, #8a7663 100%);
+    display: flex; gap: 16px; align-items: stretch;
+  }
+  .panel {
+    flex: 1; border-radius: var(--radius-2xl); padding: 18px 20px;
+    display: flex; flex-direction: column; justify-content: center; gap: 6px;
+  }
+  .glass {
+    background: var(--surface-glass);
+    -webkit-backdrop-filter: var(--blur-panel); backdrop-filter: var(--blur-panel);
+    border: 1px solid rgba(255,255,255,.75);
+    box-shadow: var(--shadow-glass);
+  }
+  .tile {
+    background: var(--leida-tile);
+    -webkit-backdrop-filter: var(--blur-chip); backdrop-filter: var(--blur-chip);
+    border: 1px solid rgba(255,255,255,.6);
+    box-shadow: var(--shadow-card);
+  }
+  .panel .eyebrow { margin: 0; }
+  .panel strong { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 1.3rem; color: var(--leida-ink); }
+  .panel small { font-family: var(--font-mono); font-size: 0.56rem; color: var(--leida-sign); letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+  <div class="panel glass">
+    <div class="eyebrow">Glass</div>
+    <strong>Frosted panel</strong>
+    <small>white .42 · blur 26px · sat 115%</small>
+  </div>
+  <div class="panel tile">
+    <div class="eyebrow">Tile</div>
+    <strong>Soft card</strong>
+    <small>white .72 · blur 6px</small>
+  </div>
+</body>
+</html>

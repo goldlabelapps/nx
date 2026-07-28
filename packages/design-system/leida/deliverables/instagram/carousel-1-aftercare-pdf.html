@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Leida - Carousel 1: The trouble with the aftercare PDF</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  :root { --scale: 0.42; }
+  body { margin: 0; background: #6f6a60; padding: 48px 0 72px; font-family: var(--font-sans); }
+  .head { text-align: center; color: #f7f7f4; max-width: 900px; margin: 0 auto 40px; }
+  .head .kick { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: #d9cdbb; }
+  .head h1 { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: #fff; font-size: 2rem; margin: 10px 0 4px; }
+  .head p { font-size: 0.9rem; color: #d7d0c4; margin: 0; }
+
+  .strip { display: flex; gap: 26px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 48px 20px; }
+  .strip::-webkit-scrollbar { height: 8px; }
+  .strip::-webkit-scrollbar-thumb { background: rgba(255,255,255,.25); border-radius: 8px; }
+  .item { scroll-snap-align: center; flex: 0 0 auto; }
+  .thumb { width: calc(1080px * var(--scale)); height: calc(1350px * var(--scale)); border-radius: 18px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+  .thumb .slide { transform: scale(var(--scale)); transform-origin: top left; }
+  .cap { text-align: center; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #cfc8bd; margin-top: 12px; }
+
+  /* ---- Slide (true 1080x1350) ---- */
+  .slide {
+    width: 1080px; height: 1350px; box-sizing: border-box;
+    position: relative; display: flex; flex-direction: column;
+    padding: 108px 96px; background: var(--leida-parchment); overflow: hidden;
+  }
+  .slide.center { justify-content: center; }
+  .slide.ink { background: var(--leida-ink); }
+  .slide.clay { background: var(--leida-clay); }
+  .slide.ink .eye, .slide.clay .eye { color: rgba(247,247,244,.7); }
+  .slide.ink .h, .slide.clay .h { color: #f7f7f4; }
+  .slide.ink .body, .slide.clay .body { color: rgba(247,247,244,.82); }
+  .slide.ink .meta, .slide.clay .meta { color: rgba(247,247,244,.55); }
+
+  .eye { font-family: var(--font-mono); font-size: 30px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--leida-clay); }
+  .h { font-family: var(--font-serif); font-style: italic; font-weight: 400; color: var(--leida-ink); line-height: 1.0; letter-spacing: -0.02em; }
+  .h.xl { font-size: 132px; }
+  .h.lg { font-size: 104px; }
+  .h.md { font-size: 82px; }
+  .body { font-family: var(--font-sans); font-size: 42px; line-height: 1.5; color: var(--leida-body); max-width: 20ch; }
+  .lead { font-family: var(--font-mono); font-size: 28px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--leida-clay); }
+
+  .topmark { position: absolute; top: 96px; left: 96px; }
+  .foot { position: absolute; left: 96px; right: 96px; bottom: 84px; display: flex; align-items: center; justify-content: space-between; }
+  .foot .meta { font-family: var(--font-mono); font-size: 24px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--leida-muted); }
+  .foot .wm { display: flex; align-items: center; gap: 12px; }
+  .foot .wm span { font-family: var(--font-serif); font-style: italic; font-size: 34px; color: var(--leida-ink); }
+  .slide.ink .foot .wm span, .slide.clay .foot .wm span { color: #f7f7f4; }
+  img.star { display: block; }
+  .rule { width: 88px; height: 2px; background: var(--leida-clay); margin: 0 0 40px; border: 0; }
+  .btn { display: inline-flex; align-items: center; gap: 16px; align-self: flex-start; font-family: var(--font-mono); font-size: 30px; letter-spacing: 0.1em; text-transform: uppercase; padding: 30px 52px; border-radius: 999px; background: var(--leida-parchment); color: var(--leida-ink); margin-top: 20px; }
+</style>
+</head>
+<body>
+  <div class="head">
+    <div class="kick">Instagram carousel · 1 of 3</div>
+    <h1>The trouble with the aftercare PDF</h1>
+    <p>Swipe through, 6 slides · 1080 × 1350</p>
+  </div>
+
+  <div class="strip">
+
+    <!-- 1 - Cover -->
+    <div class="item">
+      <div class="thumb"><div class="slide center">
+        <img class="star topmark" src="../../assets/logos/leida-star-black.svg" width="72" height="72" alt="">
+        <div class="eye">For skin therapists</div>
+        <hr class="rule" style="margin-top:36px">
+        <div class="h xl">The trouble<br>with the<br>aftercare<br><em>PDF.</em></div>
+        <div class="foot"><span class="meta">01 / 06</span><span class="wm"><img class="star" src="../../assets/logos/leida-star-black.svg" width="34" height="34" alt=""><span>Leida</span></span></div>
+      </div></div>
+      <div class="cap">Slide 1 · Cover</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="item">
+      <div class="thumb"><div class="slide center">
+        <div class="eye">Sound familiar</div>
+        <hr class="rule" style="margin-top:36px">
+        <div class="h lg">You spend the<br>evening in <em>Canva.</em></div>
+        <p class="body" style="margin-top:56px">One beautiful PDF, exported, attached, sent. Then it's done, frozen the moment you hit send.</p>
+        <div class="foot"><span class="meta">02 / 06</span><span class="wm"><img class="star" src="../../assets/logos/leida-star-black.svg" width="34" height="34" alt=""><span>Leida</span></span></div>
+      </div></div>
+      <div class="cap">Slide 2</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="item">
+      <div class="thumb"><div class="slide center">
+        <div class="eye">A week later</div>
+        <hr class="rule" style="margin-top:36px">
+        <div class="h lg">By next week,<br>it's already <em>out<br>of date.</em></div>
+        <p class="body" style="margin-top:56px">You changed one product at the review. The PDF didn't. Now two versions exist, and the client has the old one.</p>
+        <div class="foot"><span class="meta">03 / 06</span><span class="wm"><img class="star" src="../../assets/logos/leida-star-black.svg" width="34" height="34" alt=""><span>Leida</span></span></div>
+      </div></div>
+      <div class="cap">Slide 3</div>
+    </div>
+
+    <!-- 4 -->
+    <div class="item">
+      <div class="thumb"><div class="slide center">
+        <div class="eye">Meanwhile</div>
+        <hr class="rule" style="margin-top:36px">
+        <div class="h lg">They can't find it.<br>So they <em>guess.</em></div>
+        <p class="body" style="margin-top:56px">Buried in an email thread, lost in downloads. The routine you designed with care is now a memory of a screenshot.</p>
+        <div class="foot"><span class="meta">04 / 06</span><span class="wm"><img class="star" src="../../assets/logos/leida-star-black.svg" width="34" height="34" alt=""><span>Leida</span></span></div>
+      </div></div>
+      <div class="cap">Slide 4</div>
+    </div>
+
+    <!-- 5 - turn -->
+    <div class="item">
+      <div class="thumb"><div class="slide center ink">
+        <img class="star topmark" src="../../assets/logos/leida-star-offwhite.svg" width="72" height="72" alt="">
+        <div class="eye">The shift</div>
+        <hr class="rule" style="margin-top:36px">
+        <div class="h md">Aftercare should<br>be a <em>living page</em>,<br>not a dead file.</div>
+        <div class="foot"><span class="meta">05 / 06</span><span class="wm"><img class="star" src="../../assets/logos/leida-star-offwhite.svg" width="34" height="34" alt=""><span>Leida</span></span></div>
+      </div></div>
+      <div class="cap">Slide 5</div>
+    </div>
+
+    <!-- 6 - CTA -->
+    <div class="item">
+      <div class="thumb"><div class="slide center clay">
+        <img class="star topmark" src="../../assets/logos/leida-star-offwhite.svg" width="72" height="72" alt="">
+        <div class="h md" style="color:#fff">Client aftercare,<br><em>reimagined.</em></div>
+        <p class="body" style="margin-top:44px;color:rgba(255,255,255,.9)">One living page per client that updates itself and saves to their phone like an app.</p>
+        <span class="btn">Join the waitlist →</span>
+        <div class="foot"><span class="meta">06 / 06</span><span class="wm"><img class="star" src="../../assets/logos/leida-star-offwhite.svg" width="34" height="34" alt=""><span>Leida</span></span></div>
+      </div></div>
+      <div class="cap">Slide 6 · CTA</div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+:root {
+  color-scheme: light;
+  --nx-ink: #1a1814;
+  --nx-body: #3a3530;
+  --nx-muted: #9a9080;
+  --nx-parchment: #f7f7f4;
+  --nx-paper: #fbfaf7;
+  --nx-clay: #a8927a;
+  --nx-line: rgba(40, 34, 28, 0.12);
+  --nx-shadow-card: 0 12px 40px rgba(40, 34, 28, 0.12);
+  --nx-radius-xl: 26px;
+  --font-serif: "Times New Roman", Times, serif;
+  --font-sans: "DM Sans", "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SFMono-Regular", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-size: 17px;
+  background: var(--nx-parchment);
+  color: var(--nx-body);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.nx-surface {
+  background: var(--nx-paper);
+  border: 1px solid var(--nx-line);
+  border-radius: var(--nx-radius-xl);
+  box-shadow: var(--nx-shadow-card);
+}
+
+.site-panel-main ul ul,
+.site-panel-main ol ol,
+.site-panel-main ul ol,
+.site-panel-main ol ul {
+	margin-left: 1rem;
+}
+
+.site-panel-main li {
+	position: relative;
+}

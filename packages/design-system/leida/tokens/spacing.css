@@ -1,0 +1,50 @@
+/* ============================================================
+   Leida, Space, radius, shadow & motion tokens
+   ============================================================ */
+:root {
+  /* --- Spacing scale --- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  22px;
+  --space-6:  26px;
+  --space-7:  34px;
+  --space-8:  46px;
+  --space-10: 70px;
+  --space-12: 108px;   /* section rhythm (desktop) */
+  --space-section-mobile: 60px;
+
+  --maxw-prose:  680px;   /* app / reading column */
+  --maxw-page:  1080px;   /* marketing content width */
+
+  /* --- Corner radii --- */
+  --radius-sm:   14px;
+  --radius-md:   16px;
+  --radius-lg:   20px;
+  --radius-xl:   26px;   /* default card */
+  --radius-2xl:  28px;   /* glass panel */
+  --radius-phone:42px;   /* device bezel */
+  --radius-pill: 999px;  /* buttons, tags, inputs */
+
+  /* --- Elevation - warm, brown-tinted shadows (never neutral grey) --- */
+  --shadow-card:       0 12px 40px rgba(40, 34, 28, 0.12);
+  --shadow-card-hover: 0 28px 66px rgba(40, 34, 28, 0.20);
+  --shadow-glass:      0 26px 60px -12px rgba(40, 34, 28, 0.20), 0 2px 6px rgba(40, 34, 28, 0.06);
+  --shadow-button:     0 12px 30px rgba(26, 24, 20, 0.22);
+  --shadow-button-hi:  0 18px 40px rgba(26, 24, 20, 0.30);
+  --shadow-float:      0 40px 80px rgba(26, 24, 20, 0.32); /* floating device */
+  --shadow-pop:        0 16px 48px rgba(40, 34, 28, 0.22); /* menus / popovers */
+
+  /* --- Glass blur --- */
+  --blur-panel: blur(26px) saturate(115%); /* @kind other */
+  --blur-bar:   blur(10px);                /* @kind other */
+  --blur-chip:  blur(6px);                 /* @kind other */
+
+  /* --- Motion --- */
+  --ease-out:   cubic-bezier(0.2, 0.7, 0.2, 1); /* @kind other */   /* the house easing */
+  --ease-spring:cubic-bezier(0.16, 0.84, 0.3, 1); /* @kind other */ /* drawer / reveal */
+  --dur-fast:   0.2s;   /* @kind other */
+  --dur-mid:    0.4s;   /* @kind other */
+  --dur-reveal: 0.9s;   /* @kind other */   /* scroll-reveal fade+rise */
+}
