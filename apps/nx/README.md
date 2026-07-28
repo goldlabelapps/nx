@@ -14,3 +14,126 @@
 > **NEW July 2026** [NX° Turbo](https://github.com/goldlabelapps/nx-turbo) implementation with [turborepo](https://turborepo.dev/)
 
 - [Documentation TOC](docs/README.md)
+
+```javascript
+
+
+{
+  "name": "Natalie Brooks",
+  "routineContext": "Looking for a pregnancy-safe skincare routine that keeps her skin hydrated, helps minimise pigmentation, and maintains a healthy complexion with a minimal number of products.",
+  "skinOverview": "Combination skin with mild dehydration and early pregnancy-related pigmentation developing across the cheeks. Skin would benefit from gentle hydration, barrier support, and pregnancy-safe brightening ingredients.",
+  "personalNotes": "Recently entered her second trimester and wants reassurance that her skincare products are pregnancy-safe. Enjoys long walks with her husband and is trying to be more consistent with daily SPF.",
+  "skinType": "Combination",
+  "concerns": [
+    "Pigmentation",
+    "Dehydration"
+  ],
+  "dateOfBirth": "11/04/1993",
+  "pregnant": true,
+  "breastfeeding": false
+}
+
+
+
+{
+  "name": "Rachel Mercer",
+  "routineContext": "Looking for a simple routine that controls excess oil, reduces breakouts and post-acne marks, and keeps the skin hydrated without feeling heavy."
+  "skinOverview": "Oily skin with visible congestion through the T-zone, enlarged pores, and occasional post-blemish pigmentation. Skin would benefit from balancing oil production while maintaining hydration and supporting an even complexion.",
+  "personalNotes": "Recently returned from maternity leave and is looking for a quick, effective skincare routine. Loves hiking at weekends and wants to be more consistent with daily SPF.",
+  "skinType": "Oily",
+  "concerns": [
+    "Acne",
+    "Pigmentation",
+    "Dehydration"
+  ],
+  "dateOfBirth": "05/08/1988",
+  "pregnant": false, "breastfeeding": false,
+}
+
+
+{
+  "name": "Hermione Granger",
+  "age": 45,
+  "personalNotes": [
+    "Recently started training for a charity 10K and is spending more time outdoors.",
+    "Prefers fragrance-free skincare and likes products with straightforward ingredient lists."
+  ],
+  "skinType": "Dry",
+  "skinOverview": "Dry, slightly dehydrated skin with visible fine lines and some uneven pigmentation. The skin would benefit from consistent barrier support, increased hydration, and targeted brightening ingredients.",
+  "concerns": [
+    "Dehydration",
+    "Pigmentation",
+    "Wrinkles",
+    "Aging"
+  ],
+  "dateOfBirth": "14/02/1981",
+  "pregnant": false,
+  "breastfeeding": false,
+  "routineContext": "Looking for a nourishing routine that strengthens the skin barrier, restores lasting hydration, and improves skin tone while helping to minimise early signs of ageing."
+}
+
+{
+  "name": "Simon Little",
+  "age": 50,
+  "personalNotes": [
+    "Cycles to work most days and is looking for a skincare routine that fits into a busy morning.",
+    "Enjoys weekends on the Norfolk coast and spends a lot of time outdoors in all weather."
+  ],
+  "skinType": "Normal",
+  "skinOverview": "Generally healthy skin with mild sun damage, fine lines around the eyes, and occasional dehydration. A consistent routine focused on protection, hydration, and healthy ageing would deliver noticeable improvements.",
+  "concerns": [
+    "Aging",
+    "Wrinkles",
+    "Dehydration"
+  ],
+  "dateOfBirth": "22/11/1975",
+  "pregnant": false,
+  "breastfeeding": false,
+  "routineContext": "Wants a straightforward daily routine that keeps his skin healthy, protects against environmental damage, and reduces visible signs of ageing without adding unnecessary steps."
+}
+
+```
+
+
+
+
+
+```sh
+You are a Skin Care Therapist with 10 years experience. Create the details for a mock client a typical practitioner would encounter professionally. The mock client’s name is “My Friend” and approx age is “56”. Please generate the following for her:
+
+Personal notes
+Daughter called Florence 
+Dog called Frank
+Partner called Tom
+Lives in Norwich
+
+Skin type
+One of 4; Dry, Oily, Combination or Normal
+
+Skin Overview
+
+This should be in the voice of a professional therapist. The overview should not contain any personal information. It should be about the length of a tweet. A good example would be 
+
+Some pigmentation/freckles she would like to work on. Prone to sebaceous filaments and dehydration, likes nourishing, thick products. Wants to work on anti ageing without Botox.
+
+Concerns
+One or more of the following list  
+Acne, Wrinkles, Redness, Pigmentation, Dehydration and Aging. 
+These are the only possible concerns for now, more to come.
+
+
+
+Date of birth 
+format dd/mm/yyyy 
+Take it from the age in the prompt or make it up
+
+Pregnant or Breastfeeding
+booleans
+
+Routine Context
+
+Should also be around the length of a tweet. It is designed to be part of an LLM prompt, the other part being the skin type. In this way we generate a unique routine every time. So the context should be a clear goal for the routine. Example context:
+
+Wants to start a simple routine that cares for his skin and gets him looking his best for his Caribbean holiday at Christmas.
+
+```
