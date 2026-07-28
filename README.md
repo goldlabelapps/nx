@@ -3,12 +3,12 @@
         <a href="https://nx.goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
         <img
             src="https://nx.goldlabel.pro/nx/png/favicon.png"
-            width="50"
-            height="50"
+            width="75"
+            height="75"
         />
         </a>
         <span>NX° Turbo</span>
     </h1>
 </div>
 
-[Docs](./)
+[Docs](./docs/README.md)
