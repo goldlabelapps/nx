@@ -1,3 +1,5 @@
+'use client';
+
 import { CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
 import type { ReactNode } from 'react';
 import { createAppTheme, type DesignSystemMode } from '../theme';
