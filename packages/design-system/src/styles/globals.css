@@ -1,0 +1,261 @@
+:root {
+	--bg: #f5f4f1;
+	--surface: #ffffff;
+	--surface-soft: #f0ede7;
+	--text: #161513;
+	--text-muted: #5d5850;
+	--border: #d9d3c8;
+	--radius: 12px;
+	--shadow: 0 10px 30px rgba(20, 20, 20, 0.08);
+
+	--space-1: 0.5rem;
+	--space-2: 0.75rem;
+	--space-3: 1rem;
+	--space-4: 1.25rem;
+	--space-5: 1.75rem;
+	--space-6: 2.25rem;
+
+	--content-max: 1240px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	font-size: 17px;
+	background: radial-gradient(circle at top right, #fffdf9, var(--bg));
+	color: var(--text);
+	font-family: "Avenir Next", "Avenir", "Segoe UI", sans-serif;
+	line-height: 1.5;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+a {
+	color: inherit;
+	font-weight: 400;
+	text-decoration: none;
+}
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+	text-decoration: none;
+}
+
+b,
+strong {
+	font-weight: 400;
+}
+
+a strong {
+	font-weight: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+}
+
+.wrapper,
+.site-shell {
+	width: min(100%, var(--content-max));
+	margin-inline: auto;
+	padding: var(--space-4);
+}
+
+.site-header,
+.site-panel,
+.site-footer {
+	background: color-mix(in oklab, var(--surface) 92%, var(--surface-soft));
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+.site-header {
+	padding: var(--space-4);
+	margin-bottom: var(--space-4);
+}
+
+.site-header-top {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: var(--space-3);
+}
+
+.site-header-top .site-footer-brand {
+	display: grid;
+	gap: 0.35rem;
+}
+
+.site-header-title-row {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.75rem;
+	font-size: 2rem;
+	line-height: 1;
+}
+
+.site-header-text-stack {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.1rem;
+	min-width: 0;
+}
+
+.site-header-title-row h1 {
+	margin: 0;
+	padding-top: 6px;
+	padding-left: 6px;
+	font-size: 0.7em;
+	line-height: 1.1;
+}
+
+.site-header-text-stack p,
+.site-header-text-stack .site-breadcrumbs {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 0.9rem;
+	padding-left: 6px;
+}
+
+.site-header-top .site-footer-brand p {
+	margin: 0;
+}
+
+.site-breadcrumbs {
+	margin: 0;
+	color: var(--text-muted);
+	font-size: 0.9rem;
+}
+
+.site-breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.35rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.site-breadcrumbs li:not(:last-child)::after {
+	content: '/';
+	margin-left: 0.35rem;
+	color: var(--text-muted);
+}
+
+.site-breadcrumbs a {
+	text-decoration: none;
+}
+
+.site-breadcrumbs a:hover {
+	text-decoration: underline;
+}
+
+.site-home-reset {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 3rem;
+	height: 3rem;
+	border: 0;
+	border-radius: 10px;
+	background: transparent;
+	flex-shrink: 0;
+}
+
+.site-home-reset img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.site-header-mobile-nav {
+	margin-left: auto;
+	align-self: flex-start;
+	position: relative;
+	margin-top: 0.1rem;
+}
+
+.site-header-mobile-nav[open] .site-mobile-nav-panel {
+	position: absolute;
+	top: calc(100% + 0.5rem);
+	right: 0;
+	z-index: 20;
+	width: min(20rem, calc(100vw - 2rem));
+	max-height: min(60vh, 32rem);
+	overflow: auto;
+	box-shadow: var(--shadow);
+}
+
+.site-header-hero {
+	margin-top: var(--space-4);
+}
+
+.site-header-eyebrow {
+	margin: 0;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	font-size: 0.78rem;
+	color: var(--text-muted);
+}
+
+.site-header-copy p {
+	margin: var(--space-2) 0 0;
+}
+
+.site-main {
+	display: grid;
+	grid-template-columns: minmax(0, 260px) minmax(0, 1fr) minmax(0, 260px);
+	gap: var(--space-4);
+	align-items: start;
+}
+
+.site-col {
+	min-width: 0;
+}
+
+.site-panel {
+	padding: var(--space-4);
+	overflow-wrap: anywhere;
+}
+
+.site-panel-main {
+	min-height: 340px;
+}
+
+.site-panel-main ul,
+.site-panel-main ol {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+}
+
+.site-panel-main ul ul,
+.site-panel-main ol ol,
+.site-panel-main ul ol,
+.site-panel-main ol ul {
+	margin-left: 1rem;
+}
+
+.site-panel-main li {
+	position: relative;
+}
