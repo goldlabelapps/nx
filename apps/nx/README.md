@@ -17,7 +17,6 @@
 
 ```javascript
 
-
 {
   "name": "Natalie Brooks",
   "routineContext": "Looking for a pregnancy-safe skincare routine that keeps her skin hydrated, helps minimise pigmentation, and maintains a healthy complexion with a minimal number of products.",
@@ -50,52 +49,7 @@
   "pregnant": false, "breastfeeding": false,
 }
 
-
-{
-  "name": "Hermione Granger",
-  "age": 45,
-  "personalNotes": [
-    "Recently started training for a charity 10K and is spending more time outdoors.",
-    "Prefers fragrance-free skincare and likes products with straightforward ingredient lists."
-  ],
-  "skinType": "Dry",
-  "skinOverview": "Dry, slightly dehydrated skin with visible fine lines and some uneven pigmentation. The skin would benefit from consistent barrier support, increased hydration, and targeted brightening ingredients.",
-  "concerns": [
-    "Dehydration",
-    "Pigmentation",
-    "Wrinkles",
-    "Aging"
-  ],
-  "dateOfBirth": "14/02/1981",
-  "pregnant": false,
-  "breastfeeding": false,
-  "routineContext": "Looking for a nourishing routine that strengthens the skin barrier, restores lasting hydration, and improves skin tone while helping to minimise early signs of ageing."
-}
-
-{
-  "name": "Simon Little",
-  "age": 50,
-  "personalNotes": [
-    "Cycles to work most days and is looking for a skincare routine that fits into a busy morning.",
-    "Enjoys weekends on the Norfolk coast and spends a lot of time outdoors in all weather."
-  ],
-  "skinType": "Normal",
-  "skinOverview": "Generally healthy skin with mild sun damage, fine lines around the eyes, and occasional dehydration. A consistent routine focused on protection, hydration, and healthy ageing would deliver noticeable improvements.",
-  "concerns": [
-    "Aging",
-    "Wrinkles",
-    "Dehydration"
-  ],
-  "dateOfBirth": "22/11/1975",
-  "pregnant": false,
-  "breastfeeding": false,
-  "routineContext": "Wants a straightforward daily routine that keeps his skin healthy, protects against environmental damage, and reduces visible signs of ageing without adding unnecessary steps."
-}
-
 ```
-
-
-
 
 
 ```sh
