@@ -128,7 +128,7 @@ export default async function Page({ params }: T_PageProps) {
                     featuredImage={featuredImage}
                 />
 
-                <SiteSidebar />
+                {/* <SiteSidebar /> */}
             </main>
 
             {/* <SiteFooter /> */}

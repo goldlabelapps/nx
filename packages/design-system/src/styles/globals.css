@@ -224,7 +224,8 @@ h6 {
 
 .site-main {
 	display: grid;
-	grid-template-columns: minmax(0, 260px) minmax(0, 1fr) minmax(0, 260px);
+	/* Desktop layout: left column (sidebar) + main content. Removed right column. */
+	grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
 	gap: var(--space-4);
 	align-items: start;
 }

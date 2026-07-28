@@ -37,6 +37,20 @@ export default function ExamplePage() {
 }
 ```
 
+## Building
+
+This package ships compiled JavaScript and type declarations to `dist/`.
+
+Run the build locally:
+
+```bash
+pnpm build
+```
+
+Notes:
+- The package expects `react`, `react-dom`, and `@mui/material` as peer dependencies.
+- `main`/`types` point to the `dist/` output; add the package to your monorepo's workspace or publish if desired.
+
 ## Notes
 
 This package is intentionally small and composable. As the UI layer grows, new atoms, molecules, and higher-level patterns should be added here instead of being spread across app folders.
