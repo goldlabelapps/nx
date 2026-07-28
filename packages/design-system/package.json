@@ -1,0 +1,22 @@
+{
+  "name": "@nx/design-system",
+  "version": "0.1.0",
+  "description": "Shared frontend presentation package for NX, covering theme, layout, and reusable UI primitives.",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'No lint configured yet'"
+  },
+  "peerDependencies": {
+    "@mui/material": ">=7.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}
