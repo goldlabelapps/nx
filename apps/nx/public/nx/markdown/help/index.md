@@ -5,6 +5,7 @@ description: Creating a new NX° App
 slug: /help
 icon: rocket
 tags: help, support, install
+image: https://live.staticflickr.com/65535/55043207718_0af207d889_b.jpg
 ---
 
 As a logged-in GitHub user, go to [github.com/goldlabelapps/nx](https://github.com/goldlabelapps/nx) and click "Use this template."

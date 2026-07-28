@@ -5,8 +5,9 @@ description: Powerful modern technologies
 slug: /features
 icon: tick
 tags: features
+image: https://live.staticflickr.com/65535/55327040507_6ebcd4873b_c.jpg
 ---
-[PageLink icon="design" url="/features/design-system" title="Design System" ]  
-[PageLink icon="mobile" url="/features/pwa" title="Progressive Web Apps" ]  
-[PageLink icon="uberedux" url="/features/uberedux" title="Uberedux" ]  
-[PageLink icon="wordpress" url="/features/shortcodes" title="Shortcodes" ]  
+- [Design System](/features/design-system)
+- [Progressive Web Apps](/features/pwa)
+- [Uberedux](/features/uberedux)
+- [Shortcodes](/features/shortcodes)

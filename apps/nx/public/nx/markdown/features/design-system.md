@@ -7,7 +7,7 @@ icon: design
 tags: features, design system, mui, material ui,
 image: https://live.staticflickr.com/65535/55139727398_05d97ed1d6_b.jpg
 ---
-> [CleverText text="No other design system sees the same breadth of adoption"]
+## No other design system sees the same breadth of adoption
 
 Material UI, commonly known as MUI, has grown into the most widely used React component library and design system. Its popularity comes from a mix of practical engineering benefits: a complete suite of pre-built components, a predictable theming model, strong TypeScript support, and an ecosystem that stays aligned with modern React patterns.
 

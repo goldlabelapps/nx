@@ -4,20 +4,14 @@ title: Techstack
 description: Built with Open Source
 slug: /techstack
 icon: techstack
-tags: Techstack, Vercel, Firebase, Render, React
-image: /nx/png/python.png
+tags: Techstack, Vercel, Firebase, Render, React, Python
+image: https://live.staticflickr.com/65535/54379898801_bc14e92b57_b.jpg
 ---
 
-[PageLink icon="github" title="Git" url="/techstack/git"]  
-
-[PageLink icon="js" title="TypeScript" url="/techstack/typescript"]  
-
-[PageLink icon="js" title="NextJS" url="/techstack/nextjs"]  
-
-[PageLink icon="js" title="React" url="/techstack/react"]  
-
-[PageLink icon="api" title="Python 3" url="/techstack/python-3"]  
-
-[PageLink icon="api" title="FastAPI" url="/techstack/fastapi"]  
-
-[PageLink icon="api" title="tsvector" url="/techstack/tsvector"]  
+- [Git](/techstack/git)
+- [TypeScript](/techstack/typescript)
+- [NextJS](/techstack/nextjs)
+- [React](/techstack/react)
+- [Python 3](/techstack/python-3)
+- [FastAPI](/techstack/fastapi)
+- [tsvector](/techstack/tsvector)
