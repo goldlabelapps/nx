@@ -1,8 +1,9 @@
 {
   "name": "@nx/design-system",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Shared frontend presentation package for NX°, covering theme, layout, and reusable UI primitives.",
   "private": true,
+  "sideEffects": ["**/*.css"],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,14 +11,16 @@
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./styles.css": "./dist/styles/globals.css"
   },
   "files": ["dist"],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && mkdir -p dist/styles && cp src/styles/globals.css dist/styles/globals.css",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No lint configured yet'",
     "clean": "rm -rf dist",
+    "dev": "storybook dev -p 6006 --ci",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
