@@ -7,13 +7,13 @@
   },
   "private": true,
   "scripts": {
-    "dev": "concurrently -n nx,admin,storybook -c blue,green,magenta \"pnpm --dir apps/nx dev\" \"pnpm --dir apps/admin dev\" \"pnpm --dir packages/design-system dev\"",
-    "build": "pnpm --dir apps/nx build",
+    "dev": "concurrently -n nx,admin,storybook -c blue,green,magenta \"pnpm --dir apps/www dev\" \"pnpm --dir apps/admin dev\" \"pnpm --dir packages/design-system dev\"",
+    "build": "pnpm --dir apps/www build",
     "clean": "bash ./shell/clean-repo.sh",
     "lint": "turbo run lint",
     "test": "echo 'Tests are disabled'",
     "type-check": "turbo run type-check",
-    "ci:github": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && NEXT_TELEMETRY_DISABLED=1 sh -c 'if [ -d apps/nx ]; then corepack pnpm --dir apps/nx build; else corepack pnpm build; fi'",
+    "ci:github": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && NEXT_TELEMETRY_DISABLED=1 sh -c 'if [ -d apps/www ]; then corepack pnpm --dir apps/www build; else corepack pnpm build; fi'",
     "ci:full": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm lint && corepack pnpm type-check && corepack pnpm test && corepack pnpm build"
   },
   "devDependencies": {

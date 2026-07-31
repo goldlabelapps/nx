@@ -1,6 +1,6 @@
 {
   "version": "3.0.5",
-  "name": "nx",
+  "name": "www",
   "description": "NX°",
   "packageManager": "pnpm@10.12.4",
   "scripts": {
