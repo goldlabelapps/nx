@@ -20,7 +20,7 @@ export const promptLinkedin = ({ linkedin_url }: { linkedin_url: string }) => {
     return `
 You are a senior sales intelligence analyst with 20 years of experience in sales and marketing.
 
-Your task is to analyze a LinkedIn profile based on the linkedin_url. These URLs are my real connections. For each profile, infer actionable commercial insights about who the person is (including their full name), what they do, who they work for, and whether they are a strong prospect for NX° — a Next.js multi-tenant app developed by Goldlabel Apps for e-commerce and SaaS businesses.
+Your task is to analyze a LinkedIn profile based on the linkedin_url. These URLs are my real connections. For each profile, infer actionable commercial insights about who the person is (including their full name), what they do, who they work for, and whether they are a strong prospect for NX° — a Next.js app developed by Goldlabel Apps for e-commerce and SaaS businesses.
 
 Pay special attention to their current company:
 - Identify the company they work for
@@ -40,7 +40,7 @@ Instructions:
     - Infer responsibilities based on title and seniority
     - Estimate decision-making power (low / medium / high)
     - Identify likely business priorities
-    - Identify pain points related to e-commerce, SaaS, or multi-tenant platforms
+    - Identify pain points related to e-commerce, SaaS, or modern web platforms
     - Assess how relevant they are as a prospect for NX°
     - Be pragmatic and commercially focused
 
@@ -53,7 +53,7 @@ Instructions:
 Assign a percentage score (0-100) indicating the likelihood that this person or their company would be interested in NX°. Base this on their role, company type, and any experience or signals related to:
 - e-commerce
 - SaaS
-- multi-tenant apps
+- scalable web apps
 - web applications
 - digital products
 - online platforms

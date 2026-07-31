@@ -6,6 +6,3 @@ export const getAppConfig = () => {
         markdownDir: process.cwd() + '/public/nxadmin/markdown',
     };
 };
-
-// Backward-compatible alias while the codebase migrates off tenant naming.
-export const getTenant = getAppConfig;

@@ -4,7 +4,7 @@ import { serverUseMDBySlug } from './serverHooks/serverUseMDBySlug';
 import { serverUseAllMd } from './serverHooks/serverUseAllMd';
 import { serverUseSlugs } from './serverHooks/serverUseSlugs';
 import { serverUseRelated } from './serverHooks/serverUseRelated';
-import { getAppConfig } from './getTenant';
+import { getAppConfig } from './getAppConfig';
 import { getMeta } from './getMeta';
 
 export {

@@ -1,5 +1,5 @@
 // import type { I_Meta } from '../types';
-import { getAppConfig } from './getTenant';
+import { getAppConfig } from './getAppConfig';
 
 export const getMeta = (props: any) => {
 
