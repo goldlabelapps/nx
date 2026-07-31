@@ -1,0 +1,34 @@
+{
+  "id": "/nxadmin/",
+  "short_name": "°Admin",
+  "name": "°Admin",
+  "description": "Level Five AI only",
+  "lang": "en",
+  "theme_color": "#364450",
+  "background_color": "#364450",
+  "display": "fullscreen",
+  "orientation": "any",
+  "scope": "/",
+  "start_url": "/",
+  "splash_pages": null,
+  "icons": [
+    {
+      "src": "/nxadmin/png/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/nxadmin/png/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/nxadmin/svg/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

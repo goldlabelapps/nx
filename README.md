@@ -24,3 +24,22 @@
 - [Overview](./docs/README.md)
 - [Tech Stack](./docs/techstack.md)
 - [Apps and Packages](./docs/apps.md)
+
+
+
+{
+  "name": "Gisela Dorward",
+  "routineContext": "Would like a gentle routine that deeply hydrates mature skin, improves comfort and radiance, and supports skin health without using harsh active ingredients.",
+  "skinOverview": "Mature dry skin with reduced elasticity, pronounced fine lines, and some age-related pigmentation. The skin would benefit from intensive hydration, barrier repair, and nourishing ingredients to improve softness and luminosity.",
+  "personalNotes": "Enjoys tending to her rose garden and spends a lot of time outdoors in spring and summer. Wants a simple routine that's easy to follow and doesn't involve too many products.",
+  "skinType": "Dry",
+  "concerns": [
+    "Wrinkles",
+    "Pigmentation",
+    "Dehydration",
+    "Aging"
+  ],
+  "dateOfBirth": "03/06/1951",
+  "pregnant": false,
+  "breastfeeding": false
+}
