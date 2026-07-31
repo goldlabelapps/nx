@@ -5,6 +5,7 @@
   "packageManager": "pnpm@10.12.4",
   "scripts": {
     "dev": "next dev -p 1999 --webpack",
+    "prebuild": "pnpm --dir ../../packages/design-system build",
     "build": "next build --webpack",
     "start": "next start",
     "test": "jest --runInBand --passWithNoTests",
