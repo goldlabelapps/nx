@@ -1,8 +1,8 @@
 ---
 order: 1 
 slug: /
-title: Fast to build
-tags: NX°, free, framework, fullstack, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, SSG, Server Side JavaScript, Node, NextJS
+title: NX°
+tags: free, framework, fullstack, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, SSG, Server Side JavaScript, Node, NextJS
 icon: rocket
 image: https://live.staticflickr.com/65535/55043297044_45e9c515ae_b.jpg
 ---

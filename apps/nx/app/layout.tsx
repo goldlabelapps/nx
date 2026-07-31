@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import '@nx/design-system';
+import '@nx/design-system/styles.css';
+import '@nx/design-system/site-layout.css';
 import fs from 'fs';
 import path from 'path';
 import { AppShell, DesignSystemProvider } from '@nx/design-system';
@@ -66,7 +67,7 @@ export default async function RootLayout({
       </head>
       <body>
         <div className="wrapper">
-          <DesignSystemProvider mode="light">
+          <DesignSystemProvider mode="dark">
             <UbereduxProvider config={config}>
               <AppShell>{children}</AppShell>
             </UbereduxProvider>
