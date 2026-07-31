@@ -1,3 +1,16 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://nx.goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://nx.goldlabel.pro/nx/png/favicon.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Apps and Packages</span>
+    </h1>
+</div>
+
 # Apps and Packages
 
 This monorepo is organized into two main kinds of workspaces: apps and packages.

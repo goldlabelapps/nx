@@ -1,3 +1,16 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://nx.goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://nx.goldlabel.pro/nx/png/favicon.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Developer</span>
+    </h1>
+</div>
+
 ## Developer
 
 As a logged-in GitHub user, go to [github.com/goldlabelapps/nx](https://github.com/goldlabelapps/nx) and click "Use this template."
