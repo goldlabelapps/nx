@@ -1,10 +1,10 @@
 {
-    "tenant": "nxadmin",
-    "siteName": "°Admin",
+    "tenant": "admin",
+    "siteName": "NX°",
     "description": "Level Five AIs only",
-    "url": "https://nx-admin.goldlabel.pro/",
+    "url": "https://admin.goldlabel.pro/",
     "owner": {
-        "name": "°Admin",
+        "name": "NX°",
         "email": "admin@goldlabel.pro"
     },
     "favicon": "/nxadmin/svg/favicon.svg",

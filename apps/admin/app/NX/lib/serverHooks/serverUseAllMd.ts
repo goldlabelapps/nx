@@ -5,10 +5,10 @@ import matter from "gray-matter";
 /**
  * Recursively collects all markdown slugs from frontmatter in a directory.
  * @param dir Directory to search (default: project markdown dir)
- * @param project Project name (default: "nx")
+ * @param project Project name (default: "nxadmin")
  * @returns Array of slug arrays
  */
-export function serverUseAllMd(dir?: string, project: string = "nx"): string[][] {
+export function serverUseAllMd(dir?: string, project: string = "nxadmin"): string[][] {
     // If no directory is provided, default to public/{project}/markdown
     if (!dir) {
         dir = path.resolve(process.cwd(), "public", project, "markdown");

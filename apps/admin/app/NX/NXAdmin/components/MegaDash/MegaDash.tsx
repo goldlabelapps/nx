@@ -27,7 +27,7 @@ export default function MegaDash() {
     React.useEffect(() => {
         if (dash && dash.title) {
             dispatch(setNXAdmin('header', {
-                title: '°Admin',
+                title: 'Dashboard',
                 icon: 'dashboard',
             }));
         }

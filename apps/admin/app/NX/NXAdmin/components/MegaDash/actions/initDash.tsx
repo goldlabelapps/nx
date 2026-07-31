@@ -7,7 +7,7 @@ export const initDash = (): any =>
         try {
             const nxAdmin = getState()?.redux?.nxAdmin || {};
             if (!nxAdmin.dash) await dispatch(setNXAdmin('dash', {
-                title: 'NX° Admin',
+                title: 'Dashboard',
                 hero: 'accounts',
                 panels: [
                     'account',
