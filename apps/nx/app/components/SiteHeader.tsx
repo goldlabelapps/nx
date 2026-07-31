@@ -23,9 +23,9 @@ export default function SiteHeader({
 	return (
 		<header className="site-header">
 			<div className="site-header-top" aria-label="Main header bar">
-				<div className="site-footer-brand" aria-label="Brand and overview">
+				<div className="site-brand" aria-label="Brand and overview">
 					<div className="site-header-title-row">
-						<a className="site-home-reset" href={homeHref} aria-label="Home">
+						<a className="site-home-link" href={homeHref} aria-label="Home">
 							<img src={logoSrc} alt={logoAlt} aria-hidden={true} />
 						</a>
 						<div className="site-header-text-stack">
@@ -52,7 +52,7 @@ export default function SiteHeader({
 					</div>
 				</div>
 
-				<details className="site-header-mobile-nav site-floating-nav" aria-label="Mobile navigation">
+				<details className="site-header-mobile-nav" aria-label="Mobile navigation">
 					<summary className="site-mobile-nav-trigger">Menu</summary>
 					<nav className="site-mobile-nav-panel" aria-label="Primary navigation">
 						{navItems}

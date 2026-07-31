@@ -17,11 +17,16 @@
       "import": "./dist/styles/globals.css",
       "require": "./dist/styles/globals.css",
       "default": "./dist/styles/globals.css"
+    },
+    "./site-layout.css": {
+      "import": "./dist/styles/site-layout.css",
+      "require": "./dist/styles/site-layout.css",
+      "default": "./dist/styles/site-layout.css"
     }
   },
   "files": ["dist"],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json && mkdir -p dist/styles && cp src/styles/globals.css dist/styles/globals.css",
+    "build": "tsc -p tsconfig.build.json && mkdir -p dist/styles && cp src/styles/*.css dist/styles/",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No lint configured yet'",
     "clean": "rm -rf dist",

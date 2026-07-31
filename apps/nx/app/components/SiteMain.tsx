@@ -20,13 +20,11 @@ export default function SiteMain({
 	return (
 		<section className="site-col site-col-center" aria-label="Page content">
 			<div className="site-panel site-panel-main">
-				
-                {featuredImage ? (
-                    <div className="site-featured-image" aria-label="Featured image" aria-hidden="true">
-                        <img className="site-featured-image-bg" src={featuredImage} alt="" />
-                    </div>
-                ) : null}
-
+				{featuredImage ? (
+					<div className="site-featured-image" aria-label="Featured image" aria-hidden="true">
+						<img className="site-featured-image-bg" src={featuredImage} alt="" />
+					</div>
+				) : null}
 
 				<RenderMarkdown config={config}>{content}</RenderMarkdown>
 			</div>
