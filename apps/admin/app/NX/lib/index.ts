@@ -8,7 +8,7 @@ import {
 } from './firebase';
 
 // Config & metadata utilities
-import { getAppConfig } from './getTenant';
+import { getAppConfig } from './getAppConfig';
 import { getMeta } from './getMeta';
 
 // Vanilla JS utilities

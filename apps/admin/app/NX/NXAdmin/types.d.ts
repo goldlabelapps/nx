@@ -88,7 +88,6 @@ export type T_HistoryEntry = {
     featuredImage: string;
     url: string;
     slug: string;
-    tenant: string;
     siteName: string;
     favicon: string;
 };

@@ -11,8 +11,6 @@ export interface I_MakeRes {
     data?: any;
 }
 
-export type T_Tenant = 'my-tenant' | 'new-tenant';
-
 // Messaging
 export type T_EmailContact = {
     label: string;
@@ -49,7 +47,6 @@ export type T_ConfigTheme = {
 
 export type T_Config = {
     siteName: string;
-    tenant: string;
     description: string;
     url: string;
     owner: {

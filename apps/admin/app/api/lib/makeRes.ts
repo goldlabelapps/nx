@@ -4,7 +4,6 @@ import { makeTime } from './makeTime';
 export function makeRes({ severity, message, data }: I_MakeRes) {
     return {
         time: makeTime(Date.now()),
-        tenant: 'nxadmin',
         severity,
         message,
         data
