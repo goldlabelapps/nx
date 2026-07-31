@@ -1,8 +1,8 @@
-# NX° Admin
+# Dashboard
 
 > Modular admin surface for managing app data, operations, and internal tools.
 
-NX° Admin is a modular, extensible admin cartridge for React apps. It provides a top-level admin component, a barrel export for all features, and a folder structure supporting scalable feature modules (Prospects, Queue, Fingerprints, MegaDash, etc). All major admin functionality is exported from [index.tsx](index.tsx).
+Dashboard is a modular, extensible admin cartridge for React apps. It provides a top-level admin component, a barrel export for all features, and a folder structure supporting scalable feature modules (Prospects, Queue, Fingerprints, MegaDash, etc). All major admin functionality is exported from [index.tsx](index.tsx).
 
 ## Primary Entry Points
 

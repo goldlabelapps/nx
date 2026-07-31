@@ -206,7 +206,7 @@ export default function MobileLayout(props: Props) {
                 >
                     <Fab
                         color={'primary'}
-                        aria-label={open ? 'Close NX Admin navigation' : 'Open NX Admin navigation'}
+                        aria-label={open ? 'Close Dashboard navigation' : 'Open Dashboard navigation'}
                         onClick={handleMenuClick}
                         sx={{
                             boxShadow: 0,

@@ -45,11 +45,14 @@ export default function SimpleSignIn({ config }: { config?: T_Config }) {
                     title={<Typography variant="h6" color="text.secondary">
                         {config.siteName}
                     </Typography>}
-                    // avatar={
-                    //     <Avatar
-                    //         src={config.favicon}
-                    //         alt={config.siteName} />
-                    // }
+                    avatar={
+                        <Avatar
+                            variant="square"
+                            src="/nxadmin/svg/favicon.svg"
+                            alt={config.siteName}
+                            sx={{ width: 32, height: 32 }}
+                        />
+                    }
                 />
             )}
 

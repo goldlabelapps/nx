@@ -1,8 +1,7 @@
-import type { T_Tenant } from '../NX/types';
 import { Metadata } from "next";
 import { NXAdmin } from '../NX/NXAdmin';
 import {
-    getTenant,
+    getAppConfig,
 } from '../NX/lib/index.server';
 
 type T_Params = {
@@ -32,10 +31,9 @@ export async function generateMetadata({ params }: { params?: Promise<T_Params> 
         ? resolvedParams.slug.join('/')
         : '';
 
-    const tenant = process.env.NEXT_PUBLIC_TENANT || 'nxadmin';
-    const { config } = getTenant(tenant as T_Tenant);
+    const { config } = getAppConfig();
 
-    const siteName = config.siteName || 'NX°Admin';
+    const siteName = config.siteName || 'Dashboard';
     const description = config.description || 'Level Five AI only';
     const baseUrl = (config.url).replace(/\/$/, '');
     const pageUrl = slugPath ? `${baseUrl}/${slugPath}` : baseUrl;
@@ -68,9 +66,7 @@ export async function generateMetadata({ params }: { params?: Promise<T_Params> 
 
 
 export default async function Page() {
-    const tenant = process.env.NEXT_PUBLIC_TENANT || "nxadmin";
-    const { config: rawConfig } = getTenant(tenant as T_Tenant);
-    const config = { ...rawConfig, tenant: tenant as T_Tenant };
+    const { config } = getAppConfig();
 
     return <NXAdmin config={config} />;
 }

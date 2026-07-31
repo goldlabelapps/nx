@@ -14,8 +14,7 @@ export interface NavItem {
 }
 
 async function getMarkdownRoot() {
-    const project = process.env.NEXT_PUBLIC_TENANT || "goldlabel";
-    return path.join(process.cwd(), `public/${project}/markdown`);
+    return path.join(process.cwd(), 'public/nxadmin/markdown');
 }
 
 function normalizeSlug(slug: string | undefined, fallback: string): string {
@@ -90,8 +89,7 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
 }
 
 export async function serverUseNav(): Promise<NavItem[]> {
-    const tenant = process.env.NEXT_PUBLIC_TENANT || "nx";
     const markdownRoot = await getMarkdownRoot();
-    const baseUrl = `/${tenant}/markdown`;
+    const baseUrl = '/nxadmin/markdown';
     return buildNavTree(markdownRoot, baseUrl);
 }

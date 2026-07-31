@@ -24,7 +24,7 @@ export default function Surface() {
     // React.useEffect(() => {
     //     if (dash && dash.title) {
     //         dispatch(setNXAdmin('header', {
-    //             title: '°Admin',
+    //             title: 'Dashboard',
     //             icon: 'dashboard',
     //         }));
     //     }

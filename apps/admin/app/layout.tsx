@@ -6,8 +6,7 @@ import fs from 'fs';
 import path from 'path';
 import { UbereduxProvider } from './NX/Uberedux';
 
-const tenant = process.env.NEXT_PUBLIC_TENANT || "free";
-const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
+const configPath = path.join(process.cwd(), 'public', 'nxadmin', 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
 const { title, favicon } = config;
@@ -22,7 +21,7 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href={favicon} />
-        <link rel="manifest" href={`/${tenant}/manifest.json`} />
+        <link rel="manifest" href="/nxadmin/manifest.json" />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />

@@ -40,7 +40,7 @@ export default function AdminNav({
             open={open}
             onClick={navigateToRoute}
             options={{
-              label: '°Admin',
+              label: 'Dashboard',
               icon: 'dashboard',
               route: '/',
             }}

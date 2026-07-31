@@ -7,8 +7,8 @@ import {
     getFirebaseMessaging,
 } from './firebase';
 
-// Tenant & metadata utilities
-import { getTenant } from './getTenant';
+// Config & metadata utilities
+import { getAppConfig } from './getTenant';
 import { getMeta } from './getMeta';
 
 // Vanilla JS utilities
@@ -26,8 +26,8 @@ export {
     getFirebaseFirestore,
     getFirebaseStorage,
     getFirebaseMessaging,
-    // Tenant & metadata
-    getTenant,
+    // Config & metadata
+    getAppConfig,
     getMeta,
     // Utilities
     createSlug,
