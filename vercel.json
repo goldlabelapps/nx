@@ -2,5 +2,5 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm --version && corepack pnpm install --frozen-lockfile",
-  "buildCommand": "if [ -d apps/nx ]; then corepack pnpm --dir apps/nx build; else corepack pnpm build; fi"
+  "buildCommand": "if [ -d apps/www ]; then corepack pnpm --dir apps/www build; else corepack pnpm build; fi"
 }
