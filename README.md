@@ -17,4 +17,4 @@
 
 - [Overview](./docs/README.md)
 - [Tech Stack](./docs/techstack.md)
-- [Apps and Packages](./docs/apps.md)
+- [Apps and Packages](./docs/apps-packages.md)
