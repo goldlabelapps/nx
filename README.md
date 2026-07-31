@@ -7,7 +7,7 @@
             height="32"
         />
         </a>
-        <span>NX°</span>
+        <span>NX° </span>
     </h1>
 </div>
 
