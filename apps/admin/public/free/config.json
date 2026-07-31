@@ -1,0 +1,46 @@
+{
+    "tenant": "free",
+    "siteName": "NX°",
+    "description": "Open Source & Free",
+    "url": "https://goldlabel.pro",
+    "owner": {
+        "name": "NX°",
+        "email": "nx@goldlabel.pro"
+    },
+    "favicon": "/free/png/favicon.png",
+    "avatars": {
+        "light": "/free/svg/avatarLight.svg",
+        "dark": "/free/svg/avatarDark.svg"
+    },
+    "images": {
+        "light": "/free/png/python.png",
+        "dark": "/free/png/python.png"
+    },
+    "cartridges": {
+        "paywall": {
+            "enabled": false
+        },
+        "designSystem": {
+            "themeSwitching": true,
+            "defaultTheme": "light",
+            "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#888888",
+                    "secondary": "#bbbbbb",
+                    "background": "#222222",
+                    "paper": "#333333",
+                    "text": "#f5f5f5"
+                },
+                "light": {
+                    "mode": "light",
+                    "primary": "#bbbbbb",
+                    "secondary": "#888888",
+                    "background": "#f5f5f5",
+                    "paper": "#eeeeee",
+                    "text": "#222222"
+                }
+            }
+        }
+    }
+}

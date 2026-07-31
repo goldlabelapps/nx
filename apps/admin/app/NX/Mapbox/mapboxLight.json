@@ -1,0 +1,105 @@
+{
+  "version": 8,
+  "name": "Goldlabel Light",
+  "glyphs": "mapbox://fonts/mapbox/{fontstack}/{range}.pbf",
+  "metadata": {
+    "mapbox:theme": {
+      "name": "Goldlabel Light",
+      "settings": {
+        "background": "#eaf0f5",
+        "water": "#EEF7FF",
+        "land": "#eaf0f5",
+        "road": "#364450",
+        "road-label": "#000000",
+        "poi": "#364450",
+        "poi-label": "#000000",
+        "place-label": "#000000",
+        "transit": "#364450",
+        "boundary": "#364450",
+        "building": "#EEF7FF",
+        "building-outline": "#364450"
+      }
+    }
+  },
+  "sources": {
+    "mapbox": {
+      "type": "vector",
+      "url": "mapbox://mapbox.mapbox-streets-v8"
+    }
+  },
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#eaf0f5"
+      }
+    },
+    {
+      "id": "water",
+      "type": "fill",
+      "source": "mapbox",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "#EEF7FF"
+      }
+    },
+    {
+      "id": "land",
+      "type": "fill",
+      "source": "mapbox",
+      "source-layer": "landuse",
+      "paint": {
+        "fill-color": "#eaf0f5"
+      }
+    },
+    {
+      "id": "road",
+      "type": "line",
+      "source": "mapbox",
+      "source-layer": "road",
+      "paint": {
+        "line-color": "#364450",
+        "line-width": 1
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "source": "mapbox",
+      "source-layer": "building",
+      "paint": {
+        "fill-color": "#EEF7FF",
+        "fill-outline-color": "#364450"
+      }
+    },
+    {
+      "id": "road-label",
+      "type": "symbol",
+      "source": "mapbox",
+      "source-layer": "road",
+      "layout": {
+        "text-field": ["get", "name"],
+        "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+        "text-size": 12
+      },
+      "paint": {
+        "text-color": "#000000"
+      }
+    },
+    {
+      "id": "poi-label",
+      "type": "symbol",
+      "source": "mapbox",
+      "source-layer": "poi_label",
+      "layout": {
+        "text-field": ["get", "name"],
+        "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "#000000"
+      }
+    }
+  ]
+}

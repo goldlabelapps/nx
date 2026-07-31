@@ -1,0 +1,43 @@
+{
+    "tenant": "nxadmin",
+    "siteName": "°Admin",
+    "description": "Level Five AIs only",
+    "url": "https://nx-admin.goldlabel.pro/",
+    "owner": {
+        "name": "°Admin",
+        "email": "admin@goldlabel.pro"
+    },
+    "favicon": "/nxadmin/svg/favicon.svg",
+    "avatars": {
+        "light": "/nxadmin/svg/avatarLight.svg",
+        "dark": "/nxadmin/svg/avatarDark.svg"
+    },
+    "images": {
+        "light": "/nxadmin/png/apps.png",
+        "dark": "/nxadmin/png/apps.png"
+    },
+    "cartridges": {
+        "designSystem": {
+            "themeSwitching": true,
+            "defaultTheme": "dark",
+            "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#ffd849",
+                    "secondary": "#ffd849",
+                    "paper": "#364450",
+                    "background": "#364450",
+                    "text": "#fff"
+                },
+                "light": {
+                    "mode": "light",
+                    "primary": "#364450",
+                    "secondary": "#ffd849",
+                    "background": "#f7f7f4",
+                    "paper": "#f7f7f4",
+                    "text": "#2c2c2a"
+                }
+            }
+        }
+    }
+}
