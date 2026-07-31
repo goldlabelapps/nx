@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently -n nx,admin,storybook -c blue,green,magenta \"pnpm --dir apps/nx dev\" \"pnpm --dir apps/admin dev\" \"pnpm --dir packages/design-system dev\"",
-    "build": "turbo run build",
+    "build": "pnpm --dir apps/nx build",
     "clean": "bash ./shell/clean-repo.sh",
     "lint": "turbo run lint",
     "test": "echo 'Tests are disabled'",
