@@ -118,7 +118,6 @@ export default async function Page({ params }: T_PageProps) {
                         <SiteNav items={navItems} />
                     </div>
                 </aside>
-
                 <SiteMain
                     title={data.title || title}
                     description={description || config?.description || ''}
@@ -127,10 +126,8 @@ export default async function Page({ params }: T_PageProps) {
                     content={content}
                     featuredImage={featuredImage}
                 />
-
-                <SiteSidebar />
             </main>
-
+            <SiteSidebar />
             <SiteFooter />
         </div>
     );
