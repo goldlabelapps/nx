@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AppShell, PageSection, SectionTitle, Eyebrow, BrandMark } from './Primitives';
+import { AppShell, BrandMark, Eyebrow, PageSection, SectionTitle } from '../../index';
 
 const meta: Meta<typeof AppShell> = {
-  title: 'Design System/Primitives',
+  title: 'Foundations/Primitives',
   component: AppShell,
   parameters: {
-    layout: 'fullscreen'
-  }
+    layout: 'fullscreen',
+  },
 };
 
 export default meta;
@@ -19,9 +19,12 @@ export const Overview: Story = {
         <div className="nx-surface" style={{ padding: '24px', display: 'grid', gap: '16px' }}>
           <BrandMark name="NX°" />
           <Eyebrow>Editorial foundations</Eyebrow>
-          <SectionTitle title="Thoughtful defaults" subtitle="Built to carry the stronger theme language from the original system into the NX package." />
+          <SectionTitle
+            title="Thoughtful defaults"
+            subtitle="Built to carry the stronger theme language from the original system into the NX package."
+          />
         </div>
       </PageSection>
     </AppShell>
-  )
+  ),
 };

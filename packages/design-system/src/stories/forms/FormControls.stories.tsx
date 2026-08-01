@@ -1,12 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Alert, Card, Field } from './FormControls';
+import { Alert, Card, Field } from '../../index';
 
 const meta: Meta<typeof Card> = {
-  title: 'Design System/Form Controls',
+  title: 'Forms/Form Controls',
+  id: 'design-system-form-controls',
   component: Card,
   parameters: {
-    layout: 'centered'
-  }
+    layout: 'centered',
+  },
 };
 
 export default meta;
@@ -27,5 +28,5 @@ export const Gallery: Story = {
         <Field label="Project" error="Choose a workspace" />
       </Card>
     </div>
-  )
+  ),
 };

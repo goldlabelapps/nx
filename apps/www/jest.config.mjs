@@ -11,6 +11,8 @@ const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/tests/jest.setup.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
+    '^@nx/design-system$': '<rootDir>/../../packages/design-system/src/index.ts',
+    '^@nx/design-system/(.*)$': '<rootDir>/../../packages/design-system/src/$1',
   },
 };
 
