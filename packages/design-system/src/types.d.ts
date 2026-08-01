@@ -28,11 +28,11 @@ export type DesignSystemProviderProps = {
 	mode?: DesignSystemMode;
 };
 
-export type EyebrowTone = 'primary' | 'secondary' | 'ink' | 'clay';
+export type HeadingTone = 'primary' | 'secondary' | 'ink' | 'clay';
 
-export type EyebrowProps = {
+export type HeadingProps = {
 	children: ReactNode;
-	tone?: EyebrowTone;
+	tone?: HeadingTone;
 	as?: 'span' | 'div';
 	style?: CSSProperties;
 };

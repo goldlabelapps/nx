@@ -8,7 +8,7 @@ export default defineConfig({
     css: true,
     coverage: {
       reporter: ['text', 'html'],
-      include: ['src/components/**/*.{ts,tsx}', 'src/theme.ts'],
+      include: ['src/components/**/*.{ts,tsx}', 'src/styles/theme.ts'],
     },
   },
 });
