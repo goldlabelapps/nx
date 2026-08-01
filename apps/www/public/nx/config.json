@@ -35,11 +35,11 @@
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#000",
-                    "secondary": "#000",
-                    "background": "#000",
-                    "paper": "#000",
-                    "text": "#FFF"
+                    "primary": "#4A46B8",
+                    "secondary": "#6C68D6",
+                    "background": "#F6F5FF",
+                    "paper": "#FFFFFF",
+                    "text": "#1E1C34"
                 }
             }
         }
