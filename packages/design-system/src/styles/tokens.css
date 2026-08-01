@@ -46,7 +46,7 @@
   --type-body: 1.25rem;
   --type-small: 1.15rem;
   --type-fine: 1rem;
-  --type-eyebrow: 0.875rem;
+  --type-heading: 0.875rem;
   --type-label: 0.825rem;
   --type-micro: 0.7rem;
   --weight-regular: 400;
@@ -57,7 +57,7 @@
   --leading-snug: 1.15;
   --leading-body: 1.6;
   --track-display: -0.02em;
-  --track-eyebrow: 0.22em;
+  --track-heading: 0.22em;
   --track-label: 0.12em;
   --track-button: 0.1em;
   --track-tight: 0.05em;

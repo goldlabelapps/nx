@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createAppTheme } from './theme';
+import { createAppTheme } from '../src/styles/theme';
 
 describe('createAppTheme', () => {
   it('creates a light theme by default', () => {

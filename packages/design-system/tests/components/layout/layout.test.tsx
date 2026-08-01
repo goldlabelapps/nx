@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { AppShell, PageSection, SectionTitle } from './Layout';
-import Header from './Header';
-import Main from './Main';
-import Sidebar from './Sidebar';
-import Footer from './Footer';
+import { AppShell, PageSection, SectionTitle } from '../../../src/components/layout/Layout';
+import Header from '../../../src/components/layout/Header';
+import Main from '../../../src/components/layout/Main';
+import Sidebar from '../../../src/components/layout/Sidebar';
+import Footer from '../../../src/components/layout/Footer';
 
 describe('layout primitives', () => {
   it('renders shell and page section content', () => {

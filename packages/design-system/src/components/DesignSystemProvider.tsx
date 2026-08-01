@@ -1,7 +1,7 @@
 'use client';
 
 import { CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
-import { createAppTheme } from '../theme';
+import { createAppTheme } from '../styles/theme';
 import type { DesignSystemProviderProps } from '../types';
 
 export default function DesignSystemProvider({ children, mode = 'light' }: DesignSystemProviderProps) {

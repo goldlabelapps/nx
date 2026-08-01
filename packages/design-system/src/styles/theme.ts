@@ -1,5 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-import type { DesignSystemMode } from './types';
+import type { DesignSystemMode } from '../types';
 
 export function createAppTheme(mode: DesignSystemMode = 'light') {
   const isDark = mode === 'dark';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Button as MuiButton, Stack, TextField, Typography } from '@mui/material';
 import type { AlertProps, CardProps, FieldProps } from '../../types';
 

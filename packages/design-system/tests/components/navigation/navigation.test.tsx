@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import SiteNav from './SiteNav';
+import SiteNav from '../../../src/components/navigation/SiteNav';
 
 describe('site navigation', () => {
   it('renders flat and nested items', () => {

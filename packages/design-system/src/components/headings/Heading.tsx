@@ -1,7 +1,9 @@
-import { Typography } from '@mui/material';
-import type { EyebrowProps } from '../../types';
+'use client';
 
-function Heading({ children, tone = 'primary', as = 'span', style, ...rest }: EyebrowProps) {
+import { Typography } from '@mui/material';
+import type { HeadingProps } from '../../types';
+
+function Heading({ children, tone = 'primary', as = 'span', style, ...rest }: HeadingProps) {
   const resolvedTone = tone === 'clay' ? 'primary' : tone === 'ink' ? 'secondary' : tone;
 
   return (
@@ -26,5 +28,4 @@ function Heading({ children, tone = 'primary', as = 'span', style, ...rest }: Ey
   );
 }
 
-export { Heading as Eyebrow };
 export default Heading;

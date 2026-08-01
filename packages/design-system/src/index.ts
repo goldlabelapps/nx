@@ -3,7 +3,7 @@ import './styles/globals.css';
 export { default as DesignSystemProvider } from './components/DesignSystemProvider';
 export { AppShell, PageSection, SectionTitle } from './components/layout/Layout';
 export { default as ColorPalette } from './components/brand/ColorPalette';
-export { default as Eyebrow } from './components/headings/Heading';
+export { default as Heading } from './components/headings/Heading';
 export { default as Logo } from './components/brand/Logo';
 export { Alert, Card, Field } from './components/feedback/Feedback';
 export { default as SiteNav } from './components/navigation/SiteNav';
@@ -13,7 +13,7 @@ export { default as SiteHeader } from './components/layout/Header';
 export { default as SiteMain } from './components/layout/Main';
 export { default as SiteSidebar } from './components/layout/Sidebar';
 export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Viewport';
-export { createAppTheme } from './theme';
+export { createAppTheme } from './styles/theme';
 export type {
 	AlertProps,
 	AlertSeverity,
@@ -27,8 +27,8 @@ export type {
 	ColorToken,
 	DesignSystemMode,
 	DesignSystemProviderProps,
-	EyebrowProps,
-	EyebrowTone,
+	HeadingProps,
+	HeadingTone,
 	FieldProps,
 	LogoProps,
 	PageSectionProps,

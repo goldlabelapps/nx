@@ -10,7 +10,7 @@ vi.mock('@mui/material', async (importOriginal) => {
 });
 
 import { useMediaQuery } from '@mui/material';
-import { DesktopOnly, MobileOnly } from './Viewport';
+import { DesktopOnly, MobileOnly } from '../../../src/components/responsive/Viewport';
 
 const mockedUseMediaQuery = vi.mocked(useMediaQuery);
 
