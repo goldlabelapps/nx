@@ -4,6 +4,14 @@ import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
+    SiteFooter,
+    SiteHeader,
+    SiteMain as DesignSystemSiteMain,
+    SiteNav,
+    SiteSidebar,
+    type T_NavNode,
+} from '@nx/design-system';
+import {
     serverUseMDBySlug,
     serverUseAllMd,
     serverUseNav,
@@ -11,14 +19,7 @@ import {
     getMeta,
 } from '../NX/lib/index.server';
 import { normalizeTenant } from '../NX/lib/normalizeTenant';
-import {
-    SiteFooter,
-    SiteHeader,
-    SiteMain,
-    SiteNav,
-    SiteSidebar,
-} from '../components';
-import type { T_NavNode } from '../components';
+import { RenderMarkdown } from '../NX/Shortcodes';
 
 type T_PageParams = {
     slug?: string[];
@@ -118,19 +119,12 @@ export default async function Page({ params }: T_PageProps) {
                         <SiteNav items={navItems} />
                     </div>
                 </aside>
-
-                <SiteMain
-                    title={data.title || title}
-                    description={description || config?.description || ''}
-                    cartridge={data.cartridge}
-                    config={config}
-                    content={content}
-                    featuredImage={featuredImage}
-                />
-
+                <DesignSystemSiteMain featuredImage={featuredImage}>
+                    <RenderMarkdown config={config}>{content}</RenderMarkdown>
+                </DesignSystemSiteMain>
                 <SiteSidebar />
             </main>
-
+           
             <SiteFooter />
         </div>
     );
