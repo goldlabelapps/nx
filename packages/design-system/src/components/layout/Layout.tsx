@@ -1,26 +1,18 @@
 'use client';
 
-import { Box, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import type { AppShellProps, PageSectionProps, SectionTitleProps } from '../../types';
 
 export function AppShell({ children }: AppShellProps) {
-  return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', color: 'text.primary' }}>
-      {children}
-    </Box>
-  );
+  return <div>{children}</div>;
 }
 
 export function PageSection({ children, title, subtitle }: PageSectionProps) {
   return (
-    <Box component="section" sx={{ px: { xs: 2, md: 4 }, py: { xs: 3, md: 5 } }}>
+    <section>
       {(title || subtitle) && (
-        <Stack spacing={0.5} sx={{ mb: 3 }}>
-          {title && (
-            <Typography variant="h2" sx={{ fontSize: '1.5rem' }}>
-              {title}
-            </Typography>
-          )}
+        <Stack spacing={0.5}>
+          {title && <Typography variant="h2">{title}</Typography>}
           {subtitle && (
             <Typography variant="body1" color="text.secondary">
               {subtitle}
@@ -29,7 +21,7 @@ export function PageSection({ children, title, subtitle }: PageSectionProps) {
         </Stack>
       )}
       {children}
-    </Box>
+    </section>
   );
 }
 

@@ -175,9 +175,6 @@
 }
 
 .site-nav-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -189,16 +186,14 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  padding: 0.7rem 0.8rem;
-  border-radius: 0.75rem;
+  padding: 0.25rem 0;
   color: var(--text-strong);
-  transition: background-color 160ms ease, transform 160ms ease;
 }
 
 .site-nav-item > a:hover,
 .site-nav-branch-summary:hover {
-  background: color-mix(in srgb, var(--surface-page) 85%, var(--surface-paper) 15%);
-  transform: translateY(-1px);
+  background: none;
+  transform: none;
 }
 
 .site-nav-branch summary {
@@ -207,11 +202,6 @@
 
 .site-nav-branch summary::-webkit-details-marker {
   display: none;
-}
-
-.site-nav-branch-toggle {
-  color: var(--text-muted);
-  font-weight: 700;
 }
 
 .site-featured-image {

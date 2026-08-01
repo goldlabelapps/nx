@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <nav className="site-footer-columns" aria-label="Footer links">
-        <section className="site-footer-section" aria-label="Company links">
+    <footer>
+      <nav aria-label="Footer links">
+        <section aria-label="Company links">
           <h3>Company</h3>
           <ul>
             <li>
@@ -11,7 +11,7 @@ export default function Footer() {
           </ul>
         </section>
 
-        <section className="site-footer-section" aria-label="Product links">
+        <section aria-label="Product links">
           <h3>Features</h3>
           <ul>
             <li>
@@ -20,7 +20,7 @@ export default function Footer() {
           </ul>
         </section>
 
-        <section className="site-footer-section" aria-label="Resources links">
+        <section aria-label="Resources links">
           <h3>Techstack</h3>
           <ul>
             <li>
@@ -29,7 +29,7 @@ export default function Footer() {
           </ul>
         </section>
 
-        <section className="site-footer-section" aria-label="Legal links">
+        <section aria-label="Legal links">
           <h3>Download</h3>
           <ul>
             <li>

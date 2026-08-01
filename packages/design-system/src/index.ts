@@ -7,6 +7,7 @@ export { default as Heading } from './components/headings/Heading';
 export { default as Logo } from './components/brand/Logo';
 export { Alert, Card, Field } from './components/feedback/Feedback';
 export { default as SiteNav } from './components/navigation/SiteNav';
+export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
 export { default as SiteFooter } from './components/layout/Footer';
 export { default as SiteHeader } from './components/layout/Header';
@@ -30,6 +31,7 @@ export type {
 	HeadingProps,
 	HeadingTone,
 	FieldProps,
+	FeaturedImageProps,
 	LogoProps,
 	PageSectionProps,
 	SectionTitleProps,

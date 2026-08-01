@@ -20,6 +20,7 @@
     "@mui/material": "^7.3.7",
     "@mui/x-data-grid": "^8.28.0",
     "@mui/x-tree-view": "^8.0.0",
+    "@nx/design-system": "workspace:*",
     "@reduxjs/toolkit": "^2.11.2",
     "d3": "^7.9.0",
     "firebase": "^12.10.0",
