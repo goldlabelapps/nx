@@ -5,9 +5,7 @@ const preview: Preview = {
   parameters: {
     layout: 'fullscreen',
     options: {
-      storySort: {
-        order: ['README', 'Brand', 'Headings', 'Feedback', 'Layout', 'Navigation', 'Responsive'],
-      },
+      
     },
   },
   globalTypes: {

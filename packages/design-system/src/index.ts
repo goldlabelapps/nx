@@ -2,7 +2,6 @@ import './styles/globals.css';
 
 export { default as DesignSystemProvider } from './components/DesignSystemProvider';
 export { AppShell, PageSection, SectionTitle } from './components/layout/Layout';
-export { default as ColorPalette } from './components/brand/ColorPalette';
 export { default as Heading } from './components/headings/Heading';
 export { default as Logo } from './components/brand/Logo';
 export { Alert, Field } from './components/feedback/Feedback';
@@ -33,9 +32,6 @@ export type {
 	CardPadding,
 	CardProps,
 	CardVariant,
-	ColorGroup,
-	ColorPaletteProps,
-	ColorToken,
 	DesignSystemMode,
 	DesignSystemProviderProps,
 	HeadingProps,

@@ -9,22 +9,6 @@ export type LogoProps = {
 	subtitle?: string;
 };
 
-export type ColorToken = {
-	label: string;
-	cssVar: string;
-	note: string;
-};
-
-export type ColorGroup = {
-	title: string;
-	tokens: readonly ColorToken[];
-};
-
-export type ColorPaletteProps = {
-	title?: string;
-	subtitle?: string;
-};
-
 export type DesignSystemProviderProps = {
 	children: ReactNode;
 	mode?: DesignSystemMode;
