@@ -148,6 +148,7 @@ vite.config.ts.timestamp-*
 .turbo/
 packages/design-system/storybook-static/
 packages/design-system/.npm-cache/
+packages/design-system/package-lock.json
 packages/themes/storybook/storybook-static/
 apps/agent/next-env.d.ts
 packages/nx-agent/next-env.d.ts

@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Stack, Typography } from '@mui/material';
 import type { AppShellProps, PageSectionProps, SectionTitleProps } from '../../types';
 

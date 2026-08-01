@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import Logo from './Logo';
-import ColorPalette from './ColorPalette';
+import Logo from '../../../src/components/brand/Logo';
+import ColorPalette from '../../../src/components/brand/ColorPalette';
 
 describe('brand components', () => {
   it('renders logo default and custom content', () => {
