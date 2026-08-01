@@ -4,9 +4,6 @@ import { SiteMain } from '../../index';
 const meta: Meta<typeof SiteMain> = {
   title: 'Layout/Main',
   component: SiteMain,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

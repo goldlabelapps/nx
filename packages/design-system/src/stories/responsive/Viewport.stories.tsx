@@ -4,9 +4,6 @@ import { Card, DesktopOnly, MobileOnly } from '../../index';
 const meta: Meta<typeof DesktopOnly> = {
   title: 'Responsive/Viewport',
   component: DesktopOnly,
-  parameters: {
-    layout: 'centered',
-  },
 };
 
 export default meta;

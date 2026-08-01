@@ -17,9 +17,6 @@ const sampleNav: T_NavNode[] = [
 const meta: Meta<typeof SiteHeader> = {
   title: 'Layout/Header',
   component: SiteHeader,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

@@ -5,9 +5,6 @@ import { AppShell, Field, PageSection } from '../../index';
 const meta: Meta<typeof Field> = {
   title: 'Feedback/Field',
   component: Field,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

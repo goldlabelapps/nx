@@ -4,9 +4,6 @@ import { SiteFooter } from '../../index';
 const meta: Meta<typeof SiteFooter> = {
   title: 'Layout/Footer',
   component: SiteFooter,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

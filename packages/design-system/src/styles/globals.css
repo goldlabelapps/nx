@@ -51,6 +51,16 @@ select {
   font: inherit;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li::marker {
+  content: '';
+}
+
 .nx-surface {
   background: var(--nx-paper);
   border: 1px solid var(--nx-line);

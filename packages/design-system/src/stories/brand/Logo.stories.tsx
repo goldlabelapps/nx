@@ -4,9 +4,6 @@ import { AppShell, DesignSystemProvider, Logo, PageSection } from '../../index';
 const meta: Meta<typeof Logo> = {
   title: 'Brand/Logo',
   component: Logo,
-  parameters: {
-    layout: 'centered',
-  },
 };
 
 export default meta;
@@ -30,7 +27,4 @@ export const Darkmode: Story = {
       </AppShell>
     </DesignSystemProvider>
   ),
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
