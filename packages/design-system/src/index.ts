@@ -15,6 +15,7 @@ export { default as SiteFooter } from './components/layout/Footer';
 export { default as SiteHeader } from './components/layout/Header';
 export { default as SiteMain } from './components/layout/Main';
 export { default as SiteSidebar } from './components/layout/Sidebar';
+export { default as Icon } from './components/icons/Icon';
 export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Viewport';
 export { createAppTheme } from './styles/theme';
 export type {
@@ -49,3 +50,4 @@ export type {
 	UseIsMobileOptions,
 	VisibilityProps,
 } from './types';
+export type { IconName, IconProps } from './components/icons/Icon';
