@@ -1,27 +1,21 @@
 'use client';
 
-import { Button as MuiButton } from '@mui/material';
+import { IconButton as MuiIconButton } from '@mui/material';
 import type { SxProps, Theme } from '@mui/material/styles';
-import type { ButtonProps as NxButtonProps, ButtonSize, ButtonTone, ButtonVariant } from '../../types';
+import type { ButtonSize, ButtonTone, ButtonVariant, IconButtonProps as NxIconButtonProps } from '../../types';
 
 const SIZE_STYLES = {
   sm: {
-    minHeight: 36,
-    px: 1.5,
-    py: 0.75,
-    fontSize: '0.9rem',
+    width: 36,
+    height: 36,
   },
   md: {
-    minHeight: 42,
-    px: 2,
-    py: 0.9,
-    fontSize: '0.96rem',
+    width: 42,
+    height: 42,
   },
   lg: {
-    minHeight: 48,
-    px: 2.5,
-    py: 1,
-    fontSize: '1rem',
+    width: 48,
+    height: 48,
   },
 } satisfies Record<ButtonSize, Record<string, string | number>>;
 
@@ -119,30 +113,23 @@ function getToneStyles(tone: ButtonTone, variant: ButtonVariant) {
   return tones[tone][styleVariant];
 }
 
-export default function Button({
-  children,
-  variant = 'solid',
+export default function IconButton({
+  icon,
+  variant = 'ghost',
   tone = 'primary',
   size = 'md',
-  fullWidth = false,
   disabled = false,
   href,
   onClick,
-  startIcon,
-  endIcon,
   type = 'button',
   ariaLabel,
   className,
   sx,
-}: NxButtonProps) {
+}: NxIconButtonProps) {
   const mergedSx = {
     borderRadius: '3px',
-    fontWeight: 700,
-    lineHeight: 1,
-    letterSpacing: '0.02em',
-    textTransform: 'none',
     alignSelf: 'flex-start',
-    width: fullWidth ? '100%' : 'auto',
+    border: VARIANT_MAP[variant] === 'outlined' ? '1px solid' : undefined,
     boxShadow: variant === 'ghost' || variant === 'text' ? 'none' : undefined,
     '&.Mui-disabled': {
       opacity: 0.55,
@@ -153,22 +140,32 @@ export default function Button({
 
   const composedSx: SxProps<Theme> = Array.isArray(sx) ? [mergedSx, ...sx] : sx ? [mergedSx, sx] : mergedSx;
 
+  if (href) {
+    return (
+      <MuiIconButton
+        component='a'
+        href={href}
+        disabled={disabled}
+        onClick={onClick}
+        aria-label={ariaLabel}
+        className={className}
+        sx={composedSx}
+      >
+        {icon}
+      </MuiIconButton>
+    );
+  }
+
   return (
-    <MuiButton
-      variant={VARIANT_MAP[variant]}
-      disableElevation
-      fullWidth={fullWidth}
+    <MuiIconButton
       disabled={disabled}
-      href={href}
       onClick={onClick}
-      startIcon={startIcon}
-      endIcon={endIcon}
       type={type}
       aria-label={ariaLabel}
       className={className}
       sx={composedSx}
     >
-      {children}
-    </MuiButton>
+      {icon}
+    </MuiIconButton>
   );
 }

@@ -8,6 +8,7 @@ export { default as Logo } from './components/brand/Logo';
 export { Alert, Field } from './components/feedback/Feedback';
 export { default as Card } from './components/feedback/Card';
 export { default as Button } from './components/buttons/Button';
+export { default as IconButton } from './components/buttons/IconButton';
 export { default as SiteNav } from './components/navigation/SiteNav';
 export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
@@ -16,6 +17,7 @@ export { default as SiteHeader } from './components/layout/Header';
 export { default as SiteMain } from './components/layout/Main';
 export { default as SiteSidebar } from './components/layout/Sidebar';
 export { default as Icon } from './components/icons/Icon';
+export { ICON_NAMES } from './components/icons/Icon';
 export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Viewport';
 export { createAppTheme } from './styles/theme';
 export type {
@@ -24,6 +26,7 @@ export type {
 	ButtonSize,
 	ButtonTone,
 	ButtonVariant,
+	IconButtonProps,
 	AlertSeverity,
 	AppShellProps,
 	BreadcrumbItem,

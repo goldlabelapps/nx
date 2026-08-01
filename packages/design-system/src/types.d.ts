@@ -67,7 +67,7 @@ export type FieldProps = {
 
 export type ButtonTone = 'primary' | 'neutral' | 'danger';
 
-export type ButtonVariant = 'solid' | 'outline' | 'ghost';
+export type ButtonVariant = 'solid' | 'outline' | 'ghost' | 'text';
 
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
@@ -84,6 +84,20 @@ export type ButtonProps = {
 	endIcon?: ReactNode;
 	type?: 'button' | 'submit' | 'reset';
 	ariaLabel?: string;
+	className?: string;
+	sx?: SxProps<Theme>;
+};
+
+export type IconButtonProps = {
+	icon: ReactNode;
+	variant?: ButtonVariant;
+	tone?: ButtonTone;
+	size?: ButtonSize;
+	disabled?: boolean;
+	href?: string;
+	onClick?: () => void;
+	type?: 'button' | 'submit' | 'reset';
+	ariaLabel: string;
 	className?: string;
 	sx?: SxProps<Theme>;
 };

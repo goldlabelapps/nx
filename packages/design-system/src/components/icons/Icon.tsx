@@ -417,6 +417,8 @@ const ICON_COMPONENTS: Record<string, IconComponent> = {
 
 export type IconName = keyof typeof ICON_COMPONENTS;
 
+export const ICON_NAMES = Object.keys(ICON_COMPONENTS).sort() as IconName[];
+
 export type IconProps = {
   icon: IconName | (string & {});
   color?: SvgIconProps['color'];
