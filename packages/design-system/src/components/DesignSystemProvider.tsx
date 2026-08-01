@@ -1,15 +1,10 @@
 'use client';
 
 import { CssBaseline, GlobalStyles, ThemeProvider } from '@mui/material';
-import type { ReactNode } from 'react';
-import { createAppTheme, type DesignSystemMode } from '../theme';
+import { createAppTheme } from '../theme';
+import type { DesignSystemProviderProps } from '../types';
 
-type DesignSystemProviderProps = {
-  children: ReactNode;
-  mode?: DesignSystemMode;
-};
-
-export function DesignSystemProvider({ children, mode = 'light' }: DesignSystemProviderProps) {
+export default function DesignSystemProvider({ children, mode = 'light' }: DesignSystemProviderProps) {
   const theme = createAppTheme(mode);
   const isDark = mode === 'dark';
 

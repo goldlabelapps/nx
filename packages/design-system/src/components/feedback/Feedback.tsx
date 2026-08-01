@@ -1,12 +1,5 @@
 import { Box, Button as MuiButton, Stack, TextField, Typography } from '@mui/material';
-import type { ReactNode } from 'react';
-
-type AlertProps = {
-  children: ReactNode;
-  title?: string;
-  severity?: 'info' | 'success' | 'warning' | 'error';
-  dismissible?: boolean;
-};
+import type { AlertProps, CardProps, FieldProps } from '../../types';
 
 export function Alert({ children, title, severity = 'info', dismissible = false }: AlertProps) {
   const tone = {
@@ -46,12 +39,6 @@ export function Alert({ children, title, severity = 'info', dismissible = false 
   );
 }
 
-type CardProps = {
-  children: ReactNode;
-  padding?: 'sm' | 'md' | 'lg';
-  variant?: 'paper' | 'glass' | 'tile' | 'ink';
-};
-
 export function Card({ children, padding = 'md', variant = 'paper' }: CardProps) {
   const pad = { sm: 2, md: 3, lg: 4 }[padding] ?? 3;
   const styling = {
@@ -67,12 +54,6 @@ export function Card({ children, padding = 'md', variant = 'paper' }: CardProps)
     </Box>
   );
 }
-
-type FieldProps = {
-  label?: string;
-  hint?: string;
-  error?: string;
-};
 
 export function Field({ label, hint, error }: FieldProps) {
   return (

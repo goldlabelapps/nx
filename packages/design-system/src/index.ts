@@ -1,12 +1,42 @@
 import './styles/globals.css';
 
-export { DesignSystemProvider } from './components/DesignSystemProvider';
-export { AppShell, PageSection, SectionTitle } from './components/Primitives';
-export { Eyebrow } from './components/Eyebrow';
-export { BrandMark } from './components/BrandMark';
-export { Alert, Card, Field } from './components/FormControls';
-export { SiteNav } from './components/navigation';
-export type { T_NavNode } from './components/navigation';
-export { SiteFooter, SiteHeader, SiteMain, SiteSidebar } from './components/site';
-export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive';
-export { createAppTheme, type DesignSystemMode } from './theme';
+export { default as DesignSystemProvider } from './components/DesignSystemProvider';
+export { AppShell, PageSection, SectionTitle } from './components/layout/Layout';
+export { default as ColorPalette } from './components/brand/ColorPalette';
+export { default as Eyebrow } from './components/headings/Heading';
+export { default as Logo } from './components/brand/Logo';
+export { Alert, Card, Field } from './components/feedback/Feedback';
+export { default as SiteNav } from './components/navigation/SiteNav';
+export type { T_NavNode } from './types';
+export { default as SiteFooter } from './components/layout/Footer';
+export { default as SiteHeader } from './components/layout/Header';
+export { default as SiteMain } from './components/layout/Main';
+export { default as SiteSidebar } from './components/layout/Sidebar';
+export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Viewport';
+export { createAppTheme } from './theme';
+export type {
+	AlertProps,
+	AlertSeverity,
+	AppShellProps,
+	BreadcrumbItem,
+	CardPadding,
+	CardProps,
+	CardVariant,
+	ColorGroup,
+	ColorPaletteProps,
+	ColorToken,
+	DesignSystemMode,
+	DesignSystemProviderProps,
+	EyebrowProps,
+	EyebrowTone,
+	FieldProps,
+	LogoProps,
+	PageSectionProps,
+	SectionTitleProps,
+	SiteHeaderProps,
+	SiteMainProps,
+	SiteNavProps,
+	SiteSidebarProps,
+	UseIsMobileOptions,
+	VisibilityProps,
+} from './types';

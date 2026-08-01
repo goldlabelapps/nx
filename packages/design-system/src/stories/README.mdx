@@ -1,33 +1,104 @@
 import { Meta } from '@storybook/addon-docs/blocks';
+import { Card } from '../index';
 
 <Meta title="README" />
 
-# Design System Workbench
+# Design System Storybook
 
-This is the Storybook landing page for active component development.
+This workspace is the visual and behavioral reference for the shared NX design-system package.
 
-Use this page to keep track of what is currently being built, refined, or reviewed.
+## How To Use This Workbench
 
-## Currently In Focus
+- Use **Brand** for identity primitives and color references.
+- Use **Headings** for small-label typography patterns.
+- Use **Feedback** for form and messaging UI.
+- Use **Layout** for page shell and site chrome pieces.
+- Use **Navigation** for hierarchical menus.
+- Use **Responsive** for viewport-aware helpers.
 
-- Site chrome group: SiteHeader, SiteNav, SiteMain, SiteSidebar, SiteFooter
-- Story structure: grouped by Foundations, Forms, and Site
-- Theme parity: light/dark behavior via global mode toggle
+## Theme Snapshot
 
-## Where To Iterate
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '18px', margin: '16px 0 24px' }}>
+  <Card>
+    <div style={{ display: 'grid', gap: '12px' }}>
+      <div style={{ fontWeight: 700 }}>Light theme accents</div>
+      <div style={{ display: 'grid', gap: '12px' }}>
+        <div style={{ border: '1px solid rgba(30, 28, 52, 0.12)', borderRadius: '14px', overflow: 'hidden' }}>
+          <div style={{ height: '72px', background: '#4A46B8' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Primary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all' }}>#4A46B8</div>
+          </div>
+        </div>
+        <div style={{ border: '1px solid rgba(30, 28, 52, 0.12)', borderRadius: '14px', overflow: 'hidden' }}>
+          <div style={{ height: '72px', background: '#1E1C34' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Secondary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all' }}>#1E1C34</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Card>
+  <Card variant="ink">
+    <div style={{ display: 'grid', gap: '12px' }}>
+      <div style={{ fontWeight: 700 }}>Dark theme accents</div>
+      <div style={{ display: 'grid', gap: '12px' }}>
+        <div style={{ border: '1px solid rgba(230, 228, 255, 0.24)', borderRadius: '14px', overflow: 'hidden', background: '#222132' }}>
+          <div style={{ height: '72px', background: '#E6E4FF' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Primary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all', color: '#ECEBFF' }}>#E6E4FF</div>
+          </div>
+        </div>
+        <div style={{ border: '1px solid rgba(230, 228, 255, 0.24)', borderRadius: '14px', overflow: 'hidden', background: '#222132' }}>
+          <div style={{ height: '72px', background: '#ECEBFF' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Secondary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all', color: '#ECEBFF' }}>#ECEBFF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Card>
+</div>
 
-- Foundations: Primitives
-- Forms: Form Controls
-- Site: Chrome
+<a
+  href="?path=/story/design-system-color-palette--overview"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px 16px',
+    borderRadius: '999px',
+    background: 'var(--nx-clay)',
+    color: '#ffffff',
+    textDecoration: 'none',
+    fontWeight: 700,
+    marginBottom: '18px',
+  }}
+>
+  Open Full Color Palette
+</a>
 
-## Development Notes
+## Story Map
 
-- Add new components to the appropriate group first.
-- Keep stories focused on one behavior at a time.
-- Pin story IDs when links should remain stable.
+- Brand / Logo
+- Brand / Color Palette
+- Headings / Eyebrow
+- Feedback / Alert
+- Feedback / Card
+- Feedback / Field
+- Layout / App Shell
+- Layout / Header
+- Layout / Main
+- Layout / Sidebar
+- Layout / Footer
+- Navigation / Site Nav
+- Responsive / Viewport
 
-## Quick Links
+## Notes
 
-- Foundations / Primitives
-- Forms / Form Controls
-- Site / Chrome
+- Keep stories focused and single-purpose.
+- Prefer real token usage over one-off hardcoded styling in stories.
+- When adding components, add docs here and a dedicated story in the matching category.

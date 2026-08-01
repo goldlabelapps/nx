@@ -1,14 +1,9 @@
 import { Typography } from '@mui/material';
-import type { ReactNode } from 'react';
+import type { EyebrowProps } from '../../types';
 
-type EyebrowProps = {
-  children: ReactNode;
-  tone?: 'ink' | 'clay';
-  as?: 'span' | 'div';
-  style?: React.CSSProperties;
-};
+function Heading({ children, tone = 'primary', as = 'span', style, ...rest }: EyebrowProps) {
+  const resolvedTone = tone === 'clay' ? 'primary' : tone === 'ink' ? 'secondary' : tone;
 
-export function Eyebrow({ children, tone = 'clay', as = 'span', style, ...rest }: EyebrowProps) {
   return (
     <Typography
       component={as}
@@ -20,7 +15,7 @@ export function Eyebrow({ children, tone = 'clay', as = 'span', style, ...rest }
         fontSize: '0.875rem',
         letterSpacing: '0.22em',
         textTransform: 'uppercase',
-        color: tone === 'clay' ? 'var(--nx-clay)' : 'text.primary',
+        color: resolvedTone === 'primary' ? 'var(--nx-clay)' : 'text.primary',
         fontWeight: 600
       }}
       style={style}
@@ -30,3 +25,6 @@ export function Eyebrow({ children, tone = 'clay', as = 'span', style, ...rest }
     </Typography>
   );
 }
+
+export { Heading as Eyebrow };
+export default Heading;

@@ -1,21 +1,6 @@
-import type { ReactNode } from 'react';
+import type { SiteHeaderProps } from '../../types';
 
-type BreadcrumbItem = {
-  label: string;
-  href?: string;
-};
-
-type SiteHeaderProps = {
-  title: string;
-  description?: string;
-  breadcrumbItems: BreadcrumbItem[];
-  homeHref: string;
-  logoSrc: string;
-  logoAlt?: string;
-  navItems: ReactNode;
-};
-
-export function SiteHeader({
+export default function Header({
   title,
   description,
   breadcrumbItems,
@@ -48,7 +33,7 @@ export function SiteHeader({
                   </ol>
                 </nav>
               ) : (
-                <span style={{ paddingLeft: 6, fontSize: '0.9rem', color: 'var(--text-muted)' }}>{description}</span>
+                <span className="site-header-description">{description}</span>
               )}
             </div>
           </div>
