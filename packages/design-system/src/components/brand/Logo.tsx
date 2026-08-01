@@ -12,26 +12,38 @@ export default function Logo({ name = 'NX°', children, subtitle }: LogoProps) {
         display: 'inline-flex',
         alignItems: 'center',
         gap: 1.25,
-        px: 1.25,
-        py: 0.75,
-        borderRadius: '3px',
-        border: '1px solid rgba(40, 34, 28, 0.12)',
-        bgcolor: 'background.paper',
-        color: 'text.primary',
-        boxShadow: '0 8px 24px rgba(40, 34, 28, 0.08)'
+        color: 'text.primary'
       }}
     >
       <Box
+        aria-hidden="true"
         sx={{
-          width: 12,
-          height: 12,
-          borderRadius: '50%',
-          bgcolor: 'primary.main',
-          boxShadow: '0 0 0 4px rgba(168, 146, 122, 0.2)'
+          width: 24,
+          height: 24,
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'primary.main',
+          lineHeight: 0
         }}
-      />
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-label="NX Favicon">
+          <g stroke="none" fill="none" fillRule="evenodd">
+            <g>
+              <rect fillOpacity="0" x="0" y="0" width="24" height="24" />
+              <g transform="translate(1, 1)" fillRule="nonzero">
+                <path
+                  d="M11.9316955,0.00778516743 C18.2793961,0.234625 23.2318292,5.339499 22.9916183,11.4103978 C22.7565183,17.4812966 17.4207699,22.2190224 11.0730694,21.9921826 C4.72536881,21.7653428 -0.227064254,16.6604688 0.00803576687,10.58957 C0.248246659,4.51867123 5.58399495,-0.218565786 11.9316955,0.00778516743 Z"
+                  fill="currentColor"
+                />
+                <path d="M8,12 C12.6203742,21.9973959 20,13.9133228 20,13.9133228 C14.7209979,15.4126605 8,12 8,12 Z" fill="#fff" />
+              </g>
+            </g>
+          </g>
+        </svg>
+      </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-        <Typography component="span" sx={{ fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+        <Typography component="span" sx={{ fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', fontSize: '1.25rem', lineHeight: 1 }}>
           {text}
         </Typography>
         {subtitle ? (

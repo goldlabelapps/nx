@@ -8,7 +8,12 @@ import { UbereduxProvider } from './NX/Uberedux';
 import { normalizeTenant } from './NX/lib/normalizeTenant';
 
 const tenant = normalizeTenant();
-const configPath = path.join(process.cwd(), 'public', tenant, 'config.json');
+const defaultTenant = 'nx';
+const tenantConfigPath = path.join(process.cwd(), 'public', tenant, 'config.json');
+const fallbackConfigPath = path.join(process.cwd(), 'public', defaultTenant, 'config.json');
+const hasTenantConfig = fs.existsSync(tenantConfigPath);
+const resolvedTenant = hasTenantConfig ? tenant : defaultTenant;
+const configPath = hasTenantConfig ? tenantConfigPath : fallbackConfigPath;
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
 const { title, description, favicon } = config;
@@ -58,7 +63,7 @@ export default async function RootLayout({
     <html lang="en" data-design-system={designSystemId}>
       <head>
         <link rel="icon" href={favicon} />
-        <link rel="manifest" href={`/${tenant}/manifest.json`} />
+        <link rel="manifest" href={`/${resolvedTenant}/manifest.json`} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
