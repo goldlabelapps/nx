@@ -1,107 +1,104 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 import { Card } from '../index';
 
-<Meta title="NX°" />
+<Meta title="README" />
 
-# Design System Workbench
+# Design System Storybook
 
-This is the Storybook landing page for active component development.
+This workspace is the visual and behavioral reference for the shared NX design-system package.
 
-Use this page to keep track of what is currently being built, refined, or reviewed.
+## How To Use This Workbench
 
-## Key Colours
+- Use **Brand** for identity primitives and color references.
+- Use **Headings** for small-label typography patterns.
+- Use **Feedback** for form and messaging UI.
+- Use **Layout** for page shell and site chrome pieces.
+- Use **Navigation** for hierarchical menus.
+- Use **Responsive** for viewport-aware helpers.
 
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '18px', margin: '20px 0 24px' }}>
-	<Card>
-		<div style={{ display: 'grid', gap: '16px' }}>
-			<div>
-				<div style={{ fontWeight: 700, fontSize: '1rem' }}>Light Theme</div>
-				<div style={{ color: 'var(--text-muted)', marginTop: '4px' }}>Primary and secondary references for default UI surfaces.</div>
-			</div>
-			<div style={{ display: 'grid', gap: '14px' }}>
-				<div style={{ border: '1px solid rgba(30, 28, 52, 0.12)', borderRadius: '18px', overflow: 'hidden', background: '#ffffff' }}>
-					<div style={{ height: '88px', background: '#4A46B8' }} />
-					<div style={{ padding: '14px 16px' }}>
-						<div style={{ fontWeight: 700, marginBottom: '4px' }}>Primary</div>
-						<div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', userSelect: 'all' }}>#4A46B8</div>
-					</div>
-				</div>
-				<div style={{ border: '1px solid rgba(30, 28, 52, 0.12)', borderRadius: '18px', overflow: 'hidden', background: '#ffffff' }}>
-					<div style={{ height: '88px', background: '#1E1C34' }} />
-					<div style={{ padding: '14px 16px' }}>
-						<div style={{ fontWeight: 700, marginBottom: '4px' }}>Secondary</div>
-						<div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', userSelect: 'all' }}>#1E1C34</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</Card>
-	<Card variant="ink">
-		<div style={{ display: 'grid', gap: '16px' }}>
-			<div>
-				<div style={{ fontWeight: 700, fontSize: '1rem' }}>Dark Theme</div>
-				<div style={{ color: 'rgba(236, 235, 255, 0.72)', marginTop: '4px' }}>Primary and secondary references for dark surfaces and inverse moments.</div>
-			</div>
-			<div style={{ display: 'grid', gap: '14px' }}>
-				<div style={{ border: '1px solid rgba(230, 228, 255, 0.2)', borderRadius: '18px', overflow: 'hidden', background: '#222132' }}>
-					<div style={{ height: '88px', background: '#E6E4FF' }} />
-					<div style={{ padding: '14px 16px' }}>
-						<div style={{ fontWeight: 700, marginBottom: '4px' }}>Primary</div>
-						<div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', userSelect: 'all', color: '#ECEBFF' }}>#E6E4FF</div>
-					</div>
-				</div>
-				<div style={{ border: '1px solid rgba(230, 228, 255, 0.2)', borderRadius: '18px', overflow: 'hidden', background: '#222132' }}>
-					<div style={{ height: '88px', background: '#ECEBFF' }} />
-					<div style={{ padding: '14px 16px' }}>
-						<div style={{ fontWeight: 700, marginBottom: '4px' }}>Secondary</div>
-						<div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.95rem', userSelect: 'all', color: '#ECEBFF' }}>#ECEBFF</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</Card>
+## Theme Snapshot
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '18px', margin: '16px 0 24px' }}>
+  <Card>
+    <div style={{ display: 'grid', gap: '12px' }}>
+      <div style={{ fontWeight: 700 }}>Light theme accents</div>
+      <div style={{ display: 'grid', gap: '12px' }}>
+        <div style={{ border: '1px solid rgba(30, 28, 52, 0.12)', borderRadius: '14px', overflow: 'hidden' }}>
+          <div style={{ height: '72px', background: '#4A46B8' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Primary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all' }}>#4A46B8</div>
+          </div>
+        </div>
+        <div style={{ border: '1px solid rgba(30, 28, 52, 0.12)', borderRadius: '14px', overflow: 'hidden' }}>
+          <div style={{ height: '72px', background: '#1E1C34' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Secondary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all' }}>#1E1C34</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Card>
+  <Card variant="ink">
+    <div style={{ display: 'grid', gap: '12px' }}>
+      <div style={{ fontWeight: 700 }}>Dark theme accents</div>
+      <div style={{ display: 'grid', gap: '12px' }}>
+        <div style={{ border: '1px solid rgba(230, 228, 255, 0.24)', borderRadius: '14px', overflow: 'hidden', background: '#222132' }}>
+          <div style={{ height: '72px', background: '#E6E4FF' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Primary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all', color: '#ECEBFF' }}>#E6E4FF</div>
+          </div>
+        </div>
+        <div style={{ border: '1px solid rgba(230, 228, 255, 0.24)', borderRadius: '14px', overflow: 'hidden', background: '#222132' }}>
+          <div style={{ height: '72px', background: '#ECEBFF' }} />
+          <div style={{ padding: '10px 12px' }}>
+            <div style={{ fontWeight: 700 }}>Secondary</div>
+            <div style={{ fontFamily: 'var(--font-mono)', userSelect: 'all', color: '#ECEBFF' }}>#ECEBFF</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Card>
 </div>
 
 <a
-	href="?path=/story/design-system-color-palette--overview"
-	style={{
-		display: 'inline-flex',
-		alignItems: 'center',
-		justifyContent: 'center',
-		padding: '12px 18px',
-		borderRadius: '999px',
-		background: 'var(--nx-clay)',
-		color: '#ffffff',
-		textDecoration: 'none',
-		fontWeight: 700,
-		marginBottom: '28px',
-	}}
+  href="?path=/story/design-system-color-palette--overview"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '10px 16px',
+    borderRadius: '999px',
+    background: 'var(--nx-clay)',
+    color: '#ffffff',
+    textDecoration: 'none',
+    fontWeight: 700,
+    marginBottom: '18px',
+  }}
 >
-	Open Colour Palette
+  Open Full Color Palette
 </a>
 
-## Currently In Focus
-
-- Brand group: Logo, Eyebrow, Color Palette
-- Forms group: Alert, Card, Field
-- Theme parity: light/dark behavior via global mode toggle
-
-## Where To Iterate
-
-- Brand: Logo, Eyebrow, Color Palette
-- Forms: Alert, Card, Field
-
-## Development Notes
-
-- Add new components to the appropriate group first.
-- Keep stories focused on one behavior at a time.
-- Pin story IDs when links should remain stable.
-
-## Quick Links
+## Story Map
 
 - Brand / Logo
-- Brand / Eyebrow
 - Brand / Color Palette
-- Forms / Alert
-- Forms / Card
-- Forms / Field
+- Headings / Eyebrow
+- Feedback / Alert
+- Feedback / Card
+- Feedback / Field
+- Layout / App Shell
+- Layout / Header
+- Layout / Main
+- Layout / Sidebar
+- Layout / Footer
+- Navigation / Site Nav
+- Responsive / Viewport
+
+## Notes
+
+- Keep stories focused and single-purpose.
+- Prefer real token usage over one-off hardcoded styling in stories.
+- When adding components, add docs here and a dedicated story in the matching category.
