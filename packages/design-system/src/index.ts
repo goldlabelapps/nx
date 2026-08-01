@@ -7,6 +7,7 @@ export { default as Heading } from './components/headings/Heading';
 export { default as Logo } from './components/brand/Logo';
 export { Alert, Field } from './components/feedback/Feedback';
 export { default as Card } from './components/feedback/Card';
+export { default as Button } from './components/buttons/Button';
 export { default as SiteNav } from './components/navigation/SiteNav';
 export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
@@ -18,6 +19,10 @@ export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Vi
 export { createAppTheme } from './styles/theme';
 export type {
 	AlertProps,
+	ButtonProps,
+	ButtonSize,
+	ButtonTone,
+	ButtonVariant,
 	AlertSeverity,
 	AppShellProps,
 	BreadcrumbItem,

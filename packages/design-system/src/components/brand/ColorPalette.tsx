@@ -112,7 +112,7 @@ function ColorSwatch({ token }: { token: ColorToken }) {
         gap: 2,
         alignItems: 'center',
         p: 2,
-        borderRadius: '20px',
+        borderRadius: '3px',
         border: '1px solid',
         borderColor: 'divider',
         bgcolor: 'background.paper',
@@ -124,7 +124,7 @@ function ColorSwatch({ token }: { token: ColorToken }) {
         sx={{
           width: { xs: 56, sm: 72 },
           height: { xs: 56, sm: 72 },
-          borderRadius: '18px',
+          borderRadius: '3px',
           backgroundColor: `var(${token.cssVar})`,
           border: '1px solid rgba(30, 28, 52, 0.12)',
         }}
