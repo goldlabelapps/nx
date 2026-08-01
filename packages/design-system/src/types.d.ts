@@ -1,3 +1,4 @@
+import type { SxProps, Theme } from '@mui/material/styles';
 import type { CSSProperties, ReactNode } from 'react';
 
 export type DesignSystemMode = 'light' | 'dark';
@@ -62,6 +63,29 @@ export type FieldProps = {
 	label?: string;
 	hint?: string;
 	error?: string;
+};
+
+export type ButtonTone = 'primary' | 'neutral' | 'danger';
+
+export type ButtonVariant = 'solid' | 'outline' | 'ghost';
+
+export type ButtonSize = 'sm' | 'md' | 'lg';
+
+export type ButtonProps = {
+	children: ReactNode;
+	variant?: ButtonVariant;
+	tone?: ButtonTone;
+	size?: ButtonSize;
+	fullWidth?: boolean;
+	disabled?: boolean;
+	href?: string;
+	onClick?: () => void;
+	startIcon?: ReactNode;
+	endIcon?: ReactNode;
+	type?: 'button' | 'submit' | 'reset';
+	ariaLabel?: string;
+	className?: string;
+	sx?: SxProps<Theme>;
 };
 
 export type AppShellProps = {

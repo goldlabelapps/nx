@@ -14,7 +14,7 @@ export default function Logo({ name = 'NX°', children, subtitle }: LogoProps) {
         gap: 1.25,
         px: 1.25,
         py: 0.75,
-        borderRadius: '999px',
+        borderRadius: '3px',
         border: '1px solid rgba(40, 34, 28, 0.12)',
         bgcolor: 'background.paper',
         color: 'text.primary',

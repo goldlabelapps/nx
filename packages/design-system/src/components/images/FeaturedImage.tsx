@@ -15,7 +15,7 @@ export default function FeaturedImage({
         width: '100%',
         height,
         overflow: 'hidden',
-        borderRadius: 2,
+        borderRadius: '3px',
         bgcolor: 'grey.100',
       }}
     >

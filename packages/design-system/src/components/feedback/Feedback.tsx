@@ -17,7 +17,7 @@ export function Alert({ children, title, severity = 'info', dismissible = false 
         border: `1px solid ${tone.border}`,
         borderLeft: '4px solid',
         borderColor: 'primary.main',
-        borderRadius: '18px',
+        borderRadius: '3px',
         bgcolor: tone.bg,
         p: 2.25,
         display: 'flex',
@@ -51,7 +51,7 @@ export function Card({ children, padding = 'md', variant = 'paper' }: CardProps)
   }[variant];
 
   return (
-    <Box sx={{ borderRadius: '26px', p: pad, ...styling }}>
+    <Box sx={{ borderRadius: '3px', p: pad, ...styling }}>
       {children}
     </Box>
   );

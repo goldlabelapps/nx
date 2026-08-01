@@ -50,7 +50,7 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
       },
     },
     shape: {
-      borderRadius: 20
+      borderRadius: 3
     },
     typography: {
       fontFamily: '"DM Sans", "Segoe UI", Roboto, sans-serif',
@@ -79,7 +79,7 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
       MuiButton: {
         styleOverrides: {
           root: {
-            borderRadius: '999px',
+            borderRadius: '3px',
             padding: '0.7rem 1.2rem',
             boxShadow: palette.buttonShadow,
           },
@@ -96,7 +96,7 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
       MuiPaper: {
         styleOverrides: {
           root: {
-            borderRadius: '26px',
+            borderRadius: '3px',
             border: `1px solid ${palette.borderSoft}`,
           },
         },

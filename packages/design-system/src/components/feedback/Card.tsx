@@ -41,7 +41,7 @@ export default function Card({ children, padding = 'md', variant = 'paper', hove
       onMouseEnter={() => hoverLift && setIsHovered(true)}
       onMouseLeave={() => hoverLift && setIsHovered(false)}
       sx={{
-        borderRadius: '26px',
+        borderRadius: '3px',
         p: pad,
         transition: 'transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease',
         ...(isHovered && hoverLift
