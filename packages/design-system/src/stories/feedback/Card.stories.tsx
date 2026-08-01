@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { AppShell, Card, PageSection } from '../../index';
+
+function StoryFrame({ children }: { children: React.ReactNode }) {
+  return <Box sx={{ p: 3.125 }}>{children}</Box>;
+}
 
 const meta: Meta<typeof Card> = {
   title: 'Feedback/Card',
@@ -24,15 +28,17 @@ function Copy({ title, text }: { title: string; text: string }) {
 
 export const Variants: Story = {
   render: () => (
-    <AppShell>
-      <PageSection title="Card variants" subtitle="Panel treatments for different emphasis levels.">
-        <Stack spacing={2.5} sx={{ maxWidth: 760 }}>
-          <Card variant="paper"><Copy title="Paper" text="Default container for content surfaces." /></Card>
-          <Card variant="glass"><Copy title="Glass" text="Translucent panel for elevated contextual layers." /></Card>
-          <Card variant="tile"><Copy title="Tile" text="Compact utility surface for dense views." /></Card>
-          <Card variant="ink"><Copy title="Ink" text="High-contrast inverse card for emphasis." /></Card>
-        </Stack>
-      </PageSection>
-    </AppShell>
+    <StoryFrame>
+      <AppShell>
+        <PageSection title="Card variants" subtitle="Panel treatments for different emphasis levels.">
+          <Stack spacing={2.5} sx={{ maxWidth: 760 }}>
+            <Card variant="paper"><Copy title="Paper" text="Default container for content surfaces." /></Card>
+            <Card variant="glass" hoverLift><Copy title="Glass" text="Translucent panel for elevated contextual layers." /></Card>
+            <Card variant="tile"><Copy title="Tile" text="Compact utility surface for dense views." /></Card>
+            <Card variant="ink"><Copy title="Ink" text="High-contrast inverse card for emphasis." /></Card>
+          </Stack>
+        </PageSection>
+      </AppShell>
+    </StoryFrame>
   ),
 };

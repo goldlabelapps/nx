@@ -9,7 +9,10 @@ export default function Header({
 }: SiteHeaderProps) {
   return (
     <header>
-      <div aria-label="Main header bar">
+      <div
+        aria-label="Main header bar"
+        style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}
+      >
         <div aria-label="Brand and overview">
           <a
             href="/"

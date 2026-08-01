@@ -55,6 +55,7 @@ export type CardProps = {
 	children: ReactNode;
 	padding?: CardPadding;
 	variant?: CardVariant;
+	hoverLift?: boolean;
 };
 
 export type FieldProps = {
