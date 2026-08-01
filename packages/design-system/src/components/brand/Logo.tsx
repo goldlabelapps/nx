@@ -1,12 +1,7 @@
 import { Box, Typography } from '@mui/material';
-import type { ReactNode } from 'react';
+import type { LogoProps } from '../../types';
 
-type BrandMarkProps = {
-  name?: string;
-  children?: ReactNode;
-};
-
-export function BrandMark({ name = 'NX°', children }: BrandMarkProps) {
+export default function Logo({ name = 'NX°', children }: LogoProps) {
   return (
     <Box
       sx={{

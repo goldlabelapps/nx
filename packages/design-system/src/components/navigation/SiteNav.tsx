@@ -1,15 +1,5 @@
 import type { ReactNode } from 'react';
-
-export type T_NavNode = {
-  title?: string;
-  slug?: string;
-  path?: string;
-  children?: T_NavNode[];
-};
-
-type SiteNavProps = {
-  items: T_NavNode[];
-};
+import type { SiteNavProps, T_NavNode } from '../../types';
 
 function getNavHref(item: T_NavNode): string {
   if (typeof item.slug === 'string' && item.slug.trim()) {
@@ -55,6 +45,6 @@ function renderNavItems(items: T_NavNode[], keyPrefix = 'nav'): ReactNode {
   );
 }
 
-export function SiteNav({ items }: SiteNavProps) {
+export default function SiteNav({ items }: SiteNavProps) {
   return renderNavItems(items);
 }

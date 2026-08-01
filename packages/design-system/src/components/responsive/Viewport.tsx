@@ -1,18 +1,8 @@
 'use client';
 
-import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from '@mui/material';
-
-type UseIsMobileOptions = {
-  maxWidth?: number;
-};
-
-type VisibilityProps = {
-  children: ReactNode;
-  maxWidth?: number;
-  fallback?: ReactNode;
-};
+import type { UseIsMobileOptions, VisibilityProps } from '../../types';
 
 export function useIsMobile({ maxWidth = 999 }: UseIsMobileOptions = {}) {
   return useMediaQuery(`(max-width:${maxWidth}px)`, {

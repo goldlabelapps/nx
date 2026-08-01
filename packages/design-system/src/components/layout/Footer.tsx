@@ -1,4 +1,4 @@
-export function SiteFooter() {
+export default function Footer() {
   return (
     <footer className="site-footer">
       <nav className="site-footer-columns" aria-label="Footer links">

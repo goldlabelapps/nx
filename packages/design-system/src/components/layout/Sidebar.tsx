@@ -1,9 +1,6 @@
-type SiteSidebarProps = {
-  title?: string;
-  text?: string;
-};
+import type { SiteSidebarProps } from '../../types';
 
-export function SiteSidebar({
+export default function Sidebar({
   title = 'Placeholder',
   text = 'Sidebar module intentionally muted for now.',
 }: SiteSidebarProps) {

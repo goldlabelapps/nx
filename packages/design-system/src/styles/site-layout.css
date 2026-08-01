@@ -92,6 +92,11 @@
   font-size: 0.92rem;
 }
 
+.site-header-description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
 .site-breadcrumbs li + li::before {
   content: "/";
   margin-right: 0.45rem;
@@ -268,6 +273,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+}
+
+@media (min-width: 1000px) {
+  .site-header-description {
+    font-size: 1.125rem;
+  }
 }
 
 @media (max-width: 999px) {

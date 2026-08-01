@@ -5,7 +5,7 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: ['README', 'Foundations', 'Forms', 'Site'],
+        order: ['README', 'Brand', 'Forms'],
       },
     },
   },

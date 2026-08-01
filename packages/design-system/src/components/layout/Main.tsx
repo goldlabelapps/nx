@@ -1,11 +1,6 @@
-import type { ReactNode } from 'react';
+import type { SiteMainProps } from '../../types';
 
-type SiteMainProps = {
-  children: ReactNode;
-  featuredImage?: string | null;
-};
-
-export function SiteMain({ children, featuredImage }: SiteMainProps) {
+export default function Main({ children, featuredImage }: SiteMainProps) {
   return (
     <section className="site-col site-col-center" aria-label="Page content">
       <div className="site-panel site-panel-main">
