@@ -4,6 +4,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
+    DesktopOnly,
     SiteFooter,
     SiteHeader,
     SiteMain as DesignSystemSiteMain,
@@ -114,11 +115,13 @@ export default async function Page({ params }: T_PageProps) {
             />
 
             <main className="site-main" id="main">
-                <aside className="site-col site-col-left" aria-label="Primary navigation">
-                    <div className="site-panel site-panel-nav">
-                        <SiteNav items={navItems} />
-                    </div>
-                </aside>
+                <DesktopOnly>
+                    <aside className="site-col site-col-left" aria-label="Primary navigation">
+                        <div className="site-panel site-panel-nav">
+                            <SiteNav items={navItems} />
+                        </div>
+                    </aside>
+                </DesktopOnly>
                 <DesignSystemSiteMain featuredImage={featuredImage}>
                     <RenderMarkdown config={config}>{content}</RenderMarkdown>
                 </DesignSystemSiteMain>

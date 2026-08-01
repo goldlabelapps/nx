@@ -2,14 +2,14 @@
 
 :root {
   color-scheme: light;
-  --nx-ink: #1a1814;
-  --nx-body: #3a3530;
-  --nx-muted: #9a9080;
-  --nx-parchment: #f7f7f4;
-  --nx-paper: #fbfaf7;
-  --nx-clay: #a8927a;
-  --nx-line: rgba(40, 34, 28, 0.12);
-  --nx-shadow-card: 0 12px 40px rgba(40, 34, 28, 0.12);
+  --nx-ink: #1e1c34;
+  --nx-body: #2a2748;
+  --nx-muted: #7672a0;
+  --nx-parchment: #f6f5ff;
+  --nx-paper: #ffffff;
+  --nx-clay: #4a46b8;
+  --nx-line: rgba(30, 28, 52, 0.14);
+  --nx-shadow-card: 0 12px 40px rgba(30, 28, 52, 0.14);
   --nx-radius-xl: 26px;
   --font-serif: "Times New Roman", Times, serif;
   --font-sans: "DM Sans", "Segoe UI", Roboto, sans-serif;
