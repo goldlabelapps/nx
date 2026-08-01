@@ -36,7 +36,7 @@ type Story = StoryObj<typeof SiteNav>;
 
 export const Default: Story = {
   render: () => (
-    <div className="site-panel site-panel-nav" style={{ maxWidth: 320 }}>
+    <div style={{ maxWidth: 320 }}>
       <SiteNav items={sampleNav} />
     </div>
   ),

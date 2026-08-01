@@ -3,7 +3,9 @@
 import { Box, Typography } from '@mui/material';
 import type { LogoProps } from '../../types';
 
-export default function Logo({ name = 'NX°', children }: LogoProps) {
+export default function Logo({ name = 'NX°', children, subtitle }: LogoProps) {
+  const text = children ?? name;
+
   return (
     <Box
       sx={{
@@ -28,9 +30,16 @@ export default function Logo({ name = 'NX°', children }: LogoProps) {
           boxShadow: '0 0 0 4px rgba(168, 146, 122, 0.2)'
         }}
       />
-      <Typography component="span" sx={{ fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-        {children ?? name}
-      </Typography>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <Typography component="span" sx={{ fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+          {text}
+        </Typography>
+        {subtitle ? (
+          <Typography component="span" variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.2 }}>
+            {subtitle}
+          </Typography>
+        ) : null}
+      </Box>
     </Box>
   );
 }

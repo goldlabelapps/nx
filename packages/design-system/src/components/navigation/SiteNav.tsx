@@ -17,21 +17,19 @@ function renderNavItems(items: T_NavNode[], keyPrefix = 'nav'): ReactNode {
   }
 
   return (
-    <ul className="site-nav-list">
+    <ul>
       {items.map((item, index) => {
         const key = `${keyPrefix}-${index}-${item.title || item.slug || item.path || 'node'}`;
         const hasChildren = Array.isArray(item.children) && item.children.length > 0;
         const label = item.title || 'Untitled';
 
         return (
-          <li key={key} className={hasChildren ? 'site-nav-item site-nav-item-branch' : 'site-nav-item'}>
+          <li key={key}>
             {hasChildren ? (
-              <details className="site-nav-branch">
-                <summary className="site-nav-branch-summary">
+              <details>
+                <summary>
                   <a href={getNavHref(item)}>{label}</a>
-                  <span className="site-nav-branch-toggle" aria-hidden="true">
-                    +
-                  </span>
+                  <span aria-hidden="true">+</span>
                 </summary>
                 {renderNavItems(item.children as T_NavNode[], key)}
               </details>

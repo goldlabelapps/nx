@@ -33,8 +33,9 @@
     "test:coverage": "vitest run --coverage",
     "lint": "echo 'No lint configured yet'",
     "clean": "rm -rf dist",
-    "dev": "storybook dev -p 6006 --ci",
-    "storybook": "storybook dev -p 6006",
+    "storybook:clean-cache": "rm -rf ../../node_modules/.cache/storybook node_modules/.cache/storybook",
+    "dev": "pnpm run storybook",
+    "storybook": "pnpm run storybook:clean-cache && storybook dev -p 6006 --ci",
     "build-storybook": "storybook build"
   },
   "peerDependencies": {

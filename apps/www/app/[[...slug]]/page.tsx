@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
     DesktopOnly,
+    FeaturedImage,
     SiteFooter,
     SiteHeader,
     SiteMain as DesignSystemSiteMain,
@@ -88,7 +89,9 @@ export default async function Page({ params }: T_PageProps) {
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
-    const featuredImage = typeof data.image === 'string' && data.image.trim() ? data.image : null;
+    const featuredImageSrc = typeof data.image === 'string' && data.image.trim()
+        ? data.image
+        : config.images?.light || '';
     const navItems = (await serverUseNav()) as T_NavNode[];
     const breadcrumbItems = slugArr.length
         ? [
@@ -104,31 +107,42 @@ export default async function Page({ params }: T_PageProps) {
 
     return (
         <div className="site-shell">
+            
             <SiteHeader
                 title={data.title || title}
                 description={slugArr.length ? '' : (config?.description || '')}
                 breadcrumbItems={breadcrumbItems}
                 homeHref="/"
                 logoSrc="/nx/png/favicon.png"
-                logoAlt=""
+                logoAlt="NX° Logo"
                 navItems={<SiteNav items={navItems} />}
             />
 
             <main className="site-main" id="main">
                 <DesktopOnly>
-                    <aside className="site-col site-col-left" aria-label="Primary navigation">
-                        <div className="site-panel site-panel-nav">
-                            <SiteNav items={navItems} />
-                        </div>
+                    <aside className="site-col site-col-left" aria-label="NX°  Navigation">
+                        <SiteNav items={navItems} />
                     </aside>
                 </DesktopOnly>
-                <DesignSystemSiteMain featuredImage={featuredImage}>
+
+                <DesignSystemSiteMain>
+                    {featuredImageSrc ? (
+                        <FeaturedImage
+                            image={{
+                                src: featuredImageSrc,
+                                alt: data.title || title,
+                            }}
+                        />
+                    ) : null}
                     <RenderMarkdown config={config}>{content}</RenderMarkdown>
                 </DesignSystemSiteMain>
+
                 <SiteSidebar />
+
             </main>
            
-            <SiteFooter />
+            {/* <SiteFooter /> */}
+
         </div>
     );
 }

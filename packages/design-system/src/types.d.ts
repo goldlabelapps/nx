@@ -5,6 +5,7 @@ export type DesignSystemMode = 'light' | 'dark';
 export type LogoProps = {
 	name?: string;
 	children?: ReactNode;
+	subtitle?: string;
 };
 
 export type ColorToken = {
@@ -54,6 +55,7 @@ export type CardProps = {
 	children: ReactNode;
 	padding?: CardPadding;
 	variant?: CardVariant;
+	hoverLift?: boolean;
 };
 
 export type FieldProps = {
@@ -111,6 +113,20 @@ export type SiteHeaderProps = {
 	logoSrc: string;
 	logoAlt?: string;
 	navItems: ReactNode;
+};
+
+export type FeaturedImageData = {
+	src: string;
+	alt?: string;
+	width?: number | string;
+	height?: number | string;
+	objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+};
+
+export type FeaturedImageProps = {
+	image: FeaturedImageData;
+	width?: number | string;
+	height?: number | string;
 };
 
 export type SiteMainProps = {

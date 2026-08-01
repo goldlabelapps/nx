@@ -5,8 +5,10 @@ export { AppShell, PageSection, SectionTitle } from './components/layout/Layout'
 export { default as ColorPalette } from './components/brand/ColorPalette';
 export { default as Heading } from './components/headings/Heading';
 export { default as Logo } from './components/brand/Logo';
-export { Alert, Card, Field } from './components/feedback/Feedback';
+export { Alert, Field } from './components/feedback/Feedback';
+export { default as Card } from './components/feedback/Card';
 export { default as SiteNav } from './components/navigation/SiteNav';
+export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
 export { default as SiteFooter } from './components/layout/Footer';
 export { default as SiteHeader } from './components/layout/Header';
@@ -30,6 +32,8 @@ export type {
 	HeadingProps,
 	HeadingTone,
 	FieldProps,
+	FeaturedImageData,
+	FeaturedImageProps,
 	LogoProps,
 	PageSectionProps,
 	SectionTitleProps,
