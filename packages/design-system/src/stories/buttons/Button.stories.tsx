@@ -5,9 +5,6 @@ import { AppShell, Button, PageSection } from '../../index';
 const meta: Meta<typeof Button> = {
   title: 'Buttons/Button',
   component: Button,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

@@ -29,7 +29,6 @@ function renderNavItems(items: T_NavNode[], keyPrefix = 'nav'): ReactNode {
               <details>
                 <summary>
                   <a href={getNavHref(item)}>{label}</a>
-                  <span aria-hidden="true">+</span>
                 </summary>
                 {renderNavItems(item.children as T_NavNode[], key)}
               </details>

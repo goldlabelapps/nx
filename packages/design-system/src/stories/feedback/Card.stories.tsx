@@ -9,9 +9,6 @@ function StoryFrame({ children }: { children: React.ReactNode }) {
 const meta: Meta<typeof Card> = {
   title: 'Feedback/Card',
   component: Card,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

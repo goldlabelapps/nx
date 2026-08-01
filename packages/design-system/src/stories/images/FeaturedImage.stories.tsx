@@ -4,9 +4,6 @@ import { FeaturedImage } from '../../index';
 const meta: Meta<typeof FeaturedImage> = {
   title: 'Images/Featured Image',
   component: FeaturedImage,
-  parameters: {
-    layout: 'padded',
-  },
 };
 
 export default meta;

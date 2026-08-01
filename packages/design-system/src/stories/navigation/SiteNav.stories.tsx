@@ -26,9 +26,6 @@ const sampleNav: T_NavNode[] = [
 const meta: Meta<typeof SiteNav> = {
   title: 'Navigation/Site Nav',
   component: SiteNav,
-  parameters: {
-    layout: 'padded',
-  },
 };
 
 export default meta;

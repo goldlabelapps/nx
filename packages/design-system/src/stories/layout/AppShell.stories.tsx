@@ -5,9 +5,6 @@ import { AppShell, PageSection, SectionTitle } from '../../index';
 const meta: Meta<typeof AppShell> = {
   title: 'Layout/App Shell',
   component: AppShell,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

@@ -4,9 +4,6 @@ import { SiteSidebar } from '../../index';
 const meta: Meta<typeof SiteSidebar> = {
   title: 'Layout/Sidebar',
   component: SiteSidebar,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

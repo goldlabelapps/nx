@@ -5,9 +5,6 @@ import { Alert, AppShell, PageSection } from '../../index';
 const meta: Meta<typeof Alert> = {
   title: 'Feedback/Alert',
   component: Alert,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;

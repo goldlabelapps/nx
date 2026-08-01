@@ -5,9 +5,6 @@ import { AppShell, Heading, PageSection } from '../../index';
 const meta: Meta<typeof Heading> = {
   title: 'Headings/Heading',
   component: Heading,
-  parameters: {
-    layout: 'fullscreen',
-  },
   args: {
     children: 'Editorial label',
   },

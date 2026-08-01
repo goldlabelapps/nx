@@ -3,6 +3,7 @@ import { DesignSystemProvider, type DesignSystemMode } from '../src';
 
 const preview: Preview = {
   parameters: {
+    layout: 'fullscreen',
     options: {
       storySort: {
         order: ['README', 'Brand', 'Headings', 'Feedback', 'Layout', 'Navigation', 'Responsive'],
@@ -28,7 +29,24 @@ const preview: Preview = {
       const mode = (context.globals.mode ?? 'light') as DesignSystemMode;
       return (
         <DesignSystemProvider mode={mode}>
-          <Story />
+          <div
+            style={{
+              width: '100%',
+              minHeight: '100vh',
+              padding: '25px',
+              boxSizing: 'border-box',
+            }}
+          >
+            <div
+              style={{
+                width: '100%',
+                maxWidth: '1280px',
+                margin: '0 auto',
+              }}
+            >
+              <Story />
+            </div>
+          </div>
         </DesignSystemProvider>
       );
     },

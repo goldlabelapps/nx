@@ -5,9 +5,6 @@ const meta: Meta<typeof ColorPalette> = {
   title: 'Brand/Color Palette',
   id: 'design-system-color-palette',
   component: ColorPalette,
-  parameters: {
-    layout: 'fullscreen',
-  },
 };
 
 export default meta;
