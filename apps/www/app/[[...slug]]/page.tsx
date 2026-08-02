@@ -4,6 +4,7 @@ import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
+    Card,
     Breadcrumb,
     FeaturedImage,
     Heading,
@@ -124,7 +125,9 @@ export default async function Page({ params }: T_PageProps) {
         textSecondary?: string;
     }> | undefined;
     const selectedTheme = (themes?.[defaultThemeName] ?? themes?.light);
-    const themeMode = selectedTheme?.mode === 'dark' ? 'dark' : 'light';
+    const themeMode = defaultThemeName === 'system'
+        ? 'system'
+        : (selectedTheme?.mode === 'dark' ? 'dark' : 'light');
     const themeConfigs = {
         light: themes?.light
             ? {
@@ -197,9 +200,12 @@ export default async function Page({ params }: T_PageProps) {
 
                         <RenderMarkdown config={config}>{content}</RenderMarkdown>
                     </DesignSystemSiteMain>
-                    {/* <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
-                        Aside, share
-                    </aside> */}
+                    <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
+                        <Card>
+                            Uberedux
+                        </Card>
+                        
+                    </aside>
                 </main>
                 
                 <SiteFooter />

@@ -4,6 +4,7 @@ import { DesignSystemProvider, type DesignSystemThemeConfig } from '@nx/design-s
 import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
 
 export type ThemeMode = 'light' | 'dark';
+export type ThemeModePreference = ThemeMode | 'system';
 
 export type ThemeModeContextValue = {
   mode: ThemeMode;
@@ -12,7 +13,7 @@ export type ThemeModeContextValue = {
 
 type ThemeModeProviderProps = {
   children: ReactNode;
-  initialMode: ThemeMode;
+  initialMode: ThemeModePreference;
   themeConfigs?: Partial<Record<ThemeMode, DesignSystemThemeConfig>>;
 };
 
@@ -28,8 +29,20 @@ export function useThemeMode() {
   return context;
 }
 
+export function resolveThemeMode(initialMode: ThemeModePreference | undefined): ThemeMode {
+  if (initialMode === 'dark' || initialMode === 'light') {
+    return initialMode;
+  }
+
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  return 'light';
+}
+
 export function ThemeModeProvider({ children, initialMode, themeConfigs }: ThemeModeProviderProps) {
-  const [mode, setMode] = useState<ThemeMode>(initialMode);
+  const [mode, setMode] = useState<ThemeMode>(() => resolveThemeMode(initialMode));
   const value = useMemo(() => ({ mode, setMode }), [mode]);
   const activeThemeConfig = themeConfigs?.[mode];
 
