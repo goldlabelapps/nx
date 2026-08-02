@@ -104,3 +104,7 @@ li::marker {
 .site-panel-main li {
 	position: relative;
 }
+
+.site-main-content p {
+  font-size: 1.25em;
+}

@@ -18,7 +18,7 @@ export { default as SiteNav } from './components/navigation/SiteNav';
 export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
 export { default as SiteFooter } from './components/layout/Footer';
-export { default as SiteHeader } from './components/layout/Header';
+export { default as Header } from './components/layout/Header';
 export { default as MenuDrawer } from './components/layout/MenuDrawer';
 export { default as SiteMain } from './components/layout/Main';
 export { default as Icon } from './components/icons/Icon';
