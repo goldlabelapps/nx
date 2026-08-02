@@ -14,4 +14,14 @@ describe('createAppTheme', () => {
     expect(theme.palette.primary.main).toBe('#F3F3F3');
     expect(theme.palette.background.default).toBe('#111111');
   });
+
+  it('uses supplied primary and secondary colors when provided', () => {
+    const theme = createAppTheme('light', {
+      primary: '#123456',
+      secondary: '#abcdef',
+    });
+
+    expect(theme.palette.primary.main).toBe('#123456');
+    expect(theme.palette.secondary.main).toBe('#abcdef');
+  });
 });

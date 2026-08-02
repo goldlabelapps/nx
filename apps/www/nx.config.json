@@ -1,0 +1,33 @@
+{
+    "name": "NX°",
+    "description": "Rapidly build modern apps",
+    "url": "https://nx.goldlabel.pro",
+    "owner": {
+        "name": "NX°",
+        "email": "nx@goldlabel.pro"
+    },
+    "favicon": "/nx/png/favicon.png",
+    "cartridges": {
+        "designSystem": {
+            "defaultTheme": "light",
+            "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#ffd849",
+                    "secondary": "#ffd849",
+                    "paper": "#364450",
+                    "background": "#364450",
+                    "text": "#fff"
+                },
+                "light": {
+                    "mode": "light",
+                    "primary": "#364450",
+                    "secondary": "#ffd849",
+                    "background": "#f7f7f4",
+                    "paper": "#f7f7f4",
+                    "text": "#2c2c2a"
+                }
+            }
+        }
+    }
+}

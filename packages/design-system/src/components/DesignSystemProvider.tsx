@@ -5,8 +5,8 @@ import { createAppTheme } from '../styles/theme';
 import type { DesignSystemProviderProps } from '../types';
 import { getNxStyle } from './nxStyle';
 
-export default function DesignSystemProvider({ children, mode = 'light' }: DesignSystemProviderProps) {
-  const theme = createAppTheme(mode);
+export default function DesignSystemProvider({ children, mode = 'light', themeConfig }: DesignSystemProviderProps) {
+  const theme = createAppTheme(mode, themeConfig);
   const style = getNxStyle(mode);
 
   return (

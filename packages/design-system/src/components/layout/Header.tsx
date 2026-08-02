@@ -1,8 +1,8 @@
 "use client";
 
 import Logo from '../brand/Logo';
-import Heading from '../headings/Heading';
 import MenuDrawer from './MenuDrawer';
+import {Button} from '@mui/material';
 import type { SiteHeaderProps } from '../../types';
 
 export default function Header({
@@ -26,6 +26,10 @@ export default function Header({
             <Logo name={title}>{title}</Logo>
           </a>
         </div>
+        
+        <Button variant="contained" color="primary" href="/">
+          Home
+        </Button>
 
         <MenuDrawer navItems={navItems} toggleAriaLabel="Toggle menu" />
       </div>

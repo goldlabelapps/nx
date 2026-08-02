@@ -36,6 +36,7 @@ export type {
 	CardVariant,
 	DesignSystemMode,
 	DesignSystemProviderProps,
+	DesignSystemThemeConfig,
 	HeadingProps,
 	HeadingTone,
 	HeadingVariant,

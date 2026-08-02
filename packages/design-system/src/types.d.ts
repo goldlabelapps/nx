@@ -3,6 +3,11 @@ import type { CSSProperties, MouseEvent, ReactNode } from 'react';
 
 export type DesignSystemMode = 'light' | 'dark';
 
+export type DesignSystemThemeConfig = {
+	primary?: string;
+	secondary?: string;
+};
+
 export type LogoProps = {
 	name?: string;
 	children?: ReactNode;
@@ -13,6 +18,7 @@ export type LogoProps = {
 export type DesignSystemProviderProps = {
 	children: ReactNode;
 	mode?: DesignSystemMode;
+	themeConfig?: DesignSystemThemeConfig;
 };
 
 export type HeadingTone = 'primary' | 'secondary' | 'ink' | 'clay';

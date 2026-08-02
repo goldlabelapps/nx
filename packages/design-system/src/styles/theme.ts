@@ -1,13 +1,15 @@
 import { createTheme } from '@mui/material/styles';
-import type { DesignSystemMode } from '../types';
+import type { DesignSystemMode, DesignSystemThemeConfig } from '../types';
 
-export function createAppTheme(mode: DesignSystemMode = 'light') {
+export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: DesignSystemThemeConfig) {
   const isDark = mode === 'dark';
+  const resolvedPrimary = themeConfig?.primary ?? (isDark ? '#F3F3F3' : '#5A5A5A');
+  const resolvedSecondary = themeConfig?.secondary ?? (isDark ? '#E3E3E3' : '#7A7A7A');
 
   const palette = {
     dark: {
-      primary: '#F3F3F3',
-      secondary: '#E3E3E3',
+      primary: resolvedPrimary,
+      secondary: resolvedSecondary,
       background: '#111111',
       paper: '#1C1C1C',
       text: '#F7F7F7',
@@ -18,8 +20,8 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
       buttonShadow: '0 12px 30px rgba(0, 0, 0, 0.4)',
     },
     light: {
-      primary: '#5A5A5A',
-      secondary: '#7A7A7A',
+      primary: resolvedPrimary,
+      secondary: resolvedSecondary,
       background: '#F5F5F5',
       paper: '#FFFFFF',
       text: '#1E1E1E',
@@ -36,9 +38,11 @@ export function createAppTheme(mode: DesignSystemMode = 'light') {
       mode,
       primary: {
         main: palette.primary,
+        contrastText: isDark ? '#111111' : '#FFFFFF',
       },
       secondary: {
         main: palette.secondary,
+        contrastText: isDark ? '#111111' : '#FFFFFF',
       },
       background: {
         default: palette.background,
