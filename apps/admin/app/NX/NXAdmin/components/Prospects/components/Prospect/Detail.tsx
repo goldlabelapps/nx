@@ -19,7 +19,7 @@ import {
 
 import { Icon, navigateTo } from '../../../../../DesignSystem';
 import { createSlug } from '../../../../../lib/vanilla-js/createSlug';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { AvaFlag } from '../../../Prospects';
 import { updateProspect } from '../../actions/updateProspect';
 

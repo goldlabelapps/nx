@@ -9,7 +9,7 @@ import {
     InputLabel,
     FormControl,
 } from '@mui/material';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setNXAdmin, setCRUD, useCRUD } from '../../../NXAdmin'
 import { Icon } from '../../../../NX/DesignSystem';
 

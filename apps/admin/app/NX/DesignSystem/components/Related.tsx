@@ -6,7 +6,7 @@ import {
 	Button,
 } from '@mui/material';
 import { Icon, navigateTo, setFeedback } from '../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export interface I_Related {
 	related?: any[];

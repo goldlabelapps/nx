@@ -1,5 +1,5 @@
 import type { T_UbereduxDispatch } from '../../types';
-import { setUbereduxKey } from '/uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 
 export const setDesignSystem =
   (key: string, value: any): any =>

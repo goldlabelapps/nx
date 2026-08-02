@@ -11,7 +11,7 @@ import {
     Typography,
 } from '@mui/material';
 import { navigateTo } from '../../../../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { AvaFlag } from '../../../Prospects';
 import { formatDeviceSummary } from '../../utils';
 

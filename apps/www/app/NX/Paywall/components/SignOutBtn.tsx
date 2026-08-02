@@ -4,7 +4,7 @@ import {
     IconButton,
 } from '@mui/material';
 import { Icon } from '../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import {
     setPaywall,
     firebaseLogout,

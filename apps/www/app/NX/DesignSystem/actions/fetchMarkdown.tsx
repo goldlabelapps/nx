@@ -1,5 +1,5 @@
 import type { T_UbereduxDispatch } from '../../types';
-import { setUbereduxKey } from '/uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { setDesignSystem } from './setDesignSystem';
 
 // Helper for GET with JSON body and error handling

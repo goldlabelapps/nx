@@ -12,7 +12,7 @@ import {
 	Typography,
 } from '@mui/material';
 import { navigateTo } from '../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export interface I_Header {
 	config: T_Config;

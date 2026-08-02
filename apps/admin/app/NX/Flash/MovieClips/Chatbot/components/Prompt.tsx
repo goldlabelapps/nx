@@ -2,7 +2,7 @@
 import React from 'react';
 import { TextField, Box, IconButton } from '@mui/material';
 import { useFlash, setFlash } from '../../../../Flash';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { Icon } from '../../../../DesignSystem';
 
 const Prompt = () => {

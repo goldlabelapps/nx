@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { store, resetUberedux, setUbereduxKey } from '/uberedux';
+import { store, resetUberedux, setUbereduxKey } from '@nx/uberedux';
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({
@@ -15,7 +15,7 @@ jest.mock('next/navigation', () => ({
 jest.mock('../../app/NX/DesignSystem', () => {
   const ReactLocal = require('react');
   const { useSelector } = require('react-redux');
-  const { setUbereduxKey: setKey } = require('../../app/NX/Uberedux/store');
+  const { setUbereduxKey: setKey } = require('@nx/uberedux');
 
   const iconTestIds: Record<string, string> = {
     menu: 'MenuIcon',

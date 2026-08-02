@@ -7,7 +7,7 @@ import {
   ButtonBase,
 } from '@mui/material';
 import { Icon, navigateTo } from '../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export default function GithubLink({
   url = '',

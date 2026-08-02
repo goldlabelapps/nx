@@ -1,4 +1,4 @@
-import type { T_UbereduxDispatch, T_RootState } from '/uberedux';
+import type { T_UbereduxDispatch, T_RootState } from '@nx/uberedux';
 export type { T_UbereduxDispatch, T_RootState }
 
 export type T_Severity = 'success' | 'error' | 'warning' | 'info';

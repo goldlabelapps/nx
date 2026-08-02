@@ -4,7 +4,7 @@ import {
   Button,
 } from '@mui/material';
 import { setFeedback } from '../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export default function FeedbackBtn({
   url,

@@ -4,7 +4,7 @@ import '@nx/design-system/site-layout.css';
 import fs from 'fs';
 import path from 'path';
 import { AppShell, DesignSystemProvider } from '@nx/design-system';
-import { UbereduxProvider } from '/uberedux';
+import { UbereduxProvider } from '@nx/uberedux';
 import { normalizeTenant } from './NX/lib/normalizeTenant';
 
 const tenant = normalizeTenant();

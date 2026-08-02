@@ -1,7 +1,7 @@
 import type { Dispatch } from 'redux';
 import { doc, updateDoc } from 'firebase/firestore';
 import { setFeedback } from '../../../../DesignSystem';
-import { setUbereduxKey } from '/uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { getFirebaseFirestore } from '../../../../lib/firebase';
 
 export const updateFingerprint = (

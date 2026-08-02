@@ -12,7 +12,7 @@ import {
     DialogActions,
 } from '@mui/material';
 import { Icon, setFeedback } from '../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { 
     usePaywall,
     setPaywall, 

@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { Snackbar, Alert, IconButton, Typography } from '@mui/material';
-import { useDispatch } from '/uberedux'
+import { useDispatch } from '@nx/uberedux'
 import { Icon, useFeedback, setFeedback } from '../../DesignSystem';
 
 export default function Feedback() {

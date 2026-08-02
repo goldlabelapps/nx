@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '/uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { setNXAdmin } from '../../../../NXAdmin';
 import { fetchQueue, setQueue } from '../';
 

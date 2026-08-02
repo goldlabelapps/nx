@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Backdrop, CircularProgress } from '@mui/material';
 import { useDesignSystem, setDesignSystem } from '../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export default function Loader() {
     const designSystem = useDesignSystem();

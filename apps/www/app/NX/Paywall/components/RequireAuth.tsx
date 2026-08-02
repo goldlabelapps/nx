@@ -5,7 +5,7 @@ import { firebaseLogin } from '../../Paywall';
 import { User } from 'firebase/auth';
 import { useFirebaseAuthListener } from '../../lib';
 import { Typography, Backdrop, CircularProgress, Box } from "@mui/material";
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export default function RequireAuth({ children, config }: { children: React.ReactNode; config: T_Config }) {
     const [user, setUser] = useState<User | null>(null);

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { getFirebaseFirestore } from '../../../../lib/firebase';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
 import { createSlug } from '../../../../lib/vanilla-js/createSlug';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setFeedback } from '../../../../DesignSystem';
 
 type T_UseSubscriptionOptions = {

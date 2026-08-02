@@ -6,7 +6,7 @@ import {
     IconButton,
 } from '@mui/material';
 import { useFlash, setFlash } from '../../../../app/NX/Flash';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { Icon } from '../../../../app/NX/DesignSystem';
 import { NotFound } from './';
 

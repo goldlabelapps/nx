@@ -1,4 +1,4 @@
-import type { T_RootState } from '/uberedux';
+import type { T_RootState } from '@nx/uberedux';
 import { useSelector } from 'react-redux';
 
 export function useFullscreen() {

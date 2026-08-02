@@ -1,5 +1,5 @@
 import type { T_Feedback, T_UbereduxDispatch } from '../../../../types';
-import { setUbereduxKey } from '/uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { setDesignSystem } from '../../../../DesignSystem';
 
 export const toggleFullscreen =

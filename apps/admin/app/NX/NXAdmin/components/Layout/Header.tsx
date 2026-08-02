@@ -8,7 +8,7 @@ import {
     IconButton,
 } from '@mui/material';
 import { Icon, navigateTo } from '../../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { useHeader, NXAdminMenu } from '../../../NXAdmin';
 
 export default function Header() {

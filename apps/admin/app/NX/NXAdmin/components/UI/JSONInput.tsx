@@ -7,7 +7,7 @@ import {
     FormControl,
 } from '@mui/material';
 import type { I_JSONInput } from '../../types';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setNXAdmin, setCRUD, useCRUD } from '../../../NXAdmin'
 
 export type { I_JSONInput };

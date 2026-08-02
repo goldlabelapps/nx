@@ -5,7 +5,7 @@ import {
   Alert,
 } from '@mui/material';
 // import { Icon, useConfig, navigateTo } from '../../NX/DesignSystem';
-// import { useDispatch } from '/uberedux';
+// import { useDispatch } from '@nx/uberedux';
 
 export default function Orders() {
 

@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { useNXAdmin, setNXAdmin, SoundPlayer } from '../../../NXAdmin';
 import { initQueue, NextRecord, FilterSelect, useFilters, useNumbers } from './';
 

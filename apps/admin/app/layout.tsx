@@ -6,7 +6,7 @@ import '@nx/design-system/styles.css';
 import '@nx/design-system/site-layout.css';
 import fs from 'fs';
 import path from 'path';
-import { UbereduxProvider } from '/uberedux';
+import { UbereduxProvider } from '@nx/uberedux';
 
 const configPath = path.join(process.cwd(), 'public', 'nxadmin', 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');

@@ -17,7 +17,7 @@ import {
 } from '@mui/material';
 import { navigateTo, Icon } from '../../../../DesignSystem';
 import { MultiMarker } from '../../../../Mapbox';
-import { useDispatch } from '/uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { 
     useSubscription, 
     initFingerprints,
