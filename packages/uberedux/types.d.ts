@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
-import type { Dispatch, UnknownAction } from 'redux';
+import type { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
 
-export type T_UbereduxState = Record<string, unknown>;
+export type T_UbereduxState = Record<string, any>;
 
 export type T_UbereduxKeyPayload = {
   key: string;
@@ -12,7 +12,7 @@ export type T_RootState = {
   redux: T_UbereduxState;
 };
 
-export type T_UbereduxDispatch = Dispatch<UnknownAction>;
+export type T_UbereduxDispatch = ThunkDispatch<T_RootState, unknown, UnknownAction>;
 export type AppDispatch = T_UbereduxDispatch;
 
 export type T_UbereduxProviderProps = {
