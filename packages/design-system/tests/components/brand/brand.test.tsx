@@ -18,4 +18,12 @@ describe('brand components', () => {
     expect(screen.queryByText('NX°')).toBeNull();
     expect(screen.queryByText('NX')).toBeNull();
   });
+
+  it('uses custom face and smile colors when provided', () => {
+    render(<Logo faceColor="#123456" smileColor="#abcdef" />);
+
+    const paths = document.querySelectorAll('svg[aria-label="NX Favicon"] path');
+    expect(paths[0]?.getAttribute('fill')).toBe('#123456');
+    expect(paths[1]?.getAttribute('fill')).toBe('#abcdef');
+  });
 });

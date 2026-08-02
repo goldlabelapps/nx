@@ -48,7 +48,7 @@ const headingVariantStyles = {
   },
 } as const;
 
-function Heading({ children, tone = 'primary', as = 'span', variant, style, ...rest }: HeadingProps) {
+function Heading({ children, tone = 'primary', as = 'span', variant, style, sx, ...rest }: HeadingProps) {
   const resolvedTone = tone === 'clay' ? 'primary' : tone === 'ink' ? 'secondary' : tone;
   const { fontWeight: _fontWeight, ...safeStyle } = style ?? {};
   const inferredVariant = as === 'h1' || as === 'h2' || as === 'h3' || as === 'h4' || as === 'h5' || as === 'h6' ? as : 'label';
@@ -57,15 +57,18 @@ function Heading({ children, tone = 'primary', as = 'span', variant, style, ...r
   return (
     <Typography
       component={as}
-      sx={{
-        display: as === 'span' ? 'inline-flex' : 'block',
-        alignItems: 'center',
-        gap: 1,
-        fontFamily: 'var(--font-title)',
-        ...headingVariantStyles[resolvedVariant],
-        color: resolvedTone === 'primary' ? 'var(--nx-clay)' : 'text.primary',
-        fontWeight: 400
-      }}
+      sx={[
+        {
+          display: as === 'span' ? 'inline-flex' : 'block',
+          alignItems: 'center',
+          gap: 1,
+          fontFamily: 'var(--font-title)',
+          ...headingVariantStyles[resolvedVariant],
+          color: resolvedTone === 'primary' ? 'var(--nx-clay)' : 'text.primary',
+          fontWeight: 400
+        },
+        ...(Array.isArray(sx) ? sx : sx ? [sx] : [])
+      ]}
       style={safeStyle}
       {...rest}
     >

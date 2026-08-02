@@ -1,8 +1,8 @@
 {
   "short_name": "NX°",
   "name": "NX°",
-  "theme_color": "#f5f5f5",
-  "background_color": "#f5f5f5",
+  "theme_color": "#364450",
+  "background_color": "#364450",
   "display": "fullscreen",
   "orientation": "any",
   "scope": "/",

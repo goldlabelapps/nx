@@ -18,6 +18,8 @@ export type LogoProps = {
 	children?: ReactNode;
 	subtitle?: string;
 	favicon?: boolean;
+	faceColor?: string;
+	smileColor?: string;
 };
 
 export type DesignSystemProviderProps = {
@@ -35,6 +37,7 @@ export type HeadingProps = {
 	as?: 'span' | 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 	variant?: HeadingVariant;
 	style?: CSSProperties;
+	sx?: SxProps<Theme>;
 };
 
 export type AlertSeverity = 'info' | 'success' | 'warning' | 'error';
