@@ -169,6 +169,13 @@ export default async function Page({ params }: T_PageProps) {
                     </DesktopOnly>
 
                     <DesignSystemSiteMain>
+
+                        {pageDescription ? (
+                            <Heading variant="h2" style={{ marginBottom: '1rem' }} tone="secondary">
+                                {pageDescription}
+                            </Heading>
+                        ) : null}
+
                         
                         {featuredImageSrc ? (
                             <FeaturedImage
@@ -179,15 +186,8 @@ export default async function Page({ params }: T_PageProps) {
                             />
                         ) : null}
                         
-
-                        {pageDescription ? (
-                            <Heading variant="h2" style={{ marginTop: '1rem' }} tone="secondary">
-                                {pageDescription}
-                            </Heading>
-                        ) : null}
-
                         {breadcrumbItems.length ? (
-                            <div style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
+                            <div style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}>
                                 <Breadcrumb items={breadcrumbItems} />
                             </div>
                         ) : null}
