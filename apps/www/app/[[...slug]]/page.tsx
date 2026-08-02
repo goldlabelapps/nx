@@ -18,6 +18,7 @@ import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
+import UbereduxStatePreview from '../NX/DesignSystem/UbereduxStatePreview';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
@@ -98,6 +99,7 @@ export default async function Page({ params }: T_PageProps) {
     const featuredImageSrc = typeof data.image === 'string' && data.image.trim()
         ? data.image
         : config.images?.light || '';
+    const headerIconSrc = featuredImageSrc || config.images?.light || '/nx/png/favicon.png';
     const navItems = (await serverUseNav()) as T_NavNode[];
     const breadcrumbItems = slugArr.length
         ? [
@@ -159,7 +161,7 @@ export default async function Page({ params }: T_PageProps) {
                     title={data.title || title}
                     description={slugArr.length ? '' : (config?.description || '')}
                     homeHref="/"
-                    logoSrc="/nx/png/favicon.png"
+                    logoSrc={headerIconSrc}
                     navItems={<RoutedSiteNav items={navItems} />}
                     actions={<HeaderActions navItems={<RoutedSiteNav items={navItems} />} />}
                 />
@@ -202,9 +204,11 @@ export default async function Page({ params }: T_PageProps) {
                     </DesignSystemSiteMain>
                     <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
                         <Card>
-                            Uberedux
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                <>Uberedux</>
+                                <UbereduxStatePreview />
+                            </div>
                         </Card>
-                        
                     </aside>
                 </main>
                 

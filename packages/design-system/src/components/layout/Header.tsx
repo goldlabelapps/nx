@@ -7,6 +7,7 @@ import type { SiteHeaderProps } from '../../types';
 export default function Header({
   title,
   actions,
+  icon,
 }: SiteHeaderProps) {
   const theme = useTheme();
 
@@ -26,6 +27,7 @@ export default function Header({
           >
             <Logo 
               name={title} 
+              icon={icon}
               faceColor={theme.palette.secondary.main} 
               smileColor={theme.palette.background.default}>
                 {title}

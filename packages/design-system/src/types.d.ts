@@ -21,6 +21,7 @@ export type LogoProps = {
 	name?: string;
 	children?: ReactNode;
 	subtitle?: string;
+	icon?: ReactNode;
 	favicon?: boolean;
 	faceColor?: string;
 	smileColor?: string;
@@ -180,6 +181,7 @@ export type SiteHeaderProps = {
 	homeHref: string;
 	logoSrc: string;
 	logoAlt?: string;
+	icon?: ReactNode;
 	navItems: ReactNode;
 	actions?: ReactNode;
 };
