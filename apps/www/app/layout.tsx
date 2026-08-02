@@ -47,6 +47,7 @@ export const metadata: Metadata = {
   metadataBase,
   title: `${title}, ${description}`,
   description,
+  manifest: '/manifest.webmanifest',
   icons: {
     icon: favicon,
     shortcut: favicon,
@@ -63,7 +64,6 @@ export default async function RootLayout({
     <html lang="en" data-design-system={designSystemId}>
       <head>
         <link rel="icon" href={favicon} />
-        <link rel="manifest" href={`/${resolvedTenant}/manifest.webmanifest`} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
