@@ -147,6 +147,7 @@ export type SiteHeaderProps = {
 	logoSrc: string;
 	logoAlt?: string;
 	navItems: ReactNode;
+	actions?: ReactNode;
 };
 
 export type MenuDrawerProps = {

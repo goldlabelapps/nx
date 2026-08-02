@@ -59,17 +59,20 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
     typography: {
       fontFamily: '"DM Sans", "Segoe UI", Roboto, sans-serif',
       h1: {
+        fontFamily: 'var(--font-title)',
         fontWeight: 700,
         fontSize: '2.5rem',
         lineHeight: 1.05,
         letterSpacing: '-0.02em'
       },
       h2: {
+        fontFamily: 'var(--font-title)',
         fontWeight: 700,
         fontSize: '2rem',
         lineHeight: 1.1
       },
       h3: {
+        fontFamily: 'var(--font-title)',
         fontWeight: 600,
         fontSize: '1.5rem'
       },

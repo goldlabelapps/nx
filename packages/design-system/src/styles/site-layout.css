@@ -8,11 +8,7 @@
   min-height: 100vh;
   gap: 1.25rem;
   padding: 1.25rem clamp(1rem, 2.5vw, 2rem) 2rem;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--surface-page) 86%, var(--surface-paper) 14%) 0%,
-    color-mix(in srgb, var(--surface-page) 92%, var(--nx-ink) 8%) 100%
-  );
+  background: var(--surface-page);
   color: var(--text-strong);
 }
 
@@ -20,7 +16,7 @@
 .site-footer,
 .site-panel {
   border: 1px solid var(--border-hairline);
-  background: color-mix(in srgb, var(--surface-paper) 95%, transparent);
+  background: var(--surface-paper);
   box-shadow: var(--nx-shadow-card);
   backdrop-filter: blur(10px);
 }
@@ -62,7 +58,7 @@
   flex-shrink: 0;
   border-radius: 3px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--surface-page) 92%, var(--surface-paper) 8%);
+  background: var(--surface-page);
 }
 
 .site-home-link img {

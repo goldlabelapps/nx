@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 import {
     Breadcrumb,
     DesktopOnly,
-    DesignSystemProvider,
     FeaturedImage,
     Heading,
     SiteFooter,
@@ -16,6 +15,8 @@ import {
     type T_NavNode,
 } from '@nx/design-system';
 import nxConfig from '../../nx.config.json';
+import HeaderActions from '../NX/DesignSystem/HeaderActions';
+import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
@@ -124,7 +125,7 @@ export default async function Page({ params }: T_PageProps) {
         : undefined;
 
     return (
-        <DesignSystemProvider mode={themeMode} themeConfig={themeConfig}>
+        <ThemeModeProvider initialMode={themeMode} themeConfig={themeConfig}>
             <div className="site-shell">
                 
                 <SiteHeader
@@ -133,6 +134,7 @@ export default async function Page({ params }: T_PageProps) {
                     homeHref="/"
                     logoSrc="/nx/png/favicon.png"
                     navItems={<SiteNav items={navItems} />}
+                    actions={<HeaderActions navItems={<SiteNav items={navItems} />} />}
                 />
 
                 <main className="site-main" id="main">
@@ -175,6 +177,6 @@ export default async function Page({ params }: T_PageProps) {
                 <SiteFooter />
 
             </div>
-        </DesignSystemProvider>
+        </ThemeModeProvider>
     );
 }
