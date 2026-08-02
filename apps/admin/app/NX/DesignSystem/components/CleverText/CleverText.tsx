@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { CleverTextAS } from './';
 import { setFlash, useFlash } from '../../../../NX/Flash';
-import { useDispatch } from '../../../../NX/Uberedux';
+import { useDispatch } from '/uberedux';
 
 export interface I_CleverText {
     options: {

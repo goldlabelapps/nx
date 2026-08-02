@@ -8,7 +8,7 @@ import {
     subscribeAccount, 
     setPaywall,
 } from '../../Paywall';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 
 export interface I_UserSpot {
     onClick?: React.MouseEventHandler<HTMLButtonElement>;

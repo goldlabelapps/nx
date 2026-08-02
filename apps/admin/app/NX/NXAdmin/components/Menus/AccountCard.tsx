@@ -10,7 +10,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
     usePaywall,
 } from '../../../Paywall';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { Icon, navigateTo } from '../../../DesignSystem';
 
 export default function AccountCard() {

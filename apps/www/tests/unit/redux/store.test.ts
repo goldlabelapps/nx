@@ -1,4 +1,4 @@
-import { store, resetUberedux, setUbereduxKey } from '@/app/NX/Uberedux/store';
+import { store, resetUberedux, setUbereduxKey } from '/uberedux';
 
 describe('redux/store setUbereduxKey + resetUberedux', () => {
   beforeEach(() => {

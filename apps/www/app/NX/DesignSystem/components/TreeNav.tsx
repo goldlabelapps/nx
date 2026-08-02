@@ -1,7 +1,7 @@
 "use client";
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter, usePathname } from 'next/navigation';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { navigateTo } from '../../DesignSystem';
 
 function normalizeRoute(route?: string): string | undefined {

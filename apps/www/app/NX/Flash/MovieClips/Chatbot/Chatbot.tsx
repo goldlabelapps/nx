@@ -9,7 +9,7 @@ import {
     Toolbar,
 } from '@mui/material';
 import { useFlash, setFlash } from '../../../Flash';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '/uberedux';
 import {
     ChatbotAS,
     Prompt,

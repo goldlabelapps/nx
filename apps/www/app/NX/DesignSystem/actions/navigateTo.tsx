@@ -1,6 +1,6 @@
 import type { T_UbereduxDispatch } from '../../types';
 import { useRouter } from 'next/navigation';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '/uberedux';
 import { setDesignSystem } from '../../DesignSystem';
 
 export const navigateTo = (

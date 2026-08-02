@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { store, resetUberedux, setUbereduxKey } from '@/app/NX/Uberedux/store';
+import { store, resetUberedux, setUbereduxKey } from '/uberedux';
 
 jest.mock('next/navigation', () => ({
   useRouter: () => ({

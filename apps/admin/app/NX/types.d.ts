@@ -1,4 +1,4 @@
-import type { T_RootState, T_UbereduxDispatch } from '../NX/Uberedux/store';
+import type { T_RootState, T_UbereduxDispatch } from '/uberedux';
 
 export type { T_RootState, T_UbereduxDispatch };
 

@@ -1,5 +1,5 @@
 import type { T_Feedback, T_UbereduxDispatch } from '../../types';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '/uberedux';
 
 export const setFeedback =
   (feedback: T_Feedback): any =>

@@ -26,7 +26,7 @@ import {
     AdminNav,
 } from '../../../NXAdmin';
 import PageRouter from '../PageRouter';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '/uberedux';
 
 const drawerWidth = 220;
 const NAV_ROUTES = new Set([

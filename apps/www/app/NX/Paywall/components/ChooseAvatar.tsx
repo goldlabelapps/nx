@@ -11,7 +11,7 @@ import {
     DialogActions,
 } from '@mui/material';
 import { Icon, setFeedback } from '../../DesignSystem';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { 
     usePaywall,
     setPaywall, 

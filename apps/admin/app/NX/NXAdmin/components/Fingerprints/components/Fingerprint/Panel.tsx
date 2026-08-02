@@ -13,7 +13,7 @@ import {
     Typography,
 } from '@mui/material';
 import { navigateTo } from '../../../../../DesignSystem';
-import { useDispatch } from '../../../../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { Device, AvaFlag } from '../../../Fingerprints';
 import { formatDeviceSummary } from '../../utils';
 

@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../../../Uberedux';
+import { setUbereduxKey } from '/uberedux';
 
 export const setDash =
     (key: string, value: any): any =>

@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import { onMessage } from 'firebase/messaging';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { getFirebaseMessaging } from '../../lib/firebase';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '/uberedux';
 
 const NOTIFICATION_SOUND = '/nxadmin/mp3/notification.mp3';
 

@@ -11,7 +11,7 @@ import {
   Box,
   useTheme,
 } from '@mui/material';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { Icon, setDesignSystem, navigateTo } from '../../../DesignSystem';
 import { logout, UserSpot, AccountCard } from '../../../Paywall';
 import { MiniListItem } from '../../../NXAdmin';

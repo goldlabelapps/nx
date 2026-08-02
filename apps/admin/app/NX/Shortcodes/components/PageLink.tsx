@@ -8,7 +8,7 @@ import {
   CardHeader,
 } from '@mui/material';
 import { Icon, navigateTo } from '../../DesignSystem';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 
 export default function PageLink({
   url = null,

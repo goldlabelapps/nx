@@ -18,7 +18,7 @@ import {
     firebaseLogout,
     updateAccount,
 } from '../../Paywall';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { Icon, EditableStr } from '../../DesignSystem';
 
 export default function MiniAccount({ onCloseDrawer }: { onCloseDrawer?: () => void } = {}) {

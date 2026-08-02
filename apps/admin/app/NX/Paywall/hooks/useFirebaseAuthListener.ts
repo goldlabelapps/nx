@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import { getFirebaseAuth } from '../../lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { setPaywall } from '../../Paywall';
 
 /**

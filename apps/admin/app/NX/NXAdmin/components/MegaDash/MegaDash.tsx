@@ -3,7 +3,7 @@ import * as React from 'react';
 import {
     Grid,
 } from '@mui/material';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { setNXAdmin, useNXAdmin } from '../../../NXAdmin';
 import { initDash, useDash } from '../MegaDash';
 import { Surface as Fingerprints } from '../Fingerprints';

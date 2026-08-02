@@ -11,7 +11,7 @@ import {
     Typography,
 } from '@mui/material';
 import { Icon } from '../../DesignSystem';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { useRouter } from 'next/navigation';
 import {
     usePaywall,

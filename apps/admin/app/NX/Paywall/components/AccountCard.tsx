@@ -8,7 +8,7 @@ import {
     usePaywall, 
     updateAccount,
 } from '../../Paywall';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '/uberedux';
 import { EditableStr } from '../../DesignSystem';
 
 export default function AccountCard() {

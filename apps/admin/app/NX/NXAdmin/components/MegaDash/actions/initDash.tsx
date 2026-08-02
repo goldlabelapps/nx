@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../../../Uberedux';
+import { setUbereduxKey } from '/uberedux';
 import { setNXAdmin } from '../../../../NXAdmin';
 
 export const initDash = (): any =>
