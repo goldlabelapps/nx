@@ -5,7 +5,6 @@ description: How quickly can you despecialise?
 slug: /experience/despecialise
 icon: experience
 tags: Frontend, Backend, UX, Ops, AI, workflows, Delivery
-image: https://live.staticflickr.com/65535/55377570810_2d100cf128_b.jpg
 ---
 
 > [CleverText text="What has become critical is experience"]  

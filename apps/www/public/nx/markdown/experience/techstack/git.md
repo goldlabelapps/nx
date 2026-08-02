@@ -6,8 +6,7 @@ slug: /experience/techstack/git
 icon: github
 tags: open source, free, git, github
 --- 
-
-[GithubProfile username="goldlabelapps"]
+]
 
 Progress in software is only possible by standing on the shoulders of giants. Learning from, building upon, and contributing to the work of those who came before us. 
 

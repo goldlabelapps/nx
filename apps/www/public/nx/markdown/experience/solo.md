@@ -4,7 +4,6 @@ title: High Trust
 description: Solo Technical Operator
 slug: /experience/solo
 icon: experience
-image: https://live.staticflickr.com/65535/55377570810_2d100cf128_b.jpg
 ---
 
 > A very real emerging category of role is Not an freelancer. Not an agency. Not an employee.

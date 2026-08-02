@@ -76,7 +76,7 @@ export default function Logo({
         }}>
           {hasText ? (
             <Heading 
-              variant="h1" 
+              variant="h2" 
               style={{ 
                 marginTop: 3,
               }}>
