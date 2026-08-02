@@ -44,6 +44,9 @@ importers:
       '@nx/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
+      '@nx/uberedux':
+        specifier: workspace:*
+        version: link:../../packages/uberedux
       '@reduxjs/toolkit':
         specifier: ^2.11.2
         version: 2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.3)(redux@5.0.1))(react@19.2.3)
@@ -186,6 +189,9 @@ importers:
       '@nx/design-system':
         specifier: workspace:*
         version: link:../../packages/design-system
+      '@nx/uberedux':
+        specifier: workspace:*
+        version: link:../../packages/uberedux
       '@reduxjs/toolkit':
         specifier: ^2.11.2
         version: 2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.3)(redux@5.0.1))(react@19.2.3)
@@ -404,6 +410,28 @@ importers:
       redux:
         specifier: ^5
         version: 5.0.1
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
+  packages/uberedux:
+    dependencies:
+      '@reduxjs/toolkit':
+        specifier: '>=2.0.0'
+        version: 2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.3)(redux@5.0.1))(react@19.2.3)
+      redux:
+        specifier: '>=4.0.0'
+        version: 5.0.1
+    devDependencies:
+      '@types/react':
+        specifier: ^19
+        version: 19.2.17
+      react:
+        specifier: ^19
+        version: 19.2.3
+      react-redux:
+        specifier: ^9
+        version: 9.3.0(@types/react@19.2.17)(react@19.2.3)(redux@5.0.1)
       typescript:
         specifier: ^5
         version: 5.9.3

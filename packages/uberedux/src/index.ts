@@ -1,11 +1,11 @@
 import UbereduxProvider from './UbereduxProvider';
 import { useSlice } from './hooks/useSlice';
 import { useDispatch } from './hooks/useDispatch';
-import { setUbereduxKey, resetUberedux, store } from './store';
-import type { T_RootState, T_UbereduxDispatch, AppDispatch } from './store';
+import { initialState, setUbereduxKey, resetUberedux, store } from './store';
 
 export {
   UbereduxProvider,
+  initialState,
   useSlice,
   useDispatch,
   setUbereduxKey,
@@ -13,5 +13,4 @@ export {
   store,
 };
 
-export type { T_RootState, T_UbereduxDispatch, AppDispatch };
-
+export type { T_RootState, T_UbereduxDispatch, AppDispatch } from './store';

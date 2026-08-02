@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@nx/uberedux": ["../../packages/uberedux/src"],
+      "@nx/uberedux/*": ["../../packages/uberedux/src/*"]
     }
   },
   "include": [
