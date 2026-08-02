@@ -145,6 +145,7 @@ export default async function Page({ params }: T_PageProps) {
                     </DesktopOnly>
 
                     <DesignSystemSiteMain>
+                        
                         {featuredImageSrc ? (
                             <FeaturedImage
                                 image={{
