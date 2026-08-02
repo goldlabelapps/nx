@@ -7,6 +7,7 @@ export type LogoProps = {
 	name?: string;
 	children?: ReactNode;
 	subtitle?: string;
+	favicon?: boolean;
 };
 
 export type DesignSystemProviderProps = {

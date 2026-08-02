@@ -3,8 +3,10 @@
 import { Box, Typography } from '@mui/material';
 import type { LogoProps } from '../../types';
 
-export default function Logo({ name = 'NX°', children, subtitle }: LogoProps) {
+export default function Logo({ name = 'NX°', children, subtitle, favicon = false }: LogoProps) {
   const text = children ?? name;
+  const hasText = !favicon && text !== undefined && text !== null && text !== '';
+  const showTextBlock = !favicon && (hasText || Boolean(subtitle));
 
   return (
     <Box
@@ -42,16 +44,20 @@ export default function Logo({ name = 'NX°', children, subtitle }: LogoProps) {
           </g>
         </svg>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-        <Typography component="span" sx={{ fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', fontSize: '1.25rem', lineHeight: 1 }}>
-          {text}
-        </Typography>
-        {subtitle ? (
-          <Typography component="span" variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.2 }}>
-            {subtitle}
-          </Typography>
-        ) : null}
-      </Box>
+      {showTextBlock ? (
+        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          {hasText ? (
+            <Typography component="span" sx={{ fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', fontSize: '1.25rem', lineHeight: 1 }}>
+              {text}
+            </Typography>
+          ) : null}
+          {subtitle ? (
+            <Typography component="span" variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.2 }}>
+              {subtitle}
+            </Typography>
+          ) : null}
+        </Box>
+      ) : null}
     </Box>
   );
 }

@@ -9,5 +9,9 @@ describe('brand components', () => {
 
     rerender(<Logo>NX</Logo>);
     expect(screen.getByText('NX')).toBeTruthy();
+
+    rerender(<Logo favicon />);
+    expect(screen.queryByText('NX°')).toBeNull();
+    expect(screen.queryByText('NX')).toBeNull();
   });
 });

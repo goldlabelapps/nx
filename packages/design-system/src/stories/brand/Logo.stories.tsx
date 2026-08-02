@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { AppShell, DesignSystemProvider, Logo, PageSection } from '../../index';
+import { Logo } from '../../index';
 
 const meta: Meta<typeof Logo> = {
   title: 'Brand/Logo',
@@ -14,17 +14,14 @@ export const Default: Story = {
 };
 
 export const Favicon: Story = {
-  render: () => <Logo>NX</Logo>,
-};
-
-export const Darkmode: Story = {
-  render: () => (
-    <DesignSystemProvider mode="dark">
-      <AppShell>
-        <PageSection>
-          <Logo />
-        </PageSection>
-      </AppShell>
-    </DesignSystemProvider>
-  ),
+  parameters: {
+    usage: {
+      code: [
+        "import { Logo } from '@nx/design-system';",
+        '',
+        '<Logo favicon />',
+      ].join('\n'),
+    },
+  },
+  render: () => <Logo favicon />,
 };
