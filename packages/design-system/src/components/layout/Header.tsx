@@ -1,10 +1,7 @@
 "use client";
 
-import { useState } from 'react';
-import { Box, Popover } from '@mui/material';
 import Logo from '../brand/Logo';
-import IconButton from '../buttons/IconButton';
-import Icon from '../icons/Icon';
+import MenuDrawer from './MenuDrawer';
 import type { SiteHeaderProps } from '../../types';
 
 export default function Header({
@@ -13,17 +10,6 @@ export default function Header({
   breadcrumbItems,
   navItems,
 }: SiteHeaderProps) {
-  const [menuAnchor, setMenuAnchor] = useState<HTMLElement | null>(null);
-  const isMenuOpen = Boolean(menuAnchor);
-
-  const handleMenuToggle = (event: React.MouseEvent<HTMLElement>) => {
-    setMenuAnchor((current) => (current ? null : event.currentTarget));
-  };
-
-  const handleMenuClose = () => {
-    setMenuAnchor(null);
-  };
-
   return (
     <header>
       <div
@@ -50,34 +36,7 @@ export default function Header({
           </a>
         </div>
 
-        <Box>
-          <IconButton
-            icon={<Icon icon="menu" />}
-            ariaLabel="Toggle menu"
-            onClick={handleMenuToggle}
-            aria-haspopup="menu"
-            aria-expanded={isMenuOpen}
-            aria-controls={isMenuOpen ? 'header-mobile-nav' : undefined}
-          />
-          <Popover
-            id="header-mobile-nav"
-            open={isMenuOpen}
-            anchorEl={menuAnchor}
-            onClose={handleMenuClose}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-            PaperProps={{
-              sx: {
-                mt: 1,
-                minWidth: 240,
-                p: 1.25,
-                borderRadius: '3px',
-              },
-            }}
-          >
-            <nav aria-label="Primary navigation">{navItems}</nav>
-          </Popover>
-        </Box>
+        <MenuDrawer navItems={navItems} toggleAriaLabel="Toggle menu" />
       </div>
     </header>
   );

@@ -137,6 +137,11 @@ export type SiteHeaderProps = {
 	navItems: ReactNode;
 };
 
+export type MenuDrawerProps = {
+	navItems: ReactNode;
+	toggleAriaLabel?: string;
+};
+
 export type FeaturedImageData = {
 	src: string;
 	alt?: string;
