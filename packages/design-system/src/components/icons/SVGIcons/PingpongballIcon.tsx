@@ -4,8 +4,8 @@ import { SvgIcon, useTheme } from '@mui/material';
 export default function PingpongballIcon(props: any) {
   const theme = useTheme();
 
-  const smile = '#fff';
-  const mainColor = theme.palette.primary.main;
+  const smile = theme.palette.background.default === '#fff' ? '#000' : '#fff';
+  const mainColor = theme.palette.secondary.main;
 
   return (
     <SvgIcon {...props}>

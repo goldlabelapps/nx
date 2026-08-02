@@ -215,8 +215,8 @@ export default function Share({
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
         <Box sx={{ p: 1.5, minWidth: 220 }}>
           <Stack spacing={gap} role="menu" aria-label="Share menu">
@@ -269,8 +269,8 @@ export default function Share({
         open={copiedOpen}
         anchorEl={copiedAnchorEl}
         onClose={handleCopiedClose}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        transformOrigin={{ vertical: 'top', horizontal: 'center' }}
         disableRestoreFocus
       >
         <Box role="status" sx={{ px: 1.5, py: 1 }}>

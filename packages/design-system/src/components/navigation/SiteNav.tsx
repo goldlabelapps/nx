@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, type ReactNode } from 'react';
+import { Fragment, useEffect, useState, type ReactNode } from 'react';
 import type { SiteNavProps, T_NavNode } from '../../types';
 import List from '../lists/List';
 import ListItem from '../lists/ListItem';
@@ -27,12 +27,36 @@ function isSuppressedHomeItem(item: T_NavNode, depth: number): boolean {
   return title === 'home' || path === '/';
 }
 
+function normalizeNavPath(path: string): string {
+  if (!path || path === '/') {
+    return '/';
+  }
+
+  const trimmed = path.trim();
+  return trimmed.endsWith('/') ? trimmed.slice(0, -1) : trimmed;
+}
+
+function isOnCurrentPath(itemPath: string, currentPath: string): boolean {
+  if (!currentPath || !itemPath || itemPath === '#') {
+    return false;
+  }
+
+  const normalizedCurrentPath = normalizeNavPath(currentPath);
+  const normalizedItemPath = normalizeNavPath(itemPath);
+
+  if (normalizedItemPath === '/') {
+    return normalizedCurrentPath !== '/';
+  }
+
+  return normalizedCurrentPath === normalizedItemPath || normalizedCurrentPath.startsWith(`${normalizedItemPath}/`);
+}
 
 function renderNavItems(
   items: T_NavNode[],
   navigateTo?: (path: string, item: T_NavNode) => void,
   depth = 0,
-  keyPrefix = 'nav'
+  keyPrefix = 'nav',
+  currentPath = '',
 ): ReactNode {
   if (!Array.isArray(items) || !items.length) {
     return null;
@@ -48,13 +72,17 @@ function renderNavItems(
         const key = `${keyPrefix}-${index}-${item.title || item.slug || item.path || 'node'}`;
         const hasChildren = Array.isArray(item.children) && item.children.length > 0;
         const label = item.title || 'Untitled';
+        const itemPath = getNavPath(item);
+        const isCurrentPath = Boolean(currentPath && itemPath && currentPath === itemPath);
+        const shouldRenderChildren = Boolean(hasChildren && isOnCurrentPath(itemPath, currentPath));
 
         return (
           <Fragment key={key}>
             <ListItem disablePadding>
               <ListItemButton
+                disabled={isCurrentPath}
                 onClick={() => {
-                  navigateTo?.(getNavPath(item), item);
+                  navigateTo?.(itemPath, item);
                 }}
                 sx={{
                   pl: 1.5 + depth * 2,
@@ -64,6 +92,7 @@ function renderNavItems(
                 }}
               >
                 <ListItemText
+
                   primary={label}
                   sx={{ my: 0 }}
                   primaryTypographyProps={{
@@ -74,7 +103,7 @@ function renderNavItems(
                 />
               </ListItemButton>
             </ListItem>
-            {hasChildren ? renderNavItems(item.children as T_NavNode[], navigateTo, depth + 1, key) : null}
+            {shouldRenderChildren ? renderNavItems(item.children as T_NavNode[], navigateTo, depth + 1, key, currentPath) : null}
           </Fragment>
         );
       })}
@@ -83,5 +112,16 @@ function renderNavItems(
 }
 
 export default function SiteNav({ items, navigateTo }: SiteNavProps) {
-  return renderNavItems(items, navigateTo);
+  const [currentPath, setCurrentPath] = useState('');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const pathname = window.location.pathname;
+    setCurrentPath(pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname);
+  }, []);
+
+  return renderNavItems(items, navigateTo, 0, 'nav', currentPath);
 }
