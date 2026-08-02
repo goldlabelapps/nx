@@ -25,6 +25,7 @@ export type LogoProps = {
 	favicon?: boolean;
 	faceColor?: string;
 	smileColor?: string;
+	iconSize?: number;
 };
 
 export type DesignSystemProviderProps = {
@@ -178,11 +179,12 @@ export type ShareProps = {
 export type SiteHeaderProps = {
 	title: string;
 	description?: string;
-	homeHref: string;
-	logoSrc: string;
-	logoAlt?: string;
 	icon?: ReactNode;
-	navItems: ReactNode;
+	iconSize?: number;
+	homeHref?: string;
+	logoSrc?: string;
+	logoAlt?: string;
+	navItems?: ReactNode;
 	actions?: ReactNode;
 };
 

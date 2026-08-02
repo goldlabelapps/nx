@@ -3,16 +3,18 @@
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Heading from '../headings/Heading';
+import Icon from '../icons/Icon';
 import type { LogoProps } from '../../types';
 
 export default function Logo({ 
   name = 'NX°', 
   children, 
   subtitle, 
-  icon,
+  icon = "pingpong",
   favicon = false, 
   faceColor,
   smileColor,
+  iconSize = 30,
 }: LogoProps) {
 
   const theme = useTheme();
@@ -34,8 +36,8 @@ export default function Logo({
       <Box
         aria-hidden="true"
         sx={{
-          width: 36,
-          height: 36,
+          width: iconSize,
+          height: iconSize,
           marginRight: 0.5,
           display: 'inline-flex',
           alignItems: 'center',
@@ -46,10 +48,10 @@ export default function Logo({
       >
         {icon ? (
           <Box sx={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-            {icon}
+            <Icon icon={icon as any} color="secondary" size={iconSize} />
           </Box>
         ) : (
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" role="img" aria-label="NX Favicon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={iconSize} height={iconSize} role="img" aria-label="NX Favicon">
             <g stroke="none" fill="none" fillRule="evenodd">
               <g>
                 <rect fillOpacity="0" x="0" y="0" width="24" height="24" />

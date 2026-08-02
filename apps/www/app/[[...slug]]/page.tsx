@@ -11,7 +11,6 @@ import {
     SiteFooter,
     Header,
     SiteMain as DesignSystemSiteMain,
-    SiteNav,
     type T_NavNode,
 } from '@nx/design-system';
 import nxConfig from '../../nx.config.json';
@@ -99,7 +98,7 @@ export default async function Page({ params }: T_PageProps) {
     const featuredImageSrc = typeof data.image === 'string' && data.image.trim()
         ? data.image
         : config.images?.light || '';
-    const headerIconSrc = featuredImageSrc || config.images?.light || '/nx/png/favicon.png';
+    const headerIcon = 'home';
     const navItems = (await serverUseNav()) as T_NavNode[];
     const breadcrumbItems = slugArr.length
         ? [
@@ -159,10 +158,7 @@ export default async function Page({ params }: T_PageProps) {
                 
                 <Header
                     title={data.title || title}
-                    description={slugArr.length ? '' : (config?.description || '')}
-                    homeHref="/"
-                    logoSrc={headerIconSrc}
-                    navItems={<RoutedSiteNav items={navItems} />}
+                    icon={data.icon}
                     actions={<HeaderActions navItems={<RoutedSiteNav items={navItems} />} />}
                 />
 
