@@ -28,27 +28,6 @@ export const Description: Story = {
       <SiteHeader
         title="NX Documentation"
         description="Design system reference and implementation guides"
-        breadcrumbItems={[]}
-        homeHref="/"
-        logoSrc="/nx/png/favicon.png"
-        logoAlt="NX logo"
-        navItems={<SiteNav items={sampleNav} />}
-      />
-    </div>
-  ),
-};
-
-export const Breadcrumbs: Story = {
-  render: () => (
-    <div className="site-shell">
-      <SiteHeader
-        title="Design System"
-        description=""
-        breadcrumbItems={[
-          { label: 'Docs', href: '/docs' },
-          { label: 'Frontend', href: '/docs/frontend' },
-          { label: 'Design System' },
-        ]}
         homeHref="/"
         logoSrc="/nx/png/favicon.png"
         logoAlt="NX logo"

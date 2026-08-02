@@ -6,6 +6,10 @@ describe('brand components', () => {
   it('renders logo default and custom content', () => {
     const { rerender } = render(<Logo />);
     expect(screen.getByText('NX°')).toBeTruthy();
+    const favicon = document.querySelector('svg[aria-label="NX Favicon"]');
+    expect(favicon).toBeTruthy();
+    expect(favicon?.getAttribute('width')).toBe('36');
+    expect(favicon?.getAttribute('height')).toBe('36');
 
     rerender(<Logo>NX</Logo>);
     expect(screen.getByText('NX')).toBeTruthy();

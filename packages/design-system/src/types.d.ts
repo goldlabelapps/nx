@@ -16,11 +16,13 @@ export type DesignSystemProviderProps = {
 };
 
 export type HeadingTone = 'primary' | 'secondary' | 'ink' | 'clay';
+export type HeadingVariant = 'label' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export type HeadingProps = {
 	children: ReactNode;
 	tone?: HeadingTone;
-	as?: 'span' | 'div';
+	as?: 'span' | 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+	variant?: HeadingVariant;
 	style?: CSSProperties;
 };
 
@@ -128,10 +130,13 @@ export type BreadcrumbItem = {
 	href?: string;
 };
 
+export type BreadcrumbProps = {
+	items: BreadcrumbItem[];
+};
+
 export type SiteHeaderProps = {
 	title: string;
 	description?: string;
-	breadcrumbItems: BreadcrumbItem[];
 	homeHref: string;
 	logoSrc: string;
 	logoAlt?: string;
@@ -145,7 +150,7 @@ export type MenuDrawerProps = {
 
 export type FeaturedImageData = {
 	src: string;
-	alt?: string;
+	alt?: string | null;
 	width?: number | string;
 	height?: number | string;
 	objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
@@ -160,9 +165,4 @@ export type FeaturedImageProps = {
 export type SiteMainProps = {
 	children: ReactNode;
 	featuredImage?: string | null;
-};
-
-export type SiteSidebarProps = {
-	title?: string;
-	text?: string;
 };

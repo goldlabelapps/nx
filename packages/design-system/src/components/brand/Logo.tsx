@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import Heading from '../headings/Heading';
 import type { LogoProps } from '../../types';
 
 export default function Logo({ name = 'NX°', children, subtitle, favicon = false }: LogoProps) {
@@ -20,8 +21,9 @@ export default function Logo({ name = 'NX°', children, subtitle, favicon = fals
       <Box
         aria-hidden="true"
         sx={{
-          width: 24,
-          height: 24,
+          width: 36,
+          height: 36,
+          marginRight: 0.5,
           display: 'inline-flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -29,7 +31,7 @@ export default function Logo({ name = 'NX°', children, subtitle, favicon = fals
           lineHeight: 0
         }}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-label="NX Favicon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" role="img" aria-label="NX Favicon">
           <g stroke="none" fill="none" fillRule="evenodd">
             <g>
               <rect fillOpacity="0" x="0" y="0" width="24" height="24" />
@@ -47,14 +49,18 @@ export default function Logo({ name = 'NX°', children, subtitle, favicon = fals
       {showTextBlock ? (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           {hasText ? (
-            <Typography component="span" sx={{ fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', fontSize: '1.25rem', lineHeight: 1 }}>
+            <Heading variant="h1">
               {text}
-            </Typography>
+            </Heading>
           ) : null}
           {subtitle ? (
-            <Typography component="span" variant="caption" sx={{ color: 'text.secondary', lineHeight: 1.2 }}>
+            <Heading
+              as="span"
+              tone="secondary"
+              style={{ lineHeight: 1.2, fontSize: '0.75rem', letterSpacing: '0.06em', textTransform: 'none' }}
+            >
               {subtitle}
-            </Typography>
+            </Heading>
           ) : null}
         </Box>
       ) : null}

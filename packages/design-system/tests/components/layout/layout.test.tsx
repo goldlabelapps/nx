@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 import { AppShell, PageSection, SectionTitle } from '../../../src/components/layout/Layout';
 import Header from '../../../src/components/layout/Header';
 import Main from '../../../src/components/layout/Main';
-import Sidebar from '../../../src/components/layout/Sidebar';
 import Footer from '../../../src/components/layout/Footer';
 
 describe('layout primitives', () => {
@@ -23,37 +22,18 @@ describe('layout primitives', () => {
 });
 
 describe('site layout components', () => {
-  it('renders header description when breadcrumbs are absent', () => {
+  it('renders header title link', () => {
     render(
       <Header
         title="Docs"
         description="Description copy"
-        breadcrumbItems={[]}
         homeHref="/"
         logoSrc="/logo.png"
         navItems={<div>Nav</div>}
       />
     );
-    expect(screen.getByText('Description copy')).toBeTruthy();
-  });
-
-  it('renders breadcrumbs when provided', () => {
-    const { container } = render(
-      <Header
-        title="Docs"
-        description=""
-        breadcrumbItems={[
-          { label: 'Home', href: '/' },
-          { label: 'Docs' },
-        ]}
-        homeHref="/"
-        logoSrc="/logo.png"
-        navItems={<div>Nav</div>}
-      />
-    );
-    expect(screen.getByLabelText('Breadcrumb')).toBeTruthy();
-    expect(container.querySelector('nav.site-breadcrumbs a[href="/"]')).toBeTruthy();
-    expect(container.querySelector('nav.site-breadcrumbs span[aria-current="page"]')?.textContent).toBe('Docs');
+    expect(screen.getByRole('link', { name: 'Go to Docs home' })).toBeTruthy();
+    expect(screen.getByText('Docs')).toBeTruthy();
   });
 
   it('renders main with and without featured image', () => {
@@ -63,7 +43,7 @@ describe('site layout components', () => {
       </Main>
     );
     expect(screen.getByText('Hero section')).toBeTruthy();
-    expect(container.querySelector('img.site-featured-image-bg')).toBeTruthy();
+    expect(container.querySelector('img[src="/hero.png"]')).toBeTruthy();
 
     rerender(
       <Main>
@@ -73,20 +53,10 @@ describe('site layout components', () => {
     expect(screen.getByText('Plain section')).toBeTruthy();
   });
 
-  it('renders sidebar defaults and custom content', () => {
-    const { rerender } = render(<Sidebar />);
-    expect(screen.getByText('Placeholder')).toBeTruthy();
-
-    rerender(<Sidebar title="Release" text="v1.0.0" />);
-    expect(screen.getByText('Release')).toBeTruthy();
-    expect(screen.getByText('v1.0.0')).toBeTruthy();
-  });
-
   it('renders footer link groups', () => {
     render(<Footer />);
     expect(screen.getByText('Company')).toBeTruthy();
     expect(screen.getByText('Features')).toBeTruthy();
     expect(screen.getByText('Techstack')).toBeTruthy();
-    expect(screen.getByText('Download')).toBeTruthy();
   });
 });

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Logo } from '../../index';
+import { DesignSystemProvider, Logo } from '../../index';
 
 const meta: Meta<typeof Logo> = {
   title: 'Brand/Logo',
@@ -24,4 +24,12 @@ export const Favicon: Story = {
     },
   },
   render: () => <Logo favicon />,
+};
+
+export const Darkmode: Story = {
+  render: () => (
+    <DesignSystemProvider mode="dark">
+      <Logo />
+    </DesignSystemProvider>
+  ),
 };

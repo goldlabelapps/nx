@@ -8,6 +8,7 @@ export { Alert, Field } from './components/feedback/Feedback';
 export { default as Card } from './components/feedback/Card';
 export { default as Button } from './components/buttons/Button';
 export { default as IconButton } from './components/buttons/IconButton';
+export { default as Breadcrumb } from './components/navigation/Breadcrumb';
 export { default as SiteNav } from './components/navigation/SiteNav';
 export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
@@ -15,7 +16,6 @@ export { default as SiteFooter } from './components/layout/Footer';
 export { default as SiteHeader } from './components/layout/Header';
 export { default as MenuDrawer } from './components/layout/MenuDrawer';
 export { default as SiteMain } from './components/layout/Main';
-export { default as SiteSidebar } from './components/layout/Sidebar';
 export { default as Icon } from './components/icons/Icon';
 export { ICON_NAMES } from './components/icons/Icon';
 export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Viewport';
@@ -30,6 +30,7 @@ export type {
 	AlertSeverity,
 	AppShellProps,
 	BreadcrumbItem,
+	BreadcrumbProps,
 	CardPadding,
 	CardProps,
 	CardVariant,
@@ -37,6 +38,7 @@ export type {
 	DesignSystemProviderProps,
 	HeadingProps,
 	HeadingTone,
+	HeadingVariant,
 	FieldProps,
 	FeaturedImageData,
 	FeaturedImageProps,
@@ -47,7 +49,6 @@ export type {
 	SiteHeaderProps,
 	SiteMainProps,
 	SiteNavProps,
-	SiteSidebarProps,
 	UseIsMobileOptions,
 	VisibilityProps,
 } from './types';
