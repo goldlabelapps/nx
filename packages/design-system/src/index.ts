@@ -4,6 +4,11 @@ export { default as DesignSystemProvider } from './components/DesignSystemProvid
 export { AppShell, PageSection, SectionTitle } from './components/layout/Layout';
 export { default as Heading } from './components/headings/Heading';
 export { default as Logo } from './components/brand/Logo';
+export { default as List } from './components/lists/List';
+export { default as ListItem } from './components/lists/ListItem';
+export { default as ListItemButton } from './components/lists/ListItemButton';
+export { default as ListItemText } from './components/lists/ListItemText';
+export { default as ListSubheader } from './components/lists/ListSubheader';
 export { Alert, Field } from './components/feedback/Feedback';
 export { default as Card } from './components/feedback/Card';
 export { default as Button } from './components/buttons/Button';
@@ -41,6 +46,11 @@ export type {
 	HeadingTone,
 	HeadingVariant,
 	FieldProps,
+	ListProps,
+	ListItemButtonProps,
+	ListItemProps,
+	ListItemTextProps,
+	ListSubheaderProps,
 	FeaturedImageData,
 	FeaturedImageProps,
 	LogoProps,

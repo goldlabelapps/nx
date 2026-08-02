@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import { useMediaQuery } from '@mui/material';
 import type { UseIsMobileOptions, VisibilityProps } from '../../types';
 
@@ -13,13 +13,18 @@ export function useIsMobile({ maxWidth = 999 }: UseIsMobileOptions = {}) {
 
 export function DesktopOnly({ children, maxWidth = 999, fallback = null }: VisibilityProps) {
   const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHydrated(true);
   }, []);
 
   const isMobile = useIsMobile({ maxWidth });
+
   if (!hydrated) {
-    return <>{fallback}</>;
+    return (
+      <div style={{ opacity: 0, pointerEvents: 'none' }}>
+        {children}
+      </div>
+    );
   }
 
   return isMobile ? <>{fallback}</> : <>{children}</>;
@@ -27,13 +32,18 @@ export function DesktopOnly({ children, maxWidth = 999, fallback = null }: Visib
 
 export function MobileOnly({ children, maxWidth = 999, fallback = null }: VisibilityProps) {
   const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHydrated(true);
   }, []);
 
   const isMobile = useIsMobile({ maxWidth });
+
   if (!hydrated) {
-    return <>{fallback}</>;
+    return (
+      <div style={{ opacity: 0, pointerEvents: 'none' }}>
+        {children}
+      </div>
+    );
   }
 
   return isMobile ? <>{children}</> : <>{fallback}</>;

@@ -4,6 +4,7 @@ import { AppShell, PageSection, SectionTitle } from '../../../src/components/lay
 import Header from '../../../src/components/layout/Header';
 import Main from '../../../src/components/layout/Main';
 import Footer from '../../../src/components/layout/Footer';
+import { DesktopOnly } from '../../../src/components/responsive/Viewport';
 
 describe('layout primitives', () => {
   it('renders shell and page section content', () => {
@@ -22,6 +23,16 @@ describe('layout primitives', () => {
 });
 
 describe('site layout components', () => {
+  it('renders desktop-only content without waiting for a later effect cycle', () => {
+    render(
+      <DesktopOnly fallback={<div>fallback</div>}>
+        <div>desktop content</div>
+      </DesktopOnly>
+    );
+
+    expect(screen.getByText('desktop content')).toBeTruthy();
+  });
+
   it('renders header title link', () => {
     render(
       <Header

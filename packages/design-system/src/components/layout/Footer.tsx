@@ -1,16 +1,16 @@
+import { Box } from '@mui/material';
 import Heading from '../headings/Heading';
 
 export default function Footer() {
   return (
-    <footer style={{ paddingBlock: '0.75rem' }}>
-      <nav
+    <Box
+      component="footer"
+      className="site-footer"
+    >
+      <Box
+        component="nav"
         aria-label="Footer links"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-          gap: '0.5rem 1rem',
-          alignItems: 'start',
-        }}
+        className="site-footer-columns"
       >
         <section aria-label="Company links" style={{ margin: 0 }}>
           <Heading as="h3" style={{ margin: '0 0 0.25rem 0', fontSize: '0.95rem', lineHeight: 1.25 }}>
@@ -45,7 +45,7 @@ export default function Footer() {
           </ul>
         </section>
 
-        {/* <section aria-label="Legal links" style={{ margin: 0 }}>
+        <section aria-label="Legal links" style={{ margin: 0 }}>
           <Heading as="h3" style={{ margin: '0 0 0.25rem 0', fontSize: '0.95rem', lineHeight: 1.25 }}>
             Download
           </Heading>
@@ -56,8 +56,8 @@ export default function Footer() {
               </a>
             </li>
           </ul>
-        </section> */}
-      </nav>
-    </footer>
+        </section>
+      </Box>
+    </Box>
   );
 }
