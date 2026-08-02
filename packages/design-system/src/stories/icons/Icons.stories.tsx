@@ -340,7 +340,7 @@ function IconGallery() {
   return (
     <AppShell>
       <PageSection
-        title="Icon Library"
+        title="Icons"
         subtitle={`${ICON_NAMES.length} icon type names. Click any tile to copy the icon type.`}
       >
         <div style={{ display: 'grid', gap: 24 }}>
@@ -395,7 +395,7 @@ function IconGallery() {
 }
 
 const meta: Meta<typeof Icon> = {
-  title: 'Icons/Library',
+  title: 'Icons/Default',
   component: Icon,
 };
 

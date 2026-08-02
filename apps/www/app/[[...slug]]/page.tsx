@@ -141,7 +141,7 @@ export default async function Page({ params }: T_PageProps) {
 
             </main>
            
-            {/* <SiteFooter /> */}
+            <SiteFooter />
 
         </div>
     );

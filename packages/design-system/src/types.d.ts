@@ -1,5 +1,5 @@
 import type { SxProps, Theme } from '@mui/material/styles';
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, MouseEvent, ReactNode } from 'react';
 
 export type DesignSystemMode = 'light' | 'dark';
 
@@ -7,6 +7,7 @@ export type LogoProps = {
 	name?: string;
 	children?: ReactNode;
 	subtitle?: string;
+	favicon?: boolean;
 };
 
 export type DesignSystemProviderProps = {
@@ -63,7 +64,7 @@ export type ButtonProps = {
 	fullWidth?: boolean;
 	disabled?: boolean;
 	href?: string;
-	onClick?: () => void;
+	onClick?: (event: MouseEvent<HTMLElement>) => void;
 	startIcon?: ReactNode;
 	endIcon?: ReactNode;
 	type?: 'button' | 'submit' | 'reset';
@@ -79,7 +80,7 @@ export type IconButtonProps = {
 	size?: ButtonSize;
 	disabled?: boolean;
 	href?: string;
-	onClick?: () => void;
+	onClick?: (event: MouseEvent<HTMLElement>) => void;
 	type?: 'button' | 'submit' | 'reset';
 	ariaLabel: string;
 	className?: string;
@@ -135,6 +136,11 @@ export type SiteHeaderProps = {
 	logoSrc: string;
 	logoAlt?: string;
 	navItems: ReactNode;
+};
+
+export type MenuDrawerProps = {
+	navItems: ReactNode;
+	toggleAriaLabel?: string;
 };
 
 export type FeaturedImageData = {

@@ -1,4 +1,7 @@
+"use client";
+
 import Logo from '../brand/Logo';
+import MenuDrawer from './MenuDrawer';
 import type { SiteHeaderProps } from '../../types';
 
 export default function Header({
@@ -33,10 +36,7 @@ export default function Header({
           </a>
         </div>
 
-        <details aria-label="Mobile navigation">
-          <summary>Menu</summary>
-          <nav aria-label="Primary navigation">{navItems}</nav>
-        </details>
+        <MenuDrawer navItems={navItems} toggleAriaLabel="Toggle menu" />
       </div>
     </header>
   );
