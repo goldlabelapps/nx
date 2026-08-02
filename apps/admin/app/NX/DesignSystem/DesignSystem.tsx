@@ -3,7 +3,7 @@ import * as React from 'react';
 import { I_DesignSystem } from '../types';
 import { DesignSystemProvider, type DesignSystemThemeConfig } from '@nx/design-system';
 import { usePathname } from 'next/navigation';
-import { useDispatch } from '../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setDesignSystem, Loader, useConfig } from '../DesignSystem';
 
 export default function DesignSystem({

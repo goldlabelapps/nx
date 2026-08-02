@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { getFirebaseApp } from '../../lib/firebase';
 import { fetchCollectionDocs, subscribeToCollectionDocs } from './firebaseCrudHelpers';
 

@@ -11,7 +11,7 @@ import {
     AccountCard,
     Register,
  } from '../../Paywall';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export default function Account() {
     const isAuthed = useIsAuthed();

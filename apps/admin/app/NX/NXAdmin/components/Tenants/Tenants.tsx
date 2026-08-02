@@ -3,7 +3,7 @@ import * as React from 'react';
 import {
     Grid,
 } from '@mui/material';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setNXAdmin, useNXAdmin } from '../../../NXAdmin';
 import { initTenants, setTenants, useTenants } from '../Tenants';
 import { useDash } from '../MegaDash';

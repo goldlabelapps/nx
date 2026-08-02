@@ -2,7 +2,7 @@
 import React from 'react';
 import { I_NX, T_Theme } from './types';
 import { DesignSystem, Feedback, setDesignSystem, useDesignSystem } from './DesignSystem';
-import { useDispatch } from './Uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 const NX: React.FC<I_NX> = ({
     children,

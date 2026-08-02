@@ -3,7 +3,7 @@ import * as React from 'react';
 import { T_Theme, I_DesignSystem } from '../types';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { usePathname } from 'next/navigation';
-import { useDispatch } from '../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setDesignSystem, useMUITheme, Loader, useConfig } from '../DesignSystem';
 
 export default function DesignSystem({

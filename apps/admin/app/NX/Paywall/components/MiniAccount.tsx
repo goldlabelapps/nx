@@ -19,7 +19,7 @@ import {
     updateAccount,
     ChooseAvatar,
 } from '../../Paywall';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { Icon, EditableStr } from '../../DesignSystem';
 
 export default function MiniAccount({ onCloseDrawer }: { onCloseDrawer?: () => void } = {}) {

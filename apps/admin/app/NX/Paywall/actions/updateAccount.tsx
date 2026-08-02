@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { setPaywall } from '../../Paywall';
 import { setFeedback } from '../../DesignSystem';
 import { getFirebaseFirestore } from "../../lib/firebase";

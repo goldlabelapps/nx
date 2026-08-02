@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Badge, IconButton, Tooltip } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { useNXAdmin, triggerPwaInstall } from '../../../NXAdmin';
 
 export default function PWAAlert() {

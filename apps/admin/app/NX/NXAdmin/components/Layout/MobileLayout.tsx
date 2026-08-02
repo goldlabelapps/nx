@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { grey } from '@mui/material/colors';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { Icon } from '../../../DesignSystem';
 import {
     AdminNav,

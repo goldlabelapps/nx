@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { Icon } from '../../DesignSystem';
 import { useTheme } from '@mui/material/styles';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import type { T_Config } from '../../types';
 import { login } from '../../Paywall';
 

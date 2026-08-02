@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { CardActions, Button, TextField, Typography, InputAdornment } from '@mui/material';
 import { Icon } from '../../DesignSystem';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setPaywall } from '../../Paywall';
 
 export interface I_Register {

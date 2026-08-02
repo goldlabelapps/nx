@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { Badge, IconButton, Tooltip } from '@mui/material';
 import { Icon } from '../../../DesignSystem';
-import { useDispatch } from '../../../Uberedux';
-import { setUbereduxKey } from '../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { useNXAdmin } from '../../../NXAdmin';
 import { requestNotifications } from '../../../NXAdmin';
 

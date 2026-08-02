@@ -8,7 +8,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { useDispatch } from '../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import {
   DesignSystem,
   Feedback,

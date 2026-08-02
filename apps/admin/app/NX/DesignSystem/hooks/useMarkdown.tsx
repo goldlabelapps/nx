@@ -1,4 +1,4 @@
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { useDesignSystem } from './useDesignSystem';
 import { fetchMarkdown } from '../actions/fetchMarkdown';
 import { useCallback } from 'react';

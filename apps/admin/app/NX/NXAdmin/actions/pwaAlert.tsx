@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 
 type T_BeforeInstallPromptEvent = Event & {
     prompt: () => Promise<void>;

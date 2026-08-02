@@ -1,0 +1,51 @@
+{
+  "name": "@nx/uberedux",
+  "version": "1.0.0",
+  "description": "Shared Redux store/provider/hooks used across NX apps.",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./store": {
+      "types": "./src/store.ts",
+      "import": "./src/store.ts",
+      "require": "./src/store.ts"
+    },
+    "./UbereduxProvider": {
+      "types": "./src/UbereduxProvider.tsx",
+      "import": "./src/UbereduxProvider.tsx",
+      "require": "./src/UbereduxProvider.tsx"
+    },
+    "./hooks/useDispatch": {
+      "types": "./src/hooks/useDispatch.ts",
+      "import": "./src/hooks/useDispatch.ts",
+      "require": "./src/hooks/useDispatch.ts"
+    },
+    "./hooks/useSlice": {
+      "types": "./src/hooks/useSlice.ts",
+      "import": "./src/hooks/useSlice.ts",
+      "require": "./src/hooks/useSlice.ts"
+    }
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'No lint configured yet'"
+  },
+  "peerDependencies": {
+    "@reduxjs/toolkit": ">=2.0.0",
+    "react": ">=18.0.0",
+    "react-redux": ">=8.0.0",
+    "redux": ">=4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "react": "^19",
+    "react-redux": "^9",
+    "typescript": "^5"
+  }
+}

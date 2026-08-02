@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { MultiMarker } from '../../../Mapbox';
 import { setNXAdmin, useNXAdmin } from '../../../NXAdmin';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import {
   initFingerprints,
   useSubscription,

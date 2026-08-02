@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import {
   IconButton,
 } from '@mui/material';
-import { useDispatch } from '../../../../NX/Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setNXAdmin } from '../../../NXAdmin'
 import { Icon } from '../../../../NX/DesignSystem';
 

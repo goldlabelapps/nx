@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { getFirebaseFirestore } from '../../../../lib/firebase';
 import { collection, query, orderBy, limit, onSnapshot } from 'firebase/firestore';
-import { useDispatch } from '../../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { setFeedback } from '../../../../DesignSystem';
 
 export function useSubscription(pageSize = 5, page = 1, setTotal?: (n: number) => void) {

@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 
 export const setNXAdmin =
     (key: string, value: any): any =>

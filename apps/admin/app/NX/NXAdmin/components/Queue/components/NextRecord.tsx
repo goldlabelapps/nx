@@ -13,7 +13,7 @@ import {
 import { alpha } from '@mui/material/styles';
 import { useNext, useQueue, checkFirestore, askPython, setQueue, deleteRecordById } from '../';
 import { CleverText, Icon, } from '../../../../DesignSystem';
-import { useDispatch } from '../../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { apolloPrompt, finishJob } from '../';
 
 export default function NextRecord() {

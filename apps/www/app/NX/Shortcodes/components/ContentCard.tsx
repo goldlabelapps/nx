@@ -10,7 +10,7 @@ import {
     navigateTo,
     useMarkdown,
 } from '../../DesignSystem';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export default function ContentCard({
     slug = '/',

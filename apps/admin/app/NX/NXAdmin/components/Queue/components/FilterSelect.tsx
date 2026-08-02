@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { useFilters, useNumbers } from '../';
 import { Icon } from '../../../../DesignSystem';
-import { useDispatch } from '../../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 export default function FilterSelect() {
     const wip = false;

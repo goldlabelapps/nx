@@ -1,6 +1,6 @@
 import type { Dispatch } from 'redux';
 import { signOut } from "firebase/auth";
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { setPaywall } from '../../Paywall';
 import { getFirebaseAuth } from "../../lib/firebase";
 

@@ -1,6 +1,6 @@
 import type { Dispatch } from 'redux';
 import { getToken } from 'firebase/messaging';
-import { setUbereduxKey } from '../../Uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { getFirebaseFirestore, getFirebaseMessaging } from '../../lib/firebase';
 
 const VAPID_KEY = process.env.NEXT_PUBLIC_FIREBASE_VAPID_KEY;

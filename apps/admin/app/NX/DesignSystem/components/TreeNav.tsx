@@ -1,7 +1,7 @@
 "use client";
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useRouter, usePathname } from 'next/navigation';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { navigateTo } from '../../DesignSystem';
 
 function mapNavItemsToTreeView(items: any[], usedIds = new Set()): any[] {

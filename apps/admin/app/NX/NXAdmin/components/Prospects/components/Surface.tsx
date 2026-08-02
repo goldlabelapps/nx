@@ -15,7 +15,7 @@ import {
 } from '@mui/material';
 import { navigateTo, Icon } from '../../../../DesignSystem';
 import { createSlug } from '../../../../lib';
-import { useDispatch } from '../../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { useSubscription, initProspects } from '../../Prospects';
 import { useNXAdmin } from '../../../../NXAdmin';
 

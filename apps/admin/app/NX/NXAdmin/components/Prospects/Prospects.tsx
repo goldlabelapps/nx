@@ -6,7 +6,7 @@ import {
   List,
 } from '@mui/material';
 import { setNXAdmin, useNXAdmin } from '../../../NXAdmin';
-import { useDispatch } from '../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import {
   initProspects,
   useSubscription,

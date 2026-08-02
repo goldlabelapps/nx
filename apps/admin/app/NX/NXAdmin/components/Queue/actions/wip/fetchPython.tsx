@@ -1,5 +1,5 @@
 import type { Dispatch } from 'redux';
-import { setUbereduxKey } from '../../../../../Uberedux';
+import { setUbereduxKey } from '@nx/uberedux';
 import { setFeedback } from '../../../../../DesignSystem';
 
 export const fetchPython = (endpoint: string): any =>

@@ -18,7 +18,9 @@
       "@nx/ui": ["packages/ui"],
       "@nx/ui/*": ["packages/ui/*"],
       "@nx/design-system": ["packages/design-system/src"],
-      "@nx/design-system/*": ["packages/design-system/src/*"]
+      "@nx/design-system/*": ["packages/design-system/src/*"],
+      "@nx/uberedux": ["packages/uberedux/src"],
+      "@nx/uberedux/*": ["packages/uberedux/src/*"]
     }
   }
 }

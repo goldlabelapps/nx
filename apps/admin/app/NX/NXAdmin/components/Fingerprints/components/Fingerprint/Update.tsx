@@ -16,7 +16,7 @@ import {
     Typography,
 } from '@mui/material';
 import { Icon } from '../../../../../DesignSystem';
-import { useDispatch } from '../../../../..//Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import {
     identityCharacters,
     randomIdentityProfile,

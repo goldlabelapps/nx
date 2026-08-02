@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IconButton, useMediaQuery, useTheme } from '@mui/material';
 import OpenInFullIcon from '@mui/icons-material/OpenInFullOutlined';
 import CloseFullscreenIcon from '@mui/icons-material/CloseFullscreenOutlined';
-import { useDispatch } from '../../../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 import { useFullscreen, toggleFullscreen } from '../index';
 
 export default function FullscreenToggle() {

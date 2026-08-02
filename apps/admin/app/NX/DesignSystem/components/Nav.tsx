@@ -19,7 +19,7 @@ import {
     useDesignSystem, 
     TreeNav,
 } from '../../DesignSystem';
-import { useDispatch } from '../../Uberedux';
+import { useDispatch } from '@nx/uberedux';
 
 function sortNavItems(items: any[]) {
     return [...items].sort((a, b) => {
