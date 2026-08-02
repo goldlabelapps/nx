@@ -7,20 +7,8 @@
             height="32"
         />
         </a>
-        <span>NX° </span>
+        <span>NX° Open Source</span>
     </h1>
 </div>
 
 > NX° is a JavaScript platform for creating apps across a network of projects and needs. Built for creators, coders, collaborators, and audiences who need a flexible space to publish, discover, and engage with rich content [more...](./docs/README.md)
-
-## Docs
-
-- [Overview](./docs/README.md)
-- [Tech Stack](./docs/techstack.md)
-- [Apps and Packages](./docs/apps-packages.md)
-
-## Storybook
-
-- Start Storybook from the workspace root with `pnpm storybook`.
-- Build the static Storybook bundle from the workspace root with `pnpm build-storybook`.
-- The implementation lives in `packages/design-system`, and the root scripts forward there.

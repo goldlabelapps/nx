@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { AppShell, DesignSystemProvider } from '@nx/design-system';
 import { UbereduxProvider } from '@nx/uberedux';
+import Init from './Init';
 import { normalizeTenant } from './NX/lib/normalizeTenant';
 
 const tenant = normalizeTenant();
@@ -74,6 +75,7 @@ export default async function RootLayout({
         <div className="wrapper">
           <DesignSystemProvider>
             <UbereduxProvider config={config}>
+              <Init />
               <AppShell>{children}</AppShell>
             </UbereduxProvider>
           </DesignSystemProvider>

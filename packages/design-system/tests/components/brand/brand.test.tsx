@@ -19,6 +19,13 @@ describe('brand components', () => {
     expect(screen.queryByText('NX')).toBeNull();
   });
 
+  it('renders a provided icon name instead of the fallback svg', () => {
+    const { container } = render(<Logo icon="home" />);
+
+    expect(container.querySelector('svg[aria-label="NX Favicon"]')).toBeNull();
+    expect(container.querySelectorAll('svg').length).toBeGreaterThan(0);
+  });
+
   it('uses custom face and smile colors when provided', () => {
     const { container } = render(<Logo faceColor="#123456" smileColor="#abcdef" />);
 

@@ -1,14 +1,17 @@
 "use client";
 
-import { useTheme } from '@mui/material/styles';
 import Logo from '../brand/Logo';
 import type { SiteHeaderProps } from '../../types';
 
 export default function Header({
   title,
   actions,
+  icon,
+  iconSize = 36,
+  homeHref = '/',
+  logoSrc,
+  logoAlt,
 }: SiteHeaderProps) {
-  const theme = useTheme();
 
   return (
     <header>
@@ -19,17 +22,30 @@ export default function Header({
 
         <div aria-label="Logo and title" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
           <a
-            href="/"
+            href={homeHref}
             aria-label={`Go to ${title} home`}
             title={title}
             style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'inherit', textDecoration: 'none' }}
           >
-            <Logo 
-              name={title} 
-              faceColor={theme.palette.secondary.main} 
-              smileColor={theme.palette.background.default}>
+            {icon || logoSrc ? (
+              <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                {icon ? (
+                  <Logo icon={icon} iconSize={iconSize}>
+                    {title}
+                  </Logo>
+                ) : (
+                  <img
+                    src={logoSrc}
+                    alt={logoAlt || title}
+                    style={{ width: iconSize, height: iconSize, objectFit: 'contain' }}
+                  />
+                )}
+              </div>
+            ) : (
+              <Logo icon={icon} iconSize={iconSize}>
                 {title}
-            </Logo>
+              </Logo>
+            )}
           </a>
         </div>
         

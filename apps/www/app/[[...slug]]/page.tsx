@@ -4,19 +4,20 @@ import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
+    Card,
     Breadcrumb,
     FeaturedImage,
     Heading,
     SiteFooter,
     Header,
     SiteMain as DesignSystemSiteMain,
-    SiteNav,
     type T_NavNode,
 } from '@nx/design-system';
 import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
+import UbereduxStatePreview from '../NX/DesignSystem/UbereduxStatePreview';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
@@ -97,6 +98,7 @@ export default async function Page({ params }: T_PageProps) {
     const featuredImageSrc = typeof data.image === 'string' && data.image.trim()
         ? data.image
         : config.images?.light || '';
+    const headerIcon = 'home';
     const navItems = (await serverUseNav()) as T_NavNode[];
     const breadcrumbItems = slugArr.length
         ? [
@@ -124,7 +126,9 @@ export default async function Page({ params }: T_PageProps) {
         textSecondary?: string;
     }> | undefined;
     const selectedTheme = (themes?.[defaultThemeName] ?? themes?.light);
-    const themeMode = selectedTheme?.mode === 'dark' ? 'dark' : 'light';
+    const themeMode = defaultThemeName === 'system'
+        ? 'system'
+        : (selectedTheme?.mode === 'dark' ? 'dark' : 'light');
     const themeConfigs = {
         light: themes?.light
             ? {
@@ -154,10 +158,7 @@ export default async function Page({ params }: T_PageProps) {
                 
                 <Header
                     title={data.title || title}
-                    description={slugArr.length ? '' : (config?.description || '')}
-                    homeHref="/"
-                    logoSrc="/nx/png/favicon.png"
-                    navItems={<RoutedSiteNav items={navItems} />}
+                    icon={data.icon}
                     actions={<HeaderActions navItems={<RoutedSiteNav items={navItems} />} />}
                 />
 
@@ -197,9 +198,15 @@ export default async function Page({ params }: T_PageProps) {
 
                         <RenderMarkdown config={config}>{content}</RenderMarkdown>
                     </DesignSystemSiteMain>
-                    {/* <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
-                        Aside, share
-                    </aside> */}
+                    
+                    <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
+                        <Card>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                <>Uberedux</>
+                                <UbereduxStatePreview />
+                            </div>
+                        </Card>
+                    </aside>
                 </main>
                 
                 <SiteFooter />

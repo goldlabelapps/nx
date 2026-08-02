@@ -21,9 +21,11 @@ export type LogoProps = {
 	name?: string;
 	children?: ReactNode;
 	subtitle?: string;
+	icon?: ReactNode;
 	favicon?: boolean;
 	faceColor?: string;
 	smileColor?: string;
+	iconSize?: number;
 };
 
 export type DesignSystemProviderProps = {
@@ -177,10 +179,12 @@ export type ShareProps = {
 export type SiteHeaderProps = {
 	title: string;
 	description?: string;
-	homeHref: string;
-	logoSrc: string;
+	icon?: ReactNode;
+	iconSize?: number;
+	homeHref?: string;
+	logoSrc?: string;
 	logoAlt?: string;
-	navItems: ReactNode;
+	navItems?: ReactNode;
 	actions?: ReactNode;
 };
 

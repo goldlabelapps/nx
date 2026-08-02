@@ -17,7 +17,7 @@ export default function FeaturedImage({
   const [status, setStatus] = useState<'loaded' | 'error'>('loaded');
   const hasIntrinsicRatio = typeof imageWidth === 'number' && typeof imageHeight === 'number' && imageWidth > 0 && imageHeight > 0;
   const resolvedPaddingTop = hasIntrinsicRatio && height == null ? `${(imageHeight / imageWidth) * 100}%` : undefined;
-  const resolvedHeight = height ?? (hasIntrinsicRatio ? 0 : 320);
+  const resolvedHeight = height ?? (hasIntrinsicRatio ? 0 : 220);
 
   return (
     <Box

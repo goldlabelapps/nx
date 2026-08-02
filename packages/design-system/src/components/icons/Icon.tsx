@@ -422,13 +422,21 @@ export const ICON_NAMES = Object.keys(ICON_COMPONENTS).sort() as IconName[];
 export type IconProps = {
   icon: IconName | (string & {});
   color?: SvgIconProps['color'];
+  size?: number | string;
 };
 
-export default function Icon({ icon, color = 'inherit' }: IconProps) {
+export default function Icon({ icon, color = 'inherit', size }: IconProps) {
   const IconComponent = ICON_COMPONENTS[icon];
 
   if (IconComponent) {
-    return <IconComponent color={color} />;
+    const resolvedSize = typeof size === 'number' ? `${size}px` : size;
+
+    return (
+      <IconComponent
+        color={color}
+        sx={resolvedSize ? { fontSize: resolvedSize } : undefined}
+      />
+    );
   }
 
   return <ErrorIcon color='warning' />;

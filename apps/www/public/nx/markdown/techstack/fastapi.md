@@ -7,9 +7,7 @@ tags: Python, FastAPI, tsvector, Postgres
 icon: api
 image: https://live.staticflickr.com/65535/55198277139_08236ed419_b.jpg
 ---
-> [CleverText text="Superfast search with tsvector"]  
-
-[PageLink icon="doc" title="redoc" description="Auto-generated & interactive" url="https://nx-ai.onrender.com/redoc"]  
+> [CleverText text="Superfast search with tsvector"]    
 
 A modern Python backend built with **FastAPI**, providing high performance and easy-to-use APIs. The app is deployed on [Render.com](https://render.com/), ensuring reliable and scalable hosting. 
 

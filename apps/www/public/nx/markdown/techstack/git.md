@@ -3,7 +3,7 @@ order: 4]550
 title: Git
 description: Proud to share code
 slug: /techstack/git
-icon: blokey
+icon: github
 tags: open source, free, git, github
 image: https://live.staticflickr.com/65535/55153040009_52bba6c7fd_b.jpg
 --- 
