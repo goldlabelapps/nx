@@ -1,14 +1,11 @@
 'use client';
 
-import type { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { store } from './store';
+import type { T_UbereduxProviderProps } from '../types';
 
 export default function UbereduxProvider({
   children,
-}: {
-  config?: unknown;
-  children: ReactNode;
-}) {
+}: T_UbereduxProviderProps) {
   return <Provider store={store}>{children}</Provider>;
 }

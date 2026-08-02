@@ -13,4 +13,4 @@ export {
   store,
 };
 
-export type { T_RootState, T_UbereduxDispatch, AppDispatch } from './store';
+export type { T_RootState, T_UbereduxDispatch, AppDispatch } from '../types';

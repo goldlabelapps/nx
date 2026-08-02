@@ -2,8 +2,9 @@
 
 import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import type { T_UbereduxState, T_UbereduxKeyPayload } from '../types';
 
-export const initialState: any = {};
+export const initialState: T_UbereduxState = {};
 
 const reduxSlice = createSlice({
   name: 'redux',
@@ -11,11 +12,11 @@ const reduxSlice = createSlice({
   reducers: {
     setUbereduxKey: (
       state,
-      action: PayloadAction<{ key: string; value: any }>,
+      action: PayloadAction<T_UbereduxKeyPayload>,
     ) => {
       const { key, value } = action.payload;
       const keys = key.split('.');
-      let target: any = state;
+      let target: T_UbereduxState = state;
 
       for (let i = 0; i < keys.length - 1; i++) {
         if (!target[keys[i]]) {
@@ -42,7 +43,3 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
-
-export type T_RootState = ReturnType<typeof store.getState>;
-export type T_UbereduxDispatch = typeof store.dispatch;
-export type AppDispatch = typeof store.dispatch;
