@@ -1,5 +1,5 @@
 import type { SxProps, Theme } from '@mui/material/styles';
-import type { CSSProperties, ReactNode } from 'react';
+import type { CSSProperties, MouseEvent, ReactNode } from 'react';
 
 export type DesignSystemMode = 'light' | 'dark';
 
@@ -63,7 +63,7 @@ export type ButtonProps = {
 	fullWidth?: boolean;
 	disabled?: boolean;
 	href?: string;
-	onClick?: () => void;
+	onClick?: (event: MouseEvent<HTMLElement>) => void;
 	startIcon?: ReactNode;
 	endIcon?: ReactNode;
 	type?: 'button' | 'submit' | 'reset';
@@ -79,7 +79,7 @@ export type IconButtonProps = {
 	size?: ButtonSize;
 	disabled?: boolean;
 	href?: string;
-	onClick?: () => void;
+	onClick?: (event: MouseEvent<HTMLElement>) => void;
 	type?: 'button' | 'submit' | 'reset';
 	ariaLabel: string;
 	className?: string;
