@@ -61,7 +61,7 @@ function Heading({ children, tone = 'primary', as = 'span', variant, style, ...r
         display: as === 'span' ? 'inline-flex' : 'block',
         alignItems: 'center',
         gap: 1,
-        fontFamily: 'var(--font-mono)',
+        fontFamily: 'var(--font-title)',
         ...headingVariantStyles[resolvedVariant],
         color: resolvedTone === 'primary' ? 'var(--nx-clay)' : 'text.primary',
         fontWeight: 400

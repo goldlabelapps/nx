@@ -30,10 +30,6 @@ describe('design-system site components', () => {
       <SiteHeader
         title="Docs"
         description="Reference"
-        breadcrumbItems={[
-          { label: 'Home', href: '/' },
-          { label: 'Docs' },
-        ]}
         homeHref="/"
         logoSrc="/nx/png/favicon.png"
         logoAlt="NX logo"

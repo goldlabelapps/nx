@@ -1,6 +1,7 @@
 'use client';
 
 import { IconButton as MuiIconButton } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import type { SxProps, Theme } from '@mui/material/styles';
 import type { ButtonSize, ButtonTone, ButtonVariant, IconButtonProps as NxIconButtonProps } from '../../types';
 
@@ -26,91 +27,91 @@ const VARIANT_MAP: Record<ButtonVariant, 'contained' | 'outlined' | 'text'> = {
   text: 'text',
 };
 
-function getToneStyles(tone: ButtonTone, variant: ButtonVariant) {
+function getToneStyles(tone: ButtonTone, variant: ButtonVariant, theme: Theme) {
   const styleVariant = variant === 'text' ? 'ghost' : variant;
-
-  const tones = {
+  const palette = theme.palette;
+  const toneColors = {
     primary: {
       solid: {
-        bgcolor: '#4a46b8',
-        color: '#f6f5ff',
+        bgcolor: palette.primary.main,
+        color: palette.primary.contrastText || palette.common.white,
         '&:hover': {
-          bgcolor: '#3d3998',
+          bgcolor: palette.primary.dark,
         },
       },
       outline: {
-        color: '#4a46b8',
-        borderColor: 'rgba(74, 70, 184, 0.38)',
-        backgroundColor: 'rgba(74, 70, 184, 0.04)',
+        color: palette.primary.main,
+        borderColor: `${palette.primary.main}38`,
+        backgroundColor: `${palette.primary.main}0A`,
         '&:hover': {
-          borderColor: '#4a46b8',
-          backgroundColor: 'rgba(74, 70, 184, 0.08)',
+          borderColor: palette.primary.main,
+          backgroundColor: `${palette.primary.main}14`,
         },
       },
       ghost: {
-        color: '#4a46b8',
+        color: palette.primary.main,
         boxShadow: 'none',
         '&:hover': {
-          backgroundColor: 'rgba(74, 70, 184, 0.08)',
+          backgroundColor: `${palette.primary.main}14`,
           boxShadow: 'none',
         },
       },
     },
     neutral: {
       solid: {
-        bgcolor: '#1e1c34',
-        color: '#f6f5ff',
+        bgcolor: palette.text.primary,
+        color: palette.background.paper,
         '&:hover': {
-          bgcolor: '#171623',
+          bgcolor: palette.text.secondary,
         },
       },
       outline: {
-        color: '#1e1c34',
-        borderColor: 'rgba(30, 28, 52, 0.22)',
-        backgroundColor: 'rgba(30, 28, 52, 0.03)',
+        color: palette.text.primary,
+        borderColor: `${palette.text.primary}38`,
+        backgroundColor: `${palette.text.primary}0A`,
         '&:hover': {
-          borderColor: 'rgba(30, 28, 52, 0.38)',
-          backgroundColor: 'rgba(30, 28, 52, 0.08)',
+          borderColor: `${palette.text.primary}61`,
+          backgroundColor: `${palette.text.primary}14`,
         },
       },
       ghost: {
-        color: '#1e1c34',
+        color: palette.text.primary,
         boxShadow: 'none',
         '&:hover': {
-          backgroundColor: 'rgba(30, 28, 52, 0.08)',
+          backgroundColor: `${palette.text.primary}14`,
           boxShadow: 'none',
         },
       },
     },
     danger: {
       solid: {
-        bgcolor: '#b53a2d',
-        color: '#fff7f5',
+        bgcolor: palette.error.main,
+        color: palette.error.contrastText,
         '&:hover': {
-          bgcolor: '#982d22',
+          bgcolor: palette.error.dark,
         },
       },
       outline: {
-        color: '#b53a2d',
-        borderColor: 'rgba(181, 58, 45, 0.32)',
-        backgroundColor: 'rgba(181, 58, 45, 0.04)',
+        color: palette.error.main,
+        borderColor: `${palette.error.main}38`,
+        backgroundColor: `${palette.error.main}0A`,
         '&:hover': {
-          borderColor: '#b53a2d',
-          backgroundColor: 'rgba(181, 58, 45, 0.08)',
+          borderColor: palette.error.main,
+          backgroundColor: `${palette.error.main}14`,
         },
       },
       ghost: {
-        color: '#b53a2d',
+        color: palette.error.main,
         boxShadow: 'none',
         '&:hover': {
-          backgroundColor: 'rgba(181, 58, 45, 0.08)',
+          backgroundColor: `${palette.error.main}14`,
           boxShadow: 'none',
         },
       },
     },
   };
 
-  return tones[tone][styleVariant];
+  return toneColors[tone][styleVariant];
 }
 
 export default function IconButton({
@@ -126,6 +127,7 @@ export default function IconButton({
   className,
   sx,
 }: NxIconButtonProps) {
+  const theme = useTheme();
   const mergedSx = {
     borderRadius: '3px',
     alignSelf: 'flex-start',
@@ -135,7 +137,7 @@ export default function IconButton({
       opacity: 0.55,
     },
     ...SIZE_STYLES[size],
-    ...getToneStyles(tone, variant),
+    ...getToneStyles(tone, variant, theme),
   };
 
   const composedSx: SxProps<Theme> = Array.isArray(sx) ? [mergedSx, ...sx] : sx ? [mergedSx, sx] : mergedSx;

@@ -82,7 +82,7 @@ export const nxDarkStyle = {
   body: {
     backgroundColor: '#111111',
     color: '#F7F7F7',
-    maxWidth: '1200px',
+    maxWidth: '1400px',
     margin: '0 auto',
     transition: 'background-color 0.2s ease',
   },

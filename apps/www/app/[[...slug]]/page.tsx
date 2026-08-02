@@ -14,6 +14,9 @@ import {
     SiteNav,
     type T_NavNode,
 } from '@nx/design-system';
+import nxConfig from '../../nx.config.json';
+import HeaderActions from '../NX/DesignSystem/HeaderActions';
+import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
@@ -107,56 +110,73 @@ export default async function Page({ params }: T_PageProps) {
         ]
         : [];
 
+    const designSystemConfig = nxConfig?.cartridges?.designSystem;
+    const defaultThemeName = typeof designSystemConfig?.defaultTheme === 'string' && designSystemConfig.defaultTheme.trim()
+        ? designSystemConfig.defaultTheme
+        : 'light';
+    const themes = designSystemConfig?.themes as Record<string, { mode?: string; primary?: string; secondary?: string }> | undefined;
+    const selectedTheme = (themes?.[defaultThemeName] ?? themes?.light);
+    const themeMode = selectedTheme?.mode === 'dark' ? 'dark' : 'light';
+    const themeConfig = selectedTheme
+        ? {
+            primary: selectedTheme.primary,
+            secondary: selectedTheme.secondary,
+        }
+        : undefined;
+
     return (
-        <div className="site-shell">
-            
-            <SiteHeader
-                title={data.title || title}
-                description={slugArr.length ? '' : (config?.description || '')}
-                homeHref="/"
-                logoSrc="/nx/png/favicon.png"
-                navItems={<SiteNav items={navItems} />}
-            />
+        <ThemeModeProvider initialMode={themeMode} themeConfig={themeConfig}>
+            <div className="site-shell">
+                
+                <SiteHeader
+                    title={data.title || title}
+                    description={slugArr.length ? '' : (config?.description || '')}
+                    homeHref="/"
+                    logoSrc="/nx/png/favicon.png"
+                    navItems={<SiteNav items={navItems} />}
+                    actions={<HeaderActions navItems={<SiteNav items={navItems} />} />}
+                />
 
-            <main className="site-main" id="main">
-                <DesktopOnly>
-                    <aside className="site-col site-col-left" aria-label="NX°  Navigation">
-                        <SiteNav items={navItems} />
-                    </aside>
-                </DesktopOnly>
+                <main className="site-main" id="main">
+                    <DesktopOnly>
+                        <aside className="site-col site-col-left" aria-label="NX°  Navigation">
+                            <SiteNav items={navItems} />
+                        </aside>
+                    </DesktopOnly>
 
-                <DesignSystemSiteMain>
-                    {featuredImageSrc ? (
-                        <FeaturedImage
-                            image={{
-                                src: featuredImageSrc,
-                                alt: data.description || null,
-                            }}
-                        />
-                    ) : null}
-                    
+                    <DesignSystemSiteMain>
+                        {featuredImageSrc ? (
+                            <FeaturedImage
+                                image={{
+                                    src: featuredImageSrc,
+                                    alt: data.description || null,
+                                }}
+                            />
+                        ) : null}
+                        
 
-                    {pageDescription ? (
-                        <Heading variant="h2" style={{ marginTop: '1rem' }} tone="secondary">
-                            {pageDescription}
-                        </Heading>
-                    ) : null}
+                        {pageDescription ? (
+                            <Heading variant="h2" style={{ marginTop: '1rem' }} tone="secondary">
+                                {pageDescription}
+                            </Heading>
+                        ) : null}
 
-                    {breadcrumbItems.length ? (
-                        <div style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
-                            <Breadcrumb items={breadcrumbItems} />
-                        </div>
-                    ) : null}
+                        {breadcrumbItems.length ? (
+                            <div style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
+                                <Breadcrumb items={breadcrumbItems} />
+                            </div>
+                        ) : null}
 
-                    <RenderMarkdown config={config}>{content}</RenderMarkdown>
-                </DesignSystemSiteMain>
-                {/* <aside aria-label="NX°  Sidebar">
-                    Aside, share
-                </aside> */}
-            </main>
-            
-            <SiteFooter />
+                        <RenderMarkdown config={config}>{content}</RenderMarkdown>
+                    </DesignSystemSiteMain>
+                    {/* <aside aria-label="NX°  Sidebar">
+                        Aside, share
+                    </aside> */}
+                </main>
+                
+                <SiteFooter />
 
-        </div>
+            </div>
+        </ThemeModeProvider>
     );
 }

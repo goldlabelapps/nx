@@ -1,7 +1,17 @@
 import type { SxProps, Theme } from '@mui/material/styles';
+import type { ListItemButtonProps as MuiListItemButtonProps } from '@mui/material/ListItemButton';
+import type { ListItemProps as MuiListItemProps } from '@mui/material/ListItem';
+import type { ListItemTextProps as MuiListItemTextProps } from '@mui/material/ListItemText';
+import type { ListProps as MuiListProps } from '@mui/material/List';
+import type { ListSubheaderProps as MuiListSubheaderProps } from '@mui/material/ListSubheader';
 import type { CSSProperties, MouseEvent, ReactNode } from 'react';
 
 export type DesignSystemMode = 'light' | 'dark';
+
+export type DesignSystemThemeConfig = {
+	primary?: string;
+	secondary?: string;
+};
 
 export type LogoProps = {
 	name?: string;
@@ -13,6 +23,7 @@ export type LogoProps = {
 export type DesignSystemProviderProps = {
 	children: ReactNode;
 	mode?: DesignSystemMode;
+	themeConfig?: DesignSystemThemeConfig;
 };
 
 export type HeadingTone = 'primary' | 'secondary' | 'ink' | 'clay';
@@ -51,6 +62,12 @@ export type FieldProps = {
 	hint?: string;
 	error?: string;
 };
+
+export type ListProps = MuiListProps;
+export type ListItemProps = MuiListItemProps;
+export type ListItemButtonProps = MuiListItemButtonProps;
+export type ListItemTextProps = MuiListItemTextProps;
+export type ListSubheaderProps = MuiListSubheaderProps;
 
 export type ButtonTone = 'primary' | 'neutral' | 'danger';
 
@@ -141,6 +158,7 @@ export type SiteHeaderProps = {
 	logoSrc: string;
 	logoAlt?: string;
 	navItems: ReactNode;
+	actions?: ReactNode;
 };
 
 export type MenuDrawerProps = {

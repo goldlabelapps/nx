@@ -8,11 +8,7 @@
   min-height: 100vh;
   gap: 1.25rem;
   padding: 1.25rem clamp(1rem, 2.5vw, 2rem) 2rem;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--surface-page) 86%, var(--surface-paper) 14%) 0%,
-    color-mix(in srgb, var(--surface-page) 92%, var(--nx-ink) 8%) 100%
-  );
+  background: var(--surface-page);
   color: var(--text-strong);
 }
 
@@ -20,7 +16,7 @@
 .site-footer,
 .site-panel {
   border: 1px solid var(--border-hairline);
-  background: color-mix(in srgb, var(--surface-paper) 95%, transparent);
+  background: var(--surface-paper);
   box-shadow: var(--nx-shadow-card);
   backdrop-filter: blur(10px);
 }
@@ -62,7 +58,7 @@
   flex-shrink: 0;
   border-radius: 3px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--surface-page) 92%, var(--surface-paper) 8%);
+  background: var(--surface-page);
 }
 
 .site-home-link img {
@@ -237,13 +233,14 @@
 
 .site-footer {
   border-radius: 3px;
-  padding: 1.1rem 1.25rem;
+  margin-top: clamp(5rem, 32svh, 10rem);
+  padding: 1.1rem 1.25rem 0.75rem;
 }
 
 .site-footer-columns {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.75rem 1rem;
 }
 
 .site-footer-section {
@@ -291,6 +288,10 @@
     padding: 0.9rem 0.9rem 1.25rem;
   }
 
+  .site-footer {
+    margin-top: clamp(8rem, 40svh, 14rem);
+  }
+
   .site-header-top {
     flex-wrap: wrap;
     align-items: flex-start;
@@ -306,6 +307,7 @@
 
   .site-footer-columns {
     grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
 
   .site-header-title-row {

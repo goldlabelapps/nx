@@ -1,14 +1,11 @@
 "use client";
 
 import Logo from '../brand/Logo';
-import Heading from '../headings/Heading';
-import MenuDrawer from './MenuDrawer';
 import type { SiteHeaderProps } from '../../types';
 
 export default function Header({
   title,
-  description,
-  navItems,
+  actions,
 }: SiteHeaderProps) {
   return (
     <header>
@@ -16,7 +13,7 @@ export default function Header({
         aria-label="Header"
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}
       >
-        <div aria-label="Logo and title" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div aria-label="Logo and title" style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: 1 }}>
           <a
             href="/"
             aria-label={`Go to ${title} home`}
@@ -26,8 +23,12 @@ export default function Header({
             <Logo name={title}>{title}</Logo>
           </a>
         </div>
-
-        <MenuDrawer navItems={navItems} toggleAriaLabel="Toggle menu" />
+        
+        {actions ? (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginLeft: 'auto' }}>
+            {actions}
+          </div>
+        ) : null}
       </div>
     </header>
   );
