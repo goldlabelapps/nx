@@ -128,10 +128,13 @@ export type BreadcrumbItem = {
 	href?: string;
 };
 
+export type BreadcrumbProps = {
+	items: BreadcrumbItem[];
+};
+
 export type SiteHeaderProps = {
 	title: string;
 	description?: string;
-	breadcrumbItems: BreadcrumbItem[];
 	homeHref: string;
 	logoSrc: string;
 	logoAlt?: string;

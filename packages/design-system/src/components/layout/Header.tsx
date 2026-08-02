@@ -7,7 +7,6 @@ import type { SiteHeaderProps } from '../../types';
 export default function Header({
   title,
   description,
-  breadcrumbItems,
   navItems,
 }: SiteHeaderProps) {
   return (
@@ -26,11 +25,7 @@ export default function Header({
             <Logo name={title}>{title}</Logo>
             <div>
               <div style={{ color: 'text.secondary' }}>
-                {breadcrumbItems.length ? (
-                  <span>{breadcrumbItems.map((item) => item.label).join(' / ')}</span>
-                ) : (
-                  description && <span>{description}</span>
-                )}
+                {description && <span>{description}</span>}
               </div>
             </div>
           </a>

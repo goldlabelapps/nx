@@ -23,37 +23,17 @@ describe('layout primitives', () => {
 });
 
 describe('site layout components', () => {
-  it('renders header description when breadcrumbs are absent', () => {
+  it('renders header description text', () => {
     render(
       <Header
         title="Docs"
         description="Description copy"
-        breadcrumbItems={[]}
         homeHref="/"
         logoSrc="/logo.png"
         navItems={<div>Nav</div>}
       />
     );
     expect(screen.getByText('Description copy')).toBeTruthy();
-  });
-
-  it('renders breadcrumbs when provided', () => {
-    const { container } = render(
-      <Header
-        title="Docs"
-        description=""
-        breadcrumbItems={[
-          { label: 'Home', href: '/' },
-          { label: 'Docs' },
-        ]}
-        homeHref="/"
-        logoSrc="/logo.png"
-        navItems={<div>Nav</div>}
-      />
-    );
-    expect(screen.getByLabelText('Breadcrumb')).toBeTruthy();
-    expect(container.querySelector('nav.site-breadcrumbs a[href="/"]')).toBeTruthy();
-    expect(container.querySelector('nav.site-breadcrumbs span[aria-current="page"]')?.textContent).toBe('Docs');
   });
 
   it('renders main with and without featured image', () => {

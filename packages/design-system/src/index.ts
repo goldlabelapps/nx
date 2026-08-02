@@ -8,6 +8,7 @@ export { Alert, Field } from './components/feedback/Feedback';
 export { default as Card } from './components/feedback/Card';
 export { default as Button } from './components/buttons/Button';
 export { default as IconButton } from './components/buttons/IconButton';
+export { default as Breadcrumb } from './components/navigation/Breadcrumb';
 export { default as SiteNav } from './components/navigation/SiteNav';
 export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
@@ -30,6 +31,7 @@ export type {
 	AlertSeverity,
 	AppShellProps,
 	BreadcrumbItem,
+	BreadcrumbProps,
 	CardPadding,
 	CardProps,
 	CardVariant,
