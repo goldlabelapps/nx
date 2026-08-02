@@ -24,10 +24,10 @@
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#364450",
-                    "secondary": "#FFD849",
-                    "background": "#f7f7f4",
-                    "paper": "#f7f7f4",
+                    "primary": "#FFD849",
+                    "secondary": "#364450",
+                    "background": "#ffffff",
+                    "paper": "#ffffff",
                     "text": "#2c2c2a"
                 }
             }

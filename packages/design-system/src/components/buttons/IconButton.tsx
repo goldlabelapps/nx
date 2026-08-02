@@ -125,10 +125,11 @@ export default function IconButton({
   type = 'button',
   ariaLabel,
   className,
+  color,
   sx,
 }: NxIconButtonProps) {
   const theme = useTheme();
-  const muiColor = tone === 'danger' ? 'error' : tone === 'primary' ? 'primary' : 'inherit';
+  const muiColor = color ?? (tone === 'danger' ? 'error' : tone === 'primary' ? 'primary' : 'inherit');
   const mergedSx = {
     borderRadius: '3px',
     alignSelf: 'flex-start',

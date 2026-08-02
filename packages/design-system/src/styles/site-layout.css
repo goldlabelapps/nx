@@ -232,6 +232,7 @@
 }
 
 .site-footer {
+  background: var(--surface-footer);
   border-radius: 3px;
   margin-top: clamp(5rem, 32svh, 10rem);
   padding: 1.1rem 1.25rem 0.75rem;
@@ -305,11 +306,6 @@
     padding: 0.9rem;
   }
 
-  .site-footer-columns {
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-  }
-
   .site-header-title-row {
     align-items: flex-start;
   }
@@ -317,5 +313,12 @@
   .site-home-link {
     width: 2.75rem;
     height: 2.75rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-footer-columns {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
   }
 }

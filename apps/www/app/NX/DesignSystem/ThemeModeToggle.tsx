@@ -12,7 +12,7 @@ export default function ThemeModeToggle() {
       aria-label={mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
       onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')}
       size="small"
-      color="primary"
+      color="secondary"
     >
       <Icon icon={mode === 'dark' ? 'lightmode' : 'darkmode'} />
     </MuiIconButton>
