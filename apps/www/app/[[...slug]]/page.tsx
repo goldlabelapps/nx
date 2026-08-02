@@ -166,7 +166,7 @@ export default async function Page({ params }: T_PageProps) {
                     <DesktopOnly>
                         <aside 
                             className="site-col site-col-left" 
-                            style={{ marginTop: 50 }}
+                            style={{ marginTop: 5 }}
                             aria-label="NX°  Navigation">
                             <RoutedSiteNav items={navItems} />
                         </aside>
@@ -200,7 +200,7 @@ export default async function Page({ params }: T_PageProps) {
 
                         <RenderMarkdown config={config}>{content}</RenderMarkdown>
                     </DesignSystemSiteMain>
-                    {/* <aside aria-label="NX°  Sidebar">
+                    {/* <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
                         Aside, share
                     </aside> */}
                 </main>

@@ -3,11 +3,12 @@
 }
 
 .site-shell {
+  --site-shell-inline-pad: clamp(1rem, 2.5vw, 2rem);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   gap: 1.25rem;
-  padding: 1.25rem clamp(1rem, 2.5vw, 2rem) 2rem;
+  padding: 1.25rem var(--site-shell-inline-pad) calc(6.25rem + env(safe-area-inset-bottom));
   background: var(--surface-page);
   color: var(--text-strong);
 }
@@ -147,6 +148,7 @@
   grid-template-areas: 'left center right';
   gap: 1.25rem;
   align-items: start;
+  flex: 1 0 auto;
 }
 
 .site-col {
@@ -232,25 +234,50 @@
 }
 
 .site-footer {
-  background: var(--surface-footer);
-  border-radius: 3px;
-  margin-top: max(100svh, clamp(5rem, 32svh, 10rem));
-  padding: 1.1rem 1.25rem 0.75rem;
+  position: fixed;
+  top: auto;
+  left: 0;
+  width: 100vw;
+  transform: none;
+  bottom: 0;
+  z-index: 1300;
+  margin: 0;
+  border: 1px solid var(--border-hairline);
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  background: color-mix(in srgb, var(--surface-page) 72%, transparent);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.12);
+}
+
+.site-footer-toolbar {
+  width: min(1400px, calc(100% - (var(--site-shell-inline-pad) * 2)));
+  margin-inline: auto;
+  min-height: 0;
+  padding: 0.65rem 0 calc(0.65rem + env(safe-area-inset-bottom));
+  justify-content: center;
 }
 
 .site-footer-columns {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.75rem 1rem;
+  align-items: flex-start;
+  justify-items: start;
+  gap: clamp(0.8rem, 2vw, 2rem);
 }
 
 .site-footer-section {
   min-width: 0;
+  text-align: left;
 }
 
 .site-footer-section h3 {
-  margin: 0 0 0.6rem;
-  font-size: 0.95rem;
+  margin: 0 0 0.2rem;
+  font-size: 0.8rem;
   font-weight: 400;
 }
 
@@ -260,7 +287,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.2rem;
 }
 
 @media (min-width: 1000px) {
@@ -286,11 +313,8 @@
   }
 
   .site-shell {
-    padding: 0.9rem 0.9rem 1.25rem;
-  }
-
-  .site-footer {
-    margin-top: max(100svh, clamp(8rem, 40svh, 14rem));
+    --site-shell-inline-pad: 0.9rem;
+    padding: 0.9rem 0.9rem calc(7.25rem + env(safe-area-inset-bottom));
   }
 
   .site-header-top {
@@ -318,7 +342,13 @@
 
 @media (max-width: 800px) {
   .site-footer-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-footer-columns {
     grid-template-columns: 1fr;
-    gap: 0.65rem;
   }
 }

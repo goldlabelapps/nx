@@ -66,8 +66,9 @@ describe('site layout components', () => {
 
   it('renders footer link groups', () => {
     render(<Footer />);
-    expect(screen.getByText('Company')).toBeTruthy();
-    expect(screen.getByText('Features')).toBeTruthy();
-    expect(screen.getByText('Techstack')).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'About' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Design System' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'NextJS' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'GitHub' })).toBeTruthy();
   });
 });
