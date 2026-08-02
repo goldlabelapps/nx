@@ -4,13 +4,14 @@ import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
+    Breadcrumb,
     DesktopOnly,
     FeaturedImage,
+    Heading,
     SiteFooter,
     SiteHeader,
     SiteMain as DesignSystemSiteMain,
     SiteNav,
-    SiteSidebar,
     type T_NavNode,
 } from '@nx/design-system';
 import {
@@ -89,6 +90,7 @@ export default async function Page({ params }: T_PageProps) {
     const { content, data } = matter(md);
     if (data.title) title = data.title;
     if (data.description) description = data.description;
+    const pageDescription = description || config?.description || '';
     const featuredImageSrc = typeof data.image === 'string' && data.image.trim()
         ? data.image
         : config.images?.light || '';
@@ -111,10 +113,8 @@ export default async function Page({ params }: T_PageProps) {
             <SiteHeader
                 title={data.title || title}
                 description={slugArr.length ? '' : (config?.description || '')}
-                breadcrumbItems={breadcrumbItems}
                 homeHref="/"
                 logoSrc="/nx/png/favicon.png"
-                logoAlt="NX° Logo"
                 navItems={<SiteNav items={navItems} />}
             />
 
@@ -130,17 +130,31 @@ export default async function Page({ params }: T_PageProps) {
                         <FeaturedImage
                             image={{
                                 src: featuredImageSrc,
-                                alt: data.title || title,
+                                alt: data.description || null,
                             }}
                         />
                     ) : null}
+                    
+
+                    {pageDescription ? (
+                        <Heading variant="h2" style={{ marginTop: '1rem' }} tone="secondary">
+                            {pageDescription}
+                        </Heading>
+                    ) : null}
+
+                    {breadcrumbItems.length ? (
+                        <div style={{ marginTop: '1rem', marginBottom: '0.5rem' }}>
+                            <Breadcrumb items={breadcrumbItems} />
+                        </div>
+                    ) : null}
+
                     <RenderMarkdown config={config}>{content}</RenderMarkdown>
                 </DesignSystemSiteMain>
-
-                <SiteSidebar />
-
+                {/* <aside aria-label="NX°  Sidebar">
+                    Aside, share
+                </aside> */}
             </main>
-           
+            
             <SiteFooter />
 
         </div>

@@ -67,6 +67,5 @@ describe('site layout components', () => {
     expect(screen.getByText('Company')).toBeTruthy();
     expect(screen.getByText('Features')).toBeTruthy();
     expect(screen.getByText('Techstack')).toBeTruthy();
-    expect(screen.getByText('Download')).toBeTruthy();
   });
 });

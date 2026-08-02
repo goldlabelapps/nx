@@ -4,7 +4,6 @@ import {
   SiteHeader,
   SiteMain,
   SiteNav,
-  SiteSidebar,
   type T_NavNode,
 } from '@nx/design-system';
 
@@ -42,9 +41,9 @@ describe('design-system site components', () => {
       />,
     );
 
-    expect(screen.getByRole('heading', { name: 'Docs' })).toBeInTheDocument();
-    expect(screen.getAllByRole('link', { name: 'Home' })).toHaveLength(3);
-    expect(screen.getByText('Menu')).toBeInTheDocument();
+    expect(screen.getByText('Docs')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Go to Docs home' })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('button', { name: 'Toggle menu' })).toBeInTheDocument();
   });
 
   it('renders the main section and featured image when provided', () => {
@@ -55,18 +54,12 @@ describe('design-system site components', () => {
     );
 
     expect(screen.getByText('Body')).toBeInTheDocument();
-    expect(container.querySelector('.site-featured-image-bg')).toHaveAttribute('src', '/hero.png');
+    expect(container.querySelector('section[aria-label="Page content"] img')).toHaveAttribute('src', '/hero.png');
   });
 
-  it('renders sidebar defaults and footer links', () => {
-    render(
-      <>
-        <SiteSidebar />
-        <SiteFooter />
-      </>,
-    );
+  it('renders footer links', () => {
+    render(<SiteFooter />);
 
-    expect(screen.getByText('Placeholder')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about');
     expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/goldlabelapps/nx');
   });

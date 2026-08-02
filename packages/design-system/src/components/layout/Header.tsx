@@ -1,6 +1,7 @@
 "use client";
 
 import Logo from '../brand/Logo';
+import Heading from '../headings/Heading';
 import MenuDrawer from './MenuDrawer';
 import type { SiteHeaderProps } from '../../types';
 
@@ -12,10 +13,10 @@ export default function Header({
   return (
     <header>
       <div
-        aria-label="Main header bar"
+        aria-label="Header"
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}
       >
-        <div aria-label="Brand and overview">
+        <div aria-label="Logo and title" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <a
             href="/"
             aria-label={`Go to ${title} home`}
@@ -23,11 +24,6 @@ export default function Header({
             style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'inherit', textDecoration: 'none' }}
           >
             <Logo name={title}>{title}</Logo>
-            <div>
-              <div style={{ color: 'text.secondary' }}>
-                {description && <span>{description}</span>}
-              </div>
-            </div>
           </a>
         </div>
 

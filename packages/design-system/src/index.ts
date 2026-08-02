@@ -16,7 +16,6 @@ export { default as SiteFooter } from './components/layout/Footer';
 export { default as SiteHeader } from './components/layout/Header';
 export { default as MenuDrawer } from './components/layout/MenuDrawer';
 export { default as SiteMain } from './components/layout/Main';
-export { default as SiteSidebar } from './components/layout/Sidebar';
 export { default as Icon } from './components/icons/Icon';
 export { ICON_NAMES } from './components/icons/Icon';
 export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Viewport';
@@ -39,6 +38,7 @@ export type {
 	DesignSystemProviderProps,
 	HeadingProps,
 	HeadingTone,
+	HeadingVariant,
 	FieldProps,
 	FeaturedImageData,
 	FeaturedImageProps,
@@ -49,7 +49,6 @@ export type {
 	SiteHeaderProps,
 	SiteMainProps,
 	SiteNavProps,
-	SiteSidebarProps,
 	UseIsMobileOptions,
 	VisibilityProps,
 } from './types';
