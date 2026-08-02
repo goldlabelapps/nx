@@ -127,6 +127,7 @@ export default function IconButton({
   className,
   color,
   sx,
+  ...rest
 }: NxIconButtonProps) {
   const theme = useTheme();
   const muiColor = color ?? (tone === 'danger' ? 'error' : tone === 'primary' ? 'primary' : 'inherit');
@@ -155,6 +156,7 @@ export default function IconButton({
         className={className}
         color={muiColor}
         sx={composedSx}
+        {...rest}
       >
         {icon}
       </MuiIconButton>
@@ -170,6 +172,7 @@ export default function IconButton({
       className={className}
       color={muiColor}
       sx={composedSx}
+      {...rest}
     >
       {icon}
     </MuiIconButton>

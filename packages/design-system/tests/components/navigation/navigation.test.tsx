@@ -1,6 +1,7 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import Breadcrumb from '../../../src/components/navigation/Breadcrumb';
+import Share from '../../../src/components/navigation/Share';
 import SiteNav from '../../../src/components/navigation/SiteNav';
 
 describe('site navigation', () => {
@@ -60,5 +61,35 @@ describe('site navigation', () => {
 
     fireEvent.click(within(container).getByRole('button', { name: 'Docs' }));
     expect(navigateTo).toHaveBeenCalledWith('/docs', { title: 'Docs', path: '/docs' });
+  });
+
+  it('renders share actions and copies the provided url', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, {
+      clipboard: {
+        writeText,
+      },
+    });
+
+    render(
+      <Share
+        url="https://nx.dev/design-system/share"
+        title="NX Design System"
+        description="Reusable navigation primitives."
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Open share menu' }));
+
+    expect(await screen.findByRole('menu', { name: 'Share menu' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Share on X/Twitter' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Share on Facebook' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Share on LinkedIn' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Share on WhatsApp' })).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Copy link' }));
+
+    expect(writeText).toHaveBeenCalledWith('https://nx.dev/design-system/share');
+    expect((await screen.findByRole('status')).textContent).toContain('Copied https://nx.dev/design-system/share to clipboard.');
   });
 });

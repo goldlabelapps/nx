@@ -4,7 +4,7 @@ import type { ListItemProps as MuiListItemProps } from '@mui/material/ListItem';
 import type { ListItemTextProps as MuiListItemTextProps } from '@mui/material/ListItemText';
 import type { ListProps as MuiListProps } from '@mui/material/List';
 import type { ListSubheaderProps as MuiListSubheaderProps } from '@mui/material/ListSubheader';
-import type { CSSProperties, MouseEvent, ReactNode } from 'react';
+import type { AriaAttributes, CSSProperties, MouseEvent, ReactNode } from 'react';
 
 export type DesignSystemMode = 'light' | 'dark';
 
@@ -112,6 +112,11 @@ export type IconButtonProps = {
 	className?: string;
 	color?: 'inherit' | 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
 	sx?: SxProps<Theme>;
+} & {
+	'aria-haspopup'?: AriaAttributes['aria-haspopup'];
+	'aria-expanded'?: boolean;
+	'aria-controls'?: string;
+	id?: string;
 };
 
 export type AppShellProps = {
@@ -158,6 +163,15 @@ export type BreadcrumbItem = {
 
 export type BreadcrumbProps = {
 	items: BreadcrumbItem[];
+};
+
+export type ShareSize = 'small' | 'medium' | 'large';
+
+export type ShareProps = {
+	size?: ShareSize;
+	url?: string;
+	title?: string;
+	description?: string;
 };
 
 export type SiteHeaderProps = {

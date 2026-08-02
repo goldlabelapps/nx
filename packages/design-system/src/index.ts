@@ -14,6 +14,7 @@ export { default as Card } from './components/feedback/Card';
 export { default as Button } from './components/buttons/Button';
 export { default as IconButton } from './components/buttons/IconButton';
 export { default as Breadcrumb } from './components/navigation/Breadcrumb';
+export { default as Share } from './components/navigation/Share';
 export { default as SiteNav } from './components/navigation/SiteNav';
 export { default as FeaturedImage } from './components/images/FeaturedImage';
 export type { T_NavNode } from './types';
@@ -36,6 +37,8 @@ export type {
 	AppShellProps,
 	BreadcrumbItem,
 	BreadcrumbProps,
+	ShareProps,
+	ShareSize,
 	CardPadding,
 	CardProps,
 	CardVariant,
