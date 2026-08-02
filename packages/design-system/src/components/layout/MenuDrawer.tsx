@@ -21,7 +21,7 @@ export default function MenuDrawer({ navItems, toggleAriaLabel = 'Toggle navigat
   return (
     <Box>
       <IconButton
-        icon={<Icon icon="expand" />}
+        icon={<Icon icon="expand" color="secondary" />}
         ariaLabel={toggleAriaLabel}
         onClick={handleToggle}
         aria-haspopup="dialog"

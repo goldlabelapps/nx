@@ -11,6 +11,10 @@ export type DesignSystemMode = 'light' | 'dark';
 export type DesignSystemThemeConfig = {
 	primary?: string;
 	secondary?: string;
+	background?: string;
+	paper?: string;
+	text?: string;
+	textSecondary?: string;
 };
 
 export type LogoProps = {
@@ -106,6 +110,7 @@ export type IconButtonProps = {
 	type?: 'button' | 'submit' | 'reset';
 	ariaLabel: string;
 	className?: string;
+	color?: 'inherit' | 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
 	sx?: SxProps<Theme>;
 };
 

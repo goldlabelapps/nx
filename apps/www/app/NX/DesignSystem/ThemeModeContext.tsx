@@ -13,7 +13,7 @@ export type ThemeModeContextValue = {
 type ThemeModeProviderProps = {
   children: ReactNode;
   initialMode: ThemeMode;
-  themeConfig?: DesignSystemThemeConfig;
+  themeConfigs?: Partial<Record<ThemeMode, DesignSystemThemeConfig>>;
 };
 
 export const ThemeModeContext = createContext<ThemeModeContextValue | null>(null);
@@ -28,13 +28,14 @@ export function useThemeMode() {
   return context;
 }
 
-export function ThemeModeProvider({ children, initialMode, themeConfig }: ThemeModeProviderProps) {
+export function ThemeModeProvider({ children, initialMode, themeConfigs }: ThemeModeProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(initialMode);
   const value = useMemo(() => ({ mode, setMode }), [mode]);
+  const activeThemeConfig = themeConfigs?.[mode];
 
   return (
     <ThemeModeContext.Provider value={value}>
-      <DesignSystemProvider mode={mode} themeConfig={themeConfig}>
+      <DesignSystemProvider mode={mode} themeConfig={activeThemeConfig}>
         {children}
       </DesignSystemProvider>
     </ThemeModeContext.Provider>

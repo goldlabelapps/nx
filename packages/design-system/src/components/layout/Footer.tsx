@@ -9,7 +9,7 @@ export default function Footer() {
     >
       <Box
         component="nav"
-        aria-label="Footer links"
+        aria-label="Footer"
         className="site-footer-columns"
       >
         <section aria-label="Company links" style={{ margin: 0 }}>

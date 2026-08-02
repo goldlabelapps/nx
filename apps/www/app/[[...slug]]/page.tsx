@@ -114,18 +114,42 @@ export default async function Page({ params }: T_PageProps) {
     const defaultThemeName = typeof designSystemConfig?.defaultTheme === 'string' && designSystemConfig.defaultTheme.trim()
         ? designSystemConfig.defaultTheme
         : 'light';
-    const themes = designSystemConfig?.themes as Record<string, { mode?: string; primary?: string; secondary?: string }> | undefined;
+    const themes = designSystemConfig?.themes as Record<string, {
+        mode?: string;
+        primary?: string;
+        secondary?: string;
+        background?: string;
+        paper?: string;
+        text?: string;
+        textSecondary?: string;
+    }> | undefined;
     const selectedTheme = (themes?.[defaultThemeName] ?? themes?.light);
     const themeMode = selectedTheme?.mode === 'dark' ? 'dark' : 'light';
-    const themeConfig = selectedTheme
-        ? {
-            primary: selectedTheme.primary,
-            secondary: selectedTheme.secondary,
-        }
-        : undefined;
+    const themeConfigs = {
+        light: themes?.light
+            ? {
+                primary: themes.light.primary,
+                secondary: themes.light.secondary,
+                background: themes.light.background,
+                paper: themes.light.paper,
+                text: themes.light.text,
+                textSecondary: themes.light.textSecondary,
+            }
+            : undefined,
+        dark: themes?.dark
+            ? {
+                primary: themes.dark.primary,
+                secondary: themes.dark.secondary,
+                background: themes.dark.background,
+                paper: themes.dark.paper,
+                text: themes.dark.text,
+                textSecondary: themes.dark.textSecondary,
+            }
+            : undefined,
+    };
 
     return (
-        <ThemeModeProvider initialMode={themeMode} themeConfig={themeConfig}>
+        <ThemeModeProvider initialMode={themeMode} themeConfigs={themeConfigs}>
             <div className="site-shell">
                 
                 <SiteHeader

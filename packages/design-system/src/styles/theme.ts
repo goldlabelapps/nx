@@ -22,7 +22,7 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
     light: {
       primary: resolvedPrimary,
       secondary: resolvedSecondary,
-      background: '#F5F5F5',
+      background: '#FFFFFF',
       paper: '#FFFFFF',
       text: '#1E1E1E',
       textSecondary: '#5A5A5A',
@@ -33,24 +33,32 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
     },
   }[mode];
 
+  const resolvedPalette = {
+    ...palette,
+    background: themeConfig?.background ?? palette.background,
+    paper: themeConfig?.paper ?? palette.paper,
+    text: themeConfig?.text ?? palette.text,
+    textSecondary: themeConfig?.textSecondary ?? palette.textSecondary,
+  };
+
   return createTheme({
     palette: {
       mode,
       primary: {
-        main: palette.primary,
+        main: resolvedPalette.primary,
         contrastText: isDark ? '#111111' : '#FFFFFF',
       },
       secondary: {
-        main: palette.secondary,
+        main: resolvedPalette.secondary,
         contrastText: isDark ? '#111111' : '#FFFFFF',
       },
       background: {
-        default: palette.background,
-        paper: palette.paper,
+        default: resolvedPalette.background,
+        paper: resolvedPalette.paper,
       },
       text: {
-        primary: palette.text,
-        secondary: palette.textSecondary,
+        primary: resolvedPalette.text,
+        secondary: resolvedPalette.textSecondary,
       },
     },
     shape: {
@@ -63,18 +71,21 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
         fontWeight: 700,
         fontSize: '2.5rem',
         lineHeight: 1.05,
-        letterSpacing: '-0.02em'
+        letterSpacing: '-0.02em',
+        color: resolvedPalette.secondary,
       },
       h2: {
         fontFamily: 'var(--font-title)',
         fontWeight: 700,
         fontSize: '2rem',
-        lineHeight: 1.1
+        lineHeight: 1.1,
+        color: resolvedPalette.secondary,
       },
       h3: {
         fontFamily: 'var(--font-title)',
         fontWeight: 600,
-        fontSize: '1.5rem'
+        fontSize: '1.5rem',
+        color: resolvedPalette.secondary,
       },
       button: {
         textTransform: 'none',
@@ -88,15 +99,15 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
           root: {
             borderRadius: '3px',
             padding: '0.7rem 1.2rem',
-            boxShadow: palette.buttonShadow,
+            boxShadow: resolvedPalette.buttonShadow,
           },
         },
       },
       MuiCard: {
         styleOverrides: {
           root: {
-            border: `1px solid ${palette.border}`,
-            boxShadow: palette.shadow,
+            border: `1px solid ${resolvedPalette.border}`,
+            boxShadow: resolvedPalette.shadow,
           },
         },
       },
@@ -104,7 +115,7 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
         styleOverrides: {
           root: {
             borderRadius: '3px',
-            border: `1px solid ${palette.borderSoft}`,
+            border: `1px solid ${resolvedPalette.borderSoft}`,
           },
         },
       },

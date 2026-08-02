@@ -5,7 +5,7 @@
   --nx-ink: #1e1c34;
   --nx-body: #2a2748;
   --nx-muted: #7672a0;
-  --nx-parchment: #f6f5ff;
+  --nx-parchment: #ffffff;
   --nx-paper: #ffffff;
   --nx-clay: #4a46b8;
   --nx-line: rgba(30, 28, 52, 0.14);
@@ -40,6 +40,7 @@ h4,
 h5,
 h6 {
   font-weight: 400;
+  color: var(--nx-muted);
 }
 
 img {

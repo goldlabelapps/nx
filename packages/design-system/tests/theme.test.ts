@@ -24,4 +24,21 @@ describe('createAppTheme', () => {
     expect(theme.palette.primary.main).toBe('#123456');
     expect(theme.palette.secondary.main).toBe('#abcdef');
   });
+
+  it('uses supplied surface and text colors when provided', () => {
+    const theme = createAppTheme('dark', {
+      primary: '#ffd849',
+      secondary: '#364450',
+      background: '#202830',
+      paper: '#24303c',
+      text: '#fefefe',
+      textSecondary: '#d4dbe1',
+    });
+
+    expect(theme.palette.background.default).toBe('#202830');
+    expect(theme.palette.background.paper).toBe('#24303c');
+    expect(theme.palette.text.primary).toBe('#fefefe');
+    expect(theme.palette.text.secondary).toBe('#d4dbe1');
+    expect(theme.typography.h1.color).toBe('#364450');
+  });
 });
