@@ -12,7 +12,7 @@
   --nx-shadow-card: 0 12px 40px rgba(30, 28, 52, 0.14);
   --nx-radius-xl: 3px;
   --font-serif: "Times New Roman", Times, serif;
-  --font-sans: "DM Sans", "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Avenir Next", "Helvetica Neue", "Segoe UI", sans-serif;
   --font-title: "Avenir Next", "Helvetica Neue", "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", ui-monospace, monospace;
 }
@@ -29,7 +29,7 @@ body {
   font-size: 17px;
   background: var(--nx-parchment);
   color: var(--nx-body);
-  font-family: var(--font-sans);
+  font-family: var(--font-title);
   line-height: 1.6;
 }
 
@@ -77,14 +77,41 @@ pre code {
   white-space: inherit;
 }
 
+blockquote {
+  margin: 1.25rem 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 3px solid var(--nx-line);
+  color: var(--nx-muted);
+}
+
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-li::marker {
-  content: '';
+.site-main-content ul,
+.site-panel-main ul {
+  list-style: disc;
+  margin: 0.9rem 0;
+  padding-left: 1.1rem;
+}
+
+.site-main-content ol,
+.site-panel-main ol {
+  margin: 0.9rem 0;
+  padding-left: 1.25rem;
+}
+
+.site-main-content li,
+.site-panel-main li {
+  margin: 0.2rem 0;
+}
+
+.site-main-content li::marker,
+.site-panel-main li::marker {
+  color: var(--nx-muted);
+  font-size: 0.85em;
 }
 
 .nx-surface {

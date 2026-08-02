@@ -128,7 +128,7 @@
   color: var(--text-on-ink);
   cursor: pointer;
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .site-mobile-nav-panel {
@@ -222,7 +222,7 @@
 
 .site-sidebar-placeholder-label {
   margin: 0;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .site-sidebar-placeholder-text {

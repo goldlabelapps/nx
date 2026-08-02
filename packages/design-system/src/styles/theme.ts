@@ -65,10 +65,10 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
       borderRadius: 3
     },
     typography: {
-      fontFamily: '"DM Sans", "Segoe UI", Roboto, sans-serif',
+      fontFamily: 'var(--font-title)',
       h1: {
         fontFamily: 'var(--font-title)',
-        fontWeight: 700,
+        fontWeight: 400,
         fontSize: '2.5rem',
         lineHeight: 1.05,
         letterSpacing: '-0.02em',
@@ -76,20 +76,20 @@ export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: D
       },
       h2: {
         fontFamily: 'var(--font-title)',
-        fontWeight: 700,
+        fontWeight: 400,
         fontSize: '2rem',
         lineHeight: 1.1,
         color: resolvedPalette.secondary,
       },
       h3: {
         fontFamily: 'var(--font-title)',
-        fontWeight: 600,
+        fontWeight: 400,
         fontSize: '1.5rem',
         color: resolvedPalette.secondary,
       },
       button: {
         textTransform: 'none',
-        fontWeight: 600,
+        fontWeight: 400,
         letterSpacing: '0.01em'
       }
     },

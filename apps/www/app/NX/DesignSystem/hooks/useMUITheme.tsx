@@ -46,7 +46,7 @@ export function useMUITheme(t: T_Theme) {
             textTransform: 'none',
           },
           containedPrimary: {
-            fontWeight: 'bold',
+            fontWeight: 'normal',
             boxShadow: 'none',
           },
         },

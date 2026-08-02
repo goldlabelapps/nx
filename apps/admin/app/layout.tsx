@@ -2,6 +2,8 @@
 import "./globals.css";
 // @ts-ignore: side-effect import without type declarations
 import "mapbox-gl/dist/mapbox-gl.css";
+import '@nx/design-system/styles.css';
+import '@nx/design-system/site-layout.css';
 import fs from 'fs';
 import path from 'path';
 import { UbereduxProvider } from './NX/Uberedux';

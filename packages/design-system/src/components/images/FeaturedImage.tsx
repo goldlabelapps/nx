@@ -87,7 +87,7 @@ export default function FeaturedImage({
         <Box
           sx={{
             position: 'absolute',
-            right: 8,
+            left: 8,
             bottom: 8,
             px: 1,
             py: 0.5,
@@ -98,7 +98,7 @@ export default function FeaturedImage({
             lineHeight: 1.2,
           }}
         >
-          <Box component="span" sx={{ display: 'block', fontWeight: 600 }}>
+          <Box component="span" sx={{ display: 'block', fontWeight: 400 }}>
             {caption}
           </Box>
         </Box>

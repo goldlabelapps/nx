@@ -28,7 +28,7 @@ export function Alert({ children, title, severity = 'info', dismissible = false 
     >
       <Box>
         {title && (
-          <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 700 }}>
+          <Typography variant="subtitle2" sx={{ mb: 0.5, fontWeight: 400 }}>
             {title}
           </Typography>
         )}

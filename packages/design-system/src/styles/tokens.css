@@ -33,7 +33,7 @@
   --nx-radius-phone: 3px;
   --nx-radius-pill: 3px;
   --font-serif: "Times New Roman", Times, serif;
-  --font-sans: "DM Sans", "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Avenir Next", "Helvetica Neue", "Segoe UI", sans-serif;
   --font-title: "Avenir Next", "Helvetica Neue", "Segoe UI", sans-serif;
   --font-mono: "SFMono-Regular", ui-monospace, monospace;
   --type-display: clamp(3.75rem, 18.75vw, 7.75rem);
