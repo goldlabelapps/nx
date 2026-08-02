@@ -7,6 +7,7 @@ import ThemeModeToggle from './ThemeModeToggle';
 export default function HeaderActions({ navItems }: { navItems: ReactNode }) {
   return (
     <Fragment>
+      Share
       <ThemeModeToggle />
       <MenuDrawer navItems={navItems} toggleAriaLabel="Toggle menu" />
     </Fragment>

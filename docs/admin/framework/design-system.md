@@ -40,7 +40,7 @@ import { DesignSystem } from '@/NX/DesignSystem';
 | `Icon` | NX° icon component (see Icon section below) |
 | `Nav` | Horizontal navigation bar |
 | `TreeNav` | Collapsible tree-style sidebar navigation |
-| `Footer` | Page footer |
+| `Footer` | Fixed bottom footer with full-width blurred surface and contained link grid |
 | `Loader` | Circular loading indicator |
 | `CleverText` | Adaptive typography component |
 | `EditableStr` | Inline editable string field |
@@ -74,6 +74,24 @@ function ThemeToggle() {
   return <button onClick={toggle}>Dark mode</button>;
 }
 ```
+
+---
+
+## Footer Layout
+
+The shared `Footer` is rendered as a fixed bottom `AppBar`.
+
+- The outer footer surface spans the viewport width and provides the blurred/translucent background.
+- The inner toolbar is width-constrained to align with the page content gutters.
+- Footer sections are distributed as a responsive grid: 4 columns on desktop, 2 on medium screens, 1 on small screens.
+- Each section is left-aligned for label and link readability.
+
+Primary implementation styles live in `packages/design-system/src/styles/site-layout.css` under:
+
+- `.site-footer`
+- `.site-footer-toolbar`
+- `.site-footer-columns`
+- `.site-footer-section`
 
 ---
 
