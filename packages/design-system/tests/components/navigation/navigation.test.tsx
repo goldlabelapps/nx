@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { fireEvent, render, screen, within } from '@testing-library/react';
+import { describe, expect, it, vi } from 'vitest';
 import Breadcrumb from '../../../src/components/navigation/Breadcrumb';
 import SiteNav from '../../../src/components/navigation/SiteNav';
 
@@ -21,7 +21,7 @@ describe('site navigation', () => {
   });
 
   it('renders flat and nested items', () => {
-    const { container } = render(
+    render(
       <SiteNav
         items={[
           { title: 'Home', slug: '/' },
@@ -37,9 +37,28 @@ describe('site navigation', () => {
       />
     );
 
-    expect(container.querySelector('a[href="/"]')?.textContent).toBe('Home');
-    expect(container.querySelector('a[href="/features"]')?.textContent).toBe('Features');
-    expect(container.querySelector('a[href="/features/design-system"]')?.textContent).toBe('Design System');
-    expect(container.querySelector('a[href="/features/storybook"]')?.textContent).toBe('Storybook');
+    expect(screen.queryByRole('button', { name: 'Home' })).toBeNull();
+    expect(screen.getByRole('button', { name: 'Features' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Design System' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Storybook' })).toBeTruthy();
+  });
+
+  it('calls navigateTo with path and item when clicked', () => {
+    const navigateTo = vi.fn();
+
+    const { container } = render(
+      <SiteNav
+        navigateTo={navigateTo}
+        items={[
+          { title: 'Home', slug: '/' },
+          { title: 'Docs', path: '/docs' },
+        ]}
+      />
+    );
+
+    expect(within(container).queryByRole('button', { name: 'Home' })).toBeNull();
+
+    fireEvent.click(within(container).getByRole('button', { name: 'Docs' }));
+    expect(navigateTo).toHaveBeenCalledWith('/docs', { title: 'Docs', path: '/docs' });
   });
 });

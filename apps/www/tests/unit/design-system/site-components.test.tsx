@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import {
   SiteFooter,
-  SiteHeader,
+  Header,
   SiteMain,
   SiteNav,
   type T_NavNode,
@@ -25,15 +25,16 @@ describe('design-system site components', () => {
     expect(screen.getByText('Design System')).toBeInTheDocument();
   });
 
-  it('renders breadcrumbs and mobile navigation in the header', () => {
+  it('renders the header home link and actions', () => {
     render(
-      <SiteHeader
+      <Header
         title="Docs"
         description="Reference"
         homeHref="/"
         logoSrc="/nx/png/favicon.png"
         logoAlt="NX logo"
         navItems={<SiteNav items={[{ title: 'Home', slug: '/' }]} />}
+        actions={<button type="button">Toggle menu</button>}
       />,
     );
 

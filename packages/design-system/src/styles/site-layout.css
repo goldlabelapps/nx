@@ -234,7 +234,7 @@
 .site-footer {
   background: var(--surface-footer);
   border-radius: 3px;
-  margin-top: clamp(5rem, 32svh, 10rem);
+  margin-top: max(100svh, clamp(5rem, 32svh, 10rem));
   padding: 1.1rem 1.25rem 0.75rem;
 }
 
@@ -290,7 +290,7 @@
   }
 
   .site-footer {
-    margin-top: clamp(8rem, 40svh, 14rem);
+    margin-top: max(100svh, clamp(8rem, 40svh, 14rem));
   }
 
   .site-header-top {

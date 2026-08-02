@@ -20,9 +20,10 @@ describe('brand components', () => {
   });
 
   it('uses custom face and smile colors when provided', () => {
-    render(<Logo faceColor="#123456" smileColor="#abcdef" />);
+    const { container } = render(<Logo faceColor="#123456" smileColor="#abcdef" />);
 
-    const paths = document.querySelectorAll('svg[aria-label="NX Favicon"] path');
+    const favicon = container.querySelector('svg[aria-label="NX Favicon"]');
+    const paths = favicon?.querySelectorAll('path');
     expect(paths[0]?.getAttribute('fill')).toBe('#123456');
     expect(paths[1]?.getAttribute('fill')).toBe('#abcdef');
   });

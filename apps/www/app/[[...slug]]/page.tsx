@@ -9,13 +9,14 @@ import {
     FeaturedImage,
     Heading,
     SiteFooter,
-    SiteHeader,
+    Header,
     SiteMain as DesignSystemSiteMain,
     SiteNav,
     type T_NavNode,
 } from '@nx/design-system';
 import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
+import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
 import {
     serverUseMDBySlug,
@@ -152,19 +153,19 @@ export default async function Page({ params }: T_PageProps) {
         <ThemeModeProvider initialMode={themeMode} themeConfigs={themeConfigs}>
             <div className="site-shell">
                 
-                <SiteHeader
+                <Header
                     title={data.title || title}
                     description={slugArr.length ? '' : (config?.description || '')}
                     homeHref="/"
                     logoSrc="/nx/png/favicon.png"
-                    navItems={<SiteNav items={navItems} />}
-                    actions={<HeaderActions navItems={<SiteNav items={navItems} />} />}
+                    navItems={<RoutedSiteNav items={navItems} />}
+                    actions={<HeaderActions navItems={<RoutedSiteNav items={navItems} />} />}
                 />
 
                 <main className="site-main" id="main">
                     <DesktopOnly>
                         <aside className="site-col site-col-left" aria-label="NX°  Navigation">
-                            <SiteNav items={navItems} />
+                            <RoutedSiteNav items={navItems} />
                         </aside>
                     </DesktopOnly>
 

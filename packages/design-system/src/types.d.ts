@@ -138,6 +138,7 @@ export type T_NavNode = {
 
 export type SiteNavProps = {
 	items: T_NavNode[];
+	navigateTo?: (path: string, item: T_NavNode) => void;
 };
 
 export type UseIsMobileOptions = {
