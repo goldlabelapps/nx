@@ -3,7 +3,9 @@
   "version": "1.0.2",
   "description": "Shared frontend presentation package for NX°, covering theme, layout, and reusable UI primitives.",
   "private": true,
-  "sideEffects": ["**/*.css"],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,7 +26,9 @@
       "default": "./dist/styles/site-layout.css"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json && mkdir -p dist/styles && cp src/styles/*.css dist/styles/",
     "type-check": "tsc --noEmit",
@@ -49,16 +53,17 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.2",
-    "@testing-library/react": "^16.3.0",
     "@storybook/addon-docs": "^10.5.2",
     "@storybook/react": "^10.5.2",
     "@storybook/react-vite": "^10.5.2",
-    "@vitest/coverage-v8": "^3.2.4",
+    "@testing-library/react": "^16.3.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/coverage-v8": "^3.2.4",
     "jsdom": "^26.1.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-share": "^5.3.0",
     "storybook": "^10.5.2",
     "typescript": "^5",
     "vitest": "^3.2.4"

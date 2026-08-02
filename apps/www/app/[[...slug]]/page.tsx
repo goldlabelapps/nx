@@ -5,7 +5,6 @@ import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
     Breadcrumb,
-    DesktopOnly,
     FeaturedImage,
     Heading,
     SiteFooter,
@@ -163,14 +162,12 @@ export default async function Page({ params }: T_PageProps) {
                 />
 
                 <main className="site-main" id="main">
-                    <DesktopOnly>
-                        <aside 
-                            className="site-col site-col-left" 
-                            style={{ marginTop: 5 }}
-                            aria-label="NX°  Navigation">
-                            <RoutedSiteNav items={navItems} />
-                        </aside>
-                    </DesktopOnly>
+                    <aside 
+                        className="site-col site-col-left" 
+                        style={{ marginTop: 5 }}
+                        aria-label="NX°  Navigation">
+                        <RoutedSiteNav items={navItems} />
+                    </aside>
 
                     <DesignSystemSiteMain>
 
