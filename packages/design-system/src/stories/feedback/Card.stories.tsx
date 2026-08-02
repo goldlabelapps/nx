@@ -17,7 +17,7 @@ type Story = StoryObj<typeof Card>;
 function Copy({ title, text }: { title: string; text: string }) {
   return (
     <Stack spacing={1}>
-      <Typography variant="h6" sx={{ fontWeight: 700 }}>{title}</Typography>
+      <Typography variant="h6" sx={{ fontWeight: 400 }}>{title}</Typography>
       <Typography variant="body2" color="text.secondary">{text}</Typography>
     </Stack>
   );

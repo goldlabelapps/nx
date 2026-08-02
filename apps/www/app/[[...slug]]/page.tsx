@@ -164,7 +164,10 @@ export default async function Page({ params }: T_PageProps) {
 
                 <main className="site-main" id="main">
                     <DesktopOnly>
-                        <aside className="site-col site-col-left" aria-label="NX°  Navigation">
+                        <aside 
+                            className="site-col site-col-left" 
+                            style={{ marginTop: 50 }}
+                            aria-label="NX°  Navigation">
                             <RoutedSiteNav items={navItems} />
                         </aside>
                     </DesktopOnly>
@@ -182,7 +185,9 @@ export default async function Page({ params }: T_PageProps) {
                             <FeaturedImage
                                 image={{
                                     src: featuredImageSrc,
-                                    alt: data.description || null,
+                                    alt: [data.title, data.description]
+                                        .filter((part): part is string => typeof part === 'string' && part.trim().length > 0)
+                                        .join(', ') || null,
                                 }}
                             />
                         ) : null}

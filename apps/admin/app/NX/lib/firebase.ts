@@ -4,6 +4,14 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getMessaging, isSupported, type Messaging } from "firebase/messaging";
 
+const FIREBASE_DISABLED = true;
+
+function assertFirebaseEnabled() {
+    if (FIREBASE_DISABLED) {
+        throw new Error("Firebase is temporarily disabled for this admin app.");
+    }
+}
+
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -14,6 +22,7 @@ const firebaseConfig = {
 };
 
 export function getFirebaseApp() {
+    assertFirebaseEnabled();
     if (!getApps().length) {
         return initializeApp(firebaseConfig);
     }
@@ -21,14 +30,17 @@ export function getFirebaseApp() {
 }
 
 export function getFirebaseAuth() {
+    assertFirebaseEnabled();
     return getAuth(getFirebaseApp());
 }
 
 export function getFirebaseFirestore() {
+    assertFirebaseEnabled();
     return getFirestore(getFirebaseApp());
 }
 
 export function getFirebaseStorage() {
+    assertFirebaseEnabled();
     return getStorage(getFirebaseApp());
 }
 
@@ -38,6 +50,7 @@ export function getFirebaseStorage() {
  * - the browser does not support the Push API / service workers
  */
 export async function getFirebaseMessaging(): Promise<Messaging | null> {
+    assertFirebaseEnabled();
     if (typeof window === "undefined") return null;
     const supported = await isSupported();
     if (!supported) return null;

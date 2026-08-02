@@ -1,18 +1,26 @@
 'use client';
 import * as React from 'react';
-import { T_Theme, I_DesignSystem } from '../types';
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { I_DesignSystem } from '../types';
+import { DesignSystemProvider, type DesignSystemThemeConfig } from '@nx/design-system';
 import { usePathname } from 'next/navigation';
 import { useDispatch } from '../Uberedux';
-import { setDesignSystem, useMUITheme, Loader, useConfig } from '../DesignSystem';
+import { setDesignSystem, Loader, useConfig } from '../DesignSystem';
 
 export default function DesignSystem({
   theme,
   children,
   config,
 }: I_DesignSystem) {
-
-  const newtheme = useMUITheme(theme as T_Theme);
+  const mode = theme?.mode === 'dark' ? 'dark' : 'light';
+  const themeConfig: DesignSystemThemeConfig | undefined = theme
+    ? {
+        primary: theme.primary,
+        secondary: theme.secondary,
+        background: theme.background,
+        paper: theme.paper,
+        text: theme.text,
+      }
+    : undefined;
   const pathname = usePathname();
   const dispatch = useDispatch();
   const currentConfig = useConfig();
@@ -27,15 +35,10 @@ export default function DesignSystem({
     }
   }, [currentConfig, config, dispatch]);
 
-  if (!newtheme) {
-    return <>{children}</>;
-  }
-
   return (
-    <ThemeProvider theme={newtheme}>
-      <CssBaseline />
+    <DesignSystemProvider mode={mode} themeConfig={themeConfig}>
       <Loader />
       {children}
-    </ThemeProvider>
+    </DesignSystemProvider>
   );
 }

@@ -67,7 +67,7 @@ function renderNavItems(
                   primary={label}
                   sx={{ my: 0 }}
                   primaryTypographyProps={{
-                    fontWeight: hasChildren ? 600 : 500,
+                    fontWeight: 400,
                     fontSize: '1rem',
                     lineHeight: 1.15,
                   }}

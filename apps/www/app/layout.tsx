@@ -72,7 +72,7 @@ export default async function RootLayout({
       </head>
       <body>
         <div className="wrapper">
-          <DesignSystemProvider mode="light">
+          <DesignSystemProvider>
             <UbereduxProvider config={config}>
               <AppShell>{children}</AppShell>
             </UbereduxProvider>

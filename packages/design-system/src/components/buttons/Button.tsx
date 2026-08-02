@@ -140,7 +140,7 @@ export default function Button({
   const theme = useTheme();
   const mergedSx = {
     borderRadius: '3px',
-    fontWeight: 700,
+    fontWeight: 400,
     lineHeight: 1,
     letterSpacing: '0.02em',
     textTransform: 'none',
