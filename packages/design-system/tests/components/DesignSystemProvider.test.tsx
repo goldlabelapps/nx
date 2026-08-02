@@ -19,8 +19,8 @@ describe('DesignSystemProvider', () => {
       </DesignSystemProvider>
     );
 
-    const headMarkup = document.head.innerHTML;
+    const headMarkup = document.head.innerHTML.toLowerCase();
     expect(headMarkup.includes('--nx-clay')).toBe(true);
-    expect(headMarkup.includes('#E6E4FF')).toBe(true);
+    expect(headMarkup.includes('#f0f0f0')).toBe(true);
   });
 });

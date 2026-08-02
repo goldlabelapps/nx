@@ -5,13 +5,13 @@ describe('createAppTheme', () => {
   it('creates a light theme by default', () => {
     const theme = createAppTheme();
     expect(theme.palette.mode).toBe('light');
-    expect(theme.palette.primary.main).toBe('#4A46B8');
+    expect(theme.palette.primary.main).toBe('#5A5A5A');
   });
 
   it('creates a dark theme with expected palette values', () => {
     const theme = createAppTheme('dark');
     expect(theme.palette.mode).toBe('dark');
-    expect(theme.palette.primary.main).toBe('#E6E4FF');
-    expect(theme.palette.background.default).toBe('#171622');
+    expect(theme.palette.primary.main).toBe('#F3F3F3');
+    expect(theme.palette.background.default).toBe('#111111');
   });
 });

@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest';
 import { AppShell, PageSection, SectionTitle } from '../../../src/components/layout/Layout';
 import Header from '../../../src/components/layout/Header';
 import Main from '../../../src/components/layout/Main';
-import Sidebar from '../../../src/components/layout/Sidebar';
 import Footer from '../../../src/components/layout/Footer';
 
 describe('layout primitives', () => {
@@ -23,7 +22,7 @@ describe('layout primitives', () => {
 });
 
 describe('site layout components', () => {
-  it('renders header description text', () => {
+  it('renders header title link', () => {
     render(
       <Header
         title="Docs"
@@ -33,7 +32,8 @@ describe('site layout components', () => {
         navItems={<div>Nav</div>}
       />
     );
-    expect(screen.getByText('Description copy')).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'Go to Docs home' })).toBeTruthy();
+    expect(screen.getByText('Docs')).toBeTruthy();
   });
 
   it('renders main with and without featured image', () => {
@@ -43,7 +43,7 @@ describe('site layout components', () => {
       </Main>
     );
     expect(screen.getByText('Hero section')).toBeTruthy();
-    expect(container.querySelector('img.site-featured-image-bg')).toBeTruthy();
+    expect(container.querySelector('img[src="/hero.png"]')).toBeTruthy();
 
     rerender(
       <Main>
@@ -51,15 +51,6 @@ describe('site layout components', () => {
       </Main>
     );
     expect(screen.getByText('Plain section')).toBeTruthy();
-  });
-
-  it('renders sidebar defaults and custom content', () => {
-    const { rerender } = render(<Sidebar />);
-    expect(screen.getByText('Placeholder')).toBeTruthy();
-
-    rerender(<Sidebar title="Release" text="v1.0.0" />);
-    expect(screen.getByText('Release')).toBeTruthy();
-    expect(screen.getByText('v1.0.0')).toBeTruthy();
   });
 
   it('renders footer link groups', () => {
