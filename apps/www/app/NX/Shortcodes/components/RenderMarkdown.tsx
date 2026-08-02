@@ -164,7 +164,7 @@ export default function RenderMarkdown({
 
               return <li><span>{renderedChildren}</span></li>;
             },
-            strong: ({ children }) => <strong>{children}</strong>,
+            strong: ({ children }) => <span>{children}</span>,
             em: ({ children }) => <em>{children}</em>,
             a: ({ href = '', children }) => {
               const isExternal = /^https?:\/\//.test(href);
@@ -174,7 +174,7 @@ export default function RenderMarkdown({
                   target={isExternal ? '_blank' : '_self'}
                   rel={isExternal ? 'noopener noreferrer' : undefined}
                 >
-                  <strong>{children}</strong>
+                  {children}
                 </a>
               );
             },
