@@ -5,7 +5,6 @@ description: by facebook
 slug: /techstack/react
 tags: javascript, nextjs, react
 icon: js
-image: https://live.staticflickr.com/65535/55042136837_2c9d12d414_b.jpg
 ---
 
 > [CleverText text="React apps are made out of components."]

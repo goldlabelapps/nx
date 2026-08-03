@@ -5,7 +5,6 @@ description: Claw Ensemble Learning is a meta-learning framework
 slug: /experience/ai/open-claw
 icon: ai
 tags: ai
-image: https://live.staticflickr.com/65535/55228044632_fbefe45525_b.jpg
 ---
 
 > [CleverText text="Yeh. If you put that kind of AI into a drone with a gun... then you've got a big problem. Bloke down the pub said, yesterday"]
