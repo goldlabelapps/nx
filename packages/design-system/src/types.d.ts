@@ -190,6 +190,7 @@ export type SiteHeaderProps = {
 
 export type MenuDrawerProps = {
 	navItems: ReactNode;
+	actions?: ReactNode;
 	toggleAriaLabel?: string;
 };
 

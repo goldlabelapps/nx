@@ -5,7 +5,6 @@ description: Material UI
 slug: /features/design-system
 icon: design
 tags: features, design system, mui, material ui,
-image: https://live.staticflickr.com/65535/55139727398_05d97ed1d6_b.jpg
 ---
 ## No other design system sees the same breadth of adoption
 

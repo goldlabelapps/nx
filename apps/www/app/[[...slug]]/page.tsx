@@ -172,7 +172,7 @@ export default async function Page({ params }: T_PageProps) {
                     <DesignSystemSiteMain>
 
                         {pageDescription ? (
-                            <Heading variant="h2" style={{ marginBottom: '1rem' }} tone="secondary">
+                            <Heading variant="h3" style={{  }} tone="clay">
                                 {pageDescription}
                             </Heading>
                         ) : null}
@@ -190,12 +190,14 @@ export default async function Page({ params }: T_PageProps) {
                         ) : null}
                         
                         {breadcrumbItems.length ? (
-                            <div style={{ marginTop: '1.5rem', marginBottom: '0.5rem' }}>
+                            <div style={{ }}>
                                 <Breadcrumb items={breadcrumbItems} />
                             </div>
                         ) : null}
 
-                        <RenderMarkdown config={config}>{content}</RenderMarkdown>
+                        <RenderMarkdown config={config}>
+                            {content}
+                        </RenderMarkdown>
                     </DesignSystemSiteMain>
                     
                     {/* <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>

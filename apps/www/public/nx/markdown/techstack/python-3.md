@@ -6,9 +6,7 @@ description: Central to AI and automation
 tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
 icon: api
 image: https://live.staticflickr.com/65535/55198277139_08236ed419_b.jpg
----
-
-[PageLink icon="github" description="Open Source, production ready Python FastAPI/Postgres" title="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
+--- 
 
 > [CleverText text="Readable syntax, massive library support"]  
 

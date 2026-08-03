@@ -3,10 +3,11 @@
 import { useId, useState } from 'react';
 import { Box, Drawer } from '@mui/material';
 import IconButton from '../buttons/IconButton';
+import Heading from '../headings/Heading';
 import Icon from '../icons/Icon';
 import type { MenuDrawerProps } from '../../types';
 
-export default function MenuDrawer({ navItems, toggleAriaLabel = 'Toggle navigation menu' }: MenuDrawerProps) {
+export default function MenuDrawer({ navItems, actions, toggleAriaLabel = 'Toggle navigation menu' }: MenuDrawerProps) {
   const [open, setOpen] = useState(false);
   const navId = useId();
 
@@ -39,9 +40,33 @@ export default function MenuDrawer({ navItems, toggleAriaLabel = 'Toggle navigat
           },
         }}
       >
+        
+        {actions ? (
+          <Box sx={{ 
+            mt: 0, 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            alignItems: 'flex-start', 
+            justifyContent: 'space-between',
+            gap: 1 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 1 }}>
+              {actions}
+            </Box>
+            <IconButton
+              icon={<Icon icon="close" color="secondary" />}
+              ariaLabel="Close navigation menu"
+              onClick={handleClose}
+            />
+          </Box>
+        ) : null}
+
+        <Heading sx={{ mt: 2, mb: 1 }}>
+          Navigation
+        </Heading>
         <nav id={navId} aria-label="Primary navigation">
           {navItems}
         </nav>
+
       </Drawer>
     </Box>
   );
