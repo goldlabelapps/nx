@@ -3,7 +3,7 @@ import { useTheme, SvgIcon } from '@mui/material';
 
 export default function WordpressIcon(props: any) {
   const theme = useTheme();
-  let color1 = theme.palette.primary.main;
+  let color1 = theme.palette.secondary.main;
 
   return (
     <SvgIcon {...props}>

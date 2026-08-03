@@ -6,3 +6,8 @@ slug: /experience/techstack
 icon: experience
 tags: experience, Techstack, Vercel, Firebase, Render, React, nx
 ---
+
+
+> [CleverText text="Experience, Techstack, Vercel, Firebase, Render, React"]
+
+

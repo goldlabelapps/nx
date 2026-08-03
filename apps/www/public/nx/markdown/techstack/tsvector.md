@@ -5,7 +5,6 @@ title: tsvector
 description: Superfast full text search
 tags: Python, FastAPI, tsvector, Postgres, PostgreSQL, data types,
 icon: api
-image: https://live.staticflickr.com/65535/55198277139_08236ed419_b.jpg
 ---
 
 > [CleverText text="Superfast search with tsvector"]  
@@ -17,7 +16,7 @@ PostgreSQL provides two data types that are designed to support full text search
 What makes tsvector brilliant is its ability to turn messy, unstructured text into a lightning-fast, searchable format right inside your database. With tsvector, you get powerful, language-aware search capabilities—ranking, stemming, and relevance without leaving Postgres. It’s great for building search features that feel instant and smart.
 
 
-### Full-Text Search
+## Full-Text Search
 
 The prospects table includes a **search_vector** column computed from all text fields on insert/update. A GIN index enables fast, scalable full-text search:
 

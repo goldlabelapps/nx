@@ -5,7 +5,6 @@ description: A WordPress concept
 slug: /features/shortcodes
 icon: wordpress
 tags: wordpress
-image: https://live.staticflickr.com/8504/8434232637_ddd4fd7cf1_z.jpg
 ---
 
 > [CleverText text="How Shortcodes Work"] 
@@ -24,7 +23,7 @@ By using shortcodes, content creators can
 - Keep markdown files clean and readable
 - Empower non-developers to enhance content without editing code
 
-#### Example Usage
+## Example Usage
 
 Suppose you want to embed a line of chatbot response style text in your markdown, you would do this
 
