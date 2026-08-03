@@ -9,9 +9,7 @@ tags: experience, eras
 
 > [CleverText text="Spanning every era of web development"]
 
-We've been a part of the evolution from the Flash era with basic dial-up experiences to today's AI-enhanced, cloud-native web apps built on React and Next.js
-
-[PageLink icon="virus" url="https://notheretofuckspiders.art/fables/old-bull" title="The fable of the young bull and the old bull" description="A young bull and an old bull were standing on a hill overlooking a field full of cows." ]  
+We've been a part of the evolution from the Flash era with basic dial-up experiences to today's AI-enhanced, cloud-native web apps built on React and Next.js  
 
 **2000s: The Flash Era (Dial-up to Early Broadband)**
 

@@ -1,7 +1,7 @@
 ---
 order: 441
 title: Techstack
-description: Built with Open Source
+description: Built on Open Source
 slug: /techstack
 icon: techstack
 tags: Techstack, Vercel, Firebase, Render, React, Python

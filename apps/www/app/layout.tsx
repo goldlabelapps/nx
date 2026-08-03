@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import '@nx/design-system/styles.css';
 import '@nx/design-system/site-layout.css';
 import fs from 'fs';
@@ -55,7 +55,6 @@ export const metadata: Metadata = {
   title: `${title}, ${description}`,
   description,
   manifest: '/manifest.webmanifest',
-  themeColor: pwaBackground,
   icons: {
     icon: [
       {
@@ -72,6 +71,10 @@ export const metadata: Metadata = {
     shortcut: defaultFavicon,
     apple: appleTouchIcon,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: pwaBackground,
 };
 
 export default async function RootLayout({
