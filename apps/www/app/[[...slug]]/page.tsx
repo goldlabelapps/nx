@@ -172,7 +172,7 @@ export default async function Page({ params }: T_PageProps) {
                     <DesignSystemSiteMain>
 
                         {pageDescription ? (
-                            <Heading variant="h3" style={{  }}>
+                            <Heading variant="h3" style={{}}>
                                 {pageDescription}
                             </Heading>
                         ) : null}
