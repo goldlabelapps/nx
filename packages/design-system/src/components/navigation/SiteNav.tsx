@@ -92,13 +92,13 @@ function renderNavItems(
                 }}
               >
                 <ListItemText
-
                   primary={label}
                   sx={{ my: 0 }}
                   primaryTypographyProps={{
-                    fontWeight: 400,
+                    fontWeight: isCurrentPath ? 600 : 400,
                     fontSize: '1rem',
                     lineHeight: 1.15,
+                    color: isCurrentPath ? 'primary.main' : 'text.primary',
                   }}
                 />
               </ListItemButton>

@@ -198,14 +198,14 @@ export default async function Page({ params }: T_PageProps) {
                         <RenderMarkdown config={config}>{content}</RenderMarkdown>
                     </DesignSystemSiteMain>
                     
-                    <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
+                    {/* <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
                         <Card>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                                 <>Uberedux</>
                                 <UbereduxStatePreview />
                             </div>
                         </Card>
-                    </aside>
+                    </aside> */}
                 </main>
                 
                 <SiteFooter />
