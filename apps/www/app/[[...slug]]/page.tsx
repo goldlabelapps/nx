@@ -97,8 +97,7 @@ export default async function Page({ params }: T_PageProps) {
     const pageDescription = description || config?.description || '';
     const featuredImageSrc = typeof data.image === 'string' && data.image.trim()
         ? data.image
-        : config.images?.light || '';
-    const headerIcon = 'home';
+        : null;
     const navItems = (await serverUseNav()) as T_NavNode[];
     const breadcrumbItems = slugArr.length
         ? [

@@ -5,7 +5,6 @@ title: FastAPI
 description: High performance and easy-to-use APIs
 tags: Python, FastAPI, tsvector, Postgres
 icon: api
-image: https://live.staticflickr.com/65535/55198277139_08236ed419_b.jpg
 ---
 > [CleverText text="Superfast search with tsvector"]    
 

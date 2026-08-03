@@ -5,7 +5,6 @@ description: Fullstack Node and React
 slug: /techstack/nextjs
 tags: javascript, nextjs, frontend, backend
 icon: js
-image: https://live.staticflickr.com/65535/55410631846_e442e2fd4a_b.jpg
 ---
 
 World’s most popular environment for developing fast, scalable, and production-ready web applications

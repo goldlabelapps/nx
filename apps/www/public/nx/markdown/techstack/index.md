@@ -5,13 +5,6 @@ description: Built with Open Source
 slug: /techstack
 icon: techstack
 tags: Techstack, Vercel, Firebase, Render, React, Python
-image: https://live.staticflickr.com/65535/54379898801_bc14e92b57_b.jpg
 ---
 
-- [Git](/techstack/git)
-- [TypeScript](/techstack/typescript)
-- [NextJS](/techstack/nextjs)
-- [React](/techstack/react)
-- [Python 3](/techstack/python-3)
-- [FastAPI](/techstack/fastapi)
-- [tsvector](/techstack/tsvector)
+This project is built on a modern, full-stack foundation: Next.js and React power the frontend, TypeScript keeps the experience reliable, and Python with FastAPI handle the backend and API layer. Git, tsvector, and a lightweight cloud setup round out a stack that is fast, flexible, and ready to scale.
