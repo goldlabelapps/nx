@@ -18,10 +18,7 @@ export default function manifest(): MetadataRoute.Manifest {
     };
   };
 
-  const pwaBackground =
-    config?.cartridges?.designSystem?.pwa?.background ||
-    config?.cartridges?.designSystem?.themes?.dark?.background ||
-    '#364450';
+  const pwaBackground = config?.cartridges?.designSystem?.pwa?.background?.trim() || '#364450';
 
   const appName = config?.name || config?.siteName || 'NX°';
   const description = config?.description || 'Rapidly build modern apps';
@@ -38,14 +35,41 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: pwaBackground,
     icons: [
       {
-        src: '/nx/png/favicon.png',
+        src: '/favicons/favicon.svg',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        purpose: 'any',
+      },
+
+      {
+        src: '/favicons/favicon_light.svg',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        purpose: 'any',
+      },
+
+      {
+        src: '/favicons/favicon_dark.svg',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        purpose: 'any',
+      },
+
+      {
+        src: '/favicons/ios.png',
+        type: 'image/png',
+        sizes: '512x512',
+        purpose: 'maskable',
+      },
+      {
+        src: '/favicons/favicon_dark.png',
         type: 'image/png',
         sizes: '512x512',
         purpose: 'any',
       },
       {
-        src: '/nx/svg/favicon.svg',
-        type: 'image/svg+xml',
+        src: '/favicons/favicon_light.png',
+        type: 'image/png',
         sizes: '512x512',
         purpose: 'any',
       },

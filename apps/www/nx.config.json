@@ -1,7 +1,7 @@
 {
     "name": "NX°",
     "description": "Rapidly build modern apps",
-    "url": "https://nx.goldlabel.pro",
+    "url": "https://goldlabel.pro",
     "owner": {
         "name": "NX°",
         "email": "nx@goldlabel.pro"
@@ -9,7 +9,7 @@
     "favicon": "/nx/png/favicon.png",
     "cartridges": {
         "designSystem": {
-            "defaultTheme": "light",
+            "defaultTheme": "dark",
             "pwa":{
                 "background": "#364450"
             },

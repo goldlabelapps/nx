@@ -13,7 +13,6 @@ const defaultTenant = 'nx';
 const tenantConfigPath = path.join(process.cwd(), 'public', tenant, 'config.json');
 const fallbackConfigPath = path.join(process.cwd(), 'public', defaultTenant, 'config.json');
 const hasTenantConfig = fs.existsSync(tenantConfigPath);
-const resolvedTenant = hasTenantConfig ? tenant : defaultTenant;
 const configPath = hasTenantConfig ? tenantConfigPath : fallbackConfigPath;
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
@@ -22,6 +21,13 @@ const configuredDesignSystem = config?.cartridges?.designSystem?.system;
 const designSystemId = typeof configuredDesignSystem === 'string' && configuredDesignSystem.trim()
   ? configuredDesignSystem.trim()
   : 'wireframe';
+const pwaBackground = typeof config?.cartridges?.designSystem?.pwa?.background === 'string' && config.cartridges.designSystem.pwa.background.trim()
+  ? config.cartridges.designSystem.pwa.background.trim()
+  : '#364450';
+const defaultFavicon = typeof favicon === 'string' && favicon.trim()
+  ? favicon
+  : '/favicons/favicon.svg';
+const appleTouchIcon = '/favicons/ios.png';
 
 function resolveMetadataBase(input: unknown): URL {
   if (typeof input === 'string') {
@@ -39,7 +45,7 @@ function resolveMetadataBase(input: unknown): URL {
     }
   }
 
-  return new URL('https://nx');
+  return new URL('https://goldlabel.pro');
 }
 
 const metadataBase = resolveMetadataBase(config?.url);
@@ -49,10 +55,22 @@ export const metadata: Metadata = {
   title: `${title}, ${description}`,
   description,
   manifest: '/manifest.webmanifest',
+  themeColor: pwaBackground,
   icons: {
-    icon: favicon,
-    shortcut: favicon,
-    apple: favicon,
+    icon: [
+      {
+        url: defaultFavicon,
+        type: defaultFavicon.endsWith('.svg') ? 'image/svg+xml' : 'image/png',
+        sizes: defaultFavicon.endsWith('.svg') ? 'any' : '32x32',
+      },
+      {
+        url: '/favicons/ios.png',
+        type: 'image/png',
+        sizes: '32x32',
+      },
+    ],
+    shortcut: defaultFavicon,
+    apple: appleTouchIcon,
   },
 };
 
@@ -64,7 +82,12 @@ export default async function RootLayout({
   return (
     <html lang="en" data-design-system={designSystemId}>
       <head>
-        <link rel="icon" href={favicon} />
+        <link rel="icon" href={defaultFavicon} type={defaultFavicon.endsWith('.svg') ? 'image/svg+xml' : 'image/png'} sizes={defaultFavicon.endsWith('.svg') ? 'any' : '32x32'} />
+        <link rel="icon" href="/favicons/favicon_dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" sizes="any" />
+        <link rel="icon" href="/favicons/favicon_light.png" type="image/png" sizes="32x32" />
+        <link rel="icon" href="/favicons/favicon_dark.png" type="image/png" media="(prefers-color-scheme: dark)" sizes="32x32" />
+        <link rel="apple-touch-icon" href={appleTouchIcon} />
+        <meta name="theme-color" content={pwaBackground} />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
