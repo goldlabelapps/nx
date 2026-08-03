@@ -1,7 +1,14 @@
 'use client';
 
 import { DesignSystemProvider, type DesignSystemThemeConfig } from '@nx/design-system';
-import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
+import {
+  readPersistedThemeModeFromStorage,
+  selectPersistedThemeMode,
+  setPersistedThemeMode,
+  themePreferencePersistor,
+  themePreferenceStore,
+} from '@nx/uberedux';
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 
 export type ThemeMode = 'light' | 'dark';
 export type ThemeModePreference = ThemeMode | 'system';
@@ -34,15 +41,49 @@ export function resolveThemeMode(initialMode: ThemeModePreference | undefined): 
     return initialMode;
   }
 
-  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
   return 'light';
 }
 
 export function ThemeModeProvider({ children, initialMode, themeConfigs }: ThemeModeProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(() => resolveThemeMode(initialMode));
+
+  useEffect(() => {
+    const persistedMode = readPersistedThemeModeFromStorage();
+
+    if (persistedMode) {
+      setMode(persistedMode);
+      return;
+    }
+
+    if (initialMode === 'system' && typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+      setMode(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    }
+  }, [initialMode]);
+
+  useEffect(() => {
+    const unsubscribe = themePreferencePersistor.subscribe(() => {
+      const persistorState = themePreferencePersistor.getState();
+
+      if (!persistorState.bootstrapped) {
+        return;
+      }
+
+      const persistedMode = selectPersistedThemeMode(themePreferenceStore.getState());
+
+      if (persistedMode) {
+        setMode(persistedMode);
+      }
+
+      unsubscribe();
+    });
+
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    themePreferenceStore.dispatch(setPersistedThemeMode(mode));
+  }, [mode]);
+
   const value = useMemo(() => ({ mode, setMode }), [mode]);
   const activeThemeConfig = themeConfigs?.[mode];
 
