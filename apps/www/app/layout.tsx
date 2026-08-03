@@ -45,7 +45,7 @@ function resolveMetadataBase(input: unknown): URL {
     }
   }
 
-  return new URL('https://nx');
+  return new URL('https://goldlabel.pro');
 }
 
 const metadataBase = resolveMetadataBase(config?.url);
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
         sizes: defaultFavicon.endsWith('.svg') ? 'any' : '32x32',
       },
       {
-        url: '/favicons/favicon_light.png',
+        url: '/favicons/ios.png',
         type: 'image/png',
         sizes: '32x32',
       },

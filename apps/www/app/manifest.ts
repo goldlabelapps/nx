@@ -40,6 +40,33 @@ export default function manifest(): MetadataRoute.Manifest {
         sizes: 'any',
         purpose: 'any',
       },
+
+      {
+        src: '/favicons/favicon_light.svg',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        purpose: 'any',
+      },
+
+      {
+        src: '/favicons/favicon_dark.svg',
+        type: 'image/svg+xml',
+        sizes: 'any',
+        purpose: 'any',
+      },
+
+      {
+        src: '/favicons/ios.png',
+        type: 'image/png',
+        sizes: '512x512',
+        purpose: 'maskable',
+      },
+      {
+        src: '/favicons/favicon_dark.png',
+        type: 'image/png',
+        sizes: '512x512',
+        purpose: 'any',
+      },
       {
         src: '/favicons/favicon_light.png',
         type: 'image/png',
