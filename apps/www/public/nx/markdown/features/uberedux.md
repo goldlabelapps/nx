@@ -4,8 +4,7 @@ title: Uberedux
 description: Zero config Redux pattern
 slug: /features/uberedux
 icon: js
-tags: features, pwa, 
-image: https://live.staticflickr.com/65535/54353995935_a904d504aa_b.jpg
+tags: features, pwa
 ---
 
 > [CleverText text="Otherwise you'd be back in jQuery callback hell. Nobody wants that."] 

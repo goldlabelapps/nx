@@ -5,7 +5,6 @@ title: Python 3
 description: Central to AI and automation
 tags: NX, Features, Python, Cartridges, FastAPI, tsvector, Postgres
 icon: api
-image: https://live.staticflickr.com/65535/55198277139_08236ed419_b.jpg
 --- 
 
 > [CleverText text="Readable syntax, massive library support"]  

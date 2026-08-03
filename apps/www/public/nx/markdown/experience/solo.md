@@ -6,7 +6,9 @@ slug: /experience/solo
 icon: experience
 ---
 
-> A very real emerging category of role is Not an freelancer. Not an agency. Not an employee.
+> [CleverText text="Not an freelancer. Not an agency. Not an employee."]
+
+A very real emerging category of role is the high trust solo developer
 
 - understand business problems
 - architect systems
@@ -15,14 +17,7 @@ icon: experience
 - coordinate specialists only when needed
 - deliver outcomes without organisational drag
 
-That model can absolutely work now because AI massively increases individual throughput.
-
-The key change is this:
-
-Previously: bigger project → bigger team
-
-Now: bigger project → better operator
-
+That model can absolutely work now because AI massively increases individual throughput. The key change is this: Previously: bigger project → bigger team Now: bigger project → better operator
 
 #### Fractional Technical Partner
 
