@@ -8,8 +8,6 @@ icon: api
 image: https://live.staticflickr.com/65535/55198277139_08236ed419_b.jpg
 ---
 
-[PageLink icon="github" description="Open Source, production ready Python FastAPI/Postgres app for NX" title="goldlabelapps/python" url="https://github.com/goldlabelapps/python"]  
-
 > [CleverText text="Superfast search with tsvector"]  
 
 PostgreSQL provides two data types that are designed to support full text search, which is the activity of searching through a collection of natural-language documents to locate those that best match a query. The tsvector type represents a document in a form optimized for text search; the tsquery type similarly represents a text query.

@@ -5,7 +5,6 @@ description: Proper Prompt Engineering
 slug: /experience/ai/prompts
 icon: ai
 tags: ai, ollama
-image: https://live.staticflickr.com/65535/55228044632_fbefe45525_b.jpg
 ---
 > [CleverText text="Simple cut+paste propmts to try "]
 
