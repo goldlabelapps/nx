@@ -1,8 +1,8 @@
 <div>
     <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://nx.goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
         <img
-            src="https://nx.goldlabel.pro/nx/png/favicon.png"
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
             width="32"
             height="32"
         />
@@ -13,20 +13,29 @@
 
 # NX°
 
-## Table of Contents
+## Product Overview
 
-- [Overview](README.md)
-- [Tech Stack](techstack.md)
-- [Apps and Packages](apps-packages.md)
+NX° is a modern product platform for building and operating multiple digital experiences from a single, shared codebase. It brings together public-facing apps, admin surfaces, shared UI foundations, and scalable runtime patterns so teams can move faster without sacrificing consistency.
 
-*What* NX° is a JavaScript platform for creating apps across a network of projects and needs. Built for creators, coders, collaborators, and audiences who need a flexible space to publish, discover, and engage with rich content 
+## Why NX° Exists
 
+NX° helps teams:
 
-*What* NX° is a JavaScript monorepo platform that runs multiple apps and shared packages in one codebase. It combines Next.js applications with reusable building blocks such as a design system, Redux state patterns, auth flows, and shared utilities.
+- ship multiple product surfaces from one monorepo
+- reuse design, UI, and runtime patterns across apps
+- keep customer-facing and internal experiences aligned
+- reduce duplication while preserving flexibility
 
-*When* Use NX° when you need to ship and maintain more than one product surface, team workflow, or client-facing experience while keeping architecture, tooling, and release processes consistent.
+## What You’ll Find Here
 
-*Where* NX° runs anywhere modern JavaScript apps run. Frontends are built with Next.js, backends can be powered by Firebase or Supabase, and deployments can target Vercel or any compatible hosting infrastructure.
+- [Executive Overview](executive-overview.md) for the high-level product story
+- [Developer Guide](developer-guide.md) for the technical structure and onboarding path
+- [Owner Guide](owner-guide.md) for the product and delivery perspective
+- [Operations and Delivery](operations-and-delivery.md) for release and operational readiness
+- [Tech Stack](techstack.md) for the implementation choices behind the platform
+- [Apps and Packages](apps-packages.md) for the workspace structure
 
-*Why* NX° reduces duplication, speeds delivery, and improves reliability by centralizing shared code, standards, and workflows. Teams can move faster with less rework while still scaling apps independently.
+## Platform Positioning
+
+NX° is built for teams that want a strong foundation for product growth. It is especially useful when you need to support both audience-facing experiences and internal operating tools without fragmenting the codebase.
 
