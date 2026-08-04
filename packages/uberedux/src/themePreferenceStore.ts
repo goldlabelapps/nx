@@ -71,7 +71,10 @@ export type T_ThemePreferenceStoreState = ReturnType<typeof themePreferenceStore
 
 export const themePreferencePersistor = persistStore(themePreferenceStore);
 
-export const { setPersistedThemeMode, clearPersistedThemeMode } = themePreferenceSlice.actions;
+const themePreferenceActions = themePreferenceSlice.actions;
+
+export const setPersistedThemeMode = themePreferenceActions.setPersistedThemeMode;
+export const clearPersistedThemeMode = themePreferenceActions.clearPersistedThemeMode;
 
 export const selectPersistedThemeMode = (state: T_ThemePreferenceStoreState) => state.themePreference.mode;
 

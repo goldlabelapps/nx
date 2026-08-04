@@ -46,18 +46,18 @@ export function resolveThemeMode(initialMode: ThemeModePreference | undefined): 
 
 export function ThemeModeProvider({ children, initialMode, themeConfigs }: ThemeModeProviderProps) {
   const [mode, setMode] = useState<ThemeMode>(() => resolveThemeMode(initialMode));
+  const [themeResolved, setThemeResolved] = useState(false);
 
   useEffect(() => {
     const persistedMode = readPersistedThemeModeFromStorage();
 
     if (persistedMode) {
       setMode(persistedMode);
-      return;
-    }
-
-    if (initialMode === 'system' && typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    } else if (initialMode === 'system' && typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
       setMode(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     }
+
+    setThemeResolved(true);
   }, [initialMode]);
 
   useEffect(() => {
@@ -81,11 +81,19 @@ export function ThemeModeProvider({ children, initialMode, themeConfigs }: Theme
   }, []);
 
   useEffect(() => {
+    if (!themeResolved) {
+      return;
+    }
+
     themePreferenceStore.dispatch(setPersistedThemeMode(mode));
-  }, [mode]);
+  }, [mode, themeResolved]);
 
   const value = useMemo(() => ({ mode, setMode }), [mode]);
   const activeThemeConfig = themeConfigs?.[mode];
+
+  if (!themeResolved) {
+    return null;
+  }
 
   return (
     <ThemeModeContext.Provider value={value}>
