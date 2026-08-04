@@ -8,21 +8,28 @@ import {
 } from '@nx/design-system';
 
 describe('design-system site components', () => {
-  it('renders recursive navigation nodes', () => {
-    const items: T_NavNode[] = [
-      { title: 'Home', slug: '/' },
-      {
-        title: 'Features',
-        slug: '/features',
-        children: [{ title: 'Design System', slug: '/features/design-system' }],
-      },
-    ];
+  it('renders recursive navigation nodes', async () => {
+    const originalPath = window.location.pathname;
+    window.history.pushState({}, '', '/features');
 
-    render(<SiteNav items={items} />);
+    try {
+      const items: T_NavNode[] = [
+        { title: 'Home', slug: '/' },
+        {
+          title: 'Features',
+          slug: '/features',
+          children: [{ title: 'Design System', slug: '/features/design-system' }],
+        },
+      ];
 
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('Features')).toBeInTheDocument();
-    expect(screen.getByText('Design System')).toBeInTheDocument();
+      render(<SiteNav items={items} />);
+
+      expect(screen.queryByText('Home')).toBeNull();
+      expect(screen.getByText('Features')).toBeInTheDocument();
+      expect(await screen.findByText('Design System')).toBeInTheDocument();
+    } finally {
+      window.history.pushState({}, '', originalPath);
+    }
   });
 
   it('renders the header home link and actions', () => {
@@ -38,8 +45,8 @@ describe('design-system site components', () => {
       />,
     );
 
-    expect(screen.getByText('Docs')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Go to Docs home' })).toHaveAttribute('href', '/');
+    expect(screen.getByRole('img', { name: 'NX logo' })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Toggle menu' })).toBeInTheDocument();
   });
 

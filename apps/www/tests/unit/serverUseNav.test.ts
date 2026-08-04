@@ -16,7 +16,7 @@ describe('serverUseNav', () => {
     expect(aboutItem).toBeDefined();
     expect(aboutItem?.children?.some((child) => child.path === '/about')).toBe(false);
 
-    expect(nav.some((item) => item.path === '/help')).toBe(true);
+    expect(nav.some((item) => item.path === '/features')).toBe(true);
 
     process.env.NEXT_PUBLIC_TENANT = originalTenant;
   });

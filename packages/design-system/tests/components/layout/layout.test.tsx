@@ -44,7 +44,7 @@ describe('site layout components', () => {
       />
     );
     expect(screen.getByRole('link', { name: 'Go to Docs home' })).toBeTruthy();
-    expect(screen.getByText('Docs')).toBeTruthy();
+    expect(screen.getByRole('img', { name: 'Docs' })).toBeTruthy();
   });
 
   it('renders main with and without featured image', () => {

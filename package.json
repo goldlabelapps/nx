@@ -13,7 +13,7 @@
     "build": "pnpm --dir packages/design-system build && pnpm --dir apps/www build",
     "clean": "bash ./shell/clean-repo.sh",
     "lint": "turbo run lint",
-    "test": "echo 'Tests are disabled'",
+    "test": "node ./tests/run-monorepo-tests.mjs",
     "type-check": "turbo run type-check",
     "ci:github": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm build-storybook && NEXT_TELEMETRY_DISABLED=1 sh -c 'if [ -d apps/www ]; then corepack pnpm --dir apps/www build; else corepack pnpm build; fi'",
     "ci:full": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm lint && corepack pnpm type-check && corepack pnpm test && corepack pnpm build-storybook && corepack pnpm build"

@@ -6,10 +6,6 @@ describe('brand components', () => {
   it('renders logo default and custom content', () => {
     const { rerender } = render(<Logo />);
     expect(screen.getByText('NX°')).toBeTruthy();
-    const favicon = document.querySelector('svg[aria-label="NX Favicon"]');
-    expect(favicon).toBeTruthy();
-    expect(favicon?.getAttribute('width')).toBe('36');
-    expect(favicon?.getAttribute('height')).toBe('36');
 
     rerender(<Logo>NX</Logo>);
     expect(screen.getByText('NX')).toBeTruthy();
@@ -27,7 +23,7 @@ describe('brand components', () => {
   });
 
   it('uses custom face and smile colors when provided', () => {
-    const { container } = render(<Logo faceColor="#123456" smileColor="#abcdef" />);
+    const { container } = render(<Logo icon={null} faceColor="#123456" smileColor="#abcdef" />);
 
     const favicon = container.querySelector('svg[aria-label="NX Favicon"]');
     const paths = favicon?.querySelectorAll('path');

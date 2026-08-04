@@ -21,27 +21,34 @@ describe('site navigation', () => {
     expect(container.querySelector('nav.site-breadcrumbs span[aria-current="page"]')?.textContent).toBe('Navigation');
   });
 
-  it('renders flat and nested items', () => {
-    render(
-      <SiteNav
-        items={[
-          { title: 'Home', slug: '/' },
-          {
-            title: 'Features',
-            slug: '/features',
-            children: [
-              { title: 'Design System', slug: '/features/design-system' },
-              { title: 'Storybook', slug: '/features/storybook' },
-            ],
-          },
-        ]}
-      />
-    );
+  it('renders flat and nested items', async () => {
+    const originalPath = window.location.pathname;
+    window.history.pushState({}, '', '/features');
 
-    expect(screen.queryByRole('button', { name: 'Home' })).toBeNull();
-    expect(screen.getByRole('button', { name: 'Features' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Design System' })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Storybook' })).toBeTruthy();
+    try {
+      render(
+        <SiteNav
+          items={[
+            { title: 'Home', slug: '/' },
+            {
+              title: 'Features',
+              slug: '/features',
+              children: [
+                { title: 'Design System', slug: '/features/design-system' },
+                { title: 'Storybook', slug: '/features/storybook' },
+              ],
+            },
+          ]}
+        />
+      );
+
+      expect(screen.queryByRole('button', { name: 'Home' })).toBeNull();
+      expect(screen.getByRole('button', { name: 'Features' })).toBeTruthy();
+      expect(await screen.findByRole('button', { name: 'Design System' })).toBeTruthy();
+      expect(await screen.findByRole('button', { name: 'Storybook' })).toBeTruthy();
+    } finally {
+      window.history.pushState({}, '', originalPath);
+    }
   });
 
   it('calls navigateTo with path and item when clicked', () => {
