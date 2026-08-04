@@ -19,7 +19,7 @@ importers:
     dependencies:
       '@ducanh2912/next-pwa':
         specifier: ^10.2.9
-        version: 10.2.9(@types/babel__core@7.20.5)(next@16.1.1(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(webpack@5.108.4)
+        version: 10.2.9(@types/babel__core@7.20.5)(next@16.1.1(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(webpack@5.108.4)
       '@emotion/react':
         specifier: ^11.14.0
         version: 11.14.0(@types/react@19.2.17)(react@19.2.3)
@@ -192,6 +192,9 @@ importers:
       '@nx/uberedux':
         specifier: workspace:*
         version: link:../../packages/uberedux
+      '@nx/virus':
+        specifier: workspace:*
+        version: link:../../packages/virus
       '@reduxjs/toolkit':
         specifier: ^2.11.2
         version: 2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.3)(redux@5.0.1))(react@19.2.3)
@@ -438,6 +441,21 @@ importers:
       react-redux:
         specifier: ^9
         version: 9.3.0(@types/react@19.2.17)(react@19.2.3)(redux@5.0.1)
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
+  packages/virus:
+    devDependencies:
+      '@types/react':
+        specifier: ^19
+        version: 19.2.17
+      firebase:
+        specifier: ^12.10.0
+        version: 12.16.0
+      react:
+        specifier: ^19.2.3
+        version: 19.2.3
       typescript:
         specifier: ^5
         version: 5.9.3
@@ -9928,7 +9946,7 @@ snapshots:
       - '@types/babel__core'
       - supports-color
 
-  '@ducanh2912/next-pwa@10.2.9(@types/babel__core@7.20.5)(next@16.1.1(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(webpack@5.108.4)':
+  '@ducanh2912/next-pwa@10.2.9(@types/babel__core@7.20.5)(next@16.1.1(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(webpack@5.108.4)':
     dependencies:
       fast-glob: 3.3.2
       next: 16.1.1(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
