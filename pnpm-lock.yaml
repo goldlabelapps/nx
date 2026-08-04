@@ -446,7 +446,14 @@ importers:
         version: 5.9.3
 
   packages/virus:
+    dependencies:
+      '@nx/design-system':
+        specifier: workspace:*
+        version: link:../design-system
     devDependencies:
+      '@fingerprintjs/fingerprintjs':
+        specifier: ^5.1.0
+        version: 5.2.0
       '@types/react':
         specifier: ^19
         version: 19.2.17
