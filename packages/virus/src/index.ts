@@ -24,7 +24,7 @@ import type {
 } from "../types";
 import { randomIdentityProfile } from "./randomIdentity";
 
-export const DEFAULT_VIRUS_COLLECTION = "fingerprints";
+export const DEFAULT_VIRUS_COLLECTION = "virus";
 export const DEFAULT_FINGERPRINT_STORAGE_KEY = "nx.virus.fingerprint";
 export const DEFAULT_GEO_ENDPOINT = "https://api.ipgeolocation.io/ipgeo";
 

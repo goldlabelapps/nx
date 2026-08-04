@@ -10,7 +10,7 @@
 
 ## Core model
 
-Each user document lives in the `fingerprints` collection by default and uses the fingerprint id as the document id.
+Each user document lives in the `virus` collection by default and uses the fingerprint id as the document id.
 
 Example document shape:
 
