@@ -18,6 +18,7 @@ import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
 import UbereduxStatePreview from '../NX/DesignSystem/UbereduxStatePreview';
+import VirusAside from './VirusAside';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
@@ -172,7 +173,7 @@ export default async function Page({ params }: T_PageProps) {
                     <DesignSystemSiteMain>
 
                         {pageDescription ? (
-                            <Heading variant="h3" style={{  }}>
+                            <Heading variant="h3" style={{}}>
                                 {pageDescription}
                             </Heading>
                         ) : null}
@@ -200,14 +201,9 @@ export default async function Page({ params }: T_PageProps) {
                         </RenderMarkdown>
                     </DesignSystemSiteMain>
                     
-                    {/* <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
-                        <Card>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                                <>Uberedux</>
-                                <UbereduxStatePreview />
-                            </div>
-                        </Card>
-                    </aside> */}
+                    <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
+                        <VirusAside />
+                    </aside>
                 </main>
                 
                 <SiteFooter />

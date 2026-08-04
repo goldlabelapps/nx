@@ -11,4 +11,4 @@
     </h1>
 </div>
 
-> NX° is a JavaScript platform for creating apps across a network of projects and needs. Built for creators, coders, collaborators, and audiences who need a flexible space to publish, discover, and engage with rich content [more...](./docs/README.md)
+> NX° is a powerful JavaScript framework for creating apps to meet multiple projects and needs. Built for creators, coders, collaborators, and audiences who need a flexible space to publish, discover, and engage with rich content [more...](./docs/README.md)

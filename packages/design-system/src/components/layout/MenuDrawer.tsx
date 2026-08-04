@@ -37,6 +37,7 @@ export default function MenuDrawer({ navItems, actions, toggleAriaLabel = 'Toggl
           sx: {
             width: { xs: 'min(90vw, 360px)', sm: 360 },
             p: 2,
+            bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#161616' : '#F2F2F2'),
           },
         }}
       >
@@ -60,9 +61,10 @@ export default function MenuDrawer({ navItems, actions, toggleAriaLabel = 'Toggl
           </Box>
         ) : null}
 
-        <Heading sx={{ mt: 2, mb: 1 }}>
+        <Heading sx={{ mt: 3, mb: 3 }}>
           Navigation
         </Heading>
+
         <nav id={navId} aria-label="Primary navigation">
           {navItems}
         </nav>
