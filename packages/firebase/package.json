@@ -17,6 +17,7 @@
     "type-check": "echo 'No type-check configured yet'"
   },
   "dependencies": {
-    "firebase-admin": "^13.5.0"
+    "firebase-admin": "^13.5.0",
+    "server-only": "^0.0.1"
   }
 }
