@@ -21,8 +21,13 @@ describe('feedback components', () => {
   });
 
   it('renders card content', () => {
-    render(<Card variant="ink">Card content</Card>);
+    const { container } = render(<Card variant="ink" padding="lg">Card content</Card>);
+
     expect(screen.getByText('Card content')).toBeTruthy();
+
+    const card = container.firstElementChild as HTMLElement;
+    expect(getComputedStyle(card).backgroundColor).toBe('rgb(156, 39, 176)');
+    expect(getComputedStyle(card).paddingTop).toBe('32px');
   });
 
   it('renders field label, hint, and error', () => {

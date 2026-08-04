@@ -6,6 +6,7 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
+    "test": "../../apps/www/node_modules/.bin/tsx --test tests/**/*.test.ts",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No lint configured yet'"
   },
