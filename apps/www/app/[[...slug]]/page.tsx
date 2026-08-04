@@ -4,7 +4,6 @@ import fs from "fs";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import {
-    Card,
     Breadcrumb,
     FeaturedImage,
     Heading,
@@ -17,8 +16,6 @@ import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
-import UbereduxStatePreview from '../NX/DesignSystem/UbereduxStatePreview';
-import VirusAside from './VirusAside';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
@@ -201,9 +198,6 @@ export default async function Page({ params }: T_PageProps) {
                         </RenderMarkdown>
                     </DesignSystemSiteMain>
                     
-                    <aside aria-label="NX° Aside" style={{ marginTop: 50 }}>
-                        <VirusAside />
-                    </aside>
                 </main>
                 
                 <SiteFooter />
