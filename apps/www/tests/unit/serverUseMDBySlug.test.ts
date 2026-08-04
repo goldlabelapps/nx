@@ -9,9 +9,9 @@ describe('serverUseMDBySlug', () => {
   });
 
   it('finds nested markdown by slug segments', () => {
-    const filePath = serverUseMDBySlug(['help'], 'nx');
+    const filePath = serverUseMDBySlug(['features', 'design-system'], 'nx');
 
     expect(filePath).toBeTruthy();
-    expect(filePath?.endsWith('public/nx/markdown/help/index.md')).toBe(true);
+    expect(filePath?.endsWith('public/nx/markdown/features/design-system.md')).toBe(true);
   });
 });
