@@ -2,6 +2,7 @@
 
 import React from "react";
 import type { Firestore } from "firebase/firestore";
+import { Alert, Card, Heading, List, ListItem, ListItemText } from "@nx/design-system";
 import {
   DEFAULT_VIRUS_COLLECTION,
   getOrCreateFingerprintId,
@@ -108,57 +109,90 @@ export default function VirusPanel({
     : [];
 
   return (
-    <section
-      aria-label="Virus fingerprint panel"
-      style={{
-        border: "1px solid rgba(127,127,127,0.35)",
-        borderRadius: 12,
-        padding: 12,
-        marginTop: 24,
-        background: "rgba(255,255,255,0.7)",
-        fontSize: 13,
-      }}
-    >
-      <h3 style={{ margin: "0 0 8px", fontSize: 16 }}>{title}</h3>
+    <Card padding="md" variant="paper">
+      <section aria-label="Virus fingerprint card">
+        <Heading as="h3" variant="h4">
+          {title}
+        </Heading>
 
-      {!isReady ? <p style={{ margin: 0 }}>Connecting...</p> : null}
-      {error ? <p style={{ margin: "4px 0", color: "#b00020" }}>{error}</p> : null}
+        {!isReady ? (
+          <List disablePadding dense>
+            <ListItem disablePadding>
+              <ListItemText primary="Connecting..." />
+            </ListItem>
+          </List>
+        ) : null}
 
-      <p style={{ margin: "6px 0" }}>
-        <strong>Fingerprint:</strong> {shortId(fingerprintId) || "-"}
-      </p>
-      <p style={{ margin: "6px 0" }}>
-        <strong>Collection:</strong> {collectionName}
-      </p>
+        {error ? (
+          <Alert severity="error" title="Fingerprint sync failed">
+            {error}
+          </Alert>
+        ) : null}
 
-      <details open>
-        <summary>Founder data</summary>
-        <pre style={{ margin: "8px 0 0", whiteSpace: "pre-wrap" }}>
-          {humanize(record?.founder ?? {})}
-        </pre>
-      </details>
+        <List disablePadding>
+          <ListItem disablePadding>
+            <ListItemText primary="Fingerprint" secondary={shortId(fingerprintId) || "-"} />
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemText primary="Collection" secondary={collectionName} />
+          </ListItem>
+        </List>
 
-      <details>
-        <summary>Traits</summary>
-        <pre style={{ margin: "8px 0 0", whiteSpace: "pre-wrap" }}>
-          {humanize(record?.traits ?? {})}
-        </pre>
-      </details>
+        <Heading as="h6" variant="h6" sx={{ mt: 1.5 }}>
+          Founder data
+        </Heading>
+        <List disablePadding dense>
+          <ListItem disablePadding>
+            <ListItemText
+              secondary={humanize(record?.founder ?? {})}
+              secondaryTypographyProps={{
+                sx: {
+                  m: 0,
+                  fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "anywhere",
+                },
+              }}
+            />
+          </ListItem>
+        </List>
 
-      <details>
-        <summary>Signals</summary>
-        <div style={{ marginTop: 8 }}>
+        <Heading as="h6" variant="h6" sx={{ mt: 1.5 }}>
+          Traits
+        </Heading>
+        <List disablePadding dense>
+          <ListItem disablePadding>
+            <ListItemText
+              secondary={humanize(record?.traits ?? {})}
+              secondaryTypographyProps={{
+                sx: {
+                  m: 0,
+                  fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+                  whiteSpace: "pre-wrap",
+                  overflowWrap: "anywhere",
+                },
+              }}
+            />
+          </ListItem>
+        </List>
+
+        <Heading as="h6" variant="h6" sx={{ mt: 1.5 }}>
+          Signals
+        </Heading>
+        <List disablePadding dense>
           {signalPairs.length ? (
             signalPairs.map(([key, value]) => (
-              <p key={key} style={{ margin: "2px 0" }}>
-                <strong>{key}:</strong> {humanize(value)}
-              </p>
+              <ListItem key={key} disablePadding>
+                <ListItemText primary={key} secondary={humanize(value)} />
+              </ListItem>
             ))
           ) : (
-            <p style={{ margin: 0 }}>No signal data yet.</p>
+            <ListItem disablePadding>
+              <ListItemText primary="No signal data yet." />
+            </ListItem>
           )}
-        </div>
-      </details>
-    </section>
+        </List>
+      </section>
+    </Card>
   );
 }

@@ -2,8 +2,9 @@
 
 `@nx/virus` is a shared package for:
 
-- generating a stable client fingerprint identifier
+- generating a client fingerprint identifier (using `@fingerprintjs/fingerprintjs` when available)
 - creating/updating a Firestore document for that fingerprint
+- enriching the document with device + geo information
 - subscribing in real time to that document
 - letting founder/admin code merge personalization data into the same object
 
@@ -15,7 +16,14 @@ Example document shape:
 
 ```json
 {
+  "id": "fpjs_visitor_id",
   "fingerprintId": "vx_...",
+  "name": "New Visitor",
+  "avatar": "guest",
+  "created": 1754230000000,
+  "updated": 1754230000000,
+  "device": { "ua": "...", "browser": "Chrome", "os": "macOS" },
+  "geo": { "ip": "...", "city": "...", "country_name": "..." },
   "signals": { "userAgent": "..." },
   "traits": { "plan": "free" },
   "founder": { "message": "Hi Alice" },
@@ -29,8 +37,9 @@ Example document shape:
 
 1. Client app generates/loads fingerprint id via localStorage.
 2. Client calls `registerFingerprint` to upsert its profile in Firestore.
-3. Client calls `subscribeToFingerprint` to receive founder-side updates in real time.
-4. Founder/admin code calls `updateFingerprintFounderData` to personalize that user profile.
+3. During registration, `@nx/virus` enriches with IP geolocation when `NEXT_PUBLIC_IPGEOLOCATION_API_KEY` is present.
+4. Client calls `subscribeToFingerprint` to receive founder-side updates in real time.
+5. Founder/admin code calls `updateFingerprintFounderData` to personalize that user profile.
 
 ## Usage
 
@@ -69,6 +78,8 @@ await updateFingerprintFounderData(db, fingerprintId, {
 unsubscribe();
 ```
 
-## Optional stronger fingerprinting
+## Fingerprint + Geo Notes
 
-If you already use `@fingerprintjs/fingerprintjs`, pass its `visitorId` into `registerFingerprint` or `getOrCreateFingerprintId` to incorporate it into the generated id.
+- `@nx/virus` will use FingerprintJS visitor IDs when the package is available.
+- You can still pass `visitorId` explicitly to override fingerprint generation.
+- Geo enrichment is best-effort and uses `NEXT_PUBLIC_IPGEOLOCATION_API_KEY`; failures do not block registration.

@@ -9,68 +9,30 @@ import {
   type Firestore,
   type Unsubscribe,
 } from "firebase/firestore";
+import type {
+  CreateFingerprintIdOptions,
+  FetchVirusGeoOptions,
+  JsonLike,
+  RegisterFingerprintOptions,
+  SubscribeToFingerprintOptions,
+  UpdateFingerprintOptions,
+  VirusDeviceInfo,
+  VirusFingerprintRecord,
+  VirusFingerprintSignals,
+  VirusGeoRecord,
+  VirusProfileObject,
+} from "../types";
+import { randomIdentityProfile } from "./randomIdentity";
 
 export const DEFAULT_VIRUS_COLLECTION = "fingerprints";
 export const DEFAULT_FINGERPRINT_STORAGE_KEY = "nx.virus.fingerprint";
+export const DEFAULT_GEO_ENDPOINT = "https://api.ipgeolocation.io/ipgeo";
 
-export type JsonLike =
-  | string
-  | number
-  | boolean
-  | null
-  | JsonLike[]
-  | { [key: string]: JsonLike };
+type FingerprintAgent = {
+  get: () => Promise<{ visitorId: string }>;
+};
 
-export type VirusProfileObject = Record<string, JsonLike | unknown>;
-
-export interface VirusFingerprintSignals {
-  userAgent: string;
-  language: string;
-  languages: string[];
-  platform: string;
-  timezone: string;
-  colorDepth: number;
-  pixelRatio: number;
-  screen: string;
-  hardwareConcurrency: number;
-  maxTouchPoints: number;
-  doNotTrack: string;
-}
-
-export interface VirusFingerprintRecord {
-  id: string;
-  fingerprintId: string;
-  createdAt?: unknown;
-  updatedAt?: unknown;
-  signals: VirusFingerprintSignals;
-  traits: VirusProfileObject;
-  founder: VirusProfileObject;
-  meta: VirusProfileObject;
-}
-
-export interface CreateFingerprintIdOptions {
-  visitorId?: string;
-  forceRefresh?: boolean;
-  storageKey?: string;
-}
-
-export interface RegisterFingerprintOptions {
-  collectionName?: string;
-  fingerprintId?: string;
-  visitorId?: string;
-  storageKey?: string;
-  traits?: VirusProfileObject;
-  founder?: VirusProfileObject;
-  meta?: VirusProfileObject;
-}
-
-export interface SubscribeToFingerprintOptions {
-  collectionName?: string;
-}
-
-export interface UpdateFingerprintOptions {
-  collectionName?: string;
-}
+let fingerprintAgentPromise: Promise<FingerprintAgent> | null = null;
 
 function inBrowser(): boolean {
   return typeof window !== "undefined";
@@ -94,79 +56,85 @@ function getTimezone(): string {
   }
 }
 
-export function collectFingerprintSignals(): VirusFingerprintSignals {
-  const nav = getSafeNavigator();
-  const scr = getSafeScreen();
+function detectBrowser(ua: string): { name: string; version?: string } {
+  const checks: Array<{ pattern: RegExp; name: string }> = [
+    { pattern: /Edg\/(\d+)/, name: "Edge" },
+    { pattern: /Chrome\/(\d+)/, name: "Chrome" },
+    { pattern: /Firefox\/(\d+)/, name: "Firefox" },
+    { pattern: /Version\/(\d+).+Safari/, name: "Safari" },
+  ];
 
-  return {
-    userAgent: nav?.userAgent ?? "unknown",
-    language: nav?.language ?? "unknown",
-    languages: nav?.languages ? [...nav.languages] : [],
-    platform: nav?.platform ?? "unknown",
-    timezone: getTimezone(),
-    colorDepth: scr?.colorDepth ?? 0,
-    pixelRatio: inBrowser() ? window.devicePixelRatio || 1 : 1,
-    screen: scr ? `${scr.width}x${scr.height}` : "0x0",
-    hardwareConcurrency: nav?.hardwareConcurrency ?? 0,
-    maxTouchPoints: nav?.maxTouchPoints ?? 0,
-    doNotTrack: nav?.doNotTrack ?? "unknown",
-  };
-}
-
-function stableSerialize(value: unknown): string {
-  if (value === null || typeof value !== "object") {
-    return JSON.stringify(value);
+  for (const check of checks) {
+    const match = ua.match(check.pattern);
+    if (match) {
+      return { name: check.name, version: match[1] };
+    }
   }
 
-  if (Array.isArray(value)) {
-    return `[${value.map((item) => stableSerialize(item)).join(",")}]`;
-  }
-
-  const entries = Object.entries(value as Record<string, unknown>).sort(([a], [b]) =>
-    a.localeCompare(b),
-  );
-  const serialized = entries.map(([key, val]) => `${JSON.stringify(key)}:${stableSerialize(val)}`);
-  return `{${serialized.join(",")}}`;
+  return { name: "Unknown" };
 }
 
-function fallbackHash(input: string): string {
-  let hash = 2166136261;
-
-  for (let index = 0; index < input.length; index += 1) {
-    hash ^= input.charCodeAt(index);
-    hash +=
-      (hash << 1) +
-      (hash << 4) +
-      (hash << 7) +
-      (hash << 8) +
-      (hash << 24);
+function detectOS(ua: string): { name: string; version?: string } {
+  if (/Windows NT/i.test(ua)) {
+    const match = ua.match(/Windows NT ([\d.]+)/i);
+    return { name: "Windows", version: match?.[1] };
   }
 
-  return Math.abs(hash >>> 0).toString(16).padStart(8, "0");
-}
-
-async function hashFingerprintInput(input: string): Promise<string> {
-  if (typeof globalThis.crypto?.subtle !== "undefined") {
-    const bytes = new TextEncoder().encode(input);
-    const digest = await globalThis.crypto.subtle.digest("SHA-256", bytes);
-    const hex = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
-    return hex;
+  if (/Android/i.test(ua)) {
+    const match = ua.match(/Android ([\d.]+)/i);
+    return { name: "Android", version: match?.[1] };
   }
 
-  return fallbackHash(input);
+  if (/iPhone|iPad|iPod/i.test(ua)) {
+    const match = ua.match(/OS ([\d_]+)/i);
+    return { name: "iOS", version: match?.[1]?.replace(/_/g, ".") };
+  }
+
+  if (/Mac OS X/i.test(ua)) {
+    const match = ua.match(/Mac OS X ([\d_]+)/i);
+    return { name: "macOS", version: match?.[1]?.replace(/_/g, ".") };
+  }
+
+  if (/Linux/i.test(ua)) {
+    return { name: "Linux" };
+  }
+
+  return { name: "Unknown" };
 }
 
-export async function createFingerprintId(options: CreateFingerprintIdOptions = {}): Promise<string> {
-  const signals = collectFingerprintSignals();
+async function loadFingerprintAgent(): Promise<FingerprintAgent | null> {
+  if (!inBrowser()) return null;
 
-  const payload = {
-    visitorId: options.visitorId ?? "",
-    signals,
-  };
+  try {
+    if (!fingerprintAgentPromise) {
+      const importModule = new Function(
+        "modulePath",
+        "return import(modulePath)",
+      ) as (modulePath: string) => Promise<{
+        default: { load: () => Promise<FingerprintAgent> };
+      }>;
 
-  const input = stableSerialize(payload);
-  const digest = await hashFingerprintInput(input);
-  return `vx_${digest.slice(0, 24)}`;
+      fingerprintAgentPromise = importModule("@fingerprintjs/fingerprintjs").then(
+        ({ default: FingerprintJS }) => FingerprintJS.load(),
+      );
+    }
+
+    return await fingerprintAgentPromise;
+  } catch {
+    return null;
+  }
+}
+
+async function resolveFingerprintJsVisitorId(): Promise<string> {
+  const agent = await loadFingerprintAgent();
+  if (!agent) return "";
+
+  try {
+    const result = await agent.get();
+    return typeof result?.visitorId === "string" ? result.visitorId : "";
+  } catch {
+    return "";
+  }
 }
 
 function readStoredFingerprint(storageKey: string): string {
@@ -187,6 +155,134 @@ function writeStoredFingerprint(storageKey: string, fingerprintId: string): void
   } catch {
     // Ignore storage errors (private mode/quota); caller still receives generated ID.
   }
+}
+
+function getRuntimeEnv(name: string): string {
+  const env = (
+    globalThis as typeof globalThis & {
+      process?: { env?: Record<string, string | undefined> };
+    }
+  ).process?.env;
+
+  if (env && typeof env[name] === "string") {
+    return env[name] ?? "";
+  }
+
+  return "";
+}
+
+function normalizeGeoFetchOptions(input: FetchVirusGeoOptions | boolean | undefined): FetchVirusGeoOptions {
+  if (typeof input === "boolean") {
+    return { enabled: input };
+  }
+
+  return input ?? {};
+}
+
+export function collectFingerprintSignals(): VirusFingerprintSignals {
+  const nav = getSafeNavigator();
+  const scr = getSafeScreen();
+
+  return {
+    userAgent: nav?.userAgent ?? "unknown",
+    language: nav?.language ?? "unknown",
+    languages: nav?.languages ? [...nav.languages] : [],
+    platform: nav?.platform ?? "unknown",
+    timezone: getTimezone(),
+    colorDepth: scr?.colorDepth ?? 0,
+    pixelRatio: inBrowser() ? window.devicePixelRatio || 1 : 1,
+    screen: scr ? `${scr.width}x${scr.height}` : "0x0",
+    hardwareConcurrency: nav?.hardwareConcurrency ?? 0,
+    maxTouchPoints: nav?.maxTouchPoints ?? 0,
+    doNotTrack: nav?.doNotTrack ?? "unknown",
+  };
+}
+
+export function collectDeviceInfo(): VirusDeviceInfo {
+  const nav = getSafeNavigator();
+  const ua = nav?.userAgent ?? "";
+  const browser = detectBrowser(ua);
+  const os = detectOS(ua);
+
+  const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(ua);
+
+  return {
+    ua,
+    browser: browser.name,
+    browserVersion: browser.version,
+    os: os.name,
+    osVersion: os.version,
+    platform: nav?.platform ?? "",
+    vendor: nav?.vendor ?? "",
+    isMobile,
+    languages: nav?.languages ? [...nav.languages] : [],
+    device: {
+      vendor: nav?.vendor ?? "",
+      model: "",
+      type: isMobile ? "mobile" : "desktop",
+    },
+    cpu: "",
+    engine: {
+      name: "",
+      version: "",
+    },
+  };
+}
+
+export async function fetchGeoFromIp(
+  options: FetchVirusGeoOptions = {},
+): Promise<VirusGeoRecord | null> {
+  if (!inBrowser()) return null;
+
+  const enabled = options.enabled ?? true;
+  if (!enabled) return null;
+
+  const apiKey = options.apiKey ?? getRuntimeEnv("NEXT_PUBLIC_IPGEOLOCATION_API_KEY");
+  if (!apiKey) return null;
+
+  const endpoint = options.endpoint ?? DEFAULT_GEO_ENDPOINT;
+  const timeoutMs = options.timeoutMs ?? 8000;
+
+  const controller = new AbortController();
+  const timeoutHandle = window.setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(
+      `${endpoint}?apiKey=${encodeURIComponent(apiKey)}`,
+      { signal: controller.signal },
+    );
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const payload = (await response.json()) as VirusGeoRecord;
+    return payload;
+  } catch {
+    return null;
+  } finally {
+    window.clearTimeout(timeoutHandle);
+  }
+}
+
+export async function createFingerprintId(options: CreateFingerprintIdOptions = {}): Promise<string> {
+  if (options.visitorId && options.visitorId.trim()) {
+    return options.visitorId.trim();
+  }
+
+  const visitorId = await resolveFingerprintJsVisitorId();
+  if (visitorId) return visitorId;
+
+  const signals = collectFingerprintSignals();
+  const seed = `${signals.userAgent}|${signals.language}|${signals.timezone}|${signals.platform}`;
+  let hash = 2166136261;
+
+  for (let index = 0; index < seed.length; index += 1) {
+    hash ^= seed.charCodeAt(index);
+    hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+  }
+
+  return `vx_${Math.abs(hash >>> 0).toString(16).padStart(8, "0")}`;
 }
 
 export async function getOrCreateFingerprintId(options: CreateFingerprintIdOptions = {}): Promise<string> {
@@ -217,8 +313,14 @@ function normalizeRecord(
   return {
     id: fingerprintId,
     fingerprintId,
+    name: typeof data?.name === "string" ? data.name : "",
+    avatar: typeof data?.avatar === "string" ? data.avatar : "",
+    created: typeof data?.created === "number" ? data.created : Date.now(),
+    updated: typeof data?.updated === "number" ? data.updated : Date.now(),
     createdAt: data?.createdAt,
     updatedAt: data?.updatedAt,
+    device: (data?.device ?? collectDeviceInfo()) as VirusDeviceInfo,
+    geo: (data?.geo ?? undefined) as VirusGeoRecord | undefined,
     signals: (data?.signals ?? collectFingerprintSignals()) as VirusFingerprintSignals,
     traits: (data?.traits ?? {}) as VirusProfileObject,
     founder: (data?.founder ?? {}) as VirusProfileObject,
@@ -239,24 +341,46 @@ export async function registerFingerprint(
     }));
 
   const ref = getFingerprintRef(db, fingerprintId, collectionName);
-  const signals = collectFingerprintSignals();
+  const snapshot = await getDoc(ref);
+  const existing = snapshot.data();
+
+  const now = Date.now();
+  const defaultIdentity = randomIdentityProfile();
+
+  const fetchGeoOptions = normalizeGeoFetchOptions(options.fetchGeo);
+  const shouldFetchGeo = fetchGeoOptions.enabled ?? true;
+
+  let geo = (existing?.geo ?? undefined) as VirusGeoRecord | undefined;
+  if (!geo && shouldFetchGeo) {
+    const fetchedGeo = await fetchGeoFromIp(fetchGeoOptions);
+    if (fetchedGeo) {
+      geo = fetchedGeo;
+    }
+  }
 
   await setDoc(
     ref,
     {
+      id: fingerprintId,
       fingerprintId,
-      signals,
-      traits: options.traits ?? {},
-      founder: options.founder ?? {},
-      meta: options.meta ?? {},
-      createdAt: serverTimestamp(),
+      name: options.name ?? (typeof existing?.name === "string" ? existing.name : defaultIdentity.name),
+      avatar: options.avatar ?? (typeof existing?.avatar === "string" ? existing.avatar : defaultIdentity.character),
+      created: typeof existing?.created === "number" ? existing.created : now,
+      updated: now,
+      device: collectDeviceInfo(),
+      signals: collectFingerprintSignals(),
+      ...(geo ? { geo } : {}),
+      traits: options.traits ?? existing?.traits ?? {},
+      founder: options.founder ?? existing?.founder ?? {},
+      meta: options.meta ?? existing?.meta ?? {},
+      createdAt: existing?.createdAt ?? serverTimestamp(),
       updatedAt: serverTimestamp(),
     },
     { merge: true },
   );
 
-  const snapshot = await getDoc(ref);
-  return normalizeRecord(fingerprintId, snapshot.data());
+  const nextSnapshot = await getDoc(ref);
+  return normalizeRecord(fingerprintId, nextSnapshot.data());
 }
 
 export async function updateFingerprintTraits(
@@ -271,6 +395,7 @@ export async function updateFingerprintTraits(
     ref,
     {
       traits: traitsPatch,
+      updated: Date.now(),
       updatedAt: serverTimestamp(),
     },
     { merge: true },
@@ -289,6 +414,7 @@ export async function updateFingerprintFounderData(
     ref,
     {
       founder: founderPatch,
+      updated: Date.now(),
       updatedAt: serverTimestamp(),
     },
     { merge: true },
@@ -312,3 +438,19 @@ export function subscribeToFingerprint(
     onChange(normalizeRecord(fingerprintId, snapshot.data()));
   });
 }
+
+export type {
+  CreateFingerprintIdOptions,
+  FetchVirusGeoOptions,
+  JsonLike,
+  RegisterFingerprintOptions,
+  SubscribeToFingerprintOptions,
+  UpdateFingerprintOptions,
+  VirusDeviceInfo,
+  VirusFingerprintRecord,
+  VirusFingerprintSignals,
+  VirusGeoRecord,
+  VirusProfileObject,
+} from "../types";
+export { identityCharacters, randomIdentity, randomIdentityProfile } from "./randomIdentity";
+export type { VirusIdentityCharacter, VirusRandomIdentity } from "./randomIdentity";
