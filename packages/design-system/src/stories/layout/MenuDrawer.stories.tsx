@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { MenuDrawer, SiteNav, type T_NavNode } from '../../index';
 
 const sampleNav: T_NavNode[] = [

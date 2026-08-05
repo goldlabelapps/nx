@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Divider, Stack } from '@mui/material';
 import { AppShell, List, ListItem, ListItemButton, ListItemText, ListSubheader, PageSection } from '../../index';
 
