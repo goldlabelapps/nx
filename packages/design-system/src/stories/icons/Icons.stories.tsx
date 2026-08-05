@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { AppShell, ICON_NAMES, Icon, PageSection } from '../../index';
 import type { IconName } from '../../index';
 
