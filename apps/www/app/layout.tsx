@@ -21,13 +21,24 @@ const configuredDesignSystem = config?.cartridges?.designSystem?.system;
 const designSystemId = typeof configuredDesignSystem === 'string' && configuredDesignSystem.trim()
   ? configuredDesignSystem.trim()
   : 'wireframe';
-const pwaBackground = typeof config?.cartridges?.designSystem?.pwa?.background === 'string' && config.cartridges.designSystem.pwa.background.trim()
+const configuredPwaBackground = typeof config?.cartridges?.designSystem?.pwa?.background === 'string'
   ? config.cartridges.designSystem.pwa.background.trim()
-  : '#364450';
+  : '';
+const defaultThemeId = typeof config?.cartridges?.designSystem?.defaultTheme === 'string'
+  ? config.cartridges.designSystem.defaultTheme.trim()
+  : '';
+const themedPwaBackground = defaultThemeId && typeof config?.cartridges?.designSystem?.themes?.[defaultThemeId]?.background === 'string'
+  ? config.cartridges.designSystem.themes[defaultThemeId].background.trim()
+  : '';
+const pwaBackground = configuredPwaBackground || themedPwaBackground || '#111111';
 const defaultFavicon = typeof favicon === 'string' && favicon.trim()
   ? favicon
   : '/favicons/favicon.svg';
-const appleTouchIcon = '/favicons/ios.png';
+const defaultIconPath = '/favicons/ios.png';
+const appleTouchIconPath = '/favicons/apple-touch-icon.png';
+const appleTouchIcon = fs.existsSync(path.join(process.cwd(), 'public', appleTouchIconPath.slice(1)))
+  ? appleTouchIconPath
+  : defaultIconPath;
 
 function resolveMetadataBase(input: unknown): URL {
   if (typeof input === 'string') {
@@ -63,7 +74,7 @@ export const metadata: Metadata = {
         sizes: defaultFavicon.endsWith('.svg') ? 'any' : '32x32',
       },
       {
-        url: '/favicons/ios.png',
+        url: appleTouchIcon,
         type: 'image/png',
         sizes: '32x32',
       },

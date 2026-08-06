@@ -23,6 +23,9 @@
         "designSystem": {
             "themeSwitching": true,
             "defaultTheme": "light",
+            "pwa": {
+                "background": "#111111"
+            },
             "system": "unix",
             "themes": {
                 "dark": {

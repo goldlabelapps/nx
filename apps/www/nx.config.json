@@ -11,7 +11,7 @@
         "designSystem": {
             "defaultTheme": "dark",
             "pwa":{
-                "background": "#364450"
+                "background": "#111111"
             },
             "themes": {
                 "dark": {
