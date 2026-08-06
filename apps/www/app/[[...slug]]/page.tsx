@@ -16,10 +16,13 @@ import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
+import ChildPagesAside from './ChildPagesAside';
+import styles from './page.module.css';
 import {
     serverUseMDBySlug,
     serverUseAllMd,
     serverUseNav,
+    serverUseChildPages,
     getTenant,
     getMeta,
 } from '../NX/lib/index.server';
@@ -97,6 +100,8 @@ export default async function Page({ params }: T_PageProps) {
         ? data.image
         : null;
     const navItems = (await serverUseNav()) as T_NavNode[];
+    const currentPath = slugArr.length ? `/${slugArr.join('/')}` : '/';
+    const childPages = await serverUseChildPages(currentPath);
     const breadcrumbItems = slugArr.length
         ? [
             { label: 'Home', href: '/' },
@@ -159,7 +164,7 @@ export default async function Page({ params }: T_PageProps) {
                     actions={<HeaderActions navItems={<RoutedSiteNav items={navItems} />} />}
                 />
 
-                <main className="site-main" id="main">
+                <main className={`site-main ${styles.siteMainChildPagesBelowMobile}`} id="main">
                     <aside 
                         className="site-col site-col-left" 
                         style={{ marginTop: 5 }}
@@ -197,6 +202,8 @@ export default async function Page({ params }: T_PageProps) {
                             {content}
                         </RenderMarkdown>
                     </DesignSystemSiteMain>
+
+                    <ChildPagesAside items={childPages} />
                     
                 </main>
                 

@@ -4,6 +4,7 @@ import { serverUseMDBySlug } from './serverHooks/serverUseMDBySlug';
 import { serverUseAllMd } from './serverHooks/serverUseAllMd';
 import { serverUseSlugs } from './serverHooks/serverUseSlugs';
 import { serverUseRelated } from './serverHooks/serverUseRelated';
+import { serverUseChildPages } from './serverHooks/serverUseChildPages';
 import { getTenant } from './getTenant';
 import { getMeta } from './getMeta';
 
@@ -14,6 +15,7 @@ export {
     serverUseAllMd,
     serverUseSlugs,
     serverUseRelated,
+    serverUseChildPages,
     getTenant,
     getMeta,
 };
