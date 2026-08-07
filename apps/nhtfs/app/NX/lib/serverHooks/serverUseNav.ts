@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { normalizeTenant } from '../normalizeTenant';
+import { resolveMarkdownRoot } from '../markdownRoots';
 
 export interface NavItem {
     title: string;
@@ -17,7 +18,7 @@ export interface NavItem {
 
 async function getMarkdownRoot() {
     const project = normalizeTenant();
-    return path.join(process.cwd(), `public/${project}/markdown`);
+    return resolveMarkdownRoot(project);
 }
 
 function normalizeSlug(slug: string | undefined, fallback: string): string {

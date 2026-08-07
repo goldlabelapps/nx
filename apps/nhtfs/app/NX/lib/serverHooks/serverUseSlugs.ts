@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { normalizeTenant } from '../normalizeTenant';
+import { resolveMarkdownRoot } from '../markdownRoots';
 
 /**
  * Finds markdown files by a comma-separated list of slugs and returns their content objects.
@@ -18,7 +19,7 @@ export function serverUseSlugs(slugs: string[] | string = [], project: string = 
     } else if (Array.isArray(slugs)) {
         slugArr = slugs.map(s => s.trim()).filter(Boolean);
     }
-    const markdownDir = `public/${project}/markdown`;
+    const markdownDir = resolveMarkdownRoot(project);
 
     // Helper to find a file by slug
     function findFileBySlug(targetSlug: string): string | null {

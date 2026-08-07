@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { normalizeTenant } from '../normalizeTenant';
+import { resolveMarkdownRoot } from '../markdownRoots';
 
 /**
  * Recursively finds a markdown file by its slug array.
@@ -36,7 +37,7 @@ export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nx"
             }
         }
     };
-    const markdownDir = `public/${project}/markdown`;
+    const markdownDir = resolveMarkdownRoot(project);
     walk(markdownDir);
     return foundPath;
 }

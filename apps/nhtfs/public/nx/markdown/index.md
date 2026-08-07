@@ -1,13 +1,13 @@
 ---
-order: 1 
+order: 1
 slug: /
-title: NX°
-tags: free, framework, fullstack, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, SSG, Server Side JavaScript, Node, NextJS
-icon: pingpong
+title: Not here to fuck spiders
+description: A novel by Wei Zang
+tags: wei zang, pornvirusmp3, virus, nhtfs,
+icon: virus
+image: https://live.staticflickr.com/65535/55365828378_090ef631a8_b.jpg
 ---
-NX° is a powerful framework for rapidly bootstrapping modern apps. Built on modular JavaScript and NextJS, it streamlines fullstack development for both server-side Node and client-side React—so you can launch new web apps fast, without starting from scratch. 
 
-Fast to build, affordable to deploy, and powered by proven web standards—from semantic HTML to static site generation. NX° apps are fast, reliable and make WordPress look very dated
+[PageLink url="/characters/wei-zang" icon="virus" title="As far back as I can remember I knew that if I played by the rules I'd lose." description="This is my story. Some of it is true"]  
 
-[CleverText text="Ready to create an NX° app?"]
-
+[PageLink url="/zeitgeist/time-bubbles" icon="ai" title="Time Bubbles" description="The infinite monkey effect"]  

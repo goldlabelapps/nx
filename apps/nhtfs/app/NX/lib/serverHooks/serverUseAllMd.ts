@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { resolveMarkdownRoot } from '../markdownRoots';
 
 /**
  * Recursively collects all markdown slugs from frontmatter in a directory.
@@ -9,9 +10,9 @@ import matter from "gray-matter";
  * @returns Array of slug arrays
  */
 export function serverUseAllMd(dir?: string, project: string = "nx"): string[][] {
-    // If no directory is provided, default to public/{project}/markdown
+    // If no directory is provided, resolve the tenant markdown root from the app or shared content locations.
     if (!dir) {
-        dir = path.resolve(process.cwd(), "public", project, "markdown");
+        dir = resolveMarkdownRoot(project);
     } else if (!path.isAbsolute(dir)) {
         // If dir is relative, resolve it from the project root
         dir = path.resolve(process.cwd(), dir);
