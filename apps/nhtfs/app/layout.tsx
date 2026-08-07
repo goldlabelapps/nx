@@ -6,14 +6,7 @@ import path from 'path';
 import { AppShell, DesignSystemProvider } from '@nx/design-system';
 import { UbereduxProvider } from '@nx/uberedux';
 import Init from './Init';
-import { normalizeTenant } from './NX/lib/normalizeTenant';
-
-const tenant = normalizeTenant();
-const defaultTenant = 'nx';
-const tenantConfigPath = path.join(process.cwd(), 'public', tenant, 'config.json');
-const fallbackConfigPath = path.join(process.cwd(), 'public', defaultTenant, 'config.json');
-const hasTenantConfig = fs.existsSync(tenantConfigPath);
-const configPath = hasTenantConfig ? tenantConfigPath : fallbackConfigPath;
+const configPath = path.join(process.cwd(), 'public', 'nx', 'config.json');
 const configRaw = fs.readFileSync(configPath, 'utf-8');
 const config = JSON.parse(configRaw);
 const { title, description, favicon } = config;

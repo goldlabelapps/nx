@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { normalizeTenant } from '../normalizeTenant';
 import { resolveMarkdownRoot } from '../markdownRoots';
 
 /**
@@ -10,8 +9,7 @@ import { resolveMarkdownRoot } from '../markdownRoots';
  * @param project Project name (default: "nx")
  * @returns The file path if found, otherwise null
  */
-export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nx"): string | null {
-    project = normalizeTenant(project);
+export function serverUseMDBySlug(slugArr: string[] = [], _project: string = "nx"): string | null {
     // Remove trailing empty strings from slugArr
     let normalizedSlugArr = Array.isArray(slugArr) ? [...slugArr] : [];
     while (normalizedSlugArr.length > 1 && normalizedSlugArr[normalizedSlugArr.length - 1] === "") {
@@ -37,7 +35,7 @@ export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nx"
             }
         }
     };
-    const markdownDir = resolveMarkdownRoot(project);
+    const markdownDir = resolveMarkdownRoot();
     walk(markdownDir);
     return foundPath;
 }

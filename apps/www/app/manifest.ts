@@ -1,15 +1,8 @@
 import type { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
-import { normalizeTenant } from './NX/lib/normalizeTenant';
-
 export default function manifest(): MetadataRoute.Manifest {
-  const tenant = normalizeTenant();
-  const defaultTenant = 'nx';
-  const tenantConfigPath = path.join(process.cwd(), 'public', tenant, 'config.json');
-  const fallbackConfigPath = path.join(process.cwd(), 'public', defaultTenant, 'config.json');
-  const hasTenantConfig = fs.existsSync(tenantConfigPath);
-  const configPath = hasTenantConfig ? tenantConfigPath : fallbackConfigPath;
+  const configPath = path.join(process.cwd(), 'public', 'nx', 'config.json');
   const config = JSON.parse(fs.readFileSync(configPath, 'utf-8')) as {
     name?: string;
     siteName?: string;

@@ -31,7 +31,7 @@ export default function DesignSystemProvider({ children, mode, themeConfig }: De
           ...style,
           body: {
             ...style.body,
-            backgroundColor: theme.palette.background.default,
+            backgroundColor: 'transparent',
             color: theme.palette.text.primary,
             transition: 'background-color 0.2s ease',
           },

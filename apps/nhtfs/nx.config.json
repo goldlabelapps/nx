@@ -11,15 +11,15 @@
         "designSystem": {
             "defaultTheme": "dark",
             "pwa":{
-                "background": "#171622"
+                "background": "#000"
             },
             "themes": {
                 "dark": {
                     "mode": "dark",
                     "primary": "#E6E4FF",
                     "secondary": "#E0DEFF",
-                    "background": "#171622",
-                    "paper": "#222132",
+                    "background": "#000",
+                    "paper": "#000",
                     "text": "#ECEBFF"
                 },
                 "light": {

@@ -8,7 +8,7 @@ import matter from "gray-matter";
  * @param project Project name (default: "nxadmin")
  * @returns The file path if found, otherwise null
  */
-export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nxadmin"): string | null {
+export function serverUseMDBySlug(slugArr: string[] = [], _project: string = "nxadmin"): string | null {
     // Remove trailing empty strings from slugArr
     let normalizedSlugArr = Array.isArray(slugArr) ? [...slugArr] : [];
     while (normalizedSlugArr.length > 1 && normalizedSlugArr[normalizedSlugArr.length - 1] === "") {
@@ -34,7 +34,7 @@ export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nxa
             }
         }
     };
-    const markdownDir = `public/${project}/markdown`;
+    const markdownDir = path.join(process.cwd(), 'public', 'nxadmin', 'markdown');
     walk(markdownDir);
     return foundPath;
 }

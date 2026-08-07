@@ -26,7 +26,6 @@ import {
     getTenant,
     getMeta,
 } from '../NX/lib/index.server';
-import { normalizeTenant } from '../NX/lib/normalizeTenant';
 import { RenderMarkdown } from '../NX/Shortcodes';
 
 type T_PageParams = {
@@ -40,8 +39,8 @@ type T_PageProps = {
 export async function generateMetadata({ params }: T_PageProps): Promise<Metadata> {
     const resolvedParams = await params;
     const slugArr = Array.isArray(resolvedParams?.slug) ? resolvedParams.slug : [];
-    const tenant = normalizeTenant();
-    const { config } = getTenant(tenant as T_Tenant);
+    const tenant = 'nx' as T_Tenant;
+    const { config } = getTenant(tenant);
     const filePath = serverUseMDBySlug(slugArr, tenant);
     let url = config.url || "";
     const themeMode: 'light' | 'dark' = 'light';
@@ -71,8 +70,8 @@ export async function generateMetadata({ params }: T_PageProps): Promise<Metadat
 }
 
 export async function generateStaticParams() {
-    const tenant = normalizeTenant();
-    const { markdownDir } = getTenant(tenant as T_Tenant);
+    const tenant = 'nx' as T_Tenant;
+    const { markdownDir } = getTenant(tenant);
     const allSlugs = serverUseAllMd(markdownDir, tenant);
     return allSlugs.map((slugArr) => {
         const normalized = slugArr.filter(Boolean);
@@ -84,9 +83,9 @@ export default async function Page({ params }: T_PageProps) {
     const resolvedParams = await params;
     const slugArr = Array.isArray(resolvedParams?.slug) ? [...resolvedParams.slug] : [];
     while (slugArr.length > 1 && slugArr[slugArr.length - 1] === "") slugArr.pop();
-    const tenant = normalizeTenant();
-    const { config: rawConfig } = getTenant(tenant as T_Tenant);
-    const config = { ...rawConfig, tenant: tenant as T_Tenant };
+    const tenant = 'nx' as T_Tenant;
+    const { config: rawConfig } = getTenant(tenant);
+    const config = { ...rawConfig, tenant };
     const filePath = serverUseMDBySlug(slugArr, tenant);
     if (!filePath || !fs.existsSync(filePath)) notFound();
     let title = tenant.toUpperCase();

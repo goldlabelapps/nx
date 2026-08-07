@@ -13,8 +13,6 @@ export function AppShell({ children }: AppShellProps) {
         boxSizing: 'border-box',
         px: { xs: 2, sm: 3, md: 4, lg: 6 },
         py: { xs: 2, sm: 3, md: 4 },
-        maxWidth: { xs: '100%', lg: '1600px' },
-        mx: 'auto',
       }}
     >
       {children}

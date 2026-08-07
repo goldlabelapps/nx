@@ -9,10 +9,9 @@ import { resolveMarkdownRoot } from '../markdownRoots';
  * @param project Project name (default: "nx")
  * @returns Array of slug arrays
  */
-export function serverUseAllMd(dir?: string, project: string = "nx"): string[][] {
-    // If no directory is provided, resolve the tenant markdown root from the app or shared content locations.
+export function serverUseAllMd(dir?: string, _project: string = "nx"): string[][] {
     if (!dir) {
-        dir = resolveMarkdownRoot(project);
+        dir = resolveMarkdownRoot();
     } else if (!path.isAbsolute(dir)) {
         // If dir is relative, resolve it from the project root
         dir = path.resolve(process.cwd(), dir);
@@ -25,7 +24,7 @@ export function serverUseAllMd(dir?: string, project: string = "nx"): string[][]
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     for (const entry of entries) {
         if (entry.isDirectory()) {
-            slugs = slugs.concat(serverUseAllMd(path.join(dir, entry.name), project));
+            slugs = slugs.concat(serverUseAllMd(path.join(dir, entry.name), _project));
         } else if (entry.name.endsWith(".md")) {
             const filePath = path.join(dir, entry.name);
             const { data } = matter(fs.readFileSync(filePath, "utf-8"));

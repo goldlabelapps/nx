@@ -36,10 +36,8 @@ export const nxLightStyle = {
     '--focus-ring': '#5A5A5A',
   },
   body: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: 'transparent',
     color: '#1E1E1E',
-    maxWidth: '1400px',
-    margin: '0 auto',
     transition: 'background-color 0.2s ease',
   },
 };
@@ -82,10 +80,8 @@ export const nxDarkStyle = {
     '--focus-ring': '#F0F0F0',
   },
   body: {
-    backgroundColor: '#111111',
+    backgroundColor: 'transparent',
     color: '#F7F7F7',
-    maxWidth: '1400px',
-    margin: '0 auto',
     transition: 'background-color 0.2s ease',
   },
 };
