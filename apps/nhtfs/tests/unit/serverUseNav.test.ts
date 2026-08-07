@@ -12,11 +12,11 @@ describe('serverUseNav', () => {
     expect(homeItem).toBeDefined();
     expect(homeItem?.title).toBe('Home');
 
-    const aboutItem = nav.find((item) => item.path === '/about');
-    expect(aboutItem).toBeDefined();
-    expect(aboutItem?.children?.some((child) => child.path === '/about')).toBe(false);
+    const booksItem = nav.find((item) => item.path === '/books');
+    expect(booksItem).toBeDefined();
+    expect(booksItem?.children?.some((child) => child.path === '/books')).toBe(false);
 
-    expect(nav.some((item) => item.path === '/features')).toBe(true);
+    expect(nav.some((item) => item.path === '/characters')).toBe(true);
 
     process.env.NEXT_PUBLIC_TENANT = originalTenant;
   });

@@ -9,9 +9,9 @@ describe('serverUseMDBySlug', () => {
   });
 
   it('finds nested markdown by slug segments', () => {
-    const filePath = serverUseMDBySlug(['features', 'design-system'], 'nx');
+    const filePath = serverUseMDBySlug(['books', 'spec-fic', 'neuromancer'], 'nx');
 
     expect(filePath).toBeTruthy();
-    expect(filePath?.endsWith('public/nx/markdown/features/design-system.md')).toBe(true);
+    expect(filePath?.endsWith('public/nx/markdown/books/spec-fic/neuromancer.md')).toBe(true);
   });
 });
