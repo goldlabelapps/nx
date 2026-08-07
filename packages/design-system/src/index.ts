@@ -22,6 +22,8 @@ export { default as SiteFooter } from './components/layout/Footer';
 export { default as Header } from './components/layout/Header';
 export { default as MenuDrawer } from './components/layout/MenuDrawer';
 export { default as SiteMain } from './components/layout/Main';
+export { default as Swatch } from './components/surfaces/Swatch';
+export { default as SwatchGroup } from './components/surfaces/SwatchGroup';
 export { default as Icon } from './components/icons/Icon';
 export { ICON_NAMES } from './components/icons/Icon';
 export { DesktopOnly, MobileOnly, useIsMobile } from './components/responsive/Viewport';
@@ -63,6 +65,8 @@ export type {
 	SiteHeaderProps,
 	SiteMainProps,
 	SiteNavProps,
+	SwatchGroupProps,
+	SwatchProps,
 	UseIsMobileOptions,
 	VisibilityProps,
 } from './types';

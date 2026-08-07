@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "@nx/design-system/styles.css";
 import "@nx/design-system/site-layout.css";
-import { DesignSystemProvider } from "@nx/design-system";
 import nxConfig from "../nx.config.json";
+import ThemeModeProvider from "./ThemeModeProvider";
 
 type ThemeConfig = {
   mode?: "light" | "dark";
@@ -39,19 +39,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <DesignSystemProvider
-          mode={themeMode}
-          themeConfig={{
-            primary: selectedTheme.primary,
-            secondary: selectedTheme.secondary,
-            background: selectedTheme.background,
-            paper: selectedTheme.paper,
-            text: selectedTheme.text,
-            textSecondary: selectedTheme.textSecondary,
+        <ThemeModeProvider
+          initialMode={themeMode}
+          themeConfigs={{
+            light: themes.light,
+            dark: themes.dark,
           }}
         >
           {children}
-        </DesignSystemProvider>
+        </ThemeModeProvider>
       </body>
     </html>
   );
