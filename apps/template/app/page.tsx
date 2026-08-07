@@ -11,23 +11,15 @@ import {
   SwatchGroup,
 } from "@nx/design-system";
 import nxConfig from "../nx.config.json";
+import type { TemplateThemeMap } from "../types";
 import { useThemeMode } from "./ThemeModeProvider";
-
-type ThemeConfig = {
-  primary?: string;
-  secondary?: string;
-  background?: string;
-  paper?: string;
-  text?: string;
-  textSecondary?: string;
-};
 
 const designSystemConfig = nxConfig?.cartridges?.designSystem;
 const defaultThemeName =
   typeof designSystemConfig?.defaultTheme === "string" && designSystemConfig.defaultTheme.trim()
     ? designSystemConfig.defaultTheme.trim()
     : "light";
-const themes = (designSystemConfig?.themes || {}) as Record<string, ThemeConfig>;
+const themes = (designSystemConfig?.themes || {}) as TemplateThemeMap;
 
 export default function Page() {
   const { mode, toggleMode } = useThemeMode();

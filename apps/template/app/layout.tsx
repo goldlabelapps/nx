@@ -3,17 +3,8 @@ import "./globals.css";
 import "@nx/design-system/styles.css";
 import "@nx/design-system/site-layout.css";
 import nxConfig from "../nx.config.json";
+import type { TemplateThemeMap, ThemeMode } from "../types";
 import ThemeModeProvider from "./ThemeModeProvider";
-
-type ThemeConfig = {
-  mode?: "light" | "dark";
-  primary?: string;
-  secondary?: string;
-  background?: string;
-  paper?: string;
-  text?: string;
-  textSecondary?: string;
-};
 
 const appName = nxConfig.name || "Template";
 const appDescription = nxConfig.description || "Minimum app";
@@ -22,9 +13,9 @@ const defaultThemeName =
   typeof designSystemConfig?.defaultTheme === "string" && designSystemConfig.defaultTheme.trim()
     ? designSystemConfig.defaultTheme.trim()
     : "light";
-const themes = (designSystemConfig?.themes || {}) as Record<string, ThemeConfig>;
+const themes = (designSystemConfig?.themes || {}) as TemplateThemeMap;
 const selectedTheme = themes[defaultThemeName] || themes.light || themes.dark || {};
-const themeMode: "light" | "dark" = selectedTheme.mode === "dark" ? "dark" : "light";
+const themeMode: ThemeMode = selectedTheme.mode === "dark" ? "dark" : "light";
 
 export const metadata: Metadata = {
   title: appName,

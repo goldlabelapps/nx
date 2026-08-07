@@ -11,22 +11,12 @@ import {
   useEffect,
   useMemo,
   useState,
-  type ReactNode,
 } from 'react';
-
-type ThemeMode = 'light' | 'dark';
-
-type ThemeModeProviderProps = {
-  children: ReactNode;
-  initialMode: ThemeMode;
-  themeConfigs?: Partial<Record<ThemeMode, DesignSystemThemeConfig>>;
-};
-
-type ThemeModeContextValue = {
-  mode: ThemeMode;
-  setMode: (mode: ThemeMode) => void;
-  toggleMode: () => void;
-};
+import type {
+  ThemeMode,
+  ThemeModeContextValue,
+  ThemeModeProviderProps,
+} from '../types';
 
 const STORAGE_KEY = 'template.themeMode';
 
