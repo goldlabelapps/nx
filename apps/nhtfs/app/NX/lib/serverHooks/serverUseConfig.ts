@@ -1,9 +1,9 @@
 import { T_Config } from '../../types';
-import path from 'path';
 import fs from 'fs';
+import { resolveNhtfsAppPath } from '../markdownRoots';
 
 export async function serverUseConfig(): Promise<T_Config> {
-    const configPath = path.join(process.cwd(), 'public', 'nx', 'config.json');
+    const configPath = resolveNhtfsAppPath('public', 'nx', 'config.json');
     const configRaw = fs.readFileSync(configPath, 'utf-8');
     const config: T_Config = JSON.parse(configRaw);
     return config;

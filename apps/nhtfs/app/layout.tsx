@@ -6,10 +6,19 @@ import path from 'path';
 import { AppShell, DesignSystemProvider } from '@nx/design-system';
 import { UbereduxProvider } from '@nx/uberedux';
 import Init from './Init';
-const configPath = path.join(process.cwd(), 'public', 'nx', 'config.json');
-const configRaw = fs.readFileSync(configPath, 'utf-8');
-const config = JSON.parse(configRaw);
-const { title, description, favicon } = config;
+import nxConfig from '../public/nx/config.json';
+import { fileURLToPath } from 'url';
+
+const config = nxConfig;
+const title = typeof config.siteName === 'string' && config.siteName.trim()
+  ? config.siteName
+  : 'NX°';
+const description = typeof config.description === 'string' && config.description.trim()
+  ? config.description
+  : '';
+const favicon = typeof config.favicon === 'string' && config.favicon.trim()
+  ? config.favicon
+  : '/favicons/favicon.svg';
 const configuredDesignSystem = config?.cartridges?.designSystem?.system;
 const designSystemId = typeof configuredDesignSystem === 'string' && configuredDesignSystem.trim()
   ? configuredDesignSystem.trim()
@@ -20,8 +29,8 @@ const configuredPwaBackground = typeof config?.cartridges?.designSystem?.pwa?.ba
 const defaultThemeId = typeof config?.cartridges?.designSystem?.defaultTheme === 'string'
   ? config.cartridges.designSystem.defaultTheme.trim()
   : '';
-const themedPwaBackground = defaultThemeId && typeof config?.cartridges?.designSystem?.themes?.[defaultThemeId]?.background === 'string'
-  ? config.cartridges.designSystem.themes[defaultThemeId].background.trim()
+const themedPwaBackground = defaultThemeId && typeof config?.cartridges?.designSystem?.themes?.[defaultThemeId as keyof typeof config.cartridges.designSystem.themes]?.background === 'string'
+  ? config.cartridges.designSystem.themes[defaultThemeId as keyof typeof config.cartridges.designSystem.themes].background.trim()
   : '';
 const pwaBackground = configuredPwaBackground || themedPwaBackground || '#111111';
 const defaultFavicon = typeof favicon === 'string' && favicon.trim()
@@ -29,7 +38,8 @@ const defaultFavicon = typeof favicon === 'string' && favicon.trim()
   : '/favicons/favicon.svg';
 const defaultIconPath = '/favicons/ios.png';
 const appleTouchIconPath = '/favicons/apple-touch-icon.png';
-const appleTouchIcon = fs.existsSync(path.join(process.cwd(), 'public', appleTouchIconPath.slice(1)))
+const appPublicDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../public');
+const appleTouchIcon = fs.existsSync(path.join(appPublicDir, appleTouchIconPath.slice(1)))
   ? appleTouchIconPath
   : defaultIconPath;
 
