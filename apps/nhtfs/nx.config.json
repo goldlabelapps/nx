@@ -11,24 +11,24 @@
         "designSystem": {
             "defaultTheme": "dark",
             "pwa":{
-                "background": "#111111"
+                "background": "#171622"
             },
             "themes": {
                 "dark": {
                     "mode": "dark",
-                    "primary": "#ffd849",
-                    "secondary": "#ffd849",
-                    "paper": "#364450",
-                    "background": "#364450",
-                    "text": "#fff"
+                    "primary": "#E6E4FF",
+                    "secondary": "#E0DEFF",
+                    "background": "#171622",
+                    "paper": "#222132",
+                    "text": "#ECEBFF"
                 },
                 "light": {
                     "mode": "light",
-                    "primary": "#FFD849",
-                    "secondary": "#364450",
-                    "background": "#ffffff",
-                    "paper": "#ffffff",
-                    "text": "#2c2c2a"
+                    "primary": "#3F3F3F",
+                    "secondary": "#0E0E0E",
+                    "background": "#ECECEC",
+                    "paper": "#E1E1E1",
+                    "text": "#0E0E0E"
                 }
             }
         }
