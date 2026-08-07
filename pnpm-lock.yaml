@@ -160,6 +160,58 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  apps/nhtfs:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.14.0
+        version: 11.14.0(@types/react@19.2.17)(react@19.2.3)
+      '@emotion/styled':
+        specifier: ^11.14.1
+        version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3))(@types/react@19.2.17)(react@19.2.3)
+      '@mui/icons-material':
+        specifier: ^7.3.7
+        version: 7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3))(@types/react@19.2.17)(react@19.2.3))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.17)(react@19.2.3)
+      '@mui/material':
+        specifier: ^7.3.7
+        version: 7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3))(@types/react@19.2.17)(react@19.2.3))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@nx/design-system':
+        specifier: workspace:*
+        version: link:../../packages/design-system
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      next:
+        specifier: 16.1.1
+        version: 16.1.1(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react:
+        specifier: 19.2.3
+        version: 19.2.3
+      react-dom:
+        specifier: 19.2.3
+        version: 19.2.3(react@19.2.3)
+      react-markdown:
+        specifier: ^10.1.0
+        version: 10.1.0(@types/react@19.2.17)(react@19.2.3)
+    devDependencies:
+      '@types/node':
+        specifier: ^20
+        version: 20.19.43
+      '@types/react':
+        specifier: ^19
+        version: 19.2.17
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.2.3(@types/react@19.2.17)
+      eslint:
+        specifier: ^9
+        version: 9.39.5(jiti@2.7.0)
+      eslint-config-next:
+        specifier: 16.1.1
+        version: 16.1.1(@typescript-eslint/parser@8.63.0(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   apps/template:
     dependencies:
       '@emotion/react':

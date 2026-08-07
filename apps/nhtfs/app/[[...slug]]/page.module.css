@@ -1,0 +1,10 @@
+.siteMainChildPagesBelowMobile {
+}
+
+@media (max-width: 999px) {
+  .siteMainChildPagesBelowMobile {
+    grid-template-areas:
+      'center'
+      'right';
+  }
+}

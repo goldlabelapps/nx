@@ -22,7 +22,11 @@
     "paths": {
       "@/*": ["./*"],
       "@nx/design-system": ["../../packages/design-system/src"],
-      "@nx/design-system/*": ["../../packages/design-system/src/*"]
+      "@nx/design-system/*": ["../../packages/design-system/src/*"],
+      "@nx/uberedux": ["../../packages/uberedux/src"],
+      "@nx/uberedux/*": ["../../packages/uberedux/src/*"],
+      "@nx/virus": ["../../packages/virus/src"],
+      "@nx/virus/*": ["../../packages/virus/src/*"]
     }
   },
   "include": [

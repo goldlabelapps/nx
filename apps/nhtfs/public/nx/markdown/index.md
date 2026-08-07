@@ -1,16 +1,13 @@
 ---
-order: 1
+order: 1 
 slug: /
-title: 不是来这里乱搞的
-description: 一部由 Markdown 驱动的静态生成小说
+title: NX°
+tags: free, framework, fullstack, JavaScript, Vanilla JavaScript, TypeScript, React, Material UI, Flash, SSG, Server Side JavaScript, Node, NextJS
 icon: pingpong
-tags:
-  - 小说
-  - 静态生成
-  - markdown
 ---
-欢迎来到这个故事。
+NX° is a powerful framework for rapidly bootstrapping modern apps. Built on modular JavaScript and NextJS, it streamlines fullstack development for both server-side Node and client-side React—so you can launch new web apps fast, without starting from scratch. 
 
-本页由 Markdown 内容静态生成。
+Fast to build, affordable to deploy, and powered by proven web standards—from semantic HTML to static site generation. NX° apps are fast, reliable and make WordPress look very dated
 
-请使用导航栏访问 **工作**、**生活** 和 **平衡**。
+[CleverText text="Ready to create an NX° app?"]
+

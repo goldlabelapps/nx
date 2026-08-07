@@ -1,38 +1,36 @@
 {
-  "name": "不是来这里乱搞的",
-  "description": "一部关于人生的小说",
-  "url": "https://goldlabel.pro",
-  "owner": {
     "name": "NX°",
-    "email": "nx@goldlabel.pro"
-  },
-  "favicon": "/nx/png/favicon.png",
-  "cartridges": {
-    "designSystem": {
-      "defaultTheme": "light",
-      "pwa": {
-        "background": "#111111"
-      },
-      "themes": {
-        "dark": {
-          "mode": "dark",
-          "primary": "#d3d3d3",
-          "secondary": "#d3d3d3",
-          "paper": "#414141",
-          "background": "#414141",
-          "text": "#ffffff",
-          "textSecondary": "#d3d3d3"
-        },
-        "light": {
-          "mode": "light",
-          "primary": "#d3d3d3",
-          "secondary": "#414141",
-          "background": "#ffffff",
-          "paper": "#ffffff",
-          "text": "#2c2c2c",
-          "textSecondary": "#414141"
+    "description": "Rapidly build modern apps",
+    "url": "https://goldlabel.pro",
+    "owner": {
+        "name": "NX°",
+        "email": "nx@goldlabel.pro"
+    },
+    "favicon": "/nx/png/favicon.png",
+    "cartridges": {
+        "designSystem": {
+            "defaultTheme": "dark",
+            "pwa":{
+                "background": "#111111"
+            },
+            "themes": {
+                "dark": {
+                    "mode": "dark",
+                    "primary": "#ffd849",
+                    "secondary": "#ffd849",
+                    "paper": "#364450",
+                    "background": "#364450",
+                    "text": "#fff"
+                },
+                "light": {
+                    "mode": "light",
+                    "primary": "#FFD849",
+                    "secondary": "#364450",
+                    "background": "#ffffff",
+                    "paper": "#ffffff",
+                    "text": "#2c2c2a"
+                }
+            }
         }
-      }
     }
-  }
 }
