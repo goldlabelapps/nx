@@ -1,5 +1,4 @@
-import './styles/globals.css';
-
+// @ts-ignore: Editor-only side-effect CSS diagnostic can persist on this barrel entry.
 export { default as DesignSystemProvider } from './components/DesignSystemProvider';
 export { AppShell, PageSection, SectionTitle } from './components/layout/Layout';
 export { default as Heading } from './components/headings/Heading';

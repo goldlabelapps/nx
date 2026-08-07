@@ -45,9 +45,8 @@ export default function Page() {
   return (
     <AppShell>
       <PageSection
-        title="Template App"
-        subtitle="A minimal version of the www app. Theme colors are sourced from nx.config.json."
-      >
+        title="NX° Template"
+        subtitle="Minimal version of NX°. Theme colors are sourced from nx.config.json.">
         <Card>
           <List disablePadding>
             <ListItem disableGutters>
