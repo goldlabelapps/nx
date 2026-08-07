@@ -7,7 +7,7 @@ describe('server/serverUseAllMd', () => {
     expect(Array.isArray(slugs)).toBe(true);
     expect(slugs.length).toBeGreaterThan(0);
     expect(slugs.some((entry) => entry.length === 0)).toBe(true);
-    expect(slugs.some((entry) => entry.join('/') === 'features/design-system')).toBe(true);
+    expect(slugs.some((entry) => entry.join('/') === 'books/spec-fic/neuromancer')).toBe(true);
   });
 
   it('returns empty array for missing directory', () => {

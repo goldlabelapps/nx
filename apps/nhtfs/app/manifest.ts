@@ -1,10 +1,11 @@
 import type { MetadataRoute } from 'next';
 import fs from 'fs';
 import path from 'path';
+import nxConfig from '../public/nx/config.json';
+import { fileURLToPath } from 'url';
 
 export default function manifest(): MetadataRoute.Manifest {
-  const configPath = path.join(process.cwd(), 'public', 'nx', 'config.json');
-  const config = JSON.parse(fs.readFileSync(configPath, 'utf-8')) as {
+  const config = nxConfig as {
     name?: string;
     siteName?: string;
     description?: string;
@@ -28,8 +29,9 @@ export default function manifest(): MetadataRoute.Manifest {
   const defaultIconPath = '/favicons/ios.png';
   const androidSvgIconPath = '/favicons/android-icon.svg';
   const androidMaskableIconPath = '/favicons/android-maskable-512.png';
-  const androidSvgIconExists = fs.existsSync(path.join(process.cwd(), 'public', androidSvgIconPath.slice(1)));
-  const androidMaskableIconExists = fs.existsSync(path.join(process.cwd(), 'public', androidMaskableIconPath.slice(1)));
+  const appPublicDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../public');
+  const androidSvgIconExists = fs.existsSync(path.join(appPublicDir, androidSvgIconPath.slice(1)));
+  const androidMaskableIconExists = fs.existsSync(path.join(appPublicDir, androidMaskableIconPath.slice(1)));
   const androidPrimaryIcon = androidSvgIconExists ? androidSvgIconPath : (androidMaskableIconExists ? androidMaskableIconPath : defaultIconPath);
   const androidPrimaryIconType = androidSvgIconExists ? 'image/svg+xml' : 'image/png';
   const androidPrimaryIconSizes = androidSvgIconExists ? 'any' : '512x512';
