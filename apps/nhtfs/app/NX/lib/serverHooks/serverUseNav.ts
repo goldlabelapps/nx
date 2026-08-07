@@ -2,7 +2,6 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { normalizeTenant } from '../normalizeTenant';
 import { resolveMarkdownRoot } from '../markdownRoots';
 
 export interface NavItem {
@@ -17,8 +16,7 @@ export interface NavItem {
 
 
 async function getMarkdownRoot() {
-    const project = normalizeTenant();
-    return resolveMarkdownRoot(project);
+    return resolveMarkdownRoot();
 }
 
 function normalizeSlug(slug: string | undefined, fallback: string): string {
@@ -98,8 +96,7 @@ function buildNavTree(dir: string, baseUrl: string): NavItem[] {
 }
 
 export async function serverUseNav(): Promise<NavItem[]> {
-    const tenant = normalizeTenant();
     const markdownRoot = await getMarkdownRoot();
-    const baseUrl = `/${tenant}/markdown`;
+    const baseUrl = '/nx/markdown';
     return buildNavTree(markdownRoot, baseUrl);
 }

@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { normalizeTenant } from '../normalizeTenant';
 import { resolveMarkdownRoot } from '../markdownRoots';
 
 /**
@@ -10,8 +9,7 @@ import { resolveMarkdownRoot } from '../markdownRoots';
  * @param project Project name (default: "nx")
  * @returns Array of content objects for each slug
  */
-export function serverUseSlugs(slugs: string[] | string = [], project: string = "nx"): any[] {
-    project = normalizeTenant(project);
+export function serverUseSlugs(slugs: string[] | string = [], _project: string = "nx"): any[] {
     // Normalize slugs to array
     let slugArr: string[] = [];
     if (typeof slugs === "string") {
@@ -19,7 +17,7 @@ export function serverUseSlugs(slugs: string[] | string = [], project: string = 
     } else if (Array.isArray(slugs)) {
         slugArr = slugs.map(s => s.trim()).filter(Boolean);
     }
-    const markdownDir = resolveMarkdownRoot(project);
+    const markdownDir = resolveMarkdownRoot();
 
     // Helper to find a file by slug
     function findFileBySlug(targetSlug: string): string | null {
