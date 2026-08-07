@@ -24,9 +24,9 @@ export function AppShell({ children }: AppShellProps) {
 
 export function PageSection({ children, title, subtitle }: PageSectionProps) {
   return (
-    <section>
+    <Box component="section" sx={{ mb: 4 }}>
       {(title || subtitle) && (
-        <Stack spacing={0.5}>
+        <Stack spacing={0.5} sx={{ mb: 2 }}>
           {title && <Typography variant="h2">{title}</Typography>}
           {subtitle && (
             <Typography variant="body1" color="text.secondary">
@@ -36,7 +36,7 @@ export function PageSection({ children, title, subtitle }: PageSectionProps) {
         </Stack>
       )}
       {children}
-    </section>
+    </Box>
   );
 }
 
