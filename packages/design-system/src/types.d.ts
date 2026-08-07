@@ -212,3 +212,12 @@ export type SiteMainProps = {
 	children: ReactNode;
 	featuredImage?: string | null;
 };
+
+export type SwatchProps = {
+	label: string;
+	value?: string;
+};
+
+export type SwatchGroupProps = {
+	items: SwatchProps[];
+};
