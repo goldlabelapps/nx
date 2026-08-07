@@ -1,15 +1,15 @@
 ---
 order: 2
 slug: /work
-title: Work
-description: Focused execution and steady delivery
+title: 工作
+description: 专注执行，稳定交付
 icon: tick
 tags:
-  - work
-  - execution
+  - 工作
+  - 执行
 ---
-Work is where ideas become deliverables.
+工作是让想法变为成果的地方。
 
-- Keep scope clear
-- Ship in small increments
-- Review outcomes frequently
+- 保持目标清晰
+- 小步迭代交付
+- 定期复盘结果

@@ -1,15 +1,15 @@
 ---
 order: 4
 slug: /balance
-title: Balance
-description: Align priorities over time
+title: 平衡
+description: 随时间调整优先事项
 icon: bolt
 tags:
-  - balance
-  - priorities
+  - 平衡
+  - 优先事项
 ---
-Balance is not static; it is actively maintained.
+平衡不是静止的，而是需要主动维护的。
 
-- Revisit priorities each week
-- Adjust effort based on reality
-- Leave buffer for uncertainty
+- 每周重新审视优先事项
+- 根据现实调整投入
+- 为不确定性留有余地
