@@ -16,9 +16,11 @@
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
     "@nx/design-system": "workspace:*",
+    "gray-matter": "^4.0.3",
     "next": "16.1.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",

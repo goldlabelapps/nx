@@ -26,3 +26,23 @@ export type ThemeModeContextValue = {
 	setMode: (mode: ThemeMode) => void;
 	toggleMode: () => void;
 };
+
+export type MarkdownFrontmatter = {
+	order?: number;
+	slug?: string;
+	title?: string;
+	description?: string;
+	icon?: string;
+	tags?: string[] | string;
+	hideInNav?: boolean | string;
+};
+
+export type MarkdownPage = {
+	slugSegments: string[];
+	routePath: string;
+	filePath: string;
+	frontmatter: MarkdownFrontmatter;
+	title: string;
+	description: string;
+	content: string;
+};
