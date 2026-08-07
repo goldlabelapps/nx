@@ -3,7 +3,6 @@
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Alert } from '@mui/material';
-import { normalizeTenant } from '../../lib/normalizeTenant';
 
 type HiddenMessageItem = {
   slug: string;
@@ -28,7 +27,7 @@ function HiddenMessageInner({
 }: {
   slug?: string;
 }) {
-  const tenant = normalizeTenant();
+  const tenant = 'nx';
   const [hiddenMessages, setHiddenMessages] = React.useState<HiddenMessageItem[]>([]);
   const searchParams = useSearchParams();
   const querySlug = searchParams.get('slug');

@@ -1,7 +1,6 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import { normalizeTenant } from '../normalizeTenant';
 
 /**
  * Recursively finds a markdown file by its slug array.
@@ -9,8 +8,7 @@ import { normalizeTenant } from '../normalizeTenant';
  * @param project Project name (default: "nx")
  * @returns The file path if found, otherwise null
  */
-export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nx"): string | null {
-    project = normalizeTenant(project);
+export function serverUseMDBySlug(slugArr: string[] = [], _project: string = "nx"): string | null {
     // Remove trailing empty strings from slugArr
     let normalizedSlugArr = Array.isArray(slugArr) ? [...slugArr] : [];
     while (normalizedSlugArr.length > 1 && normalizedSlugArr[normalizedSlugArr.length - 1] === "") {
@@ -36,7 +34,7 @@ export function serverUseMDBySlug(slugArr: string[] = [], project: string = "nx"
             }
         }
     };
-    const markdownDir = `public/${project}/markdown`;
+    const markdownDir = path.join(process.cwd(), 'public', 'nx', 'markdown');
     walk(markdownDir);
     return foundPath;
 }
