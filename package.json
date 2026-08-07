@@ -7,10 +7,10 @@
   },
   "private": true,
   "scripts": {
-    "dev": "concurrently -n nx,admin,template,storybook -c blue,green,yellow,magenta \"pnpm --dir apps/www dev\" \"pnpm --dir apps/admin dev\" \"pnpm --dir apps/template dev\" \"pnpm --dir packages/design-system dev\"",
+    "dev": "concurrently -n nx,admin,template,nhtfs,storybook -c blue,green,yellow,cyan,magenta \"pnpm --dir apps/www dev\" \"pnpm --dir apps/admin dev\" \"pnpm --dir apps/template dev\" \"pnpm --dir apps/nhtfs dev\" \"pnpm --dir packages/design-system dev\"",
     "storybook": "pnpm --dir packages/design-system storybook",
     "build-storybook": "pnpm --dir packages/design-system build-storybook",
-    "build": "pnpm --dir packages/design-system build && pnpm --dir apps/www build && pnpm --dir apps/template build",
+    "build": "pnpm --dir packages/design-system build && pnpm --dir apps/www build && pnpm --dir apps/template build && pnpm --dir apps/nhtfs build",
     "clean": "bash ./shell/clean-repo.sh",
     "lint": "turbo run lint",
     "test": "node ./tests/run-monorepo-tests.mjs",
