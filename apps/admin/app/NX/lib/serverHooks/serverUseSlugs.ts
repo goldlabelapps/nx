@@ -8,7 +8,7 @@ import matter from "gray-matter";
  * @param project Project name (default: "nxadmin")
  * @returns Array of content objects for each slug
  */
-export function serverUseSlugs(slugs: string[] | string = [], project: string = "nxadmin"): any[] {
+export function serverUseSlugs(slugs: string[] | string = [], _project: string = "nxadmin"): any[] {
     // Normalize slugs to array
     let slugArr: string[] = [];
     if (typeof slugs === "string") {
@@ -16,7 +16,7 @@ export function serverUseSlugs(slugs: string[] | string = [], project: string = 
     } else if (Array.isArray(slugs)) {
         slugArr = slugs.map(s => s.trim()).filter(Boolean);
     }
-    const markdownDir = `public/${project}/markdown`;
+    const markdownDir = path.join(process.cwd(), 'public', 'nxadmin', 'markdown');
 
     // Helper to find a file by slug
     function findFileBySlug(targetSlug: string): string | null {
