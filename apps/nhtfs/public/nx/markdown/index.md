@@ -1,8 +1,8 @@
 ---
 order: 1
 slug: /
-title: Nhtfs
-description: Not here to fuck spiders
+title: Not here to fuck spiders
+description: A novel by Wei Zang
 tags: wei zang, pornvirusmp3, virus, nhtfs,
 icon: virus
 image: https://live.staticflickr.com/65535/55365828378_090ef631a8_b.jpg

@@ -1,6 +1,7 @@
 import type { T_Tenant } from '../types';
 import nxConfig from '../../../public/nx/config.json';
 import { normalizeTenant } from './normalizeTenant';
+import { resolveMarkdownRoot } from './markdownRoots';
 
 export const getTenant = (tenant?: T_Tenant) => {
 
@@ -12,11 +13,11 @@ export const getTenant = (tenant?: T_Tenant) => {
 
         case 'nx':
             config = nxConfig;
-            markdownDir = process.cwd() + '/public/nx/markdown';
+            markdownDir = resolveMarkdownRoot(t);
             break;
         default:
             config = nxConfig;
-            markdownDir = process.cwd() + '/public/nx/markdown';
+            markdownDir = resolveMarkdownRoot(t);
             break;
     }
     return {
