@@ -13,4 +13,10 @@ describe('server/serverUseRelated', () => {
       }),
     );
   });
+
+  it('returns deterministic fallback list when tags are missing or empty', () => {
+    expect(serverUseRelated()).toHaveLength(2);
+    expect(serverUseRelated([])).toHaveLength(2);
+    expect(serverUseRelated(['', 'nx', ''])).toHaveLength(2);
+  });
 });
