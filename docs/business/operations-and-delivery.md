@@ -1,4 +1,23 @@
 <div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Operations And Delivery</span>
+    </h1>
+</div>
+
+# Operations And Delivery
+
+NX repository documentation
+
+Tags: docs, business, operations-and-delivery
+
+<div>
 	<h1 style="display: flex; align-items: center; gap: 8px;">
 		<a href="https://app.askleida.com/" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center; margin-right: 8px;">
 			<img

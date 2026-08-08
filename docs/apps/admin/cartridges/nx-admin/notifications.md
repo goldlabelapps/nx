@@ -1,3 +1,22 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Notifications</span>
+    </h1>
+</div>
+
+# Notifications
+
+NX repository documentation
+
+Tags: docs, apps, admin, cartridges, nx-admin, notifications
+
 # Dashboard — Push Notifications (FCM)
 
 Dashboard integrates Firebase Cloud Messaging (FCM) to deliver push notifications to authenticated users. The system covers foreground messages (tab in focus), background messages (service worker), permission management, and OS app badge counts.

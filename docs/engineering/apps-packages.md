@@ -11,6 +11,14 @@
     </h1>
 </div>
 
+# Apps Packages
+
+NX repository documentation
+
+Tags: docs, engineering, apps-packages
+
+
+
 # Apps and Packages
 
 This monorepo is organized into two main kinds of workspaces: apps and packages.

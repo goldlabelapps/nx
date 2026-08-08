@@ -1,3 +1,22 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° PWA</span>
+    </h1>
+</div>
+
+# PWA
+
+NX repository documentation
+
+Tags: docs, apps, admin, cartridges, nx-admin, pwa
+
 # Dashboard — PWA Support
 
 Dashboard includes built-in Progressive Web App (PWA) install prompt management. It detects browser install eligibility, exposes the deferred install prompt, and tracks install state — all in Redux.

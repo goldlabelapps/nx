@@ -1,3 +1,22 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Actions</span>
+    </h1>
+</div>
+
+# Actions
+
+NX repository documentation
+
+Tags: docs, apps, admin, cartridges, nx-admin, actions
+
 # Dashboard — Actions Reference
 
 All actions are Redux thunks. They are exported from `app/NX/NXAdmin/index.tsx` and should be dispatched via the `useDispatch()` hook from Uberedux.

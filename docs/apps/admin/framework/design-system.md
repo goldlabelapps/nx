@@ -1,3 +1,22 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Design System</span>
+    </h1>
+</div>
+
+# Design System
+
+NX repository documentation
+
+Tags: docs, apps, admin, framework, design-system
+
 # NX° Framework — DesignSystem Cartridge
 
 The `DesignSystem` cartridge provides MUI (Material UI v6) theming, global feedback toasts, an icon library, and a collection of shared UI primitives that all other cartridges consume.

@@ -1,3 +1,22 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Admin</span>
+    </h1>
+</div>
+
+# Admin
+
+NX repository documentation
+
+Tags: docs, apps, admin, admin
+
 # NX° Framework Documentation
 
 Welcome to the official documentation for the **NX° Framework** — a modular, cartridge-based React/Next.js architecture built on Firebase, MUI, and Redux Toolkit.
@@ -25,7 +44,7 @@ NX° is a composable application framework. Rather than a monolithic codebase, N
 
 | Cartridge | Description |
 |---|---|
-| [Dashboard](./cartridges/nx-admin/README.md) | Back-office administration panel |
+| [Dashboard](./cartridges/nx-admin/nx-admin.md) | Back-office administration panel |
 
 ---
 

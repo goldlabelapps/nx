@@ -7,18 +7,19 @@
             height="32"
         />
         </a>
-        <span>NX° Storybook</span>
+        <span>NX° Apps</span>
     </h1>
 </div>
 
-# Storybook
+# Apps
 
 NX repository documentation
 
-Tags: docs, engineering, storybook
+Tags: docs, apps
 
-## Storybook
+# App Docs
 
-- Start Storybook from the workspace root with `pnpm storybook`.
-- Build the static Storybook bundle from the workspace root with `pnpm build-storybook`.
-- The implementation lives in `packages/design-system`, and the root scripts forward there.
+This folder contains app-specific documentation.
+
+- [Admin](./admin/admin.md)
+- [Flash Sprite](./flash/sprite.md)

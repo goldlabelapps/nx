@@ -1,3 +1,22 @@
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Nx Admin</span>
+    </h1>
+</div>
+
+# Nx Admin
+
+NX repository documentation
+
+Tags: docs, apps, admin, cartridges, nx-admin
+
 # Dashboard Cartridge
 
 Dashboard is a full back-office administration panel that plugs into any NX° host application. It provides:
@@ -16,7 +35,7 @@ Dashboard is a full back-office administration panel that plugs into any NX° ho
 
 | Document | Description |
 |---|---|
-| [Overview & Getting Started](./README.md) | This page |
+| [Overview & Getting Started](./nx-admin.md) | This page |
 | [Components Reference](./components.md) | All exported components |
 | [Actions Reference](./actions.md) | All Redux thunk actions |
 | [Hooks Reference](./hooks.md) | All custom React hooks |
