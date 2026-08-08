@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Apps
-
 NX repository documentation
 
-Tags: docs, apps
+> Tags: docs, apps
 
 # App Docs
 

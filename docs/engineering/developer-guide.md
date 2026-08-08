@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Developer Guide
-
 NX repository documentation
 
-Tags: docs, engineering, developer-guide
+> Tags: docs, engineering, developer-guide
 
 <div>
 	<h1 style="display: flex; align-items: center; gap: 8px;">

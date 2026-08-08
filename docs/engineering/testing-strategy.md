@@ -11,13 +11,9 @@
     </h1>
 </div>
 
-# Testing Strategy
-
 NX repository documentation
 
-Tags: docs, engineering, testing-strategy
-
-
+> Tags: docs, engineering, testing-strategy
 
 # Testing Strategy: How We Prove Quality at NX°
 

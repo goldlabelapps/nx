@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Ollama
-
 Run LLMs on your own device
 
-Tags: docs, concepts, experience, ai, ollama
+> Tags: docs, concepts, experience, ai, ollama
 
 > [CleverText text="Are you breaching GDPR?"]
 

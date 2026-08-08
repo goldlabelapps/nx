@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# TypeScript
-
 Statically typed superset of JavaScript
 
-Tags: docs, concepts, experience, techstack, typescript
+> Tags: docs, concepts, experience, techstack, typescript
 
 > [CleverText text="Build large, robust applications with confidence"]  
 

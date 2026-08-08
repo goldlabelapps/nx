@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Open Claw
-
 Claw Ensemble Learning is a meta-learning framework
 
-Tags: docs, concepts, experience, ai, open-claw
+> Tags: docs, concepts, experience, ai, open-claw
 
 > [CleverText text="Yeh. If you put that kind of AI into a drone with a gun... then you've got a big problem. Bloke down the pub said, yesterday"]
 

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# tsvector
-
 Superfast full text search
 
-Tags: docs, concepts, experience, techstack, python, tsvector
+> Tags: docs, concepts, experience, techstack, python, tsvector
 
 > [CleverText text="Superfast search with tsvector"]  
 

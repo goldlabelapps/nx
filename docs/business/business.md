@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Business
-
 NX repository documentation
 
-Tags: docs, business
+> Tags: docs, business
 
 # Business Docs
 

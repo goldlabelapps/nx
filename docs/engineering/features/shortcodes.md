@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Shortcodes
-
 A WordPress concept
 
-Tags: docs, engineering, features, shortcodes
+> Tags: docs, engineering, features, shortcodes
 
 > [CleverText text="How Shortcodes Work"] 
 

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# High Trust
-
 Solo Technical Operator
 
-Tags: docs, concepts, experience, solo
+> Tags: docs, concepts, experience, solo
 
 > [CleverText text="Not an freelancer. Not an agency. Not an employee."]
 

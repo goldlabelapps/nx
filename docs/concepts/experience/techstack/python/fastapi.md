@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# FastAPI
-
 High performance and easy-to-use APIs
 
-Tags: docs, concepts, experience, techstack, python, fastapi
+> Tags: docs, concepts, experience, techstack, python, fastapi
 
 > [CleverText text="Superfast search with tsvector"]  
 

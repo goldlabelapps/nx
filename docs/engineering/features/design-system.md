@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Design System
-
 Material UI
 
-Tags: docs, engineering, features, design-system
+> Tags: docs, engineering, features, design-system
 
 > [CleverText text="No other design system sees the same breadth of adoption as Material"]
 

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Uberedux
-
 NX repository documentation
 
-Tags: docs, apps, admin, framework, uberedux
+> Tags: docs, apps, admin, framework, uberedux
 
 # NX° Framework — Uberedux (State Management)
 

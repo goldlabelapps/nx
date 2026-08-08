@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# About
-
 Goldlabel Apps Ltd
 
-Tags: docs, business, about
+> Tags: docs, business, about
 
   
 Goldlabel Apps Ltd  

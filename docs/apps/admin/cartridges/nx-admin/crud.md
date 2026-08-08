@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Crud
-
 NX repository documentation
 
-Tags: docs, apps, admin, cartridges, nx-admin, crud
+> Tags: docs, apps, admin, cartridges, nx-admin, crud
 
 # Dashboard — CRUD System
 

@@ -11,13 +11,9 @@
     </h1>
 </div>
 
-# Apps Packages
-
 NX repository documentation
 
-Tags: docs, engineering, apps-packages
-
-
+> Tags: docs, engineering, apps-packages
 
 # Apps and Packages
 

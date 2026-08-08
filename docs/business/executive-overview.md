@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Executive Overview
-
 NX repository documentation
 
-Tags: docs, business, executive-overview
+> Tags: docs, business, executive-overview
 
 <div>
 	<h1 style="display: flex; align-items: center; gap: 8px;">

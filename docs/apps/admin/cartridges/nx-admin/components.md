@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Components
-
 NX repository documentation
 
-Tags: docs, apps, admin, cartridges, nx-admin, components
+> Tags: docs, apps, admin, cartridges, nx-admin, components
 
 # Dashboard — Components Reference
 

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Overview
-
 NX repository documentation
 
-Tags: docs, apps, admin, framework, overview
+> Tags: docs, apps, admin, framework, overview
 
 # NX° Framework — Architecture Overview
 

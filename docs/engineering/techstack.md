@@ -11,13 +11,9 @@
     </h1>
 </div>
 
-# Techstack
-
 NX repository documentation
 
-Tags: docs, engineering, techstack
-
-
+> Tags: docs, engineering, techstack
 
 # Tech Stack Overview
 

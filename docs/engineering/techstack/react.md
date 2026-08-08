@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# React
-
 by facebook
 
-Tags: docs, engineering, techstack, react
+> Tags: docs, engineering, techstack, react
 
 > [CleverText text="React apps are made out of components."]
 

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Phi-3
-
 High performance Microsoft models
 
-Tags: docs, concepts, experience, ai, phi-3
+> Tags: docs, concepts, experience, ai, phi-3
 
 > [CleverText text="Are you breaching GDPR?"]
 

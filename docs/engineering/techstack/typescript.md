@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# TypeScript
-
 Statically typed superset of JavaScript
 
-Tags: docs, engineering, techstack, typescript
+> Tags: docs, engineering, techstack, typescript
 
     
 > [CleverText text="JavaScript whatever the weather "]  

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Sprite
-
 NX repository documentation
 
-Tags: docs, apps, flash, sprite
+> Tags: docs, apps, flash, sprite
 
 # Sprite
 

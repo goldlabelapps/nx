@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Specialisation
-
 The techstack we work with
 
-Tags: docs, concepts, experience, techstack
+> Tags: docs, concepts, experience, techstack
 
 > [CleverText text="Experience, Techstack, Vercel, Firebase, Render, React"]
 

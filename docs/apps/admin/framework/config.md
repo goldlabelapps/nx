@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Config
-
 NX repository documentation
 
-Tags: docs, apps, admin, framework, config
+> Tags: docs, apps, admin, framework, config
 
 # NX° Framework — Configuration (`T_Config`)
 

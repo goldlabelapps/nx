@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Owner Guide
-
 NX repository documentation
 
-Tags: docs, business, owner-guide
+> Tags: docs, business, owner-guide
 
 <div>
 	<h1 style="display: flex; align-items: center; gap: 8px;">

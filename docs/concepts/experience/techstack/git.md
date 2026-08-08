@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Git
-
 Proud to share code
 
-Tags: docs, concepts, experience, techstack, git
+> Tags: docs, concepts, experience, techstack, git
 
  
 

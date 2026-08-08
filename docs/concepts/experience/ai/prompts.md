@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Prompts
-
 Proper Prompt Engineering
 
-Tags: docs, concepts, experience, ai, prompts
+> Tags: docs, concepts, experience, ai, prompts
 
 > [CleverText text="Simple cut+paste propmts to try "]
 

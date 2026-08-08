@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Python 3
-
 Central to AI and automation
 
-Tags: docs, engineering, techstack, python-3
+> Tags: docs, engineering, techstack, python-3
 
  
 

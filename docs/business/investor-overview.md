@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Investor Overview
-
 NX repository documentation
 
-Tags: docs, business, investor-overview
+> Tags: docs, business, investor-overview
 
 <div>
 	<h1 style="display: flex; align-items: center; gap: 8px;">

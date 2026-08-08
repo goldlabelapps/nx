@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# NX°
-
 Imported from www markdown content
 
-Tags: docs, concepts, nx-overview
+> Tags: docs, concepts, nx-overview
 
 NX° is a powerful framework for rapidly bootstrapping modern apps. Built on modular JavaScript and NextJS, it streamlines fullstack development for both server-side Node and client-side React—so you can launch new web apps fast, without starting from scratch. 
 

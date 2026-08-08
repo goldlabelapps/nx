@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Uberedux
-
 Zero config Redux pattern
 
-Tags: docs, engineering, features, uberedux
+> Tags: docs, engineering, features, uberedux
 
 > [CleverText text="Otherwise you'd be back in jQuery callback hell. Nobody wants that."] 
 

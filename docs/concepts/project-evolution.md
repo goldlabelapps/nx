@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Project Evolution
-
 NX repository documentation
 
-Tags: docs, concepts, project-evolution
+> Tags: docs, concepts, project-evolution
 
 <div>
 	<h1 style="display: flex; align-items: center; gap: 8px;">

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Engineering
-
 NX repository documentation
 
-Tags: docs, engineering
+> Tags: docs, engineering
 
 # Engineering Docs
 

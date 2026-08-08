@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Concepts
-
 NX repository documentation
 
-Tags: docs, concepts
+> Tags: docs, concepts
 
 # Concepts Docs
 

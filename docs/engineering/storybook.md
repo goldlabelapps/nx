@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Storybook
-
 NX repository documentation
 
-Tags: docs, engineering, storybook
+> Tags: docs, engineering, storybook
 
 ## Storybook
 

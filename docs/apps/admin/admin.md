@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Admin
-
 NX repository documentation
 
-Tags: docs, apps, admin, admin
+> Tags: docs, apps, admin, admin
 
 # NX° Framework Documentation
 

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# PWA
-
 NX repository documentation
 
-Tags: docs, apps, admin, cartridges, nx-admin, pwa
+> Tags: docs, apps, admin, cartridges, nx-admin, pwa
 
 # Dashboard — PWA Support
 

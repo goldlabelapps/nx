@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Design System
-
 NX repository documentation
 
-Tags: docs, apps, admin, framework, design-system
+> Tags: docs, apps, admin, framework, design-system
 
 # NX° Framework — DesignSystem Cartridge
 

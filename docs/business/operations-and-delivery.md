@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Operations And Delivery
-
 NX repository documentation
 
-Tags: docs, business, operations-and-delivery
+> Tags: docs, business, operations-and-delivery
 
 <div>
 	<h1 style="display: flex; align-items: center; gap: 8px;">

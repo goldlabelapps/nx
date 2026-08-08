@@ -11,13 +11,9 @@
     </h1>
 </div>
 
-# Developer
-
 NX repository documentation
 
-Tags: docs, engineering, developer
-
-
+> Tags: docs, engineering, developer
 
 ## Developer
 

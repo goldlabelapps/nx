@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Despecialisation
-
 How quickly can you despecialise?
 
-Tags: docs, concepts, experience, despecialise
+> Tags: docs, concepts, experience, despecialise
 
 > [CleverText text="What has become critical is experience"]  
 

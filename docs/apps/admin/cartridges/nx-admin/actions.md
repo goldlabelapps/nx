@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Actions
-
 NX repository documentation
 
-Tags: docs, apps, admin, cartridges, nx-admin, actions
+> Tags: docs, apps, admin, cartridges, nx-admin, actions
 
 # Dashboard — Actions Reference
 

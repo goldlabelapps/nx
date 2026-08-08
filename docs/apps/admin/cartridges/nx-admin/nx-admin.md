@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Nx Admin
-
 NX repository documentation
 
-Tags: docs, apps, admin, cartridges, nx-admin
+> Tags: docs, apps, admin, cartridges, nx-admin
 
 # Dashboard Cartridge
 

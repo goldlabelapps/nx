@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# PWA
-
 Progressive Web Apps
 
-Tags: docs, engineering, features, pwa
+> Tags: docs, engineering, features, pwa
 
 > [CleverText text="Installable on any phone"]
 

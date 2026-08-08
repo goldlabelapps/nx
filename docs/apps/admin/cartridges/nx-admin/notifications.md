@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Notifications
-
 NX repository documentation
 
-Tags: docs, apps, admin, cartridges, nx-admin, notifications
+> Tags: docs, apps, admin, cartridges, nx-admin, notifications
 
 # Dashboard — Push Notifications (FCM)
 

@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Python
-
 Central to AI and automation
 
-Tags: docs, concepts, experience, techstack, python
+> Tags: docs, concepts, experience, techstack, python
 
 > [CleverText text="Readable syntax, massive library support"]  
 

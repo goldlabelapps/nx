@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Experience
-
 2 decades of experience
 
-Tags: docs, concepts, experience
+> Tags: docs, concepts, experience
 
 > [CleverText text="Spanning every era of web development"]
 

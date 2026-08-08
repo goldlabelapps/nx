@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Hooks
-
 NX repository documentation
 
-Tags: docs, apps, admin, cartridges, nx-admin, hooks
+> Tags: docs, apps, admin, cartridges, nx-admin, hooks
 
 # Dashboard — Hooks Reference
 

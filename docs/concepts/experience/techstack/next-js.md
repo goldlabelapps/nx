@@ -11,11 +11,9 @@
     </h1>
 </div>
 
-# Next.js
-
 Fullstack Node and React
 
-Tags: docs, concepts, experience, techstack, nextjs
+> Tags: docs, concepts, experience, techstack, nextjs
 
 > [CleverText text="The world’s most popular environment for developing fast, scalable, and production-ready web applications"]
 

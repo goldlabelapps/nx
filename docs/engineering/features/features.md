@@ -11,10 +11,8 @@
     </h1>
 </div>
 
-# Features
-
 Powerful modern technologies
 
-Tags: docs, engineering, features
+> Tags: docs, engineering, features
 
 > [CleverText text="Design System, Uberedux, Shortcodes"]  
