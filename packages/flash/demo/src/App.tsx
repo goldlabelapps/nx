@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Flash from '../../src/Flash';
 import MovieClip from '../../src/MovieClips/MovieClip';
 import LightningBolt from '../../src/MovieClips/Lightning/LightningBolt';
@@ -7,6 +8,16 @@ import Sprite from '../../src/MovieClips/Sprite';
 const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'] as const;
 
 export default function App() {
+  const [directionIndex, setDirectionIndex] = useState(0);
+  const activeDirection = directions[directionIndex];
+
+  const rotateDirection = (step: number) => {
+    setDirectionIndex((current) => {
+      const next = current + step;
+      return (next + directions.length) % directions.length;
+    });
+  };
+
   return (
     <>
       <Flash>
@@ -54,12 +65,7 @@ export default function App() {
           </div>
         </MovieClip>
 
-        <MovieClip
-          pos="top-right"
-          width={330}
-          height={330}
-          style={{ right: 16, top: 14, left: 'auto', transform: 'none' }}
-        >
+        <MovieClip width={420} height={420}>
           <div
             style={{
               width: '100%',
@@ -67,38 +73,66 @@ export default function App() {
               borderRadius: 14,
               background: 'rgba(8, 10, 14, 0.44)',
               border: '1px solid rgba(255,255,255,0.18)',
-              padding: 10,
+              padding: 14,
               color: '#f7fbff',
-              fontSize: 11,
+              fontSize: 12,
               letterSpacing: 0.3,
               boxSizing: 'border-box',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <div style={{ marginBottom: 8, opacity: 0.85, textTransform: 'uppercase' }}>
+            <div style={{ marginBottom: 12, opacity: 0.85, textTransform: 'uppercase' }}>
               8-direction sprite walk cycle
             </div>
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-                gap: 10,
+                display: 'flex',
+                flex: 1,
+                width: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              {directions.map((direction) => (
-                <div
-                  key={direction}
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 4,
-                  }}
-                >
-                  <Sprite direction={direction} state="walking" size={56} />
-                  <span style={{ fontSize: 10, opacity: 0.86 }}>{direction}</span>
-                </div>
-              ))}
+              <Sprite direction={activeDirection} state="walking" size={224} />
+            </div>
+            <div style={{ marginBottom: 10, fontSize: 14, fontWeight: 700, letterSpacing: 1.2 }}>
+              Facing: {activeDirection}
+            </div>
+            <div style={{ display: 'flex', gap: 10 }}>
+              <button
+                type="button"
+                onClick={() => rotateDirection(-1)}
+                style={{
+                  padding: '8px 12px',
+                  background: '#0f253a',
+                  border: '1px solid rgba(255,255,255,0.28)',
+                  color: '#eaf4ff',
+                  borderRadius: 8,
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  letterSpacing: 0.6,
+                }}
+              >
+                Prev
+              </button>
+              <button
+                type="button"
+                onClick={() => rotateDirection(1)}
+                style={{
+                  padding: '8px 12px',
+                  background: '#1d3f2b',
+                  border: '1px solid rgba(255,255,255,0.28)',
+                  color: '#effff0',
+                  borderRadius: 8,
+                  cursor: 'pointer',
+                  fontWeight: 700,
+                  letterSpacing: 0.6,
+                }}
+              >
+                Next
+              </button>
             </div>
           </div>
         </MovieClip>

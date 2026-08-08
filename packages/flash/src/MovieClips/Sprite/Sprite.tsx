@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useMemo, useState } from 'react';
 import SpriteArtwork from './SpriteArtwork';
-import type { SpriteProps, SpriteState } from './types';
+import type { SpriteProps, SpriteState } from '../../../types';
 
 const WALKING_FRAMES = 4;
 const IDLE_FRAMES = 4;

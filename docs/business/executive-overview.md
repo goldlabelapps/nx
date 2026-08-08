@@ -103,6 +103,6 @@ Recent work continues to reinforce the platform story:
 ## Read Next
 
 - [Owner Guide](./owner-guide.md)
-- [Developer Guide](./developer-guide.md)
+- [Developer Guide](../engineering/developer-guide.md)
 - [Investor Overview](./investor-overview.md)
-- [Project Evolution](./project-evolution.md)
+- [Project Evolution](../concepts/project-evolution.md)

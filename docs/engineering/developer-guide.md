@@ -176,9 +176,9 @@ App-level checks:
 ## Recommended Onboarding Sequence
 
 1. Read `docs/README.md`
-2. Read `docs/executive-overview.md`
-3. Read `docs/operations-and-delivery.md`
-4. Read `docs/project-evolution.md`
+2. Read `docs/business/executive-overview.md`
+3. Read `docs/business/operations-and-delivery.md`
+4. Read `docs/concepts/project-evolution.md`
 5. Review `apps/www` and `apps/admin`
 6. Explore `packages/design-system`
 
@@ -214,5 +214,5 @@ Shared UI work:
 
 ## Read Next
 
-- [Operations and Delivery](./operations-and-delivery.md)
-- [Project Evolution](./project-evolution.md)
+- [Operations and Delivery](../business/operations-and-delivery.md)
+- [Project Evolution](../concepts/project-evolution.md)

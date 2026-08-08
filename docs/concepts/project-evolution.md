@@ -145,6 +145,6 @@ rather than foundational rebuild.
 
 ## Read Next
 
-- [Executive Overview](./executive-overview.md)
-- [Developer Guide](./developer-guide.md)
-- [Owner Guide](./owner-guide.md)
+- [Executive Overview](../business/executive-overview.md)
+- [Developer Guide](../engineering/developer-guide.md)
+- [Owner Guide](../business/owner-guide.md)

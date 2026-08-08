@@ -171,4 +171,4 @@ Recent commits reinforce execution momentum:
 
 - [Executive Overview](./executive-overview.md)
 - [Owner Guide](./owner-guide.md)
-- [Project Evolution](./project-evolution.md)
+- [Project Evolution](../concepts/project-evolution.md)

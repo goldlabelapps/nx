@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Direction, SpriteArtworkProps, SpritePalette } from './types';
+import type { Direction, SpriteArtworkProps, SpritePalette } from '../../../types';
 
 const WALK_STRIDE = [-2, -1, 2, 1];
 const WALK_BOB = [0, -1, 0, 1];

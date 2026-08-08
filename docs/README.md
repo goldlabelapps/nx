@@ -28,13 +28,22 @@ NX° helps teams:
 
 ## What You’ll Find Here
 
-- [Executive Overview](executive-overview.md) for the high-level product story
-- [Developer Guide](developer-guide.md) for the technical structure and onboarding path
-- [Owner Guide](owner-guide.md) for the product and delivery perspective
-- [Operations and Delivery](operations-and-delivery.md) for release and operational readiness
-- [Tech Stack](techstack.md) for the implementation choices behind the platform
-- [Apps and Packages](apps-packages.md) for the workspace structure
-- [Testing Strategy](testing-strategy.md) for quality assurance, coverage intent, and test execution standards
+- [Executive Overview](business/executive-overview.md) for the high-level product story
+- [Developer Guide](engineering/developer-guide.md) for the technical structure and onboarding path
+- [Owner Guide](business/owner-guide.md) for the product and delivery perspective
+- [Operations and Delivery](business/operations-and-delivery.md) for release and operational readiness
+- [Tech Stack](engineering/techstack.md) for the implementation choices behind the platform
+- [Apps and Packages](engineering/apps-packages.md) for the workspace structure
+- [Testing Strategy](engineering/testing-strategy.md) for quality assurance, coverage intent, and test execution standards
+
+## Documentation Map
+
+- [business](business/) for executive, owner, investor, and delivery-facing documentation
+- [engineering](engineering/) for architecture, stack, testing, and developer onboarding docs
+- [concepts](concepts/) for project evolution and historical context
+- [apps](apps/) for app-specific documentation (admin and flash)
+- [handover](handover/) for cross-audience onboarding and transition materials
+- [media](media/) and [testdata](testdata/) for documentation assets
 
 ## Platform Positioning
 

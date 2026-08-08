@@ -1,4 +1,4 @@
-import type { Direction } from './types';
+import type { Direction } from '../../../types';
 
 const OCTANT_DIRECTIONS: Direction[] = ['E', 'SE', 'S', 'SW', 'W', 'NW', 'N', 'NE'];
 

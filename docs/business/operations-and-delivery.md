@@ -126,5 +126,5 @@ NX° is designed to support app-specific deployment rather than a single monorep
 
 ## Read Next
 
-- [Developer Guide](./developer-guide.md)
-- [Project Evolution](./project-evolution.md)
+- [Developer Guide](../engineering/developer-guide.md)
+- [Project Evolution](../concepts/project-evolution.md)
