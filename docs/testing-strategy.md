@@ -174,6 +174,7 @@ In short: we do not just "have tests". We have a testing system that protects de
 From repo root:
 
 - `pnpm test` runs the full monorepo testing pipeline
+- `pnpm test:coverage` runs merged monorepo coverage across Jest, Vitest, and Node/TSX suites
 - `pnpm --dir apps/www test` runs public app tests only
 - `pnpm --dir apps/nhtfs test` runs nhtfs app tests only
 - `pnpm --dir packages/design-system test` runs design-system tests only

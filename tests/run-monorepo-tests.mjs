@@ -114,10 +114,29 @@ try {
 }
 
 const combinedOutput = stripAnsi(`${recursiveOutput}\n${rootOutput}`);
-const jestTests = sumMatches(combinedOutput, /Tests:\s+\d+\s+passed,\s+(\d+)\s+total/g);
-const vitestTests = sumMatches(combinedOutput, /Tests\s+\d+\s+passed\s+\((\d+)\)/g);
-const nodeTests = sumMatches(combinedOutput, /(?:ℹ|i)\s*tests\s+(\d+)/gi);
-const totalTests = jestTests + vitestTests + nodeTests;
+const formatNumber = (value) => new Intl.NumberFormat('en-GB').format(value);
+
+const sumTwoMatches = (text, regex) => {
+  let passed = 0;
+  let total = 0;
+
+  for (const match of text.matchAll(regex)) {
+    passed += Number(match[1] ?? 0);
+    total += Number(match[2] ?? 0);
+  }
+
+  return { passed, total };
+};
+
+const jest = sumTwoMatches(combinedOutput, /Tests:\s+(\d+)\s+passed,\s+(\d+)\s+total/g);
+const vitest = sumTwoMatches(combinedOutput, /Tests\s+(\d+)\s+passed\s+\((\d+)\)/g);
+const node = {
+  passed: sumMatches(combinedOutput, /(?:ℹ|i)\s*pass\s+(\d+)/gi),
+  total: sumMatches(combinedOutput, /(?:ℹ|i)\s*tests\s+(\d+)/gi),
+};
+
+const totalPassed = jest.passed + vitest.passed + node.passed;
+const totalTests = jest.total + vitest.total + node.total;
 
 const workspaceCoverage =
   workspacePackageJsons.length === 0
@@ -129,9 +148,16 @@ const packageCoverage =
 
 clearTerminal();
 
-console.log(`\n${paint(color.bold, paint(color.cyan, '=== Proud Overview ==='))}`);
+console.log(`\n${paint(color.bold, paint(color.cyan, '=== NX° test suite ==='))}`);
+console.log('');
 console.log(
-  `${paint(color.blue, 'Total automated tests executed:')} ${paint(color.bold, paint(color.magenta, String(totalTests)))}`
+  `${paint(color.blue, 'Total tests passed:')} ${paint(color.bold, paint(color.magenta, formatNumber(totalPassed)))}`
+);
+console.log(
+  `${paint(color.blue, 'Total tests executed:')} ${paint(color.bold, formatNumber(totalTests))}`
+);
+console.log(
+  `${paint(color.blue, 'By test type:')} ${paint(color.bold, 'Jest')} ${formatNumber(jest.passed)}/${formatNumber(jest.total)} | ${paint(color.bold, 'Vitest')} ${formatNumber(vitest.passed)}/${formatNumber(vitest.total)} | ${paint(color.bold, 'Node/TSX')} ${formatNumber(node.passed)}/${formatNumber(node.total)}`
 );
 console.log(
   `${paint(color.blue, 'Workspace coverage:')} ${paint(color.bold, `${testedWorkspaces}/${workspacePackageJsons.length}`)} workspaces with test scripts (${paint(colorByPercent(workspaceCoverage), `${workspaceCoverage}%`)})`
@@ -139,4 +165,6 @@ console.log(
 console.log(
   `${paint(color.blue, 'App coverage:')} ${paint(color.bold, `${testedApps}/${appPackageJsons.length}`)} (${paint(colorByPercent(appCoverage), `${appCoverage}%`)}) | ${paint(color.blue, 'Package coverage:')} ${paint(color.bold, `${testedPackages}/${packagePackageJsons.length}`)} (${paint(colorByPercent(packageCoverage), `${packageCoverage}%`)})`
 );
-console.log(paint(color.bold, paint(color.green, 'Quality signal: full monorepo test pipeline passed.')));
+console.log('');
+console.log(paint(color.bold, paint(color.green, '✅ RESULT: full monorepo test suite passed.')));
+console.log('');
