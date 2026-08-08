@@ -10,6 +10,8 @@ import Macromedia from './MovieClips/Icons/Macromedia';
 import LightningBolt from './MovieClips/Lightning/LightningBolt';
 import AnimateFlashLogo from './ActionScript/AnimateFlashLogo';
 import FlashBadge from './FlashBadge';
+import Sprite, { getDirection } from './MovieClips/Sprite';
+import type { Direction, SpriteState, SpriteProps, SpritePalette } from './MovieClips/Sprite';
 
 export {
     Flash,
@@ -25,4 +27,13 @@ export {
     AnimateFlashLogo,
     ChatbotAS,
     FlashBadge,
+    Sprite,
+    getDirection,
+};
+
+export type {
+    Direction,
+    SpriteState,
+    SpriteProps,
+    SpritePalette,
 };

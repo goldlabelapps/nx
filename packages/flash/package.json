@@ -9,9 +9,9 @@
     "test": "tsx --test tests/**/*.test.ts",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No lint configured yet'",
-    "example": "vite --config demo/vite.config.ts",
-    "example:build": "vite build --config demo/vite.config.ts",
-    "example:preview": "vite preview --config demo/vite.config.ts"
+    "dev": "vite --config demo/vite.config.ts",
+    "dev:build": "vite build --config demo/vite.config.ts",
+    "dev:preview": "vite preview --config demo/vite.config.ts"
   },
   "peerDependencies": {
     "@emotion/react": ">=11.0.0",

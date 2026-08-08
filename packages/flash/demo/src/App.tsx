@@ -2,6 +2,9 @@ import Flash from '../../src/Flash';
 import MovieClip from '../../src/MovieClips/MovieClip';
 import LightningBolt from '../../src/MovieClips/Lightning/LightningBolt';
 import Macromedia from '../../src/MovieClips/Icons/Macromedia';
+import Sprite from '../../src/MovieClips/Sprite';
+
+const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'] as const;
 
 export default function App() {
   return (
@@ -48,6 +51,55 @@ export default function App() {
             Visual sandbox for MovieClips, icons, and stage composition.
             <br />
             Edit demo/src/App.tsx and the stage hot-reloads.
+          </div>
+        </MovieClip>
+
+        <MovieClip
+          pos="top-right"
+          width={330}
+          height={330}
+          style={{ right: 16, top: 14, left: 'auto', transform: 'none' }}
+        >
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              borderRadius: 14,
+              background: 'rgba(8, 10, 14, 0.44)',
+              border: '1px solid rgba(255,255,255,0.18)',
+              padding: 10,
+              color: '#f7fbff',
+              fontSize: 11,
+              letterSpacing: 0.3,
+              boxSizing: 'border-box',
+            }}
+          >
+            <div style={{ marginBottom: 8, opacity: 0.85, textTransform: 'uppercase' }}>
+              8-direction sprite walk cycle
+            </div>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+                gap: 10,
+              }}
+            >
+              {directions.map((direction) => (
+                <div
+                  key={direction}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 4,
+                  }}
+                >
+                  <Sprite direction={direction} state="walking" size={56} />
+                  <span style={{ fontSize: 10, opacity: 0.86 }}>{direction}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </MovieClip>
       </Flash>
