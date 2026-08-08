@@ -13,6 +13,24 @@
 
 > NX° is a powerful JavaScript framework for creating apps to meet multiple projects and needs. Built for creators, coders, collaborators, and audiences who need a flexible space to publish, discover, and engage with rich content [more...](./docs/README.md)
 
+## Test Suite
+
+The NX° test suite validates apps, shared packages, and monorepo guardrails in one place. It combines Jest (apps), Vitest (design system), and Node/TSX tests (shared packages + root checks), then prints a single end-of-run summary. Run from repository root
+
+```bash
+pnpm test
+```
+
+#### Understand the code
+
+- [Monorepo test runner](tests/run-monorepo-tests.mjs)
+- [Monorepo coverage runner](tests/run-monorepo-coverage.mjs)
+- [Root framework guard tests](tests/testing-framework.test.mjs)
+- [WWW integration test example](apps/www/tests/integration/nav-theme-toggle.test.tsx)
+- [NHTFS API unit test example](apps/nhtfs/tests/unit/api/getEndpoints.test.ts)
+- [Design-system navigation test example](packages/design-system/tests/components/navigation/navigation.test.tsx)
+- [Shortcodes parser package test example](packages/shortcodes/tests/parser.test.ts)
+
 ## Bash CLI
 
 The repo includes a bash-only workspace CLI in [shell/nx.sh](shell/nx.sh). It works from a fresh clone before any package install:
