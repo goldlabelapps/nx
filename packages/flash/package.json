@@ -6,7 +6,7 @@
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
-    "test": "../../apps/www/node_modules/.bin/tsx --test tests/**/*.test.ts",
+    "test": "tsx --test tests/**/*.test.ts",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No lint configured yet'",
     "example": "vite --config demo/vite.config.ts",
@@ -31,6 +31,7 @@
     "@types/react-dom": "^19",
     "next": "*",
     "redux": "^5",
+    "tsx": "^4.21.0",
     "typescript": "^5",
     "vite": "^7.1.2"
   }

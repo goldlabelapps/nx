@@ -12,4 +12,4 @@ const run = (command, args) => {
 };
 
 run('pnpm', ['--filter', './apps/*', '--filter', './packages/*', '-r', '--if-present', 'test']);
-run('node', ['--test', './tests/monorepo.test.mjs']);
+run('node', ['--test', './tests/*.test.mjs']);

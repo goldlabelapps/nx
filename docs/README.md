@@ -34,6 +34,7 @@ NX° helps teams:
 - [Operations and Delivery](operations-and-delivery.md) for release and operational readiness
 - [Tech Stack](techstack.md) for the implementation choices behind the platform
 - [Apps and Packages](apps-packages.md) for the workspace structure
+- [Testing Strategy](testing-strategy.md) for quality assurance, coverage intent, and test execution standards
 
 ## Platform Positioning
 

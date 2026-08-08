@@ -38,7 +38,7 @@
     }
   },
   "scripts": {
-    "test": "../../apps/www/node_modules/.bin/tsx --test tests/**/*.test.ts",
+    "test": "tsx --test tests/**/*.test.ts",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No lint configured yet'"
   },
@@ -56,6 +56,7 @@
     "@types/react": "^19",
     "react": "^19",
     "react-redux": "^9",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
