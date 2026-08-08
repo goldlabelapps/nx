@@ -11,13 +11,13 @@
     </h1>
 </div>
 
-# NX°
-
-## Product Overview
+## NX° Overview
 
 NX° is a modern product platform for building and operating multiple digital experiences from a single, shared codebase. It brings together public-facing apps, admin surfaces, shared UI foundations, and scalable runtime patterns so teams can move faster without sacrificing consistency.
 
-## Why NX° Exists
+NX° is built for teams that want a strong foundation for product growth. It is especially useful when you need to support both audience-facing experiences and internal operating tools without fragmenting the codebase.
+
+## Why?
 
 NX° helps teams:
 
@@ -26,17 +26,22 @@ NX° helps teams:
 - keep customer-facing and internal experiences aligned
 - reduce duplication while preserving flexibility
 
-## What You’ll Find Here
+## What?
 
-- [Executive Overview](executive-overview.md) for the high-level product story
-- [Developer Guide](developer-guide.md) for the technical structure and onboarding path
-- [Owner Guide](owner-guide.md) for the product and delivery perspective
-- [Operations and Delivery](operations-and-delivery.md) for release and operational readiness
-- [Tech Stack](techstack.md) for the implementation choices behind the platform
-- [Apps and Packages](apps-packages.md) for the workspace structure
-- [Testing Strategy](testing-strategy.md) for quality assurance, coverage intent, and test execution standards
+- [Executive Overview](business/executive-overview.md) for the high-level product story
+- [Developer Guide](engineering/developer-guide.md) for the technical structure and onboarding path
+- [Owner Guide](business/owner-guide.md) for the product and delivery perspective
+- [Operations and Delivery](business/operations-and-delivery.md) for release and operational readiness
+- [Tech Stack](engineering/techstack.md) for the implementation choices behind the platform
+- [Imported Tech Stack Pages](engineering/techstack/README.md) for page-level runtime and tooling notes
+- [Imported Feature Pages](engineering/features/README.md) for framework capability writeups
+- [Experience Pages](concepts/experience/README.md) for delivery and AI experience context
+- [Apps and Packages](engineering/apps-packages.md) for the workspace structure
+- [Testing Strategy](engineering/testing-strategy.md) for quality assurance, coverage intent, and test execution standards
 
-## Platform Positioning
+## Audience
 
-NX° is built for teams that want a strong foundation for product growth. It is especially useful when you need to support both audience-facing experiences and internal operating tools without fragmenting the codebase.
-
+- [business](business/) for executive, owner, investor, and delivery-facing documentation
+- [engineering](engineering/) for architecture, stack, testing, and developer onboarding docs
+- [concepts](concepts/) for project evolution and historical context
+- [apps](apps/) for app-specific documentation (admin and flash)
