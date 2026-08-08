@@ -23,7 +23,7 @@ In this repository, the main app is located under [apps/nx](../apps/nx), and it 
 ## Packages
 Packages are reusable building blocks shared across apps or internal tooling. They are typically smaller, focused modules that can be imported by multiple parts of the monorepo.
 
-Examples in this repository include shared libraries under [packages](../packages), such as the Firebase and Flash packages.
+Examples in this repository include shared libraries under [packages](../packages), such as the Firebase, Flash, and Shortcodes packages.
 
 ## How to think about them
 - Use apps for product experiences and deployment targets.

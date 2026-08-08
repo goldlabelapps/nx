@@ -635,6 +635,15 @@ importers:
         specifier: ^7.1.2
         version: 7.3.6(@types/node@20.19.43)(jiti@2.7.0)(lightningcss@1.33.0)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0)
 
+  packages/shortcodes:
+    devDependencies:
+      tsx:
+        specifier: ^4.21.0
+        version: 4.23.1
+      typescript:
+        specifier: ^5
+        version: 5.9.3
+
   packages/uberedux:
     dependencies:
       '@reduxjs/toolkit':

@@ -31,6 +31,7 @@ A Turborepo-managed monorepo with multiple Next.js applications and shared packa
 - `apps/www` -> the public product experience
 - `apps/admin` -> admin and operational tooling
 - `packages/design-system` -> reusable UI, tokens, and component primitives
+- `packages/shortcodes` -> markdown shortcode parsing and rendering helpers
 - `packages/uberedux` -> shared state and provider patterns
 - `packages/flash` -> presentation and runtime helpers
 
