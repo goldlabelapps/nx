@@ -1,51 +1,6 @@
 "use client";
 import React from 'react';
-
-export interface I_MovieClip {
-    children?: React.ReactNode;
-    id?: string;
-    style?: React.CSSProperties;
-    className?: string;
-    width?: number | string;
-    height?: number | string;
-    border?: boolean;
-    /**
-     * Optional minimum width for the MovieClip
-     */
-    minWidth?: number | string;
-    /**
-     * Optional maximum width for the MovieClip
-     */
-    maxWidth?: number | string;
-    /**
-     * Optional z-index for stacking order
-     */
-    zIndex?: number;
-    pos?:
-    | 'top-left'
-    | 'top-middle'
-    | 'top-right'
-    | 'middle-left'
-    | 'middle-right'
-    | 'bottom-left'
-    | 'bottom-middle'
-    | 'bottom-right';
-    align?: 'left' | 'right' | 'center';
-    /**
-     * Optional offset in the X direction (pixels)
-     */
-    offsetX?: number;
-    /**
-     * Optional offset in the Y direction (pixels)
-     */
-    offsetY?: number;
-    /**
-     * Optional ref for the MovieClip div
-     */
-    ref?: React.Ref<HTMLDivElement>;
-
-
-}
+import type { I_MovieClip } from '../types';
 
 const defaultSize = 150;
 const movieClipBaseStyle: React.CSSProperties = {

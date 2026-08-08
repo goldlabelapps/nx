@@ -1,0 +1,59 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Avenir Next", "Futura", "Trebuchet MS", sans-serif;
+  background:
+    radial-gradient(1200px 600px at 70% -10%, #ffe4b2 0%, transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, #9ee6ff 0%, transparent 65%),
+    linear-gradient(150deg, #082031 0%, #0f2f45 45%, #20496a 100%);
+  color: #fff;
+}
+
+.playground-frame {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  border: 10px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.07);
+}
+
+.pulse {
+  animation: pulse 2.8s ease-in-out infinite;
+}
+
+.float {
+  animation: float 4.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
