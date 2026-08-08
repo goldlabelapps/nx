@@ -1,33 +1,9 @@
 "use client";
 import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+import type { FadeInTextHandle, TextProps } from '../../types';
 import {
   Typography,
 } from '@mui/material';
-
-interface TextProps {
-  children: React.ReactNode;
-  variant?:
-  | 'h1'
-  | 'h2'
-  | 'h3'
-  | 'h4'
-  | 'h5'
-  | 'h6'
-  | 'subtitle1'
-  | 'subtitle2'
-  | 'body1'
-  | 'body2'
-  | 'caption'
-  | 'button'
-  | 'overline'
-  | 'inherit';
-  [key: string]: any;
-}
-
-export interface FadeInTextHandle {
-  fadeInText: (duration?: number, params?: { onComplete?: () => void;[key: string]: any }) => void;
-  fadeOutText: (duration?: number, params?: { onComplete?: () => void;[key: string]: any }) => void;
-}
 
 const Text = forwardRef<FadeInTextHandle, TextProps>(function Text(
   { children, variant = 'body1', ...props },
