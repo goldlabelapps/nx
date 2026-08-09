@@ -104,10 +104,20 @@ export default async function Page({ params }: T_PageProps) {
         ? childPages.slice(0, 4).map((page) => ({
             title: page.title,
             href: page.path,
-            children: (page.children ?? []).slice(0, 3).map((child) => ({
-                title: child.title,
-                href: child.path,
-            })),
+            children: (() => {
+                const children = page.children ?? [];
+                if (!children.length) {
+                    return [];
+                }
+
+                const randomIndex = Math.floor(Math.random() * children.length);
+                const child = children[randomIndex];
+
+                return [{
+                    title: child.title,
+                    href: child.path,
+                }];
+            })(),
         }))
         : [{ title: 'About', href: '/about' }];
     const breadcrumbItems = slugArr.length
