@@ -16,7 +16,6 @@ import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
-import ChildPagesAside from './ChildPagesAside';
 import styles from './page.module.css';
 import {
     serverUseMDBySlug,
@@ -212,8 +211,6 @@ export default async function Page({ params }: T_PageProps) {
                         </RenderMarkdown>
                     </DesignSystemSiteMain>
 
-                    <ChildPagesAside items={childPages} />
-                    
                 </main>
                 
                 <SiteFooter columns={footerColumns} />
