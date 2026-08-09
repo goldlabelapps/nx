@@ -3,13 +3,29 @@
 import { useEffect, useRef, useState } from 'react';
 import { AppBar, Box, Toolbar } from '@mui/material';
 import Heading from '../headings/Heading';
+import type { SiteFooterProps } from '../../types';
 
-export default function Footer() {
+export default function Footer({ columns = [] }: SiteFooterProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [footerHeight, setFooterHeight] = useState(0);
   const footerRef = useRef<HTMLElement | null>(null);
 
+  const visibleColumns = columns
+    .filter((column) => Boolean(column?.title && column?.href))
+    .slice(0, 4)
+    .map((column) => ({
+      title: column.title,
+      href: column.href,
+      children: (column.children ?? []).filter((child) => Boolean(child?.title && child?.href)).slice(0, 3),
+    }));
+
   useEffect(() => {
+    if (!visibleColumns.length) {
+      document.documentElement.style.setProperty('--site-footer-offset', '0px');
+      document.body.style.paddingBottom = '0px';
+      return;
+    }
+
     let hasTriggered = false;
     const isVisibleRef = { current: false };
 
@@ -88,8 +104,14 @@ export default function Footer() {
       window.removeEventListener('load', runChecks);
       window.removeEventListener('pageshow', runChecks);
       observer?.disconnect();
+      document.documentElement.style.setProperty('--site-footer-offset', '0px');
+      document.body.style.paddingBottom = '0px';
     };
-  }, []);
+  }, [visibleColumns.length]);
+
+  if (!visibleColumns.length) {
+    return null;
+  }
 
   return (
     <AppBar
@@ -118,52 +140,27 @@ export default function Footer() {
           className="site-footer-columns"
           
         >
-          <section aria-label="Company links" className="site-footer-section" 
-          style={{ margin: 0 }}>
-            <Heading as="h3" style={{ margin: '0 0 0.2rem 0', fontSize: '0.8rem', lineHeight: 1.2 }}>
-              Company
-            </Heading>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', textAlign: 'left' }}>
-              <li>
-                <a href="/about">About</a>
-              </li>
-            </ul>
-          </section>
-
-          <section aria-label="Product links" className="site-footer-section" style={{ margin: 0 }}>
-            <Heading as="h3" style={{ margin: '0 0 0.2rem 0', fontSize: '0.8rem', lineHeight: 1.2 }}>
-              Features
-            </Heading>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-              <li>
-                <a href="/features/design-system">Design System</a>
-              </li>
-            </ul>
-          </section>
-
-          <section aria-label="Resources links" className="site-footer-section" style={{ margin: 0 }}>
-            <Heading as="h3" style={{ margin: '0 0 0.2rem 0', fontSize: '0.8rem', lineHeight: 1.2 }}>
-              Techstack
-            </Heading>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-              <li>
-                <a href="/techstack/nextjs">NextJS</a>
-              </li>
-            </ul>
-          </section>
-
-          <section aria-label="Legal links" className="site-footer-section" style={{ margin: 0 }}>
-            <Heading as="h3" style={{ margin: '0 0 0.2rem 0', fontSize: '0.8rem', lineHeight: 1.2 }}>
-              Download
-            </Heading>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
-              <li>
-                <a href="https://github.com/goldlabelapps/nx" target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
-              </li>
-            </ul>
-          </section>
+          {visibleColumns.map((column) => (
+            <section
+              key={`${column.href}-${column.title}`}
+              aria-label={`${column.title} links`}
+              className="site-footer-section"
+              style={{ margin: 0 }}
+            >
+              <Heading as="h3" style={{ margin: '0 0 0.2rem 0', fontSize: '0.8rem', lineHeight: 1.2 }}>
+                <a href={column.href}>{column.title}</a>
+              </Heading>
+              {column.children.length ? (
+                <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+                  {column.children.map((child) => (
+                    <li key={`${child.href}-${child.title}`}>
+                      <a href={child.href}>{child.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+            </section>
+          ))}
         </Box>
       </Toolbar>
     </AppBar>

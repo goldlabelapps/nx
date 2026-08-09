@@ -4,6 +4,7 @@ type ChildPageLink = {
   title: string;
   path: string;
   icon?: string;
+  children?: ChildPageLink[];
 };
 
 function normalizePath(input: string): string {
@@ -53,14 +54,25 @@ function findNodeByPath(items: NavItem[], targetPath: string): NavItem | null {
   return null;
 }
 
-function mapVisibleChildren(items: NavItem[]): ChildPageLink[] {
+function mapVisibleChildren(items: NavItem[], includeChildren = false): ChildPageLink[] {
   return items
     .filter((item) => !isHiddenInNav(item.hideInNav) && item.path)
-    .map((item) => ({
-      title: item.title,
-      path: normalizePath(item.path),
-      icon: item.icon,
-    }));
+    .map((item) => {
+      const mapped: ChildPageLink = {
+        title: item.title,
+        path: normalizePath(item.path),
+        icon: item.icon,
+      };
+
+      if (includeChildren && item.children?.length) {
+        const children = mapVisibleChildren(item.children);
+        if (children.length) {
+          mapped.children = children;
+        }
+      }
+
+      return mapped;
+    });
 }
 
 export async function serverUseChildPages(currentPath: string): Promise<ChildPageLink[]> {
@@ -69,11 +81,11 @@ export async function serverUseChildPages(currentPath: string): Promise<ChildPag
   const currentNode = findNodeByPath(navItems, normalizedPath);
 
   if (currentNode?.children?.length) {
-    return mapVisibleChildren(currentNode.children);
+    return mapVisibleChildren(currentNode.children, true);
   }
 
   if (normalizedPath === '/') {
-    return mapVisibleChildren(navItems).filter((item) => item.path !== '/');
+    return mapVisibleChildren(navItems, true).filter((item) => item.path !== '/');
   }
 
   return [];

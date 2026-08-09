@@ -33,8 +33,21 @@ function resolveComponentName(context: { component?: unknown; title?: string }) 
 }
 
 const preview: Preview = {
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
+    controls: {
+      expanded: true,
+      sort: 'requiredFirst',
+    },
+    actions: {
+      argTypesRegex: '^on[A-Z].*',
+    },
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+    },
     options: {
       
     },

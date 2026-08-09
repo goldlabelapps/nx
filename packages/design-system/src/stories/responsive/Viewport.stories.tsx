@@ -4,15 +4,24 @@ import { Card, DesktopOnly, MobileOnly } from '../../index';
 const meta: Meta<typeof DesktopOnly> = {
   title: 'Responsive/Viewport',
   component: DesktopOnly,
+  args: {
+    maxWidth: 999,
+  },
+  argTypes: {
+    maxWidth: { control: { type: 'number', min: 320, max: 1600, step: 1 } },
+    children: { control: false },
+    fallback: { control: false },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof DesktopOnly>;
 
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <div style={{ minWidth: 320, maxWidth: 520, display: 'grid', gap: 16 }}>
       <DesktopOnly
+        maxWidth={args.maxWidth}
         fallback={
           <Card>
             <strong>Mobile fallback</strong>
@@ -27,6 +36,7 @@ export const Default: Story = {
       </DesktopOnly>
 
       <MobileOnly
+        maxWidth={args.maxWidth}
         fallback={
           <Card>
             <strong>Desktop fallback</strong>

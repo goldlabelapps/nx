@@ -5,9 +5,16 @@ const meta: Meta<typeof Share> = {
   title: 'Navigation/Share',
   component: Share,
   args: {
+    size: 'medium',
     url: 'https://nx.dev/design-system/share',
     title: 'NX Design System',
     description: 'Reusable navigation and content primitives for NX projects.',
+  },
+  argTypes: {
+    size: { control: 'inline-radio', options: ['small', 'medium', 'large'] },
+    url: { control: 'text' },
+    title: { control: 'text' },
+    description: { control: 'text' },
   },
 };
 

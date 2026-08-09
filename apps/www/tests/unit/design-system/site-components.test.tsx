@@ -62,9 +62,22 @@ describe('design-system site components', () => {
   });
 
   it('renders footer links', () => {
-    render(<SiteFooter />);
+    render(
+      <SiteFooter
+        columns={[
+          {
+            title: 'Features',
+            href: '/features',
+            children: [
+              { title: 'Design System', href: '/features/design-system' },
+              { title: 'Storybook', href: '/features/storybook' },
+            ],
+          },
+        ]}
+      />,
+    );
 
-    expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '/about');
-    expect(screen.getByRole('link', { name: 'GitHub' })).toHaveAttribute('href', 'https://github.com/goldlabelapps/nx');
+    expect(screen.getByRole('link', { name: 'Features' })).toHaveAttribute('href', '/features');
+    expect(screen.getByRole('link', { name: 'Design System' })).toHaveAttribute('href', '/features/design-system');
   });
 });

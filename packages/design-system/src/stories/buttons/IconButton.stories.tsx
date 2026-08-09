@@ -9,10 +9,38 @@ import { AppShell, IconButton, PageSection } from '../../index';
 const meta: Meta<typeof IconButton> = {
   title: 'Buttons/IconButton',
   component: IconButton,
+  args: {
+    ariaLabel: 'Search',
+    tone: 'primary',
+    variant: 'solid',
+    size: 'md',
+    disabled: false,
+  },
+  argTypes: {
+    tone: { control: 'inline-radio', options: ['primary', 'neutral', 'danger'] },
+    variant: { control: 'inline-radio', options: ['solid', 'outline', 'ghost', 'text'] },
+    size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
+    color: { control: 'select', options: ['inherit', 'default', 'primary', 'secondary', 'success', 'error', 'info', 'warning'] },
+    disabled: { control: 'boolean' },
+    ariaLabel: { control: 'text' },
+    icon: { control: false },
+    onClick: { action: 'clicked' },
+    sx: { control: false },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof IconButton>;
+
+export const Playground: Story = {
+  render: (args) => (
+    <AppShell>
+      <PageSection title="IconButton playground" subtitle="Adjust props for compact icon actions.">
+        <IconButton {...args} icon={<SearchOutlinedIcon />} />
+      </PageSection>
+    </AppShell>
+  ),
+};
 
 export const Set: Story = {
   render: () => (

@@ -4,6 +4,16 @@ import { Breadcrumb } from '../../index';
 const meta: Meta<typeof Breadcrumb> = {
   title: 'Navigation/Breadcrumb',
   component: Breadcrumb,
+  args: {
+    items: [
+      { label: 'Docs', href: '/docs' },
+      { label: 'Navigation', href: '/docs/navigation' },
+      { label: 'Breadcrumb' },
+    ],
+  },
+  argTypes: {
+    items: { control: 'object' },
+  },
 };
 
 export default meta;
@@ -25,13 +35,5 @@ export const Default: Story = {
       ].join('\n'),
     },
   },
-  render: () => (
-    <Breadcrumb
-      items={[
-        { label: 'Docs', href: '/docs' },
-        { label: 'Navigation', href: '/docs/navigation' },
-        { label: 'Breadcrumb' },
-      ]}
-    />
-  ),
+  render: (args) => <Breadcrumb {...args} />,
 };

@@ -101,6 +101,16 @@ export default async function Page({ params }: T_PageProps) {
     const navItems = (await serverUseNav()) as T_NavNode[];
     const currentPath = slugArr.length ? `/${slugArr.join('/')}` : '/';
     const childPages = await serverUseChildPages(currentPath);
+    const footerColumns = childPages.length
+        ? childPages.slice(0, 4).map((page) => ({
+            title: page.title,
+            href: page.path,
+            children: (page.children ?? []).slice(0, 3).map((child) => ({
+                title: child.title,
+                href: child.path,
+            })),
+        }))
+        : [{ title: 'About', href: '/about' }];
     const breadcrumbItems = slugArr.length
         ? [
             { label: 'Home', href: '/' },
@@ -206,7 +216,7 @@ export default async function Page({ params }: T_PageProps) {
                     
                 </main>
                 
-                <SiteFooter />
+                <SiteFooter columns={footerColumns} />
 
             </div>
         </ThemeModeProvider>

@@ -9,6 +9,18 @@ function StoryFrame({ children }: { children: React.ReactNode }) {
 const meta: Meta<typeof Card> = {
   title: 'Feedback/Card',
   component: Card,
+  args: {
+    children: 'Default card content',
+    variant: 'paper',
+    padding: 'md',
+    hoverLift: false,
+  },
+  argTypes: {
+    variant: { control: 'inline-radio', options: ['paper', 'glass', 'tile', 'ink'] },
+    padding: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
+    hoverLift: { control: 'boolean' },
+    children: { control: 'text' },
+  },
 };
 
 export default meta;
@@ -34,6 +46,20 @@ export const Variants: Story = {
             <Card variant="tile"><Copy title="Tile" text="Compact utility surface for dense views." /></Card>
             <Card variant="ink"><Copy title="Ink" text="High-contrast inverse card for emphasis." /></Card>
           </Stack>
+        </PageSection>
+      </AppShell>
+    </StoryFrame>
+  ),
+};
+
+export const Playground: Story = {
+  render: (args) => (
+    <StoryFrame>
+      <AppShell>
+        <PageSection title="Card playground" subtitle="Tune variant, padding, and interaction state.">
+          <div style={{ maxWidth: 540 }}>
+            <Card {...args} />
+          </div>
         </PageSection>
       </AppShell>
     </StoryFrame>

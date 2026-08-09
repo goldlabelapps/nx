@@ -5,6 +5,12 @@ import { AppShell, PageSection, SectionTitle } from '../../index';
 const meta: Meta<typeof AppShell> = {
   title: 'Layout/App Shell',
   component: AppShell,
+  args: {
+    children: 'App shell content',
+  },
+  argTypes: {
+    children: { control: 'text' },
+  },
 };
 
 export default meta;
@@ -16,6 +22,18 @@ export const Overview: Story = {
       <PageSection title="Layout primitives" subtitle="Base shell, section spacing, and title hierarchy.">
         <Box className="nx-surface" sx={{ p: 3, display: 'grid', gap: 2 }}>
           <SectionTitle title="Consistent rhythm" subtitle="Use shared spacing primitives to keep pages aligned." />
+        </Box>
+      </PageSection>
+    </AppShell>
+  ),
+};
+
+export const Playground: Story = {
+  render: (args) => (
+    <AppShell>
+      <PageSection title="App shell playground" subtitle="Preview shell spacing and surface framing.">
+        <Box className="nx-surface" sx={{ p: 3 }}>
+          {args.children}
         </Box>
       </PageSection>
     </AppShell>

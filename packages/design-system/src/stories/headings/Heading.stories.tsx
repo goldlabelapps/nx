@@ -7,11 +7,31 @@ const meta: Meta<typeof Heading> = {
   component: Heading,
   args: {
     children: 'Editorial label',
+    tone: 'primary',
+    as: 'span',
+    variant: 'label',
+  },
+  argTypes: {
+    tone: { control: 'inline-radio', options: ['primary', 'secondary', 'ink', 'clay'] },
+    as: { control: 'select', options: ['span', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
+    variant: { control: 'select', options: ['label', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] },
+    children: { control: 'text' },
+    sx: { control: false },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof Heading>;
+
+export const Playground: Story = {
+  render: (args) => (
+    <AppShell>
+      <PageSection title="Heading playground" subtitle="Inspect semantic element, visual variant, and tone combinations.">
+        <Heading {...args} />
+      </PageSection>
+    </AppShell>
+  ),
+};
 
 export const Overview: Story = {
   render: (args) => (
