@@ -5,17 +5,27 @@ import { AppShell, List, ListItem, ListItemButton, ListItemText, ListSubheader, 
 const meta: Meta<typeof List> = {
 	title: 'Lists/List',
 	component: List,
+	args: {
+		dense: false,
+		disablePadding: false,
+	},
+	argTypes: {
+		dense: { control: 'boolean' },
+		disablePadding: { control: 'boolean' },
+		subheader: { control: false },
+		children: { control: false },
+	},
 };
 
 export default meta;
 type Story = StoryObj<typeof List>;
 
 export const Default: Story = {
-	render: () => (
+	render: (args) => (
 		<AppShell>
 			<PageSection title="List" subtitle="A thin wrapper around the MUI List API with the same core behaviors and props.">
 				<Stack spacing={3} sx={{ maxWidth: 560 }}>
-					<List subheader={<ListSubheader component="div">Primary actions</ListSubheader>}>
+					<List {...args} subheader={<ListSubheader component="div">Primary actions</ListSubheader>}>
 						<ListItem>
 							<ListItemText primary="Overview" secondary="Default list item spacing" />
 						</ListItem>

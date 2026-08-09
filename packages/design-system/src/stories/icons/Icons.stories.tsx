@@ -397,11 +397,34 @@ function IconGallery() {
 const meta: Meta<typeof Icon> = {
   title: 'Icons/Default',
   component: Icon,
+  args: {
+    icon: 'home',
+    color: 'inherit',
+    size: 28,
+  },
+  argTypes: {
+    icon: { control: 'select', options: ICON_NAMES },
+    color: { control: 'select', options: ['inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'] },
+    size: { control: { type: 'number', min: 12, max: 96, step: 1 } },
+  },
 };
 
 export default meta;
 
 type Story = StoryObj<typeof Icon>;
+
+export const Playground: Story = {
+  render: (args) => (
+    <AppShell>
+      <PageSection title="Icon playground" subtitle="Choose an icon, color, and size from the available registry.">
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12 }}>
+          <Icon {...args} />
+          <span style={{ fontSize: 14 }}>{String(args.icon)}</span>
+        </div>
+      </PageSection>
+    </AppShell>
+  ),
+};
 
 export const AllIcons: Story = {
   render: () => <IconGallery />,

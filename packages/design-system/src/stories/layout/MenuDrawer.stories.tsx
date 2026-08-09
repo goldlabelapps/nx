@@ -17,6 +17,14 @@ const sampleNav: T_NavNode[] = [
 const meta: Meta<typeof MenuDrawer> = {
   title: 'Layout/Menu Drawer',
   component: MenuDrawer,
+  args: {
+    toggleAriaLabel: 'Toggle navigation menu',
+  },
+  argTypes: {
+    toggleAriaLabel: { control: 'text' },
+    navItems: { control: false },
+    actions: { control: false },
+  },
 };
 
 export default meta;
@@ -37,5 +45,5 @@ export const Default: Story = {
       ].join('\n'),
     },
   },
-  render: () => <MenuDrawer navItems={<SiteNav items={sampleNav} />} />,
+  render: (args) => <MenuDrawer {...args} navItems={<SiteNav items={sampleNav} />} />,
 };

@@ -16,7 +16,6 @@ import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
 import { ThemeModeProvider } from '../NX/DesignSystem/ThemeModeContext';
-import ChildPagesAside from './ChildPagesAside';
 import styles from './page.module.css';
 import {
     serverUseMDBySlug,
@@ -101,6 +100,26 @@ export default async function Page({ params }: T_PageProps) {
     const navItems = (await serverUseNav()) as T_NavNode[];
     const currentPath = slugArr.length ? `/${slugArr.join('/')}` : '/';
     const childPages = await serverUseChildPages(currentPath);
+    const footerColumns = childPages.length
+        ? childPages.slice(0, 4).map((page) => ({
+            title: page.title,
+            href: page.path,
+            children: (() => {
+                const children = page.children ?? [];
+                if (!children.length) {
+                    return [];
+                }
+
+                const randomIndex = Math.floor(Math.random() * children.length);
+                const child = children[randomIndex];
+
+                return [{
+                    title: child.title,
+                    href: child.path,
+                }];
+            })(),
+        }))
+        : [{ title: 'About', href: '/about' }];
     const breadcrumbItems = slugArr.length
         ? [
             { label: 'Home', href: '/' },
@@ -202,11 +221,9 @@ export default async function Page({ params }: T_PageProps) {
                         </RenderMarkdown>
                     </DesignSystemSiteMain>
 
-                    <ChildPagesAside items={childPages} />
-                    
                 </main>
                 
-                <SiteFooter />
+                <SiteFooter columns={footerColumns} />
 
             </div>
         </ThemeModeProvider>

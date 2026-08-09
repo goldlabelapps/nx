@@ -8,10 +8,42 @@ import { AppShell, Button, PageSection } from '../../index';
 const meta: Meta<typeof Button> = {
   title: 'Buttons/Button',
   component: Button,
+  args: {
+    children: 'Button label',
+    tone: 'primary',
+    variant: 'solid',
+    size: 'md',
+    disabled: false,
+    fullWidth: false,
+  },
+  argTypes: {
+    tone: { control: 'inline-radio', options: ['primary', 'neutral', 'danger'] },
+    variant: { control: 'inline-radio', options: ['solid', 'outline', 'ghost', 'text'] },
+    size: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
+    disabled: { control: 'boolean' },
+    fullWidth: { control: 'boolean' },
+    children: { control: 'text' },
+    startIcon: { control: false },
+    endIcon: { control: false },
+    onClick: { action: 'clicked' },
+    sx: { control: false },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Button>;
+
+export const Playground: Story = {
+  render: (args) => (
+    <AppShell>
+      <PageSection title="Button playground" subtitle="Adjust props to preview tone, variant, size, and layout behavior.">
+        <div style={{ maxWidth: 420 }}>
+          <Button {...args} />
+        </div>
+      </PageSection>
+    </AppShell>
+  ),
+};
 
 export const Set: Story = {
   render: () => (

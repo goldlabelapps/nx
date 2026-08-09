@@ -213,6 +213,21 @@ export type SiteMainProps = {
 	featuredImage?: string | null;
 };
 
+export type SiteFooterLink = {
+	title: string;
+	href: string;
+};
+
+export type SiteFooterColumn = {
+	title: string;
+	href: string;
+	children?: SiteFooterLink[];
+};
+
+export type SiteFooterProps = {
+	columns?: SiteFooterColumn[];
+};
+
 export type SwatchProps = {
 	label: string;
 	value?: string;

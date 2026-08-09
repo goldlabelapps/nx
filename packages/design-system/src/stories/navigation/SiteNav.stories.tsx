@@ -26,15 +26,22 @@ const sampleNav: T_NavNode[] = [
 const meta: Meta<typeof SiteNav> = {
   title: 'Navigation/Site Nav',
   component: SiteNav,
+  args: {
+    items: sampleNav,
+  },
+  argTypes: {
+    items: { control: 'object' },
+    navigateTo: { action: 'navigateTo' },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof SiteNav>;
 
 export const Default: Story = {
-  render: () => (
+  render: (args) => (
     <div style={{ maxWidth: 320 }}>
-      <SiteNav items={sampleNav} />
+      <SiteNav {...args} />
     </div>
   ),
 };
