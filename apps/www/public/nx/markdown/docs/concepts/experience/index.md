@@ -1,11 +1,27 @@
 ---
-order: 33
+order: 9028
 title: Experience
-description: 2 decades of experience
-slug: /experience
-icon: experience
-tags: experience, eras
+description: <div>
+slug: /docs/concepts/experience
+icon: docs
+tags: docs
 ---
+<div>
+    <h1 style="display: flex; align-items: center; gap: 4px;">
+        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
+        <img
+            src="https://goldlabel.pro/favicons/favicon_dark.png"
+            width="32"
+            height="32"
+        />
+        </a>
+        <span>NX° Experience</span>
+    </h1>
+</div>
+
+2 decades of experience
+
+> Tags: docs, concepts, experience
 
 > [CleverText text="Spanning every era of web development"]
 
@@ -40,11 +56,3 @@ We've been a part of the evolution from the Flash era with basic dial-up experie
 - Technologies: Next.js, Serverless (AWS Lambda, Firebase), GraphQL, TypeScript, React 18, AI-driven development (OpenAI, TensorFlow.js)
 - Key Features: The shift toward serverless architecture and cloud-native development continues. Next.js revolutionizes server-side rendering and static site generation with its App Router. AI tools like OpenAI, TensorFlow.js, and other machine learning libraries are integrated for enhanced features like chatbots, search, and predictive analytics.
 - Development Focus: AI-driven apps (e.g., recommendation engines, chatbots, real-time data analysis) become standard. Serverless computing optimizes infrastructure costs and scalability. The integration of Next.js and TypeScript enhances developer productivity, offering both high performance and a streamlined developer experience.
-
-## Experience Documentation
-
-- [Experience concepts hub](/docs/concepts/experience)
-- [AI concepts](/docs/concepts/experience/ai)
-- [Despecialisation](/docs/concepts/experience/despecialisation)
-- [High trust](/docs/concepts/experience/high-trust)
-- [Specialisation](/docs/concepts/experience/techstack/specialisation)
