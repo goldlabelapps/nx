@@ -12,6 +12,7 @@ import {
     SiteMain as DesignSystemSiteMain,
     type T_NavNode,
 } from '@nx/design-system';
+import { getFooterColumnsFromChildPages } from '@nx/content';
 import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
@@ -100,26 +101,11 @@ export default async function Page({ params }: T_PageProps) {
     const navItems = (await serverUseNav()) as T_NavNode[];
     const currentPath = slugArr.length ? `/${slugArr.join('/')}` : '/';
     const childPages = await serverUseChildPages(currentPath);
-    const footerColumns = childPages.length
-        ? childPages.slice(0, 4).map((page) => ({
-            title: page.title,
-            href: page.path,
-            children: (() => {
-                const children = page.children ?? [];
-                if (!children.length) {
-                    return [];
-                }
-
-                const randomIndex = Math.floor(Math.random() * children.length);
-                const child = children[randomIndex];
-
-                return [{
-                    title: child.title,
-                    href: child.path,
-                }];
-            })(),
-        }))
-        : [{ title: 'About', href: '/about' }];
+    const footerColumns = getFooterColumnsFromChildPages(childPages, {
+        maxColumns: 4,
+        maxChildrenPerColumn: 1,
+        fallbackColumns: [{ title: 'About', href: '/about' }],
+    });
     const breadcrumbItems = slugArr.length
         ? [
             { label: 'Home', href: '/' },

@@ -21,6 +21,8 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "@nx/content": ["../../packages/content/src"],
+      "@nx/content/*": ["../../packages/content/src/*"],
       "@nx/design-system": ["../../packages/design-system/src"],
       "@nx/design-system/*": ["../../packages/design-system/src/*"],
       "@nx/uberedux": ["../../packages/uberedux/src"],

@@ -12,6 +12,7 @@ import {
     SiteMain as DesignSystemSiteMain,
     type T_NavNode,
 } from '@nx/design-system';
+import { getFooterColumnsFromChildPages } from '@nx/content';
 import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';
@@ -101,6 +102,11 @@ export default async function Page({ params }: T_PageProps) {
     const navItems = (await serverUseNav()) as T_NavNode[];
     const currentPath = slugArr.length ? `/${slugArr.join('/')}` : '/';
     const childPages = await serverUseChildPages(currentPath);
+    const footerColumns = getFooterColumnsFromChildPages(childPages, {
+        maxColumns: 4,
+        maxChildrenPerColumn: 1,
+        fallbackColumns: [{ title: 'About', href: '/about' }],
+    });
     const breadcrumbItems = slugArr.length
         ? [
             { label: 'Home', href: '/' },
@@ -206,7 +212,7 @@ export default async function Page({ params }: T_PageProps) {
                     
                 </main>
                 
-                <SiteFooter />
+                <SiteFooter columns={footerColumns} />
 
             </div>
         </ThemeModeProvider>
