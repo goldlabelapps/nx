@@ -1,6 +1,6 @@
 {
   "name": "@nx/content",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Shared content navigation utilities for markdown-driven NX apps.",
   "private": true,
   "main": "./src/index.ts",

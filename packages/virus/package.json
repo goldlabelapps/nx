@@ -1,6 +1,6 @@
 {
   "name": "@nx/virus",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Fingerprint identity and Firestore live-profile utilities for individualized client experiences.",
   "private": true,
   "main": "./src/index.ts",
