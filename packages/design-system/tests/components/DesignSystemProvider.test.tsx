@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import DesignSystemProvider from '../../src/components/DesignSystemProvider';
+import DesignSystemProvider from '../../src/components/DesignSystemProvider/DesignSystemProvider';
 
 describe('DesignSystemProvider', () => {
   it('renders children', () => {

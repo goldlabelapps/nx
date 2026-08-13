@@ -1,0 +1,1 @@
+export type { SwatchGroupProps } from '../../../types';

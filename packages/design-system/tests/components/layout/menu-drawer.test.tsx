@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import MenuDrawer from '../../../src/components/layout/MenuDrawer';
+import MenuDrawer from '../../../src/components/layout/MenuDrawer/MenuDrawer';
 
 describe('menu drawer', () => {
   it('opens and closes the navigation drawer', async () => {

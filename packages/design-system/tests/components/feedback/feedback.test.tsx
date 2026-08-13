@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Alert, Card, Field } from '../../../src/components/feedback/Feedback';
+import Alert from '../../../src/components/feedback/Alert/Alert';
+import Card from '../../../src/components/feedback/Card/Card';
+import Field from '../../../src/components/feedback/Field/Field';
 
 describe('feedback components', () => {
   it('renders alert variants with optional dismiss', () => {

@@ -1,10 +1,10 @@
 import { render, screen, within } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import List from '../../../src/components/lists/List';
-import ListItem from '../../../src/components/lists/ListItem';
-import ListItemButton from '../../../src/components/lists/ListItemButton';
-import ListItemText from '../../../src/components/lists/ListItemText';
-import ListSubheader from '../../../src/components/lists/ListSubheader';
+import List from '../../../src/components/lists/List/List';
+import ListItem from '../../../src/components/lists/ListItem/ListItem';
+import ListItemButton from '../../../src/components/lists/ListItemButton/ListItemButton';
+import ListItemText from '../../../src/components/lists/ListItemText/ListItemText';
+import ListSubheader from '../../../src/components/lists/ListSubheader/ListSubheader';
 
 describe('List primitive', () => {
 	it('renders list content with the default ul semantics', () => {

@@ -1,8 +1,8 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
-import Breadcrumb from '../../../src/components/navigation/Breadcrumb';
-import Share from '../../../src/components/navigation/Share';
-import SiteNav from '../../../src/components/navigation/SiteNav';
+import Breadcrumb from '../../../src/components/navigation/Breadcrumb/Breadcrumb';
+import Share from '../../../src/components/navigation/Share/Share';
+import SiteNav from '../../../src/components/navigation/SiteNav/SiteNav';
 
 describe('site navigation', () => {
   it('renders breadcrumb trail with current page marker', () => {
