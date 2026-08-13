@@ -21,11 +21,13 @@
     "gray-matter": "^4.0.3"
   },
   "scripts": {
+    "test": "tsx --test tests/**/*.test.ts",
     "type-check": "tsc --noEmit",
     "lint": "echo 'No lint configured yet'"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

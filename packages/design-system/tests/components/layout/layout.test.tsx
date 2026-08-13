@@ -65,7 +65,22 @@ describe('site layout components', () => {
   });
 
   it('renders footer link groups', () => {
-    render(<Footer />);
+    render(
+      <Footer
+        columns={[
+          {
+            title: 'About',
+            href: '/about',
+            children: [{ title: 'Design System', href: '/design-system' }],
+          },
+          {
+            title: 'NextJS',
+            href: '/nextjs',
+            children: [{ title: 'GitHub', href: 'https://github.com' }],
+          },
+        ]}
+      />
+    );
     expect(screen.getByRole('link', { name: 'About' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Design System' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'NextJS' })).toBeTruthy();
