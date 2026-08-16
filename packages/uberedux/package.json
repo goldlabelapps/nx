@@ -1,6 +1,6 @@
 {
   "name": "@nx/uberedux",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Shared Redux store/provider/hooks used across NX apps.",
   "private": true,
   "main": "./src/index.ts",

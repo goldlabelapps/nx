@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import IconButton from '../../../src/components/buttons/IconButton';
+import IconButton from '../../../src/components/buttons/IconButton/IconButton';
 
 describe('icon button primitive', () => {
   it('renders a disabled button with the expected size', () => {

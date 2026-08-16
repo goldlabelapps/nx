@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import Card from '../../../src/components/feedback/Card';
+import Card from '../../../src/components/feedback/Card/Card';
 
 describe('feedback/Card standalone', () => {
   it('renders with default paper styling and children', () => {

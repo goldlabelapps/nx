@@ -2,6 +2,13 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import type { T_NavNode } from '@nx/design-system';
+import {
+  getChildPagesFromNav,
+  getFooterColumnsFromChildPages,
+  type ContentNavItem,
+  type FooterColumn,
+} from '@nx/content';
+import { buildContentNavTreeFromMarkdownRoot } from '@nx/content/server';
 import type { MarkdownFrontmatter, MarkdownPage } from '../../types';
 
 const MARKDOWN_ROOT = path.join(process.cwd(), 'public', 'nx', 'markdown');
@@ -117,15 +124,55 @@ export function getMarkdownStaticParams() {
   }));
 }
 
+function getMarkdownContentNavItems(): ContentNavItem[] {
+  const navItems = buildContentNavTreeFromMarkdownRoot(MARKDOWN_ROOT);
+
+  const isHiddenInNav = (value: unknown): boolean => {
+    if (typeof value === 'boolean') {
+      return value;
+    }
+
+    if (typeof value === 'string') {
+      const normalized = value.trim().toLowerCase();
+      return normalized === 'true' || normalized === '1' || normalized === 'yes';
+    }
+
+    return false;
+  };
+
+  const filterVisible = (items: ContentNavItem[]): ContentNavItem[] =>
+    items
+      .filter((item) => !isHiddenInNav(item.hideInNav))
+      .map((item) => ({
+        ...item,
+        children: item.children?.length ? filterVisible(item.children) : undefined,
+      }));
+
+  return filterVisible(navItems);
+}
+
+function toTNavNodes(items: ContentNavItem[]): T_NavNode[] {
+  return items.map((item) => ({
+    title: item.title,
+    slug: item.path,
+    path: item.path,
+    children: item.children?.length ? toTNavNodes(item.children) : undefined,
+  }));
+}
+
 export function getMarkdownNavItems(): T_NavNode[] {
-  return getAllMarkdownPages()
-    .filter((page) => {
-      const hide = page.frontmatter.hideInNav;
-      return hide !== true && hide !== 'true';
-    })
-    .map((page) => ({
-      title: page.routePath === '/' ? 'Home' : page.title,
-      slug: page.routePath,
-      path: page.routePath,
-    }));
+  return toTNavNodes(getMarkdownContentNavItems());
+}
+
+export function getMarkdownFooterColumns(currentPath: string): FooterColumn[] {
+  const childPages = getChildPagesFromNav(getMarkdownContentNavItems(), currentPath, {
+    includeChildren: true,
+    includeRootChildrenWhenAtRoot: true,
+  });
+
+  return getFooterColumnsFromChildPages(childPages, {
+    maxColumns: 4,
+    maxChildrenPerColumn: 1,
+    fallbackColumns: [{ title: 'About', href: '/about' }],
+  });
 }

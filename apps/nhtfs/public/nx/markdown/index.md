@@ -5,9 +5,8 @@ title: Nhtfs
 description: Not here to fuck spiders
 tags: wei zang, pornvirusmp3, virus, nhtfs,
 icon: virus
-image: https://live.staticflickr.com/65535/55365828378_090ef631a8_b.jpg
+image: https://live.staticflickr.com/65535/54338019655_94e8e39903_b.jpg
 ---
+I am Wei Zang and this is my story. Some of it is true.
 
-[PageLink url="/characters/wei-zang" icon="virus" title="As far back as I can remember I knew that if I played by the rules I'd lose." description="This is my story. Some of it is true"]  
-
-[PageLink url="/zeitgeist/time-bubbles" icon="ai" title="Time Bubbles" description="The infinite monkey effect"]  
+[PageLink url="/characters/wei-zang" icon="virus" title="Read"]

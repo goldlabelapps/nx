@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import Heading from '../../../src/components/headings/Heading';
+import Heading from '../../../src/components/headings/Heading/Heading';
 
 describe('heading component', () => {
   it('renders text and supports block and semantic heading output', () => {

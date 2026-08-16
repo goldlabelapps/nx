@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { AppShell, Card, Header, PageSection } from '@nx/design-system';
+import { AppShell, Card, Header, PageSection, SiteFooter } from '@nx/design-system';
 import ReactMarkdown from 'react-markdown';
 import RoutedSiteNav from '../RoutedSiteNav';
 import {
+  getMarkdownFooterColumns,
   getMarkdownNavItems,
   getMarkdownPageBySlug,
   getMarkdownStaticParams,
@@ -48,6 +49,8 @@ export default async function MarkdownPage({ params }: PageProps) {
   }
 
   const navItems = getMarkdownNavItems();
+  const currentPath = slug.length ? `/${slug.join('/')}` : '/';
+  const footerColumns = getMarkdownFooterColumns(currentPath);
 
   return (
     <AppShell>
@@ -61,6 +64,8 @@ export default async function MarkdownPage({ params }: PageProps) {
           <ReactMarkdown>{page.content}</ReactMarkdown>
         </Card>
       </PageSection>
+
+      <SiteFooter columns={footerColumns} />
     </AppShell>
   );
 }

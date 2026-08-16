@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 import { usePathname } from 'next/navigation';
+import { Button } from '@mui/material';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 
 function normalizeRoutePath(input: string): string {
   const trimmed = input.trim();
@@ -15,11 +17,13 @@ function normalizeRoutePath(input: string): string {
 export default function PageLink({
   url = null,
   title = null,
-  description = null
+  description = null,
+  icon = null,
 }: {
   url?: string | null;
   title?: string | null;
   description?: string | null;
+  icon?: string | null;
 }) {
   const pathname = usePathname();
   if (!url) return null;
@@ -34,25 +38,20 @@ export default function PageLink({
   const label = title || description || url;
 
   return (
-    <a
+    <Button
+      component="a"
       href={url}
       target={isExternal ? '_blank' : '_self'}
       rel={isExternal ? 'noopener noreferrer' : undefined}
-      style={{
-        display: 'flex',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        width: '100%',
-        textDecoration: 'none',
-        color: 'inherit',
-        padding: '12px 14px',
-        border: '1px dashed rgba(0,0,0,0.25)',
-        borderRadius: 8,
-        background: 'rgba(255,255,255,0.46)',
-        boxShadow: 'none',
+      variant="outlined"
+      startIcon={<ArrowForwardRoundedIcon />}
+      fullWidth
+      sx={{
+        px: 1.75,
+        py: 1.25,
       }}
     >
       {label}
-    </a>
+    </Button>
   );
 }

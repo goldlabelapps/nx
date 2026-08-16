@@ -1,10 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { AppShell, PageSection, SectionTitle } from '../../../src/components/layout/Layout';
-import Header from '../../../src/components/layout/Header';
-import Main from '../../../src/components/layout/Main';
-import Footer from '../../../src/components/layout/Footer';
-import { DesktopOnly } from '../../../src/components/responsive/Viewport';
+import AppShell from '../../../src/components/layout/AppShell/AppShell';
+import PageSection from '../../../src/components/layout/PageSection/PageSection';
+import SectionTitle from '../../../src/components/layout/SectionTitle/SectionTitle';
+import Header from '../../../src/components/layout/Header/Header';
+import Main from '../../../src/components/layout/Main/Main';
+import Footer from '../../../src/components/layout/Footer/Footer';
+import { DesktopOnly } from '../../../src/components/responsive/Viewport/Viewport';
 
 describe('layout primitives', () => {
   it('renders shell and page section content', () => {
@@ -65,7 +67,22 @@ describe('site layout components', () => {
   });
 
   it('renders footer link groups', () => {
-    render(<Footer />);
+    render(
+      <Footer
+        columns={[
+          {
+            title: 'About',
+            href: '/about',
+            children: [{ title: 'Design System', href: '/design-system' }],
+          },
+          {
+            title: 'NextJS',
+            href: '/nextjs',
+            children: [{ title: 'GitHub', href: 'https://github.com' }],
+          },
+        ]}
+      />
+    );
     expect(screen.getByRole('link', { name: 'About' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'Design System' })).toBeTruthy();
     expect(screen.getByRole('link', { name: 'NextJS' })).toBeTruthy();

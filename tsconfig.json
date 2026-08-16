@@ -20,6 +20,8 @@
       "@nx/ui/*": ["packages/ui/*"],
       "@nx/design-system": ["packages/design-system/src"],
       "@nx/design-system/*": ["packages/design-system/src/*"],
+      "@nx/content": ["packages/content/src"],
+      "@nx/content/*": ["packages/content/src/*"],
       "@nx/shortcodes": ["packages/shortcodes/src"],
       "@nx/shortcodes/*": ["packages/shortcodes/src/*"],
       "@nx/uberedux": ["packages/uberedux/src"],

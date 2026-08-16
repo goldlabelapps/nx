@@ -1,6 +1,6 @@
 {
   "name": "template",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "private": true,
   "packageManager": "pnpm@11.13.0",
   "scripts": {
@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.14.1",
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
+    "@nx/content": "workspace:*",
     "@nx/design-system": "workspace:*",
     "gray-matter": "^4.0.3",
     "next": "16.1.1",

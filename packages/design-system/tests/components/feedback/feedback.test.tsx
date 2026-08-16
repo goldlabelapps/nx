@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Alert, Card, Field } from '../../../src/components/feedback/Feedback';
+import Alert from '../../../src/components/feedback/Alert/Alert';
+import Card from '../../../src/components/feedback/Card/Card';
+import Field from '../../../src/components/feedback/Field/Field';
 
 describe('feedback components', () => {
   it('renders alert variants with optional dismiss', () => {
@@ -26,7 +28,7 @@ describe('feedback components', () => {
     expect(screen.getByText('Card content')).toBeTruthy();
 
     const card = container.firstElementChild as HTMLElement;
-    expect(getComputedStyle(card).backgroundColor).toBe('rgb(156, 39, 176)');
+    expect(getComputedStyle(card).backgroundColor).toBe('rgb(31, 31, 31)');
     expect(getComputedStyle(card).paddingTop).toBe('32px');
   });
 

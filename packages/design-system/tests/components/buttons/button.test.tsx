@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '@mui/material/styles';
 import { describe, expect, it } from 'vitest';
-import Button from '../../../src/components/buttons/Button';
-import IconButton from '../../../src/components/buttons/IconButton';
+import Button from '../../../src/components/buttons/Button/Button';
+import IconButton from '../../../src/components/buttons/IconButton/IconButton';
 import { createAppTheme } from '../../../src/styles/theme';
 
 describe('button primitive', () => {

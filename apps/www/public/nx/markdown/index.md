@@ -11,3 +11,11 @@ Fast to build, affordable to deploy, and powered by proven web standards—from 
 
 [CleverText text="Ready to create an NX° app?"]
 
+## Extended Documentation
+
+- [Documentation hub](/docs)
+- [Apps docs](/docs/apps)
+- [Concepts docs](/docs/concepts)
+- [Engineering docs](/docs/engineering)
+- [Business docs](/docs/business)
+

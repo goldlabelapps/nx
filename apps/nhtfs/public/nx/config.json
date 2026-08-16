@@ -7,7 +7,7 @@
         "name": "NX°",
         "email": "nx@goldlabel.pro"
     },
-    "favicon": "/favicons/favicon.svg",
+    "favicon": "/nx/svg/favicon.svg",
     "avatars": {
         "light": "/nx/svg/avatarLight.svg",
         "dark": "/nx/svg/avatarDark.svg"

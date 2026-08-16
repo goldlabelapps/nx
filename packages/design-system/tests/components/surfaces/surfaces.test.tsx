@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import Swatch from '../../../src/components/surfaces/Swatch';
-import SwatchGroup from '../../../src/components/surfaces/SwatchGroup';
+import Swatch from '../../../src/components/surfaces/Swatch/Swatch';
+import SwatchGroup from '../../../src/components/surfaces/SwatchGroup/SwatchGroup';
 
 describe('surface swatches', () => {
   it('renders a swatch and falls back to transparent when value is blank', () => {

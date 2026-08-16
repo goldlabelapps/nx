@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
-import FeaturedImage from '../../../src/components/images/FeaturedImage';
+import FeaturedImage from '../../../src/components/images/FeaturedImage/FeaturedImage';
 
 describe('FeaturedImage', () => {
   const captionText = 'A scenic hero image';
