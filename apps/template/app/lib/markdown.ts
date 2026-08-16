@@ -173,6 +173,5 @@ export function getMarkdownFooterColumns(currentPath: string): FooterColumn[] {
   return getFooterColumnsFromChildPages(childPages, {
     maxColumns: 4,
     maxChildrenPerColumn: 1,
-    fallbackColumns: [{ title: 'About', href: '/about' }],
   });
 }

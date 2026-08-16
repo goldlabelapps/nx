@@ -104,7 +104,6 @@ export default async function Page({ params }: T_PageProps) {
     const footerColumns = getFooterColumnsFromChildPages(childPages, {
         maxColumns: 4,
         maxChildrenPerColumn: 1,
-        fallbackColumns: [{ title: 'About', href: '/about' }],
     });
     const breadcrumbItems = slugArr.length
         ? [
