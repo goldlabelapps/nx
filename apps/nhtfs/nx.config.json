@@ -6,7 +6,7 @@
         "name": "NX°",
         "email": "nx@goldlabel.pro"
     },
-    "favicon": "/nx/png/favicon.png",
+    "favicon": "/nx/svg/favicon.svg",
     "cartridges": {
         "designSystem": {
             "defaultTheme": "dark",

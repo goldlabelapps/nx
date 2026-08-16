@@ -208,7 +208,7 @@ export default async function Page({ params }: T_PageProps) {
                         </RenderMarkdown>
                     </DesignSystemSiteMain>
 
-                    <ChildPagesAside items={childPages} />
+                    {/* <ChildPagesAside items={childPages} /> */}
                     
                 </main>
                 

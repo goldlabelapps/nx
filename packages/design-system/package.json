@@ -2,7 +2,6 @@
   "name": "@nx/design-system",
   "version": "3.0.2",
   "description": "Shared frontend presentation package for NX°, covering theme, layout, and reusable UI primitives.",
-  "private": true,
   "sideEffects": [
     "**/*.css"
   ],

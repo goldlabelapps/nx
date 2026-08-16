@@ -22,6 +22,7 @@ export default function FeaturedImage({
   return (
     <Box
       sx={{
+        my: 2,
         width: width ?? '100%',
         height: resolvedHeight,
         ...(resolvedPaddingTop ? { paddingTop: resolvedPaddingTop } : {}),

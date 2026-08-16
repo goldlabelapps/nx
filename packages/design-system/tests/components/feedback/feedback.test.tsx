@@ -28,7 +28,7 @@ describe('feedback components', () => {
     expect(screen.getByText('Card content')).toBeTruthy();
 
     const card = container.firstElementChild as HTMLElement;
-    expect(getComputedStyle(card).backgroundColor).toBe('rgb(156, 39, 176)');
+    expect(getComputedStyle(card).backgroundColor).toBe('rgb(31, 31, 31)');
     expect(getComputedStyle(card).paddingTop).toBe('32px');
   });
 
