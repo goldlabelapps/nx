@@ -99,10 +99,7 @@ export default async function RootLayout({
   return (
     <html lang="en" data-design-system={designSystemId}>
       <head>
-        <link rel="icon" href={defaultFavicon} type={defaultFavicon.endsWith('.svg') ? 'image/svg+xml' : 'image/png'} sizes={defaultFavicon.endsWith('.svg') ? 'any' : '32x32'} />
-        <link rel="icon" href="/favicons/favicon_dark.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)" sizes="any" />
-        <link rel="icon" href="/favicons/favicon_light.png" type="image/png" sizes="32x32" />
-        <link rel="icon" href="/favicons/favicon_dark.png" type="image/png" media="(prefers-color-scheme: dark)" sizes="32x32" />
+        <link rel="icon" href="/nx/png/favicon.png" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href={appleTouchIcon} />
         <meta name="theme-color" content={pwaBackground} />
         <meta name="application-name" content={title} />

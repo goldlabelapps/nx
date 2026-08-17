@@ -7,10 +7,10 @@
         "name": "NX°",
         "email": "nx@goldlabel.pro"
     },
-    "favicon": "/nx/svg/favicon.svg",
+    "favicon": "/nx/png/favicon.png",
     "avatars": {
-        "light": "/nx/svg/avatarLight.svg",
-        "dark": "/nx/svg/avatarDark.svg"
+        "light": "/nx/png/favicon.png",
+        "dark": "/nx/png/favicon.png"
     },
     "images": {
         "light": "/nx/png/apps.png",
