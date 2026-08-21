@@ -6,19 +6,6 @@ slug: /docs/apps/admin/framework/config
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Config</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, framework, config
@@ -29,7 +16,7 @@ Every NX° application is driven by a single configuration object that is passed
 
 ---
 
-## Schema
+#### Schema
 
 ```ts
 type T_Config = {
@@ -64,7 +51,7 @@ type T_Config = {
 
 ---
 
-## `cartridges.designSystem`
+#### `cartridges.designSystem`
 
 Controls theming across the entire application.
 
@@ -129,7 +116,7 @@ type T_DesignSystemCartridge = {
 
 ---
 
-## How Config Flows Through the App
+#### How Config Flows Through the App
 
 1. `config.json` is imported at the page / layout level.
 2. It is passed as the `config` prop to `<NX>` and `<NXAdmin>`.
@@ -139,7 +126,7 @@ type T_DesignSystemCartridge = {
 
 ---
 
-## TypeScript tip
+#### TypeScript tip
 
 Import `T_Config` from the framework types file to get full type-safety:
 

@@ -6,19 +6,6 @@ slug: /docs/apps/flash/sprite
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Sprite</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, flash, sprite
@@ -27,7 +14,7 @@ NX repository documentation
 
 This folder contains a reusable SVG character sprite with 8-direction facing and a 4-frame walk cycle.
 
-## What this is
+#### What this is
 
 The sprite is designed to look blocky (Minecraft-like) while still being scalable SVG, not pixel/raster art.
 
@@ -39,7 +26,7 @@ It currently supports:
 - internal timer-based animation by default
 - optional parent-controlled frame via `frame` prop
 
-## File structure
+#### File structure
 
 - `Sprite.tsx`: React-facing component API + animation timing/frame selection
 - `SpriteArtwork.tsx`: SVG geometry and pose logic
@@ -50,7 +37,7 @@ Public types are centralized in the package root declarations file:
 
 - `../../../types` (actual file: `types.d.ts` at package root)
 
-## How rendering works
+#### How rendering works
 
 `Sprite` computes the active state and active frame, then renders `SpriteArtwork`.
 
@@ -67,7 +54,7 @@ Public types are centralized in the package root declarations file:
 - `idleFps` for idle (default `2`)
 - `animateIdle` controls whether idle ticks or remains static
 
-## How artwork works
+#### How artwork works
 
 `SpriteArtwork` uses reusable SVG primitives (rectangles/ellipse) for:
 
@@ -92,7 +79,7 @@ The walking cycle is driven by small numeric patterns:
 
 This creates motion that reads as walking rather than sliding.
 
-## Direction utility
+#### Direction utility
 
 `getDirection(dx, dy, fallback)` in `direction.ts` maps a movement vector to the nearest of 8 octants.
 
@@ -103,7 +90,7 @@ Convention used here:
 
 If `dx=0` and `dy=0`, it returns `fallback` (default `"S"`).
 
-## Usage
+#### Usage
 
 From package exports:
 
@@ -145,7 +132,7 @@ Palette override:
 />
 ```
 
-## Extension notes
+#### Extension notes
 
 Good next steps if you want more features without rewriting the core:
 

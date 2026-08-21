@@ -6,19 +6,6 @@ slug: /docs/apps/admin/cartridges/nx-admin/notifications
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Notifications</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, cartridges, nx-admin, notifications
@@ -29,7 +16,7 @@ Dashboard integrates Firebase Cloud Messaging (FCM) to deliver push notification
 
 ---
 
-## Architecture
+#### Architecture
 
 ```
 Server                    Client (tab open)          Background SW
@@ -51,7 +38,7 @@ Server                    Client (tab open)          Background SW
 
 ---
 
-## Setup
+#### Setup
 
 ### 1. Environment variables
 
@@ -80,7 +67,7 @@ Place `notification.mp3` at `public/nxadmin/mp3/notification.mp3`. This file is 
 
 ---
 
-## Permission & Token Flow
+#### Permission & Token Flow
 
 The `requestNotifications` action handles the full permission → token → persist flow:
 
@@ -117,7 +104,7 @@ state.redux.nxAdmin.notifications = {
 
 ---
 
-## Foreground Messages (`useNotifications`)
+#### Foreground Messages (`useNotifications`)
 
 The `useNotifications` hook registers an `onMessage` listener for when the app tab is focused. It is called automatically by `<MiniDrawer>`.
 
@@ -141,7 +128,7 @@ function CustomShell() {
 
 ---
 
-## The Notification Bell (`<NotificationBell>`)
+#### The Notification Bell (`<NotificationBell>`)
 
 The `<NotificationBell>` component in the top app bar shows the unread notification count and allows users to request permission or clear the badge.
 
@@ -159,7 +146,7 @@ import { NotificationBell } from '@/NX/NXAdmin';
 
 ---
 
-## Sending Notifications from the Server
+#### Sending Notifications from the Server
 
 Use the `/api/notify` route to send notifications to one or more users.
 
@@ -181,7 +168,7 @@ The route uses `firebase-admin` and `sendEachForMulticast` to fan the message ou
 
 ---
 
-## Background Notifications
+#### Background Notifications
 
 Background notifications are handled by `public/firebase-messaging-sw.js`. When a push arrives while the tab is not focused:
 
@@ -193,7 +180,7 @@ Background notifications are handled by `public/firebase-messaging-sw.js`. When 
 
 ---
 
-## Testing Push Notifications
+#### Testing Push Notifications
 
 1. Open the browser console after signing in — the FCM token is logged as `"Your FCM Token: …"`.
 2. Copy the token.

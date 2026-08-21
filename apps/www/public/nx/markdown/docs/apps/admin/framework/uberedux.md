@@ -6,19 +6,6 @@ slug: /docs/apps/admin/framework/uberedux
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Uberedux</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, framework, uberedux
@@ -29,7 +16,7 @@ Uberedux is NX°'s shared Redux layer. It wraps Redux Toolkit's `configureStore`
 
 ---
 
-## Philosophy
+#### Philosophy
 
 Instead of separate reducers for every cartridge, Uberedux uses a **single flat slice** (`redux`) with a generic `setUbereduxKey` action that accepts a dot-separated key path and a value. This means:
 
@@ -39,7 +26,7 @@ Instead of separate reducers for every cartridge, Uberedux uses a **single flat 
 
 ---
 
-## Store Structure
+#### Store Structure
 
 ```
 store.getState()
@@ -54,7 +41,7 @@ store.getState()
 
 ---
 
-## API
+#### API
 
 ### `UbereduxProvider`
 
@@ -133,7 +120,7 @@ function MyComponent() {
 
 ---
 
-## Writing a Cartridge Action
+#### Writing a Cartridge Action
 
 All cartridge actions follow the same thunk pattern:
 
@@ -156,7 +143,7 @@ export const myAction = (payload: string): any =>
 
 ---
 
-## TypeScript Types
+#### TypeScript Types
 
 | Type | Description |
 |---|---|

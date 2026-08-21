@@ -6,19 +6,6 @@ slug: /docs/business/operations-and-delivery
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Operations And Delivery</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, business, operations-and-delivery
@@ -36,11 +23,11 @@ NX repository documentation
 	</h1>
 </div>
 
-## Purpose
+#### Purpose
 
 This guide covers the operating model, validation steps, and delivery practices that keep NX° reliable as it grows.
 
-## The 5 Ws of Operations
+#### The 5 Ws of Operations
 
 ### What is being operated?
 
@@ -74,7 +61,7 @@ Because modern product delivery depends on more than a polished frontend. It als
 - when changing shared packages or runtime layers
 - when deploying to Vercel or validating production readiness
 
-## Delivery Workflow
+#### Delivery Workflow
 
 A dependable delivery flow for NX° typically looks like this:
 
@@ -84,7 +71,7 @@ A dependable delivery flow for NX° typically looks like this:
 4. review shared package and runtime impact
 5. ship with clear release awareness
 
-## Core Operational Domains
+#### Core Operational Domains
 
 ### Product Experience
 
@@ -98,7 +85,7 @@ The admin experience sits in `apps/admin` and supports the internal tool layer t
 
 The shared packages and runtime layers are where much of the platform’s leverage lives. Changes here should be reviewed carefully because they can affect multiple apps.
 
-## Environment Requirements
+#### Environment Requirements
 
 ### Runtime and Tooling
 
@@ -116,7 +103,7 @@ The shared packages and runtime layers are where much of the platform’s levera
 
 Tenant configuration should be present for the active deployment target in the relevant app public directory.
 
-## Validation Commands
+#### Validation Commands
 
 Workspace-level:
 
@@ -129,18 +116,18 @@ App-level:
 - `pnpm --filter www test`
 - `pnpm --filter admin typecheck`
 
-## Deployment Posture
+#### Deployment Posture
 
 NX° is designed to support app-specific deployment rather than a single monorepo-root deployment. Deployment should be treated as an app-level concern with clear validation and environment checks.
 
-## Common Failure Modes
+#### Common Failure Modes
 
 - missing or incomplete env configuration
 - misconfigured tenant settings
 - deployment root mismatches
 - shared package changes that affect multiple apps unexpectedly
 
-## Recommended Release Checklist
+#### Recommended Release Checklist
 
 1. Confirm the app root and deployment target.
 2. Confirm required environment variables for the selected app.
@@ -149,7 +136,7 @@ NX° is designed to support app-specific deployment rather than a single monorep
 5. Run relevant app tests.
 6. Review shared package and runtime impact before shipping.
 
-## Read Next
+#### Read Next
 
 - [Developer Guide](../engineering/developer-guide.md)
 - [Project Evolution](../concepts/project-evolution.md)

@@ -6,19 +6,6 @@ slug: /docs/apps/admin/cartridges/nx-admin/components
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Components</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, cartridges, nx-admin, components
@@ -29,7 +16,7 @@ All components are exported from `app/NX/NXAdmin/index.tsx`.
 
 ---
 
-## Layout Components
+#### Layout Components
 
 ### `<NXAdmin>`
 
@@ -134,7 +121,7 @@ import { PageRouter } from '@/NX/NXAdmin';
 
 ---
 
-## Page Components
+#### Page Components
 
 ### `<MegaDash>`
 
@@ -256,7 +243,7 @@ import { Fingerprints } from '@/NX/NXAdmin';
 
 ---
 
-## CRUD Components
+#### CRUD Components
 
 See the [CRUD System](./crud.md) document for full details. The four components below are used internally by `<Collection>` but can also be used standalone.
 
@@ -311,7 +298,7 @@ import { DeleteDoc } from '@/NX/NXAdmin';
 
 ---
 
-## Menu Components
+#### Menu Components
 
 ### `<NXAdminMenu>`
 
@@ -390,7 +377,7 @@ Displays the current user's name, email, and avatar. Used inside `<NXAdminMenu>`
 
 ---
 
-## UI Primitives
+#### UI Primitives
 
 ### `<InputString>`
 

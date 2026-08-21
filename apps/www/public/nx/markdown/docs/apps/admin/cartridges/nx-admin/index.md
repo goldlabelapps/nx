@@ -6,19 +6,6 @@ slug: /docs/apps/admin/cartridges/nx-admin
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Nx Admin</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, cartridges, nx-admin
@@ -37,7 +24,7 @@ Dashboard is a full back-office administration panel that plugs into any NX° ho
 
 ---
 
-## Documentation Index
+#### Documentation Index
 
 | Document | Description |
 |---|---|
@@ -51,7 +38,7 @@ Dashboard is a full back-office administration panel that plugs into any NX° ho
 
 ---
 
-## Quick Start
+#### Quick Start
 
 ### 1. Mount the cartridge
 
@@ -90,7 +77,7 @@ Copy `public/firebase-messaging-sw.js` to the root of your `public/` folder. Thi
 
 ---
 
-## How It Works
+#### How It Works
 
 ```
 <NXAdmin config={…}>
@@ -136,7 +123,7 @@ The active route is derived from the URL pathname. `MiniDrawer` syncs the URL wi
 
 ---
 
-## Redux State Shape
+#### Redux State Shape
 
 Dashboard stores all its state under `state.redux.nxAdmin`:
 

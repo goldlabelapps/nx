@@ -6,19 +6,6 @@ slug: /docs/apps/admin/cartridges/nx-admin/pwa
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° PWA</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, cartridges, nx-admin, pwa
@@ -29,13 +16,13 @@ Dashboard includes built-in Progressive Web App (PWA) install prompt management.
 
 ---
 
-## Overview
+#### Overview
 
 The PWA system is driven by two actions (`pwaAlert`, `triggerPwaInstall`) and the `<PWAAlert>` component. State is stored under `state.redux.nxAdmin.pwa`.
 
 ---
 
-## Redux State Shape
+#### Redux State Shape
 
 ```ts
 state.redux.nxAdmin.pwa = {
@@ -49,7 +36,7 @@ state.redux.nxAdmin.pwa = {
 
 ---
 
-## `pwaAlert()` Action
+#### `pwaAlert()` Action
 
 Initialises PWA state and registers `beforeinstallprompt` and `appinstalled` event listeners. Called automatically by `<MiniDrawer>` on mount — you do not need to call it manually in standard setups.
 
@@ -72,7 +59,7 @@ dispatch(pwaAlert());
 
 ---
 
-## `triggerPwaInstall()` Action
+#### `triggerPwaInstall()` Action
 
 Triggers the browser's native install dialog using the previously deferred `BeforeInstallPromptEvent`.
 
@@ -96,7 +83,7 @@ const accepted: boolean = await dispatch(triggerPwaInstall());
 
 ---
 
-## `<PWAAlert>` Component
+#### `<PWAAlert>` Component
 
 Renders the install prompt UI when the app is installable. Mount it anywhere inside the admin shell.
 
@@ -116,7 +103,7 @@ import { PWAAlert } from '@/NX/NXAdmin';
 
 ---
 
-## Checking PWA State in Components
+#### Checking PWA State in Components
 
 ```tsx
 import { useNXAdmin } from '@/NX/NXAdmin';
@@ -137,7 +124,7 @@ function InstallBanner() {
 
 ---
 
-## Requirements
+#### Requirements
 
 - The app must be served over **HTTPS** (or `localhost`) — `isSecureContext` must be `true`.
 - A **service worker** must be registered. The `firebase-messaging-sw.js` file in `public/` satisfies this requirement.
@@ -145,7 +132,7 @@ function InstallBanner() {
 
 ---
 
-## Detecting Standalone Mode
+#### Detecting Standalone Mode
 
 The `installed` flag is set to `true` when the app is already running as a PWA:
 

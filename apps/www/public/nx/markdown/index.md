@@ -10,12 +10,3 @@ NX° is a powerful framework for rapidly bootstrapping modern apps. Built on mod
 Fast to build, affordable to deploy, and powered by proven web standards—from semantic HTML to static site generation. NX° apps are fast, reliable and make WordPress look very dated
 
 [CleverText text="Ready to create an NX° app?"]
-
-## Extended Documentation
-
-- [Documentation hub](/docs)
-- [Apps docs](/docs/apps)
-- [Concepts docs](/docs/concepts)
-- [Engineering docs](/docs/engineering)
-- [Business docs](/docs/business)
-

@@ -6,19 +6,6 @@ slug: /docs/engineering/features/shortcodes
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Shortcodes</span>
-    </h1>
-</div>
-
 A WordPress concept
 
 > Tags: docs, engineering, features, shortcodes
@@ -39,7 +26,7 @@ By using shortcodes, content creators can
 - Keep markdown files clean and readable
 - Empower non-developers to enhance content without editing code
 
-## Example Usage
+#### Example Usage
 
 Suppose you want to embed a line of chatbot response style text in your markdown, you would do this
 

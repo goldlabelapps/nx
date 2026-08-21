@@ -6,19 +6,6 @@ slug: /docs/engineering/developer-guide
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Developer Guide</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, engineering, developer-guide
@@ -36,7 +23,7 @@ NX repository documentation
 	</h1>
 </div>
 
-## Purpose
+#### Purpose
 
 This guide is the practical handover for developers building on NX°.
 
@@ -47,7 +34,7 @@ It explains:
 - how apps, packages, and shared runtime layers fit together
 - how to validate changes before shipping
 
-## The 5 Ws for a Developer
+#### The 5 Ws for a Developer
 
 ### What am I looking at?
 
@@ -85,7 +72,7 @@ To keep shared product logic, design systems, and delivery infrastructure reusab
 - cross-app UI primitives: `packages/design-system`
 - shared state and runtime plumbing: `packages/uberedux`
 
-## Repository Map
+#### Repository Map
 
 ### Root
 
@@ -145,7 +132,7 @@ Purpose:
 - app-wide state composition
 - scalable Redux/Uberedux integration
 
-## Architecture Model
+#### Architecture Model
 
 ### NX Runtime
 
@@ -166,7 +153,7 @@ The platform is designed to support multiple product surfaces from one shared co
 - an admin experience for operators and maintainers
 - shared UI and infrastructure to keep both consistent
 
-## Data and API Surfaces
+#### Data and API Surfaces
 
 ### Public APIs
 
@@ -178,14 +165,14 @@ Implemented under `apps/admin/app/api`.
 
 These layers are where integrations, content delivery, and operational endpoints live.
 
-## External Integrations
+#### External Integrations
 
 - Next.js and React
 - Firebase and Supabase-ready patterns
 - Vercel deployment support
 - shared design-system storytelling and Storybook workflows
 
-## Validation and Shipping
+#### Validation and Shipping
 
 Use these checks before shipping meaningful changes:
 
@@ -198,7 +185,7 @@ App-level checks:
 - `pnpm --filter www test`
 - `pnpm --filter admin typecheck`
 
-## Recommended Onboarding Sequence
+#### Recommended Onboarding Sequence
 
 1. Read `docs/README.md`
 2. Read `docs/business/executive-overview.md`
@@ -207,7 +194,7 @@ App-level checks:
 5. Review `apps/www` and `apps/admin`
 6. Explore `packages/design-system`
 
-## First Places to Inspect for Common Tasks
+#### First Places to Inspect for Common Tasks
 
 Public product work:
 
@@ -237,7 +224,7 @@ Shared UI work:
 - `packages/design-system`
 - `packages/ui`
 
-## Read Next
+#### Read Next
 
 - [Operations and Delivery](../business/operations-and-delivery.md)
 - [Project Evolution](../concepts/project-evolution.md)

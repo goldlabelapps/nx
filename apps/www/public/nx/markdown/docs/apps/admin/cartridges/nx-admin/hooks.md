@@ -6,19 +6,6 @@ slug: /docs/apps/admin/cartridges/nx-admin/hooks
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Hooks</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, cartridges, nx-admin, hooks
@@ -29,7 +16,7 @@ All hooks are exported from `app/NX/NXAdmin/index.tsx`. They are client-side onl
 
 ---
 
-## `useNXAdmin()`
+#### `useNXAdmin()`
 
 Returns the entire `nxAdmin` Redux slice.
 
@@ -57,7 +44,7 @@ function MyComponent() {
 
 ---
 
-## `useCRUD()`
+#### `useCRUD()`
 
 Returns the `nxAdmin.crud` slice — the state map for all initialised collections.
 
@@ -95,7 +82,7 @@ function MyComponent() {
 
 ---
 
-## `useCollection(collection)`
+#### `useCollection(collection)`
 
 Convenience hook that returns the CRUD state for a single named collection.
 
@@ -118,7 +105,7 @@ function ProductList() {
 
 ---
 
-## `useActive()`
+#### `useActive()`
 
 Returns the current active route key (`nxAdmin.active`).
 
@@ -137,7 +124,7 @@ function NavItem({ collection }) {
 
 ---
 
-## `useNotifications()`
+#### `useNotifications()`
 
 Registers a foreground FCM message listener. Should be called once, at the shell level (it is called automatically inside `<MiniDrawer>`).
 
@@ -164,7 +151,7 @@ function CustomShell() {
 
 ---
 
-## `useHeader()`
+#### `useHeader()`
 
 Returns the current page header state (`nxAdmin.header`).
 
@@ -183,7 +170,7 @@ function MyHeader() {
 
 ---
 
-## Setting the Header
+#### Setting the Header
 
 Any page component can update the top-bar header by dispatching `setNXAdmin`:
 

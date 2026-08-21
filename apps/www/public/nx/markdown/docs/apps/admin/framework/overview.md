@@ -6,26 +6,13 @@ slug: /docs/apps/admin/framework/overview
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Overview</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, framework, overview
 
 # NX° Framework — Architecture Overview
 
-## The Cartridge Model
+#### The Cartridge Model
 
 NX° is built around the concept of **cartridges** — discrete, self-contained feature modules that plug into a shared host shell. Each cartridge:
 
@@ -39,7 +26,7 @@ This design makes it possible to add, remove, or swap an entire feature (e.g. Ad
 
 ---
 
-## Directory Structure
+#### Directory Structure
 
 ```
 app/
@@ -59,7 +46,7 @@ app/
 
 ---
 
-## Core Components
+#### Core Components
 
 ### `<NX>` — Root wrapper
 
@@ -82,7 +69,7 @@ import { NX } from '@/NX';
 
 ---
 
-## Lifecycle of a Request
+#### Lifecycle of a Request
 
 ```
 Browser Request
@@ -95,7 +82,7 @@ Browser Request
 
 ---
 
-## Shared Types (`types.d.ts`)
+#### Shared Types (`types.d.ts`)
 
 Key types shared across all cartridges:
 
@@ -111,7 +98,7 @@ Key types shared across all cartridges:
 
 ---
 
-## Available Cartridges
+#### Available Cartridges
 
 | Cartridge | Directory | Purpose |
 |---|---|---|

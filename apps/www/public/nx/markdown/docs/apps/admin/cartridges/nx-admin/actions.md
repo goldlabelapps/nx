@@ -6,19 +6,6 @@ slug: /docs/apps/admin/cartridges/nx-admin/actions
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Actions</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, cartridges, nx-admin, actions
@@ -29,7 +16,7 @@ All actions are Redux thunks. They are exported from `app/NX/NXAdmin/index.tsx` 
 
 ---
 
-## `setNXAdmin(key, value)`
+#### `setNXAdmin(key, value)`
 
 The primary state setter for the Dashboard slice. Merges the given key-value pair into `state.redux.nxAdmin`.
 
@@ -54,7 +41,7 @@ The action reads the current `nxAdmin` object, spreads it, overwrites the given 
 
 ---
 
-## `setCRUD(collection, key, value)`
+#### `setCRUD(collection, key, value)`
 
 Updates a specific key within a collection's CRUD state at `state.redux.nxAdmin.crud[collection][key]`.
 
@@ -81,7 +68,7 @@ dispatch(setCRUD('products', 'saving', true));
 
 ---
 
-## `initCollection(collection, options?)`
+#### `initCollection(collection, options?)`
 
 Initialises a Firestore collection in the Redux CRUD slice and begins listening for real-time updates (or performs a one-time fetch).
 
@@ -138,7 +125,7 @@ When `subscribe: true`, the action returns the Firestore `unsubscribe` function.
 
 ---
 
-## `saveNewDoc(collection, data)`
+#### `saveNewDoc(collection, data)`
 
 Creates a new document in Firestore, then selects it and switches mode to `'update'`.
 
@@ -170,7 +157,7 @@ dispatch(saveNewDoc('products', {
 
 ---
 
-## `edit(collection, data)`
+#### `edit(collection, data)`
 
 Updates an existing Firestore document and refreshes local state.
 
@@ -184,7 +171,7 @@ dispatch(edit('products', { id: 'abc123', label: 'Updated Widget' }));
 
 ---
 
-## `collectionDelete(collection, id)`
+#### `collectionDelete(collection, id)`
 
 Deletes a Firestore document from a collection.
 
@@ -198,7 +185,7 @@ dispatch(collectionDelete('products', 'abc123'));
 
 ---
 
-## `readTypescript(collection)`
+#### `readTypescript(collection)`
 
 Reads the `typescript` schema document for a collection and stores it in the CRUD state.
 
@@ -212,7 +199,7 @@ dispatch(readTypescript('products'));
 
 ---
 
-## `subscribeUser(uid)`
+#### `subscribeUser(uid)`
 
 Subscribes to a user's Firestore document and keeps the Redux `paywall` slice in sync.
 
@@ -226,7 +213,7 @@ dispatch(subscribeUser(uid));
 
 ---
 
-## `requestNotifications()`
+#### `requestNotifications()`
 
 Requests browser notification permission, obtains an FCM registration token, and persists the token to the user's Firestore document.
 
@@ -249,7 +236,7 @@ dispatch(requestNotifications());
 
 ---
 
-## `pwaAlert()`
+#### `pwaAlert()`
 
 Initialises PWA install prompt detection. Should be called once on app mount.
 
@@ -265,7 +252,7 @@ See the [PWA Support](./pwa.md) document for full details.
 
 ---
 
-## `triggerPwaInstall()`
+#### `triggerPwaInstall()`
 
 Programmatically triggers the browser's native PWA install prompt.
 

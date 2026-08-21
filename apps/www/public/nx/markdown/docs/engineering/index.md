@@ -6,19 +6,6 @@ slug: /docs/engineering
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Engineering</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, engineering
@@ -34,7 +21,7 @@ This folder contains technical documentation for architecture, implementation, a
 - [Storybook](./storybook.md)
 - [Developer](./developer.md)
 
-## Imported Framework Features
+#### Imported Framework Features
 
 - [Features Overview](./features/features.md)
 - [Design System](./features/design-system.md)
@@ -42,7 +29,7 @@ This folder contains technical documentation for architecture, implementation, a
 - [Shortcodes](./features/shortcodes.md)
 - [Uberedux](./features/uberedux.md)
 
-## Imported Tech Stack Pages
+#### Imported Tech Stack Pages
 
 - [Tech Stack Topic Index](./techstack/techstack.md)
 - [TypeScript](./techstack/typescript.md)

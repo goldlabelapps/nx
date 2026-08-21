@@ -6,19 +6,6 @@ slug: /docs/apps/admin/framework/design-system
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Design System</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, apps, admin, framework, design-system
@@ -29,7 +16,7 @@ The `DesignSystem` cartridge provides MUI (Material UI v6) theming, global feedb
 
 ---
 
-## Mounting
+#### Mounting
 
 `<DesignSystem>` is mounted automatically by `<NX>` and `<NXAdmin>` — you do not need to render it manually unless you are building a standalone cartridge.
 
@@ -43,7 +30,7 @@ import { DesignSystem } from '@/NX/DesignSystem';
 
 ---
 
-## Public API (`app/NX/DesignSystem/index.tsx`)
+#### Public API (`app/NX/DesignSystem/index.tsx`)
 
 ### Actions
 
@@ -83,7 +70,7 @@ import { DesignSystem } from '@/NX/DesignSystem';
 
 ---
 
-## Theming
+#### Theming
 
 Themes are defined in `config.json` under `cartridges.designSystem.themes`. The active theme key is stored in `state.redux.designSystem.themeMode`.
 
@@ -102,7 +89,7 @@ function ThemeToggle() {
 
 ---
 
-## Footer Layout
+#### Footer Layout
 
 The shared `Footer` is rendered as a fixed bottom `AppBar`.
 
@@ -120,7 +107,7 @@ Primary implementation styles live in `packages/design-system/src/styles/site-la
 
 ---
 
-## Feedback Toasts
+#### Feedback Toasts
 
 Any cartridge can dispatch a toast by calling `setFeedback`:
 
@@ -141,7 +128,7 @@ The `<Feedback />` component must be mounted somewhere in the tree (it is includ
 
 ---
 
-## Icon Component
+#### Icon Component
 
 `<Icon>` renders one of the 200+ named icons in the NX° icon library.
 

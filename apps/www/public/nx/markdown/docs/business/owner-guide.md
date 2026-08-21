@@ -6,19 +6,6 @@ slug: /docs/business/owner-guide
 icon: docs
 tags: docs
 ---
-<div>
-    <h1 style="display: flex; align-items: center; gap: 4px;">
-        <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/favicons/favicon_dark.png"
-            width="32"
-            height="32"
-        />
-        </a>
-        <span>NX° Owner Guide</span>
-    </h1>
-</div>
-
 NX repository documentation
 
 > Tags: docs, business, owner-guide
@@ -36,11 +23,11 @@ NX repository documentation
 	</h1>
 </div>
 
-## Purpose of This Guide
+#### Purpose of This Guide
 
 This guide explains NX° from an owner’s point of view: what has been built, why it matters, what the platform can already do, and what the current repository says about delivery readiness.
 
-## The 5 Ws for the Owner
+#### The 5 Ws for the Owner
 
 ### What has been built?
 
@@ -83,7 +70,7 @@ The value is distributed across:
 
 Now, during product delivery, because this is the moment where ambiguity creates risk. NX° reduces that risk by making the system inspectable, documented, and extendable.
 
-## What the Owner Should Understand About Scope
+#### What the Owner Should Understand About Scope
 
 NX° spans more than one product layer.
 
@@ -101,7 +88,7 @@ This includes the shared runtime, design system, state patterns, and product doc
 
 This third layer is the difference between “a working app” and “a platform that can keep evolving.”
 
-## Why the Monorepo Matters Strategically
+#### Why the Monorepo Matters Strategically
 
 The monorepo is not just a developer preference. It creates business value:
 
@@ -111,7 +98,7 @@ The monorepo is not just a developer preference. It creates business value:
 - future features can reuse the same foundation
 - documentation can be centralized and kept in step with the code
 
-## Evidence of a Professional Foundation
+#### Evidence of a Professional Foundation
 
 The repository already shows several signs of maturity:
 
@@ -122,7 +109,7 @@ The repository already shows several signs of maturity:
 - UI concerns are being extracted into reusable packages
 - the codebase shows steady refinement rather than ad-hoc experimentation
 
-## Operational Capability Already Present
+#### Operational Capability Already Present
 
 The admin experience is not a placeholder. It captures real operational concerns and supports a more complete product story:
 
@@ -130,7 +117,7 @@ The admin experience is not a placeholder. It captures real operational concerns
 - shared product infrastructure is treated as a first-class asset
 - delivery and maintenance concerns are visible rather than hidden
 
-## Commercial Meaning of the Current State
+#### Commercial Meaning of the Current State
 
 From an ownership perspective, the most important message is:
 
@@ -145,7 +132,7 @@ That includes:
 
 These are the kinds of investments that make a platform easier to grow and harder to abandon.
 
-## Current Risks the Owner Should Be Aware Of
+#### Current Risks the Owner Should Be Aware Of
 
 The repository is strong, but it is still in refinement mode.
 
@@ -155,20 +142,20 @@ The repository is strong, but it is still in refinement mode.
 - parts of the product and docs are evolving as the platform matures
 - final polish is still part of the active roadmap
 
-## What the Owner Can Confidently Say
+#### What the Owner Can Confidently Say
 
 An accurate owner-level statement would be:
 
 > NX° has moved from proof of concept into a structured product platform with public and operational applications, shared infrastructure, reusable UI assets, documentation, and clear room for iterative refinement rather than replatforming.
 
-## Suggested Owner-Level Next Steps
+#### Suggested Owner-Level Next Steps
 
 1. Keep this handover pack updated at key milestones.
 2. Use the operations and admin docs to define short-term launch readiness criteria.
 3. Treat the developer guide as the onboarding base for any new technical contributor.
 4. Use the executive and investor overview as the business-facing explanation of why the platform is more substantial than an early prototype.
 
-## Read Next
+#### Read Next
 
 - [Executive Overview](./executive-overview.md)
 - [Investor Overview](./investor-overview.md)
