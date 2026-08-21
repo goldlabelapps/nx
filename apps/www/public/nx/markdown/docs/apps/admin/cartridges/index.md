@@ -7,6 +7,6 @@ icon: docs
 tags: docs
 ---
 
-## Admin Cartridges
+#### Admin Cartridges
 
 - [NX Admin cartridge](/docs/apps/admin/cartridges/nx-admin)

@@ -12,7 +12,7 @@ NX repository documentation
 
 # NX° Framework — Architecture Overview
 
-## The Cartridge Model
+#### The Cartridge Model
 
 NX° is built around the concept of **cartridges** — discrete, self-contained feature modules that plug into a shared host shell. Each cartridge:
 
@@ -26,7 +26,7 @@ This design makes it possible to add, remove, or swap an entire feature (e.g. Ad
 
 ---
 
-## Directory Structure
+#### Directory Structure
 
 ```
 app/
@@ -46,7 +46,7 @@ app/
 
 ---
 
-## Core Components
+#### Core Components
 
 ### `<NX>` — Root wrapper
 
@@ -69,7 +69,7 @@ import { NX } from '@/NX';
 
 ---
 
-## Lifecycle of a Request
+#### Lifecycle of a Request
 
 ```
 Browser Request
@@ -82,7 +82,7 @@ Browser Request
 
 ---
 
-## Shared Types (`types.d.ts`)
+#### Shared Types (`types.d.ts`)
 
 Key types shared across all cartridges:
 
@@ -98,7 +98,7 @@ Key types shared across all cartridges:
 
 ---
 
-## Available Cartridges
+#### Available Cartridges
 
 | Cartridge | Directory | Purpose |
 |---|---|---|

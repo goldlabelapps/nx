@@ -7,6 +7,6 @@ icon: docs
 tags: docs
 ---
 
-## Flash
+#### Flash
 
 - [Sprite](/docs/apps/flash/sprite)

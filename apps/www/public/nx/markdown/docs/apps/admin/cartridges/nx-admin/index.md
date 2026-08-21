@@ -24,7 +24,7 @@ Dashboard is a full back-office administration panel that plugs into any NX° ho
 
 ---
 
-## Documentation Index
+#### Documentation Index
 
 | Document | Description |
 |---|---|
@@ -38,7 +38,7 @@ Dashboard is a full back-office administration panel that plugs into any NX° ho
 
 ---
 
-## Quick Start
+#### Quick Start
 
 ### 1. Mount the cartridge
 
@@ -77,7 +77,7 @@ Copy `public/firebase-messaging-sw.js` to the root of your `public/` folder. Thi
 
 ---
 
-## How It Works
+#### How It Works
 
 ```
 <NXAdmin config={…}>
@@ -123,7 +123,7 @@ The active route is derived from the URL pathname. `MiniDrawer` syncs the URL wi
 
 ---
 
-## Redux State Shape
+#### Redux State Shape
 
 Dashboard stores all its state under `state.redux.nxAdmin`:
 

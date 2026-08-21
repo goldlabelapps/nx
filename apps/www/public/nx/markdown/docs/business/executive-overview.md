@@ -23,13 +23,13 @@ NX repository documentation
 	</h1>
 </div>
 
-## Executive Summary
+#### Executive Summary
 
 NX° is a product platform for building and operating multiple digital experiences from one shared codebase. The repository already demonstrates a strong foundation for shipping a polished product with clear architecture, reusable UI, and a scalable operating model.
 
 The central message is simple: NX° is not just a collection of apps. It is a platform for composing products, workflows, and shared capabilities efficiently.
 
-## The 5 Ws
+#### The 5 Ws
 
 ### What is NX°?
 
@@ -65,7 +65,7 @@ The value is concentrated in the shared platform layer and the product surfaces 
 
 It matters now because NX° is at the point where product clarity, platform maturity, and shipping discipline become visible. This is where strong foundations become obvious to new contributors and stakeholders alike.
 
-## Platform Positioning
+#### Platform Positioning
 
 NX° is designed as a flexible foundation for building ambitious digital products without fragmenting the codebase. It gives teams a way to:
 
@@ -74,7 +74,7 @@ NX° is designed as a flexible foundation for building ambitious digital product
 - keep internal tools and customer-facing apps aligned
 - scale without rebuilding the same infrastructure repeatedly
 
-## What the Repository Already Shows
+#### What the Repository Already Shows
 
 The current repository demonstrates a credible product platform foundation:
 
@@ -86,7 +86,7 @@ The current repository demonstrates a credible product platform foundation:
 
 This is the difference between a one-off prototype and a platform that can evolve.
 
-## Why This Is Compelling
+#### Why This Is Compelling
 
 NX° is attractive because it combines product ambition with implementation discipline. The codebase is not just organized — it is designed for reuse, coordination, and continued development.
 
@@ -96,7 +96,7 @@ That makes it especially strong for teams that need to:
 - maintain product quality across multiple surfaces
 - onboard contributors into a coherent system
 
-## Current Product Momentum
+#### Current Product Momentum
 
 Recent work continues to reinforce the platform story:
 
@@ -105,14 +105,14 @@ Recent work continues to reinforce the platform story:
 - shared UI and design-system maturity
 - documentation and delivery guardrails improving alongside product work
 
-## What a New Reader Should Take Away
+#### What a New Reader Should Take Away
 
 1. NX° is a real product platform, not just a demo repository.
 2. It has clear product surfaces and a reusable shared foundation.
 3. It is structured for iteration, growth, and team collaboration.
 4. It presents a credible path from MVP toward a broader product ecosystem.
 
-## Read Next
+#### Read Next
 
 - [Owner Guide](./owner-guide.md)
 - [Developer Guide](../engineering/developer-guide.md)

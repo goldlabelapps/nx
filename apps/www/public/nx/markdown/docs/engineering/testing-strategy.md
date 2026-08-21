@@ -18,7 +18,7 @@ NX° is built with exactly that mindset.
 
 This document explains what we test, why we test it, how those tests run, and what "good" looks like across the monorepo.
 
-## The Pitch
+#### The Pitch
 
 Great testing is not about chasing 100% coverage. It is about reducing expensive surprises.
 
@@ -32,7 +32,7 @@ At NX°, our testing approach is designed to:
 
 When we say quality, we mean: predictable behavior under change.
 
-## What We Test
+#### What We Test
 
 ### 1. Application Unit and Integration Behavior (Jest)
 
@@ -127,7 +127,7 @@ Why it matters:
 - catches CI and local-test breakages caused by script drift
 - keeps testing conventions explicit and enforceable
 
-## How Tests Run Repository-Wide
+#### How Tests Run Repository-Wide
 
 Primary entrypoint:
 
@@ -144,7 +144,7 @@ Current runner implementation:
 
 This gives us one command for full confidence checks across app and package boundaries.
 
-## What Good Looks Like
+#### What Good Looks Like
 
 A healthy testing posture in this repo means:
 
@@ -154,7 +154,7 @@ A healthy testing posture in this repo means:
 - framework guard tests catch accidental test-command regressions
 - root `pnpm test` remains green and fast enough for daily usage
 
-## Why This Is a Competitive Advantage
+#### Why This Is a Competitive Advantage
 
 Teams that test well ship faster over time.
 
@@ -168,7 +168,7 @@ NX° testing discipline gives us:
 
 In short: we do not just "have tests". We have a testing system that protects delivery.
 
-## Command Reference
+#### Command Reference
 
 From repo root:
 
@@ -182,7 +182,7 @@ From repo root:
 - `pnpm --dir packages/virus test` runs virus package tests only
 - `pnpm --dir packages/firebase test` runs firebase package tests only
 
-## Next-Level Enhancements
+#### Next-Level Enhancements
 
 When we want to raise the bar further, highest-value additions are:
 

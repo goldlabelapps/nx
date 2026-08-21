@@ -18,7 +18,7 @@ MUI solves the design system gap for teams that need polished UI out of the box 
 
 NX uses MUI as the foundation for its own theme cartridge, extending the base components with custom styling, utility components, and layout primitives. It gives a consistent look, predictable behaviour, and a reliable way to handle UI complexity without reinventing the basics.
 
-## Design System
+#### Design System
 
 This package is the shared home for presentation-layer work in NX°. It is meant to own the frontend experience beyond a simple color theme, including:
 
@@ -26,20 +26,20 @@ This package is the shared home for presentation-layer work in NX°. It is meant
 - layout primitives for pages and sections
 - shared UI wrappers that can be used across apps and features
 
-## Goals
+#### Goals
 
 - Keep visual decisions centralized in one package
 - Make it easy to build consistent interfaces across the monorepo
 - Provide a lightweight foundation for future component libraries
 
-## Package structure
+#### Package structure
 
 - `src/theme.ts` – theme creation and shared design tokens
 - `src/components/DesignSystemProvider.tsx` – provider that applies the theme and baseline styles
 - `src/components/Primitives.tsx` – layout helpers such as app shells and section wrappers
 - `src/index.ts` – public exports for the package
 
-## Usage
+#### Usage
 
 ```tsx
 import { DesignSystemProvider, AppShell, PageSection, SectionTitle } from '@nx/design-system';
@@ -57,7 +57,7 @@ export default function ExamplePage() {
 }
 ```
 
-## Building
+#### Building
 
 This package ships compiled JavaScript and type declarations to `dist/`.
 
@@ -71,6 +71,6 @@ Notes:
 - The package expects `react`, `react-dom`, and `@mui/material` as peer dependencies.
 - `main`/`types` point to the `dist/` output; add the package to your monorepo's workspace or publish if desired.
 
-## Notes
+#### Notes
 
 This package is intentionally small and composable. As the UI layer grows, new atoms, molecules, and higher-level patterns should be added here instead of being spread across app folders.

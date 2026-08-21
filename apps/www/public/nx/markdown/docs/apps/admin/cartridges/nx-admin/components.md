@@ -16,7 +16,7 @@ All components are exported from `app/NX/NXAdmin/index.tsx`.
 
 ---
 
-## Layout Components
+#### Layout Components
 
 ### `<NXAdmin>`
 
@@ -121,7 +121,7 @@ import { PageRouter } from '@/NX/NXAdmin';
 
 ---
 
-## Page Components
+#### Page Components
 
 ### `<MegaDash>`
 
@@ -243,7 +243,7 @@ import { Fingerprints } from '@/NX/NXAdmin';
 
 ---
 
-## CRUD Components
+#### CRUD Components
 
 See the [CRUD System](./crud.md) document for full details. The four components below are used internally by `<Collection>` but can also be used standalone.
 
@@ -298,7 +298,7 @@ import { DeleteDoc } from '@/NX/NXAdmin';
 
 ---
 
-## Menu Components
+#### Menu Components
 
 ### `<NXAdminMenu>`
 
@@ -377,7 +377,7 @@ Displays the current user's name, email, and avatar. Used inside `<NXAdminMenu>`
 
 ---
 
-## UI Primitives
+#### UI Primitives
 
 ### `<InputString>`
 

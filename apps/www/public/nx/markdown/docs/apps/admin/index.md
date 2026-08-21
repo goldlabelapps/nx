@@ -16,13 +16,13 @@ Welcome to the official documentation for the **NX° Framework** — a modular, 
 
 ---
 
-## What is NX°?
+#### What is NX°?
 
 NX° is a composable application framework. Rather than a monolithic codebase, NX° apps are assembled from self-contained **cartridges** — pluggable modules that can be switched on or off per project. Each cartridge owns its own components, actions, hooks, and Redux state slice, making it trivially portable between NX° host applications.
 
 ---
 
-## Documentation Index
+#### Documentation Index
 
 ### Framework Core
 
@@ -41,7 +41,7 @@ NX° is a composable application framework. Rather than a monolithic codebase, N
 
 ---
 
-## Quick-start
+#### Quick-start
 
 ```tsx
 // app/layout.tsx (or your root page)
@@ -74,7 +74,7 @@ export default function AdminPage() {
 
 ---
 
-## Conventions
+#### Conventions
 
 - Every cartridge is located under `app/NX/<CartridgeName>/`.
 - Each cartridge exposes its public API through a barrel `index.tsx`.

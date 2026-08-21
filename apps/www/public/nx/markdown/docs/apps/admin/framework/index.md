@@ -7,7 +7,7 @@ icon: docs
 tags: docs
 ---
 
-## Admin Framework
+#### Admin Framework
 
 - [Overview](/docs/apps/admin/framework/overview)
 - [Config](/docs/apps/admin/framework/config)

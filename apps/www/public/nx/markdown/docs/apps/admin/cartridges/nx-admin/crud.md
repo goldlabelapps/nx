@@ -16,13 +16,13 @@ The Dashboard CRUD system provides a zero-configuration, schema-driven way to ma
 
 ---
 
-## Overview
+#### Overview
 
 Each collection managed by Dashboard gets its own isolated state entry in `state.redux.nxAdmin.crud[collectionName]`. The system is driven by a **TypeScript schema document** — a special Firestore document named `typescript` within each collection — that describes the fields, their types, labels, and validation rules.
 
 ---
 
-## The TypeScript Schema Document
+#### The TypeScript Schema Document
 
 For each Firestore collection you want to manage, create a document with the ID `typescript`. Its fields describe the data shape of other documents in that collection.
 
@@ -79,7 +79,7 @@ The following field names are not rendered as form inputs and are managed automa
 
 ---
 
-## Using the `<Collection>` Component
+#### Using the `<Collection>` Component
 
 The simplest way to use the CRUD system is via the `<Collection>` component, which orchestrates all four CRUD modes automatically.
 
@@ -104,7 +104,7 @@ import { Collection } from '@/NX/NXAdmin';
 
 ---
 
-## CRUD Mode Flow
+#### CRUD Mode Flow
 
 ```
                     ┌─────────────┐
@@ -147,7 +147,7 @@ dispatch(setCRUD('products', 'selected', null));
 
 ---
 
-## `initCollection` — Data Fetching
+#### `initCollection` — Data Fetching
 
 `initCollection` initialises the Redux state for a collection and fetches documents.
 
@@ -187,7 +187,7 @@ The search filter runs client-side on the following fields (normalised, diacriti
 
 ---
 
-## Standalone CRUD Components
+#### Standalone CRUD Components
 
 You can use the four CRUD components directly without `<Collection>` if you need custom layout.
 
@@ -214,7 +214,7 @@ Confirmation dialog. On confirm, calls `collectionDelete`.
 
 ---
 
-## Building a Custom Collection Page
+#### Building a Custom Collection Page
 
 ```tsx
 'use client';

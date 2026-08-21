@@ -10,7 +10,7 @@ NX repository documentation
 
 > Tags: docs, engineering, storybook
 
-## Storybook
+#### Storybook
 
 - Start Storybook from the workspace root with `pnpm storybook`.
 - Build the static Storybook bundle from the workspace root with `pnpm build-storybook`.

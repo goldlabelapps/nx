@@ -16,7 +16,7 @@ Every NX° application is driven by a single configuration object that is passed
 
 ---
 
-## Schema
+#### Schema
 
 ```ts
 type T_Config = {
@@ -51,7 +51,7 @@ type T_Config = {
 
 ---
 
-## `cartridges.designSystem`
+#### `cartridges.designSystem`
 
 Controls theming across the entire application.
 
@@ -116,7 +116,7 @@ type T_DesignSystemCartridge = {
 
 ---
 
-## How Config Flows Through the App
+#### How Config Flows Through the App
 
 1. `config.json` is imported at the page / layout level.
 2. It is passed as the `config` prop to `<NX>` and `<NXAdmin>`.
@@ -126,7 +126,7 @@ type T_DesignSystemCartridge = {
 
 ---
 
-## TypeScript tip
+#### TypeScript tip
 
 Import `T_Config` from the framework types file to get full type-safety:
 

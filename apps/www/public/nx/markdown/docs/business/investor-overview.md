@@ -23,11 +23,11 @@ NX repository documentation
 	</h1>
 </div>
 
-## Why This Document Exists
+#### Why This Document Exists
 
 This overview explains why the Leida repository represents more than a concept. It shows the breadth of execution already completed and why the current MVP phase is building on a credible software foundation.
 
-## Investment-Level Summary
+#### Investment-Level Summary
 
 Leida is already supported by:
 
@@ -39,7 +39,7 @@ Leida is already supported by:
 
 In plain terms, the team has already done a meaningful amount of the hidden work that turns an idea into a viable product platform.
 
-## The 5 Ws for an Investor
+#### The 5 Ws for an Investor
 
 ### What has been built?
 
@@ -85,7 +85,7 @@ At MVP stage. This is when a project needs to prove it can:
 - evolve
 - support investment into refinement and growth rather than reinvention
 
-## Why the Current State Is Valuable
+#### Why the Current State Is Valuable
 
 The strongest investor signal in this repository is not any one feature. It is the combination of:
 
@@ -97,7 +97,7 @@ The strongest investor signal in this repository is not any one feature. It is t
 
 That combination suggests the team is building a platform, not just a demo.
 
-## Scope Already Covered
+#### Scope Already Covered
 
 The repository spans several layers of product value.
 
@@ -122,7 +122,7 @@ The shared framework and design-system work provide long-term leverage:
 - shared theme and component assets
 - centralized documentation
 
-## Why This Lowers Execution Risk
+#### Why This Lowers Execution Risk
 
 A well-structured repository lowers several common startup risks:
 
@@ -134,7 +134,7 @@ A well-structured repository lowers several common startup risks:
 
 Leida has not eliminated all risk, but it has clearly reduced these specific categories.
 
-## Evidence From Project Evolution
+#### Evidence From Project Evolution
 
 Recent commit history shows several healthy patterns:
 
@@ -147,7 +147,7 @@ Recent commit history shows several healthy patterns:
 
 This is the kind of history you expect in a team moving from concept toward operational MVP.
 
-## What “Solid Foundation” Means Here
+#### What “Solid Foundation” Means Here
 
 In this repository, a solid foundation means:
 
@@ -159,13 +159,13 @@ In this repository, a solid foundation means:
 
 That is exactly the kind of work investors often need to know has already been done.
 
-## Honest Current-State Framing
+#### Honest Current-State Framing
 
 This is still an active MVP phase, not a finished end-state platform. Some flows are being refined, and parts of the product are still in motion. But the important point is that those refinements are happening on top of structure, documentation, and reusable assets.
 
 The project is not trying to discover its shape anymore. It is sharpening it.
 
-## Last-Week Momentum (2026-07-27 to 2026-08-03)
+#### Last-Week Momentum (2026-07-27 to 2026-08-03)
 
 Recent commits reinforce execution momentum:
 
@@ -175,11 +175,11 @@ Recent commits reinforce execution momentum:
 - design-system and Storybook maintenance continued alongside product work
 - docs/media cleanup and asset pruning improved operational discipline
 
-## Best Investor-Level Takeaway
+#### Best Investor-Level Takeaway
 
 > Leida has already completed a substantial layer of platform-building work across product experience, internal operations, architecture, and documentation, which puts the project in a stronger position to convert effort and funding into product refinement and growth rather than foundational rebuilds.
 
-## Read Next
+#### Read Next
 
 - [Executive Overview](./executive-overview.md)
 - [Owner Guide](./owner-guide.md)

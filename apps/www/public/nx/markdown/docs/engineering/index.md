@@ -21,7 +21,7 @@ This folder contains technical documentation for architecture, implementation, a
 - [Storybook](./storybook.md)
 - [Developer](./developer.md)
 
-## Imported Framework Features
+#### Imported Framework Features
 
 - [Features Overview](./features/features.md)
 - [Design System](./features/design-system.md)
@@ -29,7 +29,7 @@ This folder contains technical documentation for architecture, implementation, a
 - [Shortcodes](./features/shortcodes.md)
 - [Uberedux](./features/uberedux.md)
 
-## Imported Tech Stack Pages
+#### Imported Tech Stack Pages
 
 - [Tech Stack Topic Index](./techstack/techstack.md)
 - [TypeScript](./techstack/typescript.md)
