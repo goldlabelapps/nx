@@ -1,4 +1,4 @@
-import { getChildPagesFromNav, type ChildPageLink } from '@nx/content';
+import { getChildPagesFromNav, type ChildPageLink } from '../content';
 import { serverUseNav } from './serverUseNav';
 
 export async function serverUseChildPages(currentPath: string): Promise<ChildPageLink[]> {

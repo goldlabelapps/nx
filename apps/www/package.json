@@ -23,7 +23,6 @@
     "@mui/material": "^7.3.7",
     "@mui/x-data-grid": "^8.28.0",
     "@mui/x-tree-view": "^8.0.0",
-    "@nx/content": "workspace:*",
     "@nx/design-system": "workspace:*",
     "@nx/virus": "workspace:*",
     "@nx/uberedux": "workspace:*",
