@@ -1,0 +1,47 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isPublished(data) {
+      return data.status == 'published';
+    }
+
+    // Posts: public can read published posts, only authenticated users can write.
+    match /posts/{postId} {
+      allow read: if isPublished(resource.data) || isSignedIn();
+      allow create: if isSignedIn();
+      allow update, delete: if isSignedIn();
+
+      match /revisions/{revisionId} {
+        allow read, write: if isSignedIn();
+      }
+    }
+
+    // Media library metadata.
+    match /media/{mediaId} {
+      allow read: if true;
+      allow create, update, delete: if isSignedIn();
+    }
+
+    // Categories & tags are public reference data, editable only when signed in.
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    match /tags/{tagId} {
+      allow read: if true;
+      allow write: if isSignedIn();
+    }
+
+    // Everything else defaults closed.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

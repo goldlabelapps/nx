@@ -11,6 +11,9 @@ import { Queue, FilterSelect } from './components/Queue';
 import { Fingerprints } from './components/Fingerprints';
 import { Prospects } from './components/Prospects';
 import { Tenants } from './components/Tenants';
+import { Posts } from './components/Posts';
+import { Media } from './components/Media';
+import { Taxonomy } from './components/Taxonomy';
 
 // UI components
 import OptionSelect from './components/UI/OptionSelect';
@@ -72,6 +75,10 @@ export {
     Prospects,
     Tenants,
     FilterSelect,
+    // Content modules
+    Posts,
+    Media,
+    Taxonomy,
 
 
     // UI components

@@ -75,6 +75,36 @@ export default function AdminNav({
           }}
         />
 
+        <MiniListItem
+          open={open}
+          onClick={navigateToRoute}
+          options={{
+            label: 'Posts°',
+            icon: 'writing',
+            route: '/posts',
+          }}
+        />
+
+        <MiniListItem
+          open={open}
+          onClick={navigateToRoute}
+          options={{
+            label: 'Media°',
+            icon: 'media',
+            route: '/media',
+          }}
+        />
+
+        <MiniListItem
+          open={open}
+          onClick={navigateToRoute}
+          options={{
+            label: 'Categories & Tags°',
+            icon: 'category',
+            route: '/taxonomy',
+          }}
+        />
+
         
 
         <Box sx={{ height: 50 }} />
