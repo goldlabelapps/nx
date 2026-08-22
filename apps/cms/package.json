@@ -1,5 +1,5 @@
 {
-  "name": "admin",
+  "name": "cms",
   "version": "3.0.2",
   "packageManager": "pnpm@11.13.0",
   "scripts": {
