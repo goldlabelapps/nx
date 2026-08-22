@@ -27,7 +27,7 @@ export const fetchPython = (endpoint: string): any =>
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             // dispatch(setFeedback({
-            //     title: `Python° error`,
+            //     title: `Python error`,
             //     description: msg,
             //     severity: 'info',
             // }))

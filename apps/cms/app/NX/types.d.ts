@@ -461,3 +461,83 @@ export type I_Icon = {
         | 'bouncer';
     color?: any;
 };
+
+// ─── CMS: Content ─────────────────────────────────────────────────────────────
+
+export type T_PostStatus = 'draft' | 'pending' | 'published' | 'scheduled' | 'trash';
+
+export type T_SEO = {
+    metaTitle?: string;
+    metaDescription?: string;
+    canonicalUrl?: string;
+    ogImage?: string;
+    noIndex?: boolean;
+};
+
+export type T_Author = {
+    id: string;
+    name: string;
+    avatar?: string;
+    bio?: string;
+};
+
+export type T_Category = {
+    id: string;
+    name: string;
+    slug: string;
+    parentId?: string | null;
+    description?: string;
+};
+
+export type T_Tag = {
+    id: string;
+    name: string;
+    slug: string;
+};
+
+export type T_MediaItem = {
+    id: string;
+    url: string;
+    storagePath: string;
+    fileName: string;
+    mimeType: string;
+    size: number;
+    width?: number;
+    height?: number;
+    alt: string;
+    caption?: string;
+    title?: string;
+    description?: string;
+    postId?: string | null;
+    uploadedBy: string;
+    uploadedAt: string;
+};
+
+export type T_PostRevision = {
+    id: string;
+    postId: string;
+    title: string;
+    body: string;
+    editedBy: string;
+    editedAt: string;
+};
+
+export type T_Post = {
+    id: string;
+    title: string;
+    slug: string;
+    oldSlugs?: string[];
+    body: string;
+    excerpt: string;
+    status: T_PostStatus;
+    authorId: string;
+    featuredImage?: T_MediaItem | null;
+    images?: T_MediaItem[];
+    categoryIds?: string[];
+    tagIds?: string[];
+    seo?: T_SEO;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt?: string | null;
+    searchIndex?: string;
+};

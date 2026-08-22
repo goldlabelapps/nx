@@ -33,6 +33,9 @@ const NAV_ROUTES = new Set([
     'prospects', 
     'fingerprints',
     'tenants',
+    'posts',
+    'media',
+    'taxonomy',
 ]);
 
 const FALLBACK_ADMIN_BASE_PATH = '/';

@@ -5,6 +5,9 @@ import {
   Fingerprints,
   Prospects,
   Tenants,
+  Posts,
+  Media,
+  Taxonomy,
 } from '../../NXAdmin';
 
 interface I_PageRouter {
@@ -20,6 +23,12 @@ export default function PageRouter({ active }: I_PageRouter) {
         return <Prospects />;
       case 'tenants':
         return <Tenants />;
+      case 'posts':
+        return <Posts />;
+      case 'media':
+        return <Media />;
+      case 'taxonomy':
+        return <Taxonomy />;
       default:
         return <MegaDash />;
     }

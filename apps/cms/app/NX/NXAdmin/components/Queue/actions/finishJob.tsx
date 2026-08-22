@@ -71,7 +71,7 @@ export const finishJob = () =>
                 const endpoint = `${baseUrl.replace(/\/$/, '')}/queue/delete?id=${encodeURIComponent(String(queueItemId))}`;
                 const response = await fetch(endpoint, { method: 'DELETE' });
                 if (!response.ok) {
-                    throw new Error(`Python° queue delete failed: ${response.statusText}`);
+                    throw new Error(`Python queue delete failed: ${response.statusText}`);
                 }
             };
 

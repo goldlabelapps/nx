@@ -50,7 +50,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Tenants°',
+            label: 'Tenants',
             icon: 'tenant',
             route: '/tenants',
           }}
@@ -60,7 +60,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Fingerprints°',
+            label: 'Fingerprints',
             icon: 'fingerprint',
             route: '/fingerprints',
           }}
@@ -69,9 +69,39 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Prospects°',
+            label: 'Prospects',
             icon: 'prospects',
             route: '/prospects',
+          }}
+        />
+
+        <MiniListItem
+          open={open}
+          onClick={navigateToRoute}
+          options={{
+            label: 'Posts',
+            icon: 'writing',
+            route: '/posts',
+          }}
+        />
+
+        <MiniListItem
+          open={open}
+          onClick={navigateToRoute}
+          options={{
+            label: 'Media',
+            icon: 'media',
+            route: '/media',
+          }}
+        />
+
+        <MiniListItem
+          open={open}
+          onClick={navigateToRoute}
+          options={{
+            label: 'Categories & Tags',
+            icon: 'category',
+            route: '/taxonomy',
           }}
         />
 

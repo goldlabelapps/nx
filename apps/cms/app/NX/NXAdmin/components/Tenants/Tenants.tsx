@@ -25,7 +25,7 @@ export default function Tenants() {
     React.useEffect(() => {
         if (dash && dash.title) {
             dispatch(setNXAdmin('header', {
-                title: 'Tenants°',
+                title: 'Tenants',
                 icon: 'tenant',
             }));
         }

@@ -42,7 +42,7 @@ export default function Fingerprints() {
 
   React.useEffect(() => {
     dispatch(setNXAdmin('header', {
-      title: 'Fingerprints°',
+      title: 'Fingerprints',
       icon: 'fingerprint',
     }));
   }, [dispatch]);

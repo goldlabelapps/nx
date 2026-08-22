@@ -31,6 +31,9 @@ const NAV_ROUTES = new Set([
     'avatars',
     'queue',
     'virus',
+    'posts',
+    'media',
+    'taxonomy',
 ]);
 const FALLBACK_ADMIN_BASE_PATH = '/';
 

@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 import { getMessaging, isSupported, type Messaging } from "firebase/messaging";
 
-const FIREBASE_DISABLED = true;
+const FIREBASE_DISABLED = false;
 
 function assertFirebaseEnabled() {
     if (FIREBASE_DISABLED) {

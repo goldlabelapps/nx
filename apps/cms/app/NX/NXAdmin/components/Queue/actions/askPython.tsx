@@ -23,7 +23,7 @@ export const askPython = (prompt: string): any =>
                 body: JSON.stringify({ prompt: safePrompt }),
             });
             if (!response.ok) {
-                throw new Error(`Python° error ${response.statusText}`);
+                throw new Error(`Python error ${response.statusText}`);
             }
             const data = await response.json();
             await dispatch(setQueue('pythonResponse', data));
@@ -32,7 +32,7 @@ export const askPython = (prompt: string): any =>
         } catch (e: unknown) {
             const msg = e instanceof Error ? e.message : String(e);
             dispatch(setFeedback({
-                title: `Python° error`,
+                title: `Python error`,
                 description: msg,
                 severity: 'error',
             }));

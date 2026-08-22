@@ -101,15 +101,15 @@ export default function Queue() {
 
   React.useEffect(() => {
       dispatch(setNXAdmin('header', {
-        title: numbers.total > 0 ? `Queue° (${numbers.total})` : 'Queue°',
+        title: numbers.total > 0 ? `Queue (${numbers.total})` : 'Queue',
         icon: 'queue',
       }));
   }, [dispatch, numbers.total]);
 
   React.useEffect(() => {
-    document.title = numbers.total > 0 ? `Queue° (${numbers.total})` : 'Queue°';
+    document.title = numbers.total > 0 ? `Queue (${numbers.total})` : 'Queue';
     return () => {
-      document.title = 'Queue°';
+      document.title = 'Queue';
     };
   }, [numbers.total]);
 
@@ -148,7 +148,7 @@ export default function Queue() {
                 </Button>
               }>
                 <Typography variant='body1'>
-                  Python° error
+                  Python error
                 </Typography>
                 <Typography variant='body2'>
                   {queue.error}
