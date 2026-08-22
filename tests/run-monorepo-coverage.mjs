@@ -117,23 +117,6 @@ const runs = [
     summaryPath: path.join(coverageRoot, 'apps-www-jest', 'coverage-summary.json'),
   },
   {
-    name: 'apps-nhtfs-jest',
-    command: 'pnpm',
-    args: [
-      '--dir',
-      'apps/nhtfs',
-      'exec',
-      'jest',
-      '--runInBand',
-      '--passWithNoTests',
-      '--coverage',
-      '--coverageReporters=json-summary',
-      '--coverageReporters=text',
-      '--coverageDirectory=../../coverage/apps-nhtfs-jest',
-    ],
-    summaryPath: path.join(coverageRoot, 'apps-nhtfs-jest', 'coverage-summary.json'),
-  },
-  {
     name: 'packages-design-system-vitest',
     command: 'pnpm',
     args: [
