@@ -28,7 +28,7 @@ pnpm test
 - [Root framework guard tests](tests/testing-framework.test.mjs)
 - [WWW integration test example](apps/www/tests/integration/nav-theme-toggle.test.tsx)
 - [Design-system navigation test example](packages/design-system/tests/components/navigation/navigation.test.tsx)
-- [Shortcodes parser package test example](packages/shortcodes/tests/parser.test.ts)
+- [Markdown parser package test example](packages/markdown/tests/parser.test.ts)
 
 ## Bash CLI
 

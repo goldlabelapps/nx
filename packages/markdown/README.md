@@ -1,10 +1,10 @@
-# @nx/shortcodes
+# @nx/markdown
 
-WordPress-style shortcode parsing utilities for markdown-driven content.
+Markdown rendering and extension utilities for NX content experiences.
 
 ## Why this package exists
 
-Shortcodes let content editors embed dynamic features in markdown without writing React code directly.
+This package centralizes the markdown pipeline: it handles React Markdown rendering, shortcode-style syntax, and future markdown extensions for content-driven experiences.
 
 Example:
 
@@ -12,7 +12,7 @@ Example:
 [CleverText text="How Shortcodes Work"]
 ```
 
-This package provides reusable parsing primitives so apps can map shortcode tags to UI components.
+The package provides reusable parsing primitives so apps can map shortcode tags to UI components while preserving standard markdown behavior.
 
 ## API
 
@@ -25,7 +25,7 @@ This package provides reusable parsing primitives so apps can map shortcode tags
 ## Example
 
 ```ts
-import { renderShortcodes } from '@nx/shortcodes';
+import { renderShortcodes } from '@nx/markdown';
 
 const output = renderShortcodes('Hi [CleverText text="World"]', {
   CleverText: (match) => `<CleverText text="${String(match.attrs.text)}" />`,
