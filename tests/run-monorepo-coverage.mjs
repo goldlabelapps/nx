@@ -117,23 +117,6 @@ const runs = [
     summaryPath: path.join(coverageRoot, 'apps-www-jest', 'coverage-summary.json'),
   },
   {
-    name: 'apps-nhtfs-jest',
-    command: 'pnpm',
-    args: [
-      '--dir',
-      'apps/nhtfs',
-      'exec',
-      'jest',
-      '--runInBand',
-      '--passWithNoTests',
-      '--coverage',
-      '--coverageReporters=json-summary',
-      '--coverageReporters=text',
-      '--coverageDirectory=../../coverage/apps-nhtfs-jest',
-    ],
-    summaryPath: path.join(coverageRoot, 'apps-nhtfs-jest', 'coverage-summary.json'),
-  },
-  {
     name: 'packages-design-system-vitest',
     command: 'pnpm',
     args: [
@@ -230,7 +213,7 @@ const runs = [
     summaryPath: path.join(coverageRoot, 'packages-shortcodes-tsx', 'coverage-summary.json'),
   },
   {
-    name: 'apps-admin-node',
+    name: 'apps-cms-node',
     command: 'pnpm',
     args: [
       'exec',
@@ -238,12 +221,12 @@ const runs = [
       '--reporter=json-summary',
       '--reporter=text',
       '--report-dir',
-      'coverage/apps-admin-node',
+      'coverage/apps-cms-node',
       'node',
       '--test',
-      'apps/admin/tests/**/*.test.mjs',
+      'apps/cms/tests/**/*.test.mjs',
     ],
-    summaryPath: path.join(coverageRoot, 'apps-admin-node', 'coverage-summary.json'),
+    summaryPath: path.join(coverageRoot, 'apps-cms-node', 'coverage-summary.json'),
   },
   {
     name: 'root-tests-node',

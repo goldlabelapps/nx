@@ -2,7 +2,7 @@
 order: 9010
 title: NX° Framework — DesignSystem Cartridge
 description: <div>
-slug: /docs/apps/admin/framework/design-system
+slug: /docs/apps/cms/framework/design-system
 icon: docs
 tags: docs
 ---

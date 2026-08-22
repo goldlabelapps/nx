@@ -2,7 +2,7 @@
 order: 9006
 title: Dashboard — Push Notifications (FCM)
 description: <div>
-slug: /docs/apps/admin/cartridges/nx-admin/notifications
+slug: /docs/apps/cms/cartridges/nx-admin/notifications
 icon: docs
 tags: docs
 ---

@@ -36,7 +36,7 @@ The central message is simple: NX° is not just a collection of apps. It is a pl
 NX° is a JavaScript/TypeScript product platform built around a monorepo structure. It combines:
 
 - a public-facing experience for audiences and customers
-- admin and operational surfaces for teams and operators
+- CMS and operational surfaces for teams and operators
 - shared runtime and UI infrastructure that reduces duplication across products
 
 ### Why was it built this way?
@@ -57,7 +57,7 @@ NX° serves several audiences at once:
 The value is concentrated in the shared platform layer and the product surfaces that sit on top of it:
 
 - `apps/www` for public experience
-- `apps/admin` for internal workflows
+- `apps/cms` for internal workflows
 - `packages/design-system` for shared visual and interaction primitives
 - `packages/uberedux` for shared state patterns and infrastructure
 

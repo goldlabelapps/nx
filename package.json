@@ -1,16 +1,16 @@
 {
   "name": "nx",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "packageManager": "pnpm@11.13.0",
   "engines": {
     "node": ">=20 <25"
   },
   "private": true,
   "scripts": {
-    "dev": "concurrently -n nx,admin,nhtfs,flash,storybook -c blue,green,yellow,cyan,white,magenta \"pnpm --dir apps/www dev\" \"pnpm --dir apps/admin dev\" \"pnpm --dir apps/nhtfs dev\" \"pnpm --dir packages/flash dev\" \"pnpm --dir packages/design-system dev\"",
+    "dev": "concurrently -n nx,cms,flash,storybook -c blue,green,yellow,cyan,white,magenta \"pnpm --dir apps/www dev\" \"pnpm --dir apps/cms dev\" \"pnpm --dir packages/flash dev\" \"pnpm --dir packages/design-system dev\"",
     "storybook": "pnpm --dir packages/design-system storybook",
     "build-storybook": "pnpm --dir packages/design-system build-storybook",
-    "build": "pnpm --dir packages/design-system build && pnpm --dir apps/www build && pnpm --dir apps/nhtfs build",
+    "build": "pnpm --dir packages/design-system build && pnpm --dir apps/www build && pnpm --dir apps/cms build",
     "clean": "bash ./shell/clean-repo.sh",
     "lint": "turbo run lint",
     "test": "node ./tests/run-monorepo-tests.mjs",

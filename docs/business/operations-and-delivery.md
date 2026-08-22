@@ -39,7 +39,7 @@ This guide covers the operating model, validation steps, and delivery practices 
 A monorepo containing:
 
 - public product experience (`apps/www`)
-- admin and operational surfaces (`apps/admin`)
+- CMS and operational surfaces (`apps/cms`)
 - shared packages for UI, branding, and runtime infrastructure
 
 ### Why is operations part of the product?
@@ -82,9 +82,9 @@ A dependable delivery flow for NX° typically looks like this:
 
 The public experience sits in `apps/www` and should be treated as a customer-facing product surface that needs both design coherence and technical reliability.
 
-### Admin and Internal Operations
+### CMS and Internal Operations
 
-The admin experience sits in `apps/admin` and supports the internal tool layer that keeps the broader product ecosystem manageable.
+The CMS experience sits in `apps/cms` and supports the internal tool layer that keeps the broader product ecosystem manageable.
 
 ### Shared Infrastructure
 
@@ -102,7 +102,7 @@ The shared packages and runtime layers are where much of the platform’s levera
 
 `apps/www` should have the relevant public environment variables configured for its runtime.
 
-`apps/admin` should have the variables required for its internal workflows and integrations.
+`apps/cms` should have the variables required for its internal workflows and integrations.
 
 ### Tenant Config Requirement
 
@@ -119,7 +119,7 @@ Workspace-level:
 App-level:
 
 - `pnpm --filter www test`
-- `pnpm --filter admin typecheck`
+- `pnpm --filter cms typecheck`
 
 ## Deployment Posture
 

@@ -1,6 +1,6 @@
 {
   "name": "@nx/shortcodes",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "WordPress-style shortcode parsing utilities for markdown-driven NX content.",
   "private": true,
   "main": "./src/index.ts",

@@ -2,7 +2,7 @@
 order: 9009
 title: NX° Framework — Configuration (`T_Config`)
 description: <div>
-slug: /docs/apps/admin/framework/config
+slug: /docs/apps/cms/framework/config
 icon: docs
 tags: docs
 ---

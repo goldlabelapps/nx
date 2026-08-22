@@ -14,8 +14,7 @@ export interface I_MakeRes {
 export type T_Tenant = 'my-tenant' |
     'new-tenant' |
     'free' |
-    'nx' |
-    'nhtfs'
+    'nx'
 ;
 
 export type T_Config = {

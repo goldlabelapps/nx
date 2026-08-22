@@ -2,7 +2,7 @@
 order: 9001
 title: NX° Framework Documentation
 description: <div>
-slug: /docs/apps/admin
+slug: /docs/apps/cms
 icon: docs
 tags: docs
 ---

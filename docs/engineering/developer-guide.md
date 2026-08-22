@@ -46,7 +46,7 @@ It explains:
 A Turborepo-managed monorepo with multiple Next.js applications and shared packages:
 
 - `apps/www` -> the public product experience
-- `apps/admin` -> admin and operational tooling
+- `apps/cms` -> CMS and operational tooling
 - `packages/design-system` -> reusable UI, tokens, and component primitives
 - `packages/shortcodes` -> markdown shortcode parsing and rendering helpers
 - `packages/uberedux` -> shared state and provider patterns
@@ -59,7 +59,7 @@ To keep shared product logic, design systems, and delivery infrastructure reusab
 ### Who works in which area?
 
 - public product experience: `apps/www`
-- admin and operational workflows: `apps/admin`
+- CMS and operational workflows: `apps/cms`
 - reusable UI and design system: `packages/design-system`
 - shared state/runtime patterns: `packages/uberedux`
 
@@ -73,7 +73,7 @@ To keep shared product logic, design systems, and delivery infrastructure reusab
 ### When should I care about each layer?
 
 - customer experience work: `apps/www`
-- operational and internal tooling: `apps/admin`
+- operational and internal tooling: `apps/cms`
 - cross-app UI primitives: `packages/design-system`
 - shared state and runtime plumbing: `packages/uberedux`
 
@@ -104,19 +104,19 @@ Common commands:
 - `pnpm --filter www typecheck`
 - `pnpm --filter www lint`
 
-### Admin App: `apps/admin`
+### CMS App: `apps/cms`
 
 Main roots:
 
-- `app/` -> admin experience and internal operations
+- `app/` -> CMS experience and internal operations
 - `app/NX` -> shared runtime and support layers
 - `app/api` -> internal API handlers
 
 Common commands:
 
-- `pnpm --filter admin dev`
-- `pnpm --filter admin typecheck`
-- `pnpm --filter admin lint`
+- `pnpm --filter cms dev`
+- `pnpm --filter cms typecheck`
+- `pnpm --filter cms lint`
 
 ### Shared Packages
 
@@ -155,7 +155,7 @@ In practice:
 The platform is designed to support multiple product surfaces from one shared codebase:
 
 - a public experience for audiences and customers
-- an admin experience for operators and maintainers
+- an CMS experience for operators and maintainers
 - shared UI and infrastructure to keep both consistent
 
 ## Data and API Surfaces
@@ -164,9 +164,9 @@ The platform is designed to support multiple product surfaces from one shared co
 
 Implemented under `apps/www/app/api`.
 
-### Admin APIs
+### CMS APIs
 
-Implemented under `apps/admin/app/api`.
+Implemented under `apps/cms/app/api`.
 
 These layers are where integrations, content delivery, and operational endpoints live.
 
@@ -188,7 +188,7 @@ Use these checks before shipping meaningful changes:
 App-level checks:
 
 - `pnpm --filter www test`
-- `pnpm --filter admin typecheck`
+- `pnpm --filter cms typecheck`
 
 ## Recommended Onboarding Sequence
 
@@ -196,7 +196,7 @@ App-level checks:
 2. Read `docs/business/executive-overview.md`
 3. Read `docs/business/operations-and-delivery.md`
 4. Read `docs/concepts/project-evolution.md`
-5. Review `apps/www` and `apps/admin`
+5. Review `apps/www` and `apps/cms`
 6. Explore `packages/design-system`
 
 ## First Places to Inspect for Common Tasks
@@ -206,10 +206,10 @@ Public product work:
 - `apps/www/app`
 - `apps/www/app/NX`
 
-Admin work:
+CMS work:
 
-- `apps/admin/app`
-- `apps/admin/app/NX`
+- `apps/cms/app`
+- `apps/cms/app/NX`
 
 Shared UI work:
 

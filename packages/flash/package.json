@@ -1,6 +1,6 @@
 {
   "name": "@nx/flash",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "NX Flash: Macromedia Flash-inspired stage and MovieClip component system",
   "private": true,
   "main": "./src/index.ts",

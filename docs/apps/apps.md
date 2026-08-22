@@ -19,5 +19,5 @@ NX repository documentation
 
 This folder contains app-specific documentation.
 
-- [Admin](./admin/admin.md)
+- [CMS](./cms/admin.md)
 - [Flash Sprite](./flash/sprite.md)

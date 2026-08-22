@@ -2,7 +2,7 @@
 order: 9002
 title: Dashboard — Actions Reference
 description: <div>
-slug: /docs/apps/admin/cartridges/nx-admin/actions
+slug: /docs/apps/cms/cartridges/nx-admin/actions
 icon: docs
 tags: docs
 ---

@@ -2,7 +2,7 @@
 order: 9005
 title: Dashboard — Hooks Reference
 description: <div>
-slug: /docs/apps/admin/cartridges/nx-admin/hooks
+slug: /docs/apps/cms/cartridges/nx-admin/hooks
 icon: docs
 tags: docs
 ---

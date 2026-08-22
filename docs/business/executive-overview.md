@@ -62,7 +62,7 @@ NX° serves several audiences at once:
 The value is concentrated in the shared platform layer and the product surfaces that sit on top of it:
 
 - `apps/www` for public experience
-- `apps/admin` for internal workflows
+- `apps/cms` for internal workflows
 - `packages/design-system` for shared visual and interaction primitives
 - `packages/uberedux` for shared state patterns and infrastructure
 

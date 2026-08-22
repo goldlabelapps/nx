@@ -34,7 +34,7 @@ This guide covers the operating model, validation steps, and delivery practices 
 A monorepo containing:
 
 - public product experience (`apps/www`)
-- admin and operational surfaces (`apps/admin`)
+- CMS and operational surfaces (`apps/cms`)
 - shared packages for UI, branding, and runtime infrastructure
 
 ### Why is operations part of the product?
@@ -53,7 +53,7 @@ Because modern product delivery depends on more than a polished frontend. It als
 - app configuration and tenant handling
 - build, test, and type-check validation
 - deployment and environment guardrails
-- shared product infrastructure and admin workflows
+- shared product infrastructure and CMS workflows
 
 ### When do these concerns matter?
 
@@ -79,7 +79,7 @@ The public experience sits in `apps/www` and should be treated as a customer-fac
 
 ### Admin and Internal Operations
 
-The admin experience sits in `apps/admin` and supports the internal tool layer that keeps the broader product ecosystem manageable.
+The CMS experience sits in `apps/cms` and supports the internal tool layer that keeps the broader product ecosystem manageable.
 
 ### Shared Infrastructure
 
@@ -97,7 +97,7 @@ The shared packages and runtime layers are where much of the platform’s levera
 
 `apps/www` should have the relevant public environment variables configured for its runtime.
 
-`apps/admin` should have the variables required for its internal workflows and integrations.
+`apps/cms` should have the variables required for its internal workflows and integrations.
 
 ### Tenant Config Requirement
 

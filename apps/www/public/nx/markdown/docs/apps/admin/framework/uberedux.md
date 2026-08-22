@@ -2,7 +2,7 @@
 order: 9012
 title: NX° Framework — Uberedux (State Management)
 description: <div>
-slug: /docs/apps/admin/framework/uberedux
+slug: /docs/apps/cms/framework/uberedux
 icon: docs
 tags: docs
 ---

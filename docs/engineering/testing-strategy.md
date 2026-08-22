@@ -44,7 +44,6 @@ When we say quality, we mean: predictable behavior under change.
 Workspaces:
 
 - `apps/www`
-- `apps/nhtfs`
 
 What we validate:
 
@@ -180,7 +179,6 @@ From repo root:
 - `pnpm test` runs the full monorepo testing pipeline
 - `pnpm test:coverage` runs merged monorepo coverage across Jest, Vitest, and Node/TSX suites
 - `pnpm --dir apps/www test` runs public app tests only
-- `pnpm --dir apps/nhtfs test` runs nhtfs app tests only
 - `pnpm --dir packages/design-system test` runs design-system tests only
 - `pnpm --dir packages/flash test` runs flash package tests only
 - `pnpm --dir packages/uberedux test` runs uberedux package tests only

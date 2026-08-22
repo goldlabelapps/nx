@@ -22,7 +22,7 @@ This monorepo is organized into two main kinds of workspaces: apps and packages.
 ## Apps
 Apps are deployable products or experiences. They contain the user-facing application code and are the places where end-to-end features are assembled.
 
-In this repository, the primary app surfaces are [apps/www](../../apps/www) for the public web experience and [apps/admin](../../apps/admin) for internal operations.
+In this repository, the primary app surfaces are [apps/www](../../apps/www) for the public web experience and [apps/cms](../../apps/cms) for internal operations.
 
 ## Packages
 Packages are reusable building blocks shared across apps or internal tooling. They are typically smaller, focused modules that can be imported by multiple parts of the monorepo.

@@ -13,7 +13,6 @@ function readJson(relativePath) {
 test('critical workspaces define a test script', () => {
   const requiredTestWorkspaces = [
     'apps/www/package.json',
-    'apps/nhtfs/package.json',
     'packages/design-system/package.json',
     'packages/firebase/package.json',
     'packages/flash/package.json',
@@ -38,8 +37,8 @@ test('critical workspaces define a test script', () => {
   }
 });
 
-test('www and nhtfs jest scripts keep runInBand and passWithNoTests as separate flags', () => {
-  const appPackageJsonPaths = ['apps/www/package.json', 'apps/nhtfs/package.json'];
+test('www jest scripts keep runInBand and passWithNoTests as separate flags', () => {
+  const appPackageJsonPaths = ['apps/www/package.json'];
 
   for (const packageJsonPath of appPackageJsonPaths) {
     const manifest = readJson(packageJsonPath);

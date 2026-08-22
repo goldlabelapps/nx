@@ -2,7 +2,7 @@
 order: 9003
 title: Dashboard — Components Reference
 description: <div>
-slug: /docs/apps/admin/cartridges/nx-admin/components
+slug: /docs/apps/cms/cartridges/nx-admin/components
 icon: docs
 tags: docs
 ---
