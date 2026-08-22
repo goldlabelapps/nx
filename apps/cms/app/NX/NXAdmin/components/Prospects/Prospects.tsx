@@ -73,7 +73,7 @@ export default function Prospects() {
     }
 
     dispatch(setNXAdmin('header', {
-      title: 'Prospects°',
+      title: 'Prospects',
       icon: 'prospects',
     }));
   }, [dispatch, isTagRoute, resolvedTagLabel]);

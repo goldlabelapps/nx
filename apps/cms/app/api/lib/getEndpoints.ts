@@ -4,7 +4,7 @@ export const getEndpoints = (name?: string) => {
     // const baseURL = getBaseurl();
     const endpoints = [
         {
-            name: 'Prompt° endpoint',
+            name: 'Prompt endpoint',
             route: `/api/prompt`,
         }
     ];

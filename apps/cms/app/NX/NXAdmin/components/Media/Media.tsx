@@ -27,7 +27,7 @@ export default function Media() {
 
     React.useEffect(() => {
         dispatch(setNXAdmin('header', {
-            title: 'Media°',
+            title: 'Media',
             icon: 'media',
         }));
     }, [dispatch]);

@@ -20,7 +20,18 @@ export function useFirebaseAuthListener(
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const auth = getFirebaseAuth();
+    let auth;
+    try {
+      auth = getFirebaseAuth();
+    } catch {
+      // Firebase disabled: treat as signed-out instead of crashing the app.
+      dispatch(setPaywall('user', null));
+      dispatch(setPaywall('authChecked', true));
+      dispatch(setPaywall('uid', null));
+      if (onAuthChecked) onAuthChecked();
+      return;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       let safeUser = null;
       if (firebaseUser) {

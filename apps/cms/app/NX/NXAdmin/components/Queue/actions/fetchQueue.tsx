@@ -15,7 +15,7 @@ export const fetchQueue = (): any =>
             await dispatch(setQueue('fetching', true));
             const response = await fetch(endpoint);
             if (!response.ok) {
-                throw new Error(`Python° dependency error ${response.statusText}`);
+                throw new Error(`Python dependency error ${response.statusText}`);
             }
             const data = await response.json();
             await dispatch(setQueue('table', data.data));

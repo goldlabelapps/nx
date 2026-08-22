@@ -50,7 +50,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Tenants°',
+            label: 'Tenants',
             icon: 'tenant',
             route: '/tenants',
           }}
@@ -60,7 +60,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Fingerprints°',
+            label: 'Fingerprints',
             icon: 'fingerprint',
             route: '/fingerprints',
           }}
@@ -69,7 +69,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Prospects°',
+            label: 'Prospects',
             icon: 'prospects',
             route: '/prospects',
           }}
@@ -79,7 +79,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Posts°',
+            label: 'Posts',
             icon: 'writing',
             route: '/posts',
           }}
@@ -89,7 +89,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Media°',
+            label: 'Media',
             icon: 'media',
             route: '/media',
           }}
@@ -99,7 +99,7 @@ export default function AdminNav({
           open={open}
           onClick={navigateToRoute}
           options={{
-            label: 'Categories & Tags°',
+            label: 'Categories & Tags',
             icon: 'category',
             route: '/taxonomy',
           }}

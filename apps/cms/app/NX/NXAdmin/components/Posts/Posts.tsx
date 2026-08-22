@@ -35,7 +35,7 @@ export default function Posts() {
 
     React.useEffect(() => {
         dispatch(setNXAdmin('header', {
-            title: 'Posts°',
+            title: 'Posts',
             icon: 'writing',
         }));
     }, [dispatch]);

@@ -82,7 +82,7 @@ export default function Taxonomy() {
 
     React.useEffect(() => {
         dispatch(setNXAdmin('header', {
-            title: 'Categories & Tags°',
+            title: 'Categories & Tags',
             icon: 'category',
         }));
     }, [dispatch]);
