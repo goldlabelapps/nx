@@ -2,7 +2,7 @@
 order: 9008
 title: Dashboard — PWA Support
 description: <div>
-slug: /docs/apps/admin/cartridges/nx-admin/pwa
+slug: /docs/apps/cms/cartridges/nx-admin/pwa
 icon: docs
 tags: docs
 ---

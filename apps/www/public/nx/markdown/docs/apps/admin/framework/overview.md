@@ -2,7 +2,7 @@
 order: 9011
 title: NX° Framework — Architecture Overview
 description: <div>
-slug: /docs/apps/admin/framework/overview
+slug: /docs/apps/cms/framework/overview
 icon: docs
 tags: docs
 ---

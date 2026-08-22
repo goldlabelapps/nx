@@ -2,7 +2,7 @@
 order: 9004
 title: Dashboard — CRUD System
 description: <div>
-slug: /docs/apps/admin/cartridges/nx-admin/crud
+slug: /docs/apps/cms/cartridges/nx-admin/crud
 icon: docs
 tags: docs
 ---

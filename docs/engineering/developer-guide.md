@@ -155,7 +155,7 @@ In practice:
 The platform is designed to support multiple product surfaces from one shared codebase:
 
 - a public experience for audiences and customers
-- an admin experience for operators and maintainers
+- an CMS experience for operators and maintainers
 - shared UI and infrastructure to keep both consistent
 
 ## Data and API Surfaces
@@ -196,7 +196,7 @@ App-level checks:
 2. Read `docs/business/executive-overview.md`
 3. Read `docs/business/operations-and-delivery.md`
 4. Read `docs/concepts/project-evolution.md`
-5. Review `apps/www` and `apps/admin`
+5. Review `apps/www` and `apps/cms`
 6. Explore `packages/design-system`
 
 ## First Places to Inspect for Common Tasks

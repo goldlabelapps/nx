@@ -2,7 +2,7 @@
 order: 9007
 title: Dashboard Cartridge
 description: <div>
-slug: /docs/apps/admin/cartridges/nx-admin
+slug: /docs/apps/cms/cartridges/nx-admin
 icon: docs
 tags: docs
 ---

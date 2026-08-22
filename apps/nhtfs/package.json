@@ -1,7 +1,7 @@
 {
-  "version": "3.0.2",
+  "version": "3.0.3",
   "name": "nhtfs",
-  "description": "NX°",
+  "description": "NX\u00b0",
   "packageManager": "pnpm@11.13.0",
   "scripts": {
     "dev": "next dev -p 3666 --webpack",
