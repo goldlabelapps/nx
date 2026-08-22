@@ -15,10 +15,8 @@ test('critical workspaces define a test script', () => {
     'apps/www/package.json',
     'packages/design-system/package.json',
     'packages/firebase/package.json',
-    'packages/flash/package.json',
     'packages/markdown/package.json',
     'packages/uberedux/package.json',
-    'packages/virus/package.json',
   ];
 
   for (const packageJsonPath of requiredTestWorkspaces) {
@@ -65,9 +63,7 @@ test('www jest scripts keep runInBand and passWithNoTests as separate flags', ()
 
 test('workspace package tests avoid app-local binary paths', () => {
   const workspacePackages = [
-    'packages/flash/package.json',
     'packages/uberedux/package.json',
-    'packages/virus/package.json',
   ];
 
   for (const packageJsonPath of workspacePackages) {

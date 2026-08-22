@@ -149,22 +149,6 @@ const runs = [
     summaryPath: path.join(coverageRoot, 'packages-firebase-node', 'coverage-summary.json'),
   },
   {
-    name: 'packages-flash-tsx',
-    command: 'pnpm',
-    args: [
-      'exec',
-      'c8',
-      '--reporter=json-summary',
-      '--reporter=text',
-      '--report-dir',
-      'coverage/packages-flash-tsx',
-      'tsx',
-      '--test',
-      'packages/flash/tests/**/*.test.ts',
-    ],
-    summaryPath: path.join(coverageRoot, 'packages-flash-tsx', 'coverage-summary.json'),
-  },
-  {
     name: 'packages-uberedux-tsx',
     command: 'pnpm',
     args: [
@@ -179,22 +163,6 @@ const runs = [
       'packages/uberedux/tests/**/*.test.ts',
     ],
     summaryPath: path.join(coverageRoot, 'packages-uberedux-tsx', 'coverage-summary.json'),
-  },
-  {
-    name: 'packages-virus-tsx',
-    command: 'pnpm',
-    args: [
-      'exec',
-      'c8',
-      '--reporter=json-summary',
-      '--reporter=text',
-      '--report-dir',
-      'coverage/packages-virus-tsx',
-      'tsx',
-      '--test',
-      'packages/virus/tests/**/*.test.ts',
-    ],
-    summaryPath: path.join(coverageRoot, 'packages-virus-tsx', 'coverage-summary.json'),
   },
   {
     name: 'packages-markdown-tsx',

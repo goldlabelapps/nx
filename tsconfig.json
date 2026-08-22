@@ -23,9 +23,7 @@
       "@nx/markdown": ["packages/markdown/src"],
       "@nx/markdown/*": ["packages/markdown/src/*"],
       "@nx/uberedux": ["packages/uberedux/src"],
-      "@nx/uberedux/*": ["packages/uberedux/src/*"],
-      "@nx/virus": ["packages/virus/src"],
-      "@nx/virus/*": ["packages/virus/src/*"]
+      "@nx/uberedux/*": ["packages/uberedux/src/*"]
     }
   }
 }

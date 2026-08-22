@@ -45,7 +45,6 @@ A Turborepo-managed monorepo with multiple Next.js applications and shared packa
 - `packages/design-system` -> reusable UI, tokens, and component primitives
 - `packages/markdown` -> markdown rendering, shortcode parsing, and content-extension helpers
 - `packages/uberedux` -> shared state and provider patterns
-- `packages/flash` -> presentation and runtime helpers
 
 ### Why is it organized this way?
 
