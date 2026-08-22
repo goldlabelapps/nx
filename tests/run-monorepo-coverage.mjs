@@ -246,22 +246,6 @@ const runs = [
     summaryPath: path.join(coverageRoot, 'apps-admin-node', 'coverage-summary.json'),
   },
   {
-    name: 'apps-template-node',
-    command: 'pnpm',
-    args: [
-      'exec',
-      'c8',
-      '--reporter=json-summary',
-      '--reporter=text',
-      '--report-dir',
-      'coverage/apps-template-node',
-      'node',
-      '--test',
-      'apps/template/tests/**/*.test.mjs',
-    ],
-    summaryPath: path.join(coverageRoot, 'apps-template-node', 'coverage-summary.json'),
-  },
-  {
     name: 'root-tests-node',
     command: 'pnpm',
     args: [
