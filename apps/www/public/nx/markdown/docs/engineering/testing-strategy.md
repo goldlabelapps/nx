@@ -86,16 +86,12 @@ How it runs:
 Workspaces:
 
 - `packages/firebase`
-- `packages/flash`
 - `packages/uberedux`
-- `packages/virus`
 
 What we validate:
 
 - environment-gated Firebase behavior
 - state update and persistence helpers
-- identity and device/fingerprint signal behavior
-- flash/action behavior in shared runtime code
 
 Why it matters:
 
@@ -175,9 +171,7 @@ From repo root:
 - `pnpm test:coverage` runs merged monorepo coverage across Jest, Vitest, and Node/TSX suites
 - `pnpm --dir apps/www test` runs public app tests only
 - `pnpm --dir packages/design-system test` runs design-system tests only
-- `pnpm --dir packages/flash test` runs flash package tests only
 - `pnpm --dir packages/uberedux test` runs uberedux package tests only
-- `pnpm --dir packages/virus test` runs virus package tests only
 - `pnpm --dir packages/firebase test` runs firebase package tests only
 
 #### Next-Level Enhancements
