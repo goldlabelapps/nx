@@ -197,7 +197,7 @@ const runs = [
     summaryPath: path.join(coverageRoot, 'packages-virus-tsx', 'coverage-summary.json'),
   },
   {
-    name: 'packages-shortcodes-tsx',
+    name: 'packages-markdown-tsx',
     command: 'pnpm',
     args: [
       'exec',
@@ -205,12 +205,12 @@ const runs = [
       '--reporter=json-summary',
       '--reporter=text',
       '--report-dir',
-      'coverage/packages-shortcodes-tsx',
+      'coverage/packages-markdown-tsx',
       'tsx',
       '--test',
-      'packages/shortcodes/tests/**/*.test.ts',
+      'packages/markdown/tests/**/*.test.ts',
     ],
-    summaryPath: path.join(coverageRoot, 'packages-shortcodes-tsx', 'coverage-summary.json'),
+    summaryPath: path.join(coverageRoot, 'packages-markdown-tsx', 'coverage-summary.json'),
   },
   {
     name: 'apps-cms-node',

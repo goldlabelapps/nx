@@ -1,6 +1,6 @@
 import path from "path";
-import { buildContentNavTreeFromMarkdownRoot } from '@nx/content/server';
-import type { ContentNavItem } from '@nx/content';
+import { buildContentNavTreeFromMarkdownRoot } from '../content';
+import type { ContentNavItem } from '../content';
 
 export type NavItem = ContentNavItem;
 

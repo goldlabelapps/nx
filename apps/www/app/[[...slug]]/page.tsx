@@ -12,7 +12,7 @@ import {
     SiteMain as DesignSystemSiteMain,
     type T_NavNode,
 } from '@nx/design-system';
-import { getFooterColumnsFromChildPages } from '@nx/content';
+import { getFooterColumnsFromChildPages } from '../NX/lib/content';
 import nxConfig from '../../nx.config.json';
 import HeaderActions from '../NX/DesignSystem/HeaderActions';
 import RoutedSiteNav from '../NX/DesignSystem/RoutedSiteNav';

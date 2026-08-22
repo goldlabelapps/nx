@@ -16,7 +16,7 @@ test('critical workspaces define a test script', () => {
     'packages/design-system/package.json',
     'packages/firebase/package.json',
     'packages/flash/package.json',
-    'packages/shortcodes/package.json',
+    'packages/markdown/package.json',
     'packages/uberedux/package.json',
     'packages/virus/package.json',
   ];
