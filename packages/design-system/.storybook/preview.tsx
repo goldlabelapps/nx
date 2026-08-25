@@ -90,27 +90,7 @@ const preview: Preview = {
                 margin: '0 auto',
               }}
             >
-              <div
-                style={{
-                  marginBottom: '16px',
-                }}>
-                
-                <pre
-                  style={{
-                    margin: 0,
-                    padding: '12px',
-                    borderRadius: '3px',
-                    overflowX: 'auto',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.85rem',
-                    lineHeight: 1.5,
-                    backgroundColor: '#f0eee8',
-                    border: '1px solid rgba(30, 28, 52, 0.14)',
-                  }}
-                >
-                  <code>{usageSnippet}</code>
-                </pre>
-              </div>
+              
               <Story />
             </div>
           </div>
