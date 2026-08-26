@@ -23,7 +23,6 @@ This folder contains technical documentation for architecture, implementation, a
 - [Tech Stack](./techstack.md)
 - [Apps and Packages](./apps-packages.md)
 - [Testing Strategy](./testing-strategy.md)
-- [Storybook](./storybook.md)
 - [Developer](./developer.md)
 
 ## Imported Framework Features

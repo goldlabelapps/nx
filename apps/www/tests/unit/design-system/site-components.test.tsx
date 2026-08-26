@@ -70,7 +70,7 @@ describe('design-system site components', () => {
             href: '/features',
             children: [
               { title: 'Design System', href: '/features/design-system' },
-              { title: 'Storybook', href: '/features/storybook' },
+              { title: 'Components', href: '/features/components' },
             ],
           },
         ]}
