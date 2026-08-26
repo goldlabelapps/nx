@@ -169,7 +169,7 @@ These layers are where integrations, content delivery, and operational endpoints
 - Next.js and React
 - Firebase and Supabase-ready patterns
 - Vercel deployment support
-- shared design-system storytelling and Storybook workflows
+- shared design-system components and styling patterns
 
 #### Validation and Shipping
 

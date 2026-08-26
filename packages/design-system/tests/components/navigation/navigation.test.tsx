@@ -35,7 +35,7 @@ describe('site navigation', () => {
               slug: '/features',
               children: [
                 { title: 'Design System', slug: '/features/design-system' },
-                { title: 'Storybook', slug: '/features/storybook' },
+                { title: 'Components', slug: '/features/components' },
               ],
             },
           ]}
@@ -45,7 +45,7 @@ describe('site navigation', () => {
       expect(screen.queryByRole('button', { name: 'Home' })).toBeNull();
       expect(screen.getByRole('button', { name: 'Features' })).toBeTruthy();
       expect(await screen.findByRole('button', { name: 'Design System' })).toBeTruthy();
-      expect(await screen.findByRole('button', { name: 'Storybook' })).toBeTruthy();
+      expect(await screen.findByRole('button', { name: 'Components' })).toBeTruthy();
     } finally {
       window.history.pushState({}, '', originalPath);
     }

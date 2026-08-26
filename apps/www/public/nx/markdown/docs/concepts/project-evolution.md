@@ -120,7 +120,7 @@ Recent commits indicate a concentrated refinement sprint:
 - kept `/routine/:client_id` as a public bypass route for shareable routine delivery
 - expanded routine page UI with side-by-side rendering, AM/PM slider, aftercare, and footer components
 - reshaped routine API flow around client routine payload retrieval
-- fixed Storybook config and continued version progression through 4.3.x
+- updated tooling configs and continued version progression through 4.3.x
 - cleaned docs media/header assets and logo paths
 - removed unused large AskLeida video assets
 

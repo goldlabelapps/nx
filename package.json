@@ -7,17 +7,15 @@
   },
   "private": true,
   "scripts": {
-    "dev": "concurrently -n nx,cms,storybook -c blue,green,cyan,white,magenta \"pnpm --dir apps/www dev\" \"pnpm --dir apps/cms dev\" \"pnpm --dir packages/design-system dev\"",
-    "storybook": "pnpm --dir packages/design-system storybook",
-    "build-storybook": "pnpm --dir packages/design-system build-storybook",
+    "dev": "concurrently -n nx,cms -c blue,green \"pnpm --dir apps/www dev\" \"pnpm --dir apps/cms dev\"",
     "build": "pnpm --dir packages/design-system build && pnpm --dir apps/www build && pnpm --dir apps/cms build",
     "clean": "bash ./shell/clean-repo.sh",
     "lint": "turbo run lint",
     "test": "node ./tests/run-monorepo-tests.mjs",
     "test:coverage": "node ./tests/run-monorepo-coverage.mjs",
     "type-check": "turbo run type-check",
-    "ci:github": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm build-storybook && NEXT_TELEMETRY_DISABLED=1 corepack pnpm build",
-    "ci:full": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm lint && corepack pnpm type-check && corepack pnpm test && corepack pnpm build-storybook && corepack pnpm build"
+    "ci:github": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && NEXT_TELEMETRY_DISABLED=1 corepack pnpm build",
+    "ci:full": "corepack enable && corepack prepare pnpm@11.13.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm lint && corepack pnpm type-check && corepack pnpm test && corepack pnpm build"
   },
   "devDependencies": {
     "c8": "^10.1.3",

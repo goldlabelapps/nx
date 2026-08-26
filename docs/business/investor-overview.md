@@ -177,7 +177,7 @@ Recent commits reinforce execution momentum:
 - public auth moved to a clearer Supabase session-gated model
 - routine sharing/presentation UX materially improved
 - API and type-shape refactoring continued around routine delivery
-- design-system and Storybook maintenance continued alongside product work
+- design-system component maintenance continued alongside product work
 - docs/media cleanup and asset pruning improved operational discipline
 
 ## Best Investor-Level Takeaway
