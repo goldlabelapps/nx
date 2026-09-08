@@ -28,8 +28,8 @@ describe("Template Distribution & Assets", () => {
       "public/md/nx/developer/testing.md",
       "public/md/nx/api.md",
       "public/md/nx/architecture.md",
-      "public/md/python/index.md",
-      "public/md/career/nextjs/next-js.md",
+      "public/md/nx/monorepo.md",
+      "public/md/nx/techstack.md",
     ];
 
     for (const doc of docChapters) {
