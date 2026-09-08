@@ -21,7 +21,7 @@ export type PublicProspectProps = ProspectsProps;
 
 export function Prospects({
   title = "",
-  description = "Here is your live device fingerprint",
+  description: _description = "Here is your live device fingerprint",
   className = "",
   showDevOutput = true,
   initialData,
