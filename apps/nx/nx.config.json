@@ -1,15 +1,15 @@
 {
-    "name": "Goldlabel",
-    "tagline": "JavaScript whatever the weather",
+    "name": "Lorem",
+    "tagline": "Ipsum Dolar Imet",
     "favicon": "/svg/favicon.svg",
-    "url": "https://goldlabel.pro",
-    "port": 5535,
+    "url": "https://lorem.goldlabel.pro",
+    "port": 4500,
     "founder": {
         "name": "Founder",
         "email": "founder@goldlabel.pro"
     },
     "social": {
-        "github": "https://github.com/goldlabelapps/nx",
+        "github": "https://github.com/goldlabelapps",
         "twitter": "https://twitter.com/goldlabelapps",
         "twitterHandle": "@goldlabelapps"
     },
