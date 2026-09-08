@@ -6,6 +6,7 @@ import { Search, X, BadgeCheck } from "lucide-react";
 import { CleverText } from "@goldlabelapps/flash";
 import { profileData } from "@/data/profileData";
 import type { GuideMeta } from "@/lib/markdown";
+import { Editable } from "@/components/common/Editable";
 import { ParticleCanvas } from "@/components/hero/ParticleCanvas";
 import { useSearch } from "./useSearch";
 import { SearchResultsList } from "./SearchResultsList";
@@ -44,40 +45,46 @@ export function HeroSearchBar({ guides = [] }: { guides?: GuideMeta[] }) {
 
       <div className="relative z-20 w-full max-w-4xl mx-auto px-4 flex flex-col items-center text-center">
         {/* Top Feature Pill Badge */}
-        <Link
-          href="/experience"
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-[#C09F52]/10 border border-[#85580C]/30 dark:border-[#C09F52]/30 text-xs font-semibold text-[#85580C] dark:text-[#F1D57A] backdrop-blur-md mb-10 sm:mb-12 hover:bg-slate-50 dark:hover:bg-[#C09F52]/15 transition-all shadow-sm"
-        >
-          <BadgeCheck className="h-3.5 w-3.5 text-[#85580C] dark:text-[#F1D57A]" />
-          <span>From Flash to Agentic AI</span>
-        </Link>
+        <Editable file="apps/nx/src/config/statement.config.ts" field="badge" inline className="mb-10 sm:mb-12">
+          <Link
+            href="/experience"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-[#C09F52]/10 border border-[#85580C]/30 dark:border-[#C09F52]/30 text-xs font-semibold text-[#85580C] dark:text-[#F1D57A] backdrop-blur-md hover:bg-slate-50 dark:hover:bg-[#C09F52]/15 transition-all shadow-sm"
+          >
+            <BadgeCheck className="h-3.5 w-3.5 text-[#85580C] dark:text-[#F1D57A]" />
+            <span>Lorem Ipsum Application Template</span>
+          </Link>
+        </Editable>
 
         {/* Main Headline */}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-3xl leading-tight min-h-[140px] sm:min-h-[180px]">
-          <span className="text-slate-900 dark:text-white inline-block">
-            <CleverText
-              text={profileData.founder.name}
-              speed={45}
-              cursor={!line1Done ? "|" : ""}
-              onFinish={handleLine1Finish}
-              style={{ fontFamily: 'inherit' }}
-            />
-          </span>
-          <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#85580C] via-[#9E6E17] to-[#784E07] dark:from-[#F1D57A] dark:via-[#C09F52] dark:to-[#E6CA65] text-3xl sm:text-5xl md:text-6xl font-bold min-h-[1.2em]">
-            {showLine2 ? (
+        <Editable file="apps/nx/src/data/profileData.ts" field="founder">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white max-w-3xl leading-tight min-h-[140px] sm:min-h-[180px]">
+            <span className="text-slate-900 dark:text-white inline-block">
               <CleverText
-                text={profileData.founder.title}
-                speed={40}
+                text={profileData.founder.name}
+                speed={45}
+                cursor={!line1Done ? "|" : ""}
+                onFinish={handleLine1Finish}
                 style={{ fontFamily: 'inherit' }}
               />
-            ) : null}
-          </span>
-        </h1>
+            </span>
+            <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#85580C] via-[#9E6E17] to-[#784E07] dark:from-[#F1D57A] dark:via-[#C09F52] dark:to-[#E6CA65] text-3xl sm:text-5xl md:text-6xl font-bold min-h-[1.2em]">
+              {showLine2 ? (
+                <CleverText
+                  text={profileData.founder.title}
+                  speed={40}
+                  style={{ fontFamily: 'inherit' }}
+                />
+              ) : null}
+            </span>
+          </h1>
+        </Editable>
 
         {/* Hardened Subheadline */}
-        <p className="mt-2 text-base sm:text-xl font-normal text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-          {profileData.founder.tagline}
-        </p>
+        <Editable file="apps/nx/src/data/profileData.ts" field="tagline" className="mt-2">
+          <p className="text-base sm:text-xl font-normal text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+            {profileData.founder.tagline}
+          </p>
+        </Editable>
 
         {/* Prominent Front & Center Search Input */}
         <div ref={searchContainerRef} className="w-full max-w-[550px] mt-10 mb-2 sm:mb-4 relative z-20 scroll-mt-24 sm:scroll-mt-28">

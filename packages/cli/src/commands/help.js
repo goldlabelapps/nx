@@ -11,7 +11,7 @@ export function showHelp() {
 
   console.log(`${colors.bold}${colors.brightWhite}COMMANDS${colors.reset}`);
   console.log(`    ${colors.bold}${colors.brightGreen}dev${colors.reset} [app]       Launch development servers (all apps or a single specified app)`);
-  console.log(`    ${colors.bold}${colors.brightGreen}nx${colors.reset}              Launch NX app (port 5530) & open browser`);
+  console.log(`    ${colors.bold}${colors.brightGreen}nx${colors.reset}              Launch NX app (port 4500) & open browser`);
   console.log(`    ${colors.bold}${colors.brightGreen}build${colors.reset}           Build all packages and applications in the workspace`);
   console.log(`    ${colors.bold}${colors.brightGreen}create${colors.reset}          Create, configure, install, and launch an app from apps/nx`);
   console.log(`    ${colors.bold}${colors.brightGreen}remove${colors.reset} [app]     Permanently delete an app and strip its references from the monorepo`);

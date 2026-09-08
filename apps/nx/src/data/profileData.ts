@@ -48,14 +48,14 @@ export interface ProfileData {
 
 export const profileData: ProfileData = {
   founder: {
-    name: "JavaScript",
-    title: "whatever the weather",
-    email: "goldlabel.apps@gmail.com",
-    phone: "+44 07745763122",
-    github: "https://github.com/goldlabelapps",
-    linkedin: "https://www.linkedin.com/in/chris-dorward/",
-    tagline: "20+ years delivering enterprise JavaScript across the full stack, specialising in React, Next.js, and Node . Working across the UK, Europe, Australia & remote teams worldwide.",
-    bio: "Deep expertise in React and TypeScript, specialising in Next.js. 20+ years delivering scalable web applications for startups, enterprises, and remote-first teams across the UK, Europe, Australia & beyond. Experienced in Agentic Coding and AI-assisted software development, including Google Antigravity, alongside Python backend development and AI/LLM prompt engineering.",
+    name: "Lorem Ipsum",
+    title: "Dolor Sit Amet",
+    email: "founder@example.com",
+    phone: "+44 0000 000000",
+    github: "https://github.com/example",
+    linkedin: "https://www.linkedin.com/in/example",
+    tagline: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
   },
   eras: [
     {

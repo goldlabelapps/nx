@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config";
+import { Editable } from "@/components/common/Editable";
 import { ExternalLink } from "lucide-react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -11,7 +12,7 @@ export function Footer() {
     <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-slate-500 dark:text-slate-400 text-xs sm:text-sm transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {/* Footer Link Columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 pb-8 sm:pb-10">
+        <Editable file="apps/nx/src/config/footer.config.ts" field="columns" className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 pb-8 sm:pb-10">
           {siteConfig.footer.columns.map((col, idx) => (
             <div key={idx} className="space-y-3">
               <h4 className="text-xs font-bold text-slate-900 dark:text-slate-200 uppercase tracking-wider">
@@ -47,7 +48,7 @@ export function Footer() {
               </ul>
             </div>
           ))}
-        </div>
+        </Editable>
 
         {/* Bottom Legal Bar */}
         <div className="pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">

@@ -6,7 +6,7 @@ import { GET as wellKnownGet } from "../../.well-known/agent-layer.json/route";
 
 describe("Agent Layer Endpoints", () => {
   it("serves agent manifest at GET /.well-known/agent-layer.json", async () => {
-    const req = new Request("http://localhost:5530/.well-known/agent-layer.json", {
+    const req = new Request("http://localhost:4500/.well-known/agent-layer.json", {
       method: "GET",
     });
     const res = await wellKnownGet(req);
@@ -20,7 +20,7 @@ describe("Agent Layer Endpoints", () => {
   });
 
   it("serves knowledge graph at GET /api/agent/knowledge", async () => {
-    const req = new Request("http://localhost:5530/api/agent/knowledge", {
+    const req = new Request("http://localhost:4500/api/agent/knowledge", {
       method: "GET",
     });
     const res = await knowledgeGet(req);
@@ -34,7 +34,7 @@ describe("Agent Layer Endpoints", () => {
   });
 
   it("executes get_site_info action at POST /api/agent/execute", async () => {
-    const req = new Request("http://localhost:5530/api/agent/execute", {
+    const req = new Request("http://localhost:4500/api/agent/execute", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "get_site_info" }),
@@ -49,7 +49,7 @@ describe("Agent Layer Endpoints", () => {
   });
 
   it("executes get_features action with tag filter", async () => {
-    const req = new Request("http://localhost:5530/api/agent/execute", {
+    const req = new Request("http://localhost:4500/api/agent/execute", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action: "get_features", input: { tag: "Theming" } }),

@@ -8,13 +8,13 @@ export default defineConfig({
   workers: 1,
   reporter: "list",
   use: {
-    baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL || "http://127.0.0.1:5530",
+    baseURL: process.env.PLAYWRIGHT_TEST_BASE_URL || "http://127.0.0.1:4500",
     trace: "on-first-retry",
     screenshot: "only-on-failure",
   },
   webServer: {
     command: "pnpm dev",
-    url: "http://127.0.0.1:5530",
+    url: "http://127.0.0.1:4500",
     reuseExistingServer: true,
     timeout: 120000,
   },

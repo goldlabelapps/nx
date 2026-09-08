@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { nxConfig } from "@/lib/nxConfig";
 import {
   siteConfig,
   metadataConfig,
@@ -18,12 +19,12 @@ import {
 
 describe("Modular Config Architecture", () => {
   it("exports individual modular configuration objects correctly", () => {
-    expect(metadataConfig.title).toBe("Goldlabel, JavaScript whatever the weather");
-    expect(metadataConfig.tagline).toBe("JavaScript whatever the weather");
-    expect(brandConfig.name).toBe("Goldlabel");
-    expect(pwaConfig.shortName).toBe("Goldlabel");
+    expect(metadataConfig.title).toBe(`${nxConfig.name}, ${nxConfig.tagline}`);
+    expect(metadataConfig.tagline).toBe(nxConfig.tagline);
+    expect(brandConfig.name).toBe(nxConfig.name);
+    expect(pwaConfig.shortName).toBe(nxConfig.name);
     expect(navigationConfig.links.length).toBeGreaterThan(0);
-    expect(heroConfig.headline).toBe("JavaScript whatever the weather");
+    expect(heroConfig.headline).toBe(nxConfig.tagline);
     expect(statementConfig.headline).toContain("Built with modern primitives");
     expect(featuresConfig.items.length).toBe(4);
     expect(videosConfig.items.length).toBe(2);
@@ -50,15 +51,15 @@ describe("Modular Config Architecture", () => {
   });
 
   it("has valid metadata and twitter image asset", () => {
-    expect(siteConfig.metadata.title).toBe("Goldlabel, JavaScript whatever the weather");
-    expect(siteConfig.metadata.tagline).toBe("JavaScript whatever the weather");
+    expect(siteConfig.metadata.title).toBe(`${nxConfig.name}, ${nxConfig.tagline}`);
+    expect(siteConfig.metadata.tagline).toBe(nxConfig.tagline);
     expect(siteConfig.metadata.twitterImage).toBe("/png/open-graph.png");
     expect(siteConfig.metadata.ogImage).toBe("/png/open-graph.png");
     expect(siteConfig.metadata.twitterHandle).toBe("@goldlabelapps");
   });
 
   it("has valid brand configuration and logo menu", () => {
-    expect(siteConfig.brand.name).toBe("Goldlabel");
+    expect(siteConfig.brand.name).toBe(nxConfig.name);
     expect(siteConfig.brand.contextMenu.enabled).toBe(true);
     expect(siteConfig.brand.contextMenu.copySvgLabel).toBe("Copy Template Logo as SVG");
   });
@@ -68,9 +69,9 @@ describe("Modular Config Architecture", () => {
     expect(siteConfig.pwa.appleTouchIcon).toBe("/png/favicon.png");
     expect(siteConfig.pwa.favicon).toBe("/svg/favicon.svg");
     expect(siteConfig.brand.logoSrc).toBe("/svg/favicon.svg");
-    expect(siteConfig.pwa.name).toBe("Goldlabel");
-    expect(siteConfig.pwa.shortName).toBe("Goldlabel");
-    expect(siteConfig.pwa.tagline).toBe("JavaScript whatever the weather");
+    expect(siteConfig.pwa.name).toBe(nxConfig.name);
+    expect(siteConfig.pwa.shortName).toBe(nxConfig.name);
+    expect(siteConfig.pwa.tagline).toBe(nxConfig.tagline);
     expect(siteConfig.pwa.icons.length).toBeGreaterThanOrEqual(2);
     expect(siteConfig.pwa.themeColor).toBe("#0f172a");
   });
@@ -109,7 +110,7 @@ describe("Modular Config Architecture", () => {
   });
 
   it("exports valid hero configuration", () => {
-    expect(heroConfig.headline).toBe("JavaScript whatever the weather");
+    expect(heroConfig.headline).toBe(nxConfig.tagline);
     expect(siteConfig.hero.primaryCta.label).toBe("Pricing");
     expect(siteConfig.hero.primaryCta.href).toBe("/#solutions");
     expect(siteConfig.hero.particleField.colors.length).toBeGreaterThan(0);

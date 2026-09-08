@@ -41,7 +41,7 @@ export const featuresConfig: FeaturesConfig = {
         prompt: "template-monorepo",
         commands: [
           { cmd: "pnpm dev" },
-          { output: "✔ Ready on http://localhost:5530" },
+          { output: "✔ Ready on http://localhost:4500" },
           { cmd: "pnpm test" },
           { output: "✦ All unit tests passed in 1.2s" },
         ],

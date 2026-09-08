@@ -1,18 +1,21 @@
 ---
 order: 9038
 title: NX°
-description: Agentic friendly framework
+description: 100% Free & Open Source Agentic-Friendly Framework
 icon: docs
-tags: nx, overview
+tags: open-source, free-forever, agentic-ai, zero-friction, app-cartridges, future-proof
 image: nx
 ---
 
 ## What is NX°?
 
-NX° is a composable application framework. Rather than a monolithic codebase, NX° apps are assembled from self-contained **cartridges** — pluggable modules that can be switched on or off per project. Each cartridge owns its own components, actions, hooks, and Redux state slice, making it trivially portable between NX° host applications.
+**NX° is 100% Free & Open Source (MIT Licensed).**
 
-It's a powerful framework for rapidly bootstrapping modern apps. Built on modular JavaScript and NextJS, it streamlines fullstack development for both server-side Node and client-side React—so you can launch new web apps fast, without starting from scratch. 
+It is a next-generation, composable application framework designed for the agentic AI era. Rather than wrestling with monolithic codebases, NX° applications are seamlessly assembled from self-contained **cartridges** — pluggable super-modules that can be toggled on or off instantly. Each cartridge brings its own UI components, server actions, hooks, and Redux state slices, making feature sharing effortless across host applications.
 
-Fast to build, affordable to deploy, and powered by proven web standards—from semantic HTML to static site generation. NX° apps are fast, reliable and make WordPress look very dated
+Built on modern JavaScript, TypeScript, and Next.js, NX° turns fullstack app development into an intuitive, high-speed experience for both human developers and AI pair programmers.
 
-[CleverText text="Ready to create an NX° app?"]
+🚀 **Zero friction. Zero licensing costs. High velocity.**  
+Fast to build, ultra-light to deploy, and powered by modern web standards—NX° makes legacy site builders and bloated boilerplate frameworks feel like ancient history.
+
+[CleverText text="Ready to create an NX° app for free?"]

@@ -43,7 +43,7 @@ describe("Email API & Helper", () => {
 
   describe("POST /api/notify/send route", () => {
     it("handles user.created event payload", async () => {
-      const req = new Request("http://localhost:5530/api/notify/send", {
+      const req = new Request("http://localhost:4500/api/notify/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -66,7 +66,7 @@ describe("Email API & Helper", () => {
     });
 
     it("returns 400 when missing subject for generic email", async () => {
-      const req = new Request("http://localhost:5530/api/email/send", {
+      const req = new Request("http://localhost:4500/api/email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),

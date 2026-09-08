@@ -37,10 +37,10 @@ describe("CLI App Resolver", () => {
     expect(resolveApp("goldlabel")).toBeNull();
     expect(resolveApp("gold")).toBeNull();
     expect(resolveApp("gl")).toBeNull();
-    expect(resolveApp("nx")?.port).toBe(5530);
-    expect(resolveApp("template")?.port).toBe(5530);
-    expect(resolveApp("starter")?.port).toBe(5530);
-    expect(resolveApp("tpl")?.port).toBe(5530);
+    expect(resolveApp("nx")?.port).toBe(4500);
+    expect(resolveApp("template")?.port).toBe(4500);
+    expect(resolveApp("starter")?.port).toBe(4500);
+    expect(resolveApp("tpl")?.port).toBe(4500);
     expect(resolveApp("prospects")).toBeNull();
     expect(resolveApp("echopay")).toBeNull();
     expect(resolveApp("storybook")).toBeNull();
@@ -107,12 +107,12 @@ describe("CLI Non-Interactive Command Dispatcher", () => {
 
   it("supports dry-run on dev command for all apps", async () => {
     await runCli(["dev", "--dry-run", "--quiet"]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringMatching(/\[DRY-RUN\] Freeing ports \(5530-5580\) and starting: .+ run dev:all/));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringMatching(/\[DRY-RUN\] Freeing ports \(4500-4550\) and starting: .+ run dev:all/));
   });
 
   it("supports dry-run launching single app via 'dev nx' and opens browser", async () => {
     await runCli(["dev", "nx", "--dry-run", "--quiet"]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("[DRY-RUN] Freeing port 5530, opening browser at http://localhost:5530"));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("[DRY-RUN] Freeing port 4500, opening browser at http://localhost:4500"));
   });
 
   it("supports dry-run on clean command", async () => {

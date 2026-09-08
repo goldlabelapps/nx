@@ -11,7 +11,7 @@ describe("ShareMenu component", () => {
 
   it("renders the share trigger as an icon button", () => {
     render(<ShareMenu />);
-    const button = screen.getByRole("button", { name: /share goldlabel/i });
+    const button = screen.getByRole("button", { name: /share/i });
     expect(button).toBeInTheDocument();
     expect(screen.queryByText("Share")).not.toBeInTheDocument();
   });
@@ -20,7 +20,7 @@ describe("ShareMenu component", () => {
     const user = userEvent.setup();
     render(<ShareMenu />);
 
-    const button = screen.getByRole("button", { name: /share goldlabel/i });
+    const button = screen.getByRole("button", { name: /share/i });
     await user.click(button);
 
     expect(screen.getByRole("dialog", { name: /share options/i })).toBeInTheDocument();
@@ -43,7 +43,7 @@ describe("ShareMenu component", () => {
 
     render(<ShareMenu url="https://template.goldlabel.pro" />);
 
-    const trigger = screen.getByRole("button", { name: /share goldlabel/i });
+    const trigger = screen.getByRole("button", { name: /share/i });
     await user.click(trigger);
 
     const copyBtn = screen.getByText("Copy Link");
@@ -57,7 +57,7 @@ describe("ShareMenu component", () => {
     const user = userEvent.setup();
     render(<ShareMenu />);
 
-    const trigger = screen.getByRole("button", { name: /share goldlabel/i });
+    const trigger = screen.getByRole("button", { name: /share/i });
     await user.click(trigger);
 
     expect(screen.getByRole("dialog")).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe("ShareMenu component", () => {
       </div>
     );
 
-    const trigger = screen.getByRole("button", { name: /share goldlabel/i });
+    const trigger = screen.getByRole("button", { name: /share/i });
     await user.click(trigger);
 
     expect(screen.getByRole("dialog")).toBeInTheDocument();

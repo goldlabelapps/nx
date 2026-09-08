@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --webpack -p 5535",
+    "dev": "next dev --webpack -p 4500",
     "update:og-json": "node public/jpg/update-manifest.js",
     "prebuild": "cd ../.. && pnpm exec turbo run build --filter=nx^...",
     "build": "next build --webpack",
-    "start": "next start -p 5535",
+    "start": "next start -p 4500",
     "lint": "eslint",
     "pretypecheck": "cd ../.. && pnpm exec turbo run build --filter=nx^...",
     "pretype-check": "cd ../.. && pnpm exec turbo run build --filter=nx^...",

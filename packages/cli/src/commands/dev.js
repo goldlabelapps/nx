@@ -4,7 +4,7 @@ import path from "node:path";
 import { checkEnv } from "../env.js";
 import { log, colors, banner, promptSelect, openBrowser } from "../terminal.js";
 
-export const MONOREPO_PORTS = [5530];
+export const MONOREPO_PORTS = [4500];
 
 export const APPS = {
   nx: {
@@ -12,8 +12,8 @@ export const APPS = {
     name: "NX",
     dir: "apps/nx",
     filter: "nx",
-    port: 5530,
-    url: "http://localhost:5530",
+    port: 4500,
+    url: "http://localhost:4500",
     desc: "Modular Next.js saas app with Lorem Ipsum",
     aliases: ["template", "starter", "tpl"],
   },
@@ -199,13 +199,13 @@ export async function runDev(options = {}) {
   if (!options.quiet) {
     console.log(banner);
     console.log(`${colors.bold}${colors.brightWhite}⚡ Launching NX° Development Servers${colors.reset}\n`);
-    log.info(`NX App:               ${colors.brightCyan}http://localhost:5530${colors.reset}\n`);
+    log.info(`NX App:               ${colors.brightCyan}http://localhost:4500${colors.reset}\n`);
     log.info(`Press ${colors.bold}Ctrl+C${colors.reset} at any time to stop all servers.\n`);
     log.divider();
   }
 
   if (options.dryRun) {
-    log.info(`[DRY-RUN] Freeing ports (5530-5580) and starting: pnpm run dev:all`);
+    log.info(`[DRY-RUN] Freeing ports (4500-4550) and starting: pnpm run dev:all`);
     return true;
   }
 
