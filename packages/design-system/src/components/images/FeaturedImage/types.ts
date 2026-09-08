@@ -1,1 +1,0 @@
-export type { FeaturedImageData, FeaturedImageProps } from '../../../types';

@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import type { ThunkDispatch, UnknownAction } from '@reduxjs/toolkit';
 import type { Store } from 'redux';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type T_UbereduxState = Record<string, any>;
 
 export type T_UbereduxKeyPayload = {
@@ -21,7 +22,7 @@ export type T_UbereduxProviderProps = {
   children: ReactNode;
 };
 
-export type T_PersistedThemeMode = 'light' | 'dark';
+export type T_PersistedThemeMode = 'light' | 'dark' | 'system';
 
 export type T_ThemePreferenceState = {
   mode: T_PersistedThemeMode | null;

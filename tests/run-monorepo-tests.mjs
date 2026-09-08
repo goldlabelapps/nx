@@ -106,7 +106,16 @@ let recursiveOutput = '';
 let rootOutput = '';
 
 try {
-  recursiveOutput = await run('pnpm', ['--filter', './apps/*', '--filter', './packages/*', '-r', '--if-present', 'test']);
+  recursiveOutput = await run('pnpm', [
+    '--filter',
+    './apps/*',
+    '--filter',
+    './packages/*',
+    '-r',
+    '--workspace-concurrency=1',
+    '--if-present',
+    'test',
+  ]);
   rootOutput = await run('node', ['--test', './tests/*.test.mjs']);
 } catch (error) {
   const code = typeof error?.exitCode === 'number' ? error.exitCode : 1;

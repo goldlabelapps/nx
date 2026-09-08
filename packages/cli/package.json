@@ -1,0 +1,32 @@
+{
+  "name": "@goldlabelapps/cli",
+  "version": "3.2.7",
+  "description": "Interactive command-line toolchain for NX and Goldlabel workspaces.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "bin": {
+    "nx-cli": "./bin/cli.js",
+    "gla": "./bin/cli.js"
+  },
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "dev": "node ./bin/cli.js",
+    "cli": "node ./bin/cli.js",
+    "build": "echo \"No build step required for CLI\"",
+    "build:all": "echo \"No build step required for CLI\"",
+    "setup": "node ./bin/cli.js setup",
+    "test": "npm run ci",
+    "test:watch": "vitest",
+    "ci": "npm run type-check && npm run lint && vitest run",
+    "type-check": "echo \"No type-check needed for JS CLI\"",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "vitest": "^4.1.11"
+  }
+}

@@ -1,0 +1,33 @@
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import Logo from '../../../src/design-system/components/brand/Logo/Logo';
+
+describe('brand components', () => {
+  it('renders logo default and custom content', () => {
+    const { rerender } = render(<Logo />);
+    expect(screen.getByText('NX°')).toBeTruthy();
+
+    rerender(<Logo>NX</Logo>);
+    expect(screen.getByText('NX')).toBeTruthy();
+
+    rerender(<Logo favicon />);
+    expect(screen.queryByText('NX°')).toBeNull();
+    expect(screen.queryByText('NX')).toBeNull();
+  });
+
+  it('renders a provided icon name instead of the fallback svg', () => {
+    const { container } = render(<Logo icon="home" />);
+
+    expect(container.querySelector('svg[aria-label="NX Favicon"]')).toBeNull();
+    expect(container.querySelectorAll('svg').length).toBeGreaterThan(0);
+  });
+
+  it('uses custom face and smile colors when provided', () => {
+    const { container } = render(<Logo icon={null} faceColor="#123456" smileColor="#abcdef" />);
+
+    const favicon = container.querySelector('svg[aria-label="NX Favicon"]');
+    const paths = favicon?.querySelectorAll('path');
+    expect(paths[0]?.getAttribute('fill')).toBe('#123456');
+    expect(paths[1]?.getAttribute('fill')).toBe('#abcdef');
+  });
+});

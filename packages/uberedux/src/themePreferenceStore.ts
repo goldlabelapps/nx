@@ -97,7 +97,7 @@ export function readPersistedThemeModeFromStorage(): T_PersistedThemeMode | null
     }
 
     const mode = JSON.parse(persistedObject.mode) as unknown;
-    return mode === 'light' || mode === 'dark' ? mode : null;
+    return mode === 'light' || mode === 'dark' || mode === 'system' ? mode : null;
   } catch {
     return null;
   }

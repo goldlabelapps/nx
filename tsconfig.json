@@ -18,12 +18,18 @@
     "paths": {
       "@nx/ui": ["packages/ui"],
       "@nx/ui/*": ["packages/ui/*"],
-      "@nx/design-system": ["packages/design-system/src"],
-      "@nx/design-system/*": ["packages/design-system/src/*"],
+      "@goldlabelapps/theme": ["packages/theme/src"],
+      "@goldlabelapps/theme/*": ["packages/theme/src/*"],
       "@nx/markdown": ["packages/markdown/src"],
       "@nx/markdown/*": ["packages/markdown/src/*"],
-      "@nx/uberedux": ["packages/uberedux/src"],
-      "@nx/uberedux/*": ["packages/uberedux/src/*"]
+      "@goldlabelapps/uberedux": ["packages/uberedux/src"],
+      "@goldlabelapps/uberedux/*": ["packages/uberedux/src/*"],
+      "@goldlabelapps/notify": ["packages/notify/src"],
+      "@goldlabelapps/notify/*": ["packages/notify/src/*"],
+      "@goldlabelapps/flash": ["packages/flash/src"],
+      "@goldlabelapps/flash/*": ["packages/flash/src/*"],
+      "@goldlabelapps/prospects": ["packages/prospects/src"],
+      "@goldlabelapps/prospects/*": ["packages/prospects/src/*"]
     }
   }
 }

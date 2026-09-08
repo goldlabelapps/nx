@@ -1,0 +1,63 @@
+{
+  "name": "@goldlabelapps/saas",
+  "version": "3.2.7",
+  "description": "SaaS auth guards, session verification, and routing zone helpers.",
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./auth/middleware": {
+      "types": "./dist/auth/middleware.d.ts",
+      "import": "./dist/auth/middleware.js",
+      "require": "./dist/auth/middleware.js"
+    },
+    "./auth/session": {
+      "types": "./dist/auth/session.d.ts",
+      "import": "./dist/auth/session.js",
+      "require": "./dist/auth/session.js"
+    },
+    "./routing/routeConfig": {
+      "types": "./dist/routing/routeConfig.d.ts",
+      "import": "./dist/routing/routeConfig.js",
+      "require": "./dist/routing/routeConfig.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "tsx --test tests/**/*.test.ts",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "peerDependencies": {
+    "@goldlabelapps/theme": ">=3.0.0",
+    "@mui/material": ">=7.0.0",
+    "firebase": ">=10.0.0",
+    "next": ">=14.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@goldlabelapps/theme": "workspace:*"
+  },
+  "devDependencies": {
+    "@mui/material": "^7.3.2",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "firebase": "^12.0.0",
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}
