@@ -1,0 +1,1 @@
+export type { ShareProps, ShareSize } from '../../../types';

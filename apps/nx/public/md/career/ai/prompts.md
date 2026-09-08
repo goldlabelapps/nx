@@ -1,0 +1,26 @@
+---
+order: 9026
+title: Prompts
+description: Proper Prompt Engineering
+icon: docs
+tags: ai, prompts, system-instructions
+image: ai
+---
+
+Proper Prompt Engineering
+
+> [CleverText text="Simple cut+paste propmts to try "]
+
+- Explain what machine learning weights which make LLM's work are in kindergarten terms
+
+- Wie könnten große Sprachmodelle deutschen Anwaltskanzleien bei der Recherche helfen?
+
+- What does the GDPR mean for a law firm in Europe that processes personal data?
+
+- What risks arise if companies send confidential files to a public AI service like ChatGPT?
+
+- Erkläre in einfachen Worten, was das Berufsgeheimnis für deutsche Rechtsanwälte bedeutet. 
+
+- Explain in simple terms what professional secrecy means for UK lawyers.
+
+- What confidentiality obligations do firms have toward their clients in regard to data confidentiality?

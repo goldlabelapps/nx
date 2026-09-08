@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "ignoreDeprecations": "5.0",
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "allowArbitraryExtensions": true,
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@nx/ui": ["packages/ui"],
+      "@nx/ui/*": ["packages/ui/*"],
+      "@goldlabelapps/theme": ["packages/theme/src"],
+      "@goldlabelapps/theme/*": ["packages/theme/src/*"],
+      "@nx/markdown": ["packages/markdown/src"],
+      "@nx/markdown/*": ["packages/markdown/src/*"],
+      "@goldlabelapps/uberedux": ["packages/uberedux/src"],
+      "@goldlabelapps/uberedux/*": ["packages/uberedux/src/*"],
+      "@goldlabelapps/notify": ["packages/notify/src"],
+      "@goldlabelapps/notify/*": ["packages/notify/src/*"],
+      "@goldlabelapps/flash": ["packages/flash/src"],
+      "@goldlabelapps/flash/*": ["packages/flash/src/*"],
+      "@goldlabelapps/prospects": ["packages/prospects/src"],
+      "@goldlabelapps/prospects/*": ["packages/prospects/src/*"]
+    }
+  }
+}

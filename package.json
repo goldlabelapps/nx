@@ -1,0 +1,30 @@
+{
+  "name": "nx",
+  "version": "3.2.7",
+  "packageManager": "pnpm@11.22.0",
+  "engines": {
+    "node": ">=20 <25"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "node ./packages/cli/bin/cli.js",
+    "dev:all": "pnpm --dir apps/nx dev",
+    "cli": "node ./packages/cli/bin/cli.js",
+    "build": "pnpm exec turbo run build",
+    "clean": "node ./packages/cli/bin/cli.js clean",
+    "lint": "pnpm exec turbo run lint",
+    "test": "node ./tests/run-monorepo-tests.mjs",
+    "typecheck": "pnpm exec turbo run type-check",
+    "type-check": "pnpm exec turbo run type-check",
+    "ci": "pnpm lint && pnpm type-check && pnpm test && pnpm build",
+    "ci:github": "corepack enable && corepack prepare pnpm@11.22.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm build-storybook && NEXT_TELEMETRY_DISABLED=1 corepack pnpm build",
+    "ci:full": "corepack enable && corepack prepare pnpm@11.22.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm lint && corepack pnpm type-check && corepack pnpm test && corepack pnpm build-storybook && corepack pnpm build"
+  },
+  "devDependencies": {
+    "c8": "^10.1.3",
+    "concurrently": "^9.0.1",
+    "eslint": "^9",
+    "turbo": "2.10.12",
+    "typescript-eslint": "^8.69.0"
+  }
+}

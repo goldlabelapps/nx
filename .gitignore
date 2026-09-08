@@ -146,8 +146,10 @@ vite.config.ts.timestamp-*
 
 # Monorepo-specific
 .turbo/
+packages/design-system/storybook-static/
 packages/design-system/.npm-cache/
 packages/design-system/package-lock.json
+packages/themes/storybook/storybook-static/
 apps/agent/next-env.d.ts
 packages/nx-agent/next-env.d.ts
 apps/agent/next-env.d.ts
@@ -155,5 +157,17 @@ packages/nx-agent/next-env.d.ts
 packages/nx-agent/next-env.d.ts
 packages/nx-agent/next-env.d.ts
 apps/agent/next-env.d.ts
-apps/agent/next-env.d.ts
-apps/agent/public/sw.js
+# PWA generated service workers & workbox
+**/public/sw.js
+**/public/sw.js.map
+**/public/workbox-*.js
+**/public/workbox-*.js.map
+**/public/worker-*.js
+**/public/worker-*.js.map
+**/public/fallback-*.js
+**/public/fallback-*.js.map
+
+# Playwright & E2E reports
+**/playwright-report/
+**/test-results/
+**/blob-report/

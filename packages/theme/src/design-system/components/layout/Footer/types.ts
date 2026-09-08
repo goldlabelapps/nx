@@ -1,0 +1,1 @@
+export type { SiteFooterColumn, SiteFooterLink, SiteFooterProps } from '../../../types';

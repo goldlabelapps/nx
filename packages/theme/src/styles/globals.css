@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --background-secondary: #f8fafc;
+    --paper: #ffffff;
+    --primary: #012867;
+    --primary-hover: #011f52;
+    --secondary: #0F172A;
+    --foreground: #0f172a;
+    --foreground-muted: #475569;
+    --card-bg: #ffffff;
+    --card-border: rgba(1, 40, 103, 0.1);
+    --surface-input: #ffffff;
+    --surface-input-border: #cbd5e1;
+  }
+
+  :where(.dark, .dark *),
+  .dark,
+  [data-theme="dark"] {
+    --background: #0F172A;
+    --background-secondary: #1E293B;
+    --paper: #1E293B;
+    --primary: #F8FAFC;
+    --primary-hover: #E2E8F0;
+    --secondary: #F8FAFC;
+    --foreground: #F8FAFC;
+    --foreground-muted: #CBD5E1;
+    --card-bg: #1E293B;
+    --card-border: rgba(255, 255, 255, 0.12);
+    --surface-input: #1E293B;
+    --surface-input-border: rgba(255, 255, 255, 0.22);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  input[type="date"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  textarea,
+  select {
+    background-color: var(--surface-input, #ffffff);
+    color: var(--foreground);
+  }
+
+  :where(.dark, .dark *) input[type="text"],
+  :where(.dark, .dark *) input[type="email"],
+  :where(.dark, .dark *) input[type="password"],
+  :where(.dark, .dark *) input[type="search"],
+  :where(.dark, .dark *) input[type="tel"],
+  :where(.dark, .dark *) input[type="url"],
+  :where(.dark, .dark *) input[type="number"],
+  :where(.dark, .dark *) input[type="date"],
+  :where(.dark, .dark *) input[type="datetime-local"],
+  :where(.dark, .dark *) input[type="month"],
+  :where(.dark, .dark *) input[type="time"],
+  :where(.dark, .dark *) input[type="week"],
+  :where(.dark, .dark *) textarea,
+  :where(.dark, .dark *) select,
+  .dark input[type="text"],
+  .dark input[type="email"],
+  .dark input[type="password"],
+  .dark input[type="search"],
+  .dark input[type="tel"],
+  .dark input[type="url"],
+  .dark input[type="number"],
+  .dark input[type="date"],
+  .dark input[type="datetime-local"],
+  .dark input[type="month"],
+  .dark input[type="time"],
+  .dark input[type="week"],
+  .dark textarea,
+  .dark select {
+    background-color: var(--surface-input, #1e293b);
+    color: var(--foreground);
+  }
+
+  * {
+    border-color: rgba(15, 23, 42, 0.12);
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  a:hover {
+    color: var(--primary-hover);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Plus Jakarta Sans", "Inter", "Segoe UI", Roboto, sans-serif;
+  }
+
+  code, pre, kbd, samp {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  code {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    padding: 0.15em 0.35em;
+    border-radius: 0.375rem;
+    font-size: 0.875em;
+  }
+
+  pre {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+  }
+
+  :where(.dark, .dark *) code,
+  .dark code {
+    background-color: #1e293b;
+    color: #f1f5f9;
+  }
+
+  :where(.dark, .dark *) pre,
+  .dark pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    border-color: #334155;
+  }
+
+  :where(.dark, .dark *) pre code,
+  .dark pre code {
+    background-color: transparent;
+    color: inherit;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not(.light) code {
+      background-color: #1e293b;
+      color: #f1f5f9;
+    }
+
+    :root:not(.light) pre {
+      background-color: #0f172a;
+      color: #f8fafc;
+      border-color: #334155;
+    }
+
+    :root:not(.light) pre code {
+      background-color: transparent;
+      color: inherit;
+    }
+  }
+
+  ::selection {
+    background-color: #012867;
+    color: #ffffff;
+  }
+}
+
+/* Custom Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+:where(.dark, .dark *) ::-webkit-scrollbar-track,
+.dark ::-webkit-scrollbar-track,
+.dark::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+:where(.dark, .dark *) ::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb,
+.dark::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+:where(.dark, .dark *) ::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover,
+.dark::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  :root:not(.light) ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+
+  :root:not(.light) ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
+
