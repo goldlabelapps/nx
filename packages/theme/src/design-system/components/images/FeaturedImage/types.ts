@@ -1,0 +1,1 @@
+export type { FeaturedImageData, FeaturedImageProps, OgImageItem, OgImagesManifest, OgImageVersion } from '../../../types';

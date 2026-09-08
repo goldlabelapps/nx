@@ -1,0 +1,198 @@
+import { createTheme } from '@mui/material/styles';
+import type { DesignSystemMode, DesignSystemThemeConfig } from '../design-system/types';
+
+export function createAppTheme(mode: DesignSystemMode = 'light', themeConfig?: DesignSystemThemeConfig) {
+  const isDark = mode === 'dark';
+  const resolvedPrimary = themeConfig?.primary ?? (isDark ? '#FFFFFF' : '#5A5A5A');
+  const resolvedSecondary = themeConfig?.secondary ?? (isDark ? '#F5F5F5' : '#7A7A7A');
+
+  const palette = {
+    dark: {
+      primary: resolvedPrimary,
+      secondary: resolvedSecondary,
+      background: '#111111',
+      paper: '#1C1C1C',
+      text: '#FFFFFF',
+      textSecondary: '#CBD5E1',
+      border: 'rgba(255, 255, 255, 0.16)',
+      borderSoft: 'rgba(255, 255, 255, 0.10)',
+      shadow: '0 12px 40px rgba(0, 0, 0, 0.35)',
+      buttonShadow: '0 12px 30px rgba(0, 0, 0, 0.4)',
+      error: {
+        main: '#F87171',
+        light: '#FCA5A5',
+        dark: '#EF4444',
+        contrastText: '#0F172A',
+      },
+      warning: {
+        main: '#FBBF24',
+        light: '#FDE047',
+        dark: '#F59E0B',
+        contrastText: '#0F172A',
+      },
+      info: {
+        main: '#38BDF8',
+        light: '#7DD3FC',
+        dark: '#0284C7',
+        contrastText: '#0F172A',
+      },
+      success: {
+        main: '#4ADE80',
+        light: '#86EFAC',
+        dark: '#22C55E',
+        contrastText: '#0F172A',
+      },
+    },
+    light: {
+      primary: resolvedPrimary,
+      secondary: resolvedSecondary,
+      background: '#FFFFFF',
+      paper: '#FFFFFF',
+      text: '#1E1E1E',
+      textSecondary: '#5A5A5A',
+      border: 'rgba(31, 31, 31, 0.14)',
+      borderSoft: 'rgba(31, 31, 31, 0.08)',
+      shadow: '0 12px 40px rgba(31, 31, 31, 0.12)',
+      buttonShadow: '0 12px 30px rgba(31, 31, 31, 0.18)',
+      error: {
+        main: '#DC2626',
+        light: '#EF4444',
+        dark: '#991B1B',
+        contrastText: '#FFFFFF',
+      },
+      warning: {
+        main: '#D97706',
+        light: '#F59E0B',
+        dark: '#92400E',
+        contrastText: '#FFFFFF',
+      },
+      info: {
+        main: '#2563EB',
+        light: '#3B82F6',
+        dark: '#1E40AF',
+        contrastText: '#FFFFFF',
+      },
+      success: {
+        main: '#16A34A',
+        light: '#22C55E',
+        dark: '#166534',
+        contrastText: '#FFFFFF',
+      },
+    },
+  }[mode];
+
+  const resolvedPalette = {
+    ...palette,
+    background: themeConfig?.background ?? palette.background,
+    paper: themeConfig?.paper ?? palette.paper,
+    text: themeConfig?.text ?? palette.text,
+    textSecondary: themeConfig?.textSecondary ?? palette.textSecondary,
+  };
+
+  return createTheme({
+    palette: {
+      mode,
+      primary: {
+        main: resolvedPalette.primary,
+        contrastText: isDark ? '#111111' : '#FFFFFF',
+      },
+      secondary: {
+        main: resolvedPalette.secondary,
+        contrastText: isDark ? '#111111' : '#FFFFFF',
+      },
+      error: palette.error,
+      warning: palette.warning,
+      info: palette.info,
+      success: palette.success,
+      background: {
+        default: resolvedPalette.background,
+        paper: resolvedPalette.paper,
+      },
+      text: {
+        primary: resolvedPalette.text,
+        secondary: resolvedPalette.textSecondary,
+      },
+    },
+    shape: {
+      borderRadius: 3
+    },
+    typography: {
+      fontFamily: 'var(--font-title)',
+      h1: {
+        fontFamily: 'var(--font-title)',
+        fontWeight: 400,
+        fontSize: '2.5rem',
+        lineHeight: 1.05,
+        letterSpacing: '-0.02em',
+        color: resolvedPalette.secondary,
+      },
+      h2: {
+        fontFamily: 'var(--font-title)',
+        fontWeight: 400,
+        fontSize: '2rem',
+        lineHeight: 1.1,
+        color: resolvedPalette.secondary,
+      },
+      h3: {
+        fontFamily: 'var(--font-title)',
+        fontWeight: 400,
+        fontSize: '1.5rem',
+        color: resolvedPalette.secondary,
+      },
+      button: {
+        textTransform: 'none',
+        fontWeight: 400,
+        letterSpacing: '0.01em'
+      }
+    },
+    components: {
+      MuiFormHelperText: {
+        styleOverrides: {
+          root: {
+            '&.Mui-error': {
+              color: isDark ? '#FCA5A5' : '#DC2626',
+              fontWeight: 500,
+            },
+          },
+        },
+      },
+      MuiInputBase: {
+        styleOverrides: {
+          root: {
+            backgroundColor: isDark ? '#1E293B' : undefined,
+            '&.Mui-error .MuiOutlinedInput-notchedOutline': {
+              borderColor: isDark ? '#F87171' : '#DC2626',
+            },
+          },
+        },
+      },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: '3px',
+            padding: '0.7rem 1.2rem',
+            boxShadow: resolvedPalette.buttonShadow,
+          },
+        },
+      },
+      MuiCard: {
+        styleOverrides: {
+          root: {
+            border: `1px solid ${resolvedPalette.border}`,
+            boxShadow: resolvedPalette.shadow,
+          },
+        },
+      },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            borderRadius: '3px',
+            border: `1px solid ${resolvedPalette.borderSoft}`,
+          },
+        },
+      },
+    },
+  });
+}
+
+export default createAppTheme;

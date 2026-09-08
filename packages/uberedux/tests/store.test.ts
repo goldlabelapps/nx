@@ -21,11 +21,12 @@ test('setUbereduxKey writes nested values and resetUberedux clears them', () => 
 
 test('theme preference store updates and selects persisted mode', () => {
   themePreferenceStore.dispatch(setPersistedThemeMode('dark'));
-
   assert.equal(selectPersistedThemeMode(themePreferenceStore.getState()), 'dark');
 
-  themePreferenceStore.dispatch(clearPersistedThemeMode());
+  themePreferenceStore.dispatch(setPersistedThemeMode('system'));
+  assert.equal(selectPersistedThemeMode(themePreferenceStore.getState()), 'system');
 
+  themePreferenceStore.dispatch(clearPersistedThemeMode());
   assert.equal(selectPersistedThemeMode(themePreferenceStore.getState()), null);
 });
 
@@ -43,6 +44,28 @@ test('readPersistedThemeModeFromStorage returns stored theme mode when available
 
   try {
     assert.equal(readPersistedThemeModeFromStorage(), 'light');
+  } finally {
+    Object.defineProperty(globalThis, 'window', {
+      configurable: true,
+      value: originalWindow,
+    });
+  }
+});
+
+test('readPersistedThemeModeFromStorage returns system mode when stored', () => {
+  const originalWindow = globalThis.window;
+
+  Object.defineProperty(globalThis, 'window', {
+    configurable: true,
+    value: {
+      localStorage: {
+        getItem: () => JSON.stringify({ mode: JSON.stringify('system') }),
+      },
+    },
+  });
+
+  try {
+    assert.equal(readPersistedThemeModeFromStorage(), 'system');
   } finally {
     Object.defineProperty(globalThis, 'window', {
       configurable: true,

@@ -12,10 +12,9 @@ function readJson(relativePath) {
 
 test('critical workspaces define a test script', () => {
   const requiredTestWorkspaces = [
-    'apps/www/package.json',
-    'packages/design-system/package.json',
-    'packages/firebase/package.json',
-    'packages/markdown/package.json',
+    'apps/nx/package.json',
+    'packages/cli/package.json',
+    'packages/saas/package.json',
     'packages/uberedux/package.json',
   ];
 
@@ -31,32 +30,6 @@ test('critical workspaces define a test script', () => {
       testScript.trim(),
       '',
       `${packageJsonPath} must define a non-empty scripts.test`
-    );
-  }
-});
-
-test('www jest scripts keep runInBand and passWithNoTests as separate flags', () => {
-  const appPackageJsonPaths = ['apps/www/package.json'];
-
-  for (const packageJsonPath of appPackageJsonPaths) {
-    const manifest = readJson(packageJsonPath);
-    const testScript = manifest?.scripts?.test ?? '';
-
-    assert.match(testScript, /\bjest\b/, `${packageJsonPath} should run jest`);
-    assert.match(
-      testScript,
-      /--runInBand(\s|$)/,
-      `${packageJsonPath} should include --runInBand`
-    );
-    assert.match(
-      testScript,
-      /--passWithNoTests(\s|$)/,
-      `${packageJsonPath} should include --passWithNoTests`
-    );
-    assert.doesNotMatch(
-      testScript,
-      /--runInBand--passWithNoTests/,
-      `${packageJsonPath} must keep jest flags separated by whitespace`
     );
   }
 });

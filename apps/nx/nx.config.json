@@ -1,0 +1,37 @@
+{
+    "name": "Lorem",
+    "tagline": "Ipsum Dolar Imet",
+    "favicon": "/svg/favicon.svg",
+    "url": "https://lorem.goldlabel.pro",
+    "port": 4500,
+    "founder": {
+        "name": "Founder",
+        "email": "founder@goldlabel.pro"
+    },
+    "social": {
+        "github": "https://github.com/goldlabelapps",
+        "twitter": "https://twitter.com/goldlabelapps",
+        "twitterHandle": "@goldlabelapps"
+    },
+    "theme": {
+        "defaultTheme": "dark",
+        "light": {
+            "mode": "light",
+            "primary": "#0f172a",
+            "secondary": "#0F172A",
+            "background": "#0F172A",
+            "paper": "#FFFFFF",
+            "text": "#0F172A",
+            "textSecondary": "#64748B"
+        },
+        "dark": {
+            "mode": "dark",
+            "primary": "#f8fafc",
+            "secondary": "#94A3B8",
+            "background": "#0F172A",
+            "paper": "#1E293B",
+            "text": "#F8FAFC",
+            "textSecondary": "#94A3B8"
+        }
+    }
+}

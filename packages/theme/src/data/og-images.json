@@ -1,0 +1,476 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Open Graph Images Manifest",
+  "updatedAt": "2026-09-08T14:05:22.394Z",
+  "totalCount": 12,
+  "items": [
+    {
+      "id": "ai",
+      "name": "Ai",
+      "category": "ai",
+      "versions": {
+        "dark": {
+          "filename": "ai-og-dark.jpg",
+          "path": "/jpg/ai/ai-og-dark.jpg",
+          "relativePath": "ai/ai-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 89226,
+            "formatted": "87.1 KB"
+          },
+          "updatedAt": "2026-09-08T08:53:03.294Z"
+        },
+        "light": {
+          "filename": "ai-og-light.jpg",
+          "path": "/jpg/ai/ai-og-light.jpg",
+          "relativePath": "ai/ai-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 85096,
+            "formatted": "83.1 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.523Z"
+        }
+      }
+    },
+    {
+      "id": "developer",
+      "name": "Developer",
+      "category": "developer",
+      "versions": {
+        "dark": {
+          "filename": "developer-og-dark.jpg",
+          "path": "/jpg/developer/developer-og-dark.jpg",
+          "relativePath": "developer/developer-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 360694,
+            "formatted": "352.2 KB"
+          },
+          "updatedAt": "2026-09-08T08:41:34.284Z"
+        },
+        "light": {
+          "filename": "developer-og-light.jpg",
+          "path": "/jpg/developer/developer-og-light.jpg",
+          "relativePath": "developer/developer-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 265168,
+            "formatted": "259.0 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.525Z"
+        }
+      }
+    },
+    {
+      "id": "flash",
+      "name": "Flash",
+      "category": "flash",
+      "versions": {
+        "dark": {
+          "filename": "flash-og-dark.jpg",
+          "path": "/jpg/flash/flash-og-dark.jpg",
+          "relativePath": "flash/flash-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 361347,
+            "formatted": "352.9 KB"
+          },
+          "updatedAt": "2026-09-07T12:41:20.648Z"
+        },
+        "light": {
+          "filename": "flash-og-light.jpg",
+          "path": "/jpg/flash/flash-og-light.jpg",
+          "relativePath": "flash/flash-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 397044,
+            "formatted": "387.7 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.526Z"
+        }
+      }
+    },
+    {
+      "id": "goldlabel",
+      "name": "Goldlabel",
+      "category": "goldlabel",
+      "versions": {
+        "dark": {
+          "filename": "goldlabel-og-dark.jpg",
+          "path": "/jpg/goldlabel/goldlabel-og-dark.jpg",
+          "relativePath": "goldlabel/goldlabel-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 108694,
+            "formatted": "106.1 KB"
+          },
+          "updatedAt": "2026-09-08T10:32:36.816Z"
+        },
+        "light": {
+          "filename": "goldlabel-og-light.jpg",
+          "path": "/jpg/goldlabel/goldlabel-og-light.jpg",
+          "relativePath": "goldlabel/goldlabel-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 107237,
+            "formatted": "104.7 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.528Z"
+        }
+      }
+    },
+    {
+      "id": "nextjs",
+      "name": "Nextjs",
+      "category": "nextjs",
+      "versions": {
+        "dark": {
+          "filename": "nextjs-og-dark.jpg",
+          "path": "/jpg/nextjs/nextjs-og-dark.jpg",
+          "relativePath": "nextjs/nextjs-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 437861,
+            "formatted": "427.6 KB"
+          },
+          "updatedAt": "2026-09-07T12:39:44.942Z"
+        },
+        "light": {
+          "filename": "nextjs-og-light.jpg",
+          "path": "/jpg/nextjs/nextjs-og-light.jpg",
+          "relativePath": "nextjs/nextjs-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 338568,
+            "formatted": "330.6 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.530Z"
+        }
+      }
+    },
+    {
+      "id": "nx",
+      "name": "Nx",
+      "category": "nx",
+      "versions": {
+        "dark": {
+          "filename": "nx-og-dark.jpg",
+          "path": "/jpg/nx/nx-og-dark.jpg",
+          "relativePath": "nx/nx-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 310972,
+            "formatted": "303.7 KB"
+          },
+          "updatedAt": "2026-09-08T08:23:16.597Z"
+        },
+        "light": {
+          "filename": "nx-og-light.jpg",
+          "path": "/jpg/nx/nx-og-light.jpg",
+          "relativePath": "nx/nx-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 305630,
+            "formatted": "298.5 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.532Z"
+        }
+      }
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "category": "python",
+      "versions": {
+        "dark": {
+          "filename": "python-og-dark.jpg",
+          "path": "/jpg/python/python-og-dark.jpg",
+          "relativePath": "python/python-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 368770,
+            "formatted": "360.1 KB"
+          },
+          "updatedAt": "2026-09-06T07:15:15.674Z"
+        },
+        "light": {
+          "filename": "python-og-light.jpg",
+          "path": "/jpg/python/python-og-light.jpg",
+          "relativePath": "python/python-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 281140,
+            "formatted": "274.6 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.534Z"
+        }
+      }
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "react",
+      "versions": {
+        "dark": {
+          "filename": "react-og-dark.jpg",
+          "path": "/jpg/react/react-og-dark.jpg",
+          "relativePath": "react/react-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 456879,
+            "formatted": "446.2 KB"
+          },
+          "updatedAt": "2026-09-06T07:02:33.640Z"
+        },
+        "light": {
+          "filename": "react-og-light.jpg",
+          "path": "/jpg/react/react-og-light.jpg",
+          "relativePath": "react/react-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 441400,
+            "formatted": "431.1 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.537Z"
+        }
+      }
+    },
+    {
+      "id": "terminal",
+      "name": "Terminal",
+      "category": "terminal",
+      "versions": {
+        "dark": {
+          "filename": "terminal-og-dark.jpg",
+          "path": "/jpg/terminal/terminal-og-dark.jpg",
+          "relativePath": "terminal/terminal-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 390939,
+            "formatted": "381.8 KB"
+          },
+          "updatedAt": "2026-09-07T12:34:33.046Z"
+        },
+        "light": {
+          "filename": "terminal-og-light.jpg",
+          "path": "/jpg/terminal/terminal-og-light.jpg",
+          "relativePath": "terminal/terminal-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 414622,
+            "formatted": "404.9 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.539Z"
+        }
+      }
+    },
+    {
+      "id": "theme",
+      "name": "Theme",
+      "category": "theme",
+      "versions": {
+        "dark": {
+          "filename": "theme-og-dark.jpg",
+          "path": "/jpg/theme/theme-og-dark.jpg",
+          "relativePath": "theme/theme-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 369621,
+            "formatted": "361.0 KB"
+          },
+          "updatedAt": "2026-09-08T14:05:21.897Z"
+        },
+        "light": {
+          "filename": "theme-og-light.jpg",
+          "path": "/jpg/theme/theme-og-light.jpg",
+          "relativePath": "theme/theme-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 319575,
+            "formatted": "312.1 KB"
+          },
+          "updatedAt": "2026-09-08T14:05:21.928Z"
+        }
+      }
+    },
+    {
+      "id": "typescript",
+      "name": "Typescript",
+      "category": "typescript",
+      "versions": {
+        "dark": {
+          "filename": "ts-og-dark.jpg",
+          "path": "/jpg/typescript/ts-og-dark.jpg",
+          "relativePath": "typescript/ts-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 434717,
+            "formatted": "424.5 KB"
+          },
+          "updatedAt": "2026-09-06T07:05:31.060Z"
+        },
+        "light": {
+          "filename": "ts-og-light.jpg",
+          "path": "/jpg/typescript/ts-og-light.jpg",
+          "relativePath": "typescript/ts-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 410776,
+            "formatted": "401.1 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.543Z"
+        }
+      }
+    },
+    {
+      "id": "uberedux",
+      "name": "Uberedux",
+      "category": "uberedux",
+      "versions": {
+        "dark": {
+          "filename": "uberedux-og-dark.jpg",
+          "path": "/jpg/uberedux/uberedux-og-dark.jpg",
+          "relativePath": "uberedux/uberedux-og-dark.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 94582,
+            "formatted": "92.4 KB"
+          },
+          "updatedAt": "2026-09-08T09:25:13.111Z"
+        },
+        "light": {
+          "filename": "uberedux-og-light.jpg",
+          "path": "/jpg/uberedux/uberedux-og-light.jpg",
+          "relativePath": "uberedux/uberedux-og-light.jpg",
+          "mimeType": "image/jpeg",
+          "dimensions": {
+            "width": 1376,
+            "height": 768,
+            "aspectRatio": "16:9"
+          },
+          "fileSize": {
+            "bytes": 91830,
+            "formatted": "89.7 KB"
+          },
+          "updatedAt": "2026-09-08T13:28:19.545Z"
+        }
+      }
+    }
+  ]
+}

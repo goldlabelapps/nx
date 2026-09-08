@@ -1,46 +1,49 @@
 {
-  "name": "@nx/uberedux",
-  "version": "3.0.3",
+  "name": "@goldlabelapps/uberedux",
+  "version": "3.2.7",
   "description": "Shared Redux store/provider/hooks used across NX apps.",
-  "private": true,
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts",
-      "require": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
     },
     "./store": {
-      "types": "./src/store.ts",
-      "import": "./src/store.ts",
-      "require": "./src/store.ts"
+      "types": "./dist/store.d.ts",
+      "import": "./dist/store.js",
+      "require": "./dist/store.js"
     },
     "./UbereduxProvider": {
-      "types": "./src/UbereduxProvider.tsx",
-      "import": "./src/UbereduxProvider.tsx",
-      "require": "./src/UbereduxProvider.tsx"
+      "types": "./dist/UbereduxProvider.d.ts",
+      "import": "./dist/UbereduxProvider.js",
+      "require": "./dist/UbereduxProvider.js"
     },
     "./hooks/useDispatch": {
-      "types": "./src/hooks/useDispatch.ts",
-      "import": "./src/hooks/useDispatch.ts",
-      "require": "./src/hooks/useDispatch.ts"
+      "types": "./dist/hooks/useDispatch.d.ts",
+      "import": "./dist/hooks/useDispatch.js",
+      "require": "./dist/hooks/useDispatch.js"
     },
     "./hooks/useSlice": {
-      "types": "./src/hooks/useSlice.ts",
-      "import": "./src/hooks/useSlice.ts",
-      "require": "./src/hooks/useSlice.ts"
+      "types": "./dist/hooks/useSlice.d.ts",
+      "import": "./dist/hooks/useSlice.js",
+      "require": "./dist/hooks/useSlice.js"
     },
     "./themePreferenceStore": {
-      "types": "./src/themePreferenceStore.ts",
-      "import": "./src/themePreferenceStore.ts",
-      "require": "./src/themePreferenceStore.ts"
+      "types": "./dist/themePreferenceStore.d.ts",
+      "import": "./dist/themePreferenceStore.js",
+      "require": "./dist/themePreferenceStore.js"
     }
   },
   "scripts": {
+    "build": "tsc -p tsconfig.build.json",
     "test": "tsx --test tests/**/*.test.ts",
     "type-check": "tsc --noEmit",
-    "lint": "echo 'No lint configured yet'"
+    "lint": "eslint ."
   },
   "peerDependencies": {
     "@reduxjs/toolkit": ">=2.0.0",
@@ -54,7 +57,7 @@
   },
   "devDependencies": {
     "@types/react": "^19",
-    "react": "^19",
+    "react": "19.2.8",
     "react-redux": "^9",
     "tsx": "^4.21.0",
     "typescript": "^5"
