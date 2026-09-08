@@ -7,7 +7,7 @@
             height="32"
         />
         </a>
-        <span>NX° — Free & Open Source Agentic Framework</span>
+        <span>NX°</span>
     </h1>
 </div>
 
@@ -15,9 +15,7 @@
 
 ### Why NX°?
 
-Unlike traditional frameworks, NX° comes with **zero learning curve**. 
-
-Whether you use Google Antigravity, Copilot, or Cursor, your AI coding assistant learns the full system instantly—allowing you to compose modular, production-ready Next.js applications through simple descriptive prompts.
+Unlike traditional frameworks, NX° comes with no learning curve. Use Google Antigravity, Copilot, or Cursor, your AI understands the full monoropos instantly—allowing you to compose modular, production-ready Next.js applications through simple descriptive prompts.
 
 #### 💡 Key Highlights & Keywords
 - **Free Forever & Open Source**: Full community ownership with MIT licensing.
