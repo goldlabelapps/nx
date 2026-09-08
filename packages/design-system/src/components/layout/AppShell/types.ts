@@ -1,1 +1,0 @@
-export type { AppShellProps } from '../../../types';

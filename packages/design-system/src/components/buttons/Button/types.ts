@@ -1,1 +1,0 @@
-export type { ButtonProps, ButtonSize, ButtonTone, ButtonVariant } from '../../../types';

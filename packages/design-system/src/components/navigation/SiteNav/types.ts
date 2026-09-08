@@ -1,1 +1,0 @@
-export type { SiteNavProps, T_NavNode } from '../../../types';

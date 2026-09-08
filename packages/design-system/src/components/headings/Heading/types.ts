@@ -1,1 +1,0 @@
-export type { HeadingProps, HeadingTone, HeadingVariant } from '../../../types';
