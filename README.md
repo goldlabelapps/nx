@@ -11,14 +11,14 @@
     </h1>
 </div>
 
-> **100% Free & Open Source (MIT Licensed)** — Built for humans & AI pair programmers alike. Zero licensing fees, zero friction.
+> 100% Free & Open Source. Built for humans & AI pair programmers alike. Zero licensing fees, zero friction.
 
 ### Why NX°?
 
-Unlike traditional frameworks, NX° comes with no learning curve. Use Google Antigravity, Copilot, or Cursor, your AI understands the full monoropos instantly—allowing you to compose modular, production-ready Next.js applications through simple descriptive prompts.
+Unlike traditional frameworks, NX° has no learning curve. Use Google Antigravity, Copilot, or Cursor, your AI understands the full monoropos instantly—allowing you to compose modular, production-ready Next.js applications through simple descriptive prompts.
 
-#### 💡 Key Highlights & Keywords
-- **Free Forever & Open Source**: Full community ownership with MIT licensing.
-- **Plug-and-Play Cartridges**: Modular feature packs that drop right into your stack.
-- **Agent-Native Architecture**: Prompt-driven app composition designed for modern AI coders.
-- **Zero-Boilerplate Speed**: Skip setup, ship fast, and eliminate legacy overhead.
+#### Key Highlights & Keywords
+- Free Forever & Open Source: Full community ownership with MIT licensing.
+- Plug-and-Play Cartridges: Modular feature packs that drop right into your stack.
+- Agent-Native Architecture: Prompt-driven app composition designed for modern AI coders.
+- Zero-Boilerplate Speed: Skip setup, ship fast, and eliminate legacy overhead.

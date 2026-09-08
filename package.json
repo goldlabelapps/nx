@@ -21,8 +21,6 @@
     "ci:full": "corepack enable && corepack prepare pnpm@11.22.0 --activate && corepack pnpm install --frozen-lockfile && corepack pnpm lint && corepack pnpm type-check && corepack pnpm test && corepack pnpm build-storybook && corepack pnpm build"
   },
   "devDependencies": {
-    "c8": "^10.1.3",
-    "concurrently": "^9.0.1",
     "eslint": "^9",
     "turbo": "2.10.12",
     "typescript-eslint": "^8.69.0"
