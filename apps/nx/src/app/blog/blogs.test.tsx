@@ -9,13 +9,12 @@ import BlogSlugPage, { generateStaticParams, generateMetadata } from "./[slug]/p
 describe("Blog Data Loader & SSG Engine", () => {
   it("loads all configured blog posts", () => {
     const posts = getAllPosts();
-    expect(posts.length).toBe(5);
+    expect(posts.length).toBe(4);
 
     const ids = posts.map((p) => p.id);
     expect(ids).toContain("getting-started-guide");
     expect(ids).toContain("theming-and-customization");
     expect(ids).toContain("architecture-and-extensibility");
-    expect(ids).toContain("flash-vector-sprites");
     expect(ids).toContain("flash-history");
   });
 
@@ -31,7 +30,7 @@ describe("Blog Data Loader & SSG Engine", () => {
 
   it("generates static slugs for SSG build", async () => {
     const staticSlugs = await generateStaticParams();
-    expect(staticSlugs.length).toBe(5);
+    expect(staticSlugs.length).toBe(4);
     const slugValues = staticSlugs.map((s) => s.slug);
     expect(slugValues).toEqual(getPostStaticSlugs().map((s) => s.slug));
   });

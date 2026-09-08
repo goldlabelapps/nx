@@ -30,7 +30,7 @@ describe("Modular Config Architecture", () => {
     expect(videosConfig.items.length).toBe(2);
     expect(useCasesConfig.items.length).toBe(2);
     expect(solutionsConfig.cards.length).toBe(2);
-    expect(blogsConfig.posts.length).toBe(5);
+    expect(blogsConfig.posts.length).toBe(4);
     expect(authCtaConfig.cliQuickInstall.command).toContain("git clone");
     expect(footerConfig.columns.length).toBe(4);
   });
@@ -151,7 +151,7 @@ describe("Modular Config Architecture", () => {
   });
 
   it("has blog posts with dates and categories", () => {
-    expect(siteConfig.blogs.posts.length).toBe(5);
+    expect(siteConfig.blogs.posts.length).toBe(4);
     siteConfig.blogs.posts.forEach((post) => {
       expect(post.title).toBeDefined();
       expect(post.date).toBeDefined();

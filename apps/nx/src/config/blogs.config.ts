@@ -53,27 +53,6 @@ Working through the Flash era instilled core principles of interactive software 
 - **User experience design:** Building responsive, tactile interfaces that engage users.`,
     },
     {
-      id: "flash-vector-sprites",
-      title: "Building Scalable 8-Directional Vector Sprites in React & Flash",
-      date: "Sep 2026",
-      category: "Architecture",
-      readTime: "4 min read",
-      summary: "An in-depth look at implementing 8-directional SVG character sprites with frame-based walk cycles and state management.",
-      href: "/blog/flash-vector-sprites",
-      image: "flash",
-      content: `The [Flash Sprite documentation](/sprite) details the implementation of scalable SVG character sprites inspired by classic Macromedia Flash programming patterns.
-
-## 8-Directional Facing & Walk Cycles
-
-Unlike traditional raster sprite sheets that pixelate when scaled, the \`Sprite\` component renders crisp, resolution-independent vector artwork (\`SpriteArtwork.tsx\`) supporting:
-
-- **8-Directional Facing**: \`N\`, \`NE\`, \`E\`, \`SE\`, \`S\`, \`SW\`, \`W\`, \`NW\` directions computed via \`getDirection()\` helper utilities.
-- **State & Frame Cycles**: \`idle\` and \`walking\` states with controlled or auto-advancing 4-frame animation intervals.
-- **Decoupled Architecture**: State and animation timing are managed in \`Sprite.tsx\`, while SVG geometry and limb pose transformations are isolated in \`SpriteArtwork.tsx\`.
-
-Check out the full interactive guide and code samples on the [Flash Sprite documentation page](/sprite).`,
-    },
-    {
       id: "getting-started-guide",
       title: "Getting Started with the Application Template",
       date: "Aug 2026",
