@@ -7,7 +7,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { LogIn, UserPlus } from "lucide-react";
 import { getFirebaseClientAuth } from "@/lib/firebase/client";
 import { Button } from "@/components/ui/Button";
-import { LiveDevice } from "@goldlabelapps/prospects";
+
 
 export function SignInForm() {
   const router = useRouter();
@@ -310,10 +310,7 @@ export function SignInForm() {
             </div>
           </div>
 
-          {/* Right Column (1/3 width): Live Device Info */}
-          <div className="w-full flex flex-col md:col-span-1 md:border-l md:border-slate-200 md:dark:border-slate-700 md:pl-6 lg:pl-8">
-            <LiveDevice showMap={false} />
-          </div>
+
         </div>
       </div>
     </section>

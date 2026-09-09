@@ -15,7 +15,6 @@ test('critical workspaces define a test script', () => {
     'apps/nx/package.json',
     'packages/cli/package.json',
     'packages/saas/package.json',
-    'packages/uberedux/package.json',
   ];
 
   for (const packageJsonPath of requiredTestWorkspaces) {
@@ -36,7 +35,7 @@ test('critical workspaces define a test script', () => {
 
 test('workspace package tests avoid app-local binary paths', () => {
   const workspacePackages = [
-    'packages/uberedux/package.json',
+    'packages/saas/package.json',
   ];
 
   for (const packageJsonPath of workspacePackages) {

@@ -33,23 +33,20 @@ export default defineConfig({
         inline: [
           "react-redux",
           "@goldlabelapps/uberedux",
-          "@goldlabelapps/prospects",
+          "@goldlabelapps/flash",
         ],
       },
     },
   },
   ssr: {
-    noExternal: ["react-redux", "@goldlabelapps/uberedux", "@goldlabelapps/prospects"],
+    noExternal: ["react-redux", "@goldlabelapps/uberedux", "@goldlabelapps/flash"],
   },
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "./src"),
       "@goldlabelapps/agent-layer": path.resolve(import.meta.dirname, "../../packages/agent-layer/src"),
       "@goldlabelapps/theme": path.resolve(import.meta.dirname, "../../packages/theme/src"),
-      "@goldlabelapps/flash": path.resolve(import.meta.dirname, "../../packages/flash/src"),
       "@goldlabelapps/notify": path.resolve(import.meta.dirname, "../../packages/notify/src"),
-      "@goldlabelapps/prospects": path.resolve(import.meta.dirname, "../../packages/prospects/src"),
-      "@goldlabelapps/uberedux": path.resolve(import.meta.dirname, "../../packages/uberedux/src"),
     },
   },
 });

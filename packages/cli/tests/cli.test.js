@@ -120,29 +120,20 @@ describe("CLI Non-Interactive Command Dispatcher", () => {
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("[DRY-RUN] Would terminate lingering processes"));
   });
 
-  it("handles dry-run publish based on available public packages", async () => {
-    await runCli(["publish", "all", "--dry-run", "--quiet", "--yes"]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringMatching(/\[DRY-RUN\]|No public publishable packages/));
+  it("supports packages update subcommand", async () => {
+    await runCli(["packages", "update", "--dry-run", "--quiet"]);
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("[DRY-RUN]"));
   });
 
-  it("exports ensureNpmAuth and supports dry-run mode", async () => {
-    const { ensureNpmAuth } = await import("../src/commands/packages.js");
-    const result = await ensureNpmAuth({ dryRun: true });
+  it("supports dry-run on update command for @goldlabelapps packages", async () => {
+    await runCli(["update", "--dry-run", "--quiet"]);
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("[DRY-RUN]"));
+  });
+
+  it("exports updatePackages and supports dry-run mode", async () => {
+    const { updatePackages } = await import("../src/commands/packages.js");
+    const result = await updatePackages({ dryRun: true });
     expect(result).toBe(true);
-  });
-
-  it("prints publish status report table without error", async () => {
-    const { printPublishStatusReport } = await import("../src/commands/packages.js");
-    printPublishStatusReport([
-      { name: "@goldlabelapps/theme", version: "1.0.0", status: "SUCCESS" },
-      { name: "@goldlabelapps/cli", version: "3.0.4", status: "FAILED", error: "Auth failed" },
-    ]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("Monorepo Package Publish Status Report"));
-  });
-
-  it("supports packages status subcommand", async () => {
-    await runCli(["packages", "status"]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("Monorepo Package Registry"));
   });
 
   it("handles unknown commands gracefully", async () => {

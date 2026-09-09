@@ -6,7 +6,7 @@ import { runSetup } from "./commands/setup.js";
 import { runDev, resolveApp } from "./commands/dev.js";
 import { runTest } from "./commands/test.js";
 import { runClean } from "./commands/clean.js";
-import { runPackages } from "./commands/packages.js";
+import { runPackages, updatePackages } from "./commands/packages.js";
 import { runCreate } from "./commands/create.js";
 import { runRemove } from "./commands/remove.js";
 import { runBuild } from "./commands/build.js";
@@ -18,7 +18,7 @@ const MAIN_MENU_OPTIONS = [
   { label: "🧪 test", value: "test", desc: "Full pre-merge CI quality gate (type-check, lint, unit tests)" },
   { label: "🎯 dev", value: "dev:nx", desc: "Run the NX app & auto-open browser" },
   { label: "🏗️  build", value: "build", desc: "Build all packages and applications" },
-  { label: "📦 packages", value: "packages", desc: "Build, bump, test, pack, and publish packages to npm" },
+  { label: "🔄 update", value: "update", desc: "Update @goldlabelapps packages to latest published npm versions" },
   { label: "🧹 clean", value: "clean", desc: "Terminate processes, purge build caches & node_modules" },
   { label: "📖 help", value: "help", desc: "Display full command line reference" },
 ];
@@ -111,9 +111,10 @@ async function runInteractiveMenu(flags) {
       case "build:all":
         await runBuild(flags);
         break;
-      case "packages":
-      case "pkg":
-        await runPackages(null, { ...flags, interactive: true });
+      case "update":
+      case "update-packages":
+      case "update:packages":
+        await updatePackages(flags);
         break;
       case "test":
         await runTest(null, { ...flags, interactive: true });
@@ -219,8 +220,10 @@ export async function runCli(rawArgs = process.argv.slice(2)) {
       await runPackages(subcommand, { ...flags, extra });
       break;
 
-    case "publish":
-      await runPackages("publish", { ...flags, target: subcommand || "all", extra });
+    case "update":
+    case "update-packages":
+    case "update:packages":
+      await updatePackages(flags);
       break;
 
     case "clean":

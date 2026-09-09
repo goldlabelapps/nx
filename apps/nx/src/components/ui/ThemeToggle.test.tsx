@@ -11,7 +11,7 @@ describe("ThemeToggle Component", () => {
     document.documentElement.className = "";
   });
 
-  it("renders segmented control with Light, Dark, and System options with Dark active by default", () => {
+  it("renders segmented control with Light, Dark, and System options with Light active by default", () => {
     render(
       <ThemeProvider>
         <ThemeToggle variant="segmented" />
@@ -26,8 +26,8 @@ describe("ThemeToggle Component", () => {
     expect(lightRadio).toBeInTheDocument();
     expect(darkRadio).toBeInTheDocument();
 
-    expect(darkRadio).toHaveAttribute("aria-checked", "true");
-    expect(lightRadio).toHaveAttribute("aria-checked", "false");
+    expect(lightRadio).toHaveAttribute("aria-checked", "true");
+    expect(darkRadio).toHaveAttribute("aria-checked", "false");
     expect(systemRadio).toHaveAttribute("aria-checked", "false");
   });
 
@@ -40,12 +40,12 @@ describe("ThemeToggle Component", () => {
       </ThemeProvider>
     );
 
-    const lightRadio = screen.getByRole("radio", { name: /light/i });
-    await user.click(lightRadio);
+    const darkRadio = screen.getByRole("radio", { name: /dark/i });
+    await user.click(darkRadio);
 
-    expect(lightRadio).toHaveAttribute("aria-checked", "true");
-    expect(document.documentElement.classList.contains("dark")).toBe(false);
-    expect(handleChange).toHaveBeenCalledWith("light");
+    expect(darkRadio).toHaveAttribute("aria-checked", "true");
+    expect(document.documentElement.classList.contains("dark")).toBe(true);
+    expect(handleChange).toHaveBeenCalledWith("dark");
   });
 });
 

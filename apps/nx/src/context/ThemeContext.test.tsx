@@ -25,15 +25,15 @@ describe("ThemeContext & ThemeProvider", () => {
     document.documentElement.className = "";
   });
 
-  it("defaults to configured theme mode ('dark') and resolves theme accordingly", () => {
+  it("defaults to configured theme mode ('light') and resolves theme accordingly", () => {
     render(
       <ThemeProvider>
         <TestConsumer />
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId("current-mode").textContent).toBe("dark");
-    expect(screen.getByTestId("current-theme").textContent).toBe("dark");
+    expect(screen.getByTestId("current-mode").textContent).toBe("light");
+    expect(screen.getByTestId("current-theme").textContent).toBe("light");
   });
 
   it("restores a persisted light mode from localStorage", () => {
@@ -59,7 +59,7 @@ describe("ThemeContext & ThemeProvider", () => {
       </ThemeProvider>
     );
 
-    expect(screen.getByTestId("current-mode").textContent).toBe("dark");
+    expect(screen.getByTestId("current-mode").textContent).toBe("light");
 
     await user.click(screen.getByText("Set Light"));
     expect(screen.getByTestId("current-mode").textContent).toBe("light");

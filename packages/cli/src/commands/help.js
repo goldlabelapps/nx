@@ -15,8 +15,8 @@ export function showHelp() {
   console.log(`    ${colors.bold}${colors.brightGreen}build${colors.reset}           Build all packages and applications in the workspace`);
   console.log(`    ${colors.bold}${colors.brightGreen}create${colors.reset}          Create, configure, install, and launch an app from apps/nx`);
   console.log(`    ${colors.bold}${colors.brightGreen}remove${colors.reset} [app]     Permanently delete an app and strip its references from the monorepo`);
-  console.log(`    ${colors.bold}${colors.brightGreen}packages${colors.reset} [sub]     Manage packages: ${colors.dim}status, build, test, bump, pack, publish, consume${colors.reset}`);
-  console.log(`    ${colors.bold}${colors.brightGreen}publish${colors.reset} [pkg|all]  Publish changed packages to npm and sync consuming apps`);
+  console.log(`    ${colors.bold}${colors.brightGreen}packages${colors.reset} [sub]     Manage packages: ${colors.dim}update${colors.reset}`);
+  console.log(`    ${colors.bold}${colors.brightGreen}update${colors.reset}           Update @goldlabelapps packages to latest published npm versions`);
   console.log(`    ${colors.bold}${colors.brightGreen}setup${colors.reset}           Interactive project onboarding, dependency install & verification`);
   console.log(`    ${colors.bold}${colors.brightGreen}test${colors.reset}            Run full CI quality gateway pipeline (type check, lint, unit tests)`);
   console.log(`    ${colors.bold}${colors.brightGreen}env${colors.reset}             Display toolchain diagnostics (Node, package manager, Git)`);

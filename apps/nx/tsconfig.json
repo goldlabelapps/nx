@@ -22,18 +22,15 @@
       "@/*": ["./src/*"],
       "@goldlabelapps/theme": ["../../packages/theme/src"],
       "@goldlabelapps/theme/*": ["../../packages/theme/src/*"],
-      "@goldlabelapps/flash": ["../../packages/flash/src"],
-      "@goldlabelapps/flash/*": ["../../packages/flash/src/*"],
       "@goldlabelapps/notify": ["../../packages/notify/src"],
       "@goldlabelapps/notify/*": ["../../packages/notify/src/*"],
-      "@goldlabelapps/agent-layer": ["../../packages/agent-layer/src"],
-      "@goldlabelapps/agent-layer/*": ["../../packages/agent-layer/src/*"],
+      "@goldlabelapps/agent-layer": ["./node_modules/@goldlabelapps/agent-layer/dist/src"],
+      "@goldlabelapps/agent-layer/*": ["./node_modules/@goldlabelapps/agent-layer/dist/src/*"],
       "@goldlabelapps/saas": ["../../packages/saas/src"],
       "@goldlabelapps/saas/*": ["../../packages/saas/src/*"],
-      "@goldlabelapps/prospects": ["../../packages/prospects/src"],
-      "@goldlabelapps/prospects/*": ["../../packages/prospects/src/*"],
-      "@goldlabelapps/uberedux": ["../../packages/uberedux/src"],
-      "@goldlabelapps/uberedux/*": ["../../packages/uberedux/src/*"]
+
+      "@goldlabelapps/uberedux": ["./node_modules/@goldlabelapps/uberedux/dist"],
+      "@goldlabelapps/uberedux/*": ["./node_modules/@goldlabelapps/uberedux/dist/*"]
     }
   },
   "include": [
