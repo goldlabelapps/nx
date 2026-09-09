@@ -1,6 +1,6 @@
 {
-    "name": "Lorem",
-    "tagline": "Ipsum Dolar Imet",
+    "name": "Lorem Ipsum",
+    "tagline": "Dolor Sit Amet",
     "favicon": "/svg/favicon.svg",
     "url": "https://lorem.goldlabel.pro",
     "port": 4500,
@@ -14,12 +14,12 @@
         "twitterHandle": "@goldlabelapps"
     },
     "theme": {
-        "defaultTheme": "dark",
+        "defaultTheme": "light",
         "light": {
             "mode": "light",
             "primary": "#0f172a",
             "secondary": "#0F172A",
-            "background": "#0F172A",
+            "background": "#FFFFFF",
             "paper": "#FFFFFF",
             "text": "#0F172A",
             "textSecondary": "#64748B"
