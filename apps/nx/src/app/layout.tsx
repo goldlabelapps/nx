@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import Script from "next/script";
 import type { Metadata, Viewport } from "next";
-import { Prospects } from "@goldlabelapps/prospects";
 import { siteConfig } from "@/config/site.config";
 import { nxConfig } from "@/lib/nxConfig";
 import { Header } from "@/components/navigation/Header";
@@ -86,7 +85,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-white dark:bg-[#0F172A] text-slate-900 dark:text-slate-100 antialiased selection:bg-[#0f172a] dark:selection:bg-slate-700 selection:text-white font-sans transition-colors duration-200">
         <AppProviders>
-          <Prospects showDevOutput={false} />
           <Suspense fallback={null}>
             <Header iconOnly />
           </Suspense>
