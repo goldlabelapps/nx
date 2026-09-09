@@ -1,19 +1,18 @@
 <div>
     <h1 style="display: flex; align-items: center; gap: 4px;">
         <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
-        <img
-            src="https://goldlabel.pro/png/favicon.png"
-            width="32"
-            height="32"
-        />
+            <img
+                src="https://goldlabel.pro/png/favicon.png"
+                width="32"
+                height="32"
+            />
         </a>
-        <span>NX°</span>
     </h1>
 </div>
 
 > 100% Free & Open Source. Built for humans & AI pair programmers alike. Zero licensing fees, zero friction.
 
-### Why NX°?
+### Why try NX°?
 
 Unlike traditional frameworks, NX° has no learning curve. Use Google Antigravity, Copilot, or Cursor, your AI understands the full monoropos instantly—allowing you to compose modular, production-ready Next.js applications through simple descriptive prompts.
 

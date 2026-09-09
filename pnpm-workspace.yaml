@@ -11,7 +11,8 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - eve@0.24.6
-  - '@goldlabelapps/prospects@3.2.8'
+  - '@goldlabelapps/prospects@3.2.8 || 3.2.9'
   - '@goldlabelapps/agent-layer@3.2.8'
   - '@goldlabelapps/uberedux@3.2.8'
   - '@goldlabelapps/flash@3.2.8'
+  - '@goldlabelapps/theme@3.2.8'

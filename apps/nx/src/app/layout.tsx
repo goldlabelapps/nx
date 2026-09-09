@@ -6,6 +6,7 @@ import { nxConfig } from "@/lib/nxConfig";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/footer/Footer";
 import { AppProviders } from "@/components/providers/AppProviders";
+import Me from "prospects";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -89,6 +90,7 @@ export default function RootLayout({
             <Header iconOnly />
           </Suspense>
           <main className="flex-1 w-full">{children}</main>
+          <Me />
           <Footer />
         </AppProviders>
       </body>

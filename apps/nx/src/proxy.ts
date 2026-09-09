@@ -1,6 +1,6 @@
 import { createAuthMiddleware } from "@goldlabelapps/saas/auth/middleware";
 
-export const middleware = createAuthMiddleware({
+export const proxy = createAuthMiddleware({
   isPublic: (pathname) =>
     !pathname.startsWith("/account") &&
     !pathname.startsWith("/app") &&
