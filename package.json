@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "@goldlabelapps/agent-layer": "^3.2.8",
-    "@goldlabelapps/prospects": "^3.2.8",
     "@goldlabelapps/uberedux": "^3.2.8"
   }
 }
