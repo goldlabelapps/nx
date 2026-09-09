@@ -11,7 +11,6 @@ import {
   Sparkles,
   Layers,
 } from "lucide-react";
-import { Editable } from "@/components/common/Editable";
 import { cn } from "@/lib/utils";
 
 export function FeatureExplorer() {
@@ -39,7 +38,7 @@ export function FeatureExplorer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <Editable file="apps/nx/src/config/features.config.ts" field="sectionTitle" className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#0f172a]/[0.06] border border-[#0f172a]/15 text-xs font-bold text-[#0f172a] mb-4 backdrop-blur-md">
             <Zap className="h-3.5 w-3.5" />
             <span>Modular Architecture</span>
@@ -52,7 +51,7 @@ export function FeatureExplorer() {
               {siteConfig.features.subtitle}
             </p>
           )}
-        </Editable>
+        </div>
 
         {/* Tab Navigation Pill Bar */}
         <div className="flex justify-center mb-10 overflow-x-auto pb-2 scrollbar-none">

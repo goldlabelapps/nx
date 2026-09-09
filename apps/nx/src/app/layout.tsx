@@ -1,13 +1,14 @@
 import { Suspense } from "react";
 import Script from "next/script";
 import type { Metadata, Viewport } from "next";
+import { Me } from "@goldlabelapps/prospects";
 import { siteConfig } from "@/config/site.config";
 import { nxConfig } from "@/lib/nxConfig";
 import { Header } from "@/components/navigation/Header";
 import { Footer } from "@/components/footer/Footer";
 import { AppProviders } from "@/components/providers/AppProviders";
-import Me from "prospects";
 import "./globals.css";
+
 
 export const viewport: Viewport = {
   themeColor: siteConfig.pwa.themeColor,
@@ -90,8 +91,8 @@ export default function RootLayout({
             <Header iconOnly />
           </Suspense>
           <main className="flex-1 w-full">{children}</main>
-          <Me />
           <Footer />
+          <Me />
         </AppProviders>
       </body>
     </html>
