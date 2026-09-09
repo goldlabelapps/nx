@@ -9,7 +9,7 @@ export const pwaConfig: PwaConfig = {
   scope: "/",
   display: "standalone",
   orientation: "portrait",
-  themeColor: nxConfig.theme.light.primary,
+  themeColor: nxConfig.theme.light.background,
   backgroundColor: nxConfig.theme.light.background,
   appleTouchIcon: "/png/favicon.png",
   favicon: nxConfig.favicon,

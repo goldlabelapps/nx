@@ -18,7 +18,7 @@
 
   .dark {
     color-scheme: dark;
-    --background: #0F172A;
+    --background: #2B2B2B;
     --background-secondary: #1E293B;
     --paper: #1E293B;
     --primary: #f8fafc;
@@ -242,7 +242,7 @@
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #2B2B2B;
 }
 
 .dark ::-webkit-scrollbar-thumb {

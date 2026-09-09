@@ -73,7 +73,7 @@ describe("Modular Config Architecture", () => {
     expect(siteConfig.pwa.shortName).toBe(nxConfig.name);
     expect(siteConfig.pwa.tagline).toBe(nxConfig.tagline);
     expect(siteConfig.pwa.icons.length).toBeGreaterThanOrEqual(2);
-    expect(siteConfig.pwa.themeColor).toBe("#0f172a");
+    expect(siteConfig.pwa.themeColor).toBe("#FFFFFF");
   });
 
   it("has navigation links and CTAs", () => {

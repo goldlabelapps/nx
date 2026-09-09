@@ -21,7 +21,7 @@
   :where(.dark, .dark *),
   .dark,
   [data-theme="dark"] {
-    --background: #0F172A;
+    --background: #2B2B2B;
     --background-secondary: #1E293B;
     --paper: #1E293B;
     --primary: #F8FAFC;
@@ -209,7 +209,7 @@
 :where(.dark, .dark *) ::-webkit-scrollbar-track,
 .dark ::-webkit-scrollbar-track,
 .dark::-webkit-scrollbar-track {
-  background: #0f172a;
+  background: #2B2B2B;
 }
 
 :where(.dark, .dark *) ::-webkit-scrollbar-thumb,

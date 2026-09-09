@@ -7,5 +7,5 @@ export const metadataConfig: SiteMetadata = {
   twitterHandle: nxConfig.social.twitterHandle,
   twitterImage: "/png/open-graph.png",
   ogImage: "/png/open-graph.png",
-  themeColor: nxConfig.theme.light.primary,
+  themeColor: nxConfig.theme.light.background,
 };
