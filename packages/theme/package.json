@@ -42,7 +42,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "pnpm --dir ../flash build && tsc -p tsconfig.build.json && mkdir -p dist/styles && cp src/styles/*.css dist/styles/",
+    "build": "tsc -p tsconfig.build.json && mkdir -p dist/styles && cp src/styles/*.css dist/styles/",
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "lint": "eslint .",
