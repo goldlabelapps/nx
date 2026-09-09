@@ -23,9 +23,7 @@
       "@nx/markdown": ["packages/markdown/src"],
       "@nx/markdown/*": ["packages/markdown/src/*"],
       "@goldlabelapps/notify": ["packages/notify/src"],
-      "@goldlabelapps/notify/*": ["packages/notify/src/*"],
-      "@goldlabelapps/flash": ["packages/flash/src"],
-      "@goldlabelapps/flash/*": ["packages/flash/src/*"]
+      "@goldlabelapps/notify/*": ["packages/notify/src/*"]
     }
   }
 }

@@ -9,13 +9,16 @@ importers:
   .:
     dependencies:
       '@goldlabelapps/agent-layer':
-        specifier: 3.2.8
+        specifier: ^3.2.8
         version: 3.2.8
+      '@goldlabelapps/flash':
+        specifier: ^3.2.8
+        version: 3.2.8(@mui/material@6.5.0(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(gsap@3.15.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@goldlabelapps/prospects':
         specifier: link:package
         version: link:package
       '@goldlabelapps/uberedux':
-        specifier: 3.2.8
+        specifier: ^3.2.8
         version: 3.2.8(@reduxjs/toolkit@2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8))(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8)(redux-persist@6.0.0(react@19.2.8)(redux@5.0.1))(redux@5.0.1)
     devDependencies:
       eslint:
@@ -37,11 +40,11 @@ importers:
         specifier: ^11.14.0
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1)
       '@goldlabelapps/agent-layer':
-        specifier: 3.2.8
+        specifier: ^3.2.8
         version: 3.2.8
       '@goldlabelapps/flash':
-        specifier: workspace:*
-        version: link:../../packages/flash
+        specifier: ^3.2.8
+        version: 3.2.8(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(gsap@3.15.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@goldlabelapps/notify':
         specifier: ^3.2.0
         version: 3.2.0
@@ -177,6 +180,10 @@ importers:
         version: 4.1.11(@opentelemetry/api@1.9.1)(@types/node@20.19.43)(@vitest/coverage-v8@4.1.11)(jsdom@30.0.1)(vite@8.1.5(@types/node@22.20.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0))
 
   packages/flash:
+    dependencies:
+      '@goldlabelapps/flash':
+        specifier: ^3.2.8
+        version: 3.2.8(@mui/material@6.5.0(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(gsap@3.15.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       '@mui/material':
         specifier: ^6.0.0
@@ -1443,6 +1450,14 @@ packages:
 
   '@goldlabelapps/agent-layer@3.2.8':
     resolution: {integrity: sha512-nS35Zg13Me+G1fS4W6CurifE4aC0VLtJaXRzfSx5u9JNISoYkpnTqKYefV+kIcW+WInEr4YSxvkM0TbIoxnAuw==}
+
+  '@goldlabelapps/flash@3.2.8':
+    resolution: {integrity: sha512-7oa0GzU21MwzLbx1jKN/6z9pbwLVeYy4pvK/UgC/09XTFA8WAs5Xw3UM2eMFEyYmTun+JuO2ovm7ER+Usxcicw==}
+    peerDependencies:
+      '@mui/material': ^5.0.0 || ^6.0.0
+      gsap: ^3.0.0
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
 
   '@goldlabelapps/notify@3.2.0':
     resolution: {integrity: sha512-Yw9r2dNjNynmv/Y6jfLdbjIe8/vCx9q9BW31auqgyOLPx2Pte1p1rTsUQ8/tRbJieRARCjCMT1t3VERLgOBptw==}
@@ -7384,6 +7399,20 @@ snapshots:
   '@firebase/webchannel-wrapper@1.0.6': {}
 
   '@goldlabelapps/agent-layer@3.2.8': {}
+
+  '@goldlabelapps/flash@3.2.8(@mui/material@6.5.0(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(gsap@3.15.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+    dependencies:
+      '@mui/material': 6.5.0(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      gsap: 3.15.0
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+
+  '@goldlabelapps/flash@3.2.8(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(gsap@3.15.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+    dependencies:
+      '@mui/material': 7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      gsap: 3.15.0
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
 
   '@goldlabelapps/notify@3.2.0': {}
 

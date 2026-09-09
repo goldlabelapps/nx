@@ -985,55 +985,17 @@ export async function updatePackages(options = {}) {
  * Interactive Packages Menu Loop
  */
 export async function runPackages(subcommand, options = {}) {
-  const { packages } = getPackagesInfo();
-
   if (subcommand) {
     const subLower = subcommand.toLowerCase();
-    const target = options.extra?.[0] || options.target;
 
     switch (subLower) {
-      case "status":
-      case "list":
-      case "ls":
-        printPackageStatus(options);
-        return true;
-
-      case "build":
-        return await buildPackage(target || "all", options);
-
-      case "test":
-        return await testPackage(target || "all", options);
-
-      case "bump": {
-        const bumpType = options.extra?.[1] || "patch";
-        return await bumpPackageVersion(target || "theme", bumpType, options);
-      }
-
-      case "pack":
-        return await packPackage(target || "theme", options);
-
-      case "publish":
-        if (target === "all" || options.all || !target) {
-          return await publishAllPackages(options);
-        }
-        return await publishPackage(target, options);
-
-      case "publish:all":
-        return await publishAllPackages(options);
-
-      case "consume":
-      case "switch": {
-        const mode = options.extra?.[1] || "workspace";
-        return await manageConsumption("all", target || "theme", mode, options);
-      }
-
       case "update":
       case "update:packages":
         return await updatePackages(options);
 
       default:
         log.error(`Unknown packages subcommand '${subcommand}'.`);
-        console.log(`Available subcommands: status, build, test, bump, pack, publish, consume, update.\n`);
+        console.log(`Available subcommands: update.\n`);
         return false;
     }
   }
@@ -1042,16 +1004,7 @@ export async function runPackages(subcommand, options = {}) {
   printPackageStatus(options);
 
   const menuOptions = [
-    { label: "📋 List Packages", value: "list", desc: "Display all workspace packages and their npm status" },
-    { label: "🚀 Publish Packages", value: "publish", desc: "Publish packages to npm one by one with 2FA auth & status report" },
     { label: "🔄 Update @goldlabelapps Packages", value: "update", desc: "Update @goldlabelapps dependencies to the latest published npm version" },
-    { label: "✨ Create New Package", value: "create", desc: "Scaffold a public npm package from its prompted name" },
-    { label: "🔨 Build Package(s)", value: "build", desc: "Build a single package or all monorepo packages" },
-    { label: "🧪 Test Package(s)", value: "test", desc: "Run test suites across workspace packages" },
-    { label: "📈 Bump Version", value: "bump", desc: "Bump patch, minor, or major version of a package" },
-    { label: "📦 Pack Tarball", value: "pack", desc: "Create npm .tgz distribution tarballs locally" },
-    { label: "🔄 Manage Consumption", value: "consume", desc: "Toggle app dependencies between workspace:* and npm registry" },
-    { label: "🗑️  Delete Package", value: "delete", desc: "Select, confirm, and remove a package and its workspace references" },
   ];
 
   const choice = await promptSelect("Package & npm Management Menu", menuOptions);
@@ -1060,130 +1013,8 @@ export async function runPackages(subcommand, options = {}) {
 
   log.divider();
 
-  switch (choice) {
-    case "list":
-      printPackageStatus(options);
-      break;
-
-    case "update":
-      await updatePackages(options);
-      break;
-
-    case "create":
-      await createPackage(options);
-      break;
-
-    case "delete":
-      await deletePackage(options);
-      break;
-
-    case "publish:all": {
-      await publishAllPackages(options);
-      break;
-    }
-
-    case "publish": {
-      const pubMode = await promptSelect("Publish Mode", [
-        { label: "🚀 Publish All Packages (One by One)", value: "all", desc: "Publish all packages to npm sequentially with status report" },
-        { label: "📦 Publish Single Package", value: "single", desc: "Select a single package to bump, build, and publish" },
-      ]);
-
-      if (pubMode === "all") {
-        await publishAllPackages(options);
-      } else if (pubMode === "single") {
-        const publicPkgs = packages.filter((p) => !p.private || p.publishAccess === "public");
-        const pkgChoices = publicPkgs.length > 0
-          ? publicPkgs.map((p) => ({ label: `${p.name} (v${p.version})`, value: p.key }))
-          : packages.map((p) => ({ label: `${p.name} (v${p.version})`, value: p.key }));
-
-        const selected = await promptSelect("Select Package to Publish", pkgChoices);
-        if (selected === "exit") break;
-
-        const targetPkg = packages.find((p) => p.key === selected);
-        if (!targetPkg) {
-          log.error(`Package '${selected}' not found.`);
-          break;
-        }
-
-        const shouldBump = await promptConfirm(`Current version is v${targetPkg.version}. Would you like to bump version before publishing?`, false);
-        if (shouldBump) {
-          const bumpType = await promptSelect("Select Version Bump", [
-            { label: `Patch (${targetPkg.version} ➜ increment patch)`, value: "patch" },
-            { label: `Minor (${targetPkg.version} ➜ increment minor)`, value: "minor" },
-            { label: `Major (${targetPkg.version} ➜ increment major)`, value: "major" },
-          ]);
-          if (bumpType !== "exit") {
-            await bumpPackageVersion(selected, bumpType, options);
-          }
-        }
-
-        const confirmed = await promptConfirm(`Ready to publish ${targetPkg.name} to npm?`, true);
-        if (confirmed) {
-          await publishPackage(selected, options);
-        }
-      }
-      break;
-    }
-
-    case "build": {
-      const pkgChoices = [
-        { label: "📦 All Packages", value: "all" },
-        ...packages.map((p) => ({ label: `${p.name} (packages/${p.key})`, value: p.key })),
-      ];
-      const selected = await promptSelect("Select Package to Build", pkgChoices);
-      if (selected !== "exit") {
-        await buildPackage(selected, options);
-      }
-      break;
-    }
-
-    case "bump": {
-      const pkgChoices = packages.map((p) => ({ label: `${p.name} (v${p.version})`, value: p.key }));
-      const selected = await promptSelect("Select Package to Bump", pkgChoices);
-      if (selected !== "exit") {
-        const bumpType = await promptSelect("Select Bump Type", [
-          { label: "Patch (e.g. 1.0.0 -> 1.0.1)", value: "patch" },
-          { label: "Minor (e.g. 1.0.0 -> 1.1.0)", value: "minor" },
-          { label: "Major (e.g. 1.0.0 -> 2.0.0)", value: "major" },
-        ]);
-        if (bumpType !== "exit") {
-          await bumpPackageVersion(selected, bumpType, options);
-        }
-      }
-      break;
-    }
-
-    case "pack": {
-      const pkgChoices = packages.map((p) => ({ label: `${p.name} (packages/${p.key})`, value: p.key }));
-      const selected = await promptSelect("Select Package to Pack", pkgChoices);
-      if (selected !== "exit") {
-        await packPackage(selected, options);
-      }
-      break;
-    }
-
-    case "consume": {
-      const modeChoice = await promptSelect("Select Consumption Mode for Apps", [
-        { label: "Local Workspace Mode (workspace:*)", value: "workspace", desc: "Apps consume local monorepo packages directly" },
-        { label: "Published npm Mode (^version)", value: "npm", desc: "Apps consume packages from the public npm registry" },
-      ]);
-      if (modeChoice !== "exit") {
-        await manageConsumption("all", "theme", modeChoice, options);
-      }
-      break;
-    }
-
-    case "test": {
-      const pkgChoices = [
-        { label: "🧪 All Packages", value: "all" },
-        ...packages.map((p) => ({ label: `${p.name} (packages/${p.key})`, value: p.key })),
-      ];
-      const selected = await promptSelect("Select Package to Test", pkgChoices);
-      if (selected !== "exit") {
-        await testPackage(selected, options);
-      }
-      break;
-    }
+  if (choice === "update") {
+    await updatePackages(options);
   }
 
   return true;

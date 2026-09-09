@@ -45,7 +45,6 @@ export default defineConfig({
       "@": path.resolve(import.meta.dirname, "./src"),
       "@goldlabelapps/agent-layer": path.resolve(import.meta.dirname, "../../packages/agent-layer/src"),
       "@goldlabelapps/theme": path.resolve(import.meta.dirname, "../../packages/theme/src"),
-      "@goldlabelapps/flash": path.resolve(import.meta.dirname, "../../packages/flash/src"),
       "@goldlabelapps/notify": path.resolve(import.meta.dirname, "../../packages/notify/src"),
       "@goldlabelapps/uberedux": path.resolve(import.meta.dirname, "../../packages/uberedux/src"),
     },

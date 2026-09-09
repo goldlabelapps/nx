@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { checkEnv } from "../env.js";
 import { log, colors, banner, promptSelect, openBrowser } from "../terminal.js";
+import { updatePackages } from "./packages.js";
 
 export const MONOREPO_PORTS = [4500];
 
@@ -115,6 +116,8 @@ export async function promptSelectApp() {
  * Run dev server for either all apps or a single specified app
  */
 export async function runDev(options = {}) {
+  await updatePackages(options);
+
   const env = checkEnv();
   const pm = env.packageManagers.preferred || "pnpm";
 
