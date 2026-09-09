@@ -12,3 +12,4 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - eve@0.24.6
   - '@goldlabelapps/prospects@3.2.8'
+  - '@goldlabelapps/agent-layer@3.2.8'

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@goldlabelapps/agent-layer':
+        specifier: 3.2.8
+        version: 3.2.8
       '@goldlabelapps/prospects':
         specifier: ^3.2.8
         version: 3.2.8(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -31,8 +34,8 @@ importers:
         specifier: ^11.14.0
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1)
       '@goldlabelapps/agent-layer':
-        specifier: ^3.2.3
-        version: 3.2.3
+        specifier: 3.2.8
+        version: 3.2.8
       '@goldlabelapps/flash':
         specifier: workspace:*
         version: link:../../packages/flash
@@ -1438,8 +1441,8 @@ packages:
   '@firebase/webchannel-wrapper@1.0.6':
     resolution: {integrity: sha512-Vr/Mqu79dMwGRAyGbJ4uN4+BtXB3/mRTdzetD1daWNeG8QaWuzhhbG77GltO5c0yYmYls8i250iX73624GJd7Q==}
 
-  '@goldlabelapps/agent-layer@3.2.3':
-    resolution: {integrity: sha512-QncizoI4EIILCfcm+aJc76nmfSJkgJWlUTIExqFAZr2xgJT1x+oDP7WWL37QGC+R/s0H19ce8Nhz9cZh0mFHZg==}
+  '@goldlabelapps/agent-layer@3.2.8':
+    resolution: {integrity: sha512-nS35Zg13Me+G1fS4W6CurifE4aC0VLtJaXRzfSx5u9JNISoYkpnTqKYefV+kIcW+WInEr4YSxvkM0TbIoxnAuw==}
 
   '@goldlabelapps/notify@3.2.0':
     resolution: {integrity: sha512-Yw9r2dNjNynmv/Y6jfLdbjIe8/vCx9q9BW31auqgyOLPx2Pte1p1rTsUQ8/tRbJieRARCjCMT1t3VERLgOBptw==}
@@ -7388,7 +7391,7 @@ snapshots:
 
   '@firebase/webchannel-wrapper@1.0.6': {}
 
-  '@goldlabelapps/agent-layer@3.2.3': {}
+  '@goldlabelapps/agent-layer@3.2.8': {}
 
   '@goldlabelapps/notify@3.2.0': {}
 

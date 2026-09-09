@@ -24,7 +24,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@goldlabelapps/agent-layer": "^3.2.3",
+    "@goldlabelapps/agent-layer": "3.2.8",
     "@goldlabelapps/flash": "workspace:*",
     "@goldlabelapps/notify": "^3.2.0",
     "@goldlabelapps/prospects": "^3.2.8",
