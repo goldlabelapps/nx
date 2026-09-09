@@ -35,9 +35,6 @@ importers:
       '@goldlabelapps/notify':
         specifier: workspace:*
         version: link:../../packages/notify
-      '@goldlabelapps/prospects':
-        specifier: workspace:*
-        version: link:../../packages/prospects
       '@goldlabelapps/saas':
         specifier: workspace:*
         version: link:../../packages/saas
@@ -208,37 +205,6 @@ importers:
       '@types/node':
         specifier: ^20.0.0
         version: 20.19.43
-      typescript:
-        specifier: ^5
-        version: 5.9.3
-
-  packages/prospects:
-    dependencies:
-      '@fingerprintjs/fingerprintjs':
-        specifier: ^5.2.0
-        version: 5.2.0
-      '@goldlabelapps/theme':
-        specifier: workspace:*
-        version: link:../theme
-      '@goldlabelapps/uberedux':
-        specifier: workspace:*
-        version: link:../uberedux
-    devDependencies:
-      '@types/node':
-        specifier: ^22
-        version: 22.20.1
-      '@types/react':
-        specifier: ^19
-        version: 19.2.17
-      '@types/react-dom':
-        specifier: ^19
-        version: 19.2.3(@types/react@19.2.17)
-      react:
-        specifier: 19.2.8
-        version: 19.2.8
-      react-dom:
-        specifier: 19.2.8
-        version: 19.2.8(react@19.2.8)
       typescript:
         specifier: ^5
         version: 5.9.3
@@ -1251,9 +1217,6 @@ packages:
 
   '@fastify/busboy@3.2.0':
     resolution: {integrity: sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==}
-
-  '@fingerprintjs/fingerprintjs@5.2.0':
-    resolution: {integrity: sha512-j+2nInkwCQNTJcNhOjvkGM/nLRTuGJTC6xai4quqvUpjob2ssrGwBZjS7k55nOmKvge7qvJT2nS3i/IRvQSTQA==}
 
   '@firebase/ai@2.13.1':
     resolution: {integrity: sha512-RhT/VViTPBSplhQSuEp62HhLvfsV+LowMh8ZUo5MMRDzG7oFtSget4Kmg5oHP50hDVyWQuQj6to9iPFEZk08Tw==}
@@ -7035,8 +6998,6 @@ snapshots:
 
   '@fastify/busboy@3.2.0': {}
 
-  '@fingerprintjs/fingerprintjs@5.2.0': {}
-
   '@firebase/ai@2.13.1(@firebase/app-types@0.9.5)(@firebase/app@0.15.1)':
     dependencies:
       '@firebase/app': 0.15.1
@@ -8367,6 +8328,7 @@ snapshots:
   '@types/node@22.20.1':
     dependencies:
       undici-types: 6.21.0
+    optional: true
 
   '@types/parse-json@4.0.2': {}
 

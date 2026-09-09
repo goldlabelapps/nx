@@ -27,7 +27,6 @@
     "@goldlabelapps/agent-layer": "workspace:*",
     "@goldlabelapps/flash": "workspace:*",
     "@goldlabelapps/notify": "workspace:*",
-    "@goldlabelapps/prospects": "workspace:*",
     "@goldlabelapps/saas": "workspace:*",
     "@goldlabelapps/theme": "workspace:*",
     "@goldlabelapps/uberedux": "workspace:*",

@@ -14,7 +14,7 @@ const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 import { Mail, Activity, LogOut, Database } from "lucide-react";
 import Image from "next/image";
-import { LiveDevice } from "@goldlabelapps/prospects";
+
 import {
   Dialog,
   DialogTitle,
@@ -257,10 +257,7 @@ export default function AccountPage() {
             </div>
           </div>
 
-          {/* Live Device Component */}
-          <div>
-            <LiveDevice />
-          </div>
+
 
           {/* Account Activity Card */}
           <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">

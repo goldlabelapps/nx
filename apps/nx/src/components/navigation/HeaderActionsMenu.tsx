@@ -14,7 +14,7 @@ import {
 import { useTheme } from "@/context/ThemeContext";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { cn } from "@/lib/utils";
-import { Prospects } from "@goldlabelapps/prospects";
+
 
 const emptySubscribe = () => () => {};
 const getClientSnapshot = () => true;
@@ -136,10 +136,7 @@ export function HeaderActionsMenu({ isAuthenticated, user, onSignOut }: HeaderAc
               <ThemeToggle variant="segmented" onChange={() => setIsOpen(false)} />
             </div>
 
-            {/* Public Prospect Section */}
-            <div className="md:col-span-2">
-              <Prospects showDevOutput={false} />
-            </div>
+
 
             {/* Sign Out & Clear Data Section (bottom) */}
             <div className="md:col-span-2">

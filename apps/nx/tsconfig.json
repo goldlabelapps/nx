@@ -30,8 +30,7 @@
       "@goldlabelapps/agent-layer/*": ["../../packages/agent-layer/src/*"],
       "@goldlabelapps/saas": ["../../packages/saas/src"],
       "@goldlabelapps/saas/*": ["../../packages/saas/src/*"],
-      "@goldlabelapps/prospects": ["../../packages/prospects/src"],
-      "@goldlabelapps/prospects/*": ["../../packages/prospects/src/*"],
+
       "@goldlabelapps/uberedux": ["../../packages/uberedux/src"],
       "@goldlabelapps/uberedux/*": ["../../packages/uberedux/src/*"]
     }
