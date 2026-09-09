@@ -4,6 +4,8 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+pnpmfileChecksum: sha256-JH7rCLnLlgVnHso76GdOcYjwLh+tFVqSCnw06fQn0as=
+
 importers:
 
   .:
@@ -33,6 +35,9 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.0
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1)
+      '@fingerprintjs/fingerprintjs':
+        specifier: ^5.2.0
+        version: 5.2.0
       '@goldlabelapps/agent-layer':
         specifier: ^3.2.8
         version: 3.2.8
@@ -42,6 +47,9 @@ importers:
       '@goldlabelapps/notify':
         specifier: ^3.2.0
         version: 3.2.0
+      '@goldlabelapps/prospects':
+        specifier: ^3.2.8
+        version: 3.2.8(@reduxjs/toolkit@2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8)(redux-persist@6.0.0(react@19.2.8)(redux@5.0.1))(redux@5.0.1)
       '@goldlabelapps/saas':
         specifier: ^3.2.0
         version: 3.2.0(@goldlabelapps/theme@3.2.0(bae0702cb67b58b27b44209ed3cad76b))(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(firebase@12.16.0)(next@16.3.2(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(@types/node@20.19.43)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -1170,6 +1178,9 @@ packages:
   '@fastify/busboy@3.2.0':
     resolution: {integrity: sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==}
 
+  '@fingerprintjs/fingerprintjs@5.2.0':
+    resolution: {integrity: sha512-j+2nInkwCQNTJcNhOjvkGM/nLRTuGJTC6xai4quqvUpjob2ssrGwBZjS7k55nOmKvge7qvJT2nS3i/IRvQSTQA==}
+
   '@firebase/ai@2.13.1':
     resolution: {integrity: sha512-RhT/VViTPBSplhQSuEp62HhLvfsV+LowMh8ZUo5MMRDzG7oFtSget4Kmg5oHP50hDVyWQuQj6to9iPFEZk08Tw==}
     engines: {node: '>=20.0.0'}
@@ -1393,6 +1404,12 @@ packages:
 
   '@goldlabelapps/notify@3.2.0':
     resolution: {integrity: sha512-Yw9r2dNjNynmv/Y6jfLdbjIe8/vCx9q9BW31auqgyOLPx2Pte1p1rTsUQ8/tRbJieRARCjCMT1t3VERLgOBptw==}
+
+  '@goldlabelapps/prospects@3.2.8':
+    resolution: {integrity: sha512-rib4hBEaas9OU4Y7A1+/1y49eIivVjHd5Xo2mrvNL2Y1U8B6Sl4PWKEsU9haSdN1oagodZNRHEjpTLJuChIDkg==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
 
   '@goldlabelapps/saas@3.2.0':
     resolution: {integrity: sha512-d1tW1Mte6D5DZnWQPFLMZkNBOMo9fiQ+6K3GTqLtuBcZHr1PkpjS6UMFpaf+6aVcJGqK3UQZwcFCBS5RfNdQ3w==}
@@ -6929,6 +6946,8 @@ snapshots:
 
   '@fastify/busboy@3.2.0': {}
 
+  '@fingerprintjs/fingerprintjs@5.2.0': {}
+
   '@firebase/ai@2.13.1(@firebase/app-types@0.9.5)(@firebase/app@0.15.1)':
     dependencies:
       '@firebase/app': 0.15.1
@@ -7260,6 +7279,19 @@ snapshots:
       react-dom: 19.2.8(react@19.2.8)
 
   '@goldlabelapps/notify@3.2.0': {}
+
+  '@goldlabelapps/prospects@3.2.8(@reduxjs/toolkit@2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8)(redux-persist@6.0.0(react@19.2.8)(redux@5.0.1))(redux@5.0.1)':
+    dependencies:
+      '@fingerprintjs/fingerprintjs': 5.2.0
+      '@goldlabelapps/theme': link:packages/theme
+      '@goldlabelapps/uberedux': 3.2.8(@reduxjs/toolkit@2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8))(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8)(redux-persist@6.0.0(react@19.2.8)(redux@5.0.1))(redux@5.0.1)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+    transitivePeerDependencies:
+      - '@reduxjs/toolkit'
+      - react-redux
+      - redux
+      - redux-persist
 
   '@goldlabelapps/saas@3.2.0(@goldlabelapps/theme@3.2.0(bae0702cb67b58b27b44209ed3cad76b))(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(firebase@12.16.0)(next@16.3.2(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(@types/node@20.19.43)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
     dependencies:

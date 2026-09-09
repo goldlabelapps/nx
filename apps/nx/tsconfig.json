@@ -28,7 +28,10 @@
       "@goldlabelapps/agent-layer/*": ["./node_modules/@goldlabelapps/agent-layer/dist/src/*"],
       "@goldlabelapps/saas": ["../../packages/saas/src"],
       "@goldlabelapps/saas/*": ["../../packages/saas/src/*"],
-
+      "@goldlabelapps/prospects": ["./node_modules/@goldlabelapps/prospects/dist/prospects/src"],
+      "@goldlabelapps/prospects/*": ["./node_modules/@goldlabelapps/prospects/dist/prospects/src/*"],
+      "prospects": ["./node_modules/@goldlabelapps/prospects/dist/prospects/src"],
+      "prospects/*": ["./node_modules/@goldlabelapps/prospects/dist/prospects/src/*"],
       "@goldlabelapps/uberedux": ["./node_modules/@goldlabelapps/uberedux/dist"],
       "@goldlabelapps/uberedux/*": ["./node_modules/@goldlabelapps/uberedux/dist/*"]
     }
