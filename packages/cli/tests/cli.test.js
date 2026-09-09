@@ -145,6 +145,17 @@ describe("CLI Non-Interactive Command Dispatcher", () => {
     expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("Monorepo Package Registry"));
   });
 
+  it("supports dry-run on update command for @goldlabelapps packages", async () => {
+    await runCli(["update", "--dry-run", "--quiet"]);
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("[DRY-RUN]"));
+  });
+
+  it("exports updatePackages and supports dry-run mode", async () => {
+    const { updatePackages } = await import("../src/commands/packages.js");
+    const result = await updatePackages({ dryRun: true });
+    expect(result).toBe(true);
+  });
+
   it("handles unknown commands gracefully", async () => {
     const errorSpy = vi.spyOn(console, "log").mockImplementation(() => {});
     await runCli(["unknown-command"]);

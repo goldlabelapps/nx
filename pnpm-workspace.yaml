@@ -11,3 +11,4 @@ allowBuilds:
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - eve@0.24.6
+  - '@goldlabelapps/prospects@3.2.8'

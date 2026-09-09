@@ -6,7 +6,7 @@ import { runSetup } from "./commands/setup.js";
 import { runDev, resolveApp } from "./commands/dev.js";
 import { runTest } from "./commands/test.js";
 import { runClean } from "./commands/clean.js";
-import { runPackages } from "./commands/packages.js";
+import { runPackages, updatePackages } from "./commands/packages.js";
 import { runCreate } from "./commands/create.js";
 import { runRemove } from "./commands/remove.js";
 import { runBuild } from "./commands/build.js";
@@ -221,6 +221,12 @@ export async function runCli(rawArgs = process.argv.slice(2)) {
 
     case "publish":
       await runPackages("publish", { ...flags, target: subcommand || "all", extra });
+      break;
+
+    case "update":
+    case "update-packages":
+    case "update:packages":
+      await updatePackages(flags);
       break;
 
     case "clean":

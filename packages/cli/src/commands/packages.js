@@ -865,6 +865,123 @@ export async function manageConsumption(targetApp, targetPkg, mode = "workspace"
 }
 
 /**
+ * Update all @goldlabelapps packages across workspace package.json files to latest published versions on npm
+ */
+export async function updatePackages(options = {}) {
+  const rootDir = findRepoRoot();
+
+  if (!options.quiet) {
+    console.log(banner);
+    console.log(`${colors.bold}${colors.brightWhite}🔄 Update @goldlabelapps Packages to Latest published npm Version${colors.reset}\n`);
+  }
+
+  // Find all workspace package.json files (apps and packages)
+  const workspaceFiles = [];
+  for (const subDir of ["apps", "packages"]) {
+    const dirPath = nodePath.join(rootDir, subDir);
+    if (!fs.existsSync(dirPath)) continue;
+    for (const entry of fs.readdirSync(dirPath, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        const pkgJsonPath = nodePath.join(dirPath, entry.name, "package.json");
+        if (fs.existsSync(pkgJsonPath)) {
+          workspaceFiles.push({ key: entry.name, relPath: nodePath.join(subDir, entry.name), fullPath: pkgJsonPath });
+        }
+      }
+    }
+  }
+
+  // Also include root package.json if present
+  const rootPkgJson = nodePath.join(rootDir, "package.json");
+  if (fs.existsSync(rootPkgJson)) {
+    workspaceFiles.push({ key: "root", relPath: "package.json", fullPath: rootPkgJson });
+  }
+
+  log.info("Fetching latest published versions from npm for @goldlabelapps packages...");
+
+  // Cache latest npm version for each @goldlabelapps package
+  const latestVersions = new Map();
+  const getLatestNpmVersion = (pkgName) => {
+    if (latestVersions.has(pkgName)) return latestVersions.get(pkgName);
+    const ver = getPublishedVersion(pkgName, options);
+    latestVersions.set(pkgName, ver);
+    return ver;
+  };
+
+  const updates = [];
+
+  for (const item of workspaceFiles) {
+    let manifest;
+    try {
+      manifest = JSON.parse(fs.readFileSync(item.fullPath, "utf8"));
+    } catch {
+      continue;
+    }
+
+    let modified = false;
+    for (const depType of ["dependencies", "devDependencies", "peerDependencies", "optionalDependencies"]) {
+      if (!manifest[depType]) continue;
+
+      for (const [depName, currentSpec] of Object.entries(manifest[depType])) {
+        if (!depName.startsWith("@goldlabelapps/")) continue;
+
+        const latestVersion = options.dryRun ? "latest" : getLatestNpmVersion(depName);
+        if (!latestVersion && !options.dryRun) {
+          log.warn(`Could not find published version on npm for ${depName}`);
+          continue;
+        }
+
+        const newSpec = `^${latestVersion}`;
+        if (currentSpec !== newSpec) {
+          manifest[depType][depName] = newSpec;
+          modified = true;
+          updates.push({
+            location: item.relPath,
+            depName,
+            oldSpec: currentSpec,
+            newSpec,
+          });
+        }
+      }
+    }
+
+    if (modified) {
+      if (options.dryRun) {
+        log.info(`[DRY-RUN] Would update @goldlabelapps dependencies in ${item.relPath}`);
+      } else {
+        writeJson(item.fullPath, manifest);
+        log.success(`Updated ${colors.bold}${item.relPath}${colors.reset}`);
+      }
+    }
+  }
+
+  if (updates.length > 0) {
+    console.log(`\n${colors.bold}${colors.brightCyan}Updated @goldlabelapps packages:${colors.reset}`);
+    updates.forEach((u) => {
+      console.log(`  ${colors.dim}•${colors.reset} ${colors.bold}${u.location}${colors.reset}: ${u.depName} (${colors.yellow}${u.oldSpec}${colors.reset} ➜ ${colors.brightGreen}${u.newSpec}${colors.reset})`);
+    });
+    console.log("");
+  } else if (!options.dryRun) {
+    log.success("All @goldlabelapps dependencies are already up to date with published npm versions.");
+    return true;
+  }
+
+  if (options.dryRun) {
+    log.info("[DRY-RUN] Would update @goldlabelapps packages and run 'pnpm install' to refresh workspace dependencies.");
+  } else {
+    log.info("Refreshing workspace dependencies with 'pnpm install'...");
+    try {
+      execSync("pnpm install", { stdio: "inherit" });
+      log.success("Workspace dependencies refreshed successfully!");
+    } catch (err) {
+      log.error(`Failed to refresh dependencies: ${err.message}`);
+      return false;
+    }
+  }
+
+  return true;
+}
+
+/**
  * Interactive Packages Menu Loop
  */
 export async function runPackages(subcommand, options = {}) {
@@ -910,9 +1027,13 @@ export async function runPackages(subcommand, options = {}) {
         return await manageConsumption("all", target || "theme", mode, options);
       }
 
+      case "update":
+      case "update:packages":
+        return await updatePackages(options);
+
       default:
         log.error(`Unknown packages subcommand '${subcommand}'.`);
-        console.log(`Available subcommands: status, build, test, bump, pack, publish, consume.\n`);
+        console.log(`Available subcommands: status, build, test, bump, pack, publish, consume, update.\n`);
         return false;
     }
   }
@@ -923,6 +1044,7 @@ export async function runPackages(subcommand, options = {}) {
   const menuOptions = [
     { label: "📋 List Packages", value: "list", desc: "Display all workspace packages and their npm status" },
     { label: "🚀 Publish Packages", value: "publish", desc: "Publish packages to npm one by one with 2FA auth & status report" },
+    { label: "🔄 Update @goldlabelapps Packages", value: "update", desc: "Update @goldlabelapps dependencies to the latest published npm version" },
     { label: "✨ Create New Package", value: "create", desc: "Scaffold a public npm package from its prompted name" },
     { label: "🔨 Build Package(s)", value: "build", desc: "Build a single package or all monorepo packages" },
     { label: "🧪 Test Package(s)", value: "test", desc: "Run test suites across workspace packages" },
@@ -941,6 +1063,10 @@ export async function runPackages(subcommand, options = {}) {
   switch (choice) {
     case "list":
       printPackageStatus(options);
+      break;
+
+    case "update":
+      await updatePackages(options);
       break;
 
     case "create":

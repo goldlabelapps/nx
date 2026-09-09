@@ -24,5 +24,8 @@
     "eslint": "^9",
     "turbo": "2.10.12",
     "typescript-eslint": "^8.69.0"
+  },
+  "dependencies": {
+    "@goldlabelapps/prospects": "^3.2.8"
   }
 }

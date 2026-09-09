@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@goldlabelapps/prospects':
+        specifier: ^3.2.8
+        version: 3.2.8(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       eslint:
         specifier: ^9
@@ -27,23 +31,26 @@ importers:
         specifier: ^11.14.0
         version: 11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1)
       '@goldlabelapps/agent-layer':
-        specifier: workspace:*
-        version: link:../../packages/agent-layer
+        specifier: ^3.2.3
+        version: 3.2.3
       '@goldlabelapps/flash':
         specifier: workspace:*
         version: link:../../packages/flash
       '@goldlabelapps/notify':
-        specifier: workspace:*
-        version: link:../../packages/notify
+        specifier: ^3.2.0
+        version: 3.2.0
+      '@goldlabelapps/prospects':
+        specifier: ^3.2.8
+        version: 3.2.8(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@goldlabelapps/saas':
-        specifier: workspace:*
-        version: link:../../packages/saas
+        specifier: ^3.2.0
+        version: 3.2.0(@goldlabelapps/theme@3.2.0(bae0702cb67b58b27b44209ed3cad76b))(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(firebase@12.16.0)(next@16.3.2(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(@types/node@20.19.43)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@goldlabelapps/theme':
-        specifier: workspace:*
-        version: link:../../packages/theme
+        specifier: ^3.2.0
+        version: 3.2.0(bae0702cb67b58b27b44209ed3cad76b)
       '@goldlabelapps/uberedux':
-        specifier: workspace:*
-        version: link:../../packages/uberedux
+        specifier: ^3.2.0
+        version: 3.2.0(@reduxjs/toolkit@2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8))(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8)(redux-persist@6.0.0(react@19.2.8)(redux@5.0.1))(redux@5.0.1)
       '@mui/icons-material':
         specifier: ^7.3.7
         version: 7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(@types/react@19.2.17)(react@19.2.8)
@@ -212,8 +219,8 @@ importers:
   packages/saas:
     dependencies:
       '@goldlabelapps/theme':
-        specifier: workspace:*
-        version: link:../theme
+        specifier: ^3.2.0
+        version: 3.2.0(@mui/icons-material@7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.17)(react@19.2.3))(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(next@16.1.1(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(supports-color@8.1.1)
     devDependencies:
       '@mui/material':
         specifier: ^7.3.2
@@ -1218,6 +1225,9 @@ packages:
   '@fastify/busboy@3.2.0':
     resolution: {integrity: sha512-m9FVDXU3GT2ITSe0UaMA5rU3QkfC/UXtCU8y0gSN/GugTqtVldOBWIB5V6V3sbmenVZUIpU6f+mPEO2+m5iTaA==}
 
+  '@fingerprintjs/fingerprintjs@5.2.0':
+    resolution: {integrity: sha512-j+2nInkwCQNTJcNhOjvkGM/nLRTuGJTC6xai4quqvUpjob2ssrGwBZjS7k55nOmKvge7qvJT2nS3i/IRvQSTQA==}
+
   '@firebase/ai@2.13.1':
     resolution: {integrity: sha512-RhT/VViTPBSplhQSuEp62HhLvfsV+LowMh8ZUo5MMRDzG7oFtSget4Kmg5oHP50hDVyWQuQj6to9iPFEZk08Tw==}
     engines: {node: '>=20.0.0'}
@@ -1427,6 +1437,46 @@ packages:
 
   '@firebase/webchannel-wrapper@1.0.6':
     resolution: {integrity: sha512-Vr/Mqu79dMwGRAyGbJ4uN4+BtXB3/mRTdzetD1daWNeG8QaWuzhhbG77GltO5c0yYmYls8i250iX73624GJd7Q==}
+
+  '@goldlabelapps/agent-layer@3.2.3':
+    resolution: {integrity: sha512-QncizoI4EIILCfcm+aJc76nmfSJkgJWlUTIExqFAZr2xgJT1x+oDP7WWL37QGC+R/s0H19ce8Nhz9cZh0mFHZg==}
+
+  '@goldlabelapps/notify@3.2.0':
+    resolution: {integrity: sha512-Yw9r2dNjNynmv/Y6jfLdbjIe8/vCx9q9BW31auqgyOLPx2Pte1p1rTsUQ8/tRbJieRARCjCMT1t3VERLgOBptw==}
+
+  '@goldlabelapps/prospects@3.2.8':
+    resolution: {integrity: sha512-rib4hBEaas9OU4Y7A1+/1y49eIivVjHd5Xo2mrvNL2Y1U8B6Sl4PWKEsU9haSdN1oagodZNRHEjpTLJuChIDkg==}
+    peerDependencies:
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+
+  '@goldlabelapps/saas@3.2.0':
+    resolution: {integrity: sha512-d1tW1Mte6D5DZnWQPFLMZkNBOMo9fiQ+6K3GTqLtuBcZHr1PkpjS6UMFpaf+6aVcJGqK3UQZwcFCBS5RfNdQ3w==}
+    peerDependencies:
+      '@goldlabelapps/theme': '>=3.0.0'
+      '@mui/material': '>=7.0.0'
+      firebase: '>=10.0.0'
+      next: '>=14.0.0'
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+
+  '@goldlabelapps/theme@3.2.0':
+    resolution: {integrity: sha512-XsJtTam2U4S/Kvr6nG7dceHvVljXnBZ3I/Qp89AXxmpwPCemeKjFFFotZUH0AnNCK7Kv97KC7jmejLvVtH8nkA==}
+    peerDependencies:
+      '@mui/icons-material': '>=7.0.0'
+      '@mui/material': '>=7.0.0'
+      next: '>=15.0.0'
+      react: '>=18.0.0'
+      react-dom: '>=18.0.0'
+
+  '@goldlabelapps/uberedux@3.2.0':
+    resolution: {integrity: sha512-vt6ZHkUDGCa+u+62rYownhY84fuhhOo0e+K9B/ef56MMHm4NPJSg6hboKBZrW6nMlKTbfrPjx7is1yCZ5zAXOA==}
+    peerDependencies:
+      '@reduxjs/toolkit': '>=2.0.0'
+      react: '>=18.0.0'
+      react-redux: '>=8.0.0'
+      redux: '>=4.0.0'
+      redux-persist: '>=6.0.0'
 
   '@google-cloud/firestore@7.11.6':
     resolution: {integrity: sha512-EW/O8ktzwLfyWBOsNuhRoMi8lrC3clHM5LVFhGvO1HCsLozCOOXRAlHrYBoE6HL42Sc8yYMuCb2XqcnJ4OOEpw==}
@@ -3714,6 +3764,17 @@ packages:
     resolution: {integrity: sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==}
     engines: {node: '>=12.20.0'}
 
+  framer-motion@13.2.0:
+    resolution: {integrity: sha512-9E33ebgMaO33w1nN/jEdW8z3/GO483fMi4rqbMG9rt83XgW9QLKRe4NcmJ8s+fQ3O34++UHrIQwlIWGIWTITjA==}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0
+      react-dom: ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   fs-extra@9.1.0:
     resolution: {integrity: sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==}
     engines: {node: '>=10'}
@@ -4629,6 +4690,12 @@ packages:
         optional: true
       uglify-js:
         optional: true
+
+  motion-dom@13.2.0:
+    resolution: {integrity: sha512-N6gdSoWRDk0Rh/fVtlqUtLs+fEN3ELFZI3cn3IQE9Mnf3E+Mh8wjO6MstzCOPFh4Yf0L1as5m2eUyYWj8ylVSQ==}
+
+  motion-utils@13.0.0:
+    resolution: {integrity: sha512-7DnN7TmbLcYXcG4RVadXIihWlyuM9afoUww8Y5Agg431kGKiuL2/OMyP4mJ5wLz+pvN3t5ySClLOaVXJ+wekRQ==}
 
   ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
@@ -6998,6 +7065,8 @@ snapshots:
 
   '@fastify/busboy@3.2.0': {}
 
+  '@fingerprintjs/fingerprintjs@5.2.0': {}
+
   '@firebase/ai@2.13.1(@firebase/app-types@0.9.5)(@firebase/app@0.15.1)':
     dependencies:
       '@firebase/app': 0.15.1
@@ -7319,6 +7388,67 @@ snapshots:
 
   '@firebase/webchannel-wrapper@1.0.6': {}
 
+  '@goldlabelapps/agent-layer@3.2.3': {}
+
+  '@goldlabelapps/notify@3.2.0': {}
+
+  '@goldlabelapps/prospects@3.2.8(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+    dependencies:
+      '@fingerprintjs/fingerprintjs': 5.2.0
+      '@goldlabelapps/theme': link:packages/theme
+      '@goldlabelapps/uberedux': link:packages/uberedux
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+
+  '@goldlabelapps/saas@3.2.0(@goldlabelapps/theme@3.2.0(bae0702cb67b58b27b44209ed3cad76b))(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(firebase@12.16.0)(next@16.3.2(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(@types/node@20.19.43)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)':
+    dependencies:
+      '@goldlabelapps/theme': 3.2.0(bae0702cb67b58b27b44209ed3cad76b)
+      '@mui/material': 7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      firebase: 12.16.0
+      next: 16.3.2(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(@types/node@20.19.43)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+
+  '@goldlabelapps/theme@3.2.0(@mui/icons-material@7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.17)(react@19.2.3))(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(next@16.1.1(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(supports-color@8.1.1)':
+    dependencies:
+      '@mui/icons-material': 7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.17)(react@19.2.3)
+      '@mui/material': 7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      canvas-confetti: 1.9.4
+      clsx: 2.1.1
+      framer-motion: 13.2.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      lucide-react: 1.34.0(react@19.2.3)
+      next: 16.1.1(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(babel-plugin-macros@3.1.0)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+      react-share: 5.3.0(react@19.2.3)(supports-color@8.1.1)
+      tailwind-merge: 3.6.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@goldlabelapps/theme@3.2.0(bae0702cb67b58b27b44209ed3cad76b)':
+    dependencies:
+      '@mui/icons-material': 7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(@types/react@19.2.17)(react@19.2.8)
+      '@mui/material': 7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      canvas-confetti: 1.9.4
+      clsx: 2.1.1
+      framer-motion: 13.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      lucide-react: 1.34.0(react@19.2.8)
+      next: 16.3.2(@babel/core@7.29.7(supports-color@8.1.1))(@opentelemetry/api@1.9.1)(@playwright/test@1.62.1)(@types/node@20.19.43)(babel-plugin-macros@3.1.0)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+      react-share: 5.3.0(react@19.2.8)(supports-color@8.1.1)
+      tailwind-merge: 3.6.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@goldlabelapps/uberedux@3.2.0(@reduxjs/toolkit@2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8))(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8)(redux-persist@6.0.0(react@19.2.8)(redux@5.0.1))(redux@5.0.1)':
+    dependencies:
+      '@reduxjs/toolkit': 2.12.0(react-redux@9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1))(react@19.2.8)
+      react: 19.2.8
+      react-redux: 9.3.0(@types/react@19.2.17)(react@19.2.8)(redux@5.0.1)
+      redux: 5.0.1
+      redux-persist: 6.0.0(react@19.2.8)(redux@5.0.1)
+
   '@google-cloud/firestore@7.11.6(supports-color@8.1.1)':
     dependencies:
       '@opentelemetry/api': 1.9.1
@@ -7637,6 +7767,14 @@ snapshots:
   '@mui/core-downloads-tracker@6.5.0': {}
 
   '@mui/core-downloads-tracker@7.3.11': {}
+
+  '@mui/icons-material@7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@types/react@19.2.17)(react@19.2.3)':
+    dependencies:
+      '@babel/runtime': 7.29.7
+      '@mui/material': 7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.3)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react: 19.2.3
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   '@mui/icons-material@7.3.11(@mui/material@7.3.11(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react@19.2.8)(supports-color@8.1.1))(@types/react@19.2.17)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(@types/react@19.2.17)(react@19.2.8)':
     dependencies:
@@ -9759,6 +9897,24 @@ snapshots:
     dependencies:
       fetch-blob: 3.2.0
 
+  framer-motion@13.2.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      motion-dom: 13.2.0
+      motion-utils: 13.0.0
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
+
+  framer-motion@13.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8):
+    dependencies:
+      motion-dom: 13.2.0
+      motion-utils: 13.0.0
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+
   fs-extra@9.1.0:
     dependencies:
       at-least-node: 1.0.0
@@ -10619,6 +10775,10 @@ snapshots:
       lodash.clonedeep: 4.5.0
       lru-cache: 6.0.0
 
+  lucide-react@1.34.0(react@19.2.3):
+    dependencies:
+      react: 19.2.3
+
   lucide-react@1.34.0(react@19.2.8):
     dependencies:
       react: 19.2.8
@@ -10700,6 +10860,12 @@ snapshots:
       esbuild: 0.28.1
       lightningcss: 1.33.0
       postcss: 8.5.23
+
+  motion-dom@13.2.0:
+    dependencies:
+      motion-utils: 13.0.0
+
+  motion-utils@13.0.0: {}
 
   ms@2.0.0: {}
 
@@ -11065,6 +11231,14 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.17
       redux: 5.0.1
+
+  react-share@5.3.0(react@19.2.3)(supports-color@8.1.1):
+    dependencies:
+      classnames: 2.5.1
+      jsonp: 0.2.1(supports-color@8.1.1)
+      react: 19.2.3
+    transitivePeerDependencies:
+      - supports-color
 
   react-share@5.3.0(react@19.2.8)(supports-color@8.1.1):
     dependencies:
