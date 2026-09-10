@@ -32,10 +32,10 @@ export const colors = {
 };
 
 export const banner = `
-${colors.brightCyan}  ╭─────────────────────────────────────────────────────────────╮${colors.reset}
-${colors.brightCyan}  │${colors.reset} ${colors.bold}${colors.brightWhite}▲ TURBO${colors.reset}${colors.gray} // ${colors.reset}${colors.bold}${colors.brightMagenta}GOLDLABEL${colors.reset} ${colors.bold}${colors.brightBlue}NX°${colors.reset} ${colors.dim}CLI${colors.reset} ${colors.brightYellow}v3.3.0${colors.reset}                     ${colors.brightCyan}│${colors.reset}
-${colors.brightCyan}  │${colors.reset} ${colors.brightRed}█${colors.brightYellow}█${colors.brightGreen}█${colors.brightCyan}█${colors.brightBlue}█${colors.brightMagenta}█${colors.brightWhite}█${colors.reset} ${colors.dim}High-Performance Monorepo Toolchain${colors.reset}           ${colors.brightCyan}│${colors.reset}
-${colors.brightCyan}  ╰─────────────────────────────────────────────────────────────╯${colors.reset}
+${colors.brightRed}╭─${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}─╮${colors.reset}
+${colors.brightRed}│${colors.reset} ${colors.bold}${colors.brightWhite}▲ TURBO${colors.reset} ${colors.bold}${colors.brightBlue}NX°${colors.reset} ${colors.dim}CLI${colors.reset} ${colors.brightYellow}v3.3.0${colors.reset}                                 ${colors.brightMagenta}│${colors.reset}
+${colors.brightYellow}│${colors.reset} ${colors.brightRed}█${colors.brightYellow}█${colors.brightGreen}█${colors.brightCyan}█${colors.brightBlue}█${colors.brightMagenta}█${colors.brightWhite}█${colors.reset} ${colors.dim}High-Performance Monorepo Toolchain${colors.reset}           ${colors.brightBlue}│${colors.reset}
+${colors.brightGreen}╰─${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}──${colors.brightMagenta}──${colors.brightRed}──${colors.brightYellow}──${colors.brightGreen}──${colors.brightCyan}──${colors.brightBlue}─╯${colors.reset}
 `;
 
 export function clearScreen() {
