@@ -78,38 +78,22 @@ describe("Header component", () => {
     expect(screen.getByRole("button", { name: /sign out & clear data/i })).toBeInTheDocument();
   });
 
-  it("replaces sign-in actions with sign-out and confirms before signing out when authenticated", async () => {
-    const fetchMock = vi.fn()
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({ authenticated: true }),
-      })
-      .mockResolvedValueOnce({
-        ok: true,
-        json: async () => ({ ok: true }),
-      });
+  it("replaces sign-in actions with account link when authenticated", async () => {
+    const fetchMock = vi.fn().mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({ authenticated: true }),
+    });
 
     vi.stubGlobal("fetch", fetchMock);
 
     render(<AppProviders><Header /></AppProviders>);
 
     await waitFor(() => {
-      expect(screen.getByRole("button", { name: /sign out/i })).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: /account/i })).toBeInTheDocument();
     });
 
     expect(screen.queryByRole("link", { name: /sign in/i })).not.toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /create account/i })).not.toBeInTheDocument();
-
-    const user = userEvent.setup();
-    await user.click(screen.getByRole("button", { name: /sign out/i }));
-
-    expect(window.confirm).toHaveBeenCalledWith("Sign out of your account?");
-
-    await waitFor(() => {
-      expect(fetchMock).toHaveBeenCalledWith("/api/auth/sign-out", { method: "POST" });
-      expect(pushMock).toHaveBeenCalledWith("/");
-      expect(refreshMock).toHaveBeenCalled();
-    });
+    expect(screen.queryByRole("button", { name: /^sign out$/i })).not.toBeInTheDocument();
   });
 
   it("updates background styling on scroll", async () => {
