@@ -97,7 +97,7 @@ export function HeaderActionsMenu({ isAuthenticated, user, onSignOut }: HeaderAc
         open={isOpen}
         onClose={() => setIsOpen(false)}
         aria-labelledby="settings-dialog-title"
-        maxWidth="md"
+        maxWidth="xs"
         fullWidth
         PaperProps={{
           sx: {
