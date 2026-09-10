@@ -1,5 +1,5 @@
 import process from "node:process";
-import { banner, colors, log, promptSelect, clearScreen, promptPostAction } from "./terminal.js";
+import { banner, colors, log, promptSelect, clearScreen, promptPostAction, VERSION } from "./terminal.js";
 import { printEnvSummary } from "./env.js";
 import { showHelp } from "./commands/help.js";
 import { runSetup } from "./commands/setup.js";
@@ -10,8 +10,6 @@ import { runPackages, updatePackages } from "./commands/packages.js";
 import { runCreate } from "./commands/create.js";
 import { runRemove } from "./commands/remove.js";
 import { runBuild } from "./commands/build.js";
-
-const VERSION = "3.3.0";
 
 const MAIN_MENU_OPTIONS = [
   { label: "🚀 install", value: "setup:diagnostics", desc: "Guided onboarding and toolchain verification" },
@@ -69,17 +67,10 @@ export function parseArgs(rawArgs) {
  * Interactive main menu loop
  */
 async function runInteractiveMenu(flags) {
-  let isFirstRender = true;
-
   while (true) {
-    if (isFirstRender) {
-      if (!flags.quiet) {
-        clearScreen();
-      }
+    if (!flags.quiet) {
+      clearScreen();
       console.log(banner);
-      isFirstRender = false;
-    } else {
-      console.log(`\n${colors.brightCyan}✦ Goldlabel NX°${colors.reset}`);
     }
 
     const choice = await promptSelect("", MAIN_MENU_OPTIONS);
