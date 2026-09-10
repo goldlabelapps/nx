@@ -8,7 +8,6 @@ export const navigationConfig: NavigationConfig = {
     tooltip: "Access documentation and guides",
   },
   links: [
-    { label: "NX°", href: "/nx" },
     {
       label: "Blog",
       href: "/blog",

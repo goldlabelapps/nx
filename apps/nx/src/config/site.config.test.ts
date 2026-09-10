@@ -77,11 +77,10 @@ describe("Modular Config Architecture", () => {
   });
 
   it("has navigation links and CTAs", () => {
-    expect(siteConfig.navigation.links.length).toBe(4);
+    expect(siteConfig.navigation.links.length).toBe(3);
 
     const nxLink = siteConfig.navigation.links.find((l) => l.label === "NX°");
-    expect(nxLink).toBeDefined();
-    expect(nxLink?.href).toBe("/nx");
+    expect(nxLink).toBeUndefined();
 
     const flashLink = siteConfig.navigation.links.find((l) => l.label === "Flash");
     expect(flashLink).toBeUndefined();
