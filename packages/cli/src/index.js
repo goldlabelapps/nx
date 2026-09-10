@@ -11,7 +11,7 @@ import { runCreate } from "./commands/create.js";
 import { runRemove } from "./commands/remove.js";
 import { runBuild } from "./commands/build.js";
 
-const VERSION = "3.0.4";
+const VERSION = "3.3.0";
 
 const MAIN_MENU_OPTIONS = [
   { label: "🚀 install", value: "setup:diagnostics", desc: "Guided onboarding and toolchain verification" },

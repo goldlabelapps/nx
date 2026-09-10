@@ -24,7 +24,7 @@ export function showHelp() {
 
   console.log(`${colors.bold}${colors.brightWhite}OPTIONS & FLAGS${colors.reset}`);
   console.log(`    ${colors.cyan}-h, --help${colors.reset}         Show manual synopsis and command usage`);
-  console.log(`    ${colors.cyan}-v, --version${colors.reset}      Output version number (v3.0.4)`);
+  console.log(`    ${colors.cyan}-v, --version${colors.reset}      Output version number (v3.3.0)`);
   console.log(`    ${colors.cyan}-i, --interactive${colors.reset}  Force launch interactive menu loop`);
   console.log(`    ${colors.cyan}-q, --quiet${colors.reset}        Suppress decorative banners and verbose outputs`);
   console.log(`    ${colors.cyan}--dry-run${colors.reset}          Print commands without executing side-effects\n`);

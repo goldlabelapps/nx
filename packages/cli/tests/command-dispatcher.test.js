@@ -14,7 +14,7 @@ describe("CLI Non-Interactive Command Dispatcher", () => {
 
   it("outputs version when --version flag is passed", async () => {
     await runCli(["--version"]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("gla v3.0.4"));
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining("gla v3.3.0"));
   });
 
   it("outputs help manual when --help flag is passed", async () => {

@@ -32,11 +32,10 @@ export const colors = {
 };
 
 export const banner = `
-${colors.brightYellow}  ╔═ ${colors.dim}${colors.yellow}01010101010101010101010101010101010101010101010101010101010${colors.reset}${colors.brightYellow} ═╗
-  ║   ${colors.bold}${colors.brightWhite}✦ GOLDLABEL${colors.reset}${colors.brightYellow}  //  ${colors.bold}${colors.brightYellow}NX° WORKSPACE CLI v3.0.4${colors.reset}${colors.dim}${colors.yellow} [WWII]${colors.reset}${colors.brightYellow}             ║
-  ║   ${colors.dim}${colors.yellow}Bandits at 12 o'clock... Scramble the squadron!${colors.reset}${colors.brightYellow}             ║
-  ║   ${colors.brightYellow}Chocks away, pilot.${colors.reset}${colors.dim}${colors.yellow}  //  Radio check... Loud and clear.     ${colors.reset}${colors.brightYellow}║
-  ╚═ ${colors.dim}${colors.yellow}10101010101010101010101010101010101010101010101010101010101${colors.reset}${colors.brightYellow} ═╝${colors.reset}
+${colors.brightCyan}  ╭─────────────────────────────────────────────────────────────╮${colors.reset}
+${colors.brightCyan}  │${colors.reset} ${colors.bold}${colors.brightWhite}▲ TURBO${colors.reset}${colors.gray} // ${colors.reset}${colors.bold}${colors.brightMagenta}GOLDLABEL${colors.reset} ${colors.bold}${colors.brightBlue}NX°${colors.reset} ${colors.dim}CLI${colors.reset} ${colors.brightYellow}v3.3.0${colors.reset}                     ${colors.brightCyan}│${colors.reset}
+${colors.brightCyan}  │${colors.reset} ${colors.brightRed}█${colors.brightYellow}█${colors.brightGreen}█${colors.brightCyan}█${colors.brightBlue}█${colors.brightMagenta}█${colors.brightWhite}█${colors.reset} ${colors.dim}High-Performance Monorepo Toolchain${colors.reset}           ${colors.brightCyan}│${colors.reset}
+${colors.brightCyan}  ╰─────────────────────────────────────────────────────────────╯${colors.reset}
 `;
 
 export function clearScreen() {
