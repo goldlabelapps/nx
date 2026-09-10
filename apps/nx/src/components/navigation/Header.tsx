@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { User } from "lucide-react";
 import { siteConfig } from "@/config";
 import { LogoContextMenu } from "./LogoContextMenu";
 import { DropdownMenu } from "./DropdownMenu";
@@ -200,13 +201,13 @@ export function Header({ iconOnly = false }: HeaderProps = {}) {
           <div className="flex items-center gap-2">
             {isAuthenticated ? (
               <div className="flex items-center gap-2">
-                {user?.photoURL ? (
-                  <Link
-                    href="/account"
-                    title="Account"
-                    aria-label="Account"
-                    className="relative h-7 w-7 md:h-9 md:w-9 rounded-full overflow-hidden hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-slate-400 shrink-0"
-                  >
+                <Link
+                  href="/account"
+                  title="Account"
+                  aria-label="Account"
+                  className="relative h-7 w-7 md:h-9 md:w-9 rounded-full overflow-hidden hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-slate-400 shrink-0 flex items-center justify-center bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                >
+                  {user?.photoURL ? (
                     <Image
                       src={user.photoURL}
                       alt={user.displayName || "User avatar"}
@@ -214,19 +215,10 @@ export function Header({ iconOnly = false }: HeaderProps = {}) {
                       sizes="(max-width: 768px) 28px, 36px"
                       className="object-cover"
                     />
-                  </Link>
-                ) : (
-                  <Button
-                    type="button"
-                    onClick={handleSignOut}
-                    variant="outline"
-                    size="sm"
-                    className="font-semibold"
-                    disabled={isSigningOut}
-                  >
-                    {isSigningOut ? "Signing out..." : "Sign out"}
-                  </Button>
-                )}
+                  ) : (
+                    <User className="h-4 w-4 text-slate-600 dark:text-slate-300" />
+                  )}
+                </Link>
               </div>
             ) : (
               <div className="flex items-center gap-2">
