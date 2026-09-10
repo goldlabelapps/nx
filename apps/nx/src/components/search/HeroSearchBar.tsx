@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { Search, X, BadgeCheck } from "lucide-react";
 import { CleverText } from "@goldlabelapps/flash";
@@ -32,16 +32,6 @@ export function HeroSearchBar({ guides = [] }: { guides?: GuideMeta[] }) {
     setTimeout(() => setShowLine2(true), 200);
   };
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const el = searchContainerRef.current;
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 100;
-        window.scrollTo({ top, behavior: "smooth" });
-      }
-    }, 1800);
-    return () => clearTimeout(timer);
-  }, []);
 
   return (
     <section className="relative z-30 min-h-[85vh] flex flex-col items-center justify-center pt-24 sm:pt-32 pb-16 bg-slate-50 dark:bg-slate-950">

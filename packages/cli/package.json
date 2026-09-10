@@ -1,6 +1,6 @@
 {
   "name": "@goldlabelapps/cli",
-  "version": "3.2.7",
+  "version": "4.0.0",
   "description": "Interactive command-line toolchain for NX and Goldlabel workspaces.",
   "publishConfig": {
     "access": "public"
@@ -20,6 +20,7 @@
     "build": "echo \"No build step required for CLI\"",
     "build:all": "echo \"No build step required for CLI\"",
     "setup": "node ./bin/cli.js setup",
+    "publish": "npm publish --access public",
     "test": "npm run ci",
     "test:watch": "vitest",
     "ci": "npm run type-check && npm run lint && vitest run",

@@ -1,6 +1,11 @@
 import readline from "node:readline/promises";
 import { emitKeypressEvents } from "node:readline";
 import { stdin as input, stdout as output } from "node:process";
+import { createRequire } from "node:module";
+
+const require = createRequire(import.meta.url);
+const pkg = require("../package.json");
+export const VERSION = pkg.version;
 
 // ANSI color escape sequences
 export const colors = {
@@ -31,13 +36,39 @@ export const colors = {
   brightWhite: "\x1b[97m",
 };
 
-export const banner = `
-${colors.brightYellow}  ╔═ ${colors.dim}${colors.yellow}01010101010101010101010101010101010101010101010101010101010${colors.reset}${colors.brightYellow} ═╗
-  ║   ${colors.bold}${colors.brightWhite}✦ GOLDLABEL${colors.reset}${colors.brightYellow}  //  ${colors.bold}${colors.brightYellow}NX° WORKSPACE CLI v3.0.4${colors.reset}${colors.dim}${colors.yellow} [WWII]${colors.reset}${colors.brightYellow}             ║
-  ║   ${colors.dim}${colors.yellow}Bandits at 12 o'clock... Scramble the squadron!${colors.reset}${colors.brightYellow}             ║
-  ║   ${colors.brightYellow}Chocks away, pilot.${colors.reset}${colors.dim}${colors.yellow}  //  Radio check... Loud and clear.     ${colors.reset}${colors.brightYellow}║
-  ╚═ ${colors.dim}${colors.yellow}10101010101010101010101010101010101010101010101010101010101${colors.reset}${colors.brightYellow} ═╝${colors.reset}
-`;
+function createBanner() {
+  const titleText = `NX CLI v${VERSION}`;
+  const titleVisible = titleText;
+  const subtitleVisible = `███████ High-Performance Monorepo Toolchain`;
+
+  const innerWidth = Math.max(titleVisible.length, subtitleVisible.length) + 6; // 60 chars inner
+
+  const titlePadding = " ".repeat(innerWidth - titleVisible.length);
+  const subtitlePadding = " ".repeat(innerWidth - subtitleVisible.length);
+
+  // Rainbow palette
+  const palette = [colors.brightRed, colors.brightYellow, colors.brightGreen, colors.brightCyan, colors.brightBlue, colors.brightMagenta];
+
+  const makeHorizontalBorder = (cornerLeft, cornerRight) => {
+    let result = cornerLeft;
+    for (let i = 0; i < innerWidth + 1; i++) {
+      const color = palette[i % palette.length];
+      result += `${color}─`;
+    }
+    result += `${palette[(innerWidth + 1) % palette.length]}${cornerRight}${colors.reset}`;
+    return result;
+  };
+
+  const topBorder = makeHorizontalBorder("╭", "╮");
+  const bottomBorder = makeHorizontalBorder("╰", "╯");
+
+  const line1 = `${palette[0]}│${colors.reset} ${colors.bold}${colors.brightWhite}NX CLI${colors.reset} ${colors.brightYellow}v${VERSION}${colors.reset}${titlePadding}${palette[3]}│${colors.reset}`;
+  const line2 = `${palette[1]}│${colors.reset} ${colors.brightRed}█${colors.brightYellow}█${colors.brightGreen}█${colors.brightCyan}█${colors.brightBlue}█${colors.brightMagenta}█${colors.brightWhite}█${colors.reset} ${colors.dim}High-Performance Monorepo Toolchain${colors.reset}${subtitlePadding}${palette[4]}│${colors.reset}`;
+
+  return `\n${topBorder}\n${line1}\n${line2}\n${bottomBorder}\n`;
+}
+
+export const banner = createBanner();
 
 export function clearScreen() {
   if (process.stdout.isTTY && process.env.NODE_ENV !== "test") {
@@ -146,8 +177,11 @@ export async function promptSelect(title, options) {
         return options[num - 1].value;
       }
       clearScreen();
+      console.log(banner);
       printMenu();
-      log.warn(`Invalid bearing '${trimmed}'. Please enter a number between 1 and ${options.length}.`);
+      if (trimmed !== "") {
+        log.warn(`Invalid bearing '${trimmed}'. Please enter a number between 1 and ${options.length}.`);
+      }
     }
   } finally {
     if (supportsRawInput) {

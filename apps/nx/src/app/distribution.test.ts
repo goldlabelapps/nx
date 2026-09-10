@@ -23,13 +23,13 @@ describe("Template Distribution & Assets", () => {
   it("verifies public documentation chapters exist", () => {
     const docChapters = [
       "public/md/index.md",
-      "public/md/nx/developer/installation.md",
-      "public/md/nx/config.md",
-      "public/md/nx/developer/testing.md",
-      "public/md/nx/api.md",
-      "public/md/nx/architecture.md",
-      "public/md/nx/monorepo.md",
-      "public/md/nx/techstack.md",
+      "public/md/developer/installation.md",
+      "public/md/config.md",
+      "public/md/developer/testing.md",
+      "public/md/api.md",
+      "public/md/architecture.md",
+      "public/md/monorepo.md",
+      "public/md/techstack.md",
     ];
 
     for (const doc of docChapters) {
