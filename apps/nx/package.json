@@ -28,7 +28,6 @@
     "@goldlabelapps/agent-layer": "^3.2.8",
     "@goldlabelapps/flash": "^3.3.0",
     "@goldlabelapps/notify": "^3.2.0",
-    "@goldlabelapps/prospects": "^3.4.1",
     "@goldlabelapps/saas": "^3.2.0",
     "@goldlabelapps/theme": "^3.2.8",
     "@goldlabelapps/uberedux": "^3.2.8",
