@@ -1,7 +1,5 @@
 import { Suspense } from "react";
 import Script from "next/script";
-import type { Metadata, Viewport } from "next";
-import { Me } from "@goldlabelapps/prospects";
 import { siteConfig } from "@/config/site.config";
 import { nxConfig } from "@/lib/nxConfig";
 import { Header } from "@/components/navigation/Header";
@@ -92,7 +90,6 @@ export default function RootLayout({
           </Suspense>
           <main className="flex-1 w-full">{children}</main>
           <Footer />
-          <Me />
         </AppProviders>
       </body>
     </html>
