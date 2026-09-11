@@ -1,6 +1,6 @@
 {
   "name": "@goldlabelapps/cli",
-  "version": "4.0.0",
+  "version": "3.5.0",
   "description": "Interactive command-line toolchain for NX and Goldlabel workspaces.",
   "publishConfig": {
     "access": "public"

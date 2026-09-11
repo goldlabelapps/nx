@@ -1,6 +1,6 @@
 {
   "name": "nx",
-  "version": "3.2.7",
+  "version": "3.5.0",
   "private": true,
   "type": "module",
   "scripts": {
