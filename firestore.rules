@@ -1,0 +1,74 @@
+rules_version = '2';
+
+service cloud.firestore {
+
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isPublished(data) {
+      return data != null && data.status == 'published';
+    }
+
+    match /fingerprints/{document=**} {
+      allow read, write: if isSignedIn();
+    }
+
+    // User profile document rules
+    match /users/{userId} {
+      // 1. Any authenticated user can read user profiles (e.g. for avatars/names)
+      allow read: if request.auth != null;
+      // 2. A user can only write/update their OWN user document
+      allow create, update: if request.auth != null && request.auth.uid == userId;
+      // 3. Prevent users from deleting their document (managed by admin/backend)
+      allow delete: if false;
+    }
+
+    match /virus/{document=**} {
+      allow read, write: if isSignedIn();
+    }
+
+    match /tenants/{document=**} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if request.auth != null;
+    }
+
+    match /prospects/{document=**} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if request.auth != null;
+    }
+
+    match /devices/{document=**} {
+      allow read: if true;
+      allow create: if true;
+      allow update: if true;
+      allow delete: if request.auth != null;
+    }
+
+    match /accounts/{document=**} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if request.auth != null;
+    }
+
+    // Posts: public can read published posts, only authenticated users can write.
+    match /posts/{postId} {
+      allow read: if (resource != null && isPublished(resource.data)) || isSignedIn();
+      allow create: if isSignedIn();
+      allow update, delete: if isSignedIn();
+
+      match /revisions/{revisionId} {
+        allow read, write: if isSignedIn();
+      }
+    }
+
+    // Deny all other collections by default
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -94,7 +94,9 @@ export default function AccountPage() {
                 }
               },
               (error) => {
-                console.error("Error listening to user document in Firestore:", error);
+                if (error.code !== "permission-denied") {
+                  console.error("Error listening to user document in Firestore:", error);
+                }
                 setFirestoreUserData(null);
               }
             );
