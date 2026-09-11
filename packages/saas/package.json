@@ -1,6 +1,6 @@
 {
   "name": "@goldlabelapps/saas",
-  "version": "3.2.7",
+  "version": "3.5.0",
   "description": "SaaS auth guards, session verification, and routing zone helpers.",
   "publishConfig": {
     "access": "public"
