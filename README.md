@@ -12,7 +12,7 @@
 
 > 100% Free & Open Source. Built for humans & AI pair programmers alike. Zero licensing fees, zero friction. Unlike traditional frameworks, NX° has no learning curve. Use Google Antigravity, Copilot, or Cursor, your AI understands the full monoropos instantly—allowing you to compose modular, production-ready Next.js applications through simple descriptive prompts.
 
-## Quick Start (Install & Use)
+## Quick Start
 
 Follow this simple flow to get up and running:
 
