@@ -3,8 +3,8 @@
         <a href="https://goldlabel.pro" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center;">
             <img
                 src="https://goldlabel.pro/png/favicon.png"
-                width="50"
-                height="50"
+                width="75"
+                height="75"
             />
         </a>
     </h1>
