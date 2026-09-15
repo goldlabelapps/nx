@@ -71,7 +71,9 @@ function createBanner() {
 export const banner = createBanner();
 
 export function clearScreen() {
-  // Screen clearing disabled to preserve warnings and errors
+  if (process.stdout.isTTY && process.env.NODE_ENV !== "test") {
+    process.stdout.write("\x1Bc");
+  }
 }
 
 /**
